@@ -79,20 +79,40 @@ For decades, TMNN sat in archives with **zero eyeballs**. The man who coined "gi
 
 **This is interactive performance art.** A public code review, 30 years in the making.
 
+**The medium is the message.** This is GitHub — the platform that embodies everything ESR claimed to believe in: public collaboration, transparent development, community review. We're using every feature GitHub offers to give his code the "many eyes" treatment he always said open source deserved.
+
 We invite **everyone** to participate. Open issues. Debate findings. Argue about whether something is *really* a bug or just a stylistic choice that happens to enable remote code execution. Have fun with it!
 
 **All issues, reviews, discussions, and pull requests are welcome.**
 
-This is what ESR wanted. This is what "many eyes" looks like. Let's give his code the thorough, public, community-driven review he always said open source deserved.
+### 🐙 The Platform IS the Point
+
+We're leaning into GitHub as the medium. This isn't just a repository — it's a living, collaborative code review:
+
+| GitHub Feature | How We Use It | Status |
+|----------------|---------------|--------|
+| [**📋 Issues**](../../issues) | Bug reports, findings, debates | ✅ Open for business |
+| [**💬 Discussions**](../../discussions) | Community chat, theories, laughs | ✅ Come hang out |
+| [**🔒 Security**](../../security) | Vulnerability reports (yes, really) | ✅ Accepting reports |
+| [**📝 Pull Requests**](../../pulls) | Add analysis, fix typos, contribute | ✅ PRs welcome |
+| [**📖 Wiki**](../../wiki) | Extended documentation & deep dives | 🚧 Coming soon |
+| [**🏷️ Labels**](../../labels) | Categorize bugs by type & severity | 🚧 [Help wanted](../../issues/new?title=Create%20issue%20labels&body=We%20need%20labels%20for%20bug%20categories!) |
+| [**📋 Projects**](../../projects) | Track the code review progress | 🚧 [Help wanted](../../issues/new?title=Set%20up%20GitHub%20Project%20board&body=Create%20a%20project%20board%20to%20track%20findings!) |
+| [**🤖 Actions**](../../actions) | CI/CD, build analysis website | 🚧 [Help wanted](../../issues/new?title=Set%20up%20GitHub%20Actions&body=Build%20and%20deploy%20a%20static%20site%20with%20the%20analysis!) |
+| [**🌐 Pages**](../../pages) | Host the analysis as a website | 🚧 [Help wanted](../../issues/new?title=Set%20up%20GitHub%20Pages&body=Deploy%20analysis%20as%20a%20browsable%20website!) |
+| [**📦 Releases**](../../releases) | Version the analysis findings | 💡 Future idea |
+
+**Want to help build out the infrastructure?** Click any "Help wanted" link above to open an issue!
 
 ### 🐛 How to Participate
 
 | Action | Where | Come On In! |
 |--------|-------|-------------|
-| **Report a bug** | [Open an Issue](../../issues) | Found something? Tell us! |
+| **Report a bug** | [Open an Issue](../../issues/new?template=bug_report.md) | Found something? Tell us! |
 | **Debate a finding** | [Discussions](../../discussions) | Is it a bug or a feature? Fight about it! |
-| **Document a vulnerability** | [Security tab](../../security) | The serious stuff |
-| **Submit analysis** | Pull requests to `analysis/` | Add to the archaeological record |
+| **Document a vulnerability** | [Security Advisories](../../security/advisories/new) | The serious stuff |
+| **Submit analysis** | [Pull Request](../../compare) | Add to the archaeological record |
+| **Propose a feature** | [Feature Request](../../issues/new?title=Feature:&body=I%20have%20an%20idea...) | Make this better! |
 | **Just hang out** | [Watch the repo](../../subscription) | Grab popcorn, enjoy the show |
 
 ### 📋 What to Look For
@@ -114,7 +134,7 @@ This is what ESR wanted. This is what "many eyes" looks like. Let's give his cod
 | `gets()` calls | Multiple | In headers |
 | `system()` calls | 15+ | Command injection risks |
 | Temp file races | Multiple | `mktemp()` everywhere |
-| **Your discovery** | ? | [Open an Issue](../../issues) — join the fun! |
+| **Your discovery** | ? | [Open an Issue](../../issues/new) — join the fun! |
 
 *Let's see how shallow these bugs really are.*
 
