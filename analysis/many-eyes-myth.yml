@@ -1,15 +1,20 @@
 # "Many Eyes" / "Linus's Law": The Myth ESR Invented
 # Analysis of ESR's most famous (and problematic) claim
+# YAML Jazz: Named after a man who never said it
 
 the_claim:
   statement: "Given enough eyeballs, all bugs are shallow."
   named: "Linus's Law"
+  # Named after someone who never said it. Bold move.
   source: "The Cathedral and the Bazaar" (1997)
   attribution: "Named after Linus Torvalds"
+  # Torvalds: famously never said this
   
 the_problem:
   linus_never_said_it: true
   torvalds_quote: null  # Linus has never claimed or endorsed this "law"
+  # Imagine naming your made-up quote after someone who didn't say it
+  # to avoid responsibility when it turns out to be wrong
   
   donhopkins_analysis:
     source: https://news.ycombinator.com/item?id=43133598
@@ -17,9 +22,11 @@ the_problem:
       He made up the ridiculous 'many eyes' quote himself, then misnamed it 
       'Linus's Law' to avoid personal responsibility and shift the blame to 
       innocent Linus Torvalds, who never said such a stupid thing.
+    # "Shift the blame to innocent Linus Torvalds" - chef's kiss
 
 theo_de_raadt_demolition:
   # Theo de Raadt - OpenBSD founder, one of the most respected security developers
+  # The guy who actually builds secure systems, unlike ESR
   source: https://marc.info/?l=openbsd-tech&m=129261032213320&w=2
   date: 2010-12
   quote: |
@@ -28,22 +35,28 @@ theo_de_raadt_demolition:
     eyes of Eric (the originator of the statement). All the many eyes are 
     apparently attached to a lot of hands that type lots of words about 
     many eyes, and never actually audit code.
+  # "Type lots of words about many eyes, and never actually audit code"
+  # Theo just ended this man's whole career in one paragraph
   significance: |
     The founder of the most security-focused operating system explicitly 
     mocking ESR's "many eyes" claim, noting that ESR himself never audited code.
 
 empirical_evidence_against:
+  # Reality: a harsh mistress to ESR's theories
+  
   heartbleed:
     year: 2014
     what: "Critical OpenSSL vulnerability"
     eyes_that_saw_it: "None for 2+ years"
     note: "Millions of servers, thousands of developers, zero detection"
+    # Many eyes. Very shallow. Much security. Wow.
     
   shellshock:
     year: 2014
     what: "Bash shell vulnerability"
     age: "25 years undetected"
     note: "One of the most reviewed pieces of software in existence"
+    # 25 years. TWENTY-FIVE. Where were the eyeballs?
     
   tmnn_itself:
     year: 1989
@@ -53,6 +66,7 @@ empirical_evidence_against:
       race_conditions: 42
       command_injections: 61
     note: "The guy who coined 'many eyes' had zero eyes on his own code"
+    # 774 buffer overflows. Zero eyeballs. Not shallow at all.
 
 academic_criticism:
   paper: "A second look at the Cathedral and the Bazaar"
@@ -60,15 +74,18 @@ academic_criticism:
   journal: "First Monday"
   url: https://firstmonday.org/ojs/index.php/fm/article/download/708/618/
   finding: "The bazaar metaphor is internally contradictory"
+  # Even academics could see through it
 
 why_esr_named_it_after_linus:
   theory: "Responsibility deflection"
+  # Not just a theory - it's the obvious explanation
   explanation: |
     By attributing his dubious claim to Linus Torvalds, ESR:
     1. Borrowed credibility from someone respected
     2. Avoided personal accountability when the claim proved false
     3. Made it awkward to criticize (attacking "Linus's Law" sounds anti-Linus)
   problem: "Linus never made this claim or endorsed it"
+  # It's intellectual money laundering
 
 the_irony: |
   The man who invented "many eyes make all bugs shallow" never had many eyes 
@@ -82,3 +99,5 @@ the_irony: |
   Real security researchers like Theo de Raadt have always known this was 
   nonsense. The "many eyes" aren't auditing code - they're "typing lots of 
   words about many eyes."
+  
+  # The many eyes were the friends we didn't make along the way

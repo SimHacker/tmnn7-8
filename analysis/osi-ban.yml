@@ -1,5 +1,6 @@
 # OSI Ban: Co-Founder Expelled from His Own Organization
 # How ESR got banned from the Open Source Initiative he co-founded
+# YAML Jazz: The leopard ate his own face
 
 the_organization:
   name: "Open Source Initiative (OSI)"
@@ -8,11 +9,13 @@ the_organization:
     - "Eric S. Raymond"
     - "Bruce Perens"
   esr_role: "President for first six years"
+  # Six years of ESR. The organization survived somehow.
   mission: "Stewardship of the Open Source Definition"
 
 the_ban:
   date: 2020-03-26
   action: "Banned from OSI mailing lists"
+  # Banned. From the thing he started. Let that sink in.
   lists_affected:
     - "License-Review"
     - "License-Discuss"
@@ -20,9 +23,12 @@ the_ban:
   
   reason_given:
     violation: "OSI Code of Conduct"
+    # The guy who hates Codes of Conduct got banned for violating one
+    # You can't make this up
     specifics:
       - "deliberately divisive or disrespectful messages"
       - "threatening, disparaging or belittling remarks"
+      # His brand, basically
       
 the_incident:
   date: 2020-02-24
@@ -30,30 +36,36 @@ the_incident:
     ESR rejoined the mailing list after 20 years of absence to argue against 
     "ethical" open source licensing proposals that would allow projects to 
     exclude certain organizations.
+  # 20 years of silence. Then: "I'm back, and I have OPINIONS"
     
   his_position: |
     Argued against "social justice" goals in licensing, saying OSI's role is 
     to "protect a narrow and particular set of liberties."
+  # His liberties, specifically
     
   what_he_said:
     first_post: |
       To hell with you *and* the horse you rode in on.
     target: "Advocates of ethical licensing clauses"
+    # A measured, professional opening. Very collaborative.
     
     penultimate_email: |
       I am not fooled. You are mounting an ideological attack on our core 
       principles of liberty and nondiscrimination. You will not succeed 
       while I retain any ability to oppose this.
+    # "While I retain any ability" - dramatic. Shakespearean, even.
       
     blocked_email:
       leaked: true
       url: http://lists.opensource.org/pipermail/license-discuss_lists.opensource.org/2020-February/021328.html
       content: "Called someone a 'toxic loonytoon'"
+      # Peak discourse from the "How to Become a Hacker" guy
 
 hacker_news_reactions:
   main_thread: https://news.ycombinator.com/item?id=22539530
   points: 328
   comments: 420+
+  # 420+ comments. The internet had thoughts.
   
   selected_comments:
     - user: latk
@@ -62,27 +74,33 @@ hacker_news_reactions:
         similar opinions both before and after his messages. But ESR, over the 
         course of a few days where he returned to the mailing list, was 
         increasingly unable to express those opinions in a professional manner.
+      # "Increasingly unable to express opinions professionally" - diplomatic
         
     - user: latk
       quote: |
         I'd even have considered banning ESR without any particular evidence. 
         That guy isn't new to the scene but has a long history of troublesome 
         behavior.
+      # "Long history of troublesome behavior" - understatement of the decade
 
 news_coverage:
   - source: "i-programmer.info"
     title: "Co-founder of OSI Banned From Mailing Lists"
     url: https://www.i-programmer.info/news/136-open-source/13535-co-founder-of-osi-banned-from-.html
+    # Even the headline sounds exhausted
     
   - source: "lunduke.com"
     title: "Open Source Initiative bans co-founder, Eric S Raymond"
     note: "Sympathetic to ESR"
+    # Of course Lunduke was sympathetic
 
 the_irony:
   founding_to_ban: "22 years"
+  # 22 years from "I made this" to "you can't sit with us"
   pattern: |
     ESR co-founded an organization to promote open collaboration.
     ESR was banned from that organization for being unable to collaborate.
+    # The call is coming from inside the house
     
   tmnn_connection: |
     The same pattern visible in TMNN: ESR can write about how things 
@@ -90,6 +108,7 @@ the_irony:
     for TMNN explicitly distanced himself from FSF, his BRAGSHEET 
     bragged about solo "secret laboratory" work, and his code had no 
     external contributors.
+    # He's been like this since 1989. At least.
 
 other_institutional_separations:
   - organization: "Free Software Foundation (context)"
@@ -98,6 +117,8 @@ other_institutional_separations:
       My action is not to be construed as an endorsement of the political 
       or economic views... of any member, agent, or ally of the Free 
       Software Foundation other than myself.
+    # "Not to be construed as an endorsement" - in a LICENSE file
+    # Peak ESR
 
 pattern_summary: |
   ESR has been unable to maintain productive relationships with the 
@@ -106,3 +127,5 @@ pattern_summary: |
   - Distanced from FSF (in 1989 TMNN license)
   - Jargon File maintainer but criticized by original hackers
   - "Open source" advocate who developed in secret laboratories
+  
+  # The common denominator in all ESR's failed relationships is ESR

@@ -1,11 +1,13 @@
 # The Jargon File: How ESR Hijacked Hacker Culture
 # Analysis of ESR's appropriation of the original MIT/Stanford document
+# YAML Jazz: Hostile takeover of a community treasure
 
 original_jargon_file:
   origin: "Stanford AI Lab (SAIL)"
   started_by: "Raphael Finkel"
   year: 1975
   original_name: "AIWORD.RF[UP,DOC]"
+  # Before ESR. Back when it was pure.
   
   early_contributors:
     - name: "Raphael Finkel"
@@ -14,12 +16,15 @@ original_jargon_file:
       role: "Brought to MIT in 1976"
     - name: "Guy L. Steele Jr."
       role: "Major MIT contributor and editor"
+      # Actual legend. Wrote LISP standards.
     - name: "Richard M. Stallman"
       role: "MIT AI Lab contributor"
+      # Another actual legend. Started GNU.
     - name: "Don Woods"
       role: "Contributor"
     - name: "Geoff Goodfellow"
       role: "Contributor"
+  # Notice who's not on this list? ESR.
       
   published_book:
     title: "The Hacker's Dictionary"
@@ -27,13 +32,16 @@ original_jargon_file:
     publisher: "Harper & Row"
     year: 1983
     note: "Authorized compilation by actual MIT/Stanford hackers"
+    # "Actual" - a distinction that matters
 
 esr_takeover:
   event: "ESR takes over maintenance of stagnant Jargon File"
   period: "Late 1980s onward"
+  # Vulture circles, lands on unattended carcass
   
   his_version:
     title: "The New Hacker's Dictionary"
+    # "New" - as in "I changed it"
     editions:
       - year: 1991
         note: "First ESR edition"
@@ -44,17 +52,19 @@ esr_takeover:
 accusations_of_hijacking:
   idlewords_quote:
     source: https://news.ycombinator.com/item?id=36920683
-    user: idlewords  # Maciej Ceglowski
+    user: idlewords  # Maciej Ceglowski - Pinboard founder, brilliant writer
     quote: |
       It would be great if someone with appropriate 'back in the day' 
       credentials would take over membership of this document and 
       powerwash the gratuitous Eric Raymond edits and insertions off of it.
+    # "Powerwash the gratuitous Eric Raymond edits" - chef's kiss
       
   deepspace_quote:
     source: https://news.ycombinator.com/item?id=36923046
     quote: |
       the man's disgusting political and social views tarnished 
       everything he touched
+    # "Tarnished everything he touched" - the Midas touch, but bad
       
   donhopkins_assessment:
     source: https://news.ycombinator.com/item?id=43133598
@@ -65,27 +75,34 @@ accusations_of_hijacking:
         Dictionary to be disrespectful parasitical vandalism that doesn't 
         represent the actual hacker culture, just a tool he hijacked, corrupted, 
         and abused to spread his right-wing political ideology.
+      # "Disrespectful parasitical vandalism" - accurate
       - |
         He certainly doesn't deserve to be called a hacker, let alone presume 
         to define the meaning of the term.
+      # The guy who rewrote the hacker dictionary isn't a hacker
     credentials: "Known ESR since early 1980s, was present at MIT AI Lab"
+    # First-hand witness
 
 original_source:
   url: https://github.com/PDP-10/its/blob/master/doc/humor/jargon.68
   description: "The original MIT ITS jargon file, free of ESR's pollution"
+  # "Free of ESR's pollution" - liberation theology
   note: "This is what it looked like before ESR rewrote it"
 
 what_esr_changed:
   additions:
     - "Political content reflecting ESR's libertarian views"
     - "Self-referential entries promoting ESR's own work"
+    # "See also: my essays, my books, my genius"
     - "Redefinitions that changed the meaning of hacker culture"
   removals_or_diminishments:
     - "Original MIT/Stanford cultural context"
     - "Contributions from people ESR disagreed with"
+    # If you're not on Team ESR, you get edited out
   net_effect: |
     Transformed a collaborative community document into a vehicle for 
     ESR's personal ideology and self-promotion
+  # Turned "our history" into "my resume"
 
 the_pattern: |
   ESR has a recurring pattern of:
@@ -99,6 +116,8 @@ the_pattern: |
   - His claims about defining "hacker" culture
   - "How to Become a Hacker" essay
   - "Linus's Law" (attributed to someone who never said it)
+  
+  # It's not a pattern, it's a business model
 
 parallel_to_tmnn:
   note: |
@@ -106,3 +125,6 @@ parallel_to_tmnn:
     adding his political ideology (FASCIST/COMMUNIST flags) and buffer 
     overflows. The pattern is consistent: take others' work, insert 
     politics, break things, claim credit.
+  # Spafford: security legend
+  # ESR: added security vulnerabilities
+  # The audacity

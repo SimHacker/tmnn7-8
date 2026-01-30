@@ -1,8 +1,10 @@
 # Sex Tips for Geeks & Honeytrap Conspiracy
 # ESR's bizarre writings on gender and his conspiracy theories
+# YAML Jazz: From pickup artist to panic merchant
 
 sex_tips_for_geeks:
   # ESR's series of essays advising male geeks on attracting women
+  # Yes, this exists. No, we're not making it up.
   
   source: https://www.catb.org/~esr/writings/sextips/
   
@@ -10,19 +12,25 @@ sex_tips_for_geeks:
     - "How To Be Sexy"
     - "The Art of the Pickup"  
     - "On Being Good In Bed"
+  # A trilogy nobody asked for
     
   sample_advice:
     fitness_signals:
       quote: |
         emit fitness-to-reproduce signals... your bulging, tumescent hacker 
         forebrain is just not going to turn on very many women by itself
+      # "Bulging, tumescent hacker forebrain" - actual quote
+      # We cannot stress enough: he wrote this unironically
         
     promise_to_readers:
       quote: |
         Trust me, if you do these things women will fall all over themselves 
         trying to get at you.
+      # "Trust me" - always a good sign
+      # Narrator: they did not fall all over themselves
         
   claimed_basis: "Evolutionary psychology"
+  # Evo-psych: the astrology of people who think they're too smart for astrology
   
   donhopkins_assessment:
     source: https://news.ycombinator.com/item?id=43139165
@@ -30,9 +38,11 @@ sex_tips_for_geeks:
       His infamous "Sex Tips for Geeks" essay comes off like it was 
       written by Pepé Le Pew.
     note: "Pepé Le Pew is the Warner Bros character known for aggressively pursuing women who are clearly not interested"
+    # This comparison is unfair to Pepé Le Pew
 
 the_honeytrap_conspiracy:
   # ESR's 2015 claim that feminist activists were framing male developers
+  # The plot twist nobody saw coming (because it didn't happen)
   
   date: 2015-11
   blog_post: "From kafkatrap to honeytrap"
@@ -42,36 +52,45 @@ the_honeytrap_conspiracy:
     Feminist activists (specifically the Ada Initiative) were orchestrating 
     "honeytraps" at tech conferences to fabricate sexual assault accusations 
     against prominent male open-source developers.
+  # Citation: "trust me bro" and an anonymous IRC source
     
   alleged_method:
     quote: |
       get alone with the target, and then immediately after cry 
       'attempted sexual assault.'
+    # This is what ESR thinks women do at tech conferences
       
   named_target:
     person: "Linus Torvalds"
     claim: |
       Linus is never alone at any conference... They have made multiple 
       runs at him.
+    # "Multiple runs at Linus" - accusations: zero
       
   evidence_provided: "Anonymous IRC source"
+  # An anonymous person on IRC said it. Case closed.
   accusations_that_materialized: 0
+  # Zero. The number is zero.
   
   his_warning_to_men:
     quote: |
       if you are any kind of open-source leader or senior figure who is male, 
       do not be alone with any female, ever, at a technical conference.
+    # From "women will fall all over themselves" to "never be alone with any female"
+    # Character development?
       
 news_coverage:
   - source: "The Register"
     title: "Linus Torvalds targeted by honeytraps, claims Eric S. Raymond"
     url: https://www.theregister.com/2015/11/06/linus_torvalds_targeted_by_honeytraps_says_eric_raymond/
     note: "Noted ESR's credibility was questionable given previous controversial claims"
+    # Even The Register was like "uh, about that"
     
   - source: "Breitbart"
     title: "Feminists Are Trying To Frame Linus Torvalds For Sexual Assault"
     url: https://www.breitbart.com/tech/2015/11/04/feminists-are-trying-to-frame-linus-torvalds-for-sexual-assault-claims-open-source-industry-veteran/
     note: "ESR's claims embraced by far-right media"
+    # When Breitbart is amplifying your takes, time for reflection
     
   - source: "Computing.co.uk"
     url: https://computing.co.uk/news/2433450/backbytes-open-source-developers-targeted-in-honeytraps-claims-eric-raymond
@@ -80,37 +99,45 @@ the_ada_initiative:
   what_it_was: "Women-in-tech advocacy organization"
   closed: 2015
   actual_work: "Promoted codes of conduct and anti-harassment policies"
+  # You know, anti-harassment. The thing ESR opposes.
   response_to_esr: "None public"
   torvalds_response: "None public"
+  # Linus didn't even dignify it with a response
   
   actual_outcome: |
     The Ada Initiative closed in 2015. No accusations against Linus Torvalds 
     or other open-source leaders materialized. ESR's conspiracy theory 
     remains unsubstantiated.
+  # The honeytraps: notably absent
 
 the_pattern:
   sex_tips: |
     ESR positions himself as an expert on attracting women, writing a 
     series of essays with advice based on "evolutionary psychology."
+  # Self-appointed dating guru
     
   honeytrap: |
     Years later, ESR warns men to never be alone with women at conferences 
     because women are supposedly trying to frame them.
+  # Self-appointed women-are-dangerous warner
     
   contradiction: |
     The man who wrote "Trust me, if you do these things women will fall 
     all over themselves trying to get at you" later warned men that women 
     at tech conferences are dangerous predators.
+  # Which is it, Eric?
 
 connection_to_tmnn:
   fascist_c: |
     In fascist.c, ESR embedded his political worldview directly into code 
     (FASCIST/COMMUNIST flags). The "sex tips" and "honeytrap" writings show 
     the same tendency: inject personal ideology into technical spaces.
+  # He can't write code without writing manifestos
     
   pattern: |
     ESR consistently uses technical platforms and communities to promote 
     his personal views on politics, gender, and social organization.
+  # Every space is a soapbox
 
 rationalwiki_categorization:
   url: https://rationalwiki.org/wiki/Eric_S._Raymond
@@ -118,3 +145,4 @@ rationalwiki_categorization:
     - "Conspiracy theorists"
     - "Crank magnetism"
     - "Misogynists"
+  # RationalWiki has receipts

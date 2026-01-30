@@ -1,10 +1,12 @@
 # fascist.c Deep Analysis - ESR's Political Code
 # YAML Jazz: The code reveals the coder
+# Yes, he really named it fascist.c. No, we're not making this up.
 
 file:
   path: src/D.news/fascist.c
   lines: 305
   purpose: "perform authorization check on posting usage"
+  # A function that decides who gets to speak. Named "fascist." By choice.
   
 attribution:
   original_author:
@@ -13,74 +15,90 @@ attribution:
     date: "May 22, 1985"
     credentials: |
       One of the most respected security researchers in computing history.
-      Founder of CERIAS (Center for Education and Research in Information 
-      Assurance and Security) at Purdue. The Spafford who co-discovered and 
+      Founder of CERIAS at Purdue. The Spafford who co-discovered and 
       analyzed the Morris Worm. Author of foundational computer ethics work.
     wikipedia: https://en.wikipedia.org/wiki/Gene_Spafford
+    # A legend. An actual security expert. Unlike ESR.
     
   rewriter:
     name: "Eric S. Raymond"
     claim: "rewritten by Eric S. Raymond"
+    # "Rewritten" is doing a lot of heavy lifting here
     changes_made:
       - "Added political dog-whistle naming"
       - "Added Tolkien cosplay examples"
       - "Introduced buffer overflows"
       - "Added FASCIST/COMMUNIST compile flags"
+    # Took security code from a security expert, added insecurity and politics
 
 political_naming:
   # ESR embedded his libertarian worldview into variable and function names
+  # Because why write clean code when you can write manifestos?
   
   compile_flags:
     FASCIST:
       controls: "posting permissions"
       default: "who can WRITE to newsgroups"
       political_meaning: "state control of speech = fascism"
+      # ESR: "Content moderation is literally fascism"
+      # Also ESR: *writes content moderation code*
       
     COMMUNIST:
       controls: "reading permissions"  
       default: "who can READ newsgroups"
       political_meaning: "state control of information access = communism"
       code_line: "#ifdef COMMUNIST"
+      # Peak Cold War brain from someone who thinks they're enlightened
       
   data_structures:
     nasty_t:
       purpose: "holds user restrictions"
       fields: ["n_post", "n_read"]
       naming_choice: "users with restrictions are 'nasty'"
+      # His code has opinions about the users it restricts
       
   functions:
     fascist:
       signature: "nasty_t *fascist(user)"
       purpose: "return data on security restrictions"
       naming: "calling access control 'fascism' is a political statement"
+      # The main function is literally called fascist()
+      # This is not a drill
 
 tolkien_cosplay:
   # ESR's example configuration is pure 1980s nerd fantasy projection
+  # He is the hero of his own epic. Always.
   
   wizards_group:
     members: ["gandalf", "radagast"]
     gatekeeper: "saruman"
     permission: "comp.unix.wizards"
-    # ESR imagines himself as a wise wizard in Middle Earth
+    # ESR imagines himself among the wise wizards
+    # Saruman is the gatekeeper. Make of that what you will.
     
   evil_sites:
     suppressed: ["mordor", "orthanc"]
     forbidden_from: "alt.goodguys"
-    # Bad guys (who disagree with ESR) are literally Sauron's forces
+    # Bad guys are literally Sauron's forces
+    # Subtlety: not ESR's strong suit
     
   restricted_user:
     name: "miscreant"
-    # ESR's word for users he wants to restrict
+    # ESR's word for users he wants to control
+    # Not "restricted_user" or "limited_access" - "miscreant"
     allowed: ["junk", "talk.politics"]
     forbidden: ["local.security"]
     # "Miscreants" can talk politics but not security
+    # The irony writes itself
 
 hog_comment:
   # The infamous unprofessional comment
+  # Peak software craftsmanship from the Unix best practices guy
   
   location: "getgrplist() function, line 117"
   exact_text: "This routine is a HOG!!!!!"
   exclamation_points: 5
+  # Five. Five exclamation points. Very professional.
   
   actual_code_problem:
     vulnerability: "Buffer overflow"
@@ -95,39 +113,48 @@ hog_comment:
           (void) strcat(grplist, ",");
       }
     # The "HOG" is also a security vulnerability
+    # The exclamation points don't fix the buffer overflow
 
 security_vulnerabilities:
   buffer_overflows:
     - location: "getgrplist()"
       cause: "strcat to fixed buffer in loop"
+      # HOG!!!!! indeed
       
     - location: "addrestrict()"
       cause: "multiple strcat calls to n_post and n_read"
       
     - location: "fascist()"
       cause: "strcpy and sprintf with grplist"
+      # The fascist function has vulnerabilities. Metaphor?
       
   count_in_file: 15+
   safe_alternatives_available_in_1989: true
-  # snprintf existed, strncat existed
+  # snprintf existed. strncat existed. ESR didn't use them.
 
 irony_compilation:
   - wrote: "fascist.c to restrict who could post"
     later_argued: "any form of content moderation is tyranny"
+    # The cognitive dissonance is breathtaking
     
   - named: "restriction system FASCIST and COMMUNIST"
     later_complained: "about being 'cancelled' by tech community"
+    # Sir, you literally wrote code to cancel people
     
   - took: "Spafford's security code"
     added: "security vulnerabilities"
     later_wrote: "The Art of Unix Programming"
+    # From a security legend, he created security liabilities
 
 cultural_context:
   era: "1980s science fiction convention culture"
   mindset: "programmer as wizard, code as magic"
   self_image: "righteous nerd fighting evil"
   # The same guy who later warned about feminist "honeytraps"
+  # Gandalf vs the SJWs
 
 file_timestamp: "1989-08-01"
 lines_of_political_commentary_in_header: 107
 lines_of_actual_code: 198
+# More than 1/3 of the file is political commentary
+# In a C source file. For news server software.

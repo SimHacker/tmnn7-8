@@ -1,14 +1,17 @@
 # LICENSE Analysis - ESR's Political Manifesto in Legal Clothing
 # YAML Jazz: The license tells us more about ESR than about the software
+# 40% political screed, 60% GPL ripoff, 100% ESR
 
 meta:
   filename: LICENSE
   title: "NETNEWS GENERAL PUBLIC LICENSE"
   date: 1988
   # Pre-dates his "open source" advocacy by a decade
+  # And contradicts everything he'd later claim to believe
 
 political_preamble:
   # The license opens with ESR's political philosophy, not legal terms
+  # Because what software license doesn't need a libertarian manifesto?
   
   property_rights_absolutism:
     quote: |
@@ -16,6 +19,8 @@ political_preamble:
       to own, control, and dispose of their creative work in whatever ways and
       under whatever terms the free market will allow.
     position: "libertarian property maximalism"
+    # The future "open source" guy arguing for strict IP laws
+    # Make it make sense
     
   anti_commons:
     quote: |
@@ -23,6 +28,7 @@ political_preamble:
       denying them property rights therein, including denial of the right to 
       hold software proprietary.
     # This is the "open source" guy arguing FOR proprietary rights
+    # The cognitive dissonance could power a small city
     
   fsf_distancing:
     quote: |
@@ -31,21 +37,27 @@ political_preamble:
       Free Software Foundation other than myself.
     target: RMS and FSF
     # Explicitly attacks FSF while using GPL-like terms
+    # "I'll take your license but not your cooties"
     tone: "passive aggressive"
+    # Peak passive aggressive - in a software license
     
   voluntary_sharing_emphasis:
     quote: "I support *voluntary* sharing"
     # Emphasis his - he added asterisks
+    # In 1988. In a license file.
     subtext: "Free Software Foundation's approach is coerced sharing"
+    # Sir, this is a Wendy's. I mean, a license file.
 
 ideology_in_license:
   # ESR embeds his entire worldview
+  # A software license that requires you to agree with libertarianism
   
   free_market_evangelism:
     quote: |
       Believing as I do that this goal may be best accomplished within a society 
       of private enterprise and free markets, I not only permit but encourage 
       commercial and for-profit use of this software.
+    # "I permit commercial use" - as if anyone was waiting for permission
       
   libertarian_creed:
     quote: |
@@ -54,6 +66,7 @@ ideology_in_license:
       contract rights; and by affirming the autonomy and privacy of individuals 
       and voluntary associations.
     # A software license that asks users to adopt libertarian politics
+    # "Accept the LICENSE terms: [x] I agree to become a libertarian"
     
   censorship_absolutism:
     quote: |
@@ -61,22 +74,30 @@ ideology_in_license:
       form of and rationalization for censorship. The marketplace of ideas is, 
       ultimately, the most important free market of all.
     irony: "From the man who wrote fascist.c to control who could post"
+    # "Oppose all censorship" says man who wrote censorship tools
+    # Peak irony achieved
 
 commercial_plug:
   # Yes, an actual advertisement in a software license
+  # Stay classy, Eric
   
   section_title: "AN UNABASHED COMMERCIAL PLUG"
-  # He literally named it this
+  # He literally named it this. Unironically.
   
   content:
     offer: "I am available at competitive rates as a consultant"
     services: "customized netnews versions as an information-sharing tool"
-    contact_1989: # By definition, this is not DOXing.
-      voice: "(215)-296-5718"  # Redacted but was in original
+    # For software that was abandoned at beta 7.8
+    contact_1989:
+      voice: "(215)-296-5718"
       address: "22 South Warren Avenue, Malvern PA 19355"
+      # The "secret laboratories" had a street address
     solicitation: "don't hesitate to call"
+    # "Please hire me" - in a license file
     
   professionalism: "embedding sales pitch in FOSS license"
+  # No other open source license has a "COMMERCIAL PLUG" section
+  # Because that would be tacky
 
 nuisance_message_deletion:
   # He modified GPL specifically to remove startup message requirement
@@ -86,27 +107,35 @@ nuisance_message_deletion:
     nuisance message on startup has been deleted
   translation: "I find FSF's attribution requirements annoying"
   # His words: "nuisance message"
+  # Today we call this "credit" or "attribution"
+  # ESR calls it a "nuisance"
 
 legal_actual:
   # The actual legal terms are mostly GPL-derived
+  # With extra ESR sprinkled on top
   base: "GNU Emacs General Public License"
   modifications:
     - Removed startup message requirement
     - Added political preamble
     - Added commercial advertisement
     - Added libertarian philosophy requirements
+  # It's GPL with a side of Ayn Rand
 
 irony_compilation:
   - statement: "oppose unconditionally every form of censorship"
     code_written: "fascist.c with FASCIST mode to control who can post"
+    # Unconditional opposition to censorship, except for his censorship tools
     
   - statement: "support strict intellectual property laws"
     later_career: "became spokesman for 'open source'"
+    # Plot twist: he became the IP guy's nemesis
     
   - statement: "denying them property rights"
     later_essay: "'The Magic Cauldron' arguing software shouldn't be property"
+    # ESR vs ESR: the eternal struggle
 
 file_metadata:
   source: LICENSE
   lines: 175
   ratio_political_to_legal: "~40%"
+  # 40% manifesto. In a license file.

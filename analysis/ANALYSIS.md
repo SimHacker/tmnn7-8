@@ -4,7 +4,7 @@ A comprehensive archaeological examination of Eric S. Raymond's abandoned "Teena
 
 ## The Discovery
 
-In January 2026, while researching a Hacker News discussion about Usenet interfaces and Eric S. Raymond, the source code for TMNN was rediscovered in a Finnish Ubuntu archive mirror. The code had been essentially buried for 30 years.
+In January 2026, while researching a Hacker News discussion about Usenet interfaces and Eric S. Raymond, the source code for TMNN was rediscovered in a Finnish Ubuntu archive mirror captured on archive.org. The code had been essentially buried for 30 years.
 
 **Archive source:** [fi.archive.ubuntu.com](https://web.archive.org/web/20191205160937/https://fi.archive.ubuntu.com/index/unix/news/tmnn7-8.tar.Z)
 
