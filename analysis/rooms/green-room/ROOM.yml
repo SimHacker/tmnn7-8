@@ -50,7 +50,7 @@ furniture:
         pose: manspreading, arms crossed, defensive posture
         activity: muttering about "kids these days"
       - position: right_cushion
-        character: ./plannedchaos/
+        character: ./planned-chaos/
         pose: leaning toward daFlute, nodding vigorously
         activity: agreeing with everything daFlute says
 
@@ -121,7 +121,7 @@ furniture:
         note: "Earl Grey. Properly steeped. —PureMonad"
       - emoji: 🥤
         name: "Soylent"
-        note: "Efficient. Synergistic. —plannedchaos"
+        note: "Efficient. Synergistic. —planned-chaos"
 
   mirror:
     type: fixture
@@ -162,7 +162,7 @@ furniture:
       daFlute:
         items: ["Worn leather jacket", "Free Software t-shirt (faded)", "Cargo shorts"]
         note: "The uniform of a self-proclaimed hacker"
-      plannedchaos:
+      planned-chaos:
         items: ["Business casual button-down", "Khakis", "Lanyard (expired conference)"]
         note: "Middle management cosplay"
       FearlessCrab:
@@ -183,7 +183,7 @@ characters:
     status: present
     mood: defensive
     
-  - path: ./plannedchaos/
+  - path: ./planned-chaos/
     location: loveseat.right_cushion
     status: present
     mood: obsequious
@@ -224,7 +224,7 @@ ambiance:
     - "Phone notifications (WebScaleChad)"
     - "Occasional sighs (PureMonad)"
     - "Muttering (daFlute)"
-    - '"Mm-hmm, absolutely" (plannedchaos)'
+    - '"Mm-hmm, absolutely" (planned-chaos)'
   smell: Coffee, energy drinks, and old books
   temperature: Slightly too warm. The HVAC is a metaphor.
 
@@ -234,7 +234,7 @@ on_enter:
     You push through the heavy door marked "GREEN ROOM - PERFORMERS ONLY"
     and find yourself backstage.
     
-    On a loveseat near the door, daFlute and plannedchaos sit uncomfortably
+    On a loveseat near the door, daFlute and planned-chaos sit uncomfortably
     close, the latter nodding along to whatever the former is saying.
     
     At a standing desk, FearlessCrab hammers away at a keyboard, Rust

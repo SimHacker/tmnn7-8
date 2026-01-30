@@ -16,7 +16,7 @@ Here, our sock puppets wait for their cue.
 
 | Furniture | Emoji | Occupant(s) |
 |-----------|-------|-------------|
-| Loveseat | 🛋️ | daFlute (left cushion) + plannedchaos (right cushion) |
+| Loveseat | 🛋️ | daFlute (left cushion) + planned-chaos (right cushion) |
 | Standing Desk | 🖥️ | FearlessCrab (typing furiously) |
 | Beanbag | 🫘 | WebScaleChad (checking phone) |
 | Armchair | 🪑 | PureMonad (reading category theory) |
@@ -29,7 +29,7 @@ Here, our sock puppets wait for their cue.
 
 ## The Scene
 
-On a loveseat near the door, **daFlute** and **plannedchaos** sit uncomfortably close, the latter nodding along to whatever the former is saying.
+On a loveseat near the door, **daFlute** and **planned-chaos** sit uncomfortably close, the latter nodding along to whatever the former is saying.
 
 At a standing desk, **FearlessCrab** hammers away at a keyboard, Rust documentation reflected in their glasses.
 

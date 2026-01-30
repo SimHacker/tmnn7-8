@@ -59,7 +59,7 @@ jobs:
           - haskell-port          # PureMonad's categorical paradise
           - nodejs-webscale       # WebScaleChad's async wonderland
           - based-freedom-fork    # GrokVibeCheck's freedom zone
-          - elbonia-initiative    # plannedchaos's enterprise solution
+          - elbonia-initiative    # planned-chaos's enterprise solution
           - actual-fixes          # OpenBFD's patches nobody merges
     
     steps:

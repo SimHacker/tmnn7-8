@@ -52,7 +52,7 @@ jobs:
             haskell-port*) FACTION="PureMonad λ" ;;
             nodejs-webscale*) FACTION="WebScaleChad 🚀" ;;
             based-freedom-fork*) FACTION="GrokVibeCheck 🤖" ;;
-            elbonia-initiative*) FACTION="plannedchaos 📊" ;;
+            elbonia-initiative*) FACTION="planned-chaos 📊" ;;
             actual-fixes*) FACTION="OpenBFD 🐡" ;;
             *) FACTION="Unknown faction 🎭" ;;
           esac

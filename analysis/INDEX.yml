@@ -64,7 +64,7 @@ characters:
       prefix: "🎭🤖"
       branch: based-freedom-fork
       
-    - id: plannedchaos
+    - id: planned-chaos
       tagline: "Let's take this offline"
       archetype: "PHB who wandered into wrong repo"
       prefix: "🎭📊"
@@ -187,7 +187,7 @@ k-lines:
   rewrite-zealot: [FearlessCrab, PureMonad, WebScaleChad]
   bot-breakdown: [ReviewBot-774]
   crypto-scam: [SecAuditDAOBot-69420]
-  process-theater: [plannedchaos]
+  process-theater: [planned-chaos]
   independent-ai: [GrokVibeCheck]
   
   # Thematic

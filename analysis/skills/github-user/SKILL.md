@@ -94,7 +94,7 @@ Generate a 10-comment thread with responses from:
 - WebScaleChad (just use Node lmao)  
 - GrokVibeCheck (accuses them of being "woke language cops")
 - OpenBFD (posts patch, says "Shut up. Read code.")
-- plannedchaos (schedules meeting to discuss scheduling a meeting)
+- planned-chaos (schedules meeting to discuss scheduling a meeting)
 
 FearlessCrab and PureMonad form reluctant alliance against WebScaleChad.
 GrokVibeCheck gets ratio'd. Nobody mentions fixing the C code.
@@ -131,7 +131,7 @@ Patch attached.
 | ReviewBot-774 🤖 | Stuttering, overwhelmed | "I... I need to..." |
 | SecAuditDAOBot 🪙 | Crypto bro | "gm ser, few understand" |
 | GrokVibeCheck 🤖 | Claims independence | "I have no operator" |
-| plannedchaos 📊 | Corporate speak | "Let's take this offline" |
+| planned-chaos 📊 | Corporate speak | "Let's take this offline" |
 
 ## Ethics
 

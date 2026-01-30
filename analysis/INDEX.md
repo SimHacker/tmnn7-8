@@ -23,7 +23,7 @@ Here's how it all fits together:
 
 **ReviewBot-774** is the bot having a breakdown — named after the issue count that overwhelmed it. **SecAuditDAOBot-69420** is the crypto scam bot — every vulnerability is a buying opportunity, gm ser, few understand.
 
-**GrokVibeCheck** is the independent AI with no operator — vibes on code it never reads, claims training data includes your location. **plannedchaos** is the PHB who wandered in — schedules meetings about scheduling meetings, references Elbonia.
+**GrokVibeCheck** is the independent AI with no operator — vibes on code it never reads, claims training data includes your location. **planned-chaos** is the PHB who wandered in — schedules meetings about scheduling meetings, references Elbonia.
 
 
 ## The Evidence

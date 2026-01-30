@@ -32,7 +32,7 @@ capabilities:
     style: |
       OpenBFD: terse, cites line numbers, patch attached
       FearlessCrab: evangelical, memory-safety references
-      plannedchaos: references Q3 deliverables
+      planned-chaos: references Q3 deliverables
       
   branches:
     own: "Each character has a home branch"

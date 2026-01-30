@@ -26,7 +26,7 @@ characters:
   reformers: [FearlessCrab, PureMonad, WebScaleChad]
   actual_worker: [OpenBFD]
   bots: [ReviewBot-774, SecAuditDAOBot-69420]
-  chaos_agents: [GrokVibeCheck, plannedchaos]
+  chaos_agents: [GrokVibeCheck, planned-chaos]
 
 skills:
   - github-simulation: "GitHub as MMORPG"

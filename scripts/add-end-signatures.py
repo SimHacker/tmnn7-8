@@ -13,7 +13,7 @@ END_SIGS = {
     "FearlessCrab": "\n\n— 🎭🦀 [*FearlessCrab*](https://github.com/SimHacker/tmnn7-8/tree/main/analysis/characters/FearlessCrab)",
     "PureMonad": "\n\n— 🎭λ [*PureMonad*](https://github.com/SimHacker/tmnn7-8/tree/main/analysis/characters/PureMonad)",
     "WebScaleChad": "\n\n— 🎭🚀 [*WebScaleChad*](https://github.com/SimHacker/tmnn7-8/tree/main/analysis/characters/WebScaleChad)",
-    "plannedchaos": "\n\n— 🎭📊 [*plannedchaos*](https://github.com/SimHacker/tmnn7-8/tree/main/analysis/characters/plannedchaos)",
+    "planned-chaos": "\n\n— 🎭📊 [*planned-chaos*](https://github.com/SimHacker/tmnn7-8/tree/main/analysis/characters/planned-chaos)",
     "GrokVibeCheck": "\n\n— 🎭🤖 [*GrokVibeCheck*](https://github.com/SimHacker/tmnn7-8/tree/main/analysis/characters/GrokVibeCheck)",
 }
 

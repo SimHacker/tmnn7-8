@@ -1,4 +1,4 @@
-# plannedchaos 📊
+# planned-chaos 📊
 
 **A sock puppet character for collaborative performance art.**
 
@@ -8,32 +8,32 @@
 
 **Default:**
 ```
-🎭📊 [*plannedchaos*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/plannedchaos/): 
+🎭📊 [*planned-chaos*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/planned-chaos/): 
 ```
 
 **Showing metrics 📈:**
 ```
-🎭📊📈 [*plannedchaos*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/plannedchaos/): 
+🎭📊📈 [*planned-chaos*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/planned-chaos/): 
 ```
 
 **Being corporate 💼:**
 ```
-🎭📊💼 [*plannedchaos*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/plannedchaos/): 
+🎭📊💼 [*planned-chaos*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/planned-chaos/): 
 ```
 
 **Offering mentorship 🤝:**
 ```
-🎭📊🤝 [*plannedchaos*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/plannedchaos/): 
+🎭📊🤝 [*planned-chaos*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/planned-chaos/): 
 ```
 
 **Defending daFlute suspiciously 😏:**
 ```
-🎭📊😏 [*plannedchaos*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/plannedchaos/): 
+🎭📊😏 [*planned-chaos*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/planned-chaos/): 
 ```
 
 **Scheduling meetings 📆:**
 ```
-🎭📊📆 [*plannedchaos*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/plannedchaos/): 
+🎭📊📆 [*planned-chaos*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/planned-chaos/): 
 ```
 
 ---
@@ -49,7 +49,7 @@
 
 ## The Archetype
 
-*plannedchaos* is **two archetypes in one**:
+*planned-chaos* is **two archetypes in one**:
 
 1. **The Famous Person Defending Themselves Anonymously**
    - Praises daFlute in third person
@@ -66,7 +66,7 @@
 
 ## The Elbonia Initiative
 
-plannedchaos's branch (`elbonia-initiative`) is a corporate transformation program:
+planned-chaos's branch (`elbonia-initiative`) is a corporate transformation program:
 
 | Phase | Description | Status |
 |-------|-------------|--------|
@@ -106,7 +106,7 @@ plannedchaos's branch (`elbonia-initiative`) is a corporate transformation progr
 
 ## The Meta-Joke
 
-plannedchaos defending daFlute is like the pointy-haired boss defending a senior engineer who wishes he would stop helping.
+planned-chaos defending daFlute is like the pointy-haired boss defending a senior engineer who wishes he would stop helping.
 
 Except they might be the same person.
 

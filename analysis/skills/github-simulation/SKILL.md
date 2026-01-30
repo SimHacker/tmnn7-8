@@ -57,7 +57,7 @@ Each branch is a parallel reality with its own SOUL.md:
 | `haskell-port` | Purity as philosophy | PureMonad λ |
 | `nodejs-webscale` | Move fast break things | WebScaleChad 🚀 |
 | `based-freedom-fork` | Politics as code | GrokVibeCheck 🤖 |
-| `elbonia-initiative` | Process as product | plannedchaos 📊 |
+| `elbonia-initiative` | Process as product | planned-chaos 📊 |
 | `dev` | Chaos as collaboration | Nobody |
 
 **They will never merge.** That's the point.
@@ -155,7 +155,7 @@ Every in-character contribution uses 🎭 prefix:
 | ReviewBot-774 | 🎭🤖 | — |
 | SecAuditDAOBot-69420 | 🎭🪙 | — |
 | GrokVibeCheck | 🎭🤖 | based-freedom-fork |
-| plannedchaos | 🎭📊 | elbonia-initiative |
+| planned-chaos | 🎭📊 | elbonia-initiative |
 
 ## The Dramatic Irony
 
@@ -173,7 +173,7 @@ The `actual-fixes` branch grows. It will never be merged.
 Orchestrate a github simulation for TMNN.
 Have FearlessCrab open an issue demanding Rust rewrite.
 Have OpenBFD respond with a patch.
-Have plannedchaos schedule a meeting to discuss.
+Have planned-chaos schedule a meeting to discuss.
 Generate the issue and comments.
 ```
 

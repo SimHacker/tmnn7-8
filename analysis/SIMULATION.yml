@@ -21,7 +21,7 @@ characters:
   FearlessCrab: {emoji: 🦀, archetype: "Rust Evangelist", branch: rust-rewrite}
   PureMonad: {emoji: λ, archetype: "FP Academic", branch: haskell-port}
   WebScaleChad: {emoji: 🚀, archetype: "Startup Bro", branch: nodejs-webscale}
-  plannedchaos: {emoji: 📊, archetype: "Pointy-Haired Boss", branch: elbonia-initiative}
+  planned-chaos: {emoji: 📊, archetype: "Pointy-Haired Boss", branch: elbonia-initiative}
   GrokVibeCheck: {emoji: 🤖, archetype: "Ideological AI", branch: based-freedom-fork}
   OpenBFD: {emoji: 🐡, archetype: "Actual Code Reader", branch: actual-fixes}
   ReviewBot-774: {emoji: 🤖, archetype: "Bot Having Breakdown"}

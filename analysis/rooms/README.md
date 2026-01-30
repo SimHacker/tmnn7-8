@@ -20,4 +20,4 @@ Spaces in the performance art world.
 | FearlessCrab | The Workshop | Rust posters, no `unsafe` |
 | PureMonad | The Office | Category theory whiteboards |
 | WebScaleChad | The Startup | Standing desks, AWS dashboard |
-| plannedchaos | Corner Office | PowerPoint, RACI matrices |
+| planned-chaos | Corner Office | PowerPoint, RACI matrices |

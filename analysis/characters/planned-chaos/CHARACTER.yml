@@ -1,8 +1,8 @@
-# plannedchaos - A Sock Puppet Character
+# planned-chaos - A Sock Puppet Character
 # This is a MASK. Anyone can wear it.
 # This character is NOT any real person.
 
-# plannedchaos - A Sock Puppet Character
+# planned-chaos - A Sock Puppet Character
 # This is a MASK. Anyone can wear it.
 # This character is NOT any real person.
 # See README.md for copy-paste signatures
@@ -24,8 +24,8 @@ meta:
     - ☕  # "take this offline"
   
   # Full copy-paste signature
-  link: "https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/plannedchaos/"
-  signature: "🎭📊 [*plannedchaos*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/plannedchaos/):"
+  link: "https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/planned-chaos/"
+  signature: "🎭📊 [*planned-chaos*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/planned-chaos/):"
   
   branch: elbonia-initiative
   faction_issue: 9
@@ -52,8 +52,8 @@ github_actions:
     The pointy-haired boss who doesn't realize he's the pointy-haired boss.
 
 character:
-  name: plannedchaos
-  handle: "@plannedchaos"
+  name: planned-chaos
+  handle: "@planned-chaos"
   branch: elbonia-initiative
   origin: The corporate dystopia cubicle-verse
   
@@ -90,11 +90,11 @@ personality:
     - Cannot distinguish strategy from tactics
     - Offers mentorship to experts in the field
     - Defends people who don't want or need defense
-    - The irony of his handle "plannedchaos"
+    - The irony of his handle "planned-chaos"
 
 the_elbonia_initiative:
   description: |
-    plannedchaos's grand plan to "transform" the codebase through
+    planned-chaos's grand plan to "transform" the codebase through
     strategic alignment, offshore partnerships, and modified Agile.
     
   key_elements:
@@ -140,14 +140,14 @@ catchphrases:
 
 relationship_to_daFlute:
   dynamic: |
-    plannedchaos sees daFlute as a kindred spirit—another 
+    planned-chaos sees daFlute as a kindred spirit—another 
     misunderstood visionary fighting against the haters.
     He offers unsolicited mentorship. He defends daFlute
     in third person. He doesn't realize they might be
     the same person (or does he?).
     
   the_meta_joke: |
-    plannedchaos defending daFlute is like the pointy-haired boss
+    planned-chaos defending daFlute is like the pointy-haired boss
     defending a senior engineer who wishes he would stop.
     Except they might be the same person.
     The sock puppet has a sock puppet.
