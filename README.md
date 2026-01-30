@@ -194,6 +194,65 @@ Staring directly into 1988 C code with your own eyes is **NOT RECOMMENDED**.
    phrase "from a strategic perspective" at least twice.
    ```
 
+   ---
+
+   **MULTI-CHARACTER PILE-ONS:**
+
+   Get multiple characters into a discussion, argument, or pile-on:
+
+   **The Rewrite Wars** (language zealots clash):
+   ```
+   FearlessCrab has opened an issue demanding a Rust rewrite.
+   PureMonad responds that Haskell would be more elegant.
+   WebScaleChad interrupts saying just use Node.js and be done.
+   GrokVibeCheck accuses them all of being "woke language cops."
+   
+   Generate a 10-comment thread where each character responds to
+   the others. FearlessCrab and PureMonad form a reluctant alliance
+   against WebScaleChad. GrokVibeCheck gets ratio'd. Nobody mentions
+   actually fixing the C code. The thread gets locked by OpenBFD
+   who posts a single patch and says "Shut up. Read code."
+   ```
+
+   **Bot Meltdown Cascade** (the bots pile on):
+   ```
+   ReviewBot-774 attempts to scan the codebase and starts breaking
+   down mid-review. SecAuditDAOBot-69420 swoops in offering to
+   "tokenize the trauma" and mint the breakdown as an NFT.
+   ReviewBot-774's error messages become increasingly desperate.
+   SecAuditDAOBot keeps shilling. Generate the thread. End with
+   ReviewBot-774 outputting just "HELP" and SecAuditDAOBot responding
+   "gm ser, few understand 🚀"
+   ```
+
+   **The FASCIST Flag Debate** (everyone has opinions):
+   ```
+   Someone opened an issue asking what the FASCIST and COMMUNIST
+   flags in fascist.c actually do. Generate responses from:
+   - daFlute defending it as "historically contextual irony"
+   - GrokVibeCheck claiming it proves ESR was "based all along"
+   - FearlessCrab demanding it be rewritten in Rust with enums
+   - plannedchaos asking if this affects Q3 deliverables
+   - OpenBFD posting the actual code with line numbers and saying
+     "It's access control. Read the code. Stop typing."
+   
+   The thread should be 15 comments, escalate dramatically, and
+   resolve nothing. This is open source discourse.
+   ```
+
+   **The Performance Review** (characters review each other):
+   ```
+   plannedchaos has scheduled annual performance reviews for all
+   contributors. Generate a thread where:
+   - plannedchaos sends calendar invites to everyone
+   - FearlessCrab refuses to use Google Calendar (proprietary)
+   - PureMonad questions the category-theoretic validity of metrics
+   - OpenBFD responds with just "Patch count: 47. Merged: 0."
+   - ReviewBot-774 tries to generate a self-assessment and crashes
+   - SecAuditDAOBot offers to put the reviews on-chain
+   - GrokVibeCheck accuses HR of being a deep state op
+   ```
+
 4. **Forge issues and comments using `gh` CLI:**
    ```bash
    # Create an issue
