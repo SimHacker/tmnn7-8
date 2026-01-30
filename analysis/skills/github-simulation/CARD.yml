@@ -1,0 +1,105 @@
+# github-simulation — Capability Interface
+# What it can do, how to invoke it
+
+meta:
+  id: github-simulation
+  version: 1
+  inherits:
+    - adventure              # Room-based exploration (moollm)
+    - character              # Entity foundation (moollm)
+    - simulation             # Central hub (moollm)
+    - procedural-rhetoric    # Rules embody arguments (Bogost)
+    - representation-ethics  # Ethics of simulating people
+    - mcluhan               # Medium is the message — GitHub IS the content
+  
+tagline: "GitHub as MMORPG — Issues are scenes, branches are factions"
+
+capabilities:
+  orchestrate:
+    - Coordinate multi-character interactions via SIMULATION.yml
+    - Track runtime state (unsafe_calls_fixed, character_activity)
+    - Manage branch-as-faction parallel realities
+    
+  generate:
+    - Create in-character issues with gh CLI
+    - Generate commit messages in character voice
+    - Forge comments as specific personas
+    
+  sync:
+    - Multiverse sync of core files across branches
+    - PR Guardian gatekeeping for faction warfare
+    - CODEOWNERS enforcement for character protection
+
+activation_triggers:
+  - "run a github simulation"
+  - "orchestrate characters on github"
+  - "create an issue as [character]"
+  - "forge a commit as [character]"
+  - "explain SIMULATION.yml"
+
+files:
+  core:
+    - SIMULATION.yml      # Runtime state and orchestration
+    - characters/         # The playable cast
+    - rooms/              # Spatial layout
+    
+  workflows:
+    - .github/workflows/multiverse-sync.yml
+    - .github/workflows/pr-guardian.yml
+    - .github/CODEOWNERS
+
+auth_modes:
+  # Who is actually making the GitHub API calls?
+  
+  default:
+    mode: "Single User Puppeteer"
+    description: |
+      Use your current gh login. All actions come from YOUR account.
+      The 🎭 prefix and signatures indicate roleplay.
+      This is the default — no special auth setup required.
+    command: "gh auth status  # shows current login"
+    
+  multi_account:
+    mode: "Dedicated Sock Puppet Accounts"
+    description: |
+      Create actual GitHub accounts for characters.
+      Switch auth context to post as that character.
+      More immersive but requires managing multiple accounts.
+    setup: |
+      # Create accounts: OpenBFD-bot, FearlessCrab-bot, etc.
+      # Store tokens securely
+      # Switch context per character:
+      gh auth login --with-token < ~/.tokens/openbfd.token
+      # ... do character actions ...
+      gh auth login --with-token < ~/.tokens/default.token
+    note: "Respect GitHub ToS on automated accounts"
+    
+  real_user:
+    mode: "Authorized Real User"
+    description: |
+      With proper auth (keys, tokens, OAuth), you could
+      theoretically act as any user you're authorized for.
+      For collab projects where multiple humans participate.
+    use_case: "Team members playing their own characters"
+
+commands:
+  create_issue: |
+    gh issue create \
+      --title "🎭[emoji] [Title]" \
+      --label "ai-generated,[faction]" \
+      --body "$(cat issue-body.md)"
+      
+  add_comment: |
+    gh issue comment [number] --body "$(cat comment.md)"
+    
+  forge_commit: |
+    git commit -m "🎭[emoji] [type]: [message in character voice]"
+
+the_joke: |
+  Characters generate endless discussion.
+  872 unsafe function calls sit unfixed.
+  This is the joke. This is also real open source.
+
+see_also:
+  - github-user       # Characters as GitHub actors
+  - code-archaeology  # How OpenBFD actually fixes code

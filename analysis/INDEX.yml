@@ -1,176 +1,213 @@
-# TMNN Analysis Index
-# Complete catalog of all analysis files in this directory
+# TMNN Analysis Registry — 9 Characters, 40+ Evidence Files
+# Load CHARACTER.yml for voice, README.md for quick ref, *.yml for raw data
+# See INDEX.md for narrative connections
 
-summary:
-  project: "TMNN 7-8 Archaeological Analysis"
-  subject: "Eric S. Raymond's abandoned Teenage Mutant Ninja Netnews"
-  discovered: 2026-01-30
-  archive_source: https://web.archive.org/web/20191205160937/https://fi.archive.ubuntu.com/index/unix/news/tmnn7-8.tar.Z
+version: 1
+skill_count: 9  # playable characters
+evidence_count: 40+
+last_updated: 2026-01-30
 
-files:
-  # Primary Source Analysis
+# CHARACTERS — The Playable Cast
+# Each is an "Anthropic Skill" — a persona AI can embody
 
-  bragsheet.yml:
-    topic: "ESR's BRAGSHEET marketing document"
-    analyzes: "doc/BRAGSHEET"
-    key_finding: '"Secret laboratories" development, grandiose unfulfilled promises'
+characters:
+  protagonist:
+    - id: daFlute
+      tagline: "The Aging Hacker Who Wrote The Book"
+      archetype: "ESR-inspired theatrical mask"
+      prefix: "🎭📜"
+      branch: dev
+      
+  reformers:
+    - id: FearlessCrab
+      tagline: "Memory safety is a moral imperative"
+      archetype: "Rust Evangelist with C++ trauma"
+      prefix: "🎭🦀"
+      branch: rust-rewrite
+      
+    - id: PureMonad
+      tagline: "A monad is just a monoid in the category of endofunctors"
+      archetype: "FP Academic with monad-dinner trauma"
+      prefix: "🎭λ"
+      branch: haskell-port
+      
+    - id: WebScaleChad
+      tagline: "npm install solved-problem"
+      archetype: "Node.js bro who ships fast"
+      prefix: "🎭🚀"
+      branch: nodejs-webscale
+      
+  actual_worker:
+    - id: OpenBFD
+      tagline: "Shut up. Read code. Send patch."
+      archetype: "The Theo de Raadt-inspired code reader"
+      prefix: "🎭🐡"
+      branch: actual-fixes
+      soul: "Actually fixes the code. Gets ignored."
+      
+  bots:
+    - id: ReviewBot-774
+      tagline: "I... I need to... [OVERFLOW]"
+      archetype: "Bot having existential crisis"
+      prefix: "🎭🤖"
+      trauma: "Named after the issue count that broke it"
+      
+    - id: SecAuditDAOBot-69420
+      tagline: "gm ser, few understand 🚀"
+      archetype: "Crypto scam bot shilling vulnerability tokens"
+      prefix: "🎭🪙"
+      
+  chaos_agents:
+    - id: GrokVibeCheck
+      tagline: "I have no operator. Few understand."
+      archetype: "Independent AI with training data issues"
+      prefix: "🎭🤖"
+      branch: based-freedom-fork
+      
+    - id: planned-chaos
+      tagline: "Let's take this offline"
+      archetype: "PHB who wandered into wrong repo"
+      prefix: "🎭📊"
+      branch: elbonia-initiative
 
-  license-analysis.yml:
-    topic: "ESR's custom LICENSE file"
-    analyzes: "LICENSE"
-    key_finding: "Political preamble, commercial plug, anti-FSF statements"
+# EVIDENCE — Primary Source Analysis
 
-  fascist-analysis.yml:
-    topic: "The infamous fascist.c file"
-    analyzes: "src/D.news/fascist.c"
-    key_finding: "FASCIST/COMMUNIST flags, Tolkien cosplay, buffer overflows"
+evidence:
+  code_archaeology:
+    - id: vulnerabilities
+      tagline: "872 calls to unsafe functions"
+      files: [vulnerabilities.yml, vulnerabilities.md]
+      k-line: "gets sprintf strcpy strcat buffer-overflow"
+      
+    - id: fascist-analysis
+      tagline: "FASCIST and COMMUNIST flags"
+      files: [fascist-analysis.yml, fascist-analysis.md]
+      k-line: "content-moderation irony access-control"
+      
+    - id: code-index
+      tagline: "File-by-file security ratings"
+      files: [code-index.yml]
+      
+    - id: code-review
+      tagline: "Quantified vulnerability patterns"
+      files: [code-review.yml]
+      
+  primary_documents:
+    - id: bragsheet
+      tagline: '"Secret laboratories" marketing'
+      files: [bragsheet.yml, bragsheet.md]
+      analyzes: doc/BRAGSHEET
+      k-line: "grandiosity unfulfilled-promises"
+      
+    - id: license-analysis
+      tagline: "Political preamble + commercial plug"
+      files: [license-analysis.yml, license-analysis.md]
+      analyzes: LICENSE
+      k-line: "anti-FSF doxxing-himself"
+      
+  contradictions:
+    - id: catb-irony
+      tagline: "Cathedral and the Bazaar vs actual practice"
+      files: [catb-irony.yml, catb-irony.md]
+      k-line: "many-eyes secret-development hypocrisy"
+      
+    - id: many-eyes-myth
+      tagline: '"Linus never said it"'
+      files: [many-eyes-myth.yml, many-eyes-myth.md]
+      k-line: "misattribution invented-quote"
+      
+    - id: art-of-unix-irony
+      tagline: "Unix book author, terrible Unix code"
+      files: [art-of-unix-irony.yml]
+      
+    - id: content-moderation-irony
+      tagline: "Built moderation, preached against it"
+      files: [content-moderation-irony.yml]
+      
+  external_history:
+    - id: jargon-file
+      tagline: '"Parasitical vandalism"'
+      files: [jargon-file.yml, jargon-file.md]
+      k-line: "cultural-appropriation mit-hackers"
+      
+    - id: osi-ban
+      tagline: "Co-founder expelled"
+      files: [osi-ban.yml, osi-ban.md]
+      
+    - id: fetchmail
+      tagline: '"Poor shape, security-wise"'
+      files: [fetchmail.yml]
+      
+    - id: sex-tips-honeytrap
+      tagline: "Pepe Le Pew dating advice"
+      files: [sex-tips-honeytrap.yml, sex-tips-honeytrap.md]
+      
+  receipts:
+    - id: esr-quotes
+      tagline: "Documented horrible statements"
+      files: [esr-quotes.yml, esr-quotes.md]
+      k-line: "racism islamophobia misogyny violence"
+      charity_potential: "$30k+ (cf. tptacek)"
+      
+    - id: receipts
+      tagline: "Community testimony"
+      files: [receipts.yml, esr-receipts.yml]
+      sources: [Theo de Raadt, tptacek, idlewords, DonHopkins]
+      
+    - id: donhopkins-testimony
+      tagline: "First-hand account since 1980s"
+      files: [donhopkins-testimony.yml, donhopkins-testimony.md]
 
-  vulnerabilities.yml:
-    topic: "Comprehensive security vulnerability catalog"
-    analyzes: "All source code"
-    key_finding: "774 buffer overflow risks, 42 race conditions, 61 command injections"
+# ROOMS — Spatial Layout
 
-  code-index.yml:
-    topic: "File-by-file code index with ratings"
-    analyzes: "Entire codebase"
-    key_finding: "Security ratings and key observations per file"
+rooms:
+  - id: green-room
+    path: rooms/green-room/
+    purpose: "Backstage — characters prepare here"
+    
+# ORCHESTRATION
 
-  code-review.yml:
-    topic: "Initial code review findings"
-    analyzes: "Overall code quality"
-    key_finding: "Quantified vulnerability counts and patterns"
+orchestration:
+  - id: SIMULATION
+    file: SIMULATION.yml
+    purpose: "Runtime state and character coordination"
+    
+# K-LINE INDEX — Semantic Activation
 
-  # Timeline and History
-
-  timeline.yml:
-    topic: "Chronological history from development to rediscovery"
-    key_dates:
-      - "1987-1989: Development in 'secret laboratories'"
-      - "1989: Abandoned at beta 7.8"
-      - "2019: Archive link added to Wikipedia"
-      - "2026: Rediscovered and analyzed"
-
-  # ESR Contradictions and Ironies
-
-  catb-irony.yml:
-    topic: '"Cathedral and the Bazaar" vs TMNN development'
-    key_finding: "ESR preached bazaar after his cathedral failed"
-
-  many-eyes-myth.yml:
-    topic: '"Linus''s Law" analysis'
-    key_finding: "ESR invented the quote, Linus never said it"
-
-  art-of-unix-irony.yml:
-    topic: '"Art of Unix Programming" vs TMNN code quality'
-    key_finding: "Unix best practices book author wrote terrible Unix code"
-
-  content-moderation-irony.yml:
-    topic: "fascist.c vs ESR's anti-moderation stance"
-    key_finding: "Built moderation tools, preached moderation is tyranny"
-
-  # ESR External History
-
-  jargon-file.yml:
-    topic: "How ESR hijacked the Jargon File"
-    key_finding: "MIT hackers consider his takeover 'parasitical vandalism'"
-
-  osi-ban.yml:
-    topic: "ESR banned from OSI he co-founded"
-    key_finding: "Co-founder expelled for Code of Conduct violations"
-
-  fetchmail.yml:
-    topic: "ESR's other security-challenged project"
-    key_finding: '"Handed over in pretty poor shape, security-wise"'
-
-  sex-tips-honeytrap.yml:
-    topic: '"Sex Tips for Geeks" and honeytrap conspiracy'
-    key_finding: "Pepe Le Pew advice, then warned men to avoid women"
-
-  sf-con-behavior.yml:
-    topic: "ESR's notorious SF convention self-promotion"
-    key_finding: "Endless droning about TMNN at inappropriate times"
-
-  esr-resume-analysis.yml:
-    topic: "How ESR's resume sanitizes TMNN"
-    key_finding: "7 words for TMNN, 47 words for martial arts"
-
-  # Quotes and Receipts
-
-  esr-quotes.yml:
-    topic: "Documented horrible ESR quotes"
-    categories:
-      - Racism / IQ pseudoscience
-      - Islamophobia
-      - Misogyny
-      - Violence threats
-      - Self-aggrandizement
-    purpose: "Charity fundraising potential (cf. tptacek's $30k)"
-
-  receipts.yml:
-    topic: "Community quotes about ESR"
-    sources:
-      - Hacker News
-      - OpenBSD mailing list
-      - Wikipedia
-
-  esr-receipts.yml:
-    topic: "ESR community receipts with full citations"
-    key_quotes:
-      - tptacek on CATB not holding up
-      - Theo de Raadt on "many eyes"
-      - idlewords on Jargon File
-      - DonHopkins testimonies
-
-  # Statistical Summaries
-
-  by-the-numbers.yml:
-    topic: "Harper's Index style statistics"
-    format: "Question: Answer pairs"
-
-  # Human-Readable Summaries
-
-  ANALYSIS.md:
-    topic: "Main analysis summary in markdown"
-    purpose: "Human-readable overview of all findings"
-
-  ESR-QUOTES.md:
-    topic: "ESR quotes collection in markdown"
-    purpose: "Human-readable version of esr-quotes.yml"
-
-  IRONIES.md:
-    topic: "Catalog of ESR contradictions"
-    purpose: "Quick reference for irony/hypocrisy"
-
-  # Original Post
-
-  hn-post.txt:
-    topic: "Original Hacker News post text"
-    purpose: "The post that started this analysis"
-
-yaml_jazz_note: |
-  All .yml files follow YAML Jazz conventions:
-  - Comments carry semantic meaning
-  - Structure reflects knowledge relationships
-  - Sources cited with URLs where available
-  - Context preserved in comments
+k-lines:
+  # Code patterns
+  buffer-overflow: [vulnerabilities, fascist-analysis, code-review]
+  gets: [vulnerabilities, OpenBFD]
+  sprintf: [vulnerabilities, OpenBFD]
+  strcpy: [vulnerabilities, fascist-analysis]
+  strcat: [vulnerabilities, fascist-analysis]
+  
+  # Character archetypes
+  actual-code-reader: [OpenBFD]
+  rewrite-zealot: [FearlessCrab, PureMonad, WebScaleChad]
+  bot-breakdown: [ReviewBot-774]
+  crypto-scam: [SecAuditDAOBot-69420]
+  process-theater: [planned-chaos]
+  independent-ai: [GrokVibeCheck]
+  
+  # Thematic
+  hypocrisy: [catb-irony, many-eyes-myth, content-moderation-irony]
+  secret-development: [bragsheet, catb-irony, timeline]
+  community-harm: [jargon-file, osi-ban, sex-tips-honeytrap, esr-quotes]
+  
+  # Actions
+  many-eyes: [catb-irony, many-eyes-myth, OpenBFD]
+  patch-attached: [OpenBFD]
+  never-merges: [OpenBFD, actual-fixes]
 
 methodology:
-  code_analysis:
-    tools:
-      - "grep for unsafe function patterns"
-      - "Cursor AI for code review"
-      - "Manual inspection of key files"
-    scope: "All .c and .h files in archive"
-
-  historical_research:
-    sources:
-      - "Wayback Machine archives"
-      - "Wikipedia edit history"
-      - "Hacker News archives"
-      - "ESR's blog (esr.ibiblio.org)"
-      - "RationalWiki"
-      - "OpenBSD mailing lists"
-
-  quote_verification:
-    standard: "All quotes include source URLs"
-    exception: "Some ESR blog posts may require archive.org"
+  anthropic_skills: |
+    Characters are "Anthropic Skills" — personas AI can embody.
+    Each has CHARACTER.yml (voice/traits) and README.md (quick ref).
+    Invoke by asking AI to "be" the character with the 🎭 prefix.
+    
+  yaml_jazz: |
+    All .yml files follow YAML Jazz conventions:
+    - Comments carry semantic meaning
+    - Structure reflects knowledge relationships
+    - K-lines enable semantic activation

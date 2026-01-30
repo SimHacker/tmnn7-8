@@ -1,0 +1,164 @@
+# D.scrn/ — Screen Handling
+glance-depth: deep
+# Terminal UI before terminals were cool again
+# Curses: both the library and what you say when using it
+
+what: |
+  5 C files, 5 headers.
+  Terminal display and control.
+  Screen management via curses/termcap.
+  
+  The UI layer for text-mode news reading.
+  Remember when "interface" meant "keyboard + 80x24 terminal"?
+
+stats:
+  c_files: 5
+  h_files: 5
+  danger_level: "LOW"
+  
+  why_safe: |
+    Mostly output code. Draws things on screen.
+    Uses well-tested curses library.
+    Low attack surface.
+
+# Terminal UI in 1988
+# What "user interface" meant
+
+historical_context:
+  the_terminal: |
+    VT100. VT220. WYSE 60. Televideo 925.
+    80 columns. 24 rows. Maybe color if you're fancy.
+    
+    No mouse. No graphics. No web browser.
+    Just text and escape sequences.
+    
+  curses_library: |
+    curses (and ncurses) abstracted terminal differences.
+    You say "move cursor to (10,5)" — it sends the right
+    escape sequence for YOUR terminal type.
+    
+    TERM=vt100? Different codes than TERM=xterm.
+    curses handles it.
+    
+  termcap_terminfo: |
+    Terminal capability databases.
+    "How do I clear the screen on a Wyse 60?"
+    Look it up in termcap.
+    
+    This was serious business. Companies made money
+    selling terminal databases.
+
+# Files
+# The screen machinery
+
+files:
+  screen.c:
+    purpose: "Main screen control"
+    handles:
+      - "Initialize/shutdown terminal"
+      - "Clear screen"
+      - "Basic drawing"
+    uses: "curses library"
+    
+  window.c:
+    purpose: "Window management"
+    handles:
+      - "Multiple screen regions"
+      - "Article window"
+      - "Header window"
+      - "Status window"
+    note: "TUI before TUI was retro-cool"
+    
+  cursor.c:
+    purpose: "Cursor positioning"
+    handles:
+      - "Move cursor"
+      - "Track cursor position"
+      - "Optimize cursor movement"
+    note: "Cursor movement had to be efficient — slow modems"
+    
+  keypad.c:
+    purpose: "Keyboard handling"
+    handles:
+      - "Function keys"
+      - "Arrow keys"
+      - "Special keys"
+    note: "Escape sequences for non-character keys"
+    
+  attrs.c:
+    purpose: "Display attributes"
+    handles:
+      - "Bold, underline, reverse"
+      - "Color (if supported)"
+      - "Standout mode"
+    note: "Terminal styling before CSS"
+
+# The Art of Text UI
+# Making 80x24 feel spacious
+
+ui_design:
+  constraints: |
+    80 columns. 24 rows. 1920 characters total.
+    Every character counts. Every pixel (there are none)
+    matters.
+    
+  techniques:
+    - "Status lines for context"
+    - "Modal interfaces (different modes, different keys)"
+    - "Single-key commands"
+    - "Mnemonic key bindings"
+    
+  the_charm: |
+    There's a reason text UIs are making a comeback.
+    htop, vim, tmux, tig, lazygit.
+    
+    Constraints breed creativity.
+    When you can't have a button, you think harder
+    about what you really need.
+
+# Why Screen Code is Safer
+# The boring-but-true explanation
+
+safety:
+  output_focused: |
+    This code writes TO the screen.
+    It doesn't read much FROM the network.
+    Output is safer than input.
+    
+  battle_tested_library: |
+    curses has been around since the 1970s.
+    It's one of the most battle-tested libraries
+    in Unix history. Not perfect, but solid.
+    
+  limited_scope: |
+    Screen handling does one thing:
+    Put characters at positions.
+    Not much room for security creativity.
+
+# Escape Sequence Concerns
+# The one area of worry
+
+escape_sequences:
+  the_risk: |
+    Terminal escape sequences are powerful.
+    \x1b[2J clears the screen.
+    Other sequences can:
+    - Change terminal settings
+    - Redefine keys
+    - (In old terminals) dump memory
+    
+  article_content: |
+    If article content contains escape sequences,
+    and the screen code doesn't sanitize,
+    articles could mess with your terminal.
+    
+  mitigation: |
+    Good news readers strip or escape control characters.
+    Whether THIS code does... would need auditing.
+
+k-lines:
+  - terminal-ui
+  - curses-library
+  - vt100-nostalgia
+  - 80x24-constraints
+  - output-not-input
