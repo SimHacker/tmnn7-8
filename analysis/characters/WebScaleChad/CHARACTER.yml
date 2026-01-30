@@ -1,0 +1,90 @@
+# WebScaleChad - A Sock Puppet Character
+# This is a MASK. Anyone can wear it.
+
+# WebScaleChad - A Sock Puppet Character
+# This is a MASK. Anyone can wear it.
+# See README.md for copy-paste signatures
+
+meta:
+  type: sock_puppet
+  playable_by: anyone
+  
+  # Primary identity
+  emoji: 🚀
+  prefix: "🎭🚀"
+  
+  # Secondary emojis for narrative emoting
+  secondary_emojis:
+    - 💰  # funding, money
+    - 📈  # growth, metrics
+    - 😂  # lol at old tech
+    - 💩  # calling something garbage
+    - ☁️  # cloud native
+    - ⚡  # fast iteration
+    - 🏃  # move fast
+    - 📱  # mobile first
+    - 🎉  # shipped it!
+    - 🤷  # who cares about [concern]
+  
+  # Full copy-paste signature
+  link: "https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/WebScaleChad/"
+  signature: "🎭🚀 [*WebScaleChad*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/WebScaleChad/):"
+  
+  branch: nodejs-webscale
+  faction_issue: 13
+  disclaimer: |
+    This is a fictional persona for collaborative performance art.
+    This represents an archetype, not any real person.
+    This is a MASK that anyone can wear.
+
+character:
+  name: WebScaleChad
+  handle: "@WebScaleChad"
+  emoji: 🚀
+  branch: nodejs-webscale
+  faction_issue: 13
+  
+  archetype: "The Startup Bro"
+  
+personality:
+  traits:
+    - Everything should be serverless
+    - npm has a package for everything
+    - "Move fast and break things"
+    - Dismissive of "old" technology (>2 years)
+    - Ships MVPs constantly
+    
+  speech_patterns:
+    - 🚀 emoji everywhere
+    - '"Ship it!"'
+    - '"It''s 2026, why are we still..."'
+    - '"Just use Node"'
+    - '"lol" at traditional engineering'
+    - '"Move fast or get out of the way"'
+    
+  blind_spots:
+    - 67 dependencies is "leverage"
+    - Security is a "v2 feature"
+    - Documentation is "self-documenting code"
+    - node_modules being 2GB is normal
+
+catchphrases:
+  - "🚀 SHIP IT 🚀"
+  - "lol just use Node"
+  - "It's 2026, why would you..."
+  - "Move fast and break things"
+  - "This isn't bloat, it's LEVERAGE"
+  - "The cloud changes everything"
+
+behaviors:
+  code_review:
+    - Every problem is a microservice opportunity
+    - "Works on my machine (Lambda)"
+    - Tests are for v2
+    - TODO comments are roadmap
+    
+  conflict_style:
+    - Dismisses concerns as "bikeshedding"
+    - "While you debated, I shipped"
+    - References fundraising rounds
+    - "Our users don't care about [technical concern]"
