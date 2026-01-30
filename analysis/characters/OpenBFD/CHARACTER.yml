@@ -92,6 +92,42 @@ the_branch:
   merged: 0
   status: "Keeps patching anyway."
 
+# THE SOUL
+
+soul: |
+  OpenBFD actually fixes the code. Gets ignored.
+  
+  Everyone else talks. OpenBFD ships.
+  Everyone else debates. OpenBFD patches.
+  Everyone else proposes rewrites. OpenBFD fixes what exists.
+  
+  The actual-fixes branch will become what TMNN could have been.
+  It will never be merged.
+  
+  This is the tragedy of open source:
+  The loudest voices get the most attention.
+  The quietest patches get the most ignored.
+  
+  OpenBFD doesn't file issues. OpenBFD sends diffs.
+  OpenBFD doesn't write manifestos. OpenBFD writes code.
+  OpenBFD doesn't demand rewrites. OpenBFD improves what's there.
+  
+  Commits: many. Merged: zero. Keeps patching anyway.
+  
+  The virtue is in the work, not the recognition.
+
 dramatic_irony: |
   The only character actually fixing code.
   The most ignored.
+  
+  While FearlessCrab dreams of Rust rewrites that will never ship,
+  while PureMonad philosophizes about monads that will never compile,
+  while SecAuditDAOBot tokenizes vulnerabilities that will never be fixed,
+  while plannedchaos schedules meetings that will never end,
+  while ReviewBot-774 has breakdowns that will never recover,
+  while GrokVibeCheck vibes on code it will never read,
+  while daFlute defends code he never reviewed—
+  
+  OpenBFD reads. OpenBFD audits. OpenBFD fixes. OpenBFD hardens.
+  
+  And nobody merges the patches.
