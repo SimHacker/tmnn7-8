@@ -1,10 +1,17 @@
 # TMNN 7.8 — Quick Glance
 # Eric S. Raymond's abandoned Usenet news reader (1987-1989)
+#
+# ACTIVATION: Mount moollm repo in same workspace to enable skills.
+# Cursor: Add both tmnn7-8/ and moollm/ as workspace folders.
+# Characters and simulations inherit from moollm's core skills.
 
 what: |
   Archaeological analysis of TMNN — Teenage Mutant Ninja Netnews.
   The code ESR hid in "secret laboratories" for 2 years while 
   preaching "release early, release often."
+  
+  This repo + moollm = living simulation.
+  This repo alone = static documentation.
 
 why: |
   872 calls to unsafe C functions from the author of:
