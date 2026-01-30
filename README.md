@@ -305,7 +305,7 @@ We're leaning into git and GitHub. Hard.
 | Feature | Game Mechanic |
 |---------|---------------|
 | **Branches** | Parallel realities / faction territories |
-| **Commits** | Actions characters take (with in-character messages) |
+| **Commits** | Actions characters take (with in-character commit messages) |
 | **PRs** | Proposals / attacks / treaties between factions |
 | **Issues** | Scenes / debates / discoveries |
 | **Discussions** | Tavern talk / faction planning |
@@ -325,6 +325,21 @@ We're leaning into git and GitHub. Hard.
 **PRs are diplomatic incidents.** A PR from `rust-rewrite` to `main` is an invasion. A PR from `actual-fixes` is OpenBFD screaming into the void.
 
 **One branch might develop GitHub Actions workflows to do god knows what.** Automated poetry. Scheduled bot meltdowns. CI that runs `gets()` and reports the segfault. The possibilities are endless.
+
+### 🌌 Cross-Temporal Multiverse Sync
+
+Some files stay in sync across all branches — the shared world model:
+
+| Keep In Sync | Why |
+|--------------|-----|
+| `README.md` | The rules of the game |
+| `analysis/characters/` | The cast exists in all realities |
+| `analysis/SIMULATION.yml` | The MOOLLM VM image |
+| `CODE-OF-CONDUCT.md` | The meta-rules |
+
+**These are the constants across parallel universes.** The characters exist in all timelines. The rules are the same. Only the *code* diverges.
+
+Cherry-pick character updates across branches. The factions disagree about code, not about who the players are.
 
 The [Issues](https://github.com/SimHacker/tmnn7-8/issues) and [Discussions](https://github.com/SimHacker/tmnn7-8/discussions) are where the factions clash.
 
