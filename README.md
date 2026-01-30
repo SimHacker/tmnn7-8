@@ -95,7 +95,7 @@ We're leaning into GitHub as the medium. This isn't just a repository — it's a
 | [**💬 Discussions**](../../discussions) | Community chat, theories, laughs | ✅ Come hang out |
 | [**🔒 Security**](../../security) | Vulnerability reports (yes, really) | ✅ Accepting reports |
 | [**📝 Pull Requests**](../../pulls) | Add analysis, fix typos, contribute | ✅ PRs welcome |
-| [**⚖️ Code of Conduct**](CODE_OF_CONDUCT.md) | Community standards (ESR hates these) | ✅ **Yes, we have one** |
+| [**⚖️ Code of Conduct**](CODE-OF-CONDUCT.md) | Community standards (ESR hates these) | ✅ **Yes, we have one** |
 | [**📖 Wiki**](../../wiki) | Extended documentation & deep dives | 🚧 Coming soon |
 | [**🏷️ Labels**](../../labels) | Categorize bugs by type & severity | 🚧 [Help wanted](../../issues/new?title=Create%20issue%20labels&body=We%20need%20labels%20for%20bug%20categories!) |
 | [**📋 Projects**](../../projects) | Track the code review progress | 🚧 [Help wanted](../../issues/new?title=Set%20up%20GitHub%20Project%20board&body=Create%20a%20project%20board%20to%20track%20findings!) |
