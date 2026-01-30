@@ -221,7 +221,7 @@ register char *user;
     result.n_read = svread; svread[0] = '\0';
     (void) strcpy(grplist, getgrplist(user));
 
-    (void) sprintf(bfr, "%s/authorized", site.admdir);
+    (void) snprintf(bfr, LBUFLEN, "%s/authorized", site.admdir);
     if ((facfp = fopen(bfr, "r")) != (FILE *)NULL)
     {
 	char	*field[F_MAXFLDS + 1];
