@@ -15,13 +15,13 @@ Each character represents an archetype — a pattern of behavior common in onlin
 
 ## The Cast
 
-| Character | Archetype | Emoji | Branch |
-|-----------|-----------|-------|--------|
-| [daFlute](daFlute/) | The Aging Hacker Who Wrote The Book | — | `dev` |
-| [plannedchaos](plannedchaos/) | The Famous Person Defending Themselves | — | — |
-| [FearlessCrab](FearlessCrab/) | The Rust Evangelist | 🦀 | `rust-rewrite` |
-| [PureMonad](PureMonad/) | The Functional Programming Academic | λ | `haskell-port` |
-| [WebScaleChad](WebScaleChad/) | The Startup Bro | 🚀 | `nodejs-webscale` |
+| Character | Archetype | Emoji | Branch | Issue |
+|-----------|-----------|-------|--------|-------|
+| [daFlute](daFlute/) | The Aging Hacker Who Wrote The Book | — | `dev` | [#10](../../issues/10) |
+| [plannedchaos](plannedchaos/) | The PHB Who Doesn't Know It | — | `elbonia-initiative` | [#9](../../issues/9) |
+| [FearlessCrab](FearlessCrab/) | The Rust Evangelist | 🦀 | `rust-rewrite` | [#11](../../issues/11) |
+| [PureMonad](PureMonad/) | The FP Academic | λ | `haskell-port` | [#12](../../issues/12) |
+| [WebScaleChad](WebScaleChad/) | The Startup Bro | 🚀 | `nodejs-webscale` | [#13](../../issues/13) |
 
 ## How to Play
 
