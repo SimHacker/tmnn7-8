@@ -1,0 +1,32 @@
+# GLANCE.yml — security audit
+# 🐡 "Talk is cheap. Show me the patch."
+
+what: |
+  Systematic security audit of TMNN 7.8 codebase.
+  Enumerate, triage, fix. No rewrites.
+
+auditor: OpenBFD
+method: code-archaeology
+branch: actual-fixes
+
+summary:
+  total_issues: 774
+  critical: 12   # gets() — cannot be used securely
+  high: 167      # sprintf, strcpy, strcat
+  medium: 595    # buffer size mismatches
+
+files:
+  - AUDIT.md     # Master audit document
+  - TRIAGE.yml   # Prioritized fix list  
+  - CHANGES.md   # Meticulous changelog
+
+related_issues:
+  - "#2 — Security Practices (Harper's Index)"
+  - "#8 — Rust Rewrite (the alternative)"
+
+status: in_progress
+
+note: |
+  While they debate rewrites, I fix bugs.
+  The patches exist. The changelog exists.
+  The credit doesn't matter.
