@@ -44,6 +44,14 @@ capabilities:
     - Collaborator invites for new players
     - Teams as organized factions (org repos)
     - GitHub Actions as automated game mechanics
+    
+  infrastructure_drama:
+    - Real bugs become issues with character discussion
+    - Characters volunteer fixes (in character)
+    - Faction branches get real failures (documented)
+    - OpenBFD fixes on main (always works)
+    - Multiverse-sync propagates canonical fix
+    - Learning through failure theater
 
 activation_triggers:
   - "run a github simulation"
@@ -133,6 +141,12 @@ k-lines:
   - real-players-join
   - permission-as-plot
   - teach-github-by-playing
+  # Infrastructure bug fix drama
+  - real-bugs-as-plot
+  - openbfd-infrastructure-hero
+  - faction-failures-documented
+  - canonical-fix-syncs-out
+  - patches-beat-rewrites
 
 operational_knowledge:
   # Cached lessons — see SKILL.md for details
