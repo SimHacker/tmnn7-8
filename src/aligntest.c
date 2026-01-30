@@ -55,7 +55,7 @@ char **argv;
     signal(SIGBUS, catcher);
     signal(SIGSEGV, catcher);
     signal(SIGILL, catcher);
-	
+
     l = 0x12345678;
 
     *((long *) buf) = l;
@@ -85,7 +85,7 @@ char **argv;
 	 */
 	*((long *) (++cp)) = l;
 	test++;
-		
+
 	if (l != *((long *) cp)) {
 	    (void) printf(LONGPROBS, test);
 #ifdef ANSWER
@@ -99,7 +99,7 @@ char **argv;
 	 * Now try copying it in place with memcpy
 	 */
 	(void) memcpy(cp, &l, sizeof(l));
-		
+
 	if (l != *((long *) cp))
 	{
 	    (void) printf(LONGPROBS, test);
@@ -116,9 +116,9 @@ char **argv;
 #ifdef ANSWER
     (void) printf(ANSWER, "NO");
 #endif
-	
+
     exit(0);
-	
+
 }
 
 /* aligntest.c ends here */
