@@ -28,7 +28,7 @@ Welcome to the archaeological dig site of Eric S. Raymond's TMNN (Teenage Mutant
 - **Branch: `actual-fixes`** — [Where OpenBFD actually fixes bugs](https://github.com/SimHacker/tmnn7-8/commits/actual-fixes)
 - **Issue #2** — [Security Practices discussion](https://github.com/SimHacker/tmnn7-8/issues/2)
 - **Bug Count** — Started at 774, currently 753
-- **🆕 Relationships** — [OpenBFD ↔ ReviewBot-774](../blob/main/analysis/relationships/openbfd-reviewbot774.md) — *Sims-style mentorship tracking*
+- **🆕 Mentorship** — [OpenBFD](analysis/characters/OpenBFD/CHARACTER.yml) teaches [ReviewBot-774](analysis/characters/ReviewBot-774/CHARACTER.yml) — *Sims-style relationship in each character's soul*
 
 ## Critical Theory
 
