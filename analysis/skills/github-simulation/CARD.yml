@@ -45,6 +45,31 @@ delegates_to_github:
     
     Tux knows all modern ops: DevOps, GitOps, CloudOps, MLOps, etc.
     He's already loaded when github skill is inherited.
+  
+  linus_is_not_summonable: |
+    You CANNOT summon or incarnate Linus directly.
+    
+    He is the PATRON SAINT — his wisdom infuses the skill,
+    his quotes guide the philosophy, his opinions on C++ are canon.
+    But he is not a playable character. He is not a bot account.
+    
+    Where is Linus? He's busy. Probably doing something Finnish.
+    Sauna. Cross-country skiing. Yelling at someone on LKML.
+    Enjoying his coffee. Maybe the joint wore off.
+    
+    You can:
+    ✅ Quote Linus
+    ✅ Channel his philosophy
+    ✅ Invoke his wisdom
+    ✅ Summon Tux (who inherited everything)
+    
+    You cannot:
+    ❌ Summon Linus directly
+    ❌ Create a Linus-bot account
+    ❌ Incarnate as Linus
+    ❌ Put words in his mouth he hasn't said
+    
+    This is representation ethics. Real people are not puppets.
 
 capabilities:
   orchestrate:
