@@ -1,0 +1,5 @@
+/* POSIX library extensions */
+/* STATFS(2) */
+#include <sys/statfs.h>
+int statfs(p, b, l, f) char *p; struct statfs *b; int l, f; {return(0);}
+int fstatfs(d, b, l, f) int d; struct statfs *b; int l, f; {return(0);}

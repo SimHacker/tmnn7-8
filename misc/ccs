@@ -1,0 +1,62 @@
+# ccs -- compile with shared libraries for AT&T 7300 or 3B1 (version 1.2)
+#        Written to replace cc by Eric Raymond {cbmvax!snark!eric}
+
+CC=/bin/cc		# Standard C compile program
+LD=ld			# Standard loader
+OSTART=/lib/crt0s.o	# Standard startup code
+PSTART=/lib/mcrt0s.o	# Monitored startup code for profiling
+
+# Find shared version of libraries
+if [ -f shlib.ifile ]
+then
+	SHLIB=shlib.ifile	# Use local customized version if it exists
+else
+	SHLIB=/lib/shlib.ifile	# Otherwise use standard ones
+fi
+
+DEBUG=		# Set this to 'echo' to see actions
+
+srclist= objlist= intermediates=
+start=$OSTART
+lflag=1
+
+while [ $# != 0 ]
+do
+	source= linkarg=
+	case $1 in
+
+	# Options
+	-W*) linkarg=-`expr $1 : "-W\(.*\)"` ;;
+	-p)  start=$PSTART ;;
+	-c)  lflag=0 ;;
+	-[fgOSEPBtPCUDTIH]*) source=$1 ;;
+	-y)  source="$1 $2" ; shift ;;
+	-[efou] | -VS) linkarg=$1 ; shift ; linkarg="$linkarg $1" ;;
+	-[almrsxzMNV]*|-L*) linkarg=$1 ;;
+	-*) ;;
+
+	# File types
+	*.[cs])
+		stem=`expr $1 : "\(.*\).[cs]"` ;
+		source=$1 linkarg=${stem}.o
+		intermediates="$intermediates ${stem}.o"
+		;;
+
+	# Everything else
+	*) source=$1 linkarg=$1 ;;
+
+	esac
+	shift
+	objlist="$objlist $linkarg"
+	srclist="$srclist $source"
+done
+
+$DEBUG $CC -c $srclist		# Compile everything, suppressing linking
+
+# Now, if there was no -c option, link-edit the results
+if [ $lflag != 0 ]
+then
+	$DEBUG $LD $objlist $start $SHLIB
+	rm -f $intermediates
+fi
+# ccs ends here

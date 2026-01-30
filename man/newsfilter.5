@@ -1,0 +1,434 @@
+.if n .ds La '
+.if n .ds Ra '
+.if t .ds La `
+.if t .ds Ra '
+.if n .ds Lq "
+.if n .ds Rq "
+.if t .ds Lq ``
+.if t .ds Rq ''
+.de Ch
+\\$3\\*(Lq\\$1\\*(Rq\\$2
+..
+.TH FILTER 5 "May 10, 1989"
+.ds ]W News Filter
+.SH NAME
+filter \- reader/newsfilter communications protocol.
+.SH SYNOPSIS
+This document describes version 1.00 of the protocol used to implement
+newsreader communication with newsfilter processes. The intent is to support
+construction of newsfilters that can communicate with any standard reader.
+.SH DESCRIPTION
+During initialization, newsreaders may attempt to establish communication
+with a newsfilter process. If it succeeds, information on each article will
+be passed to the newsfilter using a protocol described in this document;
+the newsfilter will pass back an `interest score' which the reader may use
+to determine whether and how the article should be presented.
+.PP
+The news sources distribution provides C libraries for both the `top' (reader)
+end, and the `bottom' (filter) end.
+.SH THEORY OF OPERATION
+Protocol execution may be thought of a series of \fRtransactions\fR; in each
+transaction, the newsreader sends command down to the newsfilter, and
+blocks waiting a response. Optionally, the reader may time out if a response
+is not received within some maximum time.
+.PP
+Some transactions group into \fIdialogues\fR; these are logical sequences 
+of transactions which share state (i.e. affect shared data in the protocol
+service routines).
+.PP
+A protocol session consists of a \fIstart dialogue\fR, followed by any
+number of \fIcommand dialogues\fR, terminated by an \fIend dialogue\fR.
+There are presently two kinds of command dialogue;
+\fInewsgroup dialogues\fR and \fIarticle dialogues\fR. Specifications for
+each of these are given below.
+.SH COMMAND AND RESPONSE FORMAT
+All messages start with a fixed-size \fIheader\fR. Some messages
+may be followed by an \fIargument list\fR, the length of which is provided as
+part of the header. In a few cases, the argument list may be followed by an
+additional variable-length \fItext section\fR.
+.PP
+Here is the format of a header:
+.nf
+	0	Type: `C' = call, `R' = response, `Q' = query, `A' = answer
+	1	A command code letter.
+	2	A space ` '
+	3-8	A 6-digit decimal command sequence number.
+	9	A space ` '
+	10-12	A 3-digit decimal argument list length.
+	13	A terminating 0 (NUL) or newline byte.
+.fi
+.PP
+In a call, the sequence number is 1 for the first command issued and
+increases by one in each following command.
+In a response, the sequence number field is the number of the command to which
+the response pertains.  The newsreader is not required to provide meaningful
+sequence numbers, but whatever number the newsreader sends will be used in
+all filter responses to that command.
+.PP
+If a numeric field is smaller than the full field width,
+it should be either left justified and
+space-filled to the right or 0 filled from the left. The latter form is
+recommended and is the one shown in this document's examples.
+.PP
+The \fIargument list\fR (if any) of a message is interpreted as a
+sequence of NUL-separated character strings. The
+length field in the header must count the the terminating zero byte found at
+the end of the last argument.  The length of
+the argument list is limited to 256 characters counting the NUL bytes.
+.P
+The \fItext section\fR (in the non-implemented pipe mode) may consist of
+either (a) an RFC-822 message
+header followed and terminated by two carriage returns (a blank line), or b)
+ASCII data.  Both are presented in a special packet format described below.
+.SH STARTUP
+While it is possible that this protocol may be implemented using other
+forms of inter process communication, this first version of the protocol
+is expected to be implemented using two nameless pipes.   News filter
+programs will take their commands from the master newsreading program
+by reading from the standard input.  They will give their responses and
+queries to the standard output.
+.PP
+A typical newsreader will fork a child news filter process, create pipes
+to talk to the standard input of the child and read from the standard
+output of the child, and then execute a news filter executable program.
+.PP
+While a newsreader may use any means to decide the location of the
+news filter program it executes, the standard name is
+.B rnkill.
+The nclip program should be found in the same directory the newsreader
+uses to keep user files, such as the
+.N .newsrc
+file.  The newsreader may also search the directories listed in the
+user's PATH environment variable for this executable.
+.PP
+When the filter program is executed by a reader, it should be executed with
+the `-p' option (signifying pipe mode). The option `-D' followed by a numeric
+argument is reserved for setting the filter's debug level; nonzero values
+may cause diagnostic messages to be printed to the tty. These options conform
+to the SVID recommendations for command-line option syntax.
+.SS INITIAL SEQUENCE
+When a news filter starts up operation, it should immediately send
+a ``response'' with the OK message (see below) to its standard output.  This
+is not a response to any command, just a response to being executed.
+This will indicate that the news filter program has started correctly.
+.PP
+Newsreading programs which start up a news filter and do not get
+this immediate initial response should assume the filter has failed
+to start, and act as though it is not present.
+.PP
+If the OK message is detected, the newsreader should then send a
+Version command to the news filter and await a Version response.  If
+all goes well, general operation may then continue.
+.PP
+News filter programs should be sure to handle signals properly.  For
+example, a filter program should probably ignore INT (break) signals, as
+it is not talking to a terminal but will still be in the newsreader's
+process group (on Unix).
+.PP
+At the end of a session, the newsreader should send the Quit command
+to the filter, await an OK, and then terminate or go on with the knowledge
+the news filter program is not in operation.
+
+.SH DIALOGUE SPECIFICATIONS
+In the following specifications, the form of a message is given 
+as a pseudo-BNF listing the code byte of the header and the meaning of the
+arguments following. Required and computed format elements such as the leading
+type byte, the embedded spaces, the sequence number, the argument list length
+field, and various NUL separators should be understood from the request format
+description above.
+.PP
+Each command or response specification is followed by an example. The first
+line of each example shows a sample header of the given type, and the second
+line an argument list.
+.SS The `Start' Dialogue
+The `start dialogue' consists of a single transaction. The reader sends a
+`V' (Version) command and expects a `V' (Version) response. These are defined
+as follows:
+.TP 0
+COMMAND: V <version-string>
+.TP 0
+	CV 000001 005\\0
+	V100\\0
+.PP
+This command can be sent to a newsfilter to establish the newsfilter
+language protocol understood by both programs.  The newsfilter
+program will respond with a version line of its own, including
+the list of valid commands it understands and the list of responses it
+can give back.  The newsreader should only send those commands in
+the list given; others will produce an `error' response.  All newsfilters must
+accept the set of commands listed in this document -- the specification for
+V100 of the newsfilter interface language.
+.TP 0
+RESPONSE: V <version> <commands> <responses> <plang> <pversion>
+.TP 0
+	RV 000001 029\\0
+	V100\\0ABHNPQV\\0ABEHORV\\0rnkill\\V100\\0
+.PP
+The <vnum> argument is a Version number for the command
+language understood by the newsfiltering program.  This language is
+version V100.  Later releases will have a higher number.
+.PP
+The <commands> arg is the set of command codes the newsfilter understands.
+The <responses> arg is the set of responses that it knows to send back.
+.PP
+The <plang> argument is the name of the filter language ('P' commands) that
+the newsfilter understands, and the <pversion> number is a version number.
+If the newsfilter does not understand any language for P commands, it should
+use the name `NULL' and a version number of 0.
+.PP
+If the newsreader gets an `error' response to this message, it should assume
+that the filter is present but cannot handle the language specified, or has
+failed to initialize properly.  The reader may attempt different Version
+commands, or may decide to send a Quit command.
+.PP
+Defined names currently are:
+		NULL
+		newsclip
+		rnkill
+.PP
+Names can be registered via email to newsfilters@looking.on.ca
+.SS The `End' Dialogue
+The \fIend dialogue\fR consists of a single transaction; the reader sends
+a `Q' (Quit) command and expects an `O' (Ok) response.
+.TP
+COMMAND: Q
+.TP
+	CQ 000236 000\\0
+.PP
+The newsfilter program should terminate.  An response of `Ok' is
+expected, after which the pipes will close.
+.PP
+Closing the command pipe, causing EOF for the newsfilter, should
+also cause the newsfilter to terminate.  If a newsreader detects EOF
+on the answer pipe, it should assume the newsfilter has terminated and
+act accordingly, possibly giving an error message to the user.
+.TP 0
+RESPONSE: O
+.TP 0
+	RO 052317 000\\0
+.PP
+This response confirms that the newsfilter is exiting gracefully.
+.SS The `Program' Dialogue
+.PP
+The \fIprogram dialogue\fR begins with an 'P' (Program) command and ends with
+one of the responses 'O' (Ok) or `E' (Error).
+.TP 0
+COMMAND: P <command-string>
+.TP 0
+	CP 012321 016\\0
+	kill From: Eric\\0
+.PP
+The first arg passes free format commands to the newsfilter.  Normally these
+will be things to add to the newsfilter's "kill files" or other such
+commands.  The format of the commands is entirely up to the newsfilter.
+.P
+The above command might be request to kill all articles that include the string
+"Eric" in their From line.  It would be generated by a newsreader that
+knew how to translate user requests into commands to this particular
+newsfilter.
+.PP
+The newsfilter should interpret the command.  If it is a valid command, it
+should execute it and issue an OK response.  If it is not a valid command,
+it should issue an Error response.  The newsreader may decide to issue
+an error message because of the error response, or do further
+analysis of the command.
+.TP 0
+RESPONSE: O
+.TP 0
+	RO 12321 000\\0
+.PP
+This response confirms that the argument was accepted as a valid command
+by the newsfilter program.
+.TP 0
+RESPONSE: E <error-message>
+.TP 0
+	RE 12321 017\\0
+	No such command!\\0
+.PP
+This response tells the reader the argument was rejected as an invalid command
+by the newsfilter program.
+.SS The `Newsgroup' Dialogue 
+The \fINewsgroup dialogue\fR consists of a single transaction; the reader sends
+an `N' (Newsgroup) command, and expects an Accept, Reject or Ok response.
+.TP 0
+COMMAND: N <newsgroup>
+.TP 0
+	CN 00005 015\\0
+	news.groups\\0
+.PP
+This command asks the newsfilter for general information on
+a newsgroup.  Responses can be `A' (Accept), which indicates that
+all articles in this group should be accepted without consulting the
+newsfilter, `R' (Reject) which means that all articles should be rejected
+without consulting the newsfilter or `O' (Ok - Consult), which means that
+articles should be fed to the newsfilter for examination.
+.PP
+Note that even in the case of an `A' or `R', articles in that group
+may still be sent for examination.  It is just less efficient to do so.
+.TP 0
+RESPONSE: A <score>
+.TP 0
+	RA 000005 003\\0
+	22\\0
+.PP
+This response indicates that the article should be accepted. The single
+argument is an `interest score' computed by the newskiller; it may be omitted
+to indicate a value of 1.
+.TP 0
+RESPONSE: R <score>
+.TP 0
+	RR 000005 003\\0
+	-2\\0
+.PP
+This response indicates that the article should be rejected. The single
+argument is an `interest score' computed by the newskiller; it may be omitted
+to indicate a value of -1.
+.PP
+By convention, the `R' response carries a zero or negative score and the `A'
+response a positive one.
+.PP
+The `O' response is as documented for the `Q' (Quit) command above.
+.SS The `Article' Dialogue
+The \fIarticle dialogue\fR begins with an 'A' (Article) command and ends with
+one of the responses 'A' (Accept) or `R' (Reject). There may be one or more
+transactions in this dialogue.
+.TP 0
+COMMAND: A <article-spec> [<mode>] [<filename>]
+.TP 0
+	CA 000006 048\\0
+	news.groups/034\\0R\\0/usr/spool/news/news/groups/43\\0
+.PP
+The first argument is an article specification, either an article-number
+pair separated by a slash or an RFC1036 Message-ID. If the newsfilter
+can deduce a final interest score from these, it will do so and return accept
+or reject immediately. Otherwise, the newsfilter can return article information
+requests to see portions of the article; see the following description of
+article information exchange. The <filename> argument, if present, is used
+in resolving the article information request.  The <mode> argument
+indicates whether the article is present in the file, or must be
+requested. If omitted, it defaults to file mode.
+.PP
+Text may be passed down to the newsfilter in one of two modes; \fIpipe mode\fR
+or \fIfile mode\fR.  The mode is triggered by the signle character <mode>
+byte argument.  File modes require a file name
+name argument on the reader command that triggered the article information
+request.  For pipe mode, no file name is given and a mode character of
+'P' is provided.  The two file modes use mode characters of
+'F' (full) and 'R' (request).
+.PP
+Pipe mode is currently not
+implemented in any of the news filtering or newsreading programs using
+this protocol.  It is defined for future expansion.
+.PP
+In \fIpipe mode\fR article portions are passed down in the text sections of
+Header and Body replies from the newsreader in accordance with text query 
+sequences started by the newsfilter. Text query sequence protocol is specified
+below.
+.PP
+In \fIfile mode\fR the article information is passed in the file named.
+This file may be either the permanent location of the article, or a tempfile.
+.PP
+In the former case, it is likely (but not necessary) that the 'F' (full)
+file mode will be used.  In this case, the entire article is already present
+in the file, and no further queries should be issued by the newsfilter.
+The only acceptable responses to a full file mode Article command are
+Accept, Reject and Error.
+.PP
+In the latter case of request mode, the newsfilter should issue text queries
+before attempting
+to read first the header, and later the body of the article.  After
+issuing such queries, the filter should wait for a response from the
+newsreader before reading into the file.
+.PP
+A text query sequence consists of a series of 'H' (Header) and 'B' (Body)
+requests sent by the newsfilter to the newsreader, and corresponding responses
+by the newsreader.
+.TP 0
+QUERY: H
+.TP 0
+	QH 000340 000\\0
+.PP
+This query requests the RFC-822 header of the article selected by a previous
+`A' command, or of the article selected by the newsreader at the time of
+issuance of a 'P' command.
+.TP 0
+ANSWER: H [<size> [<asize>]]
+.TP 0
+	AH 000340 004\\0
+	364\\0
+.PP
+This answer signifies that the newsreader has header data ready in response
+to a previous 'H' query. The optional <size> argument specifies the total
+length of the header.  The body of the article may exist beyond the header.
+Filters should not assume they will read EOF at the end of a header.
+.PP
+In pipe mode, this answer is followed immediately by a text section in RFC-822
+format (see above), using message packet format. 
+Message packets consist of a length byte, followed
+by 0 to 255 text data bytes.  A 0 length packet indicates the end of the
+header, which must be preceded by a blank line.
+.PP
+The optional <asize> is the size of the entire article, but only if the
+newsreader has it handy.
+.TP 0
+QUERY: B [<size>]
+.TP 0
+	QB 000341 004\\0
+	125\\0
+.PP
+This query asks the reader to send down all or a portion of the body of the
+current article.   The filter may optionally communicate the most it wants
+of the article with the <size> argument.  If this is present, the newsreader
+need not transmit or place more than <size> bytes of the body.  The
+newsreader is still always free to send the entire body -- this is merely
+an optimization.  If the <size> argument is not present, the entire body
+must be made available.
+.TP 0
+ANSWER: B [<size>]
+.TP 0
+	AB 000341 004\\0
+	125\\0
+.PP
+The 'B' response signifies that the newsreader has text data ready for the
+newsfilter.  The argument optionally gives the length of the data in bytes. This
+length may be smaller or larger than the requested length.  It will only
+be smaller if the article body itself is smaller than the requested length.
+.PP
+Note that a newsreader can use request mode even if it always has
+complete article files ready for the filter.  It should merely respond
+to queries immediately, doing nothing.  The 'F' (full) mode simply allows
+a reader to be sure it will never receive queries.  This allows very
+simple reader implementations of this protocol.
+.PP
+NNTP readers and other readers that do not have access to single
+article files should use the request mode, building a temporary file
+for the filter as requested.
+.PP
+In pipe mode, this answer is followed immediately by a text section in
+message packet format.   Message packets consist of a length byte, followed
+by 0 to 255 text data bytes.  A 0 length packet indicates EOF.
+.SH NOTES
+The protocol is designed for use over the most primitive IPC common on UNIX,
+a pair of nameless pipes. Some older UNIXes (V7 in particular) feature pipe
+implementations that behave rather badly (as in, cause a lockup or sudden
+process death) if reads and writes are not carefully synchronized. Thus the
+rigid alternation of fixed-size with variable-size transmissions, and the
+care in specifying lengths of variable parts in fixed-part blocks.
+.PP
+Under a more forgiving IPC implementation (such as System V message queues),
+the fixed and variable-length parts might be sent in one transmission; this
+is an implementation detail left up to service libraries.
+.PP
+The all-ASCII format avoids potential alignment problems.
+.PP
+Is is expected that the protocol service libraries will automatically choose
+pipe or file mode for text query sequence, depending on whether the calling
+newsreader browses a file hierarchy or talks to some sort of network daemon.
+.PP
+The 'F' (full) file mode is the simplest mode, intended for use on
+systems where the article files reside in normal format on the user's
+machine.  A newsreader can be adapted to this mode of operation with
+minimal changes.
+.SH AUTHORS
+This protocol was developed by Brad Templeton and Eric Raymond.
+

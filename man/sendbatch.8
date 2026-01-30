@@ -1,0 +1,89 @@
+.if n .ds La '
+.if n .ds Ra '
+.if t .ds La `
+.if t .ds Ra '
+.if n .ds Lq "
+.if n .ds Rq "
+.if t .ds Lq ``
+.if t .ds Rq ''
+.de Ch
+\\$3\\*(Lq\\$1\\*(Rq\\$2
+..
+.TH SENDBATCH 8 "Mar 17, 1989"
+.ds ]W News 3.0 (beta level 7)
+.SH NAME
+sendbatch \- send news articles queued for batching
+.SH SYNOPSIS
+sendbatch [-DvFkf] [ [-sx]
+.B system...
+]
+.SH DESCRIPTION
+.PP
+A call to sendbatch with no arguments ships pending batches to all systems.
+If a list of system names is given on the command line, only those systems
+are sent to.
+.PP
+The -x option disables normal checks on available free uucp spool space.
+See the SPOOLMIN configuration symbol description for details.
+.PP
+The -v option sets a verbosity level, causing  action messages 
+down to the transport layer (uux invocation) to be emitted to stdout.
+If sendbatch was compiled with -DDEBUG, the -D option suppresses
+suppressing actual modification of the news database.
+.PP
+The -f option suppresses batch sending and batchfile deletion; instead, it
+causes sendbatch to emit to stdout a list of the article files it would have
+batched and sent. This is intended for use by news-transmission and
+postprocessing tools that need to see the old batch format. 
+.PP
+The -k option forces deletion of the batchfiles for the selected systems.
+.PP
+The -F option causes sendbatch to act as a filter that translates a file of
+IDs on stdin into article file instance names on stdout.
+.PP
+The A, B, C, D, E, N, Q, S and U transmission options are interpreted when
+sending batches from here. Special arrangements are made to do N and Q;
+the others are handed off to the lower level routines in transmit.c.
+.PP
+The program expects to find files in your batch directory (usually
+/usr/spool/batch, see the HOME and BATCHDIR config symbols) bearing
+the names of neighbor systems. Each file is expected to hold the Nessage-IDs
+of messages to be transmitted to that system, one per line.
+.PP
+The format sendbatch emits is the standard one, i.e.
+.PP
+.nf
+	#! aaaa
+	#! rnews xxxx
+	<article containing xxxx characters>
+	#! rnews yyy
+	<article containing yyy characters>
+	    :
+	    :
+	#! rnews zzzz
+	<article containing zzzz characters>
+	<EOF>
+.fi
+.PP
+where aaaa is one of the names unbatch, cunbatch or c7unbatch to indicate the
+compression type. The first header line may be suppressed (2.10.2 style) by the
+`o' modifier of the `B' transmission option.
+.PP
+This utility is intended to be called from cron at least once daily.
+.SH NOTE
+This utility replaces the old batch program and sendbatch, csendbatch and 
+c7sendbatch scripts.
+.SH FILES
+.nf
+/tmp/notify??????            -- used to build notification headers
+/tmp/bout??????              -- used to build batch (before compression)
+/tmp/batch??????             -- the final batch
+BATCHDIR/<system>.work       -- work copy of the batch file for system
+.fi
+.SH SEE ALSO
+inews(1),
+rnews(1),
+uurec(8),
+recnews(8),
+readnews(1),
+checknews(1)

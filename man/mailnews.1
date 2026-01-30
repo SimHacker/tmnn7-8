@@ -1,0 +1,67 @@
+.if n .ds La '
+.if n .ds Ra '
+.if t .ds La `
+.if t .ds Ra '
+.if n .ds Lq "
+.if n .ds Rq "
+.if t .ds Lq ``
+.if t .ds Rq ''
+.de Ch
+\\$3\\*(Lq\\$1\\*(Rq\\$2
+..
+.TH MAILNEWS 8 "Mar 17, 1989"
+.ds ]W News 3.0 (beta level 7)
+.SH NAME
+mailnews \- use a system mailer as a news interface
+.SH SYNOPSIS
+.BR mailnews " [ " \-a
+.IR date " ] [ "
+.B \-n
+.IR newsgroups " ] [ "
+.B \-t
+.IR titles " ] [ "
+.BR \-drxfS " ] [ "
+.BR \-c " [ "
+.IR mailer " ] ] ["
+.BR \-D " [ "
+.IR level " ] "
+]
+.PP
+.B "mailnews \-s"
+.SH DESCRIPTION
+This program presses a mail reader into service as a news interface.
+The -antrxfsS, -q, and -D options are processed just as their readnews
+equivalents.
+The -c option takes the name of a mailer command to use; otherwise
+the program uses a system-dependent default, usually either /bin/mailx or
+(if TMAIL was suitably defined in defs.dist) /usr/ucb/mail with the -T option.
+See the mailer documentation for available commands.
+.PP
+If you are using a mailer other than /usr/ucb/mail -T, mailnews will try to
+compute which messages you deleted out of the mailfile and mark those seen.
+Thus, when using /bin/mail, you can mark a message seen with the 'd'
+(delete) command. You can reverse this logic by invoking mailnews with the
+-d option, so that all messages you do \fBnot\fR delete will be marked seen.
+If you prefer -d as a default, just put
+.PP
+.nf
+options mailnews -d
+.fi
+.PP
+in your .newsrc.
+.PP
+No matter what mailer you are using, if you exit with a command that would
+normally leave your mailbox unchanged (such as the /bin/mail 'x' command),
+your .newsrc will be left unmodified.
+.SH NOTE
+For the delete-command interpretation feature to work
+your execution path must get you standard UNIX sed(1), sort(1) and comm(1)
+utilities; if they aren't found or have properties incompatible with their
+Version 7 versions, unpredictable things will happen (most likely no
+messages will be marked seen).
+.SH BUGS
+The -r option and the subject-thread following feature don't like each other.
+.SH SEE ALSO
+readnews(1),
+vnews(1),
+rn(1)

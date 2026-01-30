@@ -1,0 +1,278 @@
+.if n .ds La '
+.if n .ds Ra '
+.if t .ds La `
+.if t .ds Ra '
+.if n .ds Lq "
+.if n .ds Rq "
+.if t .ds Lq ``
+.if t .ds Rq ''
+.de Ch
+\\$3\\*(Lq\\$1\\*(Rq\\$2
+..
+.\" Set up for Matt Bishop's mn macros
+.ds V "News 3.0 (beta level 7)
+.ds h0 "New Newsgroups
+.ds h1
+.ds h2 %
+.ds f0 "\*(vr
+.ds f1
+.ds f2 "Mar 17, 1989"
+.mt
+Procedures for Creating New Newsgroups
+A Tutorial Introduction for Usenet Readers
+.au
+Dave Taylor
+.au
+Eric S. Raymond
+.ai
+(taylor@hplabs.HP.COM)
+.\"
+.\" Insert name of the current new-group mogul here
+.ds NM "Gene Spafford (spaf@gatech.edu)
+.\"
+.pg l
+Introduction
+.pg
+One of the most commonly asked questions on the
+Usenet system is \*(Lqhow do I create a new newsgroup?\*(Rq. While
+the actual mechanism of creating a new group is rather simple
+the network isn't a total anarchy. As a consequence,
+there is a defined protocol that one must go through to
+achieve a valid group.
+.pg
+A common misconception with people who want to create a new
+group is that the existence of a group will justify the need
+for a group. This is also commonly known as the \*(Lqwe can't
+prove we need it because no-one knows it's there, therefore
+there are no relevent postings!\*(Rq. This is NOT a good argument.
+.pg
+Successful groups that are well read, and willingly
+passed about the network at a cost to the backbones are
+those that fill a perceived need in the Unix community.
+(Note that most people view the network as a free entity.
+In fact it isn't. Backbone sites have phone bills in the
+thousands of dollars a month to transport news about!)
+Therefore, a group should meet a perceived need and be
+viewed with those points in mind.
+.pg
+Without further ado, then, the steps needed to create a new
+newsgroup;
+.pg l
+1. Find a Niche
+.pg
+The first step towards creating a new group is to
+identify a topic of interest to a reasonable subset of the
+Unix community (NOTHING is of interest to all, but by the
+same token groups shouldn't be created so that you and a few
+of your friends* can play with the news system
+.fn
+* Actually, it would be okay to do this if the group
+wasn't sent to sites other than those willing to accept
+the group, but we'll get back to that in a bit...
+.ef
+or with a very limited readership of any sort).
+.pg
+There are two ways to tell if you have a good niche
+- the first is if there are enough postings about the topic
+in inappropriate groups (like a car-for-sale article in
+\*(Lqnet.general\*(Rq), or articles about the topic tend to be
+cross-posted to a number of different groups
+(\*(Lqnet.singles\*(Rq versus \*(Lqnet.social\*(Rq and \*(Lqnet.abortion\*(Rq
+versus \*(Lqnet.women\*(Rq are fine examples).
+.pg
+It is rare to find a topic that no-one is posting
+about simply because an appropriate forum isn't available .
+If there are no postings somewhere it usually implies that
+there are not enough people interested enough to post articles
+on the subject.
+.pg l
+2. Start a Mailing List
+.pg
+Once a topic is found that seems likely, \fIstart a
+mailing list\fR. People who run mailing lists can relate any
+number of stories of good ideas that didn't catch on, and
+creating newsgroups to accomodate them would have been a
+poor idea. Also, sometimes the number of active readers
+(e.g. people who submit articles to the group) is a LOT less
+than the number of readers (this is also known as the \*(Lqno-one
+posts!\*(Rq lament). A mailing list with very little
+traffic can be gracefully and easily retired, but a news
+group tends to be much more of an administrative hassle, and
+therefore is view more askance by administrators (especially
+backbone administrators).
+.pg
+To create a mailing list, write a paragraph or two
+about what the list is to cover, post a copy to
+\*(Lqnet.news.group\*(Rq and mail (email) a copy to the maintainer
+of the List of Publicly Accessible Mailing Lists (this list
+is available through the \*(Lqmod.announce.newusers\*(Rq newsgroup)
+and wait for the flood of mail.
+.pg
+If you only get a few responses, don't despair -
+just start the mailing list anyway. If it's good and you
+get good people to write for it, it'll catch on and the
+transition to a \*(Lareal\*(Ra newsgroup will be easy. If it does
+catch on and you get over 75 or so requests to be put on the
+list, then summarize them (tally them) and post a response
+to your original article in \*(Lqnet.news.group\*(Rq proposing
+that a newsgroup be created.
+.pg
+If at any point after about 60 days or so the mailing
+list starts to become unwieldy, post an article to
+\*(Lqnet.news.group\*(Rq proposing that a newsgroup be created.
+Present REAL NUMBERS of readers and such, too - it helps
+justify the need.
+.pg l
+3. Temporary Newsgroups
+.pg
+One of the problems with the current system is that
+there is no easy mechanism for creating new newsgroups with
+a temporary lifespan. Nonetheless, it is recommended that
+if a discussion \*(Laexplodes\*(Ra (like the discussion of old
+(classic) versus new coke did a couple of years ago) that a
+newsgroup for the discussion be created. The name should
+contain the string \*(Lqmisc\*(Rq or \*(Lqtemp\*(Rq and should otherwise
+be similar to the groupname that spawned the discussion
+(e.g. \*(Lqnet.misc\*(Rq spawned off \*(Lqnet.misc.coke\*(Rq for a
+while, and \*(Lqnet.movies\*(Rq spawned \*(Lqnet.movies.sw\*(Rq [Star
+Wars]). When the traffic dies down, the group is then
+removed and the integrity of the network is preserved.
+.pg
+Hopefully in the future this will become easier to
+do.
+.pg l
+4. Transitioning from Mail to News
+.pg
+If a mailing list is sufficiently popular, as discussed
+above, a suggestion that it be transitioned into a
+newsgroup should be posted to \*(Lqnet.news.group\*(Rq.
+.pg l
+5. People with More Say in the Creation Process
+.pg
+Since the backbone sites (ihnp4, hplabs, seismo,
+utzoo, gatech, ucbvax, etc) pay real money for newsgroups,
+the administrators of those sites have more say in the creation
+of groups that pass through their machines. There is a
+fine line here - a group can still be created without the
+approval of the backbone administrators, but they may choose
+to stop accepting and/or forwarding the new group. The
+appropriate recourse if this happens is not to publicly or
+privately attack those administrators who have simply exercised
+their options on their own machines, but rather to set
+up a list of alternative feeds.
+.pg
+Most typically, backbone sites are more willing to
+distribute groups locally, or to machines that poll them,
+than they are to machines they call long-distance daily.
+It's a simple matter of economics, really.
+.pg
+To consider an example, someone proposed the creation
+of a group called \*(Lqnet.rec.drugs\*(Rq for discussion of
+various aspects of so-called recreational drugs. A number
+of backbone site admins stated that they were not willing to
+allow the group on their machine due to repercussions, and
+the person wanting the group then responded by creating his
+own \*(Laside\(*Ra network connectivity group (essentially a parallel
+backbone). This is the appropriate solution.
+.pg
+To wax philosophical for a moment, it is anticipated
+by a number of members of Usenet that a set of discrete,
+overlapping networks will transport all the news in the
+future, and machines will \*(Lasign up\*(Ra for those groups that
+they're interested in only. This is further down the road,
+though.
+.pg l
+6. Actually Creating the New Group
+.pg
+Once it's decided that a group will be created, and
+the name and such have been settled, and the backbone
+administrators have either agreed to carry the information
+or have stated that they'd rather not, the next, and final
+step, is to issue a \*(Lanewgroup\*(Ra command.
+.pg
+To accomplish this, mail a request to the backbone's `newsgroups mogul'
+with the proposed name of the group and such. The current
+newgroups mogul is \*(NM.
+He will process your request with all
+due speed and send you some sort of indication of completion.
+He will also be able to confirm that the steps
+documented herein have been followed.
+.pg l
+7. Moderation
+.pg
+It is VERY HIGHLY recommended that all new groups be
+created as moderated groups. This reduces the occurances of
+inapropriate postings and duplicate postings, and generally
+makes the net less painful to read.
+.pg
+Also, moderated groups are much more likely to be
+followed by backbone sites....
+.pg l
+8. Moving from Moderation to Not
+.pg
+Some groups are intrinsicly very high volume, and
+are most appropriate as non-moderated groups. Much care
+should be taken before this is changed, though.
+.pg l
+9. A Few Other Comments...
+.pg
+There are a number of myths about creating and
+managing groups that I'd like to explicitly debunk once and
+for all;
+.pg
+First off, having a lot of people read a group does not
+equate to having a lot of postings for them to read! This
+is a very common misconception and is about as far from the
+truth as is possible. There are any number of causes for
+this, including lack of writing skills, lack of interest,
+lack of time, etc. etc., ad infinitum.
+.pg
+Secondly, there is also what Henry Spencer refers to as the
+\*(Lqflash-in-the-pan phenomenon\*(Rq, where a group starts out
+fantastically popular, but in the course of a few weeks or
+so dies out completely. Be on the lookout for this and try
+to only propose groups that are of lasting interest to the
+community that will be sending it out. Discussions on
+topics that will be either resolved or deadlocked in a short
+period of time can be worse than annoying. Consider a group
+that was to discuss the relative merits of one religion over
+another...it would very rapidly collapse into a shouting
+match and no useful discussion would ensue at all. Please
+try to avoid this trap!
+.pg
+Next, moderation isn't that much of a hassle. For the most
+part, accepting the role simply means that you'll briefly
+peruse the articles to ensure that they are appropriate for
+the group before posting. It is suggested that you also
+check for typographical, spelling and gramatical errors
+(don't change the meaning of the posting, though, or you'll
+get into trouble mighty quick!). Also recommended is to
+remove extraneous data, including multiple copies of \*(Lq.signature\*Rq
+file entries and so on. The best policy is to start
+the group (or mailing list, for that matter) with a note
+outlining the major topics of interest and also indicating
+the \*(Laeditorial policy\*(Ra. The role of moderator can be anything
+from simply content checking to emulating a major
+magazine publisher - the quality of the group is commensurate
+to this too, usually.
+.pg
+While we're on the subject, don't hesitate to refuse postings
+if they are wandering too far off the topic of the
+group or if they are simply treading on well-trod ground
+(one advantage of a moderated group is that you can avoid
+constantly discussing the cyclic topics that most unmoderated
+Usenet newsgroups seem to go through all too often)
+.pg
+Finally, I hope this hasn't soured you of the idea of creating
+the group you're thinking of that will fill that one
+vital niche that is empty in the current system. By all
+means make the effort! You might be suprised at how popular
+topics can become!
+.pg l
+Finally
+.pg
+This article was generated with helpful input from
+Tony Birnseth and Chris Andersen of Tektronix, Rob Horn of
+Infinet, Chuq Von Rospach of Sun, Henry Spencer of the
+University of Toronto, and Gene Spafford of Georgia Tech.
+.\" newgroup.mn ends here

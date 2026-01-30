@@ -1,0 +1,96 @@
+# libread.a generic Makefile to be customized for your site by Configure
+#
+# This is the reader library directory. The Makefile defines four targets:
+#
+# libread.a:	The common reader library itself
+# manifest:	Echo a string containing names of all library sources
+# llib-lread.ln	The lint library made from libread.a
+# clean:	Clean out all object, library and lint files
+#
+# Call "make -f Makefile.dst Makefile" from here to rebuild the Makefile
+
+# Other news source directories
+MAINDIR = ..
+PORTDIR = ../D.port
+NEWSDIR = ../D.news
+FILTDIR = ../D.filt
+POSTDIR = ../D.post
+
+DIRLIST = $(MAINDIR) $(PORTDIR) $(NEWSDIR) $(FILTDIR) $(POSTDIR)
+INCLUDE = -I$(MAINDIR) -I$(PORTDIR) -I$(NEWSDIR) -I$(FILTDIR) -I$(POSTDIR)
+LIBSDIR = $(MAINDIR)
+
+#
+# You should not need to edit anything below this line
+#
+
+# Here are the macro definitions that Configure tweaks
+CFLAGS = $(CDEBUG) $(INCLUDE) $(CSPECIAL)
+LDFLAGS = $(LDDEBUG) $(LDSPECIAL)
+LINTFLAGS = $(INCLUDE)
+
+.PRECIOUS: Makefile libread.a
+
+RLHDRS = libread.h browse.h gcmd.h insrc.h nextmsg.h session.h rfuncs.h
+RLSRCS = browse.c checkinit.c clockdaemon.c digest.c gcmd.c insrc.c macros.c \
+	nextmsg.c readinit.c reader.c rfuncs.c session.c vinfoline.c wrnewsrc.c
+RLOBJS = browse.o checkinit.o clockdaemon.o digest.o gcmd.o insrc.o macros.o \
+	nextmsg.o readinit.o reader.o rfuncs.o session.o vinfoline.o wrnewsrc.o
+
+libread.a: $(RLOBJS)
+	ar lrc libread.a $?
+	-ranlib libread.a
+#PROFLIB 	(cd profiled; ar lrc ../libread_p.a $?)
+#PROFLIB 	-ranlib libread_p.a
+  
+setup:
+#PROFLIB	-mkdir profiled
+
+#PROFLIB .c.o:
+#PROFLIB 	${CC} -p ${CFLAGS} -c $*.c
+#PROFLIB 	mv $*.o profiled/$*.o
+#PROFLIB 	${CC} ${CFLAGS} -c $*.c
+
+export: setup libread.a
+	@rm -f $(LIBSDIR)/libread.a
+	-ln libread.a $(LIBSDIR)
+#PROFLIB 	@rm -f $(LIBSDIR)/profiled/libread.a
+#PROFLIB 	-ln libread_p.a $(LIBSDIR)/profiled/libread.a
+
+Makefile: Makefile.dst
+	$(MAINDIR)/GenerateMake $(DIRLIST)
+
+# ----------------------------------------------------------------------
+# OBJECT AUTO-DEPENDENCIES GO AFTER THIS LINE -- DO NOT DELETE IT!!!
+#
+.SUFFIXES: .ln
+
+.c.ln:
+#LINTLIBS	lint $(LINTFLAGS) -c $<
+#NOLINTLIBS	lint $(LINTFLAGS) -C$* $<
+
+# LINT AUTO-DEPENDENCIES GO AFTER THIS LINE -- DO NOT DELETE IT!!!
+
+lintlib: $(LIBSDIR)/llib-lread.ln
+
+$(LIBSDIR)/llib-lread.ln: llib-lread.ln
+	cp llib-lread.ln $(LIBSDIR)
+
+#LINTLIBS llib-lread.ln: $(RLSRCS:.c=.ln)
+#LINTLIBS	lint -x -u $(RLSRCS:.c=.ln) -o read
+#NOLINTLIBS llib-lread.ln: $(RLSRCS)
+#NOLINTLIBS	lint $(LINTFLAGS) -Cread $(RLSRCS)
+
+#
+# Random utility productions
+#
+manifest:
+	echo Makefile.dst Makefile $(RLHDRS) $(RLSRCS)
+
+distclean:
+
+clean:
+	rm -f *.a *.o *.ln *~ Makefile
+	rm -fr profiled
+
+# libread.a Makefile ends here

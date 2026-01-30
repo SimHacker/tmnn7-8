@@ -1,0 +1,67 @@
+# By The Numbers: Harper's Index Style
+# Statistics from TMNN code analysis
+
+development:
+  years_in_secret_laboratories: 2
+  hours_cornering_people_at_sf_cons: ∞
+  beta_level_when_abandoned: 7.8
+  promised_features_delivered: 0
+  features_promised:
+    - hypertext
+    - encryption
+    - intelligent_agents
+
+fundraising:
+  dollars_raised_to_stop_posting_esr_quotes: 30000
+  fundraiser: "Thomas Ptacek / The Great Slate"
+
+security_vulnerabilities:
+  unsafe_string_functions: 874
+  mktemp_instances: 42
+  shell_injection_points: 61
+  gets_in_system_h: 1
+  
+code_quality:
+  his_assessment_of_locking_code: "ugly and flaky"
+  exclamation_points_in_hog_comment: 5
+
+political_embedding:
+  ideologies_as_compile_flags: 2
+  flags:
+    - FASCIST
+    - COMMUNIST
+
+tolkien_cosplay:
+  lotr_characters_in_config: 3
+  characters:
+    - Gandalf
+    - Radagast
+    - Saruman
+  evil_fortresses_as_banned_sites: 2
+  sites:
+    - Mordor
+    - Orthanc
+  name_for_restricted_user: "miscreant"
+
+career_irony:
+  years_between_abandonment_and_catb: 8
+  books_on_unix_best_practices: 1
+  buffer_overflows_in_own_code: uncounted
+  times_resume_mentions_teenage_mutant_ninja: 0
+
+attribution:
+  original_fascist_c_author: "Eugene Spafford"
+  spafford_credentials: "respected security researcher"
+  person_who_rewrote_with_buffer_overflows: "ESR"
+
+cathedral_vs_bazaar:
+  catb_thesis: "release early, release often; given enough eyeballs, all bugs are shallow"
+  years_esr_kept_code_in_secret_labs: 2
+  eyeballs_before_release: unclear
+  bugs_remaining: "shallow they were not"
+
+timeline:
+  code_last_modified: 1989
+  archive_link_found: 2019
+  years_code_buried: 30
+  many_eyes_on_his_code: ~0

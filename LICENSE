@@ -1,0 +1,174 @@
+		 NETNEWS GENERAL PUBLIC LICENSE
+
+         Copyright (C) 1988 by Eric S. Raymond (eric@snark.uu.net)
+   You may distribute verbatim copies of this license but not modify it.
+
+BY COMPILING AND INSTALLING THE NETNEWS SOFTWARE, YOU ENTER AN AGREEMENT
+WITH ERIC S. RAYMOND AND THE FREE SOFTWARE FOUNDATION TO ABIDE BY THE
+LICENSE TERMS SPELLED OUT BELOW. READ THIS DOCUMENT CAREFULLY.
+
+                   AUTHOR'S STATEMENT OF INTENT
+
+   I support strict intellectual property laws and the right of designers
+to own, control, and dispose of their creative work in whatever ways and
+under whatever terms the free market will allow. I oppose any and all
+attempts to alienate designers from their work by denying them property
+rights therein, including denial of the right to hold software proprietary.
+
+   I have nevertheless, in the belief that an abundance of voluntarily
+contributed free software is a worthy goal, opted to issue Netnews under the
+aegis of the Free Software Foundation and under terms very similar to those
+of the GNU Emacs General Public License (only the portion that would have
+required the software to display a nuisance message on startup has been
+deleted).
+
+   My action is not to be construed as an endorsement of the political or
+economic views or personal crusades of any member, agent, or ally of the
+Free Software Foundation other than myself. I support *voluntary* sharing.
+
+   My work has been directed towards the end of increasing individual freedom
+and empowerment through the means of increasing individual information wealth.
+Believing as I do that this goal may be best accomplished within a society of
+private enterprise and free markets, I not only permit but encourage commercial
+and for-profit use of this software.
+
+   If you respect my work and my intentions, please guide your use of the news
+software by respect for personal, political, and economic freedom; by support
+for natural property and contract rights; and by affirming the autonomy and
+privacy of individuals and voluntary associations.
+
+   And, most especially, please join me in opposing unconditionally every form
+of and rationalization for censorship. The marketplace of ideas is, ultimately,
+the most important free market of all.
+
+		AN UNABASHED COMMERCIAL PLUG
+
+   I am available at competitive rates as a consultant to any organization
+wishing to use customized netnews versions as an information-sharing tool. 
+As of April 1989 I can be reached via voice at (215)-296-5718 or by mail at
+22 South Warren Avenue, Malvern PA 19355; don't hesitate to call.
+
+                         LICENSE TERMS
+
+  The license agreements of most software companies keep you at the
+mercy of those companies.  By contrast, our general public license is
+intended to give everyone the right to share Netnews.  To make
+sure that you get the rights we want you to have, we need to make
+restrictions that forbid anyone to deny you these rights or to ask you
+to surrender the rights.  Hence this license agreement.
+
+  Specifically, we want to make sure that you have the right to give
+away copies of Netnews, that you receive source code or else can get it
+if you want it, that you can change Netnews or use pieces of it in new
+free programs, and that you know you can do these things.
+
+  To make sure that everyone has such rights, we have to forbid you to
+deprive anyone else of these rights.  For example, if you distribute
+copies of Netnews, you must give the recipients all the rights that you
+have.  You must make sure that they, too, receive or can get the
+source code.  And you must tell them their rights.
+
+  Also, for our own protection, we must make certain that everyone
+finds out that there is no warranty for Netnews.  If Netnews is
+modified by someone else and passed on, we want its recipients to know
+that what they have is not what we distributed, so that any problems
+introduced by others will not reflect on our reputation.
+
+  Therefore we (Eric S. Raymond and the Free Software Foundation,
+Inc.) make the following terms which say what you must do to be
+allowed to distribute or change Netnews.
+
+  1. You may copy and distribute verbatim copies of Netnews source
+code as you receive it, in any medium, provided that you conspicuously
+and appropriately publish on each file a valid copyright notice such
+as "Copyright (C) 1988 Eric S. Raymond", containing the year of
+last change and name of copyright holder for the file in question;
+keep intact the notices on all files that refer to this License
+Agreement and to the absence of any warranty; and give any other
+recipients of the Netnews program a copy of this License Agreement
+along with the program.  You may charge a distribution fee for the
+physical act of transferring a copy.
+
+  2. You may modify your copy or copies of the Netnews source code or
+any portion of it, and copy and distribute such modifications under
+the terms of Paragraph 1 above, provided that you also do the following:
+
+    a) cause the modified files to carry prominent notices stating
+    who last changed such files and the date of any change; and
+
+    b) require the whole of any work that you distribute or publish,
+    that in whole or in part contains or is a derivative of Netnews
+    or any part thereof, to be licensed at no charge to all third
+    parties on terms identical to those contained in this License
+    Agreement (except that you may choose to grant more extensive
+    warranty protection to third parties, at your option).
+
+    c) You may charge a distribution fee for the physical act of
+    transferring a copy, and you may at your option offer warranty
+    protection in exchange for a fee.
+
+  3. You may copy and distribute Netnews or any portion of it in
+compiled, executable or object code form under the terms of Paragraphs
+1 and 2 above provided that you do the following:
+
+    a) cause each such copy of the portion of Netnews incorporated in the
+    product to be accompanied by the corresponding machine-readable source
+    code; or
+
+    b) cause each such copy of Netnews to be accompanied by a
+    written offer, with no time limit, to give any third party
+    free (except for a nominal shipping charge) a machine-readable
+    copy of the corresponding source code; or
+
+    c) in the case of a recipient of Netnews in compiled, executable
+    or object code form (without the corresponding source code) you
+    shall cause copies you distribute to be accompanied by a copy
+    of the written offer of source code which you received along
+    with the copy of Netnews.
+
+  4. You may not copy, sublicense, distribute or transfer Netnews
+except as expressly provided under this License Agreement.  Any attempt
+otherwise to copy, sublicense, distribute or transfer Netnews is void and
+your rights to use Netnews under this License agreement shall be
+automatically terminated.  However, parties who have received computer
+software programs from you with this License Agreement will not have
+their licenses terminated so long as such parties remain in full compliance.
+
+  5. If you wish to incorporate parts of Netnews into other free programs
+whose distribution conditions are different, write to the author and/or
+the Free Software Foundation.  We have not yet worked out a simple rule that
+can be stated here, but we will often permit this.  We will be guided by the
+two goals of preserving the free status of derivatives of our free software
+and of promoting the sharing and reuse of software.
+
+			   NO WARRANTY
+
+  BECAUSE NETNEWS IS LICENSED FREE OF CHARGE, WE PROVIDE ABSOLUTELY
+NO WARRANTY, TO THE EXTENT PERMITTED BY APPLICABLE STATE LAW.  EXCEPT
+WHEN OTHERWISE STATED IN WRITING, THE FREE SOFTWARE FOUNDATION, INC,
+ERIC S. RAYMOND AND/OR OTHER PARTIES PROVIDE NETNEWS STRICTLY "AS IS"
+WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESSED OR IMPLIED, INCLUDING,
+BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND
+FITNESS FOR A PARTICULAR PURPOSE.  THE ENTIRE RISK AS TO THE QUALITY
+AND PERFORMANCE OF THE PROGRAM IS WITH YOU.  SHOULD THE NETNEWS
+PROGRAM PROVE DEFECTIVE, YOU ASSUME THE COST OF ALL NECESSARY
+SERVICING, REPAIR OR CORRECTION.
+
+    IN NO EVENT UNLESS REQUIRED BY APPLICABLE LAW WILL FREE SOFTWARE
+FOUNDATION, INC., ERIC S. RAYMOND, AND/OR ANY OTHER PARTY WHO MAY
+MODIFY AND REDISTRIBUTE NETNEWS AS PERMITTED ABOVE, BE LIABLE TO YOU
+FOR DAMAGES, INCLUDING ANY LOST PROFITS, LOST MONIES, OR OTHER
+SPECIAL, INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE USE OR
+INABILITY TO USE (INCLUDING BUT NOT LIMITED TO LOSS OF DATA OR DATA
+BEING RENDERED INACCURATE OR LOSSES SUSTAINED BY THIRD PARTIES OR A
+FAILURE OF THE PROGRAM TO OPERATE WITH PROGRAMS NOT DISTRIBUTED BY
+FREE SOFTWARE FOUNDATION, INC.) THE PROGRAM, EVEN IF YOU HAVE BEEN
+ADVISED OF THE POSSIBILITY OF SUCH DAMAGES, OR FOR ANY CLAIM BY ANY
+OTHER PARTY.
+
+    IN NO EVENT WILL THE FREE SOFTWARE FOUNDATION OR ERIC S. RAYMOND BE LIABLE
+FOR ANY MISAPPROPRIATION OF CREATIVE WORK OR VIOLATION OF COPYRIGHT OR TRADE
+SECRET PRIVILEGES OF NEWS ARTICLE AUTHORS INVOLVING THE NETNEWS SOFTWARE AS A
+CHANNEL OR DISTRIBUTION MEANS. THE ENTIRE RESPONSIBILITY FOR RESPECTING RIGHTS
+AND PRIVILEGES RETAINED BY AUTHORS OF COPYRIGHTED OR TRADE-SECRET PROTECTED
+WORKS RESTS ON YOU.

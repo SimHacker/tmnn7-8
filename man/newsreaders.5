@@ -1,0 +1,500 @@
+.if n .ds La '
+.if n .ds Ra '
+.if t .ds La `
+.if t .ds Ra '
+.if n .ds Lq "
+.if n .ds Rq "
+.if t .ds Lq ``
+.if t .ds Rq ''
+.de Ch
+\\$3\\*(Lq\\$1\\*(Rq\\$2
+..
+.TH NEWSREADERS 5 "Mar 17, 1989"
+.ds ]W News 3.0 (beta level 7)
+.SH NAME
+newsreaders \- common conventions for interactive news readers
+.SH DESCRIPTION
+This manual page describes conventions common to all interactive readers
+built using the netnews distribution libraries.
+.SH "ENVIRONMENT VARIABLES"
+All readers conventionally interpret the following environment variables.
+In general the default values assumed for these variables are reasonable,
+so if you are using a reader for the first time, you can safely ignore this
+section.
+.PP
+Those variables marked (%) are subject to % interpolation, and those marked
+(~) are subject to both % interpolation and ~ interpretation. See the section
+following this one for details on these interpolations.
+.IP "ATTRIBUTION (%)" 8
+Gives the format of the attribution line in front of the quoted article
+included by an F command.
+.sp
+Default: In article %i %e wrote:
+.IP "DOTDIR" 8
+Directory where your .newsrc is to be found, if not your home directory. Note
+that if you use this feature, expire can't know where to find your .newsrc;
+thus you may miss seeing articles in volatile groups because it won't be able
+to tell you haven't seen them.
+.IP "EDITOR (~)" 8
+The name of your editor, if VISUAL is undefined.
+.sp
+Default: whatever your news administrator compiled in, usually vi.
+.IP "FIRSTLINE (%)" 8
+Controls the user-settable part of the line displayed with an article. May
+show up at different places on the screen depending on the interface manager
+your reader uses.
+.sp
+Default: %C %a (%U unseen)
+.IP HOME 8
+Your home directory.
+Affects ~ interpretation.
+.sp
+Default: $LOGDIR
+.IP LOGDIR 8
+Your home directory if HOME is undefined.
+Affects ~ interpretation, and the location of your
+dot files if DOTDIR is not defined.
+.sp
+Default: none.
+.sp
+Explanation: you must have either $HOME or $LOGDIR.
+.IP LOGNAME 8
+Your login name, if USER is undefined.
+May be interpolated using \*(L"%L\*(R".
+.sp
+Default: value of getlogin().
+.IP "MAILER (~)"
+Mailing program invoked by Reply commands
+.sp
+Default: /bin/mail on older systems, mailx(1) or Mail(1) on newer ones.
+.IP "MAILFILE (~)" 8
+Where to check for mail. The file named by MAIL is also checked.
+.sp
+Default: /usr/spool/mail/%L or /usr/mail/%L (system-dependent)
+.IP NAME 8
+Your full human name. The default is the contents of the gecos field in your
+password file, with ~ expanded to your username (and capitalized if
+appropriate). On USG systems RJE cruft is also stripped out.
+This string may be interpolated using \*(L"%N\*(R".
+.sp
+Default: name from /etc/passwd, or ~/.fullname.
+.IP "NEWSBOX (~)" 8
+File part of the default save file. The %b escape in it is substituted with
+what the user types for a command. See the note below.
+.sp
+Default: %C
+.IP "NEWSCMD (~)" 8
+Command template for pipe commands. The %b escape in it is substituted with
+what the user types for a command. See the note below.
+.sp
+Default: %b
+.IP "NEWSDIR (~)" 8
+Directory part of the default save file. The %b escape in it is substituted
+with what the user types for a command.
+.sp
+Default: ~/News
+.IP NEWSFILTER
+Specifies what news filter process the reader will try to start up at
+newsreader initialization time (see \fIfilter\fR(5)). This filter must be in
+either DOTDIR or the user's normal execution path; DOTDIR will be checked
+first. If the value of NEWSFILTER contains a colon, the portion after the
+colon will be taken as the language name expected from the filter; otherwise,
+the language name will be assumed the same as the filter name.
+.sp
+Default: rnkill
+.IP NEWSOPTS 8
+Options for newsreaders. No default.
+.IP ORGANIZATION 8
+Either the name of your organization, or the name of a file containing the
+name of your organization.
+May be interpolated using \*(L"%o\*(R".
+.sp
+Default: whatever your news administrator compiled in.
+.IP PAGER 8
+Paging program invoked by articles with more than 16 lines.
+.sp
+Default: more, pg, or cat (depending on what your system supports).
+.IP SHELL 8
+The name of your preferred shell.
+It will be used by the \*(L'!\*(R', \*(L'S\*(R' and \*(L'W\*(R' commands.
+.sp
+Default: whatever your news administrator compiled in.
+.IP "SUBJLINE (%)" 8
+Display format for subject-list lines.
+.sp
+Default: %5.5%a %19.19f %[Subject]
+.IP TERM 8
+Determines which termcap entry to use, unless TERMCAP contains the entry.
+.IP TERMCAP 8
+Holds either the name of your termcap file, or a termcap entry.
+.sp
+Default: /etc/termcap, normally.
+.IP USER 8
+Your login name.
+May be interpolated using \*(L"%L\*(R".
+.sp
+Default: $LOGNAME
+.IP "VISUAL (~)" 8
+The name of your editor.
+.sp
+Default: $EDITOR
+.IP "YOUSAID (%)" 8
+Gives the format of the attribution line in front of the quoted article
+included by an R command.
+.sp
+Default: In article %i you write:
+.PP
+Note: if, in a save command, you specify no destination, the destination file
+used will be ${NEWSDIR}/${NEWSBOX}. If you specify something that is
+identifiably a directory, ${NEWSBOX} will be appended to it. If you
+specify a file, ${NEWSDIR} will be prepended to it.
+.PP
+The resulting destination name will undergo ~-expansion. Any directories
+necessary to create it will be made.
+.SH "ESCAPE AND FILENAME EXPANSION"
+Many of the strings that
+.I rn
+handles are subject to interpretations of several types.
+Under filename expansion, an initial \*(L"~/\*(R" is translated to the name
+of your home directory, and \*(L"~name\*(R" is translated to the login
+directory for the user specified.
+Filename expansion will also expand an initial environment variable, and
+also does the backslash, uparrow and percent expansion mentioned below.
+.PP
+All interpreted strings go through backslash, uparrow and percent
+interpretation.
+The backslash escapes are the normal ones (such as \en, \et, \ennn, etc.).
+The uparrow escapes indicate control codes in the normal fashion.
+Backslashes or uparrows to be passed through should be escaped with backslash.
+The special percent escapes are similar to printf percent escapes.
+These cause the substitution of various run-time values into the string.
+The following are currently recognized:
+.IP %a 8
+Current article number.
+.IP %A 8
+Full name of current article (%P/%c/%a).
+.IP %b 8
+Destination of last save command, often a mailbox.
+.IP %c 8
+Current newsgroup, directory form.
+.IP %C 8
+Current newsgroup, dot form.
+.IP %d 8
+Full name of newsgroup directory (%P/%c).
+.IP %D 8
+\*(L"Distribution:\*(R" line from the current article.
+.IP %e 8
+A best guess at the human name of the sender of the current article. If the
+article has a Reply-To field with an RFC-822 comment in it, the contents
+of that comment is used. Otherwise the From line is checked for an RFC-822
+comment. If such a comment is found, the contents is used; otherwise the
+Internet from-address is used.
+.IP %f 8
+\*(L"From:\*(R" line from the current article, or the \*(L"Reply-To:\*(R"
+line if there is one.
+This differs from %t in that comments (such as the full name) are not
+stripped out with %f.
+.IP %F 8
+\*(L"Newsgroups:\*(R" line for a new article, constructed from
+\*(L"Newsgroups:\*(R" and \*(L"Followup-To:\*(R" lines of current article.
+.IP %H 8
+Host name (your machine's name).
+.IP %i 8
+\*(L"Message-I.D.:\*(R" line from the current article, with <> guaranteed.
+.IP %I 8
+The reference indication mark (see the
+.B \-F
+switch.)
+.IP %k[0-9]
+In readers linked with a screen-based I/O manager, the macros k0, k1, k2, k3,
+k4, k5, k6, k7, k8 and k9 should expand to the corresponding termcap/terminfo
+capabilities. These will be useful for defining terminal-independent keyboard
+macros that bind function keys to command sequences.
+.IP %l 8
+The news administrator's login name, if any.
+.IP %L 8
+Login name (yours).
+.IP %m 8
+Returns a single-letter indication of the mode the reader is in. Mode
+values are dependent on the particular command interpreter in use. This
+may be used together with %V to do command-interpreter-independent macros.
+.IP %M 8
+The number of articles marked to return via the \*(L'M\*(R' command.
+If the same article is Marked mul.IPle times, \*(L"%M\*(R" counts it
+multiple times in the current implementation.
+.IP %n 8
+\*(L"Newsgroups:\*(R" line from the current article.
+.IP %N 8
+Full name (yours).
+.IP %o 8
+Organization (yours).
+.IP %p 8
+Your private news directory, normally ~/News.
+.IP %P 8
+Public news spool directory, normally /usr/spool/news.
+.IP %r 8
+Last reference on references line of current article (parent article id).
+.IP %R 8
+References list for a new article, constructed from the references and article
+ID of the current article.
+.IP %s 8
+Subject, with all Re's and (nf)'s stripped off.
+.IP %S 8
+Subject, with one \*(L"Re:\*(R" stripped off.
+.IP %t 8
+\*(L"To:\*(R" line derived from the \*(L"From:\*(R" and \*(L"Reply-To:\*(R"
+lines of the current article.
+This always returns an Internet format address.
+.IP %T 8
+\*(L"To:\*(R" line derived from the \*(L"Path:\*(R" line of the
+current article to produce a uucp path.
+.IP %u 8
+The number of unread articles in the current newsgroup.
+.IP %U 8
+The number of unread articles in the current newsgroup, not counting the
+current article.
+.IP %V
+The name of the news reader.
+.IP %x 8
+The news library directory.
+.IP %z 8
+The length of the current article in bytes.
+.IP %~ 8
+Your home directory.
+.IP %. 8
+Normally, the directory containing your dot files, which is your home
+directory unless the environment variable DOTDIR is defined when rn is invoked.
+However, if . is immediately followed by digits, this will instead be
+interpreted as a length-limiting prefix for the string expansion of the
+macro following the prefix (just as \fIprintf()\R would do).
+.IP %# 8
+The total number of unread articles waiting. May be too low if more news has
+arrived during your read session. May be too high if your news contains
+cross-posted articles (cross-posts to n groups are counted n times).
+.IP %$ 8
+Current process number.
+.IP %/ 8
+Last search string.
+.IP %% 8
+A percent sign. Readers that use raw or cbreak input should also immediately
+%-expand and display the contents of the input buffer when this is typed.
+.IP "%{name} or %{name\-default}" 8
+The environment variable \*(L"name\*(R".
+.IP %[name] 8
+The value of header line \*(L"Name:\*(R" from the current article.
+The \*(L"Name:\ \*(R" is not included.
+For example \*(L"%D\*(R" and \*(L"%[Distribution]\*(R" are equivalent.
+The name must be spelled out in full.
+.IP %`command` 8
+Inserts the output of the command, with any embedded newlines translated
+to space.
+.IP %""prompt"" 8
+Prints prompt on the terminal, then inputs one string, and inserts it.
+.IP "%(test_text=pattern?then_text:else_text)" 8
+If
+.I test_text
+matches
+.IR pattern ,
+has the value
+.IR then_text ,
+otherwise
+.IR else_text .
+The \*(L":else_text\*(R" is optional, and if absent, interpolates the null
+string. The = may be replaced with != to negate the test.
+To quote any of the metacharacters
+(\*(L'=\*(R', \*(L'?\*(R', \*(L':\*(R', or \*(L')\*(R'),
+precede with a backslash.
+.IP %\[0-9] 8
+Backslash followed by a digit (1 through 9) interpolates the string matched by
+the nth bracket in the last pattern match that had brackets.
+If the last pattern had alternatives, you may not know the number of the
+bracket you want; %0 will give you the last bracket matched.
+.PP
+Modifiers: to capitalize the first letter, insert \*(L'^\*(R':
+\*(L"%^C\*(R" produces something like \*(L"Net.jokes\*(R".
+Inserting \*(L'_\*(R' causes the first letter following the last
+\&\*(L'/\*(R' to be capitalized: \*(L"%_c\*(R" produces \*(L"net/Jokes\*(R".
+.PP
+Sprintf-like padding and clipping prefixes may be put on any macro; these
+must \fIfollow\fR ^ or _ qualifiers, if any. Thus, you can say "%-14.14c"
+to get exactly fourteen characters of the current group name padded to the
+left with spaces. See also the description of %. above.
+.PP
+These escapes are cribbed from Larry Wall's rn(1). All of his except %B, %h,
+%O, and %X are supported, though the return values of %m may differ from rn.
+Interpretation of %[0-9] has been \fIchanged\fR to support the sprintf-prefix
+feature, use %\[0-9] instead. The %V, %e and %# escapes are new. The %" escape
+is not yet implemented.
+.SH "USER MACROS"
+The news reader service layers provide a general user macro facility patterned
+after the macro feature of rn. 
+Any sequence of commands may be bound to any sequence of keys, so you
+could remap your entire keyboard if you desire.
+Typically, macros may be defined from the
+keyboard via a reader-dependent command, or in your .newsrc file via a macro
+definition line (see also
+.IR news (5)).
+.PP
+Macro definition lines consist the keyword `macro' followed by two
+whitespace-separated fields. The first field gives the sequence of keystrokes
+that trigger the macro, and the second field gives the sequence of commands to
+execute. Standard backslash, uparrow and %-sequences are translated in both
+fields. The trigger string is interpreted once at startup time, but the command
+field is interpreted at each macro execution time, so that you may refer to %
+values in the text of a macro.)
+For example, if you want to reverse the roles of carriage return and
+space in all your readers, your .newsrc file could contain the lines
+.sp
+macro	^J	\e040
+.br
+macro	^M	\e040
+.br
+macro	\e040	^J
+.sp
+will do just that.
+By default, all characters in the command field are interpreted as command
+characters for the reader you're using, i.e. no macro expansion is done.
+Otherwise the above pair of macros would cause an infinite loop.
+To force macro expansion in the command field, enclose the
+macro call with ^( ... ^) thusly:
+.sp
+@s	|mysavescript\en
+.br
+@w	w^(@s^)
+.sp
+Note that macros containing text for file, group or message-id name input
+and the like (as in the @s example) will work as you'd expect, but must have
+an \en appended to trigger command execution.
+.sp
+You can use the %() conditional construct to construct macros that work
+differently under different circumstances. Note that use of %V will allow
+you to conditionalize macros on the name of the reader, so you can define
+commands that will work in a multi-reader environment.
+In particular, the current mode (%m) of your reader (if it supports that
+escape) could be used to make a command that only works at a particular level.
+For example, under
+.IR vnews (1)
+.sp
+^[[O	%(%m=a?\e040)
+.sp
+will only allow the macro to work at the article level.
+.sp
+%(%{TERM}=vt100?^[[O)	\e^J
+.sp
+will do the binding only if the terminal type is vt100,
+though if you have many of these it would be better to have separate
+files for each terminal.
+.PP
+Note: if you are using an I/O manager that knows termcap (in particular, a
+screen-oriented vnews or variant), it is cleaner to do keyboard mappings in a
+terminal-independent way via the k[0-9] macros (see above).
+.SH "COMMAND PREFIXES"
+Some commands accept a numeric prefix that modifies their behavior. You may
+also prefix any command with a \fIrange\fR, which is a prefix containing
+(optional) numerals and a comma. The four forms of range are generally 
+interpreted as follows:
+.PD 0
+.TP 40
+,
+-- repeat command from current article to end of group
+.TP 40
+<number>,
+-- goto article <number>, repeat command to end of group
+.TP 40
+,<upto>
+-- repeat command from current article to article number <upto>
+.TP 40
+<number>,<upto>
+-- goto article <number>, repeat command to article number <upto>
+.PD
+The second form is particularly useful for skipping to a given article.
+.SH "REGULAR EXPRESSION SYNTAX"
+A regular expression is zero or more \fIbranches\fR, separated by `|'.
+It matches anything that matches one of the branches.
+.PP
+A branch is zero or more \fIpieces\fR, concatenated.
+It matches a match for the first, followed by a match for the second, etc.
+.PP
+A piece is an \fIatom\fR possibly followed by `*', `+', or `?'.
+An atom followed by `*' matches a sequence of 0 or more matches of the atom.
+An atom followed by `+' matches a sequence of 1 or more matches of the atom.
+An atom followed by `?' matches a match of the atom, or the null string.
+.PP
+An atom is a regular expression in parentheses (matching a match for the
+regular expression), a \fIrange\fR (see below), `.'
+(matching any single character), `^' (matching the null string at the
+beginning of the input string), `$' (matching the null string at the
+end of the input string), a `\e' followed by a single character (matching
+that character), or a single character with no other significance
+(matching that character).
+.PP
+A \fIrange\fR is a sequence of characters enclosed in `[]'.
+It normally matches any single character from the sequence.
+If the sequence begins with `^',
+it matches any single character \fInot\fR from the rest of the sequence.
+If two characters in the sequence are separated by `\-', this is shorthand
+for the full list of ASCII characters between them
+(e.g. `[0-9]' matches any decimal digit).
+To include a literal `]' in the sequence, make it the first character
+(following a possible `^').
+To include a literal `\-', make it the first or last character.
+.PP
+If a regular expression could match two different parts of the input string,
+it will match the one which begins earliest.
+If both begin in the same place	but match different lengths, or match
+the same length in different ways, life gets messier, as follows.
+.PP
+In general, the possibilities in a list of branches are considered in
+left-to-right order, the possibilities for `*', `+', and `?' are
+considered longest-first, nested constructs are considered from the
+outermost in, and concatenated constructs are considered leftmost-first.
+The match that will be chosen is the one that uses the earliest
+possibility in the first choice that has to be made.
+If there is more than one choice, the next will be made in the same manner
+(earliest possibility) subject to the decision on the first choice.
+And so forth.
+.PP
+For example, `(ab|a)b*c' could match `abc' in one of two ways.
+The first choice is between `ab' and `a'; since `ab' is earlier, and does
+lead to a successful overall match, it is chosen.
+Since the `b' is already spoken for,
+the `b*' must match its last possibility\(emthe empty string\(emsince
+it must respect the earlier choice.
+.PP
+In the particular case where no `|'s are present and there is only one
+`*', `+', or `?', the net effect is that the longest possible
+match will be chosen.
+So `ab*', presented with `xabbbby', will match `abbbb'.
+Note that if `ab*' is tried against `xabyabbbz', it
+will match `ab' just after `x', due to the begins-earliest rule.
+(In effect, the decision on where to start the match is the first choice
+to be made, hence subsequent choices must respect it even if this leads them
+to less-preferred alternatives.)
+.SH FILES
+.PD 0
+.TP 40
+.RI /usr/spool/news/ newsgroup / number
+News articles
+.TP 40
+/usr/lib/news/active
+Active newsgroups
+.TP 40
+~/.newsrc
+Options and list of previously read articles
+.TP 40
+.RI /usr/spool/news/ newsgroup /.subjlist
+The group subject file
+.PD
+.SH SEE ALSO
+checknews(1),
+inews(8),
+postnews(1),
+readnews(1),
+vnews(1),
+getdate(3),
+news(5),
+newsrc(5),
+expire(8),
+recnews(8),
+sendnews(8),
+uurec(8)

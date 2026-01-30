@@ -1,0 +1,635 @@
+.if n .ds La '
+.if n .ds Ra '
+.if t .ds La `
+.if t .ds Ra '
+.if n .ds Lq "
+.if n .ds Rq "
+.if t .ds Lq ``
+.if t .ds Rq ''
+.de Ch
+\\$3\\*(Lq\\$1\\*(Rq\\$2
+..
+.TH NEWS 5 "Jul 20, 1989"
+.ds ]W News 3.0 (beta level 7)
+.SH NAME
+news \- USENET network news article and news database file formats
+.SH DESCRIPTION
+This manual page describes the formats of the various files making up the
+netnews data base. Each of these formats is treated as a separate abstract
+data type by a linkable handler module. The formats covered in this document
+include those of article files, the active file, the history file, the
+.newsrc file, the feeds file and the attributes file.
+In these descriptions `ADM' stands for the
+name of the netnews administration files directory (usually /usr/lib/news).
+.SH "NEWS ARTICLE FORMAT"
+A news article file consists of a series of headers and then the body. A header
+field is defined as a line with a capital letter in the first column and
+a colon somewhere on the line.  Unrecognized header fields are ignored.
+News is stored in the same format transmitted, see RFC-1036
+.I "Standard for the Interchange of USENET Messages"
+for a full description.
+The following fields are among those recognized:
+.LP
+.B From:
+.IB user @ "host.domain[.domain ...]" " ("
+.IB "Full Name" )
+.br
+.B Newsgroups:
+.I Newsgroups
+.br
+.B Message-ID:
+.BI < "Unique Identifier" >
+.br
+.B Subject:
+.I descriptive title
+.br
+.B Date:
+.I Date Posted
+.br
+.B Expires:
+.I Expiration Date
+.br
+.B Reply-To:
+.I Address for mail replies
+.br
+.B References:
+.IR "Article ID of article this is a follow-up to" .
+.br
+.B Control:
+.I Text of a control message
+.LP
+Here is an example of an article:
+.LP
+.in +10n
+.nf
+Path: cbosgd!mhuxj!mhuxt!eagle!jerry
+From: jerry@eagle.uucp (Jerry Schwarz)
+Newsgroups: net.general
+Subject: Usenet Etiquette -- Please Read
+Message-ID: <642@eagle.UUCP>
+Date: Friday, 19 Nov 82 16:14:55 EST
+Followup-To: net.news
+Expires: Saturday, 1 Jan 83 00:00:00 EST
+Organization: Bell Labs, Murray Hill
+Lines: 42
+
+The body of the article comes here, after a blank line.
+.fi
+.in
+.PP
+Article headers are read and written through the
+.B header.c
+module; see the manual page comment at its beginning for details on the
+functional interface.
+.SH "GROUP NAMES AND SUBSCRIPTIONS"
+A group name consists of a series of name parts separated by dots.
+A group subscription consists of a comma-separated list of one or more
+group names or group wildcards. A group wildcard is similar to a group
+name except that it may contain the special segments "all" or "any"
+or an alternation construct (a list of subscriptions surrounded by {}),
+and may be prefixed by a "!".
+.PP
+The "all" wildcard matches any sequence of
+segments; the "any" wilcard matches any single segment (thus for example
+the subscription "all.stuff" matches "foo.bar.stuff" and "baz.stuff" but
+"any.stuff" would only match the latter).
+.PP
+A subscription preceded by "!"
+rejects the groups it would otherwise match -- they will be rejected unless
+the subscription list contains a later entry that matches them.
+.PP
+A subscription suffix consisting of a list of subscriptions enclosed in { }
+will match any suffix that is any element of the list. Thus
+.PP
+      \fIcomp.sources.{unix,mac}\fR
+.LP
+matches the same groups as
+.PP
+      \fIcomp.sources.unix,comp.sources.mac\fR
+.LP
+and
+.PP
+      \fI!talk.{politics,religion,abortion}\fR
+.LP
+is equivalent to:
+.PP
+      \fI!talk.politics,!talk.religion,!talk.abortion\fR
+.LP
+Alternation braces may be nested. The `all' and `any' wildcards and ! may
+be used inside braces.
+.PP
+Any subscription that matches a group "foo" will match any subgroup of foo
+(foo.bar, foo.baz etc.).
+.SH "ACTIVE FILE FORMAT"
+The active file holds most of the per-group state information used by netnews.
+It lives at LIB/active.
+The format of the active file line uses 5 required fixed-length fields.
+All fields are whitespace-separated. The fields are:
+
+.in +5
+.nf
+1. the group name
+2. the sequence  number of the newest  article in the group
+3. the sequence number  of the oldest article  in the group
+4. a flags  field  telling  if the group is  moderated (`m'
+   value) or unmoderated (`y' value).
+5. a timestamp giving the insertion time of the most recent
+   article posted to the group.
+.fi
+.in
+
+Article sequence numbers begin with 1 and are assigned in the order that
+articles come in.
+.PP
+The `m' flag signifies that the group is moderated and must be posted to
+by mail.
+.PP
+The handler code for this file is in the modules
+.BR rdactive.c and wractive.c
+see its module comment for details of the functional interface.
+.SH "ADMIN FILE FORMAT"
+The admin file contains additional site-dependent newsgroup administration
+information. Each line in this file consists of two or three whitespace-
+or colon-separated fields. The first is a newsgroup subscription as in the
+feeds file. The second is read as a string of single-character flags and
+possibly an integer.
+.PP
+The integer, if present, is an expiration period for the group in days.
+This overrides the compiled-in default.
+.PP
+The flags are interpreted as follows:
+
+.in +5
+.nf
+v -- the group is volatile
+i -- ignore explicit expire dates for this group
+e -- apply expiration-by-aging to this group
+a -- archive articles in this group when they expire
+c -- store group messages compressed
+x -- group has been rmgrouped, remove on next expire
+.fi
+.in
+
+A `!' followed by letters turns off the corresponding options. The scope
+of the `!' extends to the next character that is neither a legal option
+letter or ! (all such characters are otherwise ignored).
+.PP
+The `f' option designates the top of a group hierarchy in which new groups
+are created by posting to them, and old groups are scavenged after having
+been inactive for a time.
+.PP
+The third field, if present, is interpreted as the default distribution
+for articles in the given group class.
+.PP
+A `#' may be used to begin comments. It and all following text on the line
+is ignored.
+.PP
+For example:
+
+.nf
+all                       e14v  world  # Makes everybody volatile, but
+news.all                  !v           # not most of news.all,
+news.software.b           v            # (except for these); and,
+comp.unix.all,comp.lang.c !v           # not some technical groups,
+rec.mag.all,comp.os       !v           # and not some moderated ones;
+all.sources               a,!v         # also archive all sources
+misc.forsale              v     local  # and limit scope of forsale posts
+.fi
+
+.PP
+The code to read in options out of this file is in the module
+.BR wractive.c;
+see its module comment for details of the functional interface.
+.SH "NEWSRC FILE FORMAT"
+Each user has a .newsrc file which (among other things) tracks the messages
+that user has seen and which groups he or she is subscribed to. The file
+lives by default at $HOME/.newsrc, but the user may choose its name by
+setting the NEWSRC environment variable (note however that expire cannot
+find .newsrc files at locations other than the default, so they will not
+affect article volatilization). The format is as follows:
+.PP
+A .newsrc file is a text file consisting of zero or more .newsrc lines. If
+the file is nonexistent it is considered equivalent to a file with no lines.
+A .newsrc file line may be a group line, a message ID (distinguished by
+the leading <), an option line, a macro definition line, a group continuation
+line, or a comment (distinguished by the presence of a leading non-alphanumeric
+other than <).
+.PP
+Lines beginning with `ignore' are presumed to contain Message-IDs of articles
+which lead off discussions that the .newsrc owner wishes not to see. Articles
+that are identifiably followups to any of the articles IDd on one of these
+lines should be skipped by news reader programs.
+.PP
+Option lines are led by the word `options' and contain options for
+news readers. If the first token after the `options' has no leading -,
+it is assumed to be the name of the reader to which the options should
+apply; otherwise, the options apply to all readers. These are processed
+exactly as command-line options would be, but before them.
+For instance the lines
+.PP
+.B "     options \-n all !net.sf-lovers !mod.human-nets \-r"
+.LP
+and
+.PP
+.B "     options \-c \-r"
+.LP
+Thus, the examples above would apply to all readers, while
+.PP
+.B "     options vnews \-c"
+.LP
+would pass the \-c option to vnews only.
+.PP
+Any group of lines beginning with a space or tab after an initial options
+line will be considered continuation lines; the newlines and initial
+whitespace will be ignored.
+.PP
+Macro definition lines begin with the token `macro' and contain two
+whitespace-separated strings following it. The second string will be
+substituted for the first whenever the first is encountered in a
+`command' context' (i.e. when accepting command keystrokes, but not
+when accepting, say, a filename). See
+.IR newsreaders (5)
+for more detail about macro usage.
+.PP
+Comment lines are ignored, except for being written out 
+(possibly ahead of all other lines) when the .newsrc file is written.
+.PP
+A group line consists of a group name, a separator character,
+a list of articles already read, and an optional commands field.
+The separator character between the name and article list is a colon if the
+user was subscribed to this group at the end of his/her last read session,
+and an exclamation mark if not. The separator character between the article
+list and commands fields is a colon (if the field is empty the colon may
+be omitted).
+.PP
+Each newsgroup that articles
+have been read from thus has a line of the form:
+.PP
+For instance:
+
+.in +5
+.nf
+general: 1-78,80,85-90
+mod.computers.laser-printers: 1-7
+net.news: 1
+mod.ai! 1-5
+.fi
+.in
+.LP
+If the
+.Ch :
+were replaced with an
+.Ch !
+(as in
+.B mod.ai
+above) the newsgroup
+is not subscribed to and will not be shown to the user.
+.PP
+Lines following a group line and beginning with whitespace are initial
+commands for the group. They are interpreted by news readers.
+.PP
+The ordering of newsgroup lines is significant, as it determines the
+presentation order of newsgroups; newsreaders should preserve this ordering.
+Other than this the order of .newsrc file lines is not significant and need
+not be preserved by newsreaders. Lines of all four types may be intermixed
+freely in the file.
+.LP
+A module
+.I newsrc.c
+for handling .newsrc files as an abstract data type is included
+in the netnews sources. All news readers should use this to track old
+articles.
+.SH "HISTORY FILE FORMAT"
+Netnews uses a history file (LIB/history) to detect duplicate
+messages and determine whether old messages have expired.Each message,
+by USENET standard definition, has a Message-ID that is (in theory)
+unique across the entire net. This file lists the IDs of all messages
+considered active and associates with them their receipt date and the
+list of local locations to which they have been posted.
+.PP
+History files consist of zero or more lines each having three required fields
+and an optional following token list. The first required field is an
+angle-bracket-enclosed Internet-style Message-ID (as in Internet RFC 1036);
+the second and third required fields are date stamps (time of receipt and
+explicit expire time, with 0 for the latter if none was given). These first
+three fields are tab-separated; the date pair is separated by a space.
+.PP
+The trailing token list describes the status of the article at this site.
+It may have one of four forms as follows:
+.PP
+1. If the list is absent, all instances of the article have expired and the
+ID is eligible to be dropped from the history file once it has aged past 
+the system's configured forget time.
+.PP
+2. If the whitespace-separated elements are article names (each in the form
+<newsgroup>/<number>), the list enumerates all unexpired file instances of
+the article.
+.PP
+3. If the whitespace-separated elements are Message-IDs, the entry describes
+an article that has been named as a reference but not yet received. If the
+article arrives before the entry expires, the contents of the list will
+become the article's discussion list.
+.PP
+4. A list consisting of the single word `cancelled' tags an article that has
+been cancelled via a broadcast cancel control message.
+.PP
+The handler code for this file is in the module
+.BR history.c;
+see its module comment for details of the functional interface.
+.SH "FEEDS FILE FORMAT"
+Netnews keeps all its per-newsfeed information in the `feeds file' at
+LIB/feeds. The feeds file line has five fields, each separated by colons:
+.LP
+.IB system-list : subscriptions : distributions : \c
+.IB flags : "transmission command"
+.PP
+Of these fields, only the
+.IR system-list " and " subscription " need"
+to be nonempty.
+.PP
+The
+.I system list
+is the name(s) of the system(s) described by this subscription, either a
+single system or a comma-separated list. It may be optionally followed by
+a slash and another comma-separated list of names. If this option is present,
+every article due to be transmitted to the list has its path field looked at.
+If any of the systems on the path matches one of the names after the slash
+the send is not done (this provides you with a way to economize on
+transmissions if you know what other sites' feeds are).
+.PP
+The
+.I subscription
+is the list of newsgroups to be transmitted to the system. If it contains
+a slash, only the part before the slash is the subscription list; the part
+after the slash is interpreted as `flex' information. In your system's `self'
+entry, the `flex' subscription defines the subparts of the newsgroup name
+space for which `flexgroups' is in effect. In feed entries, the `flex'
+information defines the maximum subsscription up to which addsubs may be done.
+.PP
+The
+.I distributions
+is the list of geographical distributions to be sent to the system. If it
+contains a slash, only the part before the slash is the distribution list; the
+part after the slash is interpreted as `flex' information, not now interpreted
+but reserved for future use.
+.PP
+The
+.I flags
+are a set of letters describing how the article should be transmitted.
+Valid flags include:
+.B B
+(use batched transmission),
+.B C
+(compress transmitted article),
+.B N
+(use \*(Lqihave/sendme\*(Rq protocol),
+.B X
+(the system list is a multicast group),
+etc. For a complete description of available transmission options, see
+the installation guide.
+.LP
+The
+.I transmission command
+is executed by the shell with the article to be transmitted as the standard
+input. Certain escapes in the command string are expanded in useful ways at
+command-execution time. These include:
+.PP
+%S \- the name of the target system (or systems, if X is on).
+.PP
+%F \- the name of the workfile to be transmitted.
+.PP
+%R \- the appropriate news-processor for the target system.
+.PP
+%U \- options (if any) set by the U command (usually `-c').
+.PP
+%I \- the ID of the article to be transmitted (non-L links only).
+.PP
+The default on a System V machine is
+.RI "\*(Lquux \- %U \-r \-n " %S !%R <%F\*(Rq.
+(V7 and Berkeley UUCPs require slightly different options, which are supplied
+at configuration time).
+.PP
+Somewhere in the
+.I feeds
+file, there must be a line for the host system.  This line has no
+.IR flags " or " commands .
+A
+.Ch #
+as the first character in a line denotes a comment.
+A logical line may be continued to the next physical line by
+putting a \\ at end of the line.
+.PP
+Feed files are accessed and modified through the
+.B feeds.c
+module; see the manual page comment at its beginning for details on the
+functional interface.
+.SH "AUTHORIZATION FILE FORMAT"
+The ADM/authorized file consists of a series of lines having the following
+format (with all lists comma-separated):
+
+.in +5
+.nf
+g[roup]:<name>:<usernames>[:<gatekeepernames>]
+p[ermit]:<group>:<subscription>[:<subscription>]
+f[orbid]:<group>:<subscription>[:<subscription>]
+a[llow]:<user>:<subscription>[:<subscription>]
+d[eny]:<user>:<subscription>[:<subscription>]
+s[uppress]:<sitelist>:<subscription>
+.fi
+.in
+
+The `g' command declares a security group. The `usernames' and
+`gatekeepernames' fields should be lists of user login names. Group
+`gatekeepers' have permission to add or delete users from their group via the
+\fIlocknews(8)\fR utility. The gatekeepers field is optional; the news user has
+gatekeeper privileges for every security group.
+.PP
+The `permit' command declares that every user and gatekeeper of the given group
+gets the post (and, if present, read) permissions specified. The read
+subscription field is optional.
+.PP
+The `forbid' command acts like a permit, except that it locks matching users
+out of groups matching the specified subscriptions.
+.PP
+The `allow' command declares that the named user gets the post (and, if
+present, read) permissions specified. The read subscription field is optional.
+If the `named user' is `*', this line is applied to all users.
+.PP
+The `deny' command acts like an allow, except that it locks the user
+out of groups matching the specified subscriptions.
+.PP
+The `suppress' takes a sitename or list of sitenames and a subscription.
+Users at listed sites will not be allowed to post to any group matching the
+subscription.
+.PP
+If a given user matches several entries, the effect will be as if the
+subscriptions corresponding to those entries were concatenated.
+.PP
+If the username is not in the file ADM/authorized then the defaults in the
+configuration symbol FASCIST and COMMUNIST are interpreted as the post and
+read subscription fields (respectively) of an `allow' command for that user.
+Thus, FASCIST and COMMUNIST (both of which can be overridden from the
+attributes file if the RUNTIME option is on) act as global default write and
+read permissions.
+.PP
+For example:
+
+.in +5
+.nf
+a:root:all
+a:miscreant:junk,talk.politics[:!local.security]
+g:wizards:gandalf,radagast:saruman
+p:wizards:comp.unix.wizards
+s:mordor,orthanc:alt.goodguys
+.fi
+.in
+
+The first line authorizes root to post to all groups. The second allows user
+\fImiscreant\fR to post to junk and talk.politics only, and also forbids
+\fImiscreant\fR from reading the local.security newsgroups. The third declares
+a group \fIwizards\fR consisting of users gandalf, radagast and saruman, and
+gives user saruman the ability to add or delete users from the group. The
+fourth allows anyone in the group \fBwizards\fI to post to comp.unix.wizards.
+The fifth suppresses attempts by anybody at sites mordor or orthanc to post to
+alt.goodguys.
+.PP
+Permit/deny entries for group names that have not been declared with a previous
+`g' entry are assumed to correspond to real permission groups in /etc/group,
+and the group's user list is looked up there. There is no way to declare
+gatekeepers for such groups; anyone who can edit /etc/group automatically has
+gatekeeper privileges for all of them.
+.PP
+All text after a # character is ignored. This feature can be used to insert
+comment lines.
+.PP
+An open environment could have FASCIST set to "all" and then individual
+entries could be made in the authorized file to prevent certain individuals
+from posting to such a wide area.
+.PP
+Note that a distribution of "all" does NOT mean to allow postings only to
+local groups -- "all" includes "all.all". Use "all,!any" or "any" to
+get this behavior.
+.SH BBSAUTO FILES
+The information necessary for \fIbbsauto\fR(1) to access a BBS is specified by 
+a file \fIbbsauto\fR found in the invoker's home directory. It consists of a
+sequence of `service descriptions'. Each description except the last must be
+ended by the token %% on its own line.
+.P
+Each service description consists of a list of `service attribute' lines. Each
+service attribute line consists of a label, followed by a colon, followed by
+a space, followed by a string value.
+.P
+Currently supported attributes are:
+.TP 20
+\fBservice\fR
+the service name.
+.TP 20
+\fBdial\fR
+arguments to be passed to cu(1) to dial the service
+.TP 20
+\fBtype\fR
+tells which service robot to use
+.TP 20
+\fBhostname, logon, password\fR
+available for use in robot login sequences
+.TP 20
+\fBtopics\fR
+list of topic names to read news on
+.TP 20
+notify
+lists users to be notified when news arrives from the BBS
+.TP 0
+.P
+Attributes not used by a particular service may be omitted.
+.P
+Here is a sample service file:
+.nf
+service: CompuServe
+type: CompuServe
+hostname: COMPUSERVE
+dial: /usr/bin/cu -s9600 277-3708
+logon: 2317,666
+password: FAT.CHANCE
+topics: unixforum
+%%
+.fi
+.P
+More attributes may be added to service files by robot code.
+.SH THE ATTRIBUTES FILE
+The attributes file (at ADM/attributes) sets netnews default values.
+Each line in the attributes file is interpreted as a key, followed by
+whitespace, followed by value data. A few of the most important are listed
+here; for many others, see the attributes list in the \fUHacker's Guide\fR.
+.PP
+\fIbackbone\fR -- gives the site to ship moderated-group submissions to
+when no explicit moderator address can be found. It is presumed that the site
+will have proper aliases defined to direct submissions to the actual
+moderators. A %s is required in this attribute string, and expands to the
+newsgroup name with dots replaced by dashes.
+.PP
+\fIsmart-host\fR -- gives a path to a site with autorouting capability, so
+that reply mail directed to an @-address can be sent there. A %s is required
+in this string, and expands to the reply address given by the user.
+.PP
+\fInotify\fR -- the address of the person to which error and notification mail
+from the news system should be sent.
+.PP
+\fIdomain\fR -- the Internet domain in which the site is considered to reside.
+.PP
+\fIorganization\fR -- the name of yor site's sponsoring organization. If this
+is omitted, no default Organization line will be generated in news headers.
+.PP
+\fIdfltsub\fR -- default newsgroup subscription for new users.
+.PP
+\fIadmsub\fR -- mandatory newsgroup subscription for all users.
+.PP
+\fIleastuid\fR -- least numerical UID to be treated as real user
+.PP
+\fIuuprog\fR -- name of the filter program used for the senduuname message.
+.PP
+Some or all of these attribute values may be ignored in favor of compiled-in
+data (for speed) depending on the news configuration; see the \fUInstallation
+Guide\fR for details. Any of these that are omitted will assume compiled-in
+defaults set at initial-configuration time.
+.SH NOTES
+The ``feeds'' file was the ``sys'' file on older versions (the name was
+changed in order to eliminate s potential pitfall the conversion process).
+Its \fIdistributions\fR field was added in 3.0 netnews. The
+code retains the ability to read older feed files, which are
+considered to have null distribution fields. The / feature of the
+name field was not previously documented.
+.PP
+The ADM/authorized file was formerly ADM/fascist, and had a different syntax.
+Support of group declarations and the associated facilities are new in 3.0.
+.PP
+The .newsrc file's \fIcommands\fR field and the keyboard macro
+declaration syntax was added in 3.0 netnews. The code retains the ability to
+read older .newsrc files, which are considered to have null commands fields.
+.PP
+The format of the history file has been changed from 2.10.X in order
+to speed up expire; normal runs no longer need to open article files in
+order to see whether they should be expired.
+.FILES
+.TP 25
+LIB/active
+per-group data on active groups
+.TP 25
+LIB/history
+per-article data on posting locations and status
+.TP 25
+LIB/feeds
+feeds file, describes links to other systems
+.TP 25
+~/.newsrc
+options and list of previously read articles
+.SH SEE ALSO
+checknews(1),
+inews(8),
+postnews(1),
+readnews(1),
+vnews(1),
+getdate(3),
+expire(8),
+recnews(8),
+sendnews(8),
+uurec(8)

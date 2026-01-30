@@ -1,0 +1,113 @@
+# libscrn.a generic Makefile to be customized for your site by Configure
+#
+# This is the screen library directory. The Makefile defines four targets:
+#
+# libscrn.a:	The screen handler library itself
+# paged.o:	Plug-in replacement for screen library using only cooked I/O
+# manifest:	Echo a string containing names of all library sources
+# llib-lscrn.ln	The lint library made from libscrn.a
+# clean:	Clean out all object, library and lint files
+#
+# Call "make -f Makefile.dst Makefile" from here to rebuild the Makefile
+
+# Other news source directories
+MAINDIR = ..
+PORTDIR = ../D.port
+NEWSDIR = ../D.news
+READDIR = ../D.read
+
+DIRLIST = $(MAINDIR) $(PORTDIR) $(NEWSDIR) $(READDIR)
+INCLUDE = -I$(MAINDIR) -I$(PORTDIR) -I$(NEWSDIR) -I$(READDIR)
+LIBSDIR = $(MAINDIR)
+
+#
+# You should not need to edit anything below this line
+#
+
+# Here are the macro definitions that Configure tweaks
+CFLAGS = ${CDEBUG} $(INCLUDE) $(CSPECIAL)
+LDFLAGS = $(LDDEBUG) $(LDSPECIAL)
+LINTFLAGS = $(INCLUDE)
+
+.PRECIOUS: Makefile libscrn.a
+
+SLHDRS = scrnctl.h vtermio.h ttyctl.h
+SLSRCS = visual.c scrnctl.c vtermio.c ttyctl.c
+SLOBJS = visual.o scrnctl.o vtermio.o ttyctl.o
+
+libscrn.a: $(SLOBJS)
+	ar lrc libscrn.a $?
+	-ranlib libscrn.a
+#PROFLIB 	(cd profiled; ar lrc ../libscrn_p.a $?)
+#PROFLIB 	-ranlib libscrn_p.a
+  
+setup:
+#PROFLIB	-mkdir profiled
+
+#PROFLIB .c.o:
+#PROFLIB 	${CC} -p ${CFLAGS} -c $*.c
+#PROFLIB 	mv $*.o profiled/$*.o
+#PROFLIB 	${CC} ${CFLAGS} -c $*.c
+
+export: setup libscrn.a paged.o
+	@rm -f $(LIBSDIR)/libscrn.a $(LIBSDIR)/paged.o
+	-ln libscrn.a paged.o $(LIBSDIR)
+#PROFLIB 	@rm -f $(LIBSDIR)/profiled/libscrn.a
+#PROFLIB 	-ln libscrn_p.a $(LIBSDIR)/profiled/libscrn.a
+
+#NOCURSES libscrn.h: ttyctl.h scrnctl.h
+#CURSES libscrn.h: curses.h
+
+# We need a version of curses.h without some stuff defined in portlib.h
+curses.h: Makefile
+#NOCURSES	touch curses.h
+#CURSES	sed </usr/include/curses.h  >curses.h \
+#CURSES		-e "/^#[ 	]*define[ 	]*TRUE/d" \
+#CURSES		-e "/^#[ 	]*define[ 	]*FALSE/d" \
+#CURSES		-e "/^#[ 	]*define[ 	]*bool/d" \
+#CURSES		-e "/^#[ 	]*include[ 	]*<termio\.h>/d" \
+#CURSES		-e "/^typedef.*bool/d"
+
+paged.o: paged.c
+
+Makefile: Makefile.dst
+	$(MAINDIR)/GenerateMake $(DIRLIST)
+
+# ----------------------------------------------------------------------
+# OBJECT AUTO-DEPENDENCIES GO AFTER THIS LINE -- DO NOT DELETE IT!!!
+#
+.SUFFIXES: .ln
+
+.c.ln:
+#LINTLIBS	lint $(LINTFLAGS) -c $<
+#NOLINTLIBS	lint $(LINTFLAGS) -C$* $<
+
+# LINT AUTO-DEPENDENCIES GO AFTER THIS LINE -- DO NOT DELETE IT!!!
+
+lintlib: $(LIBSDIR)/llib-lscrn.ln paged.ln
+
+$(LIBSDIR)/llib-lscrn.ln: llib-lscrn.ln
+	cp llib-lscrn.ln $(LIBSDIR)
+
+$(LIBSDIR)/paged.ln: paged.ln
+	cp paged.ln $(LIBSDIR)
+
+#LINTLIBS llib-lscrn.ln: $(SLSRCS:.c=.ln)
+#LINTLIBS	lint -x -u $(SLSRCS:.c=.ln) $(TERMLIBS) -o scrn
+#NOLINTLIBS llib-lscrn.ln: $(SLSRCS)
+#NOLINTLIBS	lint $(LINTFLAGS) -Cscrn $(SLSRCS) $(TERMLIBS)
+
+#
+# Random utility productions
+#
+manifest:
+	echo Makefile.dst Makefile $(SLHDRS) $(SLSRCS)
+
+distclean:
+	rm -f curses.h
+
+clean: distclean
+	rm -f *.a *.o *.ln *~ Makefile
+	rm -fr profiled
+
+# libscrn.a Makefile ends here

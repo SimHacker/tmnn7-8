@@ -1,0 +1,50 @@
+.if n .ds La '
+.if n .ds Ra '
+.if t .ds La `
+.if t .ds Ra '
+.if n .ds Lq "
+.if n .ds Rq "
+.if t .ds Lq ``
+.if t .ds Rq ''
+.de Ch
+\\$3\\*(Lq\\$1\\*(Rq\\$2
+..
+.TH EDNEWS 1 "Mar 17, 1989"
+.ds ]W News 3.0 (beta level 7)
+.SH NAME
+edvnews \- vnews-like reader that uses cooked I/O only
+.SH SYNOPSIS
+.BR vnews " [ " \-a
+.IR date " ] [ "
+.B \-n
+.IR newsgroups " ] [ "
+.B \-t
+.IR titles " ] [ "
+.BR \-hrxucupfvwSLG " ] [ "
+.BR \-D " [ " level " ]"
+.BR \-T " ttyname"
+.BR \-q "[ " loudgroups " ]"
+.PP
+.B "vnews \-s"
+.PP
+.B "vnews \-K"
+.SH DESCRIPTION
+The edvnews reader acts like vnews (accepting all vnews commands) but does not
+use termcap/curses or any other screen facility. Instead, it dumps
+page-sized pieces of articles to stdout in cooked mode, each followed by
+a status line resembling that of vnews. 
+.PP
+The special command @ can be used to change the screen size edvnews uses.
+.PP
+This tool is intended to be used as a back end by a windowing news reader.
+When processing, a response, expect however many lines correspond to the
+current page size, followed by 0 or 1 notification lines (beginning and
+ending with square brackets, [ ]) and a final status line.
+.SH BUGS
+Some vnews commands (shell execute, save file etc.) should probably be
+disabled in edvnews. Commands involving control characters may not work.
+An equivalent of ESC-r may be invoked with '0r'.
+.SH SEE ALSO
+readnews(1)
+vnews(1)
+ednews(1)

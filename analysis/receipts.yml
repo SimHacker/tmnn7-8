@@ -1,0 +1,108 @@
+# The Receipts: Community Quotes About ESR
+# Citations from Hacker News, mailing lists, and other sources
+
+hacker_news_quotes:
+  - id: 36923046
+    url: https://news.ycombinator.com/item?id=36923046
+    user: deepspace
+    date: 2023-07-29
+    quote: |
+      the man's disgusting political and social views tarnished 
+      everything he touched
+    context: Discussion of Jargon File
+
+  - id: 36920683
+    url: https://news.ycombinator.com/item?id=36920683
+    user: idlewords
+    date: 2023-07-29
+    quote: |
+      It would be great if someone with appropriate 'back in the day' 
+      credentials would take over membership of this document and 
+      powerwash the gratuitous Eric Raymond edits and insertions off of it.
+    context: Jargon File discussion
+
+  - id: 43133598
+    url: https://news.ycombinator.com/item?id=43133598
+    user: DonHopkins
+    date: 2025-03
+    quotes:
+      - |
+        Real hackers from the MIT-AI lab where it originated consider his 
+        revisionist politically slanted rewriting-for-profit of the Hacker's 
+        Dictionary to be disrespectful parasitical vandalism that doesn't 
+        represent the actual hacker culture, just a tool he hijacked, corrupted, 
+        and abused to spread his right-wing political ideology.
+      - |
+        He certainly doesn't deserve to be called a hacker, let alone presume 
+        to define the meaning of the term.
+      - |
+        He made up the ridiculous 'many eyes' quote himself, then misnamed it 
+        'Linus's Law' to avoid personal responsibility and shift the blame to 
+        innocent Linus Torvalds, who never said such a stupid thing.
+    context: Cathedral and the Bazaar discussion
+
+  - id: 43135830
+    url: https://news.ycombinator.com/item?id=43135830
+    user: tptacek
+    date: 2025-03
+    quote: |
+      CATB has just not held up at all; it's actively bad, and it has a 
+      weirdly outsized reputation.
+    context: Cathedral and the Bazaar discussion
+
+  - id: 43139165
+    url: https://news.ycombinator.com/item?id=43139165
+    user: DonHopkins
+    date: 2025-03
+    quote: |
+      His infamous 'Sex Tips for Geeks' essay comes off like it was 
+      written by Pepé Le Pew.
+    context: Discussion of ESR's writings
+
+  - id: 22539530
+    url: https://news.ycombinator.com/item?id=22539530
+    event: ESR banned from Open Source Initiative
+    date: 2020-03
+    context: ESR was banned from the organization he co-founded
+
+mailing_list_quotes:
+  - source: OpenBSD-tech mailing list
+    url: https://marc.info/?l=openbsd-tech&m=129261032213320&w=2
+    user: Theo de Raadt
+    date: 2010-12
+    quote: |
+      Oh right, let's hear some of that 'many eyes' crap again. My favorite 
+      part of the 'many eyes' argument is how few bugs were found by the two 
+      eyes of Eric (the originator of the statement). All the many eyes are 
+      apparently attached to a lot of hands that type lots of words about 
+      many eyes, and never actually audit code.
+    context: OpenBSD security discussion
+    significance: From one of the most respected security-focused OS developers
+
+charity_fundraising:
+  source: Thomas Ptacek / The Great Slate
+    url: https://en.wikipedia.org/wiki/Eric_S._Raymond#Political_beliefs_and_activism
+    quote: |
+      I've been torturing Twitter with lurid Eric S. Raymond quotes for years. 
+      Every time I do, 20 people beg me to stop.
+    amount_raised: $30,000
+    purpose: Donations to charity in exchange for NOT posting more ESR quotes
+
+original_sources:
+  jargon_file:
+    original: https://github.com/PDP-10/its/blob/master/doc/humor/jargon.68
+    note: "Free of ESR's pollution"
+    
+  fascist_c_original_author:
+    name: Eugene Spafford
+    aka: spaf@gatech
+    wikipedia: https://en.wikipedia.org/wiki/Gene_Spafford
+    credentials: "One of the most respected security researchers in computing history"
+
+institutional:
+  osi_ban:
+    organization: Open Source Initiative
+    date: 2020-03
+    action: Banned from mailing lists
+    irony: ESR co-founded OSI
+    url: https://news.ycombinator.com/item?id=22539530

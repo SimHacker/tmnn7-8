@@ -1,0 +1,6 @@
+# Uncompress any number of batches named in the command line
+for x in $*
+do
+	(read header; /usr/lib/news/compress -d) <$x >${x}.b
+	mv ${x}.b $x
+done 

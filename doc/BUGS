@@ -1,0 +1,56 @@
+			BUGS:
+
+The rn emulation, vrn, probably needs a lot of work.
+
+The ndbm() code should be fixed to use network byte order in order to
+enable data sharing between unlike machines.
+
+The checkgroups message prepends all local groups to the newsgroups file
+every time it's invoked. It shouldn't do that...the whole issue of newsgroup
+list handling needs to be re-examined.
+
+Lint chokes on the uucast() call in sendbatch.c -- why is this?
+
+The pre-fetch strategy for subject lists forces too much crunching and
+generates monster temp files. It needs to be changed to be more conservative;
+possibly grab next two pages.
+
+Expire -r in copying mode doesn't work.  Complicated abstraction problem
+to fix. Rdhistory/wrhistory/edbm need to be rewritten to assume that the
+upper layer does the freeing.
+
+			TO DO:
+
+Full filter language in rnkill.c, with cacheing support. The driver loop in
+filter.c code should be fixed to allow the filter to cache information on new
+articles while it's waiting for reader requests. Also, it ought to be possible
+to make it log filtering info.
+
+Change handling of external groups in authorization file? Mel has a point...
+
+RFC1049-conformant Content-Type interpretation in D.news/msgopen.c. The
+transport layer should never see this. Does it?
+
+Mailbox cracking so we can read mail through news. Deletion is the sticky
+part, effectively we might have to write or rip off somebody's generic
+mailbox handler.
+
+Notes-style display of the top messages of threads only, with count of
+followups.
+
+Do we have to assume that case in the unique parts of IDs will get smashed?
+If so, we must change the timestamp encoding scheme.
+Add SNEFRU hash function to ID generation code.
+
+Fold remaining nrecnews features into inews.
+
+The NEWNEWS command cannot be easily implemented for the nntpd server.
+This is because there is no easy way to tell what all the new news
+after a specified date is.  Assuming that history.dat is in
+chronological order is wrong, since this will not be the case after an
+expire.
+
+Lint barfs on the readdir() calls. Why is this?
+
+Now that we have response_codes.h, can we simplify the make procedure by
+always compiling the network support? Is the space tradeoff worth it?

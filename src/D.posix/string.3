@@ -1,0 +1,278 @@
+.TH STRING 3 "ANSI/POSIX Standard"
+.SH NAME
+strcat, strdup, strncat, strcmp, strncmp, strcpy,
+strncpy, strlen, strchr, strrchr, strpbrk, strspn, strcspn,
+strtok \- string operations
+.SH SYNOPSIS
+.B #include <string.h>
+.br
+.B #include <sys/types.h>
+.P
+.B "char \(**strcat(s1, s2)"
+.br
+.B "char \(**s1, \(**s2;"
+.P
+.B "char \(**strdup(s1)"
+.br
+.B "char \(**s1;"
+.P
+.B "char \(**strncat(s1, s2, n)"
+.br
+.B "char \(**s1, \(**s2;"
+.br
+.B "size_t n;"
+.P
+.B "int strcmp(s1, s2)"
+.br
+.B "char \(**s1, \(**s2;"
+.P
+.B "strncmp(s1, s2, n)"
+.br
+.B "char \(**s1, \(**s2;"
+.br
+.B "size_t n;"
+.P
+.B "char \(**strcpy(s1, s2)"
+.br
+.B "char \(**s1, \(**s2;"
+.P
+.B "char \(**strncpy(s1, s2, n)"
+.br
+.B "char \(**s1, \(**s2;"
+.br
+.B "size_t n;"
+.P
+.B "int strlen(s)"
+.br
+.B "char \(**s;"
+.P
+.B "char \(**strchr(s, c)"
+.br
+.B "char \(**s;"
+.br
+.B "int c;"
+.P
+.B "char \(**strrchr(s, c)"
+.br
+.B "char \(**s;"
+.br
+.B "int c;"
+.P
+.B "char \(**strpbrk(s1, s2)"
+.br
+.B "char \(**s1, s2;"
+.P
+.B "int strspn(s1, s2)"
+.br
+.B "char \(**s1, \(**s2;"
+.P
+.B "int strcspn(s1, s2)"
+.br
+.B "char \(**s1, \(**s2;"
+.P
+.B "char \(**strtok(s1, s2)"
+.br
+.B "char \(**s1, s2;"
+.br
+.SH DESCRIPTION
+The arguments \fBs1\fR, \fBs2\fR, and s point to strings (arrays of
+characters terminated by a null character). The functions
+strcat, strncat, strcpy, and strncpy all alter \fBs1\fR. These
+functions do not check for overflow of the array pointed to
+by \fBs1\fR.
+.P
+\fBStrcat\fR appends a copy of string \fBs2\fR to the end of string \fBs1\fR.
+.P
+\fBStrdup\fR returns a pointer to a new string that is a duplicate
+of the string pointed to by \fBs1\fR. The space for the new
+string is obtained using malloc(3C). If the new string
+cannot be created, a null pointer is returned.
+.P
+\fBStrncat\fR appends at most n characters.  Each returns a
+pointer to the null-terminated result.
+.P
+\fBStrcmp\fR compares its arguments and returns an integer less
+than, equal to, or greater than 0, according as \fBs1\fR is
+lexicographically less than, equal to, or greater than \fBs2\fR.
+\fBStrncmp\fR makes the same comparison but looks at, at most, n
+characters.
+.P
+\fBStrcpy\fR copies string \fBs2\fR to \fBs1\fR, stopping after the null
+character has been copied. \fBStrncpy\fR copies exactly n
+characters, truncating \fBs2\fR or adding null characters to \fBs1\fR if
+necessary. The result will not be null-terminated if the
+length of \fBs2\fR is n or more. Each function returns \fBs1\fR.
+.P
+\fBStrlen\fR returns the number of characters in s, not including
+the terminating null character.
+.P
+\fBStrchr\fR (\fBstrrchr\fR) returns a pointer to the first (last)
+occurrence of character c in string s, or a NULL pointer if
+c does not occur in the string. The null character
+terminating a string is considered to be part of the string.
+.P
+\fBStrpbrk\fR returns a pointer to the first occurrence in string
+\fBS1\fR of any character from string \fBs2\fR, or a NULL pointer if no
+character from \fBs2\fR exists in \fBs1\fR.
+.P
+\fBStrspn\fR (\fBstrcspn\fR) returns the length of the initial segment
+of string \fBs1\fR, which consists entirely of characters from
+(not from) string \fBs2\fR.
+.P
+\fBStrtok\fR considers the string \fBs1\fR to consist of a sequence of
+zero or more text tokens separated by spans of one or more
+characters from the separator string \fBs2\fR. The first call
+(with pointer \fBs1\fR specified) returns a pointer to the first
+character of the first token, and will have written a null
+character into \fBs1\fR immediately following the returned token.
+The function keeps track of its position in the string
+between separate calls, so that subsequent calls (which must
+be made with the first argument a NULL pointer) will work
+through the string \fBs1\fR immediately following that token. In
+this way, subsequent calls will work through the string \fBs1\fR
+until no tokens remain. The separator string \fBs2\fR may be
+different from call to call. When no token remains in \fBs1\fR, a
+NULL pointer is returned.
+.P
+For user convenience, all these functions are declared in
+the optional <string.h> header file.
+.SH SEE ALSO
+malloc(3C), malloc(3X).
+.SH CAVEATS
+\fBStrcmp\fR and \fBstrncmp\fR are implemented by using the most natural
+character comparison on the machine. Thus, the sign of the
+value returned when one of the characters has its high-order
+bit set is not the same in all implementations and should
+not be relied upon.
+.P
+Character movement is performed differently in different
+implementations. Thus, overlapping moves may yield
+surprises.!STUFFY!FUNK!
+chmod 644 src/D.posix/string.3
+echo Extracting src/D.posix/getopt.3c
+sed >src/D.posix/getopt.3c <<'!STUFFY!FUNK!' -e 's///'
+.TH GETOPT 3C "Standard Extensions"
+.SH NAME
+getopt \- parse arguments from an argument token vector
+.SH SYNOPSIS
+.B int getopt (argc, argv, optstring)
+.br
+.B int argc;
+.br
+.B char \(**\(**argv, \(**opstring;
+.PP
+.B extern char \(**optarg;
+.br
+.B extern int optind, opterr;
+.SH DESCRIPTION
+.I Getopt
+returns the next option letter in
+.I argv
+that matches
+a letter in
+.IR optstring .
+.I Optstring
+is a string of recognized option letters. If a letter is followed by a colon,
+the option is expected to have an argument that may or may not be separated
+from it by white space.
+.I Optarg
+is set to point to the start of the option argument on return from
+.IR getopt .
+.PP
+.I Getopt
+places in
+.I optind
+the
+.I argv
+index of the next argument to be processed. Because
+.I optind
+is external, it is normally initialized to zero automatically before the first
+call to
+.IR getopt .
+.PP
+When all options have been processed (i.e., up to the first non-option
+argument),
+.I getopt
+returns
+.SM
+.BR EOF .
+The special option
+.B \-\-
+may be used to delimit the end of the options;
+.SM
+.B EOF
+will be returned, and
+.B \-\-
+will be skipped.
+.SH DIAGNOSTICS
+.I Getopt
+prints an error message on
+.I stderr
+and returns a
+question mark
+.RB ( ? )
+when it encounters an option letter not included in
+.IR optstring .
+This error message may be disabled by setting 
+.I opterr
+to a non-zero value.
+.SH EXAMPLE
+The following code fragment shows how one might process the arguments for a
+command that can take the mutually exclusive options
+.B a
+and
+.BR b ,
+and the options
+.B f
+and
+.BR o ,
+both of which require arguments:
+.PP
+.RS
+.nf
+.ss 18
+main (argc, argv)
+int argc;
+char \(**\(**argv;
+{
+	int c;
+	extern char \(**optarg;
+	extern int optind;
+	\&\f3.\fP
+	\&\f3.\fP
+	\&\f3.\fP
+	while ((c = getopt(argc, argv, "abf:o:")) != \s-1EOF\s+1)
+		switch (c) {
+		case \(fma\(fm:
+			if (bflg)
+				errflg++;
+			else
+				aflg++;
+			break;
+		case \(fmb\(fm:
+			if (aflg)
+				errflg++;
+			else
+				bproc( );
+			break;
+		case \(fmf\(fm:
+			ifile = optarg;
+			break;
+		case \(fmo\(fm:
+			ofile = optarg;
+			break;
+		case \(fm?\(fm:
+			errflg++;
+		}
+	if (errflg) {
+		fprintf(stderr, "usage: . . . ");
+		exit (2);
+	}
+	for ( ; optind < argc; optind++) {
+		if (access(argv[optind], 4)) {
+	\&\f3.\fP
+	\&\f3.\fP
+	\&\f3.\fP
+}
+.ss 12
+.fi

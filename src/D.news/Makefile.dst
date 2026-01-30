@@ -1,0 +1,109 @@
+# libnews.a generic Makefile to be customized for your site by Configure
+#
+# This is the news library directory. The Makefile defines four targets:
+#
+# libnews.a:	The common news library itself
+# manifest:	Echo a string containing names of all library sources
+# llib-lnews.ln	The lint library made from libnews.a
+# clean:	Clean out all object, library and lint files
+#
+# Call "make -f Makefile.dst Makefile" from here to rebuild the Makefile
+
+# Other news source directories
+MAINDIR = ..
+PORTDIR = ../D.port
+
+DIRLIST = $(MAINDIR) $(PORTDIR)
+INCLUDE = -I$(MAINDIR) -I$(PORTDIR)
+LIBSDIR = $(MAINDIR)
+
+#
+# You should not need to edit anything below this line
+#
+
+# Here are the macro definitions that Configure tweaks
+CFLAGS = $(CDEBUG) $(INCLUDE) $(CSPECIAL)
+LDFLAGS = $(LDDEBUG) $(LDSPECIAL)
+LINTFLAGS =  $(INCLUDE)
+
+.PRECIOUS: Makefile libnews.a
+
+NLHDRS = news.h active.h feeds.h header.h history.h mailbox.h newsrc.h
+NLSRCS = articleid.c artlist.c escapes.c fascist.c feeds.c getart.c \
+	getfiles.c header.c msgopen.c newsinit.c ngmatch.c mailbox.c myorg.c \
+	ospawn.c rdactive.c rdhistory.c rdbits.c rdnewsrc.c sysmail.c \
+	ttyin.c ttyout.c
+NLOBJS = articleid.o artlist.o escapes.o fascist.o feeds.o getart.o \
+	getfiles.o header.o msgopen.o newsinit.o ngmatch.o mailbox.o myorg.o \
+	ospawn.o rdactive.o rdhistory.o rdbits.o rdnewsrc.o sysmail.o \
+	ttyin.o ttyout.o
+
+libnews.a: $(NLOBJS)
+	ar lrc libnews.a $?
+	-ranlib libnews.a
+#PROFLIB 	(cd profiled; ar lrc ../libnews_p.a $?)
+#PROFLIB 	-ranlib libnews_p.a
+  
+setup:
+#PROFLIB	-mkdir profiled
+
+#PROFLIB .c.o:
+#PROFLIB 	${CC} -p ${CFLAGS} -c $*.c
+#PROFLIB 	mv $*.o profiled/$*.o
+#PROFLIB 	${CC} ${CFLAGS} -c $*.c
+
+export: setup libnews.a
+	@rm -f $(LIBSDIR)/libnews.a
+	-ln libnews.a $(LIBSDIR)
+#PROFLIB 	@rm -f $(LIBSDIR)/profiled/libnews.a
+#PROFLIB 	-ln libnews_p.a $(LIBSDIR)/profiled/libnews.a
+
+Makefile: Makefile.dst
+	$(MAINDIR)/GenerateMake $(DIRLIST)
+
+# The ngfind() torture-tester.
+TLIBS = libnews.a $(PORTDIR)/libport.a $(LIBSDIR)/D.posix/rename.o
+profactive: rdactive.c
+	-mv -f rdactive.o rdactive.o-old
+	cc -p $(INCLUDE) -DPROFILE $(MODE) rdactive.c $(TLIBS) -o profactive
+	rm -f rdactive.o
+	-mv -f rdactive.o-old rdactive.o
+
+makeprofile:
+	profactive 10000 23
+	prof profactive | grep -v "NULL" >$(MODE).prof
+
+# ----------------------------------------------------------------------
+# OBJECT AUTO-DEPENDENCIES GO AFTER THIS LINE -- DO NOT DELETE IT!!!
+#
+.SUFFIXES: .ln
+
+.c.ln:
+#LINTLIBS	lint $(LINTFLAGS) -c $<
+#NOLINTLIBS	lint $(LINTFLAGS) -C$* $<
+
+# LINT AUTO-DEPENDENCIES GO AFTER THIS LINE -- DO NOT DELETE IT!!!
+
+lintlib: $(LIBSDIR)/llib-lnews.ln
+
+$(LIBSDIR)/llib-lnews.ln: llib-lnews.ln
+	cp llib-lnews.ln $(LIBSDIR)
+
+#LINTLIBS llib-lnews.ln: $(NLSRCS:.c=.ln)
+#LINTLIBS	lint -x -u $(NLSRCS:.c=.ln) -o news
+#NOLINTLIBS llib-lnews.ln: $(NLSRCS)
+#NOLINTLIBS	lint $(LINTFLAGS) -Cnews $(NLSRCS)
+
+#
+# Random utility productions
+#
+manifest:
+	echo Makefile.dst Makefile $(NLHDRS) $(NLSRCS)
+
+distclean:
+
+clean:
+	rm -f *.a *.o *.ln *~ Makefile
+	rm -fr profiled
+
+# libnews.a Makefile ends here

@@ -1,0 +1,33 @@
+.if n .ds La '
+.if n .ds Ra '
+.if t .ds La `
+.if t .ds Ra '
+.if n .ds Lq "
+.if n .ds Rq "
+.if t .ds Lq ``
+.if t .ds Rq ''
+.de Ch
+\\$3\\*(Lq\\$1\\*(Rq\\$2
+..
+.TH UUREC 8 "Mar 17, 1989"
+.ds ]W News 3.0 (beta level 7)
+.SH NAME
+uurec \- receive processed news articles via mail
+.SH SYNOPSIS
+.B uurec
+.SH DESCRIPTION
+.I Uurec
+reads news articles on the standard input sent by the M<mailer> option
+of rnews/sendbatch, or (in older versions) by
+.IR sendnews (8),
+decodes them, and gives them to
+.IR inews (8)
+for insertion.
+.SH SEE ALSO
+inews(8),
+postnews(1),
+readnews(1),
+vnews(1),
+news(5),
+recnews(8),
+sendnews(8)

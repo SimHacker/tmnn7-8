@@ -1,0 +1,984 @@
+.ds V "News 3.0 (beta level 7)
+.\" Set up for Matt Bishop's mn macros
+.ds V "News 3.0 (beta level 7)
+.ds h0 "How to read the network news
+.ds h1
+.ds h2 %
+.ds f0 "\*(vr
+.ds f1
+.ds f2 "Mar 17, 1989"
+.mt
+HOW TO READ THE NETWORK NEWS
+.au
+Mark R. Horton
+.au
+Rick Adams (2.10.2 rev.)
+.au
+Eric S. Raymond (\*V rev.)
+.hn 1
+What are USENET and netnews, and why should you care?
+.pg
+USENET is an agreement, a culture, and an ideal. It's an agreement among
+thousands of computer sites all over the world to exchange information,
+a culture that has grown up around this exchange, and an ideal that drives
+this culture \- the ideal of information wealth for everybody, of cheap or
+free sharing of the thoughts, dreams, jokes and creations of the many kinds
+of people on USENET.
+.pg
+USENET can educate, entertain, and stimulate you. If you program or use
+computers, it can give you access to public-domain software tools and games of
+remarkably high quality. A person wishing to announce a new program or product
+can reach a wide audience immediately. A user can ask ``Does anyone have an
+.i x
+?'' and usually get several responses within a day or two. Bug reports and
+their fixes can be made quickly available without the usual overhead of sending
+out mass mailings. Discussions involving many people at different locations
+can take place without having to get everyone together. Because of this latter,
+USENET is also a new and thought-provoking kind of community \- perhaps a
+window on the social future implied by widespread use of computer-assisted
+telecommunications.
+.pg
+USENET can also bore, confuse, anger or overload you -- with huge amounts of
+irrelevant, distracting or incorrect information. The secret of getting the
+best out of it is to have the tools, and the kind of experienced judgement,
+that can separate the wheat from the chaff. As with any other information
+resource, using USENET is a learned skill, one that improves with practice.
+.pg
+At the time of writing (late 1988), USENET is estimated to have about a
+million users worldwide (the network tends to approximately double in size
+every year). Other computer information networks of comparable size do exist,
+but USENET is unique in being decentralized, nonprofit, and entirely maintained
+by volunteers.
+.pg
+Technically, USENET (Users' Network) is a bulletin board shared among thousands
+of computer systems around the world. Each one of these systems is a USENET
+`node', connected to other USENET nodes by a logical network (a set of
+communications channels). The USENET logical network uses several physical
+networks, including
+.b uucp ,
+.b BLICN ,
+.b Berknet ,
+.b X.25 ,
+and the
+.b Internet .
+Sites on USENET include many universities, private companies, research
+organizations, and an increasing number of individual people running home
+machines.
+.pg
+Eventually, the friends of USENET intend that it will grow into a true world
+information network, available on all but the most primitive and specialized
+computers.
+Already it includes sites from New Jersey to New Zealand. By far the
+largest concentration of USENET nodes is in the USA, but there are large
+and growing USENET communities in Europe, around the Pacific Rim, and
+in South America. There are even a few USENET nodes in communist Eastern
+Europe.
+.pg
+Netnews is the set of programs that provide access to the news, and transfer
+it from one machine to the next. As of this
+writing, USENET is found mostly on machines that run the UNIX operating
+system; but versions for other systems such as VMS and OS/370 do exist, and
+ports of netnews to other systems such as MS-DOS and OS/2 are in the works.
+.pg
+Since you're reading this, there is almost certainly a working netnews program
+somewhere nearby. This guide will teach you how to use netnews, and it will
+start you on the skills you will need to get the most out of USENET.
+.pg
+Netnews was originally written at Duke University, and later modified
+extensively by the University of California at Berkeley. The version this
+document comes with was rewritten from the ground up by Eric S. Raymond, an
+itinerant UNIX guru and pagan anarchist gadfly who happens also to be your
+author. It incorporates ideas and criticisms from many long-time USENETters;
+detailed credits can be found in the
+.ul 1
+Hacker's Guide
+attached to the distribution and in comments in the source.
+.hn 1
+What can I do with USENET?
+.pg
+USENET gives the user access to a large and rapidly changing collection of
+text \fBarticles\fR, divided into topic area called \fBnewsgroups\fR.
+A user can specify which topics he or she is interested in via a
+.i "subscription list".
+This document includes a list of newsgroups that were active at the time it was
+written, to assist you in determining which newsgroups you may want to
+subscribe to.
+.pg
+A user's dealings with USENET will consist of a) reading articles, and
+b) posting articles. You'll do this with two kinds of program, called
+(logically enough) ``readers'' and ``posters''. USENET \fIadministrators\I
+(people who maintain USENET at a node) need to know about some other kinds
+of tools that we'll discuss later.
+.pg
+USENET supports many different readers, tuned for different styles of
+news-reading and various kinds of terminals. When you fire up a reader,
+you will will usually be presented with all articles of interest that have
+made it to your site and that you have not yet read. Readers also include
+facilities for browsing through old news, for posting follow-up articles (by
+calling one of the posters), and for sending direct electronic
+mail replies to the author of an article.
+.pg
+Each of the news readers implements a different command set and style of visual
+presentation. Here are the alternatives:
+.lp \fBreadnews\fR 12
+The original news reader, mostly with line-oriented I/O and appropriate
+for printing terminals and glass-tty CRTs.
+.lp \fBvnews\fR 12
+A nice full-screen interface for smart terminals. The command set is
+modelled after those of \fBvi\fR and \fBemacs\fR, two popular UNIX editors.
+.lp \fBYour\ mailer\fR 12
+You can use /bin/mail, Berkeley Mail, msg, or the Rand mailer MH as an
+interface to news with mailnews. This has the virtue of
+familiarity, but (unlike the other interfaces) may not be able to accurately
+track which articles you actually read in a given session.
+.lp \fBrn\fR 12
+Another alternative mail reader, not part of this USENET
+distribution but popular at many sites. The distribution does include a
+no-guarantees emulation of it called \fvrn\fR.
+.pg
+There are, by contrast, only two posting programs (\fIpostnews\fR and
+\fBinews\fR), because posting is a task with fewer style choices outside the
+composition of the text itself. The \fIinews\fR program is intended mainly for
+use by other programs; you'll almost certainly use \fIpostnews\fR.
+.pg
+On most systems, any user can post an article, which will be sent out to the
+network to be read by anyone interested in that topic. Some USENET sites with
+security or disclosure concerns may restrict the groups an ordinary user can
+post to, though this is not encouraged.
+.pg
+Netnews allows articles to be posted for limited or very wide distribution.
+When creating a new article, the level of distribution can be controlled by
+use of the Distribution field. This will prevent notices of apartments for
+rent in New Jersey from being broadcast to California (or even Europe).
+.pg
+The remainder of this guide is a tutorial, aimed at the user who wants to read
+and possibly post news. Anyone who must install the software should see the
+companion document
+.i "USENET Installation Guide" .
+.hn 1
+Why USENET isn't just electronic mail
+.pg
+Another facility with similar capabilities to
+.i netnews
+is the
+.i "electronic mailing list" .
+A mailing list is a collection of electronic mailing addresses
+of users who are interested in a particular topic.
+By sending electronic mail to the list, all users on the
+list receive a copy of the article.
+.pg
+While the mailing list facility is quite useful, USENET offers
+a number of advantages not present in mailing lists.
+Getting yourself on a mailing list is not always easy.
+You have to figure out who maintains the list and ask them
+to put you on it.  Often these people are out of town or
+busy, and don't put you on the list for several days.
+Sometimes you have to send mail to the entire mailing list,
+hoping that one of the readers will tell you who maintains the list.
+.pg
+Once you are on the list,
+you often find yourself in the middle of a discussion.
+Netnews keeps old articles around until they expire
+(usually about two weeks) so you can browse through
+old news to catch up on what you missed.
+Similarly, referring to an old article is easy, without
+having to keep a personal file of all old mail to the list.
+.pg
+Another advantage is appreciated by the other users of the system. There is
+less overhead in having only one copy of each message sent to each machine,
+instead of separate copies for each of several users on the same machine.
+This cuts down on computer time to process the messages,
+and on line costs for telephone calls to transfer messages
+from one machine to another (when phone lines are used).
+.pg
+Yet another advantage is in the disk space consumed.
+When only one message is sent to each system, only one copy
+of the message is kept on disk.
+In a mailing list environment, each user has a copy in his mailbox.
+.hn 1
+Using readnews
+.pg
+If you have a CRT and \fItermcap\fR(3) or equivalent, you will probably
+want to use vnews. We'll describe readnews first, however, because it is
+the prototype of the other news readers and many vnews commands are
+based on readnews commands.
+.hn 2
+Getting started
+.pg
+To invoke this program, type
+.sd
+.b readnews
+.ed
+Each newsgroup to which you subscribe will be presented, one article at a time.
+As each article is presented, you will be shown the
+.i header
+(containing the name of the author, the subject, and the length of the article)
+and you will be asked if you want more.
+There are a number of possible choices you can make at this point.
+The three most common (y, n, and q) are suggested by the program.
+(To see a complete list of possible responses, type ``\fB?\fR'' for help.)
+You can type ``\fBy\fR'' for ``yes'' (or simply hit return)
+and the rest of the message will be displayed.
+If the message is long, it may stop before it runs off the
+top of the screen.  Type space or return to see more of the message.
+Another choice you can make is ``\fBn\fR'' for ``no''.
+This means you are not interested in the message - it will
+not be offered to you again.
+A third option is ``\fBq\fR'' for ``quit''.
+This causes a record to be made of which articles you read
+(or refused) and you will exit netnews.
+When you have read all the news, this happens automatically.
+The quit command is mainly useful if you are in a hurry
+and don't have time to read all the news right now.
+(Many users put a
+.b readnews
+or
+.b checknews
+command in their
+.i .profile
+or
+.i .login
+files so that they will see new news each time they log in.)
+.hn 2
+Tips for first-timers
+.pg
+If you are reading news for the first time, you may find yourself
+swamped by the volume of unread news,
+especially if the default subscription is ``all''.
+Don't let this bother you.
+If you are getting newsgroups which you have no interest,
+you can change your subscription list (see below).
+Also, bear in mind that what you see is probably at least two
+weeks accumulation of news.
+If you want to just get rid of all old news and start anew, type
+.sd
+readnews -K &
+.ed
+which will throw away all old news,
+recording that you have seen it all.
+(The '&' puts it in the background;
+chances are that there is so much old news on your machine
+that you won't want to wait for it all.)
+Or, you can use the ``K''
+command to mark all articles in the current newsgroup as read.
+.pg
+Once you catch up with (or ignore) all the old news, the news will
+come in daily at a more manageable rate.
+If the daily rate is still too much you may wish to unsubscribe
+to some of the higher volume newsgroups.
+Finally, note that while an article is printing, you can hit your
+.b INTERRUPT
+character (usually Control-C or Delete),
+which will throw away the rest of the article.
+.hn 2
+Commands
+.pg
+Among the other commands you can type after seeing the header of an
+article are:
+.lp \fBx\fR
+Exit readnews.  This is different from
+.b quit
+in that the quit command will update the record of which articles
+you have read, but the exit command will pretend you never started
+readnews.
+.lp \fBN\fR
+Go on to the next newsgroup.
+The remaining articles in the current newsgroup are considered
+``unread'' and will be offered to you again the next time you read news.
+If you follow this command with a space and newsgroup name you will go
+directly to the named group.
+.lp "\fBs\fR \fIfile\fR"
+The article is saved in a disk file with the given name.
+In practice,
+what usually happens is that an article is printed,
+and then
+.i readnews
+goes on to print the header of the next article
+before you get a chance to type anything.
+So you usually want to write out the
+.i previous
+message (the last one you have read in full);
+in this case, use the form ``\fBs\-\fR \fIfilename\fR''.
+.lp \fBw\fR
+Like the s command except that it leaves the article header off the saved
+file.
+.lp \fBe\fR
+Erase the memory of having seen this article.
+It will be offered to you again next time, as though
+you had never seen it.
+The ``\fBe\-\fR'' case is useful for checking follow-ups to see if anyone
+has already said what you wanted to say.
+.lp \fBr\fR
+Reply to the author of the message.
+You will be placed in the editor, with a set of headers derived from the
+message you are replying to.
+Type in your message after the blank line.
+If you wish to edit the header list, to add more recipients or send
+carbon copies, for instance, you can edit the header lines.
+Anyone listed on a line beginning with ``To: '' or ``Cc: ''
+will receive a copy of your reply.
+A
+.b mail
+command will then be started up, addressed to the persons listed in the
+header. You are then returned to readnews.
+The case
+.b r\-
+is also useful to reply to the previous message.
+Another variation on this is
+.b rd\-
+which puts you in $MAILER (or ``mail'' by default) to type
+in your reply directly.
+.lp \fBf\fR
+Post a follow-up message to the same newsgroup.
+This posts an article on this newsgroup with the same
+title as the original article.
+Use common sense when posting follow-ups;
+many follow-up articles should have just been replies.
+You will be placed in the editor - enter your message and exit.
+The case
+.b f\-
+is also useful to follow up the previous message.
+In each case, the editor you are placed in will be
+.b vi
+unless you set
+.b EDITOR
+(in your environment) to some other editor.
+You should enter the text of the follow-up after the blank line.
+.lp \fB+\fR
+The article is skipped for now.
+The next time you read news, you will be offered this article again.
+.lp \fB-\fR
+Go back to the last article you looked at.
+In previous versions of readnews this toggled, so that two \-'s got you the
+current article; this version actually permits you to back up through all
+your previous articles to the beginning of the session. Hitting the spacebar
+will bring you forward again.
+.lp \fB^\fR
+Takes you to the beginning of the current discussion. This version of news
+tries to show you all the followups to an article before going to what would
+otherwise be the next article in sequence. This command is useful if you find
+yourself in the middle of a discussion and want to review the whole thing.
+.lp \fBb\fR
+Back up one article in the current group. This is not necessarily
+the previous article.
+.lp \fBug\fR
+Unsubscribe to the current group.
+Your .newsrc file will be edited to change the ``:'' for that newsgroup
+to an ``!'', preventing you from being shown that newsgroup again.
+This is a two character command to ensure
+that it is not typed accidentally and to leave room for other types of
+unsubscribes (e. g. unsubscribe to discussion). You may also type ``U''
+to unsubscribe from a group.
+.lp \fBud\fR
+Unsubscribe from the current discussion. Followups of this message will
+not be shown when you read future news.
+.lp \fB<\fR
+Assumes that the rest of the line is an Internet-style Message-ID and attempts
+to find the corresponding message. Each news article has a unique article ID.
+.lp \fBd\fR
+The message is an ARPANET digest, display it as such.
+.lp \fBl\fR
+Display the newsgroup index page. This shows you a list of articles in the
+current newsgroup, giving their subject lines. Articles you haven't seen are
+marked with an asterisk. 
+.lp \fB!\fR
+Passes the rest of the command line to the
+shell. The environment variable $A is set to the
+name of the file containing the current article.
+If the last character of the command is a "&",
+then the "&" is deleted and the command is run in
+the background with stdin, stdout and stderr
+redirected to /dev/null. If the command is
+missing, the shell is invoked.
+.lp /pattern 8
+Scan forward for article containing
+.i pattern
+in the subject. The pattern may be plain text or contain certain wildcards.
+See the section on Regular Expressions in
+.IR readnews (1)
+for a description of the kinds of wildcards you can use.
+If
+.i pattern
+is omitted, the previous pattern is assumed.
+.lp /pattern/h 8
+Scan forward for article containing
+.i pattern
+in the header.
+.lp /pattern/a 8
+Scan forward for article containing
+.i pattern
+anywhere in article.
+.lp /pattern/r 8
+Scan read articles also.
+.lp /pattern/c 8
+Make search case sensitive.
+.lp ?pattern 8
+Scan backward for article containing
+.i pattern
+in the subject.
+May be modified as the forward search is: ?pattern?modifiers[:commands].
+It is likely that you will want an r modifier when scanning backward.
+.lp t 8
+Mark as read all articles with the same subject as the current article.
+.lp T 8
+Do the same as the t command, but also add a line to the initial commands for
+this newsgroup to kill this subject every time the newsgroup is started up.
+.lp \fB?\fR
+If you type any unrecognized command
+a summary of valid commands will be printed.
+.hn 3
+The /bin/mail interface
+.pg
+The interface described above is called the ``msgs'' interface
+because it mimics the style of the Berkeley
+.b msgs
+program.
+(This program, in turn, mimics a program at MIT of the same name.)
+The key element of the msgs interface is that after printing the
+header, you are asked if you want the rest of the article. This
+is appropriate for printing terminals and low-speed display terminals.
+.pg
+Another interface is available with the
+.b \-c
+option of readnews.
+In this case, the start if the article text is printed, header and body,
+and you are prompted at the end of the page.
+This is appropriate for high-speed displays, where the time required to
+paint the first page is short and eliminating the extra keystroke is
+judged worthwhile.
+.pg
+The command options are the same as the msgs interface,
+but it is usually not necessary to use the ``\fB-\fR'' suffix
+on the reply, save, or follow-up commands.
+This interface is called the ``/bin/mail'' (pronounced \fIbin mail\fR)
+interface, because it mimics the UNIX program of that name.
+.pg
+Readnews includes some advanced commands not documented here that you will
+want to learn once you become proficient with it. For details see the
+.i readnews (1)
+manual entry.
+.hn 1
+Using vnews
+.pg
+Vnews is another program for reading USENET news. It is based on
+readnews but has a CRT oriented user interface. The command
+line options are mostly the same as those of readnews.
+The list of available commands
+is quite similar, although since vnews is a "visual"
+interface, most vnews commands do not have to be terminated
+by a newline.
+.pg
+Vnews uses the first 22 lines of the screen to display the
+current article. Line 23 is the secondary prompt line, and
+is used to input string arguments to commands. Line 24
+contains several fields. The first field is the prompt
+field. If vnews is at the end of an article, the prompt is
+"next?"; otherwise the prompt is "more?" (except that after
+you have read all new articles you will be prompted with
+"Done?" once rather than dropped abruptly out of vnews).
+.pg
+The second field is the newsgroup field, which displays the current
+newsgroup, the number of the current article, and the number
+of the last article in the newsgroup. The third field
+contains the current time, and the last field contains the
+word "mail" if you have mail. When you receive new mail,
+the bell on the terminal is rung and the word mail appears in
+capital letters for 30 seconds. This field may not be displayed
+if you're on a Sun, AT&T 7300 or other workstation-type display that puts
+a new-mail icon on its status line automatically.
+.hn 3
+Commands
+.pg
+It is useful to know that there are actually three viewing modes in vnews.
+These are: article mode (for reading text), subject-index mode (useful for
+going through lots of articles by sender and subject) and group-list mode.
+.pg
+Vnews starts you in group-list mode. You will see a list of the groups you are
+currently subscribed groups. Visited groups will be marked with an underscore
+in the second column. The current group will be pointed at with a '>'. Groups
+marked with a `*' are new ones created since since the end of your last reader
+session. All normal movement and marking commands work as usual, but a space or
+newline takes you to subject-index mode to view the current group.
+As you exit each group, you'll return to group list mode.
+.pg
+Subject-index mode helps you to browse through lots of news,
+looking only at messages with interesting titles and/or senders.
+In subject-index mode, instead of seeing the articles themselves, you see a
+list of articles, senders and subjects for the current group in a format
+much like a mailer message list. Messages already seen will be
+marked with an underscore in the second column. The current message will be
+pointed at with a '>'. Articles marked with a `*' are new ones that came in
+since the start of your session; you'll see these after the next time that
+vnews updates its tables.
+.pg
+All normal movement and marking commands work as usual in subject-index mode,
+but a space or newline takes you back to article mode to view the current
+article, after which you return to subject list mode. Thus, once you're in it,
+you can just hit the spacebar repeatedly to see articles and then pop out to
+the index again.
+.pg
+Article mode is what you read article text in; it presents you with article
+headers (and, if the -c option is on, first pages) of messages to be accepted
+or rejected. In this mode, a space or newline brings up the next page of the
+article; if you're at the last page, it pops you back to subject-index mode
+pointing at the next article.
+.pg
+Most of the readnews commands have vnews counterparts and
+vice versa. Some differences are:
+.lp 1.
+It lacks a digest command, but tries to recognize digest boundaries
+(when you type 'm' you're taken to the start of the next digest if there
+is one).
+.lp 2.
+To get to the previous group, use the N command with a '-' argument.
+.lp 3.
+Vnews has commands commands for moving around in the
+article which readnews does not have since they aren't
+applicable.
+.lp 4.
+The decrypt command always does rot 13; rot 13 seems to be the default
+standard and the readnews version occasionally gets confused.
+.hn 3
+Commands that differ from readnews
+.pg
+Each vnews command may be preceded by a count. Some
+commands use the count; others ignore it. If count is
+omitted, it defaults to one. Some commands prompt for an
+argument on the second to the bottom line of the screen.
+Standard UNIX erase and kill processing is done on this
+argument. The argument is terminated by a return. An
+interrupt (delete or break) gets you out of any partially
+entered command.
+.lp \fB<CR>\fR
+A carriage return prints more of the current article, or goes on to the
+next article if you are at the end of the current article.
+.lp \fB^B\fR
+Goes backwards count pages.
+.lp \fB^F\fR
+Goes forward count pages.
+.lp \fB^N\ or\ ^Y\fR
+Go forwards count lines.
+.lp \fB^P\ or\ ^Z\fR
+Go backwards count lines.
+.lp \fB^D\fR
+Go forwards half a page.
+.lp \fB^U\fR
+Go backwards half a page.
+.lp \fBh\fR
+Go back to the top of the article and display only the header.
+.lp \fB!\fR
+Use the l command (or essentially any other command) after ! to turn on the
+display, after the program terminates.
+.lp \fBN\fR
+Go to a different newsgroup. You are prompted for
+a newsgroup name. A null newsgroup name gets the
+next group, the name "-" gets the previous group.
+.lp \fB^L\fR
+Rewrites the screen. CONTROL-L may be typed at any time.
+.lp \fBD\fR
+Decrypts a joke. It only handles rot 13 jokes.
+The D command is a toggle; typing another D re-encrypts the joke.
+.lp \fBa\fR
+The vnews a command is a toggle; type 'a' while on the index page and
+you'll go back to the article you were in when you typed the first 'a'.
+All other commands operate normally in index mode; the article you entered
+the index page from is considered the current one.
+.pg
+Vnews also includes some advanced commands not documented here that you will
+want to learn once you become proficient with it. For details see the
+.i vnews (1)
+manual entry. You will probably want to learn at least the `l' and `g'
+commands; these control two alternate viewing modes that are useful for plowing
+through a lot of news very quickly.
+.hn 2
+Using your system mailer as a news viewer
+.pg
+The
+.i mailnews (1)
+program allows you to use various mail programs to view news.
+It replaces the -c option of readnews. 
+.hn 3
+Using Berkeley Mail with mailnews
+If you have the Berkeley
+.i Mail (1)
+program with the
+.b \-T
+option that asks Mail to tell mailnews which articles you read,
+you can use the
+.i Mail
+(pronounced \fIcap mail\fR) interface. This invokes the Berkeley
+.b Mail
+program directly, and allows you to read news
+with the same commands as you read mail.
+.hn 3
+Using other mailers with mailnews
+.pg
+If Berkeley Mail does not exist on your system (or if it does but your
+USENET administrator is ignoring it) the mailnews program will call the
+default local mailer to help you read news.
+.pg
+There are a number of other mail reading programs commonly found
+on UNIX systems, including /bin/mail, msg, and MH.
+Whether Berkeley Mail exists or not, you can force mailnews to use
+whatever mailer you like with its -c
+option (the only requirement is that the mailer accept an -f option to
+specify a remote mailbox). If you type
+.sd
+\fBmailnews \-c\fR "/bin/mail"
+.ed
+for example, you'll view news through the /bin/mail interface. Mailnews
+will dump all new articles into an invisible temporary mailbox and call
+the mailer on it. When you are done, mailnews will try to deduce which
+articles you read by looking at the mailbox; anything you deleted will
+be considered seen. You can invert this (have it mark all articles
+\fBexcept\fR those you delete seen) by setting the -d option of mailnews.
+.hn 2
+Using rn
+.pg
+The
+.b rn (1)
+interface is a complete, self-contained news reading and posting program.
+Though rn uses the standard .newsrc and active file formats and a vnews-like
+screen-oriented display its command and option conventions are very different
+from the interfaces included with this distribution.
+For details, find an rn distribution kit and read its documentation files.
+Kits are available from the designer, Larry Wall (lwall@sdcrdcf.UUCP).
+.pg
+An emulation, incomplete but quite usable, is supplied as
+.IR vrn (1)
+in this distribution.
+.hn 1
+Changing your Subscription List
+.pg
+If you take no special action you will subscribe to
+a default subscription list.
+This default varies locally.
+To find out your local default, type
+.sd
+\fBreadnews \-s\fR
+.ed
+Typically this list will include
+newsgroups used for posting site- and net-wide announcements.
+such as
+.b general ,
+and
+.b all.announce .
+(As distributed, the default is ``general,all.announce''.
+Another popular default is ``all''.)
+You can change this by creating or altering a file in your home
+directory named ".newsrc" in which contains as its first line a line
+of the form:
+.sd
+options \-n newsgroup,newsgroup,newsgroup ...
+.ed
+If your lines get too long, you can continue them on subsequent lines
+by beginning those lines with a space.
+(The netnews system will put extra lines in this file to
+record which articles you have read.
+You should ignore these lines unless you want to edit them.)
+For example, if you are creating a subscription list for the
+first time, and have already read news, you will find some
+text already in your
+.i .newsrc
+file, recording which articles you have read.
+You should put your
+.b options
+line before the first line of the file.)
+Thus,
+.sd
+options \-n general,comp.unix.questions,comp.unix.wizards
+.ed
+will subscribe to those three newsgroups.
+.pg
+A ``!'' can be used to exclude certain newsgroups and the word
+.b all
+can be used as a wild card, representing any newsgroup.
+You can also use
+.b all
+as a prefix or suffix to match a class of newsgroups.
+For example,
+.sd
+options \-n all,!rec.humor,!all.unix.all
+.ed
+will result in a subscription to all newsgroups except for ARPANET news,
+jokes, and any UNIX information.
+The metacharacter ``.'' is like ``/'' to the shell, and ``all'' is like ``*''.
+.pg
+A simpler way to subscribe to news is to subscribe to ``all'',
+and then use the ``U'' readnews command to unsubscribe to newsgroups
+you don't want to read.
+This way you will see new newsgroups that are created, get a chance to
+evaluate them, and then unsubscribe to those that don't interest you.
+.pg
+The order of the newsgroups in your .newsrc (after the options line)
+is the order in which newsgroups will be shown. If you want something
+other than the default, move the lines around until you are
+satisfied with the order. Be careful to keep the options line
+as the first line in the file.
+.hn 1
+Submitting Articles
+.pg
+To submit a new news article type
+.sd
+.b postnews
+.ed
+First, it will ask you if this is a follow-up to an article.
+Answer yes or no. If yes, you really should have done an ``f'' from
+readnews, but it will try and figure out which article you are
+following up to. It will ask for the newsgroup you read the
+article in and the article number. If you can't remember, type
+? to see a list of subjects in the group. It is important that discussions
+are kept together. It is very frustrating for someone to
+read a follow-up that says:
+.Pg l
+I agree. It's very dangerous to leave that program as distributed.",
+and not have any idea what the poster was refering to.
+.pg
+If you  you answer no, postnews will ask you for the Subject of
+the new article. This should be as informative as possible. For example,
+"Car for sale in New Jersey" is much better that "Car for sale"
+or even "For sale". It will then ask which newsgroups you
+want the article posted in. If you are unsure, type ``?'' instead
+of a specific newsgroup and it will show you the list of
+currently available groups.  Then, you will be asked how far your
+article should be distributed. It is important to keep this as
+small as possible to accomplish the purpose of your article.
+Remember that many newsgroups are read in Europe, Australia and
+Asia in addition to the United States and Canada. It does no
+good (to use the previous example) to post a "Car for sale in New Jersey"
+article with a distribution of 
+.b world .
+There is almost no chance that a person in Sweden or Korea would
+be interested in buying your car. It is a waste of money and
+computer resources to transmit the article that far. For this 
+specific case, the appropriate distribution would be "nj" or
+only in New Jersey. If there were no local distribution available,
+at least it should be confined to "usa". If you are unsure of
+the distributions available at your site, type ``?'' instead
+of a distribution and you will receive a list of distributions
+valid for your site.
+.pg
+Then you will be placed in the editor.
+Enter the text of your article, after the blank line,
+and exit the editor.
+The article will be posted to the newsgroups specified.
+If you change your mind about the headers while you are still
+in the editor, you can edit them as well.
+Extra headers can also be added before the blank line.
+.pg
+If you change you mind about posting the article, you can hit
+your interrupt key, or if you are in the editor, either delete
+all of the lines or do no write out the modified file. In either
+case, the article will not be posted.
+.hn 1
+Browsing through Old News
+.pg
+There are a number of command line options to the
+.b readnews
+command to help you find an old article you want to see again.
+The
+.b \-n
+.i newsgroups
+option restricts your search to certain newsgroups.
+The
+.b \-x
+option arranges to ignore the record of articles read,
+which is kept in your
+.i \&.newsrc
+file.
+This will cause all articles in all newsgroups to which you
+subscribe to be displayed,
+even those which you have already seen.
+It also causes
+.b readnews
+to not update the
+.i \&.newsrc
+file.
+The
+.b \-a
+.i date
+option asks for news received since the given
+.i date .
+Note that even with the
+.b \-a
+option, only articles you have not already seen will be printed,
+unless you combine it with the
+.b \-x
+option.
+(Articles are kept on file until they expire,
+typically after two weeks.)
+The
+.b \-t
+.i keywords
+option restricts the query to articles mentioning one of the
+.i keywords
+in the title of the article.
+Thus, the command
+.sd
+\fBreadnews \-n\fR comp.unix \fB\-x \-a\fR last thursday \fB\-t\fR setuid
+.ed
+asks for all articles in the comp.unix groups since last
+thursday about the setuid feature.
+.be careful with the \-t option.
+The above example will not find articles about ``suid'',
+nor will it find articles with no title or whose author did not use
+the word ``setuid'' in the title.)
+.pg
+Other useful options include the
+.b \-l
+option (which lists only the headers
+of articles - a useful form for browsing through lots of articles).
+The
+.b \-p
+option prints the articles without asking for any input;
+this is similar to some older
+.b news
+programs on many UNIX systems and is useful for directing output
+to a printer.
+The
+.b \-r
+option produces articles in reverse order, from newest to oldest.
+.hn 1
+Getting News when you Log In
+.pg
+Most users like to be told when they first log in if there is any news.
+This way they are reminded of news, but are not interrupted by it
+during the day.
+If you log in once in the morning,
+you can think of getting the news as reading the morning newspaper.
+It is common to put a
+.b checknews
+or
+.b readnews
+command in your
+.i .profile
+or
+.i .login
+file of commands that happen when you log in.
+.pg
+Since there might not be any news,
+and since the
+.b readnews
+command goes to a considerable amount of
+work to find all unread news (assuming you are going to read it),
+there is another command, called
+.b checknews ,
+which tells you if there is any news.
+The
+.b checknews
+command is smaller and faster than
+.b readnews ,
+and was designed especially for a login file.
+There are also options to be silent if there is (or is not)
+news, and to start up
+.b readnews
+automatically if there is news.
+.pg
+The options to
+.b checknews
+are:
+.lp \fB\-y\fR
+Print ``There is news'' if there is any unread news.
+.lp \fB\-v\fR
+If \fB\-y\fR is also given, instead of printing ``There is news'',
+print ``News: \fInewsgroup\fR ...'' giving the name of the first newsgroup
+containing unread news.  If
+.b general
+is the first newsgroup presented, this can be used to tell users whether
+the unread news is important.
+.lp \fB\-n\fR
+Print ``No news'' if there is no unread news.
+.lp \fB\-e\fR
+If there is any unread news, start up
+.b readnews.
+Any additional arguments after the
+.b \-e
+will be passed to readnews.
+.pg
+Thus, ``\fBchecknews \-yn\fR'' tells you whether there is any unread news.
+``\fBchecknews \-e \-M\fR'' starts up
+.b readnews
+with the Mail interface if there is news,
+and otherwise does nothing.
+``\fBchecknews \-y\fR'' tells you if there is news,
+and is silent if there is no news.
+.hn 1
+Creating New Newsgroups
+.pg
+New newsgroups are created by the users.
+To create a newsgroup, first make sure this is the right thing to do.
+Normally a suggestion is first posted to news.groups,net.relatedgroup for
+a net newsgroup (net.relatedgroup should be the group which you
+are proposing to sub-divide. E.g. to propose creating rec.arts.tv.soaps, post
+the original article to rec.arts.tv, news.groups).
+Followups are made to news.groups ONLY. (You can force this by
+putting the line:
+.sd
+Followup-To: news.groups
+.ed
+in the headers of your original posting).
+If it is established that there is general interest in such a group,
+and a name is agreed on, then
+ask your local netnews administrator to create the newsgroup.
+.it can actually be created by any netnews administrator anywhere on the
+net, within the scope of the newsgroup.)
+Once the newsgroup is created and the first article has been posted,
+the newsgroup is available for all interested persons to post to.
+.hn 1
+Moderating a Newsgroup
+If you are the moderator of a newsgroup, you will see articles
+in your mail that contain news headers. These are, of course, submissions
+to your group. You will want to post at least some of them to the net.
+.pg
+Pre-\*V versions of news generate mail that contains partial
+news headers along with a To: header addressed to you. These articles must
+be posted through postnews or inews to supply missing headers.
+.pg
+\*V users, on the other hand,
+will send you submissions with full news headers including an Message-ID;
+you can post those through rnews if you want to preserve all those headers
+(this is recommended so that the posting site won't see the article again
+under a different ID).
+.pg
+This change is a necessary side-effect of some other changes designed to
+completely hide the difference between normal and moderated newsgroups from
+the human-interface level of posting programs (in particular, these programs
+now properly handle newsgroup lists that contain any mixture of moderated and
+normal groups).
+.pg
+Another change in \*V is that it automatically detects when you are the
+moderator of an addressed group and will generate a sensible Approved header
+if you don't supply one.
+.pg
+Under \*V, moderated groups may have more than one moderator. The second
+through nth fields in a moderators file line list the moderators' addresses.
+Submissions will be sent to all of them, and the \*V software will permit
+any of them to approve a article. Earlier versions of news at other sites
+have no way to know this is going on, so there is no compatibility problem.
+.hn 1
+List of Newsgroups
+.pg
+A current list of newsgroups can be obtained by typing ``?'' to the
+Newsgroups? prompt in postnews. The file this brings up lives in your
+library directory (usually /usr/lib/news) under the name 'newsgroups'.
+.pg
+Note that the list is constantly changing.
+It is recommended that other installations edit the list of local
+newsgroups to fit their installation before distributing this
+document to their users.
+If this is not possible, a local appendix can be created.
+.pg
+Local groups are kept on the current machine only.
+Local names can be identified by the lack of a prefix,
+that is, there are no periods in local newsgroup names.
+.lp \fBgeneral\fR
+News to be read by everyone on the local machine.
+For example:
+The system will be down Monday morning for PM.
+Or, a new version of program x has been installed.
+This newsgroup is usually mandatory - you are required to
+subscribe to this newsgroup.
+(The list of mandatory newsgroups varies locally.)
+This requirement assures that important announcements reach all users.
+.TC
+.CS

@@ -1,0 +1,290 @@
+			GETTING STARTED
+
+Please read the file LICENSE to understand the terms and conditions under
+which the author grants use of this software. The terms are intended to
+protect the free distribution of the software and protect it against
+commercial appropriation (no attempt is made to prohibit commercial use).
+Your installation and use of the software will be construed as an agreement
+to abide by the license terms.
+
+To make the news software, 
+
+	1. Read the rest of this file. There may be something you need to know
+	   in the section on machine-specific nits below.
+
+	2. Go to ./D.posix, run Makeposix, and follow the directions it gives.
+	   This will install some X3J11/POSIX/SVID functions in your system
+	   libraries (or a libposix.a that you can put in your library direct-
+	   ory) that you may not have if you're running a pre-4.3 Berkeley
+	   version or a pre-SVr3 AT&T version.
+
+	2. Run Configure and answer all its questions. It is strongly
+	   recommended that you read the installation guide at
+	   ../doc/install.mn before trying this.
+
+Step 2 will never need doing again until you change OS versions. Step 3 may
+need to be re-done if your site name or mailer capabilities change.
+
+Be sure to read the doc/BUGS file for pending problems.
+
+			SUPPORTED SYSTEMS
+
+The following is a partial list of systems to which this code has been
+successfully ported:
+
+   OS name	      OS type	   Hardware
+   ---------------    ---------	   ----------------------------------
+   UNIX 3.0           SVr1         AT&T 7300/3B1
+   UNIX 3.5, 3.51     SVr2         AT&T 7300/3B1
+   Microport V/AT     SVr2         Generic PC/AT clone (80286)
+   Microport V/AT     SVr3         Generic Compaq 386 clone (80386)
+   SCO XENIX V        SVr3         Generic AT-bus 80386 box
+   OSx3.1             4.2BSD       Pyramid 90x (Berkeley universe)
+   SunOS              4.3BSD       Sun 3/50
+
+If your system is one of the above you should be able to compile and install
+the software without difficulty. If it isn't, you'll want to pay particular
+attention to the section on porting and verifying the code in the Installation
+guide (at ../doc/install.mn).
+
+			THE PERILS OF MALLOC(3)
+
+The netnews code depends heavily on the efficiency and robustness of malloc(3).
+Unfortunately, there are a lot of flaky malloc(3) implementations out there.
+If you start seeing mysterious core dumps, this may be your problem. One solid
+malloc is supplied with the distribution -- the Kingsley malloc distributed
+with perl (look at the file kmalloc.c in the main directory.
+
+It isn't the default because your system malloc (if it works) may be better
+tuned to your architecture, or hand-compiled to fast assembler, or necessary
+to enable symbolic debugging. If you want to use kmalloc.c, compile it and
+add kmalloc.o to the LIBS variable in the Makefile.
+
+If this doesn't solve the problem, scope your bug as closely as you can using
+sdb or dbx or saber and report it to the developers.
+
+		GENERAL COMMENTS ON BERKELEY SYSTEMS
+
+Most V7/BSD linkers are severely brain-damaged. They leave a useless, partially
+linked object around when a link fails (apparently just to confuse `make') and
+sometimes even leave its execute permission bit on (so that it can't be
+distinguished from a valid runnable). The news makefiles and configuration
+procedures don't know about this problem, and if your system is not on the
+list of those supported it might conceivably cause you some difficulty during
+initial port validation.
+
+The management also offers no guarantees about how this code will interact
+with the horrible, slimy, multi-tentacled *thing* called the BSD tty driver.
+To our knowledge, the code works fine with stock 4.[123] implementations; but
+there are plenty of hacked-over and semi-broken mutations of the tty code out
+there with which we have had no congress. Yours may be one of them. If you
+have funny problems in the screen mode of the visual readers, tell the
+maintainers about them by all means -- but don't bet the house and kids on
+getting a solution unless *you* can find one.
+
+Due to deficiencies in BSD curses, the subject-underlining feature in vnews
+won't work. Also, the curses.h header on many non-SunOS 4.2BSD systems is
+broken, resulting in misbehavior from vnews. This patch supposedly fixes the
+problem:
+
+*** curses.h.orig	Mon May 22 23:02:25 1989
+--- curses.h	Mon May 22 23:03:39 1989
+***************
+*** 172,179
+  is that nl() changes the tty modes and the boolean, NONL, is NOT changed to
+  affect this.  The situation that causes this to show up is not very common.
+  */
+! #define nl()	 (_tty.sg_flags |= CRMOD,_pfast = _rawmode,NONL = 0,stty(_tty_ch, &_tty))
+! #define nonl()	 (_tty.sg_flags &= ~CRMOD, _pfast = TRUE, NONL = 1,stty(_tty_ch, &_tty))
+  #define	savetty() (gtty(_tty_ch, &_tty), _res_flg = _tty.sg_flags)
+  #define	resetty() (_tty.sg_flags = _res_flg, stty(_tty_ch, &_tty))
+  
+
+--- 172,179 -----
+  is that nl() changes the tty modes and the boolean, NONL, is NOT changed to
+  affect this.  The situation that causes this to show up is not very common.
+  */
+! #define nl()	 (_tty.sg_flags |= CRMOD,_pfast = _rawmode,stty(_tty_ch, &_tty))
+! #define nonl()	 (_tty.sg_flags &= ~CRMOD, _pfast = TRUE,stty(_tty_ch, &_tty))
+  #define	savetty() (gtty(_tty_ch, &_tty), _res_flg = _tty.sg_flags)
+  #define	resetty() (_tty.sg_flags = _res_flg, stty(_tty_ch, &_tty))
+
+Finally, beware of combining NFS with the LOCKF code in this release. As of
+early 1989, vendor claims to support POSIX-compatible lockf(3) on NFS volumes
+are still mostly hot air; NFS is 'stateless' and therefore cannot support locks
+without a lot of fragile klugery in the form of lock daemons (that often
+don't). You have been warned.
+
+Note: Your author is not an AT&T employee or stockholder, and was for two years
+site guru for 4.1BSD on a VAX before moving to System V. If the tone of the
+above couple of paragraphs offended you, you are probably a BSD zealot and they
+were intended to. Now you know how *I* feel when Berkeley bigots bash on *my*
+home environment...
+
+			MACHINE-SPECIFIC NITS
+
+This version of netnews was developed on an AT&T UNIX PC (aka AT&T 7300 aka
+AT&T 3B1 aka Convergent Technologies S/50) under versions 3.0 and 3.5 of 3B1
+UNIX; later on an AT-bus 386 clone box using a Micronics motherboard. It should
+port to other major UNIX versions without problems, though it may not always
+lint clean.
+
+The following glitches are known but not presently understood by the
+Configure script:
+
+			AT&T 7300 and 3B1
+
+If you want to use shared libraries on a 3B1 under an OS version that doesn't
+include a POSIX-compatible readdir() and friends, you'll need to make a
+libposix.a as per the directions in D.posix/Makefile and put it in /lib *as
+well* as installing the dirent stuff in your /lib/libc.a (yes, this means
+having two copies of the code around). Then, when you compile with ccs, you
+want -lposix in the command line (the default 3B1 makefile will have this).
+Ugh...unfortunately, the shared library area is already full to capacity.
+
+For the same reasons, scrnlib.h undefines the CURSES configuration symbol
+when it detects that it's running on a 3B1. This disables use of the 3B1
+terminfo facilities (which aren't sharable) in favor of the pseudo-curses
+supplied with the news distribution (which can use the shared libraries).
+
+The System V Release 2 lint(1) script of 3B1 UNIX 3.5 doesn't handle the
+-lm option correctly when run under ksh. This causes it to utter various lies
+when linting caesar.c, makekits.c etc. It also barfs on leading -I options,
+bollixing up the making of lint libraries in the news subdirectories.
+Workaround: replace the 'lint' command there with sh /usr/bin/lint or use sh
+as an interpreter when running lints.
+
+The System V Release 2 cc(1) script of 3B1 UNIX 3.5 and 3.51 has a bug in its
+getopt(3) call string that screws up its lint option handling. The fix is to
+run the following patch script as root:
+
+# Fix the flag-processing botch in 3.5 and 3.51 cc that screws lint
+cp /bin/cc /bin/occ
+adb -w /bin/cc <<__PATCH__
+901da?w 'Ct'
+__PATCH__
+
+If you are running the (unsupported) HDB UUCP from The Store, you can set
+UUBINDIR to /usr/lbin, which is included in uuxqt's path variable. This may
+work on older versions as well; check your uuxqt log to see if it's included
+in the PATH equate.
+
+			SUN Workstations
+
+For system.h, you may need to link /usr/include/param.h to
+/usr/include/sys/param.h.
+
+			VAXen under ULTRIX
+
+The Configure scripts may need to be run under sh5 (the System V Shell).
+
+There is an otherwise-undocumented #ifdef/#endif ULTRIX in src/control.c that
+deals with ULTRIX 1.1 C's inability to handle void function pointers properly.
+Simply insert a #define of it somewhere near the top of the source. I haven't
+incorporated this bit of smarts in the autoconfigure because I don't know a
+way to tell obsolscent 1.1 from non-ULTRIX and more recent ULTRIX
+implementations that don't need this hack.
+
+Ultrix 1.1 C screws up register declarations. If you're running 1.1, you
+may need to put -Dregister= in your compiler flags.
+
+Some versions of ULTRIX declare longjmp() to be extern void rather than (as
+is usual for BSD systems) extern int. You may have to tweak system.h to fix
+this.
+
+You will need to use kmalloc.o, ULTRIX malloc is broken.
+
+Compress.c won't compile properly under GNU C due to an #asm directive inserted
+to get around a bug in cc -O. Use pcc.
+
+			Pyramid 90x
+
+The ucb universe YACC on Pyramid's OSx 3.1 is broken. Its yaccpar file has been
+changed; it tries to include something called "y.tok.h" which YACC cannot be
+made to generate by any documented means. This will cause the compile of
+getdate.c to bomb. The att universe YACC works fine; if you must build
+netnews in the ucb universe, replace 'yacc' with 'att yacc' each time after
+you run Configure to generate a new makefile. Earlier versions of OSx as late
+as 2.5 did not have this problem.
+
+Pyramid claims to support POSIX-compatible lockf(3). Older versions don't.
+Configure your news *without* LOCKF unless you're sure.
+
+	Compaq 386 and other clone boxes under Microport V/386
+
+Due to a bug in the Microport compiler optimizer, you may have to compile
+session.o without the -O flag. This is true for all versions up to 2.3.0.
+
+			Sun Microsystems
+
+SunOS claims to support POSIX-compatible lockf(3) over NFS. As of version 3.2,
+it lies. If you're using NFS, configure your news *without* LOCKF.
+
+By default, Sun systems will be treated like 4.3BSD systems. If your SunOS
+version is old enough that you need to change this, you must tweak the
+configsys.h and configsys.sh files manually.
+
+	Radio Shack Model 16 aka Tandy 6000 & other XENIX III systems
+
+You'll have to link /usr/include/errno.h to /usr/include/sys/errno.h; this
+requires root permissions, of course. Also, older XENIX C compilers don't
+understand void, so you'll have to add -Dvoid=int to the cc options when
+compiling the POSIX library (the Configure process arranges this automatically
+for the main body of the news code).
+
+			UNIVAC 1100
+
+This machine's linker is one-pass and hiccups on some cyclic dependencies in
+libread.a. The workaround is to replace the line in the Makefile
+that reads
+
+RLIBS = libread.a libnews.a libport.a
+
+with
+
+RLIBS = libread.a libread.a libnews.a libport.a
+
+The dependency cycle causing this problem may be removed in a future release.
+
+There is a bug in the semaphores implementation on the 1100's UNIX that results
+in the sem_otime member on a newly-created semaphore not getting zeroed. This
+manifests as a hang when lock() is called. To work around this, hand-patch your
+configsys.h to #undef SVIDSEMS. You'll end up using the V7/SIII lockfile +
+busy/wait method.
+
+			GOULD UTX MACHINES
+
+If your /usr/include/sys/param.h isn't linked to /usr/include/param.h, it needs
+to be. This is standard on most 4.[23]BSD implementations.
+
+				XENIX
+
+In Makeposix, you'll need to set LIBC to /lib/386/Slibc.a.
+
+There is no 'g' lubrary under XENIX. If you compile with debugging on, you
+must remove this from the LFLAGS variable in the main Makefile.
+
+			NON-STANDARD READERS
+
+If you are using an rn or vn distribution that hasn't been modified to use
+3.0 file formats, you may have some trouble with the new .newsrc files.
+
+Specifically, if you generate a .newsrc with readnews or vnews and then
+run unmodified rn or vn on it, rn/vn may not understand some of the 3.0
+constructs like unsubscribed-discussion IDs (generated by the ug command
+from readnews/vnews), or keyboard macro definitions, or the new 'option'
+line format that allows you to embed options for several different readers
+in your .newsrc. See news.5 in the man directory for details.
+
+Bob McQueer (bobm@rtech), author of vn, is working on a 3.0 conversion kit
+for vn. Bruce Bergman (bruceb@telesoft) is working on retrofitting the 3.0
+service libraries to rn. Until these make it into a patch, use caution.
+
+The DOXREFS option for use with rn is supported.
+
+One other minor problem with rn is due to 3.0 expire's habit of deleting
+article spool subdirectories when they go empty. The version_check() code
+in rn:init.c typically won't find the spool subdirectory it's looking for,
+and will therefore suggest that you have a wrong version and cause rn to
+exit, failing. To fix this, comment out the version_check call in your 
+rn source and recompile.

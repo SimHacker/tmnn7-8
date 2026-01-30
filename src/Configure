@@ -1,0 +1,1278 @@
+: use /bin/sh
+#
+# Configure -- script for determining system capabilities.
+#	Requires the ConfigureUtils file. Produces confignews.sh and
+#	confignews.h
+#
+# If these # comments don't work, trim them.  Don't worry about the other
+# shell scripts, I will trim # comments from them for you.
+#
+# This TMN-netnews version written by Eric S. Raymond
+# Praise and kudos to Larry Wall who wrote the first direct ancestor of it.
+#
+#   This software is copyright (C) 1988 by Eric S. Raymond for the sole purpose
+# of protecting free redistribution; see the LICENSE file for details.
+
+: This is the list of library subdirectories
+DIRLIST="D.port D.news D.priv D.post D.read D.uucp D.scrn D.network"
+
+: This is the list of shell scripts that need to be customized
+scripts="checkgroups recnews euuname arbitron newsarchive newsspace newsclean newslogs"
+
+: This is the list of all top-level net group classes
+netgroups="comp,news,sci,misc,soc,rec,talk"
+
+: a sanity check
+PATH='.:/bin:/usr/bin:/usr/local/bin:/usr/ucb:/usr/local:/usr/lbin:/etc'
+export PATH || (echo "OOPS, this isn't sh.  Desperation time.  I will feed myself to sh."; sh $0; kill $$)
+
+# defaults for netnews parameters
+nonlocal='undef' access=LOCAL nntpsrv='' netlib=''
+
+newsusr='news' newsgrp='news' textdir='/usr/spool/news'
+libdir='/usr/lib/news' bindir='/usr/bin'
+batchdir='/usr/spool/batch' archdir='/usr/spool/archive'
+uubindir='/usr/bin' lrnews='ln'
+
+locpref='local'
+orgpref='' citypref='' statepref='' cntrypref='usa' contpref='na'
+
+organization='no default' dfltsub='general,all.announce' admsub='general,all.announce'
+leastuid=100
+
+dftxmit='' xmitflgs='' cgood='undef' zreturn='undef' uucast='undef'
+mailfmt='V7' mailchar='F' mailprog='/bin/mail' mailserv='/bin/mail'
+smarthost='%s' backbone='%s'
+
+notify='usenet' umask='022' nonew='undef' nodel='define' isorg='undef'
+orgdist=''
+isuup='undef' euuname='euuname'
+nazi='undef' fascist='any' commie=undef communist='all'
+
+runtime='undef' isnice='undef' nicer='4' spoolmin='500'
+spoolnews='undef' spoolpost='undef'
+histexp=28 tmnconv='undef' debug='define'
+cfeed='undef' cache='undef' hash='define' newctrl='undef'
+
+mailfront='/bin/mail' tmail='undef'
+xref='undef' sortit='define' digest='define' cmail='define' stime='define'
+dfteditor='' feedback='undef' siglines=none quotelim=none longtext=25
+modonly='undef'
+
+newmake=''
+newtranspconf=''
+case $1 in
+all|0) level=0; newmake='y'; newtranspconf='y'; ConfigureSys;;
+makefile|Makefile|2) level='2'; newmake='y';;
+links|3) level='3';;
+*) level='1'; newmake='y';;
+esac
+
+: make sure we have preconditions
+if test -f ./configsys.sh ; then
+    case $level in 0|1)
+	echo "Fetching default answers from your configsys.sh file..."
+    ;; esac
+else
+    : check that kit stuff is all there
+    dirs="src doc man misc"
+    trap 'rm -f /tmp/missing$$; exit 0' 0 1 2 15
+    echo "Checking your kits against the MANIFEST file.."
+    (cd ..; find . -print | sort | comm -13 - MANIFEST >/tmp/missing$$)
+    if test -s /tmp/missing$$
+    then
+	echo "Your kits are missing the following files: "
+	cat /tmp/missing$$
+	rm /tmp/missing$$
+	exit 0
+    else
+	echo "Your source kits are complete. "
+	rm /tmp/missing$$
+    fi
+
+    echo "There's no configsys.sh here, I'll run ConfigureSys"
+    ConfigureSys
+    level=0
+    echo "Fetching default answers from your new configsys.sh file..."
+fi
+. ./configsys.sh
+case $level in 0|1)
+   echo $date0
+;; esac
+
+if test -f ./confignews.sh ; then
+    case $level in 0|1)
+	echo "Fetching default answers from your old confignews.sh file..."
+    ;; esac
+    . ./confignews.sh
+    case $level in 0|1)
+	echo $date1
+    ;; esac
+else
+    echo "There's no confignews.sh here; I won't assume any defaults"
+    level=0
+fi
+
+: Fix up DIRLIST
+if $test "$posixcompat" = POSIXCOMPAT ; then
+	DIRLIST="D.posix $DIRLIST";
+fi
+
+: get the utilities contains, qq, loc
+. ConfigureUtils
+
+: create grpw utility to extract info from /etc/passwd and /etc/group
+$echo $n "Making passwd/group extraction tool...$c"
+make -f Makefile.dst grpw >/dev/null 2>&1
+$echo "done."
+
+: set up shell script to do ~ expansion
+trap 'rm -f $confighelpers filexp /tmp/smf$$; exit 1' 0 1 2 15
+cat >filexp <<EOSS
+$startsh
+: expand filename
+case \$1 in
+~/*|~)
+    $echo \$1 | $sed "s|~|\${HOME-\$LOGDIR}|"
+    ;;
+~*)
+    if $test -f /bin/csh; then
+	/bin/csh -f -c "glob \$1"
+	$echo ""
+    else
+	name=\`$expr x\$1 : '..\([^/]*\)'\`
+	dir=\`grpw -u \$name "%h"\`
+	if $test ! -d "\$dir"; then
+	    me=\`basename \$0\`
+	    $echo "\$me: can't locate home directory for: \$name" >&2
+	    exit 1
+	fi
+	case \$1 in
+	*/*)
+	    $echo \$dir/\`$expr x\$1 : '..[^/]*/\(.*\)'\`
+	    ;;
+	*)
+	    $echo \$dir
+	    ;;
+	esac
+    fi
+    ;;
+*)
+    $echo \$1
+    ;;
+esac
+EOSS
+chmod +x filexp
+$eunicefix filexp
+
+: FIRST RECONFIGURATION-ONLY SECTION BEGINS HERE
+case $level in '0'|'1')
+
+cat <<'EOM'
+
+The following questions set up various USENET parameters for this system.
+Questions you don't understand can safely take the default (hit RETURN).
+EOM
+
+: Only change critical locations and owners if user needs to
+echo " "
+case $level in 0)
+cat <<EOT
+If you already have a network link to a news node running a news server
+(right now this means specifically a TCP/IP link to an NNTP site)
+and you want to use it as a host rather than maintaining a local news
+database, answer 'y' to the next question.
+EOT
+go=yes ;;
+*)
+    set "0. Change network client/master status of your system?" turnon go n;
+    . qq
+;; esac
+
+case $go in undef|n*) ;; *) newmake='y' newtranspconf='y'
+set "NONLOCAL: Make readers clients of a network server?" turnon nonlocal; . qq
+
+: if we are running nonlocal much else can be skipped
+if $test "$nonlocal" = define ;
+then
+    access=NETWORK
+    : someday there will be more choices than just libnntp.a
+    netlib=libnntp.a
+    : we assume that any network access site has a BSD-like hostname command
+    set "NNTPSERVER: What is the sitename of your default NNTP server?" \
+	name nntpsrv `hostname`
+    . qq
+else
+    access=LOCAL
+fi
+
+: end of section 0, master-client status questions
+;; esac
+
+: Only change critical locations and owners if user needs to
+case $level in 0)
+cat <<EOT
+
+Next you need to pick an owner and group for the news files and settle where
+in your file hierarchy they will reside. 
+EOT
+go=yes ;;
+*)
+    echo " "
+    if $test $level != 0 ; then
+        set "1. Change news owner/group or special directories?" turnon go n;
+	. qq
+    fi
+;; esac
+case $go in undef|n*) ;; *) newmake='y' newtranspconf='y'
+
+while :;
+do
+    tryuser=$newsusr
+    set "NEWSUSR: What user should own the netnews files?" name tryuser
+    . qq
+    if grpw -u $tryuser "" >/dev/null 2>&1; then
+	newsusr=$tryuser
+	break
+    else
+    	echo "There is no such user as $tryuser, try again please.";
+    fi;
+done
+while :;
+do
+    trygrp=$newsgrp
+    set "NEWSGRP: What group should own the netnews files?" name trygrp
+    . qq;
+    if grpw -g $trygrp "" >/dev/null 2>&1; then
+	newsgrp=$trygrp
+	break
+    else
+	echo "There is no such group as $trygrp, try again please.";
+    fi;
+done
+
+if $test -d /var ; then
+    usr=/var
+else
+    usr=/usr
+fi
+
+set "LIBDIR*: Directory for news library files?" \
+		name libdir $usr/lib/news; . qq
+set "ADMDIR*: Directory for news administration files?" \
+			name admdir $libdir; . qq
+
+case $access in LOCAL)
+
+set "TEXTDIR*: Directory for article text files?" \
+		name textdir $usr/spool/news; . qq
+fs=`expr "$textdir" : "\(/[^/]*\)/.*"`
+case "$fs" in /*) usr=$fs ;; esac
+set "SPOOLDIR*: Directory for spooling incoming articles?" \
+		name spooldir $textdir/.rnews; . qq
+set "BATCHDIR*: Directory for newsbatch files?" \
+		name batchdir $textdir/.batch; . qq
+set "ARCHDIR*: Directory for archive files?" \
+		name archdir $usr/archive; . qq
+
+if $test "$species" = "BSD4_2" -o "$species" = "BSD4_3" ; then
+    uselink=y
+    set "LRNEWS: Use a symbolic link to uux-accessible rnews?" turnon uselink
+    . qq
+    case "$uselink" in '') ;; undef) lrnews='ln' ;; *) lrnews='ln -s' ;; esac
+fi
+
+;; esac
+: LOCAL-only questions end here
+
+: determine where public executables go
+while :; do
+    bindir=`loc . /bin $usr/local/bin $usr/lbin $usr/local $usr/bin`
+    set "BINDIR: Directory for public executables?" name bindir; . qq
+    bindir=`filexp $bindir`
+    if $test -d "$bindir" ; then
+	break;
+    else
+        $echo "$bindir does not appear to exist."
+    fi
+done
+while :; do
+    uubindir=`loc . /bin $usr/local/bin $usr/lbin $usr/local $usr/bin`
+    set "UUBINDIR: Directory for rnews and friends?" name uubindir; . qq
+    uubindir=`filexp $uubindir`
+    if $test -d "$uubindir" ; then
+	break;
+    else
+        $echo "$uubindir does not appear to exist."
+    fi
+done
+
+: end of section 1, owner/group and special directories questions
+;; esac
+
+;; esac
+: FIRST RECONFIGURATION-ONLY SECTION ENDS HERE
+
+: SECOND RECONFIGURATION-ONLY SECTION BEGINS HERE
+case $level in '0'|'1')
+
+: User may not want to edit distributions this time around
+echo " "
+if $test $level != 0 ; then
+    set "2. Change site ID or distributions this site accepts?" turnon go n;
+    . qq
+fi
+case $go in undef|n*) ;; *) newtranspconf='y'
+
+: verify the guess at sitename inherited from the Level 0 Configure
+if $test "$sitename" ; then
+    set "Your sitename seems to be '$sitename', is this correct? [y]"; . qq
+    case $ans in y*|'') ;; *) sitename='' ;; esac
+fi
+
+: bad guess or no guess
+while $test ! "$sitename" ; do
+    set "Please type the (one word) name of your site:" name sitename; . qq
+    case $hostcmd in
+    sed*) $echo "(That doesn't agree with your whoami.h file, by the way.)" ;;
+    *) $echo "(That doesn't agree with your $hostcmd command, by the way.)" ;;
+    esac
+    if $test $douname = "sysname"; then
+	echo "This is inconsistent with what's already in configsys.h."
+	echo "Please go back and do a 'ConfigureSys'"
+	exit 0
+    fi
+    hostcmd=''
+done
+
+case "$level" in 0)
+    $cat << 'EOH'
+
+Now you get to set the names by which this site will be known to the world.
+FROMNAME should be a fully-qualified domain name suitable for Internet use.
+PATHNAME should be the name you want to see in the Path headers of news
+generated at this site. The TRUENAME will only be used internally, in the
+headers of notification mail send to the site administrator.
+EOH
+;; esac
+set "FROMNAME*: Site's name for From lines:" name fromname $sitename.UUCP; . qq
+set "PATHNAME*: Site's name for Path lines:" name pathname $sitename; . qq
+set "TRUENAME*: Site's name for admin mail:" name truename $fromname; . qq
+
+case "$level" in 0)
+    $cat << 'EOH'
+ 
+Please type the name of your organization as you want it to appear on the
+Organization line of outgoing articles.  (It's nice if this also specifies
+your location.  Your city name is probably sufficient if well known.)
+For example:
+
+	University of Southern North Dakota, Hoople
+
+You may also put the name of a file, as long as it begins with a slash.
+For example:
+
+	/etc/organization
+
+EOH
+    ans=''
+    while :; do
+	set "ORGANIZATION*: Organization: [no default]"; . qq
+	if $test "$ans" ; then
+	    organization="$ans"
+	    break;
+	fi
+    done
+    ;;
+*)
+    set "ORGANIZATION*: Organization:" name organization; . qq
+    ;;
+esac
+
+case $level in 0)
+    $cat <<'EOH'
+    
+Distribution groups are a method for restricting the geographical area that
+a netnews message will propagate to. You are likely to be a member of several
+distribution groups, such as organization, city, state, province, country,
+continent, etc.  For example, Los Angeles has the distribution prefix "la",
+New Jersey has the prefix "nj", and Europe has the prefix "eunet". If you
+know what yours are, enter them here; if you don't, guess (postal codes are
+a good start) or take the defaults and you can correct your sys file later
+when you've found the latest USENET form documentation.
+
+The categories you will be asked are: 
+
+local organization	(Could be just one machine or a cluster or an office)
+organization		att, dec, kgb, ...
+city			la, ny, mosc, ...
+state/province		ca, nj, bc, ...
+country			usa, can, uk, rok, whatever
+continent		na (North America, not "Not Applicable"), asia, etc.
+
+(If you don't have a distribution prefix in any of these categories then
+just hit return.)
+EOH
+;;esac
+distlist='world'
+case $locpref in '') dflt='none';; *) dflt=$locpref;; esac
+set "What is the distribution prefix for your local organization? [$dflt]"; . qq
+case "$ans" in '') ;; *)  locpref="$ans" distlist="$distlist,$ans";; esac
+
+case $orgpref in '') dflt='none';; *) dflt=$orgpref;; esac
+set "What is the distribution prefix for your organization? [$dflt]"; . qq
+case "$ans" in '') ;; *)  orgpref="$ans" distlist="$distlist,$ans";; esac
+
+case $citypref in '') dflt='none';; *) dflt=$citypref;; esac
+set "What is the distribution prefix for your city? [$dflt]"; . qq
+case "$ans" in '') ;; *)  citypref="$ans" distlist="$distlist,$ans";; esac
+
+case $statepref in '') dflt='none';; *) dflt=$statepref;; esac
+set "What is the distribution prefix for your state/province? [$dflt]"; . qq
+case "$ans" in '') ;; *)  statepref="$ans" distlist="$distlist,$ans";; esac
+
+set "What is the distribution prefix for your country? [$cntrypref]"; . qq
+case "$ans" in '') ;; *)  cntrypref="$ans";; esac
+distlist="$distlist,$cntrypref"
+
+set "What is the distribution prefix for your continent? [$contpref]"; . qq
+case "$ans" in '') ;; *)  contpref="$ans";; esac
+distlist="$distlist,$contpref"
+
+if expr "$distlist" : ',\(.*\)' ; then
+    distlist=`expr "$distlist" : ',\(.*\)'`
+fi
+: End of distribution questions
+;; esac
+
+;; esac
+: SECOND RECONFIGURATION-ONLY SECTION ENDS HERE
+
+: NETNEWS ADMINISTRATION CUSTOMIZATION BEGINS HERE
+case $level in '0'|'1')
+
+: Skip mailer munging unless user needs to change it
+echo " "
+if $test $level != 0 ; then
+    set "3. Change your mailer or domain information?" turnon go n; . qq
+fi
+case $go in undef|n*) ;; *) newtranspconf='y'
+
+smarthost=''
+
+: check for BSD mail back end
+fsm=`loc sendmail x $pth`
+if $test "$fsm" != x; then
+    set "You have the sendmail server. Should I use it? [y]"; . qq
+    case $ans in n*) ;;
+	*) echo "Sendmail understands @; I'll treat you like an Internet site."
+	mailprog=$fsm
+	mailwith="-oi -oeq"
+	smarthost="%s"
+	;; esac
+fi
+
+: check for smail
+if $test -f /bin/smail; then
+    set "You have smail. Should I use it? [y]"; . qq
+    case $ans in n*) ;;
+    *) echo "Smail understands @; I'll treat you like an Internet site."
+    mailprog=/bin/smail
+    mailwith=''
+    smarthost="%s"
+    mailfmt=V7
+    ;; esac
+fi
+
+: check for mmdf
+if $test -f /usr/mmdf/submit; then
+    set "You have the mmdf mail system. Should I use it? [y]"; . qq
+    case $ans in
+    n*) ;;
+    *) echo "Mmdf understands @; I'll treat you like an Internet site."
+    mailprog=/usr/mmdf/submit
+    mailwith="-smuxto,cc*"
+    mailfmt=V7
+    smarthost="%s"
+    ;; esac
+fi
+
+: determine the default mail back end
+if $test "$mailprog" = /bin/mail ;
+then
+    mailwith="" mailfmt=V7
+    ans='blurfl/dyick'
+    while $test ! -f "$ans" ; do
+	case $ans in blurfl*) ;; *) $echo "$ans doesn't seem to exist." ;; esac
+	set "What is the default mail back end on your system?" \
+			name mailprog /bin/mail; . qq
+	case $ans in '') break 1 ;; *) ;; esac
+    done
+fi
+
+: set back-end command line
+set "Switches to use with $mailprog?" name mailwith; . qq
+mailserv="$mailprog $mailwith"
+echo "MAILSERV*: Your mail-posting command will be $mailserv."
+echo "MAILFMT*: Your mailbox format will be $mailfmt."
+
+: find out how to determine when a file is a mailbox
+case "$mailfmt" in
+V7)
+    mailchar='F';
+    echo "MAILCHAR*: Your mailbox leader character is $mailchar"
+    ;;
+MMDF)
+    mailchar='\001';
+    echo "MAILCHAR*: Your mailbox leader character is $mailchar"
+    ;;
+*)
+    $cat <<'EOM'
+
+In saving articles, readers want to differentiate between saving to mailbox
+format files and normal files.  It does this by examining the first character
+of the file in question.  On most systems the first line starts "From...",
+so the first character is F.  On other systems there are magic cookies like
+control codes between articles, so one of those would be first.
+EOM
+set "MAILCHAR*: What character begins mailboxes?" name mailchar; . qq
+;; esac
+
+set "BACKBONE*: Please enter a path to a backbone site:" name backbone; . qq
+
+: if we do not already know the site has Internet capability, find out now
+if $test "$smarthost" = "%s"
+then
+    echo "I see that your mailer supports domainist addressing. That's good."
+else
+    set "Can your mailer send @-addressed mail? [n] "; . qq
+    if $test "$ans" = 'y' ; then
+	smarthost="%s"
+	echo "I will count on your mailer to autoroute replies."
+    else
+	set "SMARTHOST*: If you can mail to an autorouting site, give the path: [no such path]:"; . qq
+	case "$ans" in
+	'') echo "O.K., I'll assume you can use bang-paths only." ;;
+	*) echo "O.K., readers will show @-addresses."; smarthost="$ans" ;;
+	esac
+    fi
+fi
+
+: End of mailer questions
+;; esac
+
+: Skip security/access/accounting munging unless user needs to change it
+echo " "
+if $test $level != 0 ; then
+    set "4. Change security, access or accounting parameters?" turnon go n;
+    . qq
+fi
+case $go in undef|n*) ;; *) newmake=y newtranspconf='y'
+
+: get news administrator name
+while :;
+do
+    if grpw -u usenet "" >/dev/null 2>&1 ; then
+	notify=usenet
+    else
+	if grpw -u news "" >/dev/null 2>&1 ; then
+	    notify=news
+	else
+	    if $test "$eunice" = "define"; then
+		notify=system
+	    else
+		notify=root
+	    fi
+	fi
+    fi
+    set "NOTIFY*: Who will be the news administrator?" name notify; . qq
+    if grpw -u $notify "" >/dev/null 2>&1; then
+	break
+    else
+	echo "There is no such user as $notify, try again please."
+    fi;
+done
+
+set "ORGDIST: Restrict scope of control messages to a distribution?" \
+	turnon isorg; . qq
+case "$isorg" in
+'define') 
+	case "$orgdist" in
+	'')
+		orgdist=$locpref;;
+	esac
+	set 'What distribution should control messages be restricted to? ' \
+		name orgdist; . qq
+	;;
+esac
+
+set "FASCIST*: Tight control of posting access?" turnon nazi; . qq
+if $test $nazi = define; then
+    set "To what groups should posting be controlled?" name fascist; . qq
+    set "COMMUNIST: Tight control of reading access?" turnon commie; . qq
+    if $test "$commie" = define; then
+	umask='027'
+	set "From what groups should reading be controlled?" name communist;
+	. qq
+    else
+	set "UMASK: Should netnews-created files be publicly writeable? [n]";
+	. qq
+	case $ans in
+	[0-7][0-7][0-7])
+	    umask=$ans
+	    echo "You asked for it, we'll use a ${umask} umask";;
+	y*)
+	    umask='000'
+	    echo "O.K., we'll use a 000 umask";;
+	*)
+	    umask='022'
+	    echo "O.K., we'll use a 022 umask" ;;
+	esac
+    fi
+fi
+
+case $access in LOCAL)
+set "MANUALLY: Force group deletion to be done by hand?" turnon nodel; . qq
+set "NONEWGROUPS: Force group creation to be done by hand?" turnon nonew; . qq
+set "UUPROG: Process uuname messages through a filter?" turnon isuup; . qq
+if $test $isuup = define; then
+    set "O.K., tell me what command to use:" name euuname; . qq
+fi
+;; esac
+
+: End of security/access/accounting questions
+;; esac
+
+: LOCAL-only question section starts here
+case $access in LOCAL)
+
+: Change performance-tuning parameters only if user needs to
+echo " "
+if $test $level != 0 ; then
+    set "5. Change performance-tuning parameters?" turnon go n;
+    . qq
+fi
+case $go in undef|n*) ;; *) newtranspconf='y'
+
+: decide how portable to be
+case "$level" in 0)
+$cat <<'EOH'
+ 
+I can set things up so that your shell scripts and binaries are more portable,
+at what may be a noticeable cost in performance. If you enable RUNTIME, the
+file `attributes' in the news user's home directory will be read at startup
+to override compiled-in defaults for symbol names followed by * in the
+Configure questions.
+
+EOH
+;; esac
+set "RUNTIME: Permit runtime configuration for portability?" turnon runtime;
+. qq
+set "DEBUG: Compile code for -D diagnostic options?" turnon debug; . qq
+
+set "NICE: Should rnews run with a priority adjustment?" turnon isnice; . qq
+if $test "$isnice" = "define"; then
+    set "O.K., what nice level do you want?" name nicer; . qq
+fi
+
+set "SPOOLMIN*: Minimum free blocks to enable batching: [$spoolmin]"; . qq
+case $ans in [0123456789]*) spoolmin=$ans ;; *) ;; esac
+
+set "SPOOLNEWS: Defer processing incoming news until rnews -U?" turnon spoolnews; . qq
+set "SPOOLPOST: Defer send of outgoing news until rnews -U?" turnon spoolpost; . qq
+
+set "HISTEXP: Maximum days to keep history records?" name histexp; . qq
+set "TMNCONVERT: Use old history & feed formats?" turnon tmnconv; . qq
+set "FEEDBITS: Compute subscriptions at start of run?" turnon cfeed; . qq
+case $cfeed in
+define)
+    set "CACHEBITS: Cache feed bits in $libdir/feedbits?" turnon cache;
+    . qq
+    ;;
+*)
+    cache=undef ;;
+esac
+set "HASHGROUPS: Trade some memory for faster group lookup?" turnon hash; . qq
+set "NEWCTRL: Compile control handling as separate tool?" turnon newctrl; . qq
+set "LEASTUID*: Least uid to treat as a real user?" name leastuid; . qq
+
+: End of performance-tuning parameters
+;; esac
+
+: Skip transport layer munging unless user needs to change it
+echo " "
+if $test $level != 0 ; then
+    set "6. Change your transport layer or UUCP parameters?" turnon go n; . qq
+fi
+case $go in undef|n*) ;; *) newtranspconf='y'
+    case $species in
+	V7|BSD[23]*|BSD4_1*) xmitflgs='- -r' cgood=undef zreturn=define;;
+	SIII|SYSV1|BSD4_[23]) xmitflgs='- -r -z -n' cgood=define zreturn=undef;;
+	SYSV2|SYSV3) xmitflgs='- -r -n' cgood=undef zreturn=undef;;
+    esac
+set "DFTXMIT: What uux flags should I use for uucp links?" name xmitflgs; . qq
+set "UUCAST: Do you want to try to use UUCP multicasting?" turnon uucast; . qq
+set "ZRETURN: Suppress nonzero returns from rnews errors?" turnon zreturn; . qq
+;; esac
+
+: LOCAL-only question section ends here
+;; esac
+
+: NETNEWS ADMINISTRATION CUSTOMIZATION ENDS HERE
+;; esac
+
+: Change user interface choices only if user needs to
+echo " "
+if $test "$level" = 1 ; then
+    set "7. Change news reader and poster interface options?" turnon go n;
+    . qq
+fi
+case $go in undef|n*) ;; *) newtranspconf='y'
+
+set "SORTACTIVE: Present news in .newsrc order?" turnon sortit; . qq
+
+: now look for a mail front end
+
+: check to see if we have the special Berkeley mailer with -T
+case $species in BSD*)
+    if $test -f /usr/ucb/Mail; then
+	echo "I think I see a BSD Mail front end."
+	set "MAILFRONT: Can I use it for replies? [y]"; . qq
+	case $ans in n*) ;; *) mailfront="/usr/ucb/Mail";; esac
+	set "TMAIL: Can I use the -T option for mailnews?" turnon tmail; . qq
+    fi
+    ;;
+*)
+    tmail=undef
+    ;;
+esac
+
+: check for other mailer front-ends
+for frontend in mush elm mailx
+do
+    if $test `loc $frontend x $pth` != x;
+    then
+	set "I spy the '$frontend' mail front end. Use it for replies? [y]"
+	. qq
+	case $ans in n*) ;; *) mailfront=$frontend; break ;; esac
+    fi
+done
+
+: determine default editor
+while :; do
+    myed=`loc emacs x $pth`
+    if $test $myed != x; then
+	dfteditor=$myed
+    else
+	myed=`loc vi x $pth`
+	if $test $myed != x; then
+	    dfteditor=$myed
+	else
+	    dfteditor="/bin/ed"
+	fi
+    fi
+    set "DFLTEDITOR: What is your system default editor?" name dfteditor; . qq
+    if $test -f "$dfteditor" ; then
+	break;
+    else
+        $echo "$dfteditor does not appear to exist."
+    fi
+done
+
+case $level in '0')
+    case $windowed in define) cmail=undef stime=undef ;; esac
+;; esac
+
+set "DFLTSUB*: What should the default subscription be?" name dfltsub; . qq
+set "ADMSUB*: What should the mandatory subscription be?" name admsub; . qq
+set "DOXREFS: Generate Xref: bogosities for use with rn?" turnon xref; . qq
+set "FEEDBACK: Enable reader feedback features?" turnon feedback; . qq
+set "CHECKMAIL: Should readers check mail periodically?" turnon cmail; . qq
+set "SHOWTIME: Should readers display a clock?" turnon stime; . qq
+set "DIGPAGE: Permit digestification in readers?" turnon digest; . qq
+set "SIGLINES*: Limit on max # of lines in signatures?" name siglines; . qq
+set "QUOTELIM*: Limit on maximum quote percentage?" name quotelim; . qq
+set "LONGTEXT*: Line count minimum to enable quote check?" name longtext; . qq
+set "MODEXCLUDE: Moderated groups suppress crossposts?" turnon modonly; . qq
+
+: End of user interface customization questions
+;; esac
+
+: LINK CONFIGURATION STARTS HERE
+case $level in 0|1|3)
+case $access in LOCAL)
+
+: Change link configuration only if user needs to
+echo " "
+case $level in '1')
+    set "8. Change descriptions of feeds to other systems?" turnon go n; . qq
+;; esac
+case $go in undef|n*) ;; *)
+
+case $level in '0')
+cat <<EOT
+
+The following questions will repeat until you type a carriage return to the
+'Downstream system?' prompt. Each time, you'll be adding a link description
+to the $libdir/feeds file, which you can modify later with a text editor
+(this file replaces the $libdir/sys of earlier versions -- if you have
+such a file, it will not be modified).
+EOT
+;;
+*) echo " "
+;; esac
+
+: initialize the feeds file to contain reasonable defaults
+if $test -f $libdir/sys ; then
+    echo "Your existing $libdir/sys will provide defaults for your links."
+    cp $libdir/sys %feeds
+elif $test -f $libdir/feeds ; then
+    echo "Your existing $libdir/feeds will provide link defaults."
+    cp $libdir/feeds %feeds
+else
+    : no defaults, treat site as new and generate a default subscription 
+    echo "$pathname:$netgroups:$distlist,to.$sitename:::" >%feeds
+fi
+
+: figure out where the uucp descriptions live
+if $test -f /usr/lib/uucp/L.sys; then
+	neighbors=/usr/lib/uucp/L.sys
+else
+	if $test -f /usr/lib/uucp/Systems; then
+		neighbors=/usr/lib/uucp/Systems
+	else
+		echo "oopsvax" >foo$$
+		neighbors=foo$$
+	fi
+fi
+
+xopts=''
+while :; do
+    $echo " "
+
+    target=''
+    set "Name of a downstream system [CR to end]?" name target; . qq
+    if $test ! "$target" ; then
+	break;
+    fi
+
+case $level in '0')
+cat <<EOT
+
+If the system has other news feeds you can specify them here as a
+comma-separated in order to cut down on retransmissions.
+EOT
+;; esac
+nosend=""
+set "What other newsfeeds does the target have? [none]" name nosend; . qq
+
+case $level in '0')
+cat <<EOT
+
+Now please specify the groups, group categories and distributions that
+$target should be sent. A group, group category or distribution may
+be explicitly excluded by prefacing it with a !.
+EOT
+;; esac
+    groups=`$sed -n <%feeds "s/^$target:\\([^:]*\\):.*:/\\1/p"`
+    commands=`$sed -n <%feeds "s/^$target:[^:]*:\\(.*\\):/\\1/p"`
+
+    if $contains "^$target:.*[^:]$" %feeds >/dev/null 2>&1 ; then
+	echo "Sorry, I can't handle entries with continued lines, you'll have"
+	echo "to edit %feeds yourself to change the \'$target\' entry."
+    else
+	if $test "X$groups" = "X" ; then
+		groups="$netgroups"
+	fi
+
+	set "What groups should $target be sent? " name groups; . qq
+
+	distribs="$distlist,to.$target"
+	set "What distributions should $target be sent? " name distribs; . qq
+
+	xopts=""
+
+	set "B: Use batched transmission? [y]"; . qq
+	case $ans in n*) ;; *) xopts="${xopts}B";; esac
+
+	set "C: Use compression on transmitted articles? [y]"; . qq
+	case $ans in
+	n*) ;;
+	*)
+	    set "    Compression options to use? [none]"; . qq
+	    case $ans in '')xopts="${xopts}C";; *)xopts="${xopts}C\"$ans\"";; esac
+	    ;;
+	esac
+
+# Someday this might be used for X.400 or something
+#	set "A: Use alternate news protocol? [n]"; . qq
+#	case $ans in y*) xopts="${xopts}A" ;; esac
+
+	set "E: Are high bits dropped on your comm link to $target? [n]"; . qq
+	case $ans in y*) xopts="${xopts}E" ;; esac
+
+	set "D: Redirect transmission to file for debug? [n]"; . qq
+	case $ans in y*) xopts="${xopts}D" ;; esac
+
+	set "L: Transmit only locally-submitted articles? [n]";	. qq
+	case $ans in
+	y)
+	    loclen='1'
+	    set "    How many hops away is 'local'?" name loclen; . qq
+	    xopts="${xopts}L$loclen"
+	    ;;
+	*) ;;
+	esac
+
+	set "N: Use ihave/sendme protocol? [n]"; . qq
+	case $ans in y*) xopts="${xopts}N" ;; esac
+
+	case $command in '') dflt=none;; *) dflt=$command;; esac
+	set "Special transmission command? [$dflt]"; . qq
+	case $ans in '');; y*) command=$ans ;; esac
+
+	# Put confirm y-or-n check here at level 0?
+
+	ed %feeds <<EOE >/dev/null 2>&1
+g/^$target:/d
+w
+q
+EOE
+sysline="$target${nosend:+/}$nosend:$groups/alt:$distribs:$xopts:$command:"
+echo $sysline >>%feeds
+	$echo " "
+	$echo "Complete entry is '$sysline'"
+	$echo " "
+    fi
+
+    if $contains $target $neighbors >/dev/null 2>&1; then
+	echo "You already have a uucp link to $target"
+    else
+	echo "You will need to make a uucp link to $target"
+    fi
+done
+
+: End of link configuration questions
+;; esac
+
+case $level in '3') exit 0;; esac
+
+: LOCAL-only questions end here
+;; esac
+: LINK CONFIGURATION ENDS HERE
+;; esac
+
+case $level in 0|1)
+	$echo " "
+	$echo "End of configuration questions."
+;;esac
+
+case "$commie" in define) security=TIGHT ;; *) security=LOOSE ;; esac
+
+trap "rm -f $confighelpers filexp config$$.sh confignews$$.h; exit 1" 1 2 15
+
+$spitshell  >>config$$.sh <<EOT
+# confignews.sh
+date1="Last level 1 configuration was `date`"
+
+# 0: news hierarchy access method
+nonlocal=$nonlocal	# 'define' to force posting through network library
+access="$access"	# NETWORK if nonlocal, LOCAL otherwise
+netlib="$netlib"	# name of net library to be used for nonlocal access
+nntpsrv="$nntpsrv"	# name of the network host for NONLOCAL readers
+
+# 1: news owner/group and special directories
+newsusr="$newsusr"	# Name of the news files owner
+newsgrp="$newsgrp"	# Name of the owning group
+textdir="$textdir"	# The article texts directory
+spooldir="$spooldir"	# The incoming-file spool directory
+batchdir="$batchdir"	# The batch files directory
+archdir="$archdir"	# The archive files directory
+libdir="$libdir"	# Where the utilities and group data lives
+admdir="$admdir"	# Where sharable database stuff lives
+bindir="$bindir"	# Where the public binaries should go
+uubindir="$uubindir"	# Where rnews and friends should go
+lrnews="$lrnews"	# Command to link inews and rnews
+
+# 2: site ID and distributions we accept
+locpref="$locpref"	# Your local organization distribution prefix
+orgpref="$orgpref"	# Your organization's distribution prefix
+citypref="$citypref"	# Your city's distribution prefix
+statepref="$statepref"	# Your state's distribution prefix
+cntrypref="$cntrypref"	# Your country's distribution prefix
+contpref="$contpref"	# Your continent's distribution prefix
+distlist="$distlist"	# The accumulated distribution list
+fromname="$fromname"	# name for From lines
+pathname="$pathname"	# name for Path lines
+truename="$truename"	# name for admin mail
+organization="$organization"		# Organization name
+
+# 3: mail handling
+mailprog="$mailprog"	# The local default mailer back end
+mailwith="$mailwith"	# Switches, if any, for local default mailer
+mailserv="$mailserv"	# Mailer back end
+mailfmt="$mailfmt"	# describes the mailer format
+mailchar="$mailchar"	# leading character of mailboxes
+smarthost="$smarthost"	# forwarding address for autorouting mail
+backbone="$backbone"	# if nonempty, a path to a backbone site
+
+# 4: security, access and accounting
+notify="$notify"	# The news administrator
+nonew="$nonew"		# 'define' to intercept newgroup messages
+nodel="$nodel"		# 'define' to intercept group deletions
+isorg="$isorg"		# 'define' to restrict scope of control messages
+orgdist="$orgdist"	# And this is the scope of the control messages
+isuup="$isuup"		# 'define' to intercept uuname messages
+euuname="$euuname"	# And this is what to intercept them with
+nazi="$nazi"	# 'define' if we're being totalitarian
+fascist="$fascist"	# Which groups we're being fascist about
+commie="$commie"	# 'define' if we're restricting posting access
+communist="$communist"	# Which groups we're being totalitarian about
+security="$security"	# TIGHT or LOOSE depending on whether communism is on
+umask="$umask"		# Umask to use for files created by news
+
+# 5: performance tuning
+isnice="$isnice"	# 'define' if we want rnews given priority
+nicer="$nicer"		# The priority increment
+spoolmin="$spoolmin"	# Minimum free blocks required to enable batching
+spoolnews="$spoolnews"	# 'define' if incoming news should wait on rnews -U
+spoolpost="$spoolpost"	# 'define' if news submission should wait on rnews -U
+runtime="$runtime"	# 'define' to permit runtime override of defaults
+histexp="$histexp"	# number of days to track history for
+debug="$debug"		# 'undef' to omit diagnostics code
+tmnconv="$tmnconv"	# 'undef' to use newer faster history format
+cfeed="$cfeed"		# 'define' to load subscription bits at startup
+cache="$cache"		# 'define' to enable feed bit caching
+newctrl="$newctrl"	# 'define' to break control handling out of rnews
+hash="$hash"		# 'define' to hash newsgroups for faster lookup
+admdir="$admdir"	# location of news administration files
+leastuid="$leastuid"	# Least uid to be considered 'user', not 'system'
+
+# 6: transport layer parameters
+uucast="$uucast"	# 'define' if UUCP multicasting is enabled
+xmitflgs="$xmitflgs"	# Uux flags to use
+zreturn="$zreturn"	# 'define' to suppress nonzero rnews returns
+
+# 7: user interface decisions
+mailfront="$mailfront"	# The local default mailer front end. 
+tmail="$tmail"		# 'define' if the Berkeley Mail program is here
+dfteditor="$dfteditor"	# Default system editor
+dfltsub="$dfltsub"	# The default newsgroup subscription
+admsub="$admsub"	# The required newsgroups
+feedback="$feedback"	# 'define' to enable ratings sweeps features
+xref='$xref'		# 'define' to enable Xref header generation
+sortit="$sortit"	# 'define' to present newsgroups in .newsrc order
+cmail="$cmail"		# 'define' to check mail in vnews
+stime="$stime"		# 'define' to show time in vnews
+digest="$digest"	# 'define' to permit digesting in vnews
+siglines="$siglines"	# Upper limit on lines used from user signatures
+quotelim="$quotelim"	# Max % of article that can be quotes
+longtext="$longtext"	# Minimum line length to trigger cquote check
+modonly="$modonly"	# Moderated croups in a crosspost suppress posting?
+
+# Other things the install makefile needs to know
+scripts="$scripts"	# List of script utilities
+
+EOT
+
+if $test $machine = UNIXPC ; then
+$spitshell  >>config$$.sh <<EOT
+termlib=""		# forget curses so we can use 3B1 shared libraries
+EOT
+fi
+
+$spitshell  >>config$$.sh <<EOT
+# confignews.sh ends here
+EOT
+
+: compute some derived things
+dftxmit="uux $xmitflgs %U %S!%R <%F"
+newsuid=`grpw -u $newsusr "%u"`
+newsgid=`grpw -u $newsusr "%g"`
+
+case $newtranspconf in y)
+$cat <<EOT  | $sed "/^#undef/s/\(.*\)\/\*\(.*\)/\/* \1 \2/" >confignews$$.h
+/* confignews.h
+ *
+ * This file was produced by running the Configure script.
+ * Feel free to modify any of this as the need arises.
+ * The first section below sets various system-dependent parameters
+ * Those with a following comment led with * can be overridden by
+ * the attributes file if RUNTIME is on.
+ */
+
+/* 0: Networked or not? */ 
+#$nonlocal NONLOCAL			/* networked to news host?	*/
+#$nonlocal NNTPSERVER	"$nntpsrv"	/** name of nntp server machine	*/
+
+/* 1: News owner/group and special directories */
+#define NEWSUSR 	"$newsusr"	/* user to own netnews files	*/
+#define NEWSGRP 	"$newsgrp"	/* group to own netnews files	*/
+#define NEWSUID		$newsuid	/* numeric user id of news	*/
+#define NEWSGID		$newsgid	/* numeric group id of news	*/
+#define LIBDIR		"$libdir"	/** the news library directory	*/
+#define ADMDIR		"$admdir"	/** the database directory	*/
+#define TEXTDIR		"$textdir"	/** the article text directory	*/
+#define SPOOLDIR	"$spooldir"	/** the article spool directory	*/
+#define BATCHDIR	"$batchdir"	/** the batch spool directory	*/
+#define ARCHDIR		"$archdir"	/** the archive directory	*/
+#define BINDIR		"$bindir"	/* the public bin directory	*/
+#define UUBINDIR	"$uubindir"	/* the uuxqt bin directory	*/
+
+/* 2: site ID information */
+#define FROMNAME 	"$fromname"	/** name for From lines		*/
+#define PATHNAME 	"$pathname"	/** name for Path lines		*/
+#define TRUENAME	"$truename"	/** name for admin mail		*/
+#define ORGANIZATION	"$organization"	/** your organization name	*/
+
+/* 3: mailer configuration */
+#define MAILSERV	"$mailserv"	/** backend mailer with switches */
+#define MAILFMT		"$mailfmt"	/** mailbox format name		*/
+#define MAILCHAR	"$mailchar"	/** leading char of mailboxes	*/
+#define BACKBONE	"$backbone"	/** our backbone link		*/
+#define SMARTHOST	"$smarthost"	/** our autorouting site 	*/
+
+/* 4: security, access control and accounting */
+#define NOTIFY		"$notify"	/** news admin mail address	*/
+#define	UMASK		$umask		/* mask for umask calls		*/
+#$isorg ORGDIST		"$orgdist"	/* Restrict control messages	*/
+#$nazi FASCIST   	"$fascist"	/** control posting privileges	*/
+#$commie COMMUNIST	"$communist"	/** control reading privileges	*/
+#$nodel MANUALLY			/* Don't rmgroup, just notify	*/
+#$nonew NONEWGROUPS			/* Don't newgroup, just notify	*/
+#$isuup UUPROG		"$euuname"	/** omit for uuname		*/
+
+/* 5: performance tuning */
+#$runtime RUNTIME			/* do runtime configuration?	*/
+#$debug DEBUG				/* compile diagnostic code?	*/
+#$isnice NICENESS	$nicer		/* rnews run priority		*/
+#define SPOOLMIN	"$spoolmin"	/** min free blks for batching	*/
+#$spoolnews SPOOLNEWS			/* batch incoming news handling	*/
+#$spoolpost SPOOLPOST			/* batch outgoing news handling	*/
+#define HISTEXP		${histexp}*DAYS	/* # days to keep history for	*/
+#$tmnconv TMNCONVERT			/* use old-style history format	*/
+#$cfeed FEEDBITS			/* get subscriptions at startup	*/
+#$cache CACHEBITS			/* cache subscription bits	*/
+#$newctrl NEWCTRL			/* newstyle control msg handler	*/
+#$hash HASHGROUPS			/* trade core for speed		*/ 
+#define LEASTUID	"$leastuid"	/* least real user ID		*/
+
+/* 6: the UUCP sublayer */
+#define DFTXMIT		"$dftxmit"	/* Default xmit command		*/
+#$cgood DFUFLG		"-c" 		/* Default U option flag	*/
+#$uucast UUCAST				/* Enable UUCP multicast	*/
+#$zreturn ZRETURN			/* Force rnews returns to 0	*/
+
+/* 7: configurable user interface information */
+#$sortit SORTACTIVE			/* show news in .newsrc order	*/
+#define MAILFRONT  	"$mailfront"	/* default user mail front end	*/
+#$tmail TMAIL		"/usr/ucb/Mail"	/* Mailer that understands -T	*/
+#define DFTEDITOR  	"$dfteditor"	/* the default postnews editor	*/
+#define DFLTSUB 	"$dfltsub"	/** default subscription	*/
+#define	ADMSUB		"$admsub"	/** mandatory subscription	*/
+#$xref DOXREFS				/* make Xref headers for rn	*/
+#$feedback FEEDBACK			/* enable feedback features	*/
+#$cmail CHECKMAIL			/* readers should check mail	*/
+#$stime SHOWTIME			/* readers should show time	*/
+#$digest DIGPAGE			/* readers do digest cracking	*/
+#define SIGLINES 	"$siglines"	/** limit on user .sig length	*/
+#define QUOTELIM  	"$quotelim"	/** quote percentage threshhold	*/
+#define LONGTEXT  	"$longtext"	/** min length to check quotes	*/
+#$modonly MODEXCLUDE			/* suppress mixed crossposts	*/
+
+/* you probably don't want to mess with these */
+#define COMPRESS	"compress -q"	/* used to compress mail	*/
+#define DECOMPRESS	"compress -qd"	/* used to decompress mail	*/
+
+/*
+ * Space conservation section, for PDP11 people and other benighted souls.
+ * Note: these get rewritten defaulting on each time you regenerate this
+ * file with Configure.
+ */
+#define ENCODE		/* support 7-bit E transmission	*/
+#define DECODE		/* support decoding of E	*/
+#define ZAPNOTES	/* convert notesfiles headers	*/
+#undef BNCVT		/* convert bnproc batches?	*/
+#define RECMDS		/* enables regular expression cmds */
+#define DELAYMARK	/* enables delayed message marking */
+#define BYTHREADS	/* enables thread-following code */
+#define SUBJFILE	/* enables the subject index feature */
+#define RNESCAPES	/* enable rn-style escape expansions */
+#define NGUPDATE	/* enable on-the-fly update fetches of group data */
+#define NEWSFILTER	/* enables the kill commands feature */
+
+#ifndef B211COMPAT
+/* disable these features for strictly B2.11-compatible .newsrc form */
+#define MACROS		/* enable user macros */
+#endif /* B211COMPAT */
+
+/* confignews.h ends here */
+EOT
+;; esac
+# End of section conditional on newtranspconf
+
+trap "rm -f $confighelpers filexp config$$.sed; exit 1" 1 2 15
+gfilter=`echo $netgroups | sed "s/,/\\\.|^/g"`
+gfilter="^$gfilter\\."
+cat >config$$.sed <<EOT
+echo "Configuring shell commands..."
+for script in \$*
+do
+	echo \$script
+	sed <\$script.sh >$libdir/\$script \\
+		-e "/NEWSUSR/s::$newsusr:g" \\
+		-e "/LIBDIR/s::$libdir:g" \\
+		-e "/ADMDIR/s::$admdir:g" \\
+		-e "/TEXTDIR/s::$textdir:g" \\
+		-e "/SPOOLDIR/s::$spooldir:g" \\
+		-e "/ARCHDIR/s::$archdir:g" \\
+		-e "/NOTIFY/s::$notify:g" \\
+		-e "/SITENAME/s::$sitename:g" \\
+		-e "/GENUS/s::$genus:g" \\
+		-e "/SPECIES/s::$species:g" \\
+		-e "/GFILTER/s::$gfilter:g" \\
+		-e "/BACKBONE/s::$backbone:g"
+done
+EOT
+
+: here go the actual config file substitutions
+mv config$$.sh confignews.sh
+case $newtranspconf in y) mv confignews$$.h confignews.h ;; esac
+mv config$$.sed config.sed
+
+: MAKEFILE CUSTOMIZATION BEGINS HERE
+if $test $newmake; then
+$echo $n "Customizing the makefile...$c"
+GenerateMake $DIRLIST
+echo "done."
+case $level in '2') exit 0 ;; esac
+fi
+: MAKEFILE CUSTOMIZATION ENDS HERE
+
+cat <<EOT
+
+I can start a make of the software, but it will take a while.
+Type 'n' to pass, 'y' to go, or '&' or carriage return to do the make
+in background.
+EOT
+set "Should I start a make of the software? [&]"; . qq
+case $ans in
+y*) make -f Makefile.dst makefiles; make all;;
+n*) ;;
+*) (make -f Makefile.dst makefiles; make all) >make.log 2>&1 &
+   echo "The make output and error messages will go to the file 'make.log'"
+   ;;
+esac
+
+rm -f contains qq filexp loc config$$.sh config$$.h
+
+echo " "
+echo "To compile the software, do 'make -f Makefile.dst makefiles; make all'"
+case $level in
+0) echo "Once the 'make all' has completed, go superuser and 'make installnews'" ;;
+1) echo "Once the 'make all' has completed, go superuser and 'make binaries'" ;;
+esac
+
+exit 0
+
+: end of Configure

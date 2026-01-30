@@ -1,0 +1,92 @@
+# libpost.a generic Makefile to be customized for your site by Configure
+#
+# This is the poster library directory. The Makefile defines four targets:
+#
+# libpost.a:	The common poster library itself
+# manifest:	Echo a string containing names of all library sources
+# llib-lpost.ln	The llibint library made from libpost.a
+# clean:	Clean out all object, library and lint files
+#
+# Call "make -f Makefile.dst Makefile" from here to rebuild the Makefile
+
+# Other news source directories
+MAINDIR = ..
+PORTDIR = ../D.port
+NEWSDIR = ../D.news
+
+DIRLIST = $(MAINDIR) $(PORTDIR) $(NEWSDIR)
+INCLUDE = -I$(MAINDIR) -I$(PORTDIR) -I$(NEWSDIR)
+LIBSDIR = $(MAINDIR)
+
+#
+# You should not need to edit anything below this line
+#
+
+# Here are the macro definitions that Configure tweaks
+CFLAGS = $(CDEBUG) $(INCLUDE) $(CSPECIAL)
+LDFLAGS = $(LDDEBUG) $(LDSPECIAL)
+LINTFLAGS = $(INCLUDE)
+
+.PRECIOUS: Makefile libpost.a
+
+PLHDRS = libpost.h
+PLSRCS = editart.c postart.c newpost.c originate.c
+PLOBJS = editart.o postart.o newpost.o originate.o
+
+libpost.a: $(PLOBJS)
+	ar lrc libpost.a $?
+	-ranlib libpost.a
+#PROFLIB 	(cd profiled; ar lrc ../libpost_p.a $?)
+#PROFLIB 	-ranlib libpost_p.a
+  
+setup:
+#PROFLIB	-mkdir profiled
+
+#PROFLIB .c.o:
+#PROFLIB 	${CC} -p ${CFLAGS} -c $*.c
+#PROFLIB 	mv $*.o profiled/$*.o
+#PROFLIB 	${CC} ${CFLAGS} -c $*.c
+
+export: setup libpost.a
+	@rm -f $(LIBSDIR)/libpost.a
+	-ln libpost.a $(LIBSDIR)
+#PROFLIB 	@rm -f $(LIBSDIR)/profiled/libpost.a
+#PROFLIB 	-ln libpost_p.a $(LIBSDIR)/profiled/libpost.a
+
+Makefile: Makefile.dst
+	$(MAINDIR)/GenerateMake $(DIRLIST)
+
+# ----------------------------------------------------------------------
+# OBJECT AUTO-DEPENDENCIES GO AFTER THIS LINE -- DO NOT DELETE IT!!!
+#
+.SUFFIXES: .ln
+
+.c.ln:
+#LINTLIBS	lint $(LINTFLAGS) -c $<
+#NOLINTLIBS	lint $(LINTFLAGS) -C$* $<
+
+# LINT AUTO-DEPENDENCIES GO AFTER THIS LINE -- DO NOT DELETE IT!!!
+
+lintlib: $(LIBSDIR)/llib-lpost.ln
+
+$(LIBSDIR)/llib-lpost.ln: llib-lpost.ln
+	cp llib-lpost.ln $(LIBSDIR)
+
+#LINTLIBS llib-lpost.ln: $(PLSRCS:.c=.ln)
+#LINTLIBS	lint -x -u $(PLSRCS:.c=.ln) -o post
+#NOLINTLIBS llib-lpost.ln: $(PLSRCS)
+#NOLINTLIBS	lint $(LINTFLAGS) -Cpost $(PLSRCS)
+
+#
+# Random utility productions
+#
+manifest:
+	echo Makefile.dst Makefile $(PLHDRS) $(PLSRCS)
+
+distclean:
+
+clean:
+	rm -f *.a *.o *.ln *~ Makefile
+	rm -fr profiled
+
+# libpost.a Makefile ends here

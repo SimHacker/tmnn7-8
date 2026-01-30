@@ -1,0 +1,365 @@
+			Hear ye, hear ye, hear ye...
+
+    A major new release of the netnews software is about to be unloosed upon
+the net.world -- yes, after two years of development the software construct
+known as TEENAGE MUTANT NINJA NETNEWS has escaped from the secret laboratories
+of Thyrsus Enterprises and will soon assume a very public identity as News 3.0.
+
+    The new release is more than just a set of patches -- it's a complete
+from-the-ground-up rewrite of the entire suite with loads of new and powerful
+features (but, of course, protocol-compatible with all B and C news versions).
+It is much easier to install, configure and administer than any previous
+version. And it offers beleaguered news.readers better ways of tracking
+discussions, winnowing chaff, and coping with a huge and increasing news
+volume.
+
+    The code is carefully modularized in accordance with abstract-data-type
+design principles, lavishly commented for comprehensibility, and accompanied
+by a full set of documents detailing installation, usage and the architecture
+internals.
+
+    Details on the new features follow.
+
+			for users:
+
+Quite a number of user-interface goodies have been added in the readers.
+These fall in two major categories; lifts from rn and entirely new stuff.
+
+			rn-like features:
+
+Cross-posted articles that you view in one group are now marked seen in all
+groups. Note that this does *not* happen on K commands and the like; you must
+actually view the article for it to happen.
+
+The interactive readers now support an 'l' command that displays an index
+page showing the Message-IDs and subject lines of all articles in the current
+group; articles that have previously been seen are marked with a '_', and
+articles that refer to an article you posted are marked with a '!'.
+The 'l' command is automatically invoked every time a new newsgroup is entered.
+The article-number prompt you see when posting a followup using postnews has a
+new '?' command which displays this same list.
+
+When in 'l' mode you can do vn-style subject-list browsing. All the normal
+movement, erase and mark commands will work, but you'll see only the
+subject list rather than the full articles.
+
+Readnews and vnews both now support a group of regular-expression commands
+similar to the pattern commands of rn. They also support a functional
+equivalent of rn's kill-file facility. See the manual page for details.
+
+Nearly the full set of rn's %-escapes are now supported in commands where
+they make sense.
+
+Rn-style keyboard macros are supported in all readers.
+
+			entirely new stuff:
+
+News can now be presented in discussion order. When an article has followups,
+those followups are shown immediately after it. If a followup itself has
+followups, those will be shown before remaining followups at the same level
+(if any) of the original article (i.e. the readers do a depth-first traverse
+of discussion trees). Discussions are tracked using the followup-to relation,
+so the code can't be missled by a change of subject. To enable this pick the
+new -S option on any reader.
+
+The interactive readers now support a 'ud' command that allows you to
+unsubscribe from a discussion, i.e. exclude followups to the current article
+from the news you will be shown in the future.
+
+The readers now show a count of articles still unseen where appropriate.
+If new news comes in during a session, that fact will be detected just before
+you would normally exit. Visual readers will then go back to handle the new
+news (readnews will just tell you it exists). The time you've spent reading
+news is displayed on exit.
+
+The readnews and vnews readers now maintain a trail of locations of all
+articles seen in this session that can be backtracked into (this was a
+nearly free bonus from the structural requirements for supporting subject
+following). The - command really works now!
+
+Readnews has been enhanced to support most of the enhanced vnews commands
+that make sense in a line-oriented environment (in particular, - and l and
+all the vnews flavors of the shell and save commands are there). See the
+updated manual pages for details.
+
+All commands in standard newsreaders now accept a standard ed(1) like
+syntax to iterate commands over a set of articles.
+
+A new 'mailnews' interface has been added for people who like to see their
+news through mailers. It is faster and smaller than readnews, and (unlike
+the readnews mode it replaces) can track articles read correctly.
+
+All contexts where an editor is spawned to do a followup (i.e. from within the
+readers or postnews) now set the environment variable $A to the name of the
+parent article's file.
+
+Several configurable options have been added to vnews that tune the display
+and defaults to go with various kinds of 'desktop' displays like the AT&T
+7300, Sun Windows environment etc. Also, vnews now uses available highlighting
+to make the status line stand out. It also now displays a "Done? " prompt
+after the last article has been seen, so you won't fall out of vnews without a
+warning.
+
+If the second word of an options line in your .newsrc file doesn't start
+with a -, the code will assume it's a reader program name and apply the
+options on that line only to that reader.
+
+A makekits utility has been added to facilitate the news transmission of
+large code systems (in particular, the news code itself!).
+
+The ORGANIZATION file name, if you use one, now accepts ~ as an initial
+abbreviation for your home directory. If there are multiple lines in the file 
+one will be picked at random each time you post.
+
+All interactive readers now support mail checking and time display.
+
+The reader code is now clean for 8-bit character set display, so articles
+containing kanji won't get mangled.
+
+Vnews now echos command characters (including control and meta characters) to
+the space following the command prompt.
+
+In postnews, help is now available at the post/edit/quit prompt. When composing
+a followup, a new option to mail the followup as a reply rather than posting it
+is available. Also, the Summary line is now requested *after* article composit-
+ion; the user is given a chance to change the Subject line after composition;
+and some other checks and questions have been added to facilitate control of
+followups to cross-posts.
+
+Also, when you ask to post a followup, the standard reader library will now
+ask for confirmation if the article has followups you haven't seen.
+
+A new tool, bbsauto, supports transparent CompuServe to netnews gatewaying.
+It is divided into two parts: 1) BBS-independent driver and service code, and
+a CompuServe `transaction robot' written in terms of high-level expect/send,
+capture/upload and translation utilities. It should be easy to write more
+transaction robots for gatewaying to other services such as BIX and GEnie.
+
+Also included is support for readers to use symbiotic `news filter' processes
+for news selection and kill command processing (thanks to Brad Templeton who
+invented the concept and allowed me to co-develop it). The new man page
+newsfilter(5) describes this facility. Service libraries for writing filters
+are provided. A sample filter is also provided that implement an rn-like kill
+language. All readers now support a ^K command for passing commands to a
+newsfilter.
+
+			for administrators:
+
+The expire program has been enhanced to support 'volatile' groups, that
+is, groups in which articles expire once all subscribers have seen them.
+It is also now possible to specify expiration periods on a per-newsgroup
+basis. This should make life much easier for people with small disks,
+especially on single-user or nearly-single-user systems. Expire now runs
+*much* faster than formerly, most of its article references are gone.
+
+A new file ADM/admin now holds per-newsgroup flags like the volatile flag,
+the compression flag (see below) and the expiration period. It also permits
+you to set default distributions for classes of groups.
+
+The installation procedure has been vastly simplified. A new interactive
+configuration script automatically sets up C include and shell variable
+assignment files after performing checks on the system capabilities and
+asking preference questions. The script includes a section that interactively
+configures news feeds in the sys file; this section can be called separately
+from the remainder. The install.sh scripts now automatically generates
+crontab lines that schedule expire, sendbatch and newsclean. As a result of
+all this, running Configure and make followed by install.sh should now
+perform the entire installation of netnews.
+
+A new 'D' transmission option facilitates debugging of links. When it is
+enabled on a connection, articles are appended to LIB/xmitlog along with
+their transmission commands.
+
+All the major netnews tools can now be compiled to accept a -D debugging
+option that suppresses their normal actions and causes them to print
+detailed descriptions of what they would normally do to stdout. In rnews
+and sendbatch these articles demonstrate the flow of control down to the
+transport (uux) layer, optionally including all encode/decode, compress/
+uncompress and other article-filtering actions.
+
+The {i,r}news program and expire now have proper interlocking to prevent
+them from clobbering the active- and history- file databases when they
+run simultaneously.
+
+The rnews program now unbatches batched news without external assistance,
+speeding up the process and eliminating a potential security hole. As a result
+the unbatch program is gone. The rnews program can now also do decompression
+itself using either a default or specified decompression program. It can
+recognize standard batch and compression formats and adapt to them. In spite
+of these enhancements, rnews is as much as 10 times faster than formerly,
+(because it no longer fork/execs a process per incoming article)
+with the advantage increasing for larger batches. Also, sys file option flags
+can now be used to specify compression and 7-bit encoding on either batched or
+unbatched connections.
+
+The batching scripts have been replaced by a sendbatch program. This program
+understands the C, D, E, N, S, and U transmission options. Note that when
+the N option is enabled sendbatch sends ihave messages, so ihave/sendme is now
+much more useful. It will execute *cmd files for nonstandard batching methods
+as 2.11 does.
+
+One effect of all these changes is that all the options of link setup
+(including batched links and mailer-based links) can be selected simply by
+setting transmission flags in the feeds file. Syntax to pass arguments to the
+compress filter and other encoding programs is supported. A result of all
+this is that unbatch, cunbatch, c7unbatch, encode, decode and sendnews have
+been absorbed into rnews and no longer have to be configured or maintained
+separately. This version also accepts bnproc-style batches.
+
+The body of incoming newgroup messages now becomes part of the body of the
+notification mailed to the news administrator, rather than being discarded.
+
+The news administrator can prevent overrun of the article spool space area
+by setting a minimum free space threshhold below which batching will be
+disabled. A 'Q' transmission option enables administrators to make
+batching to a remote system conditional on the length of that system's UUCP
+queue (these features co-opted from Chris Lewis's batcher program and Phil
+Esposito's nbatcher program).
+
+Inews is now a non-suid front end to a rewritten rnews program. It detects
+attempts to introduce non-whitespace control characters and other input
+anomalies and logs them before aborting. Postnews now also calls rnews
+directly for a substantial speed increase. The common code used for front-
+ending rnews is available as parts of a linkable library.
+
+Handling of moderated groups is now better integrated than in older versions.
+The details of posting to them are now handled in rnews out of sight of inews
+or postnews. Multiple postings to a list of newsgroups including moderated
+ones are now handled correctly. Groups may now have multiple moderators, and
+rnews detects when the poster is a group moderator and will generate a default
+Approved header if none is supplied. The 2.11 option is available to route
+sends of moderated-group postings to your nearest backbone neighbor (if you
+have one), but the moderators file is checked first (thus, you can use the
+moderators file to set up local moderated groups or moderated groups
+carried by the backbone). See the "How to" document for details.
+
+The number and size of extra headers (unrecognized by RFC-1036) that can be
+passed through news is now limited only by allocatable memory.
+
+A new library file, LIB/followups, defines default followup targets for
+newsgroups. The format is like the aliases file. The installation procedure
+creates the file containing conventional mappings. Postnews uses this file
+to fill in Followup-To headers and set Newsgroup headers on followups.
+
+News processing can now be deferred till the wee hours of the morning using
+the SPOOLNEWS option. When this is used, all incoming news is simply appended
+to a batch file until the next run of expire or rnews -U, at which time it is
+processed, inserted and resent.
+
+Root and the netnews administrator can now post control messages to create
+and delete newsgroups even when NONEWSGROUPS and MANUALLY are on.
+
+Netnews now distinguishes between newsgroups and distribution prefixes in
+the sys file (a field has been added). This information is used to strip
+off distribution information just before local insertion of an article (so
+that postings to, say, nj.wanted and pa.wanted both end up in SPOOL/wanted).
+Any distribution prefix still shows in the header and is passed out in the
+broadcast form. The sysfile code can still read old-format sys files.
+
+The "all" wildcard in group subscriptions now matches any sequence of group
+name segments (so that, for example, "all.ctl" does the right thing in the
+new directory hierarchy). A new wildcard "any" matches single segments.
+In adition, an alternation construct { } like that in BSD's C-shell
+is now accepted for newsgroup suffixes (see news(5) for details). An
+interactive tester and improved documentation for ngmatch() have been provided
+to help you understand the arcane art of subscription compostion.
+
+The configuration sequence now gives you a choice of whether or not inews
+should reject articles with too many inclusion lines in them. If you choose
+to do this test you can set both the maximum acceptable percentage of
+inclusions and a minimum article length below which the test will not be
+applied.
+
+Some compile-time switches that optimize data structures used in rnews for
+either best speed or smallest core image size have been added. In particular
+you can set up rnews to compute most of the subscription relations that
+would normally be checked by ngmatch() at startup time, and further set it up
+so that this data is cached in a bitmap form that gets automatically
+regenerated whenever the feeds file has changed (credit to Henry Spencer for
+this idea).
+
+Some shellscripts have been added to the distribution that facilitate
+usage and performance monitoring of netnews, including enhanced versions
+of 'arbitron', 'delay' and 'newsspace'. The 'newsclean' and 'arbitron' scripts
+are now automatically installed if they haven't already been.
+
+The netnews code can now automatically be configured to define a LIB/.admin
+directory for shared data files (including the active file and the history
+list). This will facilitate setup of news on a cluster of systems linked by
+NFS/RFS that is to be administered as one site.
+
+A new per-group flag in the admin file causes articles to be stored in
+compressed form. All netnews programs that read article files now open
+them through a routine that detects and undoes compression, so the effects
+of this flag are invisible except that it trades reduced spool space for
+increased access time.
+
+Code to support UUCP multicasting has been adapted from Shane McCarron's
+uucast package. This saves lots of spool space for sites feeding multiple
+downstream systems.
+
+In addition to the FASCIST-mode controls on posting of older versions, a new
+COMMUNIST configuration switch now permits full control of reading privileges
+on a per-user or per-group basis. Gatekeepers may be defined for each
+privilege group; a tool is provided for gatekeers to add and delete users
+from the group and/or change the post/read permissions associated with the
+group. Under COMMUNIST mode, all news database data is now as secure as the
+UNIX permission structure can make it.
+
+It is now possible to create junk groups at any level of the hierarchy to
+catch postings to unknown groups in the subtree below the parent. For example,
+if 'comp.junk' is in the active file, all postings to unknown but
+subscribed comp groups will land there.
+
+There is no longer any hard limit on the number of active newsgroups.
+
+			for hackers:
+
+This version's sources have been completely reorganized, re-documented and
+in fact almost completely re-written, in order to make them easier to
+understand and modify. Custom news readers, posters and manipulators using
+history and activity-record conventions compatible with the standard ones will
+now be much easier to build -- rolling your own reader, in particular, is now
+basically just a matter of writing a command interpreter and linking it to an
+I/O manager and some database service libraries.
+
+A 'Hacker's Guide to TMN-Netnews' has been provided for your amusement and
+edification.
+
+Back-end tools for building fast custom newsreader modes under GNU Emacs or
+NeWS/X-like windowing environments are provided.
+
+The code is organized to support network client status cleanly (i.e. nothing
+on the reading side need actually know where it gets its article files from
+or what the SPOOL directory hierarchy looks like). If the NONLOCAL option is
+configured, news will do all its data fetches through a well-defined interface
+to a 'network service library'.
+
+One such library, a first cut at NNTP support, is included in the D.network
+directory. I am working with Erik Fair to bring it up to spec, and future
+releases of NNTP will include some support enhancements for TMN-Netnews
+features. Mel Pleasant is working on support for NFS.
+
+			the future
+
+Besides its obvious present communication uses, TMN-Netnews is intended to
+provide a starting point for experiments in advanced logical-network services
+(including distributed info file and software-release maintenance), intelligent
+filtering agents (perhaps starting with keyword-based retrieval) and hypertext.
+
+Design of the hypertext facilities is in fact already under way, thanks to
+wise counsel from some leading figures in the hypertext research community
+(particular thanks are due to Robin Hansen and Mark Miller). I *think* I have
+a design for a distributed hypertext service netnews option that will scale up
+properly and interface gracefully with sites not running the option (yes, just
+what we need...*more* load on the network! :-) :-)).
+
+One of the things I want to implement is a public-key encryption system for
+authentication purposes. Anyone who has working C source for such a thing is
+requested to E-mail me with details.
+
+You too can be a part of this epic. By using the standard 3.0 service
+libraries, you can easily keep protocol and functional compatibility with
+both 3.0 itself and older B and C news versions, but develop your own ways
+to enhance the news interface, your own adaptations for exotic transport
+layers, and the like. The credits list may be waiting for your name!

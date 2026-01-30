@@ -1,0 +1,151 @@
+Speaking of netnews UIs and netnews "personalities"...
+
+Eric S. Raymond (aka "Eric The Flute" or "ESR") spent the late 1980s obsessively promoting his "Teenage Mutant Ninja Netnews" (TMNN) project at science fiction conventions, calling himself the "mad mastermind of TMN-Netnews" in his usenet signature (comp.lang.misc, December 13, 1989). He would corner people and drone on endlessly about it at inappropriate times.
+
+Two years in secret laboratories. The future "Cathedral and the Bazaar" guy. The "release early, release often" guy. The "given enough eyeballs, all bugs are shallow" guy.
+
+None of it materialized. The project was abandoned. Wikipedia: "A rough version of the software was released and drew attention from around the network, but the project was abandoned shortly thereafter."
+
+https://en.wikipedia.org/wiki/B_News
+
+His online resume still lists it under "Independent Consulting" as simply "A rewrite of the USENET netnews software" - burying the embarrassing name and omitting that it was abandoned.
+
+OMFG, in researching this post, I just ran across the tmnn7-8 source code, archived here:
+
+https://web.archive.org/web/20191205160937/https://fi.archive.ubuntu.com/index/unix/news/tmnn7-8.tar.Z
+
+Hey, after all those hours of listening to him drone on and on about it, I finally found the code. Let's pull it down and take a look.
+
+His BRAGSHEET file announced: "after two years of development the software construct known as TEENAGE MUTANT NINJA NETNEWS has escaped from the secret laboratories of Thyrsus Enterprises and will soon assume a very public identity as News 3.0."
+
+The BRAGSHEET promised grandiose features under "the future": "TMN-Netnews is intended to provide a starting point for experiments in advanced logical-network services... intelligent filtering agents... and hypertext." He even asked readers to email him "working C source" for a "public-key encryption system for authentication purposes."
+
+His LICENSE file included an actual commercial plug for his consulting services. He also explicitly distanced himself from FSF: "My action is not to be construed as an endorsement of the political or economic views... of any member, agent, or ally of the Free Software Foundation other than myself."
+
+The version.h file confirms: abandoned at "beta level 7.8".
+
+I asked Cursor to perform a code review of ESR's magnum opus. Here's what two years in "secret laboratories" produced:
+
+874 uses of unsafe string functions (sprintf, strcat, strcpy) with no bounds checking - buffer overflows everywhere. The actual gets() function - so dangerous it was removed from the C standard entirely - listed as available in his system.h. 42 instances of mktemp(), the function that creates predictable temp file names, enabling symlink attacks. Even in 1989, mkstemp() existed. 61 uses of system() and popen() passing unsanitized user input directly to shell - textbook command injection. Lock files stored in /tmp with hardcoded magic numbers - any local user can DoS or hijack the news system.
+
+In D.priv/lock.c, his own comment admits: "This whole module is ugly and flaky." Then ships it anyway.
+
+In fascist.c - yes, that's really the filename - he embedded his libertarian political philosophy directly into the access control system. FASCIST mode controls who can post. COMMUNIST mode controls who can read. The nasty_t struct holds user restrictions. The main function is literally called fascist().
+
+His example configuration uses Lord of the Rings names: a "wizards" group with Gandalf and Radagast, while sites named "mordor" and "orthanc" are suppressed from posting to "alt.goodguys". Peak 1980s nerd projecting himself as a righteous wizard fighting Sauron.
+
+His example of a restricted user is called "miscreant" - allowed to post to "junk" and "talk.politics" but forbidden from security groups. This is how ESR thought about users he wanted to control.
+
+The function that looks up user groups has this comment: "This routine is a HOG!!!!!" Five exclamation points. Very professional. What does this "HOG!!!!!" do? Concatenates group names into a fixed buffer with no bounds checking. Buffer overflow.
+
+Oh, and the FASCIST code? The original was by Eugene Spafford - one of the most respected security researchers in computing history. ESR "rewrote" it, adding the political dog-whistles, the Tolkien cosplay, and the buffer overflows.
+
+https://en.wikipedia.org/wiki/Gene_Spafford
+
+By The Numbers:
+
+  Years ESR spent developing TMNN in "secret laboratories": 2
+
+  Number of subjective hours ESR subjected people he cornered at SF cons to bragging about TMNN: ∞
+
+  Beta level when abandoned: 7.8
+
+  Promised features that materialized (hypertext, encryption, intelligent agents): 0
+
+  Amount of money HN's own Thomas Ptacek raised for charity to stop posting racist ESR quotes: $30,000
+
+  Uses of unsafe string functions without bounds checking: 874
+
+  Instances of mktemp(), the predictable temp file function: 42
+
+  Shell command injection vulnerabilities via system()/popen(): 61
+
+  Times gets() - removed from C11 for being unfixably dangerous - appears in system.h: 1
+
+  His own assessment of his locking code: "ugly and flaky"
+
+  Exclamation points in "This routine is a HOG!!!!!": 5
+
+  Political ideologies embedded as compile-time flags: 2 (FASCIST, COMMUNIST)
+
+  Lord of the Rings characters in example config: 3 (Gandalf, Radagast, Saruman)
+
+  Evil fortresses used as example banned sites: 2 (Mordor, Orthanc)
+
+  Name for example restricted user: "miscreant"
+
+  Years between TMNN's abandonment and "The Cathedral and the Bazaar": 8
+
+  Books ESR later wrote about Unix programming best practices: 1
+
+  Buffer overflows in his own Unix code: uncounted
+
+  Times his resume mentions "Teenage Mutant Ninja": 0
+
+  Original author of the fascist.c code (respected security researcher): Eugene Spafford
+
+  Person who "rewrote" it with buffer overflows and Tolkien cosplay: ESR
+
+  Core thesis of "The Cathedral and the Bazaar": release early, release often; given enough eyeballs, all bugs are shallow
+
+  Years ESR kept his own code in "secret laboratories" before releasing: 2
+
+  Eyeballs that reviewed it before release: unclear
+
+  Bugs that remained: shallow they were not
+
+The guy who wrote fascist.c to restrict who could post to newsgroups later spent decades arguing that any form of content moderation is tyranny.
+
+The guy who spent two years in "secret laboratories" refusing to share his code until it was "perfect" (it wasn't) later preached "release early, release often."
+
+The guy who promised "intelligent filtering agents" and "hypertext" and "public-key encryption" - and delivered none of it - later became famous for pontificating about how open source development works.
+
+The guy whose own code is riddled with buffer overflows and command injection vulnerabilities wrote a book called "The Art of Unix Programming."
+
+The Bazaar guy's own magnum opus was a Cathedral that never got built. He just kept giving talks about it.
+
+The guy who wrote "Sex Tips For Geeks" - an entire series including "How To Be Sexy," "The Art of the Pickup," and "On Being Good In Bed" - advising his followers how to "emit fitness-to-reproduce signals" because "your bulging, tumescent hacker forebrain is just not going to turn on very many women by itself." The guy who assured geeks "Trust me, if you do these things women will fall all over themselves trying to get at you." That guy later warned men to never be alone with women at tech conferences because feminist "honeytraps" were trying to frame open source leaders with false sexual assault allegations. His infamous "Sex Tips for Geeks" essay comes off like it was written by Pepé Le Pew.
+
+The guy who wrote "How to Become a Hacker" and misappropriated historical MIT-AI Lab hacker culture. The original AI:HUMOR;JARGON file was a living document created by the actual hackers at MIT and Stanford - people like Guy Steele. ESR hijacked it, rewrote it to reflect his political ideology, and republished it as his own "New Hacker's Dictionary." Real hackers from the MIT-AI Lab where hacker culture originated consider his revisionist politically-slanted rewriting-for-profit to be disrespectful parasitical vandalism - a tool he hijacked, corrupted, and abused to spread his ideology.
+
+The original jargon files, free of ESR's pollution:
+
+https://github.com/PDP-10/its/blob/master/doc/humor/jargon.68
+
+The Receipts:
+
+https://news.ycombinator.com/item?id=36923046
+
+deepspace> "the man's disgusting political and social views tarnished everything he touched"
+
+https://news.ycombinator.com/item?id=36920683
+
+idlewords> "It would be great if someone with appropriate 'back in the day' credentials would take over membership of this document and powerwash the gratuitous Eric Raymond edits and insertions off of it."
+
+https://news.ycombinator.com/item?id=43139165
+
+DonHopkins> "His infamous 'Sex Tips for Geeks' essay comes off like it was written by Pepé Le Pew."
+
+https://en.wikipedia.org/wiki/Eric_S._Raymond#Political_beliefs_and_activism
+
+"I've been torturing Twitter with lurid Eric S. Raymond quotes for years. Every time I do, 20 people beg me to stop." -Thomas Ptacek
+
+https://news.ycombinator.com/item?id=43133598
+
+DonHopkins> "Real hackers from the MIT-AI lab where it originated consider his revisionist politically slanted rewriting-for-profit of the Hacker's Dictionary to be disrespectful parasitical vandalism that doesn't represent the actual hacker culture, just a tool he hijacked, corrupted, and abused to spread his right-wing political ideology."
+
+> "He certainly doesn't deserve to be called a hacker, let alone presume to define the meaning of the term."
+
+> "He made up the ridiculous 'many eyes' quote himself, then misnamed it 'Linus's Law' to avoid personal responsibility and shift the blame to innocent Linus Torvalds, who never said such a stupid thing."
+
+https://marc.info/?l=openbsd-tech&m=129261032213320&w=2
+
+Theo de Raadt> "Oh right, let's hear some of that 'many eyes' crap again. My favorite part of the 'many eyes' argument is how few bugs were found by the two eyes of Eric (the originator of the statement). All the many eyes are apparently attached to a lot of hands that type lots of words about many eyes, and never actually audit code."
+
+https://news.ycombinator.com/item?id=43135830
+
+tptacek> "CATB has just not held up at all; it's actively bad, and it has a weirdly outsized reputation."
+
+https://news.ycombinator.com/item?id=22539530
+
+ESR was banned from the Open Source Initiative - which he co-founded - in 2020.

@@ -1,0 +1,93 @@
+# libuucp.a generic Makefile to be customized for your site by Configure
+#
+# This is the uucp hacks directory. The Makefile defines four targets:
+#
+# libuucp.a:	The uucp hacks library itself
+# manifest:	Echo a string containing names of all library sources
+# llib-luucp.ln	The lint library made from libuucp.a
+# clean:	Clean out all object, library and lint files
+#
+# Call "make -f Makefile.dst Makefile" from here to rebuild the Makefile
+
+# Other news source directories
+MAINDIR = ..
+PORTDIR = ../D.port
+NEWSDIR = ../D.news
+
+DIRLIST = $(MAINDIR) $(PORTDIR) $(NEWSDIR)
+INCLUDE = -I$(MAINDIR) -I$(PORTDIR) -I$(NEWSDIR)
+LINKDIR = $(MAINDIR)/D.links
+LIBSDIR = $(MAINDIR)
+
+#
+# You should not need to edit anything below this line
+#
+
+# Here are the macro definitions that Configure tweaks
+CFLAGS = $(CDEBUG) $(INCLUDE) $(CSPECIAL)
+LDFLAGS = $(LDDEBUG) $(LDSPECIAL)
+LINTFLAGS = $(INCLUDE)
+
+.PRECIOUS: Makefile libuucp.a
+
+UUHDRS = libuucp.h
+UUSRCS = uuq.c uucast.c sevenbit.c
+UUOBJS = uuq.o uucast.o sevenbit.o
+
+libuucp.a: $(UUOBJS)
+	ar lrc libuucp.a $?
+	-ranlib libuucp.a
+#PROFLIB 	(cd profiled; ar lrc ../libuucp_p.a $?)
+#PROFLIB 	-ranlib libuucp_p.a
+  
+setup:
+#PROFLIB	-mkdir profiled
+
+#PROFLIB .c.o:
+#PROFLIB 	${CC} -p ${CFLAGS} -c $*.c
+#PROFLIB 	mv $*.o profiled/$*.o
+#PROFLIB 	${CC} ${CFLAGS} -c $*.c
+
+export: setup libuucp.a
+	@rm -f $(LIBSDIR)/libuucp.a
+	-ln libuucp.a $(LIBSDIR)
+#PROFLIB 	@rm -f $(LIBSDIR)/profiled/libuucp.a
+#PROFLIB 	-ln libuucp_p.a $(LIBSDIR)/profiled/libuucp.a
+
+Makefile: Makefile.dst
+	$(MAINDIR)/GenerateMake $(DIRLIST)
+
+# ----------------------------------------------------------------------
+# OBJECT AUTO-DEPENDENCIES GO AFTER THIS LINE -- DO NOT DELETE IT!!!
+#
+.SUFFIXES: .ln
+
+.c.ln:
+#LINTLIBS	lint $(LINTFLAGS) -c $<
+#NOLINTLIBS	lint $(LINTFLAGS) -C$* $<
+
+# LINT AUTO-DEPENDENCIES GO AFTER THIS LINE -- DO NOT DELETE IT!!!
+
+lintlib: $(LIBSDIR)/llib-luucp.ln
+
+$(LIBSDIR)/llib-luucp.ln: llib-luucp.ln
+	cp llib-luucp.ln $(LIBSDIR)
+
+#LINTLIBS llib-luucp.ln: $(UUSRCS:.c=.ln)
+#LINTLIBS	lint -x -u $(UUSRCS:.c=.ln) -o uucp
+#NOLINTLIBS llib-luucp.ln: $(UUSRCS)
+#NOLINTLIBS	lint $(LINTFLAGS) -Cuucp $(UUSRCS)
+
+#
+# Random utility productions
+#
+manifest:
+	echo Makefile.dst Makefile $(UUHDRS) $(UUSRCS)
+
+distclean:
+
+clean:
+	rm -f *.a *.o *.ln *~ Makefile
+	rm -fr profiled
+
+# libuucp.a Makefile ends here

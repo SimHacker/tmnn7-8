@@ -1,0 +1,98 @@
+# libfilt.a generic Makefile to be customized for your site by Configure
+#
+# This is the filter hacks directory. The Makefile defines four targets:
+#
+# libfilt.a:	The filter hacks library itself
+# manifest:	Echo a string containing names of all library sources
+# llib-lfilt.ln	The lint library made from libfilt.a
+# clean:	Clean out all object, library and lint files
+#
+# Call "make -f Makefile.dst Makefile" from here to rebuild the Makefile
+
+# Other news source directories
+MAINDIR = ..
+PORTDIR = ../D.port
+NEWSDIR = ../D.news
+
+DIRLIST = $(MAINDIR) $(PORTDIR) $(NEWSDIR)
+INCLUDE = -I$(MAINDIR) -I$(PORTDIR) -I$(NEWSDIR)
+LINKDIR = $(MAINDIR)/D.links
+LIBSDIR = $(MAINDIR)
+
+#
+# You should not need to edit anything below this line
+#
+
+# Here are the macro definitions that Configure tweaks
+CFLAGS = $(CDEBUG) $(INCLUDE) $(CSPECIAL)
+LDFLAGS = $(LDDEBUG) $(LDSPECIAL)
+LINTFLAGS = $(INCLUDE)
+
+.PRECIOUS: Makefile libfilt.a
+
+FTHDRS = libfilt.h transact.h
+FTSRCS = transact.c tofilter.c filter.c lnfilter.c savescore.c
+FTOBJS = transact.o tofilter.o filter.o lnfilter.o savescore.o
+
+libfilt.a: $(FTOBJS)
+	ar lrc libfilt.a $?
+	-ranlib libfilt.a
+#PROFLIB 	(cd profiled; ar lrc ../libfilt_p.a $?)
+#PROFLIB 	-ranlib libfilt_p.a
+  
+setup:
+#PROFLIB	-mkdir profiled
+
+#PROFLIB .c.o:
+#PROFLIB 	${CC} -p ${CFLAGS} -c $*.c
+#PROFLIB 	mv $*.o profiled/$*.o
+#PROFLIB 	${CC} ${CFLAGS} -c $*.c
+
+export: setup libfilt.a
+	@rm -f $(LIBSDIR)/libfilt.a
+	-ln libfilt.a $(LIBSDIR)
+#PROFLIB 	@rm -f $(LIBSDIR)/profiled/libfilt.a
+#PROFLIB 	-ln libfilt_p.a $(LIBSDIR)/profiled/libfilt.a
+
+Makefile: Makefile.dst
+	$(MAINDIR)/GenerateMake $(DIRLIST)
+
+FLTLIBS = libfilt.a ../libnews.a ../libport.a
+lnfilter: lnfilter.c $(FLTLIBS)
+	$(CC) $(CFLAGS) $(LDFLAGS) -DMAIN lnfilter.c $(FLTLIBS) -o lnfilter
+
+# ----------------------------------------------------------------------
+# OBJECT AUTO-DEPENDENCIES GO AFTER THIS LINE -- DO NOT DELETE IT!!!
+#
+.SUFFIXES: .ln
+
+.c.ln:
+#LINTLIBS	lint $(LINTFLAGS) -c $<
+#NOLINTLIBS	lint $(LINTFLAGS) -C$* $<
+
+# LINT AUTO-DEPENDENCIES GO AFTER THIS LINE -- DO NOT DELETE IT!!!
+
+lintlib: $(LIBSDIR)/llib-lfilt.ln
+
+$(LIBSDIR)/llib-lfilt.ln: llib-lfilt.ln
+	cp llib-lfilt.ln $(LIBSDIR)
+
+#LINTLIBS llib-lfilt.ln: $(FTSRCS:.c=.ln)
+#LINTLIBS	lint -x -u $(FTSRCS:.c=.ln) -o filt
+#NOLINTLIBS llib-lfilt.ln: $(FTSRCS)
+#NOLINTLIBS	lint $(LINTFLAGS) -Cfilt $(FTSRCS)
+
+#
+# Random utility productions
+#
+manifest:
+	echo Makefile.dst Makefile $(FTHDRS) $(FTSRCS)
+
+distclean:
+	rm -f lnfilter
+
+clean: distclean
+	rm -f *.a *.o *.ln *~ Makefile
+	rm -fr profiled
+
+# libfilt.a Makefile ends here

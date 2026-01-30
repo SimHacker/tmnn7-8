@@ -1,0 +1,110 @@
+.if n .ds La '
+.if n .ds Ra '
+.if t .ds La `
+.if t .ds Ra '
+.if n .ds Lq "
+.if n .ds Rq "
+.if t .ds Lq ``
+.if t .ds Rq ''
+.de Ch
+\\$3\\*(Lq\\$1\\*(Rq\\$2
+..
+.TH BBSAUTO 8 "Mar 17, 1989"
+.ds ]W News 3.0 (beta level 7)
+.SH NAME
+bbsauto \- bidirectional netnews-to-bbs gatewaying robot 
+.SH SYNOPSIS
+.B bbsauto [-guD] [-n service] [-p newsfile]
+.SH DESCRIPTION
+The
+.I bbsauto (1)
+program supports transparent gatewaying between netnews and BBS services.
+It is intended to be run several times a day from cron by the news user,
+and as needed by other users. Each invocation does as follows:
+.P
+First, the service name (given by the -n argument, defaulting to CompuServe)
+is looked up in the service description file $HOME/\fRbbsauto\fR. The service
+file supplies a phone number, speed, service type, and login information for
+the service. The number is dialed and a connection established. The service
+type is then used to select one of several `robot' modules.
+.P
+If the -g (get news) option is given, the robot module then captures news from
+a list of `topic areas' specified in the service description. It will also try
+to capture pending mail for the invoking user.
+.P
+If the -p (news file) option was specified, it reads that file as an input
+batch and posts the component articles to the BBS in its local format. 
+A filename of `-' causes the input batch to be read from stdin.
+The batch may be in netnews batch format (with message length headers) or may
+simply be a batch of concatenated RFC-822-format articles. Articles without
+Newsgroups lines but with To lines are posted as private mail on the BBS.
+Articles that could not be successfully posted are mailed back to the
+originator with an error indication.
+.P
+Then it logs off the service. A postprocessing phase translates captured
+articles to netnews form and feeds them to \fIrnews\fR(8). If the -u option
+is specified it is passed to rnews, overriding news spooling. The post phase
+may also invoke \fImail\fR(1) to send collected BBS mail to the account owner.
+.P
+The -D option (valid only if the code was compiled with DEBUG) enables various
+levels of diagnostic output. Some other special debugging options will then
+be enabled; see the Hacker's Guide for details.
+.P
+If the -p option is not specified, the program will assume -g.
+.P
+To arrange automatic posting of BBS articles through bbsauto, you'll want to
+set up a sys line that looks something like this:
+
+	compuserve:cis:cis:FL1:bbsauto -n CompuServe -p %F:
+
+This causes locally-originated postings to CompuServe to be batched, and
+tells \fIsendbatch\fR(8) how to transmit batches through bbsauto. To arrange
+automatic collection and posting of forum articles, you'll need to run
+`bbsauto -n CompuServe' periodically; you'll also want to declare the
+cis hierarchy flexgroupy.
+.SH COMPUSERVE GATEWAYING CONVENTIONS
+CompuServe forums are mapped into a `cis' newsgroup hierarchy. The first
+level below cis has a group for each forum on the bbsauto topic list. Sections
+are indicated by an s<number>-suffix. Thus, for example, Section 3 of UNIXFORUM
+is mapped into `cis.unixforum.s3'.
+.SH
+Compuserve user IDs are mapped into From-names in an obvious way; [mmmm,nnnn]
+becomes `mmmm.nnnn@compuserve'(RFC-822 forbids the comma character in address
+local-parts). The text portion of CIS name headers are preserved as an RFC-822
+comment in parens.
+.P
+Compuserve message numbers are mapped into fake Internet IDs by prepending the
+first six letters of the forum and appending CIS's pseudo-hostname. Thus,
+article 456785 of the PRACTICE forum would become <practi456785@compuserve>
+.P
+Compuserve `Sb:' lines are mapped to `Subject' lines and vice-versa. Note that
+UNIX-to-CIS gating will frequently truncate these, CIS permits only 24 chars
+per subject line.
+CIS article threads are mapped to netnews threads using the References header.
+Followups are posted as REPLYs to the proper articles.
+.P
+The CIS robot expects you to be in Command mode and using EDIT for both Forums
+and EasyPlex (so that there are no line prompts while entering text). It
+expects EasyPlex to be in unpaged mode.
+.SH BUGS
+Currently, the only service type supported is CompuServe. Modules for BIX,
+GEnie, and other services are but a gleam in the designer's eye.
+.P
+This program requires you to leave valuable passwords in $HOME/\fIbbsauto\fR.
+Beware crackers -- deny general read permissions on that file!
+.P
+Because this program uses \fIcu\fR(1), some error conditions may cause it to
+die while leaving a process hanging on the line. This can get expensive.
+Caveat usor.
+.SH FILES
+.TP 20
+LIB/bbsauto
+file describing accessible services
+.SH SEE ALSO
+inews(8),
+postnews(1),
+readnews(1),
+vnews(1),
+news(5),
+recnews(8),
+sendnews(8)

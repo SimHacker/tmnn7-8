@@ -1,0 +1,156 @@
+# libport.a generic Makefile to be customized for your site by Configure
+#
+# This is the portability library directory. The Makefile defines four targets:
+#
+# libport.a:	The portability library itself
+# manifest:	Echo a string containing names of all library sources
+# llib-lport.ln	The lint library made from libport.a
+# clean:	Clean out all object, library and lint files
+#
+# Targets that create a couple of interactive test modules are also given
+# Call "make -f Makefile.dst Makefile" from here to rebuild the Makefile
+
+# Other netnews source directories
+MAINDIR = ..
+
+DIRLIST = $(MAINDIR)
+INCLUDE = -I. -I$(MAINDIR)
+LIBSDIR = $(MAINDIR)
+
+#
+# You should not need to edit anything below this line
+#
+
+# Here are the macro definitions that Configure tweaks
+CFLAGS = $(CDEBUG) $(INCLUDE) $(CSPECIAL)
+LDFLAGS = $(LDDEBUG) $(LDSPECIAL)
+LINTFLAGS = $(INCLUDE)
+
+.PRECIOUS: Makefile libport.a
+
+#V7 SYSSRCS = bzero.c uname.c
+#USG SYSSRCS = bzero.c
+#BSD4_1 SYSSRCS = bzero.c uname.c
+#BSD4_2 SYSSRCS = uname.c
+#BSD4_3 SYSSRCS = uname.c
+#SCO_XENIX SYSSRCS = bzero.c lockf.c
+#M_XENIX SYSSRCS = bzero.c lockf.c
+
+#V7 SYSOBJS = bzero.o uname.o
+#USG SYSOBJS = bzero.o
+#BSD4_1 SYSOBJS = bzero.o uname.o
+#BSD4_2 SYSOBJS = uname.o
+#BSD4_3 SYSOBJS = uname.o
+#SCO_XENIX SYSOBJS = bzero.o lockf.o
+#M_XENIX SYSOBJS = bzero.o lockf.o
+#UNIXPC SYSOBJS = bzero.o lockf.o
+
+MALLOCSRC=
+MALLOCOBJ=
+
+ALLSYSC = bzero.c uname.c xlockf.c
+
+LHDRS = alist.h dballoc.h edbm.h grow.h procopts.h regexp.h server.h slist.h \
+	spawn.h libport.h
+LSRCS = alist.c arpadate.c backquote.c bitbucket.c checksum.c dballoc.c df.c \
+	edbm.c environ.c errmsg.c fcopy.c filestat.c fullname.c fwait.c \
+	grow.c lcase.c linecount.c mkbranch.c more.c nstrip.c peopen.c \
+	prefix.c procopts.c regexp.c savestr.c server.c setadd.c slist.c \
+	spawn.c strindex.c vms.c xerror.c
+LOBJS = alist.o arpadate.o backquote.o bitbucket.o checksum.o dballoc.o df.o \
+	edbm.o environ.o errmsg.o fcopy.o filestat.o fullname.o fwait.o \
+	grow.o lcase.o linecount.o mkbranch.o more.o nstrip.o peopen.o \
+	prefix.o procopts.o regexp.o savestr.o server.o setadd.o slist.o \
+	spawn.o strindex.o vms.o xerror.o
+
+libport.a: $(LOBJS) $(MALLOCOBJ) $(SYSOBJS) getdate.o
+	ar lrc libport.a $?
+	-ranlib libport.a
+	cp libport.a libportnm.a
+	ar d libportnm.a $(MALLOCOBJ)
+	-ranlib libportnm.a
+#PROFLIB 	(cd profiled; ar lrc ../libport_p.a $?)
+#PROFLIB 	-ranlib libport_p.a
+  
+setup:
+#PROFLIB	-mkdir profiled
+
+#PROFLIB .c.o:
+#PROFLIB 	${CC} -p ${CFLAGS} -c $*.c
+#PROFLIB 	mv $*.o profiled/$*.o
+#PROFLIB 	${CC} ${CFLAGS} -c $*.c
+
+getdate.c: getdate.y $(MAINDIR)/system.h $(MAINDIR)/configsys.h
+	@echo "expect 8 shift/reduce conflicts"
+	yacc getdate.y
+	mv y.tab.c getdate.c
+
+export: setup libport.a
+	@rm -f $(LIBSDIR)/libport.a
+	-ln libport.a $(LIBSDIR)
+	@rm -f $(LIBSDIR)/libportnm.a
+	-ln libportnm.a $(LIBSDIR)
+#PROFLIB 	@rm -f $(LIBSDIR)/profiled/libport.a
+#PROFLIB 	-ln libport_p.a $(LIBSDIR)/profiled/libport.a
+
+Makefile: Makefile.dst
+	$(MAINDIR)/GenerateMake $(DIRLIST)
+
+# ----------------------------------------------------------------------
+# OBJECT AUTO-DEPENDENCIES GO AFTER THIS LINE -- DO NOT DELETE IT!!!
+#
+.SUFFIXES: .ln
+
+.c.ln:
+#LINTLIBS	lint $(LINTFLAGS) -c $<
+#NOLINTLIBS	lint $(LINTFLAGS) -C$* $<
+
+# LINT AUTO-DEPENDENCIES GO AFTER THIS LINE -- DO NOT DELETE IT!!!
+
+lintlib: $(LIBSDIR)/llib-lport.ln
+
+$(LIBSDIR)/llib-lport.ln: llib-lport.ln
+	cp llib-lport.ln $(LIBSDIR)
+
+#LINTLIBS llib-lport.ln: $(SYSSRCS:.c=.ln) $(LSRCS:.c=.ln)
+#LINTLIBS	lint -x -u $(SYSSRCS:.c=.ln) $(LSRCS:.c=.ln) -o port
+#NOLINTLIBS llib-lport.ln: $(SYSSRCS) $(LSRCS)
+#NOLINTLIBS	lint $(LINTFLAGS) -Cport $(SYSSRCS) $(LSRCS)
+
+#
+# Test modules
+#
+TESTERS = edbm alist slist server mkbranch
+edbm: edbm.c edbm.h
+	$(CC) -DMAIN -g $(CFLAGS) $(LSPECIAL) edbm.c -o edbm
+
+alist: alist.c alist.h dballoc.h libport.a
+	$(CC) -DMAIN -g $(CFLAGS) $(LSPECIAL) alist.c libport.a -o alist
+
+slist: slist.c slist.h libport.a
+	$(CC) -DMAIN -g $(CFLAGS) $(LSPECIAL) slist.c libport.a -o slist
+
+server: server.c libport.a
+	$(CC) -DMAIN -g $(CFLAGS) $(LSPECIAL) server.c libport.a -o server
+
+mkbranch: mkdir.c fwait.o
+	$(CC) -DMAIN -g $(CFLAGS) $(LSPECIAL) mkdir.c fwait.o -o mkbranch
+
+setadd: setadd.c
+	$(CC) -DMAIN -g $(CFLAGS) $(LSPECIAL) setadd.c -o setadd
+
+#
+# Random utility productions
+#
+PORTSRCS = $(ALLSYSC) $(LHDRS) $(LSRCS) getdate.y
+manifest:
+	echo Makefile.dst Makefile $(PORTSRCS)
+
+distclean:
+	rm -f $(TESTERS)
+
+clean: distclean
+	rm -f *.o *.a *.ln *~ Makefile getdate.c
+	rm -fr profiled
+
+# libport.a Makefile ends here

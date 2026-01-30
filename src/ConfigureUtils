@@ -1,0 +1,130 @@
+# Helper functions for the netnews configuration script
+#
+# This library file (intended to be included first by configuration scripts)
+# emits general instructions for interacting with the configuration code, and
+# sets up a couple of handy helper functions for the use of configure scripts.
+# These are:
+#	qq		-- query with prompt and shell espape
+#	contains	-- grep that is guaranteed to return status
+#	loc		-- find a command location
+# The instructions are suppressed if the shell variable level is 0 or 1
+#
+# It also arranges for them to vanish silently when the script is done or
+# interrupted, via a trap call. To make sure your script cleans these up on
+# exit, include a rm $confighelpers in your traps.
+#
+#   This software is copyright (C) 1988 by Eric S. Raymond for the sole purpose
+# of protecting free redistribution; see the LICENSE file for details.
+
+: a sanity check
+PATH='.:/bin:/usr/bin:/usr/local/bin:/usr/ucb:/usr/local:/usr/lbin:/etc'
+export PATH || (echo "OOPS, this isn't sh.  Desperation time.  I will feed myself to sh."; sh $0; kill $$)
+
+if test ! -t 0; then
+    echo "Say 'sh Configure', not 'sh <Configure'"
+    exit 1
+fi
+
+(alias) >/dev/null 2>&1 && \
+    echo "(I see you are using the Korn shell. Some kshs choke on this script," && \
+    echo "especially on exotic machines.  If yours does, try the Bourne shell instead.)"
+
+confighelpers='contains qq loc'
+trap 'rm -f qq $confighelpers; exit 1' 0 1 2 15
+
+: the following should work in any shell
+case $contains in
+contains*)
+    echo " "
+    echo 'grep "$1" "$2" >.grtmp && cat .grtmp && test -s .grtmp' >contains
+    chmod +x contains
+esac
+
+: now set up to do reads with possible shell escape
+: $1 is a prompt, $2 as a type, $3 is the variable to be set, $4 is a default
+cat <<EOSC >qq
+echo $n "\$1 $c"
+dflt=
+case \$3 in '') ;; *) eval "dflt=\\\$\$3" ;; esac
+case \$4 in '') ;; *) dflt=\$4 ;; esac
+case \$2 in
+name) case \$dflt in '') ;; *) echo $n "[\$dflt] $c";; esac ;;
+turnon)
+case \$dflt in define|y) echo $n "[y] $c";; undef|n) echo $n "[n] $c";; esac;;
+turnoff)
+case \$dflt in undef|n) echo $n "[y] $c";; define|y) echo $n "[n] $c";; esac;;
+esac
+ans='!'
+while expr "X\$ans" : "X!" >/dev/null; do
+    read ans
+    case "\$ans" in
+    !)
+	sh
+	echo " "
+	echo $n "Your answer: $c"
+	;;
+    !*)
+	set \`expr "X\$ans" : "X!\(.*\)\$"\`
+	sh -c "\$*"
+	echo " "
+	echo $n "Your answer: $c"
+	;;
+    esac
+done
+case \$2 in
+    turnon)
+	case \$ans in y*)ans=define;; '')ans=\$dflt;; *)ans=undef;; esac;;
+    turnoff)
+	case \$ans in y*)ans=undef;; '')ans=\$dflt;; *)ans=define;; esac;;
+    name)
+	case \$ans in '')ans=\$dflt;; esac;;
+    '') ;;
+    *) echo "Bad type in query"; exit 0 ;;
+esac
+case \$ans in '') ;; *) case \$3 in '') ;; *) eval "\$3='\$ans'";; esac;; esac
+EOSC
+
+cat <<EOSC >loc
+\$startsh
+thing=\$1
+shift
+dflt=\$1
+shift
+for dir in \$*; do
+    case "\$thing" in
+    .)
+	if test -d \$dir/\$thing; then
+	    echo \$dir
+	    exit 0
+	fi
+	;;
+    *)
+	if test -f \$dir/\$thing; then
+	    echo \$dir/\$thing
+	    exit 0
+	fi
+	;;
+    esac
+done
+echo \$dflt
+exit 1
+EOSC
+chmod +x loc
+pth="/usr/ucb /bin /usr/bin /usr/local /usr/local/bin /usr/lbin /etc /usr/lib"
+
+case $level in 0|1)
+
+: general instructions
+cat <<'EOH'
+ 
+This installation shell script will examine your system and ask you questions
+to determine how your distribution files should be configured.  If you
+get stuck on a question, you may use a ! shell escape to start a subshell or
+execute a command.  Many of the questions will have default answers in
+square brackets--typing carriage return will give you the default.
+
+EOH
+
+;; esac
+
+: ConfigUtils ends here

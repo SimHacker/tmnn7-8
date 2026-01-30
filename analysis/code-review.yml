@@ -1,0 +1,107 @@
+# TMNN Code Review: Security Analysis
+# Performed 2026-01-30 using Cursor AI
+
+summary: |
+  Eric S. Raymond's "Teenage Mutant Ninja Netnews" source code contains
+  numerous security vulnerabilities typical of 1980s C code, but notable
+  given ESR's later career as an authority on Unix programming best practices.
+
+buffer_overflows:
+  unsafe_string_functions:
+    total: 874
+    functions:
+      sprintf: "used without bounds checking"
+      strcat: "concatenates to fixed buffers"
+      strcpy: "no length validation"
+    example_file: src/D.news/fascist.c
+    example_code: |
+      static char grplist[LBUFLEN];
+      while (gr = getgrent()) {
+          (void) strcat(grplist, gr->gr_name);
+          (void) strcat(grplist, ",");
+      }
+    vulnerability: "Buffer overflow if user is in many groups"
+    
+  gets_function:
+    count: 1
+    location: src/system.h
+    severity: critical
+    note: "gets() was removed from C11 standard as unfixably dangerous"
+
+temp_file_vulnerabilities:
+  mktemp_usage:
+    count: 42
+    vulnerability: "Predictable temp filenames enable symlink attacks"
+    mitigation_available: "mkstemp() existed in 1989"
+    files_affected:
+      - src/rnews.c
+      - src/inews.c
+      - src/D.priv/collect.c
+
+command_injection:
+  system_popen_usage:
+    count: 61
+    functions:
+      system: "passes unsanitized input to shell"
+      popen: "same vulnerability"
+    example_file: src/D.port/spawn.c
+    vulnerability: "Shell metacharacter injection"
+
+lock_file_issues:
+  file: src/D.priv/lock.c
+  esr_comment: "This whole module is ugly and flaky."
+  problems:
+    - "Lock files in /tmp"
+    - "Hardcoded magic numbers for semaphores"
+    - "Any local user can DoS the system"
+  shipped_anyway: true
+
+political_code:
+  file: src/D.news/fascist.c
+  naming:
+    main_function: fascist()
+    data_type: nasty_t
+    compile_flags:
+      - FASCIST  # controls write permissions
+      - COMMUNIST  # controls read permissions
+  original_author: "Eugene Spafford (spaf@gatech)"
+  rewritten_by: "Eric S. Raymond"
+  changes_made:
+    - "Added political dog-whistle naming"
+    - "Added Tolkien cosplay examples"
+    - "Added buffer overflows"
+
+tolkien_cosplay:
+  file: src/D.news/fascist.c
+  examples:
+    wizards_group:
+      - gandalf
+      - radagast
+      - saruman
+    banned_sites:
+      - mordor
+      - orthanc
+    newsgroup: "alt.goodguys"
+  restricted_user_example: "miscreant"
+  permissions: "junk,talk.politics (forbidden from security groups)"
+
+unprofessional_comments:
+  hog_comment:
+    location: src/D.news/fascist.c
+    text: "This routine is a HOG!!!!!"
+    exclamation_points: 5
+    actual_bug: "Buffer overflow in the 'HOG' function"
+
+irony_score:
+  later_wrote:
+    - "The Art of Unix Programming (2003)"
+    - "How to Become a Hacker"
+  own_code_quality: "Riddled with buffer overflows and command injection"
+  
+audit_methodology:
+  tool: Cursor AI with grep analysis
+  patterns_searched:
+    - sprintf|strcat|strcpy|gets
+    - mktemp
+    - system|popen
+    - FASCIST|COMMUNIST

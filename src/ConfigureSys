@@ -1,0 +1,1620 @@
+: use /bin/sh
+#
+# ConfigureSys -- script for determining system capabilities.
+#	Requires the ConfigureUtils file. Produces configsys.sh and configsys.h
+#
+# If these # comments don't work, trim them.  Don't worry about the other
+# shell scripts, Configure will trim # comments from them for you.
+#
+# Yes, you may rip this off to use in other distribution packages.
+# This TMN-netnews version written by Eric S. Raymond. Thanks are due also
+# to Steph Marr and Keith Reynolds for modifications for use with SCO XENIX.
+# Praise and kudos to Larry Wall who wrote the first direct ancestor of it.
+#
+#   This software is copyright (C) 1988 by Eric S. Raymond for the sole purpose
+# of protecting free redistribution; see the LICENSE file for details.
+#
+
+: a sanity check
+PATH='.:/bin:/usr/bin:/usr/local/bin:/usr/ucb:/usr/local:/usr/lbin:/etc'
+export PATH || (echo "OOPS, this isn't sh.  Desperation time.  I will feed myself to sh."; sh $0; kill $$)
+
+: null out all the system parameters
+processor='unknown' machine='GENERIC' windowed=''
+species='' n='' c='' genus='' honey='' libc='' eunicefix='' cpp='' shsharp=''
+startsh='' spitshell='' test='' expr='' sed='' ed='' echo='' cat='' rm=''
+grep='' egrep='' shtest=''
+contains='' delranlib='ranlib' sitename='' cc='cc' scflags='' slflags=''
+termlib='' auxlibs='' dirlib='' prefsh='' delmake='MAKE'
+pager='' segmented='' index='' novoid='' novfork='' eunice='' termio=''
+fcntl='' lockf='' svidsems='' xenixsems='' ioctl='' normsig='' 
+curses='' keypad=''
+libndir='' douname='' hostcmd='' gcos='define' getcwd='' getpwent=''
+systemmalloc='' mallocsrc='' mallocobj='' mallocname='kmalloc'
+longalign='undef' posixcompat='' posxlib='' proflib=''
+
+: Eunice requires echo " " instead of echo "", can you believe it
+
+: some greps do not return status, grrr.
+trap 'rm -f grimble contains; exit 1' 0 1 2 15
+echo "grimblepritz" >grimble
+if grep blurfldyick grimble >/dev/null 2>&1 ; then
+    contains=contains
+else
+    if grep grimblepritz grimble >/dev/null 2>&1 ; then
+	contains=grep
+    else
+	contains=contains
+    fi
+fi
+rm grimble
+
+if test -f ./configsys.sh ; then
+    echo "Fetching default answers from your old configsys.sh file..."
+    . ./configsys.sh
+    echo $date0
+    echo "Done."
+fi
+
+trap 'rm -f .echotmp contain; exit 1' 0 1 2 15
+echo "Checking echo to see how to suppress newlines..."
+(echo "hi there\c" ; echo " ") >.echotmp
+if $contains c .echotmp >/dev/null 2>&1 ; then
+	echo "...using -n."
+	n='-n'
+	c=''
+else
+	echo "...using \\\c."
+	n=''
+	c='\c'
+fi
+echo $n "Type carriage return to continue. Your cursor should be here->$c"
+read ans
+rm .echotmp
+
+: at this point we know everything we need for the library to function
+. ConfigureUtils
+
+if test ! -f configsys.sh; then
+    echo "This is a first-time installation of the netnews software."
+fi
+cat <<EOF
+ConfigureSys will now analyze your operating system to determine its
+capabilities, and produce the following files:
+
+	configsys.h -- a file containing #defines for inclusion in C files
+	configsys.sh -- a shell script containing useful variable settings
+
+Subsequent runs of ConfigureSys will use the configsys.sh file to set defaults.
+
+Much effort has been expended to ensure that this shell script will run on any
+Unix system.  If despite that it blows up on you, your best bet is to edit it
+and try again. And please email the news maintainers your fix!
+
+EOF
+
+echo $n "[Type carriage return to continue] $c";
+read ans
+
+: get list of predefined functions in a handy place
+trap 'rm -f $confighelpers libc.list libc.tmp; exit 1' 0 1 2 15
+echo " "
+set /lib/*libc.a
+if test -f $1; then
+    if test -f /lib/libc.a; then
+	if test -f /lib/libx.a -a -f /xenix; then
+	    echo "Found XENIX libc.a and libx.a.  You're okay."
+	    libc="/lib/libc.a /lib/libx.a"
+	    libs="POSIX -lx"
+	else
+	    echo "Your C library is in /lib/libc.a.  You're boring."
+	    libc=/lib/libc.a
+	fi
+    else
+	if test -d /lib/386 -a -f /lib/386/Slibc.a; then
+	    echo "Found a XENIX 386 libc.a, you're doing great."
+	    if test -f /lib/386/Slibdir.a; then
+		libc="/lib/386/Slibc.a /lib/386/Slibdir.a /lib/386/Slibx.a /lib/386/Slibcfp.a"
+		libs="POSIX -ldir -lx"
+	    else
+		libc="/lib/386/Slibc.a /lib/386/Slibx.a /lib/386/Slibcfp.a"
+		libs="POSIX -lx"
+	    fi
+	else
+	    if test -f /lib/Mlibc.a; then
+		echo "Found a XENIX 286 libc.a, you're in good shape."
+		libc="/lib/Mlibc.a /lib/Mlibx.a /lib/Mlibcfp.a"
+		libs="POSIX -lx"
+	    fi
+	fi
+    fi
+else
+    set /usr/lib/*libc.a
+    if test -f $1; then
+	echo "Your C library is in /usr/lib/libc.a, of all places."
+	libc=/usr/lib/libc.a
+    elif test -f /lib/large/libc.a; then
+  	echo "Your C library is in /lib/large/libc.a. LARGE MODEL"
+ 	libc=/lib/large/libc.a
+ 	memmodel=large
+    elif test -f /lib/small/libc.a; then
+	echo "Your C library is in /lib/small/libc.a. SMALL MODEL"
+	libc=/lib/small/libc.a
+	memmodel=small
+    elif test -f "$libc"; then
+	echo "Your C library is in $libc, like you said before."
+    elif test -f /lib/clib; then
+    	echo "You have Apollo Domain/IX, your C library is rather funky."
+    	libc="/lib/clib"                    
+    else
+	cat <<'EOM'
+
+I can't seem to find your C library.  I've looked for /lib/libc.a and
+/usr/lib/libc.a, but neither of those are there.  What is the full name
+EOM
+	set "of your C library?" name libc; . qq
+    fi
+fi
+echo " "
+echo $n "Extracting names from C library for later perusal...$c"
+
+if test -f /lib/clib; then
+    # first, check for Apollo Domain weirdness
+    /com/bind -map $libc | sed -e 1,/Offset/d -e '/Globals/,$d' > libc.list
+else     
+    nm $libc 2>/dev/null | sed -n -e 's/^.* [TA] _//p' -e 's/^.* [TA] //p' >libc.list
+    if $contains 'printf$' libc.list >/dev/null 2>&1; then
+	echo "done"
+    else
+	nm $libc 2>/dev/null | sed -n -e 's/^.* D _//p' -e 's/^.* D //p' >libc.list
+	if $contains 'printf$' libc.list >/dev/null 2>&1; then
+    	echo "done"
+	else
+	    echo " "
+	    echo "nm didn't seem to work right."
+ 	    echo "Trying ar instead..."
+	    if ar t $libc > libc.tmp; then
+		sed -e 's/\.o$//' < libc.tmp > libc.list
+		echo "Ok."
+	    else
+		echo "ar didn't seem to work right."
+		echo "Maybe this is a Cray...trying bld instead..."
+		if bld t $libc | sed -e 's/.*\///' -e 's/\.o:.*$//' >libc.list
+		then
+		    echo "Ok."
+		else
+		    echo "That didn't work either.  Giving up."
+		    exit 1
+		fi
+	    fi
+	fi
+    fi
+fi
+rm -f libc.tmp
+
+: make some quick guesses about what we are up against
+trap 'rm -f $confighelpers libc.list; exit 1' 0 1 2 15
+echo " "
+echo $n "Hmm...$c"
+honey='undef'
+lintlibs=NOLINTLIBS
+if $contains SIGTSTP /usr/include/signal.h >/dev/null 2>&1 ; then
+    genus='V7B'
+    echo "Looks kind of like a BSD system, but we'll see..."
+    novoid='undef'
+    delmake="IF YOU HAVE THIS IN YOUR MAKEFILE IT WILL BE DELETED"
+    if $contains bcopy libc.list >/dev/null 2>&1 ; then
+	if $contains BSD4_3 /usr/include/sys/param.h >/dev/null 2>&1 ; then
+	    echo "Aha! this is a 4.3BSD or something much like it."
+	    species='BSD4_3'
+	    termlib="-lcurses -ltermcap"
+	    hvcurses="CURSES"
+	    curses='define'
+	else
+	    echo "Aha! this is a 4.2BSD, or I'm a PDP-1's uncle."
+	    species='BSD4_2'
+	fi
+    else
+	if $contains rename libc.list >/dev/null 2>&1 ; then
+	    echo "This appears to be a 4.1C BSD, how obscure."
+	    species='BSD4_1C'
+	else 
+	    echo "This must be a 4.1 or earlier BSD, how archaic."
+	    species='BSD4_1'
+	fi
+    fi
+elif $contains fcntl libc.list >/dev/null 2>&1 ; then
+    genus='USG'
+    novoid='undef'
+    delmake='MAKE'
+    echo "Looks kind of like an AT&T system, but we'll see..."
+    if $contains advfs libc.list >/dev/null 2>&1 ; then
+	if test -d /var ; then
+	    echo "Looks like System V Release 4. Final healing of the Great Schism?"
+	    species='SYSV4'
+	    auxlibs=-lmalloc
+	else
+	    echo "System V Release 3. The bandwagon rolls onward."
+	    species='SYSV3'
+	    auxlibs=-lmalloc
+	fi
+	lintlibs=LINTLIBS
+    elif test -x "/xenix" ; then
+	echo "SCO XENIX System V, just say NO to DOS."
+	species='SCO_XENIX'
+	lintlibs=LINTLIBS
+    elif $contains setvbuf libc.list >/dev/null 2>&1 ; then
+	echo "System V Release 2, gotta love that Death Star logo."
+	species='SYSV2'
+	auxlibs=-lmalloc
+	lintlibs=LINTLIBS
+    elif $contains memcpy libc.list >/dev/null 2>&1 ; then
+	echo "System V Release 1. Smile, Ma Bell loves you."
+	species='SYSV1'
+    else
+	echo "This must be System III. My condolences."
+	species='SIII'
+    fi
+else
+    echo "Looks kind of like a version 7 system, but we'll see..."
+    genus='V7B'
+    species='V7'
+    delmake="IF YOU HAVE THIS IN YOUR MAKEFILE IT WILL BE DELETED"
+fi
+if $contains vmssystem libc.list >/dev/null 2>&1 ; then
+    cat <<'EOI'
+There is, however, a strange, musty smell in the air that reminds me of
+something...hmm...yes...I've got it...there's a VMS nearby, or I'm a Blit.
+EOI
+    eunicefix=unixtovms
+    $eunicefix $confighelpers
+    eunice=define
+: it so happens the Eunice I know will not run shell scripts in Unix format
+else
+    echo " "
+    echo "Congratulations.  You aren't running Eunice."
+    eunicefix=':'
+    eunice=undef
+fi
+if test -f /xenix; then
+    echo $n "Actually, this looks more like a XENIX system...$c"
+    if test -f /etc/lpinit ; then
+	species=SCO_XENIX
+	echo "SCO_XENIX, to be exact."
+    else
+	species=M_XENIX
+	echo "Microsoft XENIX, to be exact."
+    fi
+elif test -f /venix; then
+    echo "Actually, this looks more like a VENIX system."
+elif test -f /etc/patch; then
+    uport=define
+    echo "Oh, my...this looks like a Microport system."
+fi
+
+: do we have HDB UUCP?
+if test -f /usr/lib/uucp/Systems -o -f /etc/Systems; then
+    echo "I smell something sweet -- sniff, sniff..."
+    echo "  ...ah, I see you're running Honey-Danber UUCP"
+    honey='define'
+fi
+
+: see how we invoke the C preprocessor
+trap 'rm -f $confighelpers libc.list testcpp.*; exit 1' 0 1 2 15
+echo " "
+echo "Checking to see how your C preprocessor is invoked..."
+cat <<'EOT' >testcpp.c
+#define ABC abc
+#define XYZ xyz
+ABC/XYZ
+EOT
+echo 'Maybe "cc -E" will work...'
+cc -E testcpp.c >testcpp.out 2>&1
+if $contains 'abc/xyz' testcpp.out >/dev/null 2>&1 ; then
+    echo "Yup, it does."
+    cpp='cc -E'
+else
+    echo 'Nope...maybe "cc -P" will work...'
+    cc -P testcpp.c >testcpp.out 2>&1
+    if $contains 'abc/xyz' testcpp.out >/dev/null 2>&1 ; then
+	echo "Yup, that does."
+	cpp='cc -P'
+    else
+	echo 'Nixed again...maybe "/lib/cpp" will work...'
+	/lib/cpp testcpp.c >testcpp.out 2>&1
+	if $contains 'abc/xyz' testcpp.out >/dev/null 2>&1 ; then
+	    echo "Hooray, it works!  I was beginning to wonder."
+	    cpp='/lib/cpp'
+	else
+	    echo 'Hmm...maybe you already told me...'
+	    case "$cpp" in
+	    '') ;;
+	    *) $cpp testcpp.c >testcpp.out 2>&1;;
+	    esac
+	    if $contains 'abc/xyz' testcpp.out >/dev/null 2>&1 ; then
+		echo "Hooray, you did!  I was beginning to wonder."
+	    else
+		set "Nope. I can't find a C preprocessor. Name one:" name cpp
+		. qq
+		$cpp testcpp.c >testcpp.out 2>&1
+		if $contains 'abc/xyz' testcpp.out >/dev/null 2>&1 ; then
+		    echo "OK, that will do."
+		else
+		    echo "Sorry, I can't get that to work.  Go find one."
+		    exit 1
+		fi
+	    fi
+	fi
+    fi
+fi
+rm -f testcpp.c testcpp.out
+
+: see if sh knows # comments
+trap 'rm -f $confighelpers libc.list try today; exit 1' 0 1 2 15
+echo " "
+echo "Checking your sh to see if it knows about # comments..."
+if sh -c '#' >/dev/null 2>&1 ; then
+    echo "Your sh handles # comments correctly."
+    shsharp=true
+    spitshell=cat
+    echo " "
+    echo "Okay, let's see if #! works on this system..."
+    echo "#!/bin/echo hi" > try
+    $eunicefix try
+    chmod +x try
+    try > today
+    if test -s today; then
+	echo "It does."
+	sharpbang='#!'
+    else
+	echo "#!/bin/echo hi" > try
+	$eunicefix try
+	chmod +x try
+	try > today
+	if test -s today; then
+	    echo "It does."
+	    sharpbang='#!'
+	else
+	    echo "It doesn't."
+	    sharpbang=': use '
+	fi
+    fi
+else
+    echo "Your sh doesn't grok # comments--I will strip them later on."
+    shsharp=false
+    echo "exec grep -v '^#'" >spitshell
+    chmod +x spitshell
+    $eunicefix spitshell
+    spitshell=`pwd`/spitshell
+    echo "I presume that if # doesn't work, #! won't work either!"
+    sharpbang=': use '
+fi
+
+: figure out how to guarantee sh startup
+echo " "
+echo "Checking out how to guarantee sh startup..."
+startsh=$sharpbang'/bin/sh'
+echo "Let's see if '$startsh' works..."
+cat >try <<EOSS
+$startsh
+set abc
+test "$?abc" != 1
+EOSS
+
+chmod +x try
+$eunicefix try
+if try; then
+    echo "Yup, it does."
+else
+    echo "Nope.  You may have to fix up the shell scripts to make sure sh runs them."
+fi
+rm -f try today
+
+: find out where common programs are
+trap 'rm -f $confighelpers libc.list foo1 foo2; exit 1' 0 1 2 15
+echo " "
+echo "Locating common programs..."
+loclist="expr sed ed echo cat rm mv cp grep chown chgrp chmod ls strip"
+trylist="test egrep more pg Mcc"
+for file in $loclist; do
+    xxx=`loc $file $file $pth`
+    eval $file=$xxx
+    case "$xxx" in
+    /*)
+	echo $file is in $xxx.
+	;;
+    *)
+	echo "I don't know where $file is.  I hope it's in everyone's PATH."
+	;;
+    esac
+done
+echo " "
+echo "Don't worry if any of the following aren't found..."
+for file in $trylist; do
+    xxx=`loc $file $file $pth`
+    eval $file=$xxx
+    case "$xxx" in
+    /*)
+	echo $file is in $xxx.
+	;;
+    *)
+	echo "I don't see $file out there, offhand."
+	;;
+    esac
+done
+case $egrep in
+egrep)
+    echo "Substituting grep for egrep."
+    egrep=$grep
+    ;;
+*)
+    case "$contains" in
+    grep*) contains=e$contains;;
+    esac
+    ;;
+esac
+case $test in
+test)
+    echo "Hopefully test is built into your sh."
+    ;;
+/bin/test)
+    echo " "
+    set 'Is your "test" built into sh (OK to guess)?' turnon shtest; . qq
+    case $shtest in define) test=test ;; esac
+    ;;
+*)
+    test=test
+    ;;
+esac
+case $echo in
+echo)
+    echo "Hopefully echo is built into your sh."
+    ;;
+/bin/echo)
+    echo " "
+    echo "Checking compatibility between /bin/echo and builtin echo (if any)..."
+    $echo $n "hi there$c" >foo1
+    echo $n "hi there$c" >foo2
+    if cmp foo1 foo2 >/dev/null 2>&1; then
+	echo "They are compatible.  In fact, they may be identical."
+	echo=echo
+    else
+	case "$n" in
+	'-n') n='' c='\c' ans='\c' ;;
+	*) n='-n' c='' ans='-n' ;;
+	esac
+	cat <<FOO
+They are not compatible!  You are probably running ksh on a non-USG system.
+I'll have to use /bin/echo instead of the builtin, since Bourne shell doesn't
+have echo built in and we may have to run some Bourne shell scripts.  That
+means I'll have to use $ans to suppress newlines now.  Life is ridiculous.
+
+FOO
+    fi
+    $rm -f foo1 foo2
+    ;;
+*)
+    echo=echo
+    ;;
+esac
+
+: see if there is a working ranlib
+if $test `loc ranlib x $pth` != x ; then
+    $echo " "
+    $echo "I see you have a ranlib, I'll run it on constructed libraries"
+    delranlib="IF YOU HAVE THIS IN YOUR MAKEFILE IT WILL BE DELETED"
+fi
+
+: now get the site name
+$echo " "
+$echo "Figuring out site name..."
+$echo 'If we are on a BSD or SVr4 "hostname" will work...'
+if ans=`sh -c hostname 2>&1` ; then
+    sitename="$ans"
+    hostcmd=hostname
+else
+    $echo 'Maybe "uname -n" will work...'
+    if ans=`sh -c 'uname -n' 2>&1` ; then
+	sitename="$ans"
+	hostcmd='uname -n'
+    else
+	$echo 'No, maybe "uuname -l" will work...'
+	if ans=`sh -c 'uuname -l' 2>&1` ; then
+	    sitename="$ans"
+	    hostcmd='uuname -l'
+	else
+	   $echo 'Nope...is the name lurking in /etc/uucpname, perchance?'
+	   if $test -f /etc/uucpname ; then
+		hostcmd='cat /etc/uucpname'
+		sitename=`$hostcmd`
+	   else
+	       $echo '...Or perhaps in /local/uucpname?'
+	       if $test -f /etc/uucpname ; then
+		    hostcmd='cat /local/uucpname'
+		    sitename=`$hostcmd`
+	       else
+		    $echo 'Oh well, maybe I can mine it out of whoami.h...'
+		    if ans=`sh -c $contains' sysname /usr/include/whoami.h' 2>&1` ; then
+			sitename=`$echo "$ans" | $sed 's/^.*"\(.*\)"/\1/'`
+			hostcmd="sed -n -e '"'/sysname/s/^.*\"\\(.*\\)\"/\1/{'"' -e p -e q -e '}' </usr/include/whoami.h"
+		    else
+			echo "...Gadz! maybe there's an /etc/systemid?"
+			if $test -f /etc/systemid ; then
+			    hostcmd="head -2 /etc/systemid | tail -1"
+			    sitename=`$hostcmd`
+			else
+			    case "$sitename" in
+			    '') echo "Does this machine have an identity crisis or something?"
+				hostcmd=''
+				;;
+			     *) echo "Well, you said $sitename before..."
+				 ;;
+			    esac
+			fi
+		    fi
+		fi
+	    fi
+	fi
+    fi
+fi
+
+: you do not want to know about this
+set $sitename
+sitename=$1
+
+: translate upper to lower if necessary
+case $sitename in
+    *[A-Z]*)
+	sitename=`$echo $sitename | tr '[A-Z]' '[a-z]'`
+	echo "(Normalizing case in your site name)"
+	;;
+esac
+
+echo "Your site name appears to be '$sitename', we'll check this later."
+: see how we will look up site name from C
+echo " "
+if $test -f /etc/systemid -o -f /etc/uucpname -o -f /local/uucpname; then
+    echo "The hostname lives in an ID file, a custom uname() will be used."
+    douname='UUNAME'
+elif $contains gethostname libc.list >/dev/null 2>&1 ; then
+    echo "gethostname() found."
+    douname='GHNAME'
+elif $contains uname libc.list >/dev/null 2>&1 ; then
+    $echo "Found uname(), that's how your sitename will be determined."
+    douname='UNAME'
+else
+    case $hostcmd in
+    '') ;;
+    *) $cat <<EOT
+ 
+There is no gethostname() or uname() on this system, and no site ID file
+either. You have two possibilities at this point:
+
+1)  You can have your site name ($sitename) compiled in, which lets the code
+    start up faster, but makes your binaries non-portable, or
+
+2)  You can have the code use a
+	
+	popen("$hostcmd","r")
+
+Option 1 will use whoami.h if you have one.  If you want option 2 but with
+a different command, you can edit configsys.h after this shell script is done.
+
+EOT
+	set "Do you want your site name compiled in?" turnon hardsite; . qq
+	case $hardsite in
+	undef*)
+	    echo 'We will get the hostname from popen($hostcmd, "r").'
+	    douname='HOSTCMD' hostid=$hostcmd
+	;;
+	*)
+	    if $test -f /usr/include/whoami.h; then
+		$echo 'No hostname function--using whoami.h.'
+		douname='WHOAMI'
+	    else
+		$echo 'No hostname function--hardwiring "'$sitename'".'
+		douname='sysname' hostid="echo $sitename"
+	    fi
+	;;
+	esac
+    esac
+fi
+: see uname.c to understand what gets done with these symbols
+
+: find out if this is a machine with special goodies like windows
+machine=GENERIC
+addrsize=32
+windowed='undef'
+cc="cc"
+if [ -f /lib/shlib.ifile ] ; then
+    echo "Congratulations, I see you have a Safari 4, aka AT&T 7300 or 3B1."
+    processor='68010'
+    windowed=define
+    : kluge -- try to snarf ccs from the netnews misc directory
+    if [ -f ../misc/ccs -a ! -f ccs ] ; then
+	ln ../misc/ccs .
+    fi
+    if [ -f ccs ] ; then
+	echo "Ah, ccs is at hand...I'll use shared libraries"
+	loclibs=shlib.ifile
+    	cc="ccs"
+    else
+	echo "I can't find ccs, so I won't use shared libraries"
+    fi
+fi
+if test -x /bin/sun && sun >/dev/null 2>&1 ; then
+    echo "Congratulations, I see you're using a Sun workstation."
+    echo "I'm going to treat it as a 4.3 system."
+    machine='SUN'
+    processor='68010'
+    species='BSD4_3'
+    termlib="-lcurses -ltermcap"
+    hvcurses="CURSES"
+    curses='define'
+    windowed='define'
+fi
+if $test -f /usr/include/apollo_llib.h ; then
+    echo "Congratulations, I see you're using an Apollo workstation."
+    set `/com/netstat -c | fgrep "Node Type: `
+    case "$3" in
+    DN3500|DN4500) processor='68030' ;;
+    DN3000|DN4000|DSP80|DSP90|DN570*) processor='68020' ;;
+    DN300|DN320|DN550) processor='68010' ;;
+    *) echo "Hmmm...a '$3', I don't recognize that model. I'll assume 68020."
+       processor='68020' ;;
+    esac
+    windowed='undef'
+fi
+if $test -d /usr/toolboxbin ; then
+    echo "Oh, you're using a Macintosh ... too bad.  Please don't buy any"
+    echo "more of these;  Apple has gone from leading with  technology to"
+    echo "leading with anti-competitive lawsuits. Stop the lawyers *now*!"
+    machine='MACII'
+    processor='68020'	# it *could* be a IIx, but no way to tell. bfd.
+    addrsize=32
+    scflags='-DPOSIX'
+fi
+
+if $test -d /lib/386 ; then
+    echo "Congratulations, I see you're running SCO XENIX 386."
+    machine='xenix386'
+    echo "Congratulations, I see you're running SCO XENIX 386."
+else
+    if $test -f /lib/Mlibx.a; then
+	echo "I see you've got an SCO XENIX 286 box."
+	machine='xenix286'
+	echo "I see you've got an SCO XENIX 286 box."
+	addrsize=16
+    fi
+fi
+if $test "$windowed" = define ; then
+    echo "I'll assume you don't need visual interfaces to show time or check the mail."
+fi
+
+: check for void type support
+trap 'rm -f $confighelpers libc.list try.c; exit 1' 0 1 2 15
+$echo " "
+$echo "Checking to see if your C compiler groks the void type..."
+$cat >try.c <<'EOCP'
+void main();
+EOCP
+if cc -c try.c >/dev/null 2>&1 ; then
+    novoid='undef'
+    $echo $n "Yup, it does -- $c"
+    case "$species" in SYSV3) sigf=sigset ;; *) sigf=signal ;; esac
+    if $contains "void.*${sigf}" /usr/include/signal.h >/dev/null 2>&1
+    then
+	voidcatch=define
+    else
+	$echo "however the ${sigf}(2) return type doesn't use it."
+	voidcatch='undef'
+    fi
+else
+    novoid='define'
+    voidcatch='undef'
+    $echo "Nope, it doesn't (boo hiss).  I will substitute int."
+fi
+$rm try.*
+
+: see if we need a special compiler
+if $test "$species" = "SYSV1" -a "$machine" = "GENERIC" ; then
+    case "$cc" in
+    '') case "$Mcc" in /*) dflt='Mcc' ;; *) dflt='cc';; esac ;;
+    *)  dflt="$cc";;
+    esac
+    if $test "$machine" != 'GENERIC' ; then
+	$cat <<'EOM'
+ 
+On some System Vs the default C compiler will not resolve multiple global
+references that happen to have the same name.  On some such systems the
+"Mcc" command may be used to force these to be resolved.  On other systems
+a "cc -M" command is required.  What command will force resolution on
+EOM
+	set "this system?" name cc; . qq
+    fi
+else
+    $echo "I'm assuming cc can resolve multiple definitions."
+fi
+
+: if we do not already know, determine the processor type
+case $machine in GENERIC)
+    $echo " "
+    trap 'rm -f $confighelpers libc.list try.c ptype*; exit 1' 0 1 2 15
+    cat <<'EOT' >ptype.c
+/* ptype.c -- return processor parameters */
+#include <stdio.h>
+
+struct
+{
+    char	*name;	/* processor type */
+    int		abits;	/* bit size of largest usable contiguous memory */
+    int		nregs;	/* number of register declarations available */
+}
+types[] = {
+#ifdef mc68000
+	"68000",	32,	10,
+#endif
+#ifdef MC68000				/* Tandy XENIX defines this */
+	"68000",	32,	10,
+#endif
+#ifdef mc68k
+	"68000",	32,	10,
+#endif
+#ifdef mc68010
+	"68010",	32,	10,
+#endif
+#ifdef MC68010				/* Tandy XENIX defines this */
+	"68010",	32,	10,
+#endif
+#ifdef mc68020
+	"68020",	32,	10,
+#endif
+#ifdef MC68020
+	"68020",	32,	10,
+#endif
+#ifdef mc68030
+	"68030",	32,	10,
+#endif
+#ifdef MC68030
+	"68030",	32,	10,
+#endif
+#ifdef interdata
+	"interdata",	32,	6,	/* nregs is a guess */
+#endif
+#ifdef pyr
+	"pyramid",	32,	16,
+#endif
+#ifdef vax
+	"vax",		32,	12,
+#endif
+#ifdef pdp11
+	"pdp11",	16,	3,
+#endif
+#ifdef i8086
+	"8086",		16,	3,
+#endif
+#ifdef iAPX286
+	"80286",	16,	3,
+#endif
+#ifdef iAPX386
+	"80386",	32,	3,
+#endif
+#ifdef i286
+	"80286",		16,	3,
+#endif
+#ifdef i386
+	"80386",		32,	3,
+#endif
+#ifdef z8000
+	"z8000",	16,	3,
+#endif
+#ifdef u3b2
+	"3b2",		32,	6,
+#endif
+#ifdef u3b5
+	"3b5",		32,	6,	/* nregs is a guess */
+#endif
+#ifdef u3b20
+	"3b20",		32,	6,	/* nregs is a guess */
+#endif
+#ifdef u3b200
+	"3b200",	32,	6,	/* nregs is a guess */
+#endif
+#ifdef ns32000
+	"ns32000",	32,	10,	/* nregs is a guess */
+#endif
+#ifdef univac
+	"univac",	32,	6,
+#endif
+#ifdef gould
+	"gould",	32,	6,
+#endif
+#ifdef gould
+	"mips",		32,	6,	/* nregs is a guess */
+#endif
+	"unknown",	0,	0,
+	NULL,
+#ifdef ibm032
+	"ibm032",	32,	6,	/* nregs is a guess */
+#endif
+};
+main()
+{
+    int count;
+
+    for (count = 0; types[count].name != NULL; count++)
+	continue;
+
+    printf("%s %d %d\n", types[0].name,types[0].abits,types[0].nregs);
+
+    exit(count - 2);
+}
+EOT
+    cc ptype.c -o ptype
+    set - `ptype`
+
+    if $test $? = 0 ; then
+	processor=$1
+	addrsize=$2
+    else
+	$echo "Hmmm...your compiler is ambiguous about your processor type."
+	set "What processor is your machine based on?" name processor; . qq
+	set "What is the address size in bits?" name addrsize 32; . qq
+    fi
+
+    rm -f ptype.c ptype
+;; esac
+
+: are we on a xenix box?
+if $test "$species" = "SCO_XENIX" -o "$species" = M_XENIX; then
+    if $test `uname -v` = "version=MC68000"; then
+	: special case for XENIX 3.x on a Radio Shack Model 16
+	processor=68000
+	addrsize=32
+	scflags="-DM_VOID"
+	slflags="-F 3000"
+    elif $test `uname -p` = "i80386"; then
+	: special case for XENIX on a 386 box
+	processor=80386
+	addrsize=32
+	scflags="-M3e -Zp4"
+	slflags="-M3 -i"
+    else
+	: XENIX on a 286 box
+	processor=80286
+	addrsize=16
+	scflags="-M2em -LARGE"
+	slflags="-M2m -F 2000"
+    fi
+else
+    : on a non-XENIX 286 we probably want to kick the compiler into large model
+    if $test "$processor" = "80286"; then
+	if $test "$memmodel" = "large"; then
+	    scflags="-Ml"
+	    slflags="-Ml"
+	else
+	    scflags="-Ms"
+	    slflags="-Ms"
+	fi
+	if $test "$uport" = "define"; then
+	    novoid='define'
+	    voidcatch='undef'
+	    $echo "Void loses in Microport/286 C; I'm going to substitute int."
+	fi
+    fi
+fi
+: are we on a segmented architecture?
+case $addrsize in
+16)
+    $echo "Processor type is $processor, I'll assume 64K segments."
+    compressdef=-DBITS=12
+    segmented=define
+    ;;
+32)
+    if $test "$processor" = "80386" -a "$species" = SCO_XENIX; then
+	$echo "Processor type is 80386 running SCO XENIX."
+	set "Do you want news to be compiled to 80386 native code? [y]"; . qq
+	case $ans in
+	    ""|Y*|y*)
+	        $echo "Perfect choice!"
+	        segmented=undef
+		scflags="-M3e -Zp4"
+		slflags="-M3 -i"
+	    ;;
+	    *)
+		ans=s; while $test "$ans" != "m" -o "$ans" != "l"
+		do
+		    set "The other option is 286 code, which model, m or l? [l]"
+		    . qq
+		done
+
+		if $test "$ans" = "m"
+		then
+		    scflags="-M2em"
+		    slflags="-M2m -F 2000"
+		    segmented=define  # This really means SMALL_ADDRESS_SPACE
+		    compressdef=-DBITS=12
+		else
+		    scflags="-M2el"
+		    slflags="-M2l -F 4000"
+		    segmented=undef
+		fi
+	    ;;
+	esac
+    else
+	$echo "Processor type is $processor, I'll assume flat 32-bit addressing."
+	segmented=undef
+    fi
+    ;;
+*)
+    $echo "I can't deduce your processor type."
+    case $species in
+	BSD*)
+	    $echo "You're running a BSD, I'll assume no segmentation"
+    	    segmented=undef
+	    ;;
+	*)
+	    set "Is your machine limited to 64K per segment? [n]"; . qq
+	    case $ans in
+	    y*) segmented=define compressdef=-DBITS=12 ;;
+	    *) segmented=undef ;;
+	    esac
+	;;
+    esac
+esac
+
+: Check to see if we have any long word alignment requirements
+cat <<EOM
+
+This next question is asking you if your machine architecture has any
+restrictions on where long integers must be stored (long word alignment).
+If there are no restricutions, the code can be compiled to take advantage
+of this fact.  If you are not sure, make and run the aligntest program.
+
+EOM
+case "$longalign" in
+'')
+    case $processor in
+    vax) 	longalign='undef';;
+    ibm032)	longalign='define';;
+    *)		longalign='define';;
+    esac
+    ;;
+esac
+
+set 'Does your machine have long word alignment restrictions?' \
+	turnon longalign; . qq;
+
+: machines like the Z8000 may need to call scc, not cc
+if $test $segmented = define ; then
+    $echo "If you need to invoke your compiler by a special name, give it."
+    set "What name should I use?" name cc; . qq;
+fi
+
+: Ask if we should link in posix compatibility stuff
+echo " "
+case "$posixcompat" in
+'')
+    case $species in
+    BSD4_[123]) posixcompat='define';;
+    V7)		posixcompat='define';;
+    *)		posixcompat='define';;
+    esac
+    ;;
+'POSIXCOMPAT')
+    posixcompat='define';;
+'NOPOSIXCOMPAT')
+    posixcompat='undef';;
+esac
+set 'Do you want to use the posix compatibility library?' \
+	turnon posixcompat; . qq
+case "$posixcompat" in
+'define')
+	posixcompat='POSIXCOMPAT'
+	posxlib='libposix.a';;
+*)
+	posixcompat='NOPOSIXCOMPAT'
+	posxlib='';;
+esac
+
+: time to set magic compiler flags
+$echo " "
+if $test "X$scflags" != "X" ; then
+    default=$scflags
+else
+    default='none'
+fi
+$echo "This is where to specify any magic compiler flags your machine needs."
+set "What flags would you like to add? [$default]"; . qq;
+if $test "$ans" = 'none' ; then 
+    scflags=''
+else 
+    if $test "$ans" ; then
+        scflags="$ans"
+    fi
+fi
+
+: time to set magic linker flags
+$echo " "
+if $test "X$slflags" != "X"; then
+    default="$slflags"
+else
+    default='none'
+fi
+$echo "This is where to specify any magic linker flags your machine needs."
+if $test $processor = pdp11; then
+    $echo "If you have separate I and D spaces enter -i here."
+else
+    if $test $segmented = "define"; then
+	$echo "Your machine is segmented, you may need stack size switches."
+    fi
+fi
+set "What flags would you like to add? [$default]"; . qq;
+if $test "$ans" = 'none' ; then 
+    slflags=''
+else 
+    if $test "$ans" ; then
+        slflags="$ans"
+    fi
+fi
+
+
+: time to set magic library inclusion
+$echo " "
+if $test "$libs"; then
+    if $test -f /lib/libposix.a -o -f /usr/lib/libposix.a; then
+	posix="-lposix"
+    else
+	posix="./D.posix/libposix.a"
+    fi
+    if $test $posixcompat = POSIXCOMPAT ; then
+	libs=`$echo $libs | $sed -e "s:POSIX::"`
+    else
+	libs=`$echo $libs | $sed -e "s:POSIX:$posix:"`
+    fi
+    if $test '$libs' = '' ; then
+	default='none'
+    else
+	default=$libs
+    fi
+else
+    default='none'
+fi
+$echo "This is where to specify any magic libraries your machine needs."
+set "What libraries would you like to add? [$default]"; . qq;
+if $test "$ans" = 'none' ; then 
+    libs=''
+else 
+    if $test "$ans" ; then
+        libs="$ans"
+    fi
+fi
+
+: ask if we want profiled libraries
+case "$proflib" in
+'')
+    proflib='define';;
+'PROFLIB')
+    proflib='define';;
+'NOPROFLIB')
+    proflib='undef';;
+esac
+echo " "
+set 'Do you want profiling libraries to be built? ' \
+	turnon proflib; . qq
+case "$proflib" in
+'define')
+	proflib='PROFLIB';;
+*)
+	proflib='NOPROFLIB';;
+esac
+
+: index or strcpy
+if $test $genus = USG; then
+    index=undef
+else
+    index=define
+fi
+
+: see if this is a termio system
+$echo " "
+if $test -r /usr/include/sgtty.h -a $genus != USG ; then
+    termio=undef
+    $echo "sgtty.h found."
+else
+    if $test -r /usr/include/termio.h ; then
+	termio=define
+	$echo "termio.h found."
+    else
+	termio=undef
+	$echo "Neither termio.h nor sgtty.h found--you could have problems."
+    fi
+fi
+
+: see if this system has fcntl
+if $test -r /usr/include/fcntl.h ; then
+    fcntl=define
+    $echo "fcntl.h found."
+else
+    fcntl=undef
+    $echo "No fcntl.h found, but that's ok."
+fi
+
+: see if there is a real lockf call
+: we prefer locking to lock because 3B1 shared libraries have it
+lockf='undef'
+locking='undef'
+if $contains locking libc.list >/dev/null 2>&1 ; then
+    $echo "locking() found."
+    locking='define'
+else
+    if $contains lockf libc.list >/dev/null 2>&1 ; then
+	$echo "lockf() found."
+	lockf='define'
+    else
+	$echo "No mandatory region lock facility found."
+    fi
+fi
+
+: see if we have real semaphores
+svidsems='undef'
+xenixsems='undef'
+if $contains "sem[cs][ty][ls]" libc.list >/dev/null 2>&1 ; then
+    $echo "System V semaphore features found."
+    svidsems='define'
+    if $test "$processor" = "80286"; then
+	if $test "$uport" = "define"; then
+	    svidsems='undef'
+	    $echo "But they don't work right. I am turning them off."
+	fi
+    fi
+elif $contains creatsem libc.list >/dev/null 2>&1 ; then
+    $echo "XENIX semaphores found."
+    xenixsems='define'
+else
+    $echo "No semaphore facility found."
+fi
+
+: see if ioctl defs are in sgtty/termio or sys/ioctl
+if $test -r /usr/include/sys/ioctl.h ; then
+    ioctl=define
+    $echo "sys/ioctl.h found."
+else
+    ioctl=undef
+    $echo "sys/ioctl.h not found, assuming ioctl args are defined in sgtty.h."
+fi
+
+: see if there is a vfork
+if $contains vfork libc.list >/dev/null 2>&1 ; then
+    $echo "vfork() found."
+    novfork='undef'
+else
+    $echo "No vfork() found--will use fork() instead."
+    novfork='define'
+fi
+
+: see if there is a getcwd
+if $contains getcwd libc.list >/dev/null 2>&1 ; then
+    $echo "getcwd() found."
+    getcwd='define'
+else
+    $echo "No getcwd() found."
+    getcwd='undef'
+fi
+
+: see if there is a getpwent
+if $contains getpwen libc.list >/dev/null 2>&1 ; then
+    $echo "getpwent() found."
+    getpwent='define'
+else
+    $echo "No getpwent() found--will use getpw() instead."
+    getpwent='undef'
+fi
+
+: see if there is a mkdir
+if $contains mkdir libc.list >/dev/null 2>&1 ; then
+    $echo "mkdir() found."
+    mkdir='define'
+else
+    mkdir='undef'
+fi
+
+: see if there is a rmdir
+if $contains rmdir libc.list >/dev/null 2>&1 ; then
+    $echo "rmdir() found."
+    rmdir='define'
+else
+    rmdir='undef'
+fi
+
+: see if there is a statfs
+if $contains ustat libc.list >/dev/null 2>&1 ; then
+    $echo "ustat() found."
+    ustat='define'
+    statfs='undef'
+elif $contains statfs libc.list >/dev/null 2>&1 ; then
+    $echo "statfs() found."
+    statfs='define'
+    ustat='undef'
+else
+    $echo "Neither statfs() nor ustat() found -- I'll crack df(1) output if I need it."
+    ustat='undef'
+    statfs='undef'
+fi
+
+: see if there is a drand library
+if $contains drand48 libc.list >/dev/null 2>&1 ; then
+    $echo "drand48 library found, I'll #define rand() and srand() to use it"
+    drand48='define'
+else
+    drand48='undef'
+fi
+
+: see if we need -ljobs and if we have sigset, etc.
+if $test -r /usr/lib/libjobs.a || $test -r /usr/local/lib/libjobs.a ; then
+    $echo "Jobs library found."
+    normsig=undef
+    auxlibs='-ljobs'
+else
+    case $species in
+    BSD4_[23])
+	$echo "No jobs library found.  (That's okay, the 4.2 calls are here)"
+	;;
+    *)
+	$echo "No jobs library found.  (That's okay, we all have our faults.)"
+	;;
+    esac
+    normsig=define
+    auxlibs=''
+fi
+
+: see if there are directory access routines out there
+dirent=undef
+libndir=undef
+dirlib=''
+if $test -r /usr/include/dirent.h ; then
+    $echo "dirent() facilities found."
+    dirent=define
+else
+    if $contains readdir libc.list >/dev/null 2>&1 ; then
+	$echo "You have readdir() so we'll use that."
+	libndir=undef
+    else
+	if $test -r /usr/lib/libndir.a || $test -r /usr/local/lib/libndir.a || $test /usr/include/sys/ndir.h;
+	then
+	    $echo "Ndir library found."
+	    dirlib='-lndir'
+	    libndir=define
+	else
+	    $echo "No dirent or readdir() found."
+	    dirlib="-ldirent.a"
+	fi
+    fi
+fi
+if $test $posixcompat = POSIXCOMPAT ; then
+    $echo "You are going to compile in the posix compatibility library,"
+    $echo "So we will use that over any system opendir/readdir calls."
+    dirent=define
+    libnder=undef
+fi
+
+: determine which malloc to compile in
+echo " "
+case "$systemmalloc" in
+'')
+    case $species in
+    BSD4_[123]) systemmalloc='undef';;
+    V7)		systemmalloc='undef';;
+    *)		systemmalloc='define';;
+    esac
+    ;;
+esac
+set 'Do you want to use the malloc that comes with your system?' \
+	turnon systemmalloc; . qq
+case "$systemmalloc" in
+undef) 
+	set 'Which malloc do you want to use (it must be in D.port)?' \
+		name mallocname; . qq
+	mallocsrc="$mallocname.c" mallocobj="$mallocname.o" ;;
+*) mallocsrc=''; mallocobj='';;
+esac
+
+: Where do we get termlib routines from?
+: we may already know from one of the machine type checks above
+$echo " "
+case $termlib in '')
+    hvcurses="NOCURSES"
+    if $test -d /usr/lib/*terminfo/a || $test -d /etc/term;
+    then
+	: SCO XENIX NOTE -- it is possible to "have" terminfo,
+	: but not have it compiled, which makes it useless.
+	: Check to make sure they have a subdir, not just the
+	: parent.
+	termlib="-lcurses"
+	curses=define
+	hvcurses=CURSES
+	$echo "Terminfo library found."
+    elif $genus = BSD; then
+	termlib="-lcurses -ltermcap"
+	curses=define
+	hvcurses=CURSES
+	$echo "Found curses/termcap libraries."
+	break
+    else
+	for tlib in 'curses' 'termcap' 'termlib'
+	do
+	    if loc lib${tlib}.a x /usr/lib /usr/local/lib /lib >/dev/null;
+	    then
+		termlib="-l${tlib}"
+		curses=define
+		hvcurses=CURSES
+		$echo "Found $tlib library."
+		break
+	    fi
+	done
+    fi
+;; esac
+case $termlib in '')
+    set "I can't find any cursor libraries. Do you have them? [y]"; . qq
+    case $ans in
+    y*)
+	curses=define
+	hvcurses=CURSES
+	set 'Where are they (give -llibname or a full pathname)?'; . qq
+	termlib=$ans
+	;;
+    *)
+	curses=undef
+	termlib=''
+	$echo "If you want to use any screen-oriented news interface"
+	$echo "you will have to customize your own curses-like routines."
+	;;
+    esac
+    ;;
+esac
+if $contains KEY_ /usr/include/curses.h >/dev/null 2>&1; then
+    keypad='define'
+    $echo "It looks like your curses library can do keymapping."
+else
+    keypad='undef'
+fi
+
+: find out if we can use the GCOS field
+$echo " "
+set "Does /etc/passwd keep fullnames in the GCOS field?" turnon gcos; . qq
+
+: find out which shell people like to use most
+while :; do
+    if $test -f /bin/ksh; then
+	prefsh='/bin/ksh'
+    else
+	if $test -f /bin/csh; then
+	    prefsh='/bin/csh'
+	else
+	    prefsh='/bin/sh'
+	fi
+    fi
+    $echo " "
+    set "What is your default interactive shell?" name prefsh; . qq
+    if $test -f $prefsh ; then
+	break
+    else
+	case $prefsh in blurfl*);; *) echo "I can't find $prefsh.";; esac
+    fi
+done
+
+: confirm that the system has a pager
+case $species in
+V7|SIII) set "Is there a pager on your system?" turnon ispag; . qq ;;
+*) ispag=define ;;
+esac
+
+: locate the preferred pager for this system
+if $test "X$ispag" = "Xdefine"; then
+    $echo "(If your kernel pages ttys you may answer this with '/bin/cat'.)"
+    case "$pager" in '')
+	case $pg in /*) pager=$pg ;; esac
+	case $more in /*) pager=$more ;; esac
+	case $pager in '') dflt=/usr/ucb/more ;; esac
+	;;
+    esac
+    while :; do
+	set "What pager is used on your system?" name pager; . qq
+	if $test -f "$pager" ; then
+	    break;
+	else
+	    case $pager in
+	      /*) $echo "$pager does not appear to exist."
+		$echo " "
+		;;
+	      *) $echo "Please give the full path name."
+		$echo " "
+		;;
+	    esac
+	fi
+    done
+fi
+
+: Warnings
+if $test $species = "V7"; then
+    cat <<'EOM'
+ 
+NOTE: the V7 compiler may ignore some #undefs in C files. Some V7 compilers
+also have difficulties with #defines near buffer boundaries, so beware.
+EOM
+fi
+
+: create configsys.sh file
+$echo " "
+$echo "Creating configsys.sh..."
+$spitshell <<EOT >configsys.sh
+$startsh
+date0="Last level 0 configuration was `date`"
+
+species="$species"	# The OS type
+processor="$processor"	# The processor type
+machine="$machine"	# The machine type (if known)
+windowed="$windowed"	# 'define' if normally used through a window system
+
+n="$n"			# Option to echo to use to suppress newline
+c="$c"			# Trailing character to use to suppress newline
+genus="$genus"		# The OS family (USG or V7)
+honey="$honey"		# 'define' if we're running HoneyDanBer UUCP
+lintlibs="$lintlibs"	# LINTLIBS if we have the lint -O option
+libc="$libc"		# Where the C library is
+eunicefix="$eunicefix"	# UNIX-to-VMS conversion
+cpp="$cpp"		# Where to find the C Preprocessor
+shsharp="$shsharp"	# True if the shell handles # comments OK
+startsh="$startsh"	# How to guarantee /bin/sh startup
+spitshell="$spitshell"	# Does comment stripping if necessary
+test="$test"		# Locations of common commands start here
+expr="$expr"
+sed="$sed"
+echo="$echo"
+cat="$cat"
+rm="$rm"
+cp="$cp"
+mv="$mv"
+grep="$grep"
+egrep="$egrep"
+chown="$chown"
+chgrp="$chgrp"
+chmod="$chmod"
+strip="$strip"
+ls="$ls"
+shtest="$shtest"	# Do we have built-in test?
+delranlib="$delranlib"	# If this is "ranlib" we do not need to use it
+delmake="$delmake"	# If this is MAKE, we have a new-style make(1)
+contains="$contains"	# A grep-like entity guaranteed to return status
+sitename="$sitename"	# The site's nodename
+cc="$cc"		# Name of a C compiler that uses common model
+loclibs="$loclibs"	# Special local libraries that must be made in advance
+scflags="$scflags"	# Magic compiler flags
+slflags="$slflags"	# Magic linker flags
+libs="$libs"            # Magic libraries
+linkc="$linkc"		# What to use to link C programs with
+termlib="$termlib"	# How to load termlib.a if non-null
+auxlibs="$auxlibs"	# How to load the jobs library if non-null
+posxlib="$posxlib"	# How to load the Posix library if non-null
+dirent="$dirent"	# Defined if we have POSIX-compatible dirent
+dirlib="$dirlib"	# How to load a directory library if non-null
+prefsh="$prefsh"	# Path name of preferred shell
+pager="$pager"		# Name of the system pager, if non-null
+
+# Things useful for defining macros
+segmented="$segmented"	# 'define' if the machine has 64K segments
+
+index="$index"		# 'define' if we want to use V7/BSD string functions
+novoid="$novoid"	# 'define' if the compiler chokes on void
+novfork="$novfork"	# 'define' if vfork is too virtual (non-BSD)
+eunice="$eunice"	# 'define' if we're on a EUNICE
+
+termio="$termio"	# 'define' if we're a termio system (:. USG)
+fcntl="$fcntl"		# 'define' if we have fcntl(3) (:. USG or BSD4.2)
+lockf="$lockf"		# 'define' if we have POSIX mandatory file locking
+locking="$locking"	# 'define' if we have XENIX mandatory file locking
+svidsems="$svidsems"		# 'define' if we have SVID semaphores
+xenixsems="$xenixsems"	# 'define' if we have XENIX semaphores
+ioctl="$ioctl"		# 'define' if the system has an ioctl.h header
+normsig="$normsig"	# 'define' if we must use non-4.2 signals
+curses="$curses"	# 'define' if we have termlib
+hvcurses="$hvcurses"	# CURSES if we have curses
+keypad="$keypad"		# 'define' if we have keypad mapping
+libndir="$libndir"		# 'define' if we have an ndir library
+mallocname="$mallocname"	# which malloc to use.
+mallocsrc="$mallocsrc"		# The name of the malloc.c we should use
+mallocobj="$mallocobj"		# The name of the object file we should use
+systemmalloc="$systemmalloc"
+posixcompat="$posixcompat"	# POSIXCOMPAT if we are using D.posix
+proflib="$proflib"		# PROFLIB if we are compiling profiling libs
+
+douname="$douname"	# A symbol giving the access method to the node name
+hostcmd="$hostcmd"	# Value of the node name or a command to get it
+
+gcos="$gcos"		# 'define' if there are fullnames in the GCOS field
+getcwd="$getcwd"	# 'define' if getcwd(3) is available
+getpwent="$getpwent"	# 'define' if getpw(3) is available
+statfs="$statfs"	# 'define' if statfs(2) is available
+ustat="$ustat"		# 'define' if ustat(2) is available
+mkdir="$mkdir"		# 'define' if mkdir(2) is available
+rmdir="$rmdir"		# 'define' if rmdir(2) is available
+drand48="$drand48"	# 'define' if drand48(3) is available
+longalign="$longalign"	# 'define' if there are long word restricutions
+
+# configsys.sh ends here
+EOT
+
+: create configsys.h file
+$echo " "
+$echo "Creating configsys.h..."
+$cat <<EOT | $sed "/^#undef/s/\(.*\)\/\*\(.*\)/\/* \1 \2/" >configsys.h
+/* configsys.h
+ *
+ * This file was produced by running the ConfigureSys script.
+ * Feel free to modify any of this as the need arises.
+ * The first section below sets various system-dependent parameters
+ */
+/* the OS, one of V7, SIII, BSD4_1, BSD4_1C, BSD4_2, BSD4_3, SYSV1, SYSV2 */
+#ifndef $species
+#define $species
+#endif
+
+#define $machine		/* the machine type */
+
+#$segmented SMALL_ADDRESS_SPACE	/* If your machine can't address > 32767 */
+
+/* now deal with some elementary differences in OS capability */
+#$index	strchr index	/* cultural */
+#$index	strrchr rindex	/*  differences? */
+#$novoid	void int	/* is void to be avoided? */
+#$novfork	vfork fork	/* is vfork too virtual? */
+
+/* detect various nonportable I/O, signal and directory things */
+#$voidcatch	VOIDCATCH	/* void used in signal handler type? */
+#$eunice	EUNICE		/* no linking? */
+#$eunice	VMS		/* not currently used, here just in case */
+#$termio	TERMIO		/* is this a termio system? */
+#$fcntl	FCNTL		/* should we include fcntl.h? */
+#$lockf	LOCKF		/* do we have true file locking a la AT&T? */
+#$locking	LOCKING		/* do we have true file locking a la XENIX? */
+#$svidsems	SVIDSEMS	/* do we have SVID semaphores? */
+#$xenixsems	XENIXSEMS	/* do we have XENIX-style semaphores? */
+#$ioctl	IOCTL		/* are ioctl args all defined in one place? */
+#$normsig	NORMSIG		/* use signal rather than sigset? */
+#$curses	CURSES		/* do we have curses-style screen routines? */
+#$windowed	WINDOWED	/* assume status bar time & mail display? */
+#$keypad	KEYPAD		/* do we have spiffy SysV keypad mapping? */
+#$dirent	DIRENT		/* do we have POSIX-compatible dirent? */
+#$libndir	LIBNDIR		/* include <ndir.h>? */
+#$getcwd	GETCWD		/* getcwd(3) call available? */
+#$getpwent	GETPWENT	/* need we use slow getpw? */
+#$statfs	STATFS		/* do we have statfs(2) available? */
+#$ustat	USTAT		/* do we have ustat(2) available? */
+#$mkdir	MKDIR		/* do we have mkdir(2) available? */
+#$rmdir	RMDIR		/* do we have rmdir(2) available? */
+#$drand48	DRAND48		/* do we have drand48(3) available? */
+#$longalign	LONG_ALIGN	/* are there longword alignment problems? */
+#$gcos	GCOS 		/* Full names database in the GCOS field. */
+
+/*
+ * Here are the kinds of symbol you may find on the next line:
+ *
+ *  sysname -- compile this in as the sitename
+ *  UNAME    -- means uname(3) is available
+ *  UUNAME   -- the name can be found in some local file
+ *  GHNAME   -- gethostname(2) is handy
+ *  WHOAMI   -- name can be found in the whoami.h file
+ *  HOSTCMD  -- defined command will return the sitename on standard input
+ */
+#define $douname $hostid	/* Tell us how to get the nodename */
+
+#$honey HONEYDANBER		/* tells what UUCP we're running	*/
+#define SHELL	"$prefsh"	/* default interactive shell		*/
+#$ispag PAGE	"$pager"	/* default pager			*/
+
+/* configsys.h ends here */
+EOT
+
+rm -f libc.list
+
+: end of ConfigureSys

@@ -1,0 +1,114 @@
+#!/bin/sh
+#
+# news_check: written by David Lai (vedge!lai@larry.mcrcim.mcgill.edu)
+#  Check active file against newsgroups file (and optionally against
+#  the standard newsgroups file).  It will also recommend corrections.
+#
+# This will create some <anything>.tmp_check and then delete them
+# run in any directory you have write permissions
+# the file standard_newsgroups can be pulled out of news.lists articles
+#  entitled "list of active groups", then edited to resemble a 'newsgroups'
+#  file.  It can be used to optionally compare your current newsgroups
+#  file against.
+# 
+# set the following two variables accordingly
+act="/usr/lib/news/active"
+newsg="/usr/lib/news/newsgroups"
+#
+# set the following, it doesn't matter if the file doesn't exist as it
+#  will skip that part of the check
+standard="./standard_newsgroups"
+#
+awk '{print $1}' $act | sort >a.tmp_check
+awk '{print $1}' $newsg | sort >n.tmp_check
+uniq -d a.tmp_check >a1.tmp_check
+if test -s a1.tmp_check;  then
+	echo "---list of groups multiply defined in $act---"
+	cat a1.tmp_check
+	uniq a.tmp_check >a1.tmp_check 
+else
+	mv a.tmp_check a1.tmp_check
+fi
+uniq -d n.tmp_check >n1.tmp_check
+if test -s n1.tmp_check; then
+	echo "---list of groups multiply defined in $newsg---"
+	cat n1.tmp_check 
+	uniq n.tmp_check > n1.tmp_check
+else
+	mv n.tmp_check n1.tmp_check
+fi
+cat /dev/null > an.tmp_check
+echo "---list of groups in $act but not in $newsg---"
+for i in `cat a1.tmp_check`
+do
+	if test "`fgrep -l -x $i n1.tmp_check`" = ""; then
+		echo $i
+		echo $i >> an.tmp_check
+	fi
+done
+cat /dev/null >na.tmp_check
+echo "---list of groups in $newsg but not in $act---"
+for i in `cat n1.tmp_check`
+do
+	if test "`fgrep -l -x $i a1.tmp_check`" = ""; then
+	echo $i
+	echo $i >> na.tmp_check
+	fi
+done
+fgrep "(Moderated)" $newsg | awk '{print $1}' >m.tmp_check
+fgrep " m" $act | awk '{print $1}' >m1.tmp_check
+echo "---moderated groups in $act not marked (Moderated) in $newsg---"
+for i in `cat m1.tmp_check`
+do
+	if test "`fgrep -l -x $i m.tmp_check`" = ""; then
+		echo $i
+	fi
+done
+echo "---moderated groups in $newsg not marked m in $act---"
+for i in `cat m.tmp_check`
+do
+	if test "`fgrep -l -x $i m1.tmp_check`" = ""; then
+		echo $i
+	fi
+done
+if test -f $standard; then
+	awk '$1 != "" {print $1}' $standard > n2.tmp_check
+	echo "---Standard newsgroups missing from $newsg---"
+	echo "---(* - Also missing from $act)---"
+	cat /dev/null > nm.tmp_check
+	for i in `cat n2.tmp_check`
+	do
+		if test "`fgrep -l -x $i n1.tmp_check`" = ""; then
+		echo -n $i
+		echo $i >>nm.tmp_check
+		if test "`fgrep -l -x $i a1.tmp_check`" = ""; then
+			echo " *"
+		else
+			echo
+		fi
+		fi
+	done
+	echo "---non-standard newsgroups in $newsg---"
+	cat /dev/null >del.tmp_check
+	for i in `cat n1.tmp_check`
+	do
+		if test "`fgrep -l -x $i n2.tmp_check`" = ""; then
+			echo $i
+			if test "`fgrep -l -x $i a1.tmp_check`" = ""; then
+				echo $i >> del.tmp_check
+			fi
+		fi
+	done
+	cat nm.tmp_check an.tmp_check | sort | uniq -d > add.tmp_check
+	if test -s del.tmp_check; then
+		echo "---You can correct $newsg by deleting these groups:---"
+		cat del.tmp_check
+	fi
+	if test -s add.tmp_check; then
+		echo "---You can correct $newsg by adding these lines:---"
+		for i in `cat add.tmp_check`
+		do
+			fgrep "$i	" $standard
+		done
+	fi
+fi

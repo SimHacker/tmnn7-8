@@ -1,0 +1,105 @@
+# libpriv.a generic Makefile to be customized for your site by Configure
+#
+# This is the news database munging code. The Makefile defines four targets:
+#
+# libpriv.a:	The write-side news database library itself
+# manifest:	Echo a string containing names of all library sources
+# llib-lpriv.ln	(SVr2 and later only) The lint library made from libpriv.a
+# clean:	Clean out all object, library and lint files
+#
+# Targets that create a couple of interactive test modules are also given
+# Call "make -f Makefile.dst Makefile" from here to rebuild the Makefile
+
+# Other news source directories
+MAINDIR = ..
+PORTDIR = ../D.port
+NEWSDIR = ../D.news
+UUCPDIR = ../D.uucp
+
+DIRLIST = $(MAINDIR) $(PORTDIR) $(NEWSDIR) $(UUCPDIR)
+INCLUDE = -I$(MAINDIR) -I$(PORTDIR) -I$(NEWSDIR) -I$(UUCPDIR)
+LIBSDIR = $(MAINDIR)
+
+#
+# You should not need to edit anything below this line
+#
+
+# Here are the macro definitions that Configure tweaks
+CFLAGS = $(CDEBUG) $(INCLUDE) $(CSPECIAL)
+LDFLAGS = $(LDDEBUG) $(LDSPECIAL)
+LINTFLAGS = $(INCLUDE)
+
+.PRECIOUS: Makefile libpriv.a
+
+NXHDRS = priv.h ngprep.h
+NXSRCS = collect.c feedbits.c filelock.c lock.c log.c mung.c ngprep.c \
+	privlock.c textwalk.c transmit.c wractive.c wrfeeds.c wrhistory.c
+NXOBJS = collect.o feedbits.o filelock.o lock.o log.o mung.o ngprep.o \
+	privlock.o textwalk.o transmit.o wractive.o wrfeeds.o wrhistory.o
+
+libpriv.a: $(NXOBJS)
+	ar lrc libpriv.a $?
+	-ranlib libpriv.a
+#PROFLIB 	(cd profiled; ar lrc ../libpriv_p.a $?)
+#PROFLIB 	-ranlib libpriv_p.a
+  
+setup:
+#PROFLIB	-mkdir profiled
+
+#PROFLIB .c.o:
+#PROFLIB 	${CC} -p ${CFLAGS} -c $*.c
+#PROFLIB 	mv $*.o profiled/$*.o
+#PROFLIB 	${CC} ${CFLAGS} -c $*.c
+
+export: setup libpriv.a
+	@rm -f $(LIBSDIR)/libpriv.a
+	-ln libpriv.a $(LIBSDIR)
+#PROFLIB 	@rm -f $(LIBSDIR)/profiled/libpriv.a
+#PROFLIB 	-ln libpriv_p.a $(LIBSDIR)/profiled/libpriv.a
+
+Makefile: Makefile.dst
+	$(MAINDIR)/GenerateMake $(DIRLIST)
+
+#
+# Test modules
+#
+TESTERS = lock
+lock: lock.c $(NEWSDIR)/libnews.a $(PORTDIR)/libport.a
+	$(CC) -DMAIN $(CFLAGS) -g lock.c \
+		$(NEWSDIR)/libnews.a $(PORTDIR)/libport.a -o lock
+
+# ----------------------------------------------------------------------
+# OBJECT AUTO-DEPENDENCIES GO AFTER THIS LINE -- DO NOT DELETE IT!!!
+#
+.SUFFIXES: .ln
+
+.c.ln:
+#LINTLIBS	lint $(LINTFLAGS) -c $<
+#NOLINTLIBS	lint $(LINTFLAGS) -C$* $<
+
+# LINT AUTO-DEPENDENCIES GO AFTER THIS LINE -- DO NOT DELETE IT!!!
+
+lintlib: $(LIBSDIR)/llib-lpriv.ln
+
+$(LIBSDIR)/llib-lpriv.ln: llib-lpriv.ln
+	cp llib-lpriv.ln $(LIBSDIR)
+
+#LINTLIBS llib-lpriv.ln: $(NXSRCS:.c=.ln)
+#LINTLIBS	lint -x -u $(NXSRCS:.c=.ln) -o priv
+#NOLINTLIBS llib-lpriv.ln: $(NXSRCS)
+#NOLINTLIBS	lint $(LINTFLAGS) -Cpriv $(NXSRCS)
+
+#
+# Random utility productions
+#
+manifest:
+	echo Makefile.dst Makefile $(NXHDRS) $(NXSRCS)
+
+distclean:
+	rm -f $(TESTERS)
+
+clean: distclean
+	rm -f *.a *.o *.ln *~ Makefile
+	rm -fr profiled
+
+# libpriv.a Makefile ends here

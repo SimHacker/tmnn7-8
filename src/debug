@@ -1,0 +1,2 @@
+# Debug a news tool with all source stuff findablw
+sdb $1 - .:D.news:D.port:D.posix:D.filt:D.post:D.priv:D.read:D.scrn:D.uucp

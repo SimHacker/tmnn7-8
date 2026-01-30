@@ -1,0 +1,532 @@
+.if n .ds La '
+.if n .ds Ra '
+.if t .ds La `
+.if t .ds Ra '
+.if n .ds Lq "
+.if n .ds Rq "
+.if t .ds Lq ``
+.if t .ds Rq ''
+.de Ch
+\\$3\\*(Lq\\$1\\*(Rq\\$2
+..
+.TH READNEWS 1 "Mar 17, 1989"
+.ds ]W News 3.0 (beta level 7)
+.SH NAME
+readnews \- read news articles
+.SH SYNOPSIS
+.BR readnews " ["
+.BI \-a " date"
+] [
+.BI \-n " newsgroups"
+] [
+.BI \-t " titles"
+] [
+.BR \-leprxhfuSL
+] [
+.BI \-F "[ " includemark " ]"
+] [
+.BI \-q "[ " titles " ]"
+] [
+.BR \-D " [ "
+.IR level " ] "
+]
+.PP
+.B "readnews \-s"
+.PP
+.B "readnews \-K"
+.SH DESCRIPTION
+.I Readnews
+without argument prints unread articles.
+There are several interfaces available other than the default:
+.TP 10
+Flag
+Interface
+.TP 10
+.B \-L
+Show the group index page on entry to every newsgroup.
+.TP 10
+.B \-S
+Follow discussion threads when moving to next message. With this option on
+you see followups to a message immediately after the message, regardless of
+where they actually live.
+.TP 10
+.B \-F
+Sets the include mark used to set off included article text in a reply or
+followup. The default is "> ".
+.TP 10
+.B \-p
+All selected articles are sent to the standard output.  No questions asked.
+.TP 10
+.B \-l
+Only the titles output.  The
+.I .newsrc
+file will not be updated.
+.TP 10
+.B \-e
+Like
+.B \-l
+but also updates the
+.I .newsrc
+file.
+.LP
+The
+.B \-r
+flag causes the articles to be printed in reverse order.  The
+.B \-f
+flag prevents any followup articles from being printed.  The
+.B \-h
+flag causes articles to be printed in a less verbose format,
+and is intended for terminals running at 300 baud.
+The
+.B \-u
+flag causes the
+.I .newsrc
+file to be updated every 5 minutes,
+in case of an unreliable system.
+(Note that if the
+.I .newsrc
+file is updated,
+the
+.B x
+command will not restore it to its original contents.)
+.PP
+The following flags determine the selection of articles.
+.TP 10
+.BI "\-n " newsgroups
+Select all articles that belong to
+.I newsgroups.
+.TP 10
+.BI "\-t " titles
+Select all articles whose titles contain one of the strings specified by
+.IR titles \&.
+.TP 10
+.BI "\-a " "\fR[\fP date \fR]\fP"
+Select all articles that were posted past the given
+.I date
+(in
+.IR getdate (3)
+format).
+.TP 10
+.B \-x
+Ignore
+.I .newsrc
+file.  That is, select articles that have already been read as well as new ones.
+.PP
+.I Readnews
+maintains a
+.I .newsrc
+file in the user's home directory that specifies all news articles
+already read.  It is updated at the end of each reading session in
+which the
+.BR \-x " or " \-l
+options weren't specified.
+If the environment variable
+.B NEWSRC
+is present, it should be the relative path
+name of a file to be used in place of
+.IR .newsrc \&.
+Note that .newsrc files in non-default locations won't be seen by the expire
+utility, so if you do this expire will (in effect) assume that you've seen
+every article. This could be a problem if a group you want to read is
+volatile (see the
+.IR .newsrc (5)
+man page for details).
+.PP
+If the user wishes, command option lines may be placed in the
+.I .newsrc
+file.
+This line starts with the word
+.B options
+(left justified), optionally followed by the name of a news reader,
+followed by the list of standard options just as
+they would be typed on the command line.  Such a list may include:
+the
+.B \-n
+flag along with a newsgroup list; a favorite interface; and/or
+the
+.B \-r
+or
+.B \-t
+flag.  Continuation lines are specified by following lines
+beginning with a space or tab character. If a reader name is present,
+those options are only passed to that reader; thus
+.PP
+.nf
+options -n all,control,junk
+options readnews -h
+.fi
+.PP
+would set your subscription on all readers but set the -h option on readnews
+only.
+Similarly, options can be specified in the
+.B NEWSOPTS
+environment parameter.  Where conflicts exist, option on the command
+line take precedence, followed by the
+.I .newsrc
+.B options
+line, and lastly the
+.B NEWSOPTS
+parameter.
+.PP
+You can use the
+.B \-s
+flag to print the newsgroup subscription list.
+.PP
+If you haven't read news in a while (or if you have never read news!)
+you can do
+.I "readnews \-K"
+to Kill (mark as read) all of the articles in the groups to which
+you are subscribed.
+.PP
+The
+.B \-q
+flag is a privacy-protection switch which is only meaningful and accepted if
+your system administrator has enabled the netnews feedback feature. Without an
+argument it disables feedback entirely. With an argument, it overrides the
+system default feedback subscription that determines which groups feedback is
+kept for.
+.PP
+The
+.B \-D
+flags sets a debug level. This option is intended for news maintainers
+only and is disabled unless TDEBUG was defined during news configuration.
+.PP
+When the user uses the reply command interfaces, the environment parameter
+.B MAILER
+will be used to determine
+which mailer to use.  The default is
+.IR mail (1).
+.PP
+The user may specify a particular paging progam
+for articles.  The environment parameter
+.B PAGER
+should be set to
+the paging program.  The name of the article is referenced with
+a
+.Ch % .
+If no
+.Ch %
+is present, the article will be piped to the program.
+Paging may be disabled by setting
+.B PAGER
+to a null value.  By default, the pager is
+.IR cat (1).
+See
+.IR newsreaders (5)
+for detailed information on environment variables common to all readers.
+.SH "COMMANDS"
+This section lists the commands you can type to the default and
+.I binmail
+interface prompts.
+The default interface will suggest some common commands in brackets.
+Just hitting return is the same as typing the first command.
+For example, \*(Lq[ynq]\*(Rq means that the commands
+.Ch y
+(yes),
+.Ch n
+(no),
+and
+.Ch q
+(quit) are common responses, and that
+.Ch y
+is the default.
+.sp
+.ta 2.5i
+Command		Meaning
+.IP \fB\-\fP
+Backtrack in the articles you've read this session. Each successive - will
+backtrack one level further.
+.IP \fB#\fP
+Report the name and size of the newsgroup.
+.IP \fB!\fP
+Shell escape.
+.IP "\fB<\fP\fImessage ID\fP\fB>\fP"
+Look for a particular article.
+(See
+.I
+Standard for Interchange of Usenet Messages
+for a description of message ID's).
+.IP \fBb\fP
+Back.  Back up one article.
+.IP \fBc\fP
+Cancel the article.  Only the author or the super user can do this.
+.IP \fBd\fP
+Read a digest.  Breaks up a digest into separate articles
+and permits you to read and reply to each piece.
+.IP \fBD\fP [\fInumber\fP]
+Decrypt.  Invokes a Caesar decoding program on the body of the message.
+This is used to decrypt rotated jokes posted to
+.BR net.jokes .
+Such jokes are usually obscene or otherwise offensive to some
+groups of people, and so are rotated to avoid accidental
+decryption by people who would be offended.
+The title of the joke should indicate the nature of the problem,
+enabling people to decide whether to decrypt it or not.
+.IP
+An explicit
+.I number
+rotation (usually 13) may be given to force a particular shift.
+.IP \fBe\fP
+Erase.  Forget that this article was read.
+.IP "\fBf\fP [\fItitle\fP]"
+Submit a follow up article.
+Normally you should leave off the title, since the system will generate
+one for you.
+You will be placed in your
+.B EDITOR
+to compose the text of the followup.
+.IP \fBF\fP
+Like \fBf\fP, but includes the text of the current article.
+.IP "\fBfd\fP"
+Followup directly, without edited headers.  This is like
+.BR f ,
+but the headers of the article are not included in the editor buffer.
+.IP \fBG\fP
+Subscribe (or re-subscribe) to a given group.
+.IP \fBh\fP
+Header.  Print a more verbose header.
+.IP \fBH\fP
+Print a very verbose header, containing all known information
+about the article.
+.IP \fBJ\fP
+Global kill.  Mark all remaining articles in this newsgroup (and crossposts
+of the same articles in other groups) as read and skip to the next newsgroup.
+.IP \fBK\fP
+Local kill.  Mark all remaining articles in this newsgroup (but not crossposts
+of the same articles in other groups) as read and skip to the next newsgroup.
+.IP \f^K\fR
+Prompts for a kill command, which it passes down to your news filter process
+(if any). See your newsfilter documentation for details on how to use this.
+.IP \fBn\fP
+No.  Goes on to the next article without printing current one.
+In the
+.I binmail
+interface, this means \*(Lqgo on to the next article\*(Rq,
+which will have the same effect as
+.B y
+or just hitting return.
+.IP "\fBN\fP [\fInewsgroup\fP]"
+Next Newsgroup.
+Go to the next newsgroup or named newsgroup.
+.IP \fBp\fP
+Print the parent article of this article if it is a followup. This doesn't
+work if the current article was posted by A-news or notesfiles.
+.IP ^
+If the current article is a followup, backtrack to or fetch the top node
+of the discussion that it is part of. This doesn't work if the current
+article was posted by A-news or notesfiles.
+.IP \fBP\fP
+Previous Newsgroup.  Go back to previous newsgroup.
+.IP \fBq\fP
+Quit.  The
+.I .newsrc
+file will be updated if
+.B \-l
+or
+.B \-x
+were not on the command line.
+.IP r
+Reply.  Reply to article's author via
+.IR mail \&.
+You are placed in your
+.B EDITOR
+(by default
+.IR vi (1))
+with a header specifying
+\&\*(LqTo\*(Rq, \*(LqSubject\*(Rq, and \*(LqReferences\*(Rq
+lines taken from the message.
+You may change or add headers, as appropriate.
+You add the text of the reply after the blank line, and then exit
+the editor.  The resulting message is mailed to the author of the article.
+.IP \fBrd\fP
+Reply directly.
+You are placed in 
+.B MAILER
+.RI ( mail
+by default) in reply to the author.
+Type the text of the reply and then control-D.
+.IP "\fBs\fP [\fIfile\fP]"
+Save.  The article is appended to the named file. If the filename you give
+is not a full pathname, readnews will use it and the environment variables
+NEWSBOX and NEWSDIR to give a destination according to the rules given in
+.IR newsreaders (5).
+If the first character of the file name is
+.Ch | ,
+the rest of the file name is taken as the name of a program,
+which is executed with the text of the article as standard input.
+The behavior of this command may be modified by the NEWSCMD enironment
+variable; see
+.IR newsreaders (5).
+.IP \fBug\fP
+Unsubscribe from this newsgroup. Also goes on to the next newsgroup.
+The command ``U'' will have the same effect.
+.IP ud
+Unsubscribe from this discussion. All messages that are identifiably followups
+to the current message will be ignored from now on.
+.IP \fBv\fP
+Print the current version of the news software.
+.IP \fBw\fP
+Same as
+.BR s ,
+except that the header of the article is skipped.
+.IP \fBx\fP
+Exit.  Like quit except that
+.I .newsrc
+is not updated.
+.IP \fBy\fP
+Yes.  Prints current article and goes on to next. If the current article
+has followups, you will see them before the next article in sequence.
+.IP \fInumber\fP
+Go to \fInumber\fP.
+.IP \fB+\fP[\fIn\fP]
+Skip
+.I n
+articles.
+The articles skipped are recorded as ``unread'' and will be
+offered to you again the next time you read news.
+.IP a
+Show the index page for this group. Messages not yet seen are marked with an
+asterisk.
+.IP &
+Permits you to enter option switches as you would on the command line. A
+switch may be turned off by preceding the key letter with + rather than -.
+.IP %
+Permits you to define new command macros (see
+.IR newsreaders (5)
+for details on this feature). Enter the key and trigger, separated by
+whitespace.
+.IP W
+Write your .newsrc file to disk. This is really intended only for debugging
+use; you should never need to use it unless you have some reason to believe the
+reader is going to flake out and you want to checkpoint things.
+.IP /pattern 8
+Scan forward for article containing
+.I pattern
+in the subject.
+See the section on Regular Expssions in
+.IR newsreaders (5).
+If
+.I pattern
+is omitted, the previous pattern is assumed.
+.IP /pattern/h 8
+Scan forward for article containing
+.I pattern
+in the header.
+.IP /pattern/a 8
+Scan forward for article containing
+.I pattern
+anywhere in article.
+.IP /pattern/r 8
+Scan read articles also.
+.IP /pattern/c 8
+Make search case sensitive.
+.IP "/pattern/modifiers:command{:command}" 8
+Apply the commands listed to articles matching the search command (possibly
+with h, a, or r modifiers).
+Applicable commands include \*(Lae\*(Ra (mark as unread), \*(Laj\*(Ra (mark
+as read), \*(Lqs dest\*(Rq (save to a destination), \*(Lq!command\*(Rq (shell 
+escape) and \*(LqC\*(Rq (cancel).
+If the first command is \*(Lae\*(Ra, modifier r is assumed.
+For example, to save all articles in a given newsgroup to the line printer
+and mark them read, use \*(Lq/^/\||\|lpr:j\*(Rq.
+.IP \epattern 8
+Scan backward for article containing
+.I pattern
+in the subject.
+May be modified as the forward search is: \epattern\emodifiers[:commands].
+It is likely that you will want an r modifier when scanning backward.
+.IP t 8
+Mark as read all articles with the same subject as the current article.
+.IP T 8
+Do the same as the t command, but also pass /<subject>/t to your news
+filter process (if any).
+.PP
+The commands
+.BR c ,
+.BR f ,
+.BR fd ,
+.BR r ,
+.BR rd ,
+.BR e ,
+.BR h ,
+.BR H ,
+and
+.B s
+can be followed by
+.BR \- 's
+to refer to the previous article.
+Thus, when replying to an article using the default interface,
+you should normally type
+.B r\-
+(or
+.BR re- )
+since by the time you enter
+a command, you are being offered the next article.
+.PP
+On entry to a group, readnews will try and execute whatever command is
+present in your .newsrc's commands field (if there is one).
+.SH EXAMPLES
+.TP 10
+.B readnews
+Read all unread articles using the default interface.  The
+.I .newsrc
+file is updated at the end of the session.
+.TP 10
+.B "readnews \-p \-n all \-a last thursday"
+Print every unread article since last Thursday.  The
+.I .newsrc
+file is
+updated at the end of the session.
+.TP 10
+.B "readnews \-K"
+Discard all unread news.
+This is useful after returning from a long trip.
+.SH BUGS
+.IR readnews
+will only accept one command from the initial-commands field of the .newsrc
+file, and odd things may happen if that command demands any input.
+.SH FILES
+.PD 0
+.TP 25
+/usr/lib/news/readnews.help
+Help file for readnews interface
+.PD
+.SH SEE ALSO
+binmail(1),
+checknews(1),
+inews(8),
+mail(1),
+mailx(1),
+news(5),
+newsrc(5)
+postnews(1),
+vnews(1),
+getdate(3),
+news(5),
+newsrc(5),
+expire(8),
+recnews(8),
+sendnews(8),
+uurec(8)
+.br
+.I
+How to Read the Network News
+by Mark Horton.
+.br
+.I
+Standard for Interchange of Usenet Messages
+by Mark Horton.
+.SH NOTE
+There have been significant changes to readnews for TMN-Netnews.
+Most users will probably want to use the new -S option.
+The old "-c mailer" and -M options have been replaced by
+.IB mailnews (1) .
+The "options [reader] ..." feature of .newsrc files is new.
+A number of commands have been upgraded to act like their vnews equivalents.
+These include -, p, w, ug and ! (which now recognizes the & and | final chars
+and sets the $A environment variable). The F, G, ^, & and ud commands
+are new. The semantics of s and w have changed slightly, becoming more
+rn-like. To get the old behavior, set NEWSDIR="." in your environment
+.SH AUTHORS
+TMNN version by Eric S. Raymond, based on earlier code by Matt
+Glickman, Mark Horton, Stephen Daniel, Tom Truscott and Rick Adams.

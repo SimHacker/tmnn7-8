@@ -1,0 +1,68 @@
+.if n .ds La '
+.if n .ds Ra '
+.if t .ds La `
+.if t .ds Ra '
+.if n .ds Lq "
+.if n .ds Rq "
+.if t .ds Lq ``
+.if t .ds Rq ''
+.de Ch
+\\$3\\*(Lq\\$1\\*(Rq\\$2
+..
+.TH LOCKNEWS 8 "Mar 17, 1989"
+.ds ]W News 3.0 (beta level 7)
+.SH NAME
+locknews \- edits private newsgroup permissions
+.SH SYNOPSIS
+.B locknews [lock-command]
+.SH DESCRIPTION
+The \fIlocknews\fR(8) command enables gatekeepers of private newsgroups to
+add and delete users from their groups without going through the news
+administrator. Gatekeepers may also change the post and read permissions
+of their groups via \fIlocknews\fR(8).
+.PP
+Called with no arguments, \fIlocknews\fR(8) enters an interactive mode
+that repeatedly prompts for commands with % (help is available via `?'). If
+arguments are given, \fIlocknews\fR(8) attempts to interpret them as
+a single permissions command and then exits (this mode could be used with
+\fIcrontab\fR(1), for example, to disable reading of talk groups during
+prime time).
+.PP
+The available commands are as follows:
+.PP
+.nf
+a  group user...    -- add user(s) to group
+d  group user...    -- delete user(s) from group
+p  group postsub    -- set post access
+p+ group postsub    -- add to post access
+r  group readsub    -- set read access
+r+ group readsub    -- add to read access
+l  group            -- show status of group
+x  group            -- exit
+?                   -- list commands
+.fi
+.PP
+Any of these attempted by someone without gatekeeper privileges for the
+group in question will be rejected (note that \fIlocknews\fR(8) cannot
+be used to make new groups or anoint gatekeepers; these things must be
+done from the news owner account). 
+.PP
+The `a', `d', `p' and `r' commands will create a new `permit' line if none
+already exists for the referenced group.
+.PP
+Various other self-explanatory messages may be written to standard output.
+.SH NOTE
+The private-newsgroups features are effective only when news has been
+compiled with the FASCIST and COMMUNIST configuration switches. Before
+configuring for COMMUNIST mode, think twice. Then think again. USENET is built
+on a tradition of open information sharing, and the vast majority of sites
+need not and should not run COMMUNIST.
+.SH BUGS
+There's no locking to protect multiple concurrent instances of locknews
+from stepping on each other, yet. This will be fixed.
+.PP
+The p and r commands only see and modify the first `permit' line found for a
+group. Thus, to avoid confusing \fIlocknews\fR(8), it is recommended that
+post/read authorizations for groups be expressed by a single `permit'line.
+.SH SEE ALSO
+news(5)

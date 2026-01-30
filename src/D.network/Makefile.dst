@@ -1,0 +1,88 @@
+# libnntp.a generic Makefile to be customized for your site by Configure
+#
+# This is the network library directory. The Makefile defines four targets:
+#
+# libnntp.a:	The network services library itself
+# manifest:	Echo a string containing names of all library sources
+# llib-lnntp.ln	The lint library made from libnntp.a
+# clean:	Clean out all object, library and lint files
+#
+# Call "make -f Makefile.dst Makefile" from here to rebuild the Makefile
+
+# Other netnews source directories
+MAINDIR = ..
+PORTDIR = ../D.port
+NEWSDIR = ../D.news
+
+DIRLIST = $(MAINDIR) $(PORTDIR) $(NEWSDIR)
+INCLUDE = -I$(MAINDIR) -I$(PORTDIR) -I$(NEWSDIR)
+LIBSDIR = $(MAINDIR)
+
+#
+# You should not need to edit anything below this line
+#
+
+# Here are the macro definitions that Configure tweaks
+CFLAGS = $(CDEBUG) $(INCLUDE) $(CSPECIAL)
+LDFLAGS = $(LDDEBUG) $(LDSPECIAL)
+LINTFLAGS =  $(INCLUDE)
+
+.PRECIOUS: Makefile libnntp.a
+
+NNSRCS = nntpclient.c nntppost.c nntpread.c
+NNOBJS = nntpclient.o nntppost.o nntpread.o
+
+libnntp.a: $(NNOBJS)
+	ar lrc libnntp.a $?
+	-ranlib libnntp.a
+#PROFLIB 	(cd profiled; ar lrc ../libnntp_p.a $?)
+#PROFLIB 	-ranlib libnntp_p.a
+  
+setup:
+#PROFLIB	-mkdir profiled
+
+#PROFLIB .c.o:
+#PROFLIB 	${CC} -p ${CFLAGS} -c $*.c
+#PROFLIB 	mv $*.o profiled/$*.o
+#PROFLIB 	${CC} ${CFLAGS} -c $*.c
+
+export: setup libnntp.a
+	@rm -f $(LIBSDIR)/libnntp.a
+	-ln libnntp.a $(LIBSDIR)
+#PROFLIB 	@rm -f $(LIBSDIR)/profiled/libnntp.a
+#PROFLIB 	-ln libnntp_p.a $(LIBSDIR)/profiled/libnntp.a
+
+Makefile: Makefile.dst
+	$(MAINDIR)/GenerateMake $(DIRLIST)
+
+# ----------------------------------------------------------------------
+# OBJECT AUTO-DEPENDENCIES GO AFTER THIS LINE -- DO NOT DELETE IT!!!
+#
+.SUFFIXES: .ln
+
+.c.ln:
+#LINTLIBS	lint $(LINTFLAGS) -c $<
+#NOLINTLIBS	lint $(LINTFLAGS) -C$* $<
+
+# LINT AUTO-DEPENDENCIES GO AFTER THIS LINE -- DO NOT DELETE IT!!!
+
+lintlib: $(LIBSDIR)/llib-lnntp.ln
+
+$(LIBSDIR)/llib-lnntp.ln: llib-lnntp.ln
+	cp llib-lnntp.ln $(LIBSDIR)
+
+#LINTLIBS llib-lnntp.ln: $(NNSRCS:.c=.ln)
+#LINTLIBS	lint -x -u $(NNSRCS:.c=.ln) -o nntp
+#NOLINTLIBS llib-lnntp.ln: $(NNSRCS)
+#NOLINTLIBS	lint $(LINTFLAGS) -Cnntp $(NNSRCS)
+
+#
+# Random utility productions
+#
+distclean:
+
+clean:
+	rm -f *.o *.a *.ln *~ Makefile
+	rm -fr profiled
+
+# libnntp.a Makefile ends here

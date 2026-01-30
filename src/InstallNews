@@ -1,0 +1,488 @@
+: InstallNews -- install and update the USENET group data files
+
+if test -f configsys.sh; then
+	. ./configsys.sh
+else
+	echo "No configsys.sh file -- run Configure first!"
+	exit 1
+fi
+if $test -f confignews.sh; then
+	. ./confignews.sh
+else
+	echo "No confignews.sh file -- run Configure first!"
+	exit 1
+fi
+
+case "$species" in
+BSD4_[123])
+	echo "You're running $species; I'll assume you have a BSD cron."
+	bsdcron=true
+	;;
+*)
+	echo "I'll assume you have a SYS V cron."
+	bsdcron=false
+	;;
+esac
+
+for i in $libdir/ngfile $bindir/inews $libdir/localgroups
+do
+	if $test -f $i
+	then
+		echo "$i is no longer used. You should remove it."
+	fi
+done
+
+: the feedback file needs to be publicly writeable. Someday this, too
+: will be handled by calls to NNTP.
+if $test $feedback
+then
+    fdbfiles="$admdir/feedback"
+    touch $fdbfiles; chown $newsusr $fdbfiles
+    chgrp $newsgrp $fdbfiles; chmod a+rw $fdbfiles
+fi
+
+: if we are a network client, we are done
+if $test "$shared" = define -o "$nonlocal" = define ;
+then
+    exit 0
+fi
+
+: figure out what permissions for news database files should be
+if $test "$commie" = define ; then
+    privperms="u=rw,g=r,o-rw,a-x"
+else
+    privperms="u=rw,go=r,a-x"
+fi
+
+: Ensure that textdir and a publically writable scratch area beneath exist
+if $test ! -d $textdir
+then
+	mkdir $textdir
+fi
+if $test ! -d $textdir/.tmp
+then
+	mkdir $textdir/.tmp
+fi
+chown $newsusr $textdir
+chgrp $newsgrp $textdir
+chmod $privperms $textdir
+chmod +x $textdir
+chmod a=rwx $textdir/.tmp
+
+: Ensure that spooldir exists
+if $test ! -d $spooldir
+then
+	mkdir $spooldir
+fi
+chown $newsusr $spooldir
+chgrp $newsgrp $spooldir
+chmod $privperms $spooldir
+chmod +x $spooldir
+
+: Ensure that spooldir/.tmp exists
+if $test ! -d $spooldir/.tmp
+then
+	mkdir $spooldir/.tmp
+fi
+chown $newsusr $spooldir/.tmp
+chgrp $newsgrp $spooldir/.tmp
+chmod $privperms $spooldir/.tmp
+chmod +x $spooldir/.tmp
+
+: Ensure $libdir exists
+if $test ! -d $libdir
+then
+	mkdir $libdir
+fi
+chown $newsusr $libdir
+chgrp $newsgrp $libdir
+chmod $privperms $libdir
+chmod +x $libdir
+
+: Ensure $admdir exists
+if $test ! -d $admdir
+then
+	mkdir $admdir
+fi
+chown $newsusr $admdir
+chgrp $newsgrp $admdir
+chmod $privperms $admdir
+chmod +x $admdir
+
+: Ensure certain files in $admdir exist
+touch $admdir/history $admdir/log $admdir/errlog $admdir/xmitlog
+chown $newsusr $admdir/history $admdir/log $admdir/errlog $admdir/xmitlog
+chgrp $newsgrp $admdir/history $admdir/log $admdir/errlog
+chmod $privperms $admdir/history $admdir/log $admdir/errlog
+chmod ugo=rw $admdir/xmitlog
+cp /dev/null $admdir/xmitlog
+if $test $dbhistory
+then
+    dbfiles="$admdir/history.dat $admdir/history.dir $admdir/history.pag"
+    touch $dbfiles; chown $newsusr $dbfiles;
+    chgrp $newsgrp $dbfiles; chmod $privperms $dbfiles
+fi
+
+: a %feeds will have been set up in the source directory by Configure
+: if it is newer than the feeds file copy it onto the feeds file
+if $test ! -f $admdir/feeds -o \
+	-n ""`find . -name %feeds -newer $admdir/feeds -print 2>/dev/null`
+then
+	echo "Copying %feeds file to $admdir/feeds..."
+	cp %feeds $admdir/feeds
+	chown $newsusr $admdir/feeds
+	chgrp $newsgrp $admdir/feeds
+	chmod $privperms $admdir/feeds
+	touch $admdir/feeds
+fi
+
+: if the distribution mailpaths is newer, copy it in
+if $test ! -f $admdir/mailpaths -o \
+	-n ""`find . -name %mailpaths -newer $admdir/mailpaths -print 2>/dev/null`
+then
+	echo "Copying %mailpaths file to $admdir/mailpaths..."
+	cp %mailpaths $admdir/mailpaths
+	chown $newsusr $admdir/mailpaths
+	chgrp $newsgrp $admdir/mailpaths
+	chmod $privperms $admdir/mailpaths
+	touch $admdir/mailpaths
+fi
+
+: try to ensure that rnews can run
+if $test -f /usr/lib/uucp/L.cmds; then
+	commands=/usr/lib/uucp/L.cmds
+else
+	if $test -f /usr/lib/uucp/Commands; then
+		commands=/usr/lib/uucp/Commands
+	else
+		if $test -f /usr/lib/uucp/Permissions; then
+			commands=/usr/lib/uucp/Permissions
+		fi
+	fi
+fi
+ok='no'
+if $test "$commands" ; then
+	if $test -w "$commands"; then
+		if $contains rnews $commands >/dev/null 2>&1; then
+			ok='yes'
+		else
+			if $test $honey = 'define'; then
+				ok='no'
+			else
+				if echo "rnews" >>$commands; then
+					echo "Added rnews to legal uux commands."
+					ok='yes'
+				fi
+			fi
+		fi
+	fi
+fi
+if $test $ok = 'no'; then
+	echo
+	echo 'Reminder: uux must permit rnews if running over uucp.'
+	echo 'An attempt to make this change automatically failed;'
+	echo 'you must add rnews to your /usr/lib/uucp/L.cmds or'
+	echo '/usr/lib/uucp/Commands (or local equivalent) by hand.'
+	echo
+fi
+
+: Create a newsgroups list
+if $test -n ""`find . -name %newsgroups -newer $admdir/newsgroups -print 2>/dev/null`
+then
+	echo "Making $admdir/newsgroups"
+	cp %newsgroups $admdir/newsgroups
+	chown $newsusr $admdir/newsgroups
+	chgrp $newsgrp $admdir/newsgroups
+	chmod u=rw,go=r $admdir/newsgroups
+fi
+
+: if the active file is empty, create it
+if $test ! -f $admdir/active; then
+	echo "Creating $admdir/active"
+	cat <<E_O_F >$admdir/active
+general 00000 00001 y 00000000
+E_O_F
+	sed <%newsgroups >>$admdir/active \
+	    -e '/^$/d' \
+	    -e '/[ 	].*[Mm]oderated.*/s// 00000 00001 m 00000000/' \
+	    -e '/00000 00001 m 00000000/b' \
+	    -e 's/[ 	].*/ 00000 00001 y 00000000/'
+	cat <<E_O_F >>$admdir/active
+to.${sitename} 00000 00001 y 00000000
+control 00000 00001 y 00000000
+junk 00000 00001 y 00000000
+E_O_F
+else
+	echo $n "Now checking your active file for validity...$c"
+	: make sure it is in the new format
+	set - `sed 1q $admdir/active`
+	case $# in
+	5)	;;
+	4)	ed - $admdir/active << 'EOF'
+1,$g/$/s// 00000000/
+w
+q
+EOF
+		echo
+		echo Newsgroup age fields have been added to your active
+		echo file. You must run expire immediately after this install
+		echo is done to properly update the tables.;;
+	3)	ed - $admdir/active << 'EOF'
+1,$g/$/s// y 00000000/
+w
+q
+EOF
+		echo
+		echo An age field and submission flag fields have been added to
+		echo your active file. You must run expire immediately after
+		echo this install is done to properly update the tables.;;
+	2)	ed - $admdir/active << 'EOF'
+1,$g/$/s// 00001 y 00000000/
+w
+q
+EOF
+		echo
+		echo Minimum-active, age, and submission-flag fields
+		echo have been added to your active file.
+		echo You must run expire immediately after this install
+		echo is done to properly update the tables.;;
+	*) echo Active file is in unrecognized format. Not upgraded.;;
+	esac
+fi
+
+: take special action if we were in 2.9 or earlier format
+if $test $# -eq 3 -o $# -eq 2
+then
+	(sed '/^!net/!d
+s/^!//
+s!^!/!
+s!$! /s/$/ n/!
+' $libdir/ngfile
+	echo '/ n$/!s/$/ y 0000000/') >/tmp/$$sed
+	mv $admdir/active $admdir/oactive
+	sed -f /tmp/$$sed $admdir/oactive >$admdir/active
+fi
+$libdir/checkgroups $notify <%newsgroups
+rm -f /tmp/$$*
+echo "Done"
+chown $newsusr $admdir/active
+chgrp $newsgrp $admdir/active
+chmod $privperms $admdir/active
+
+: if the admin file is empty, create it
+if $test ! -f $admdir/admin; then
+	echo "Creating $admdir/admin"
+	cat <<E_O_F >>$admdir/admin
+# Groups			Flags		Default distributions
+news.announce.newusers		!e		local
+all				e,$dfltexp	world
+talk.all			v		$cntrypref
+misc.forsale,all.wanted		v		$statepref
+misc.test			v		local
+E_O_F
+	chown $newsusr $admdir/admin
+	chgrp $newsgrp $admdir/admin
+	chmod $privperms $admdir/admin
+fi
+
+: Always rewrite the attributes file, because it can be changed by Configure 1
+echo $n "Making attributes file...$c"
+case $runtime in define) will="*will*" ;; *) will="will *not*" ;; esac
+cat >$libdir/attributes << EOF
+#
+# Setup values for the news software. This $will override compiled defaults
+#
+notify		$notify
+organization	$organization
+fromname	$fromname
+pathname	$pathname
+truename	$truename
+smart-host	$smarthost
+libdir		$libdir
+admdir		$admdir
+textdir		$textdir
+spooldir	$spooldir
+batchdir	$batchdir
+archdir		$archdir
+mailserv	$mailserv
+mailformat	$mailfmt
+mailchar	$mailchar
+backbone	$backbone
+dfltsub		$dfltsub
+admsub		$admsub
+leastuid	$leastuid
+uuprog		uuprog
+EOF
+chown $newsusr $libdir/attributes
+chgrp $newsgrp $libdir/attributes
+chmod $privperms $libdir/attributes
+echo "Done."
+
+if $test ! -f $admdir/aliases; then
+    echo "Making $admdir/aliases file"
+    cat >$admdir/aliases <<EOF
+alt.next	comp.sys.next
+ba.wanted	ba.market
+ba.forsale	ba.market
+comp.os.fidonet		comp.org.fidonet
+net.sources	comp.sources.misc
+misc.jobs		misc.jobs.misc
+na.forsale		misc.forsale
+rec.skydive		rec.skydiving
+talk.philosophy.tech		sci.philosophy.tech
+talk.religion		talk.religion.misc
+talk.rumor		talk.rumors
+EOF
+    chown $newsusr $admdir/aliases
+    chgrp $newsgrp $admdir/aliases
+    chmod $privperms $admdir/aliases
+fi
+
+if $test ! -f $admdir/buggroups; then
+    echo "Making $admdir/buggroups file"
+    cp /dev/null $admdir/buggroups
+    chown $newsusr $admdir/buggroups
+    chgrp $newsgrp $admdir/buggroups
+    chmod $privperms $admdir/buggroups
+fi
+
+if $test ! -f $admdir/followups; then
+    echo "Making $admdir/followups file"
+    cat >$admdir/followups <<EOF
+rec.humor	rec.humor.d
+misc.jobs.resumes	misc.jobs.misc
+misc.jobs.offered	misc.jobs.misc
+EOF
+    chown $newsusr $admdir/followups
+    chgrp $newsgrp $admdir/followups
+    chmod $privperms $admdir/followups
+fi
+
+if $test ! -f $admdir/distributions; then
+    echo "Making $admdir/distributions file"
+    grep "^[a-z]" %distributions >$admdir/distributions
+    chown $newsusr $admdir/distributions
+    chgrp $newsgrp $admdir/distributions
+    chmod $privperms $admdir/distributions
+fi
+
+: finally, modify the local crontab if we can find it -- prefer SVr2 cron if
+: there on 2-universe systems like Pyramids, smart sysops will be using it
+if $test "$bsdcron" = "true" ; then
+    : ok, this is a BSD-style cron
+	echo "You'll have to schedule expire, newsclean and newslog by hand"
+elif $test -d /usr/lib/cron ; then
+    : ok, this is an SVr2-style cron
+
+    crontmp=$admdir/crontab$$
+    trap "rm -f $crontmp; exit 0;" 0 1 2 15
+
+    su $newsusr -c "crontab -l >$crontmp"
+
+    makenew=n
+
+    : make sure crontab has an expire line 
+    if grep "expire" $crontmp >/dev/null 2>&1 ; then
+	: do nothing
+    else
+	echo "0 5 * * * $libdir/expire >/dev/null 2>&1" >>$crontmp
+	echo "A new crontab entry scheduling expire will be added."
+	makenew=y
+    fi
+
+    : make sure crontab has a newslogs line 
+    if grep "newslogs" $crontmp >/dev/null 2>&1 ; then
+	: do nothing
+    else
+	echo "0 6 * * 5 $libdir/newslogs >/dev/null 2>&1" >>$crontmp
+	echo "A new crontab entry scheduling newslogs will be added."
+	makenew=y
+    fi
+
+    : make sure crontab has a newsclean line 
+    if grep "newsclean" $crontmp >/dev/null 2>&1 ; then
+	: do nothing
+    else
+	echo "0 7 1 * * $libdir/newsclean >/dev/null 2>&1" >>$crontmp
+	echo "A new crontab entry scheduling newsclean will be added."
+	makenew=y
+    fi
+
+    : make sure crontab has an arbitron line 
+    if grep "arbitron" $crontmp >/dev/null 2>&1 ; then
+	: do nothing
+    else
+	echo "0 23 20 * * $libdir/arbitron >/dev/null 2>&1" >>$crontmp
+	echo "A new crontab entry scheduling arbitron will be added."
+	makenew=y
+    fi
+
+    if $test $makenew = y ; then
+	if $test -f /usr/lib/cron/cron.allow ; then
+	    if grep "$newsusr" /usr/lib/cron/cron.allow >/dev/null 2>&1;
+	    then
+		echo "Good, $newsusr can already run cron jobs"
+		else
+		echo "Your cron.allow has been changed to let $newsusr run jobs."
+		echo "$newsusr" >>/usr/lib/cron/cron.allow
+	    fi
+	else
+	    echo "No cron.allow; cron.deny will be checked."
+	fi
+
+	if grep "$newsusr" /usr/lib/cron/cron.deny 2>/dev/null;
+	then
+	    ed - /usr/lib/cron/cron.deny <<EOF
+1,\$g/^$newsusr\$/d
+w
+q
+EOF
+	    echo "Your cron.deny has been changed to let $newsusr run jobs."
+	else
+	    echo "Good, your cron.deny doesn't exclude $newsusr";
+	fi
+
+	su $newsusr -c "crontab $crontmp"
+    fi
+else
+    crontab=/usr/lib/crontab
+    if $test -f $crontab ; then
+
+	: make sure crontab has an expire line 
+	if $contains "expire" $crontab >/dev/null 2>&1 ; then
+	    : do nothing
+	else
+	    echo "0 5 * * * /bin/su $newsusr -c $libdir/expire" >>$crontab
+	    echo "A new crontab entry scheduling expire has been added."
+	fi
+
+	: make sure crontab has a newslogs line 
+	if $contains "newslogs" $crontab >/dev/null 2>&1 ; then
+	    : do nothing
+	else
+	    echo "0 6 * * 5 /bin/su $newsusr -c $libdir/newslogs" >>$crontab
+	    echo "A new crontab entry scheduling newslogs has been added."
+	fi
+
+	: make sure crontab has a newsclean line 
+	if $contains "newsclean" $crontab >/dev/null 2>&1 ; then
+	    : do nothing
+	else
+	    echo "0 7 1 * * /bin/su $newsusr -c $libdir/newsclean" >>$crontab
+	    echo "A new crontab entry scheduling newsclean has been added."
+	fi
+
+	: make sure crontab has an arbitron line 
+	if $contains "arbitron" $crontab >/dev/null 2>&1 ; then
+	    : do nothing
+	else
+	    echo "0 23 20 * * /bin/su $newsusr -c $libdir/arbitron" >>$crontab
+	    echo "A new crontab entry scheduling arbitron has been added."
+	fi
+
+    else
+	echo "You'll have to schedule expire, newsclean and newslog by hand"
+    fi
+fi
+: InstallNews ends here
+

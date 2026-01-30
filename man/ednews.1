@@ -1,0 +1,120 @@
+.if n .ds La '
+.if n .ds Ra '
+.if t .ds La `
+.if t .ds Ra '
+.if n .ds Lq "
+.if n .ds Rq "
+.if t .ds Lq ``
+.if t .ds Rq ''
+.de Ch
+\\$3\\*(Lq\\$1\\*(Rq\\$2
+..
+.TH EDNEWS 1 "Mar 17, 1989"
+.ds ]W News 3.0 (beta level 7)
+.SH NAME
+ednews \- readnews-like back end for use with EMACS or a window system.
+.SH SYNOPSIS
+.BR ednews " ["
+.BI \-a " date"
+] [
+.BI \-n " newsgroups"
+] [
+.BI \-t " titles"
+] [
+.BR \-xfuS " ] ]"
+.PP
+.SH DESCRIPTION
+Ednews is a reader-interface server suitable for controlling through a pipe
+or named-fifo pair. It is intended to be used with a front end that can
+exchange message lines via its stdin and stdout descriptors. The comm
+overhead of talking with it is kept low; the basic trick is that it generally
+hands back file names rather than file text, assuming that the interface
+front end can read files.
+.PP
+Anyone on a machine with a windowing system can use
+.I ednews
+to write a
+front-end that uses the local facilities to achieve Smalltalk-like sexiness.
+The front end will not need to know about any of the news data structures.
+SunTools, X, NeWS or the layer windowing on the AT&T 7300/3B1 would
+all do fine for this purpose. The process-window features of GNU Emacs
+or UniPress Emacs qualify them as well.
+.PP
+All readnews commands are enabled in ednews, except for the digest commands
+sub-interpreter, the header display commands, and the help command (the front
+end is presumed to provide its own help). The option flags supported are as in
+readnews.
+.PP
+All lines written to stdout are status messages except those (command) lines
+that begin with one of the following tokens (the leading ^G is to distinguish
+these from normal information-only message lines):
+.PP
+    ^GTOPICS <file> <waiting>
+    ^GGROUP <name> <least> <greatest> <unread> <seenbits>
+    ^GARTICLE <artfile> <artlines> {'seen'|'unseen'}
+    ^GSUBJECTS <file>
+    ^GDONE <status> {'seek'|'next'|'skip'|'hold'|'nomore'|'exit'}
+    ^GNOMORE
+    ^GBYE
+    ^GCMDERR <error message>
+.PP
+The first line sent up by an opened ednews is a TOPICS message.
+A TOPICS line gives the name of a file containing status info on all groups.
+The front end is responsible for deleting this file when done with it.
+The format of each file line is:
+
+	<name> <unread> {'y'|'n'}[!]
+
+In this form <unread> is the count of unread messages in the group. The third
+field may be y for a subscribed group, n for an unsubscribed one; the '!'
+flags a group as new (i.e. created since the user's last session). Groups are
+presented in the user's .newsrc order if SORTACTIVE was on. The <waiting>
+field is an integer giving the total number of messages waiting; a value of 0
+means there is no new news. When this happens, one NOMORE message (see below)
+will then be emitted and a response awaited. The front end has the option to
+to continue the session; if it does so, ednews will act as though it had begun
+with the -x flag set.
+.PP
+A GROUP line gives (as its first the field) the group name, the least and
+greatest article numbers and the count of messages still unread for the
+current group. The fourth field is a representation of the group's seen
+bits in the same format as that of a .newsrc line, including the prefix colon
+or exclamation point.
+.PP
+An ARTICLE line gives the file name of the current article text, the
+number of lines in the current article, and the token 'new' or 'old' telling
+whether or not the article has been seen before. The server expects a command
+line of input after each ARTICLE response.
+.PP
+A SUBJECTS line gives the name of a file holding an up-to-date subject line
+index for the current group. The front end is responsible for deleting this
+file when done with it. Unseen message numbers are prefixed with * as in
+the A command.
+.PP
+A DONE message carries back the status bits set by the last command. The first
+field holds a hexadecimal representation; following tokens correspond to
+the defines in gcmd.h and encode the same information in a form more suitable
+for use by GNU Emacs elisp or another token-oriented language.
+.PP
+A NOMORE line informs the front end that there are no more messages left in
+the normal read sequence.  Ednews will block for input immediately
+following this. The current location will be as it was on the previous
+ARTICLE message, if any.
+.PP
+A BYE message informs the caller that the ednews is about to terminate.
+.PP
+A CMDERR message is a diagnostic that says the last command sent down
+wasn't in the ednews commands set. Ednews will block for input immediately
+following this. The current location will be as it was on the previous
+ARTICLE message, if any.
+.PP
+The news code includes a \fIlibeipc.a\fR library that provides calls for
+communication with an ednews subprocess by C programs. A GNU Emacs package
+\fIednews.el\fR fills a similar role for GNU Emacs reader modes.
+.SH BUGS
+Some readnews commands (shell execute, save file etc.) should probably be
+disabled in ednews. Note that the child process of a shell execute does
+\fInot\fR get setgid-NEWSUSR privileges, so read security in COMMUNIST mode
+is preserved.
+.SH SEE ALSO
+readnews(1)

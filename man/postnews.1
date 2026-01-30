@@ -1,0 +1,225 @@
+.if n .ds La '
+.if n .ds Ra '
+.if t .ds La `
+.if t .ds Ra '
+.if n .ds Lq "
+.if n .ds Rq "
+.if t .ds Lq ``
+.if t .ds Rq ''
+.de Ch
+\\$3\\*(Lq\\$1\\*(Rq\\$2
+..
+.TH POSTNEWS 1 "Mar 17, 1989"
+.ds ]W News 3.0 (beta level 7)
+.SH NAME
+postnews \- submit news articles
+.SH SYNOPSIS
+.BR postnews " [ "
+.IR \-s "] ["
+.BR \-t
+.I title
+] [
+.B \-n
+.I newsgroups
+] [
+.B \-d
+.I distribution
+] [
+.B \-k
+.I keywords
+] [
+.B \-D
+] [
+.B \-X
+]
+.PP
+.BR postnews " [ "
+.BR original " ] ["
+.BR \-s "] ["
+.BR \-o
+.IR outfd " ] ["
+.BR \-f
+.IR original " ] ["
+.B \-F " ["
+.IR includemark "] ]"
+.PP
+.B postnews 
+.B -i
+articlefile
+.SH DESCRIPTION
+.I Postnews
+is a program that provides a friendly interactive front end to
+.IR inews (8)
+to submit news articles to USENET. In normal interactive use you will call
+it without command-line options.
+The commands should be self-explanatory, however you may type
+.Ch ?
+to most prompts to get a list of the possible options (except
+for the \*(LqKeywords\*(Rq of the article, etc).
+It will prompt the user for the title of the article
+(which should be a phrase suggesting the subject,
+so that persons reading the news can tell if they
+are interested in the article), for the newsgroup,
+and for the distribution.
+.PP
+If you answer yes to the first question (i.e. you're following up to a
+previous message) postnews will first ask you for the group of the
+parent message, then for its number. At the message number prompt you
+may type a number or one of the following characters:
+.IP +
+The next message in the group (to step through your alternatives)
+.IP -
+The previous message in the group (ditto)
+.IP ?
+Show a list of the subjects of all messages in the group, then ask again.
+The environment variable PAGER, if present, gives the paging program that
+will be used to display long lists.
+.PP
+Postnews will ask for confirmation when you specify a number.
+.PP
+The command-line switches allow you to specify certain things in advance
+without going through the prompts. They are as follows:
+.IP -f
+Specify a parent article to which this one is a followup. The reference may
+be an Message-ID or <group>/number pair. If the first command-line argument
+has no preceding hyphen it will be treated as the argument of a -f option.
+.IP -t
+The argument of this option becomes the message title. No good if doing a
+followup.
+.IP -n
+This option may be used to specify the list of newsgroups to which the
+article should be posted. No good if doing a followup.
+.IP -d
+This option may be used to specify the distributions to which the
+article should be posted. No good if doing a followup.
+.IP -k
+Allows you to specify keywords for the message. No good if doing a followup.
+.IP -F
+When doing a followup, this option causes the parent message to be included
+in the followup text. If a string argument is given it is used as the
+inclusion mark (the default inclustion mark is > followed by a space).
+.IP -s
+If this option is on and there is a file called .signature in the invoking
+user's home directory, it is appended to each news posting before transmission
+(if the file is executable, it is run and the output appended instead).
+.IP -D
+Debug mode. Dumps the composed message to standard output.
+.IP -o <num>
+Write the Message-ID of the newly-generated article to the given file number.
+To be used by programs that want to call postnews inside a wrapper and get
+back the ID for more processing.
+.PP
+.IP -X
+Expert mode. Suppresses some verbose prompting and inverts the -s flag, so
+that signatures are normally appended but selection of the -s option suppresses
+the signature (for use if the sender is a guest of the user).
+.PP
+If there is a POSTOPTS variable in you environment, options will be taken
+from it before the command line is parsed. This may be useful for setting
+the -X, -F and -s options to your taste.
+.PP
+A distribution is typically a geographic region or corporate region.
+Typing
+.Ch ?
+will get you a list of the possible distributions. You should
+use the minimum distribution that will serve your purpose for
+posting the article. For example, if you are selling your car in New
+Jersey, it is doubtful that someone in California (or Europe) would
+be willing to buy it. If you don't restrict the distribution to your
+local area, you will cause this article to be transmitted unnecessarily
+around the world.  Currently, with a distribution of
+.BR world ,
+the article
+will be seen in the United States, Canada, Europe, Japan, Korea and
+other places.
+A distribution header will, if given, be included in the headers
+of the article, affecting where the article is distributed to.
+.PP
+After entering the title, newsgroup, and distribution,
+the user will be placed in an editor.
+If
+.B EDITOR
+is set in the environment, that editor will be used.
+Otherwise,
+.I postnews
+defaults to
+.IR vi (1).
+.PP
+An initial set of headers containing the subject and newsgroups
+will be placed in the editor, followed by a blank line.
+The article should be appended to the buffer, after the blank line.
+The initial headers can be changed, or additional headers added,
+while in the editor, if desired.
+.PP
+After you have finished typing in your article, you have the
+option of sending it, listing it, quitting without sending it or
+saving it in a file so you can finish editing it and post it later.
+.PP
+The -i mode of postnews simply picks up a given file and hands it to your
+editor, not generating any headers or signature. It is intended for quick
+posting of articles that already have attached headers.
+.PP
+For posting news from a program, see
+.IR inews (8).
+.LP
+If the file
+.I /usr/lib/news/recording
+is present, it is taken as a list of
+\&\*(Lqrecordings\*(Rq to be shown to users posting news.
+(This is named after the recording you hear when you dial
+.Ch information
+in some parts of the U.S., asking you to stop and think if you really want do
+do this, but not actually preventing you.)
+The recording file contains lines of the form:
+.PP
+	newsgroup-specifier \fB\s-2TAB\s0\fP filename
+.PP
+for example:
+.PP
+	comp.all	comp.recording
+.br
+	local.all,!local.test local.recording
+.PP
+Any user posting an article to a newsgroup matching the pattern on
+the left will be shown the contents of the file on the right.
+The file is found in the
+.B LIB
+directory (often
+.IR /usr/lib/news ).
+The user is then told to hit \s-2DEL\s0 to abort or \s-2RETURN\s0 to proceed.
+The intent of this feature is to help companies keep proprietary
+information from accidently leaking out.
+.PP
+If the user's environment contains a variable NEWSBOX, each posting made
+will be appended to the file named in it.
+.SH "ENVIRONMENT"
+If
+.B NEWSARCHIVE
+is set, a copy of any articles you post or follow-up to, will be saved
+in the specified file. If it is the null string, they will be
+copied in 
+.I author_copy
+in your home directory.
+.SH CAVEAT
+The form of postnews invocation for followups that used an article filename
+argument as the reference is no longer supported -- this change is to ease
+support of nntp and future networked news handlers.
+.SH "SEE ALSO"
+Mail(1),
+binmail(1),
+checknews(1),
+inews(8),
+mailx(1),
+readnews(1),
+vi(1),
+news(5),
+newsrc(5),
+expire(8),
+recnews(8),
+sendnews(8),
+uurec(8)
+.SH NOTE
+The command line options are new in TMNN. Also, note that: summary prompting
+has been moved to \fIafter\fR the article, the .signature (if enabled) is now
+appended to the article \fIbefore\fR the editor is called, and some questions
+have been added for better control of followups.

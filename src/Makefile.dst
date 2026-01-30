@@ -1,0 +1,515 @@
+# Netnews generic makefile to be customized for your site by Configure
+
+SHELL = /bin/sh
+
+#
+# Here are the macro definitions that Configure tweaks
+#
+NEWSUSR = news
+NEWSGRP = news
+TEXTDIR = /usr/spool/news/
+SPOOLDIR = /usr/spool/news/.rnews
+BATCHDIR = /usr/spool/batch
+LIBDIR = /usr/lib/news
+ADMDIR = /usr/lib/news
+BINDIR = /usr/local/bin
+UUBINDIR = /usr/bin
+#NONLOCAL NNTPSRC = /usr/src/nntp
+#NONLOCAL NNTPDIR = /usr/src/nntp/common
+#POSIXCOMPAT POSIXLIB = libposix.a
+LNRNEWS = ln
+SIZEDEFS =
+CC = cc
+LD = cc
+CHOWN=chown
+CHGRP=chgrp
+TERMLIB =
+SCRIPTS =
+LOCLIBS =
+NETLIB =
+SPECIES =
+GENUS =
+MAKE=make
+CP=cp
+
+#
+# The following only change if the shape of the news source hierarchy does
+#
+MAINDIR = .
+PORTDIR = D.port
+NEWSDIR = D.news
+READDIR = D.read
+FILTDIR = D.filt
+POSTDIR = D.post
+SCRNDIR = D.scrn
+PRIVDIR = D.priv
+UUCPDIR = D.uucp
+NNETDIR = D.network
+#POSIXCOMPAT POSXDIR = D.posix
+
+#LOCAL LSOURCES = $(PRIVDIR) $(UUCPDIR)
+#NETWORK LSOURCES = $(NNETDIR)
+#LOCAL LHEADERS = -I$(PRIVDIR) -I$(UUCPDIR)
+#NETWORK LHEADERS = -I$(NNETDIR)
+
+DIRLIST = $(POSXDIR) $(PORTDIR) $(NEWSDIR) $(READDIR) $(FILTDIR) $(POSTDIR) $(SCRNDIR) \
+	$(LSOURCES) 
+INCLUDE = -I$(PORTDIR) -I$(NEWSDIR) -I$(READDIR) -I$(FILTDIR) -I$(POSTDIR) \
+	-I$(SCRNDIR) $(LHEADERS) $(NNTPDIR)
+SCRIPTDIR = D.scripts
+
+#
+# System-specific compiler and linker flags are merged in here
+#
+CSPECIAL =
+LSPECIAL =
+#CDEBUG = -g
+CDEBUG = -O
+CFLAGS = -I. -ID.include ${CDEBUG} ${CSPECIAL} $(CF)
+#LDEBUG = -lg
+LDEBUG = -s
+LFLAGS = ${LDEBUG} ${LSPECIAL}
+LIBS =
+
+#V7B LINTFLAGS = -chba -I. -ID.include
+#USG LINTFLAGS = -I. -ID.include
+
+#BSD4_1 LIBS = -ljobs
+#UNIXPC LIBS = -lposix	#...because there's no room left in shlib, @#$@#!!% it
+
+#
+# If you'll never need some of the news tools, here's where to comment them out
+#
+READERS = vnews checknews edvnews mailnews readnews ednews vrn
+FILTERS = rnkill
+#LOOSE USRCMDS = $(READERS) $(FILTERS) postnews bbsauto
+#TIGHT USRCMDS = $(READERS) $(FILTERS) postnews bbsauto locknews
+#LOCAL LIBCMDS = rnews expire sendbatch inews uurec caesar
+AUXCMDS = compress
+
+# Everything between the next line and the matching line below is sacred
+#----------------------------------------------------------------------
+#
+COMMANDS = $(LOCLIBS) $(USRCMDS) $(LIBCMDS) $(AUXCMDS)
+TESTERS = newsdb ednewsipc
+HELPFILES = readnews.help vnews.help vrn.group.help vrn.art.help vrn.pager.help
+
+# Use this default to make updated commands
+all: makefiles libraries $(COMMANDS) makekits
+	@echo "Done at "`date`
+
+profiling: profiled/expire profiled/rnews
+
+.PHONY: all makefiles libraries quietly profiling
+
+#PROFLIB .c.o:
+#PROFLIB 	${CC} -p ${CFLAGS} -c $*.c
+#PROFLIB 	mv $*.o profiled/$*.o
+#PROFLIB 	${CC} ${CFLAGS} -c $*.c
+
+saber_cflags:
+	#setopt load_flags $(CFLAGS)
+
+makefiles:
+	-$(MAKE) -$(MAKEFLAGS) Makefile;
+	for x in $(DIRLIST); do (cd $$x; echo "$$x:"; $(MAKE) -$(MAKEFLAGS) -f Makefile.dst Makefile); done
+
+Makefile: Makefile.dst confignews.sh
+	$(MAINDIR)/GenerateMake $(DIRLIST)
+
+# On the first make, generate Makefile once just to set $(DIRLIST) properly,
+# then force a re-generation so GenerateMake will attach correct prefixes
+firstmake: confignews.sh configsys.sh Makefile.dst
+	./GenerateMake
+	sleep 2; touch confignews.sh
+	$(MAKE) -$(MAKEFLAGS) makefiles D.include
+	-mkdir profiled
+
+# This kluge is required by BSD's hardcoded limit of at most 8 -Is per cc
+D.include:
+	mkdir D.include
+	mkdir D.include/sys
+	ln D.*/*.h D.include
+	ln D.posix/sys.dirent.h D.include/sys/dirent.h
+
+libraries:
+	for x in $(DIRLIST); do (cd $$x; echo "$$x:"; $(MAKE) -$(MAKEFLAGS) "CDEBUG=$(CDEBUG)" export); done
+
+quietly:
+	(nohup $(MAKE) -$(MAKEFLAGS) -k) >make.log 2>&1 &
+
+# Use this to install the system
+#LOCAL installnews: usrcmds transport
+#NETWORK installnews: usrcmds
+	sh ./InstallNews
+
+usrcmds: bindir $(HELPFILES)
+transport: libdir uubindir scripts $(ADMDIR) $(TEXTDIR) $(BATCHDIR) $(SPOOLDIR)
+
+bindir: $(BINDIR)
+#V7B	for x in $(USRCMDS); \
+#V7B		do install -o $(NEWSUSR) -g $(NEWSGRP) $$x $(BINDIR); done
+#!V7B	$(CP) $(USRCMDS) $(BINDIR);
+	-cd $(BINDIR); \
+#!V7B		chown $(NEWSUSR) $(USRCMDS); \
+#!V7B		chgrp $(NEWSGRP) $(USRCMDS); \
+#LOOSE		chmod u=rwx,go=rx $(USRCMDS)
+#TIGHT		chmod u=rwx,go=rx,g+s $(USRCMDS); chmod u+s locknews
+
+libdir: $(LIBDIR)
+#V7B	for x in $(LIBCMDS) $(AUXCMDS); \
+#V7B		do install -o $(NEWSUSR) -g $(NEWSGRP) $$x $(LIBDIR); done
+#!V7B	$(CP) $(LIBCMDS) $(AUXCMDS) $(LIBDIR)
+	cd $(LIBDIR);\
+#!V7B		chown $(NEWSUSR) $(LIBCMDS); \
+#!V7B		chgrp $(NEWSGRP) $(LIBCMDS); \
+		chmod u=rwx,go=rx $(LIBCMDS) $(AUXCMDS);\
+#NEWCTRL	chmod u=rwx,go=r control;\
+		chmod u+s,g+s expire rnews sendbatch;
+	cp $(HELPFILES) $(LIBDIR)
+
+uubindir:
+	-cd $(UUBINDIR); rm -f rnews unbatch cunbatch c7unbatch
+	${LNRNEWS} $(LIBDIR)/rnews $(UUBINDIR)/rnews
+	${LNRNEWS} $(LIBDIR)/rnews $(UUBINDIR)/unbatch
+	${LNRNEWS} $(LIBDIR)/rnews $(UUBINDIR)/cunbatch
+	${LNRNEWS} $(LIBDIR)/rnews $(UUBINDIR)/c7unbatch
+
+MAPCONFIG = ConfigureMap ConfigureUtils configsys.sh confignews.sh
+scripts:
+	-rm -f $(SCRIPTDIR)/config.sed
+	-ln config.sed $(SCRIPTDIR)
+	cd $(SCRIPTDIR); sh config.sed $(SCRIPTS)
+	cp $(MAPCONFIG) $(LIBDIR)
+	cd $(LIBDIR);\
+		$(CHOWN) $(NEWSUSR) $(SCRIPTS);\
+		$(CHGRP) $(NEWSGRP) $(SCRIPTS);\
+		chmod u=rwx,go=rx $(SCRIPTS) $(MAPCONFIG)
+
+$(BINDIR)::
+	-mkdir $(BINDIR)
+	$(CHOWN) $(NEWSUSR) $(BINDIR)
+	$(CHGRP) $(NEWSGRP) $(BINDIR)
+	chmod u=rwx,go=rx $(BINDIR)
+
+$(BATCHDIR)::
+	-mkdir $(BATCHDIR)
+	$(CHOWN) $(NEWSUSR) $(BATCHDIR)
+	$(CHGRP) $(NEWSGRP) $(BATCHDIR)
+	chmod u=rwx,go=rx $(BATCHDIR)
+
+$(LIBDIR)::
+	-mkdir $(LIBDIR)
+	$(CHOWN) $(NEWSUSR) $(LIBDIR)
+	$(CHGRP) $(NEWSGRP) $(LIBDIR)
+	chmod u=rwx,go=rx $(LIBDIR)
+
+$(ADMDIR)::
+	-mkdir $(ADMDIR)
+	$(CHOWN) $(NEWSUSR) $(ADMDIR)
+	$(CHGRP) $(NEWSGRP) $(ADMDIR)
+	chmod u=rwx,go=rx $(ADMDIR)
+
+$(TEXTDIR)::
+	-mkdir $(TEXTDIR) $(TEXTDIR)/.tmp $(TEXTDIR)/.bad
+	$(CHOWN) $(NEWSUSR) $(TEXTDIR) $(TEXTDIR)/.tmp $(TEXTDIR)/.bad
+	$(CHGRP) $(NEWSGRP) $(TEXTDIR) $(TEXTDIR)/.tmp $(TEXTDIR)/.bad
+	chmod u=rwx,go=rx $(TEXTDIR) $(TEXTDIR)/.tmp $(TEXTDIR)/.bad
+
+$(SPOOLDIR)::
+	-mkdir $(SPOOLDIR)
+	$(CHOWN) $(NEWSUSR) $(SPOOLDIR)
+	$(CHGRP) $(NEWSGRP) $(SPOOLDIR)
+	chmod u=rwx,go=rx $(SPOOLDIR)
+
+# This is strictly for TIGHT-testing purposes
+usrperms:
+	$(CHGRP) $(NEWSGRP) $(USRCMDS);
+#LOOSE	chmod u=rwx,go=rx $(USRCMDS)
+#TIGHT	chmod u=rwx,go=rx,g+s $(USRCMDS); chmod u+s locknews
+
+# Install a fake rnews for debugging purposes (you must be su news or root)
+fake: $(BATCHDIR)
+	rm -f $(UUBINDIR)/rnews
+	echo "cat >$(BATCHDIR)/inbatch\$$\$$" >$(UUBINDIR)/rnews
+	chmod +x $(UUBINDIR)/rnews
+
+# Install a fake inews for use during conversions (you must be su news or root)
+SORRY="Posting is temporarily disabled while a new version is being installed"
+ifake:
+	echo "echo \"" $(SORRY) "\"" >$(LIBDIR)/inews
+	chmod +x $(LIBDIR)/inews
+
+# Prepare to package a distribution
+distclean:
+	rm -f grpw $(USRCMDS) $(LIBCMDS) $(AUXCMDS) makekits $(TESTERS)
+	for x in $(DIRLIST); do (cd $$x; echo "$$x:"; $(MAKE) -$(MAKEFLAGS) \
+		-f Makefile.dst distclean); done
+
+# Throw away all object and generated files
+clean: distclean
+	for x in $(DIRLIST); do (cd $$x; echo "$$x:"; $(MAKE) -$(MAKEFLAGS) \
+		-f Makefile.dst clean); done
+	rm -f core a.out *.log *.ln llib-* *~ shlib.ifile TAGS *.[oa]
+	rm -fr D.include profiled
+
+# This production clears the USENET history data bases and article tree
+reset:
+	cd $(LIBDIR); rm -f log errlog old* history* LOCK EXPLOCK
+	cd $(TEXTDIR); rm -fr *
+	cd $(BATCHDIR); rm -fr *
+	sh ./InstallNews
+
+# This production clears all the USENET data bases and the article tree
+purge:
+	cd $(LIBDIR); rm -f log errlog old* history* LOCK EXPLOCK active
+	cd $(TEXTDIR); rm -fr *
+	cd $(BATCHDIR); rm -fr *
+	sh ./InstallNews
+
+# This production clobbers everything
+clobber:
+	cd $(LIBDIR); rm -fr *
+	cd $(BATCHDIR); rm -fr *
+	cd $(TEXTDIR); rm -fr *
+	cd $(SPOOLDIR); rm -fr *
+
+#
+# Productions for major commands
+#
+PHDRS = $(PORTDIR)/libport.h system.h configsys.h
+
+RLIBS = libread.a libfilt.a $(NETLIB) libnews.a libport.a
+checknews: checknews.o $(RLIBS)
+	$(LD) $(LFLAGS) checknews.o $(RLIBS) $(LIBS) -o checknews
+
+mailnews: mailnews.o $(RLIBS)
+	$(LD) $(LFLAGS) mailnews.o $(RLIBS) $(LIBS) -o mailnews
+
+PRLIBS = libread.a libpost.a libfilt.a $(NETLIB) libnews.a libport.a
+readnews: readnews.o $(PRLIBS)
+	$(LD) $(LFLAGS) readnews.o $(PRLIBS) $(LIBS) -o readnews
+ednews: ednews.o $(PRLIBS)
+	$(LD) $(LFLAGS) ednews.o $(PRLIBS) $(LIBS) -o ednews
+edvnews: vnews.o paged.o $(PRLIBS)
+	$(LD) $(LFLAGS) vnews.o paged.o $(PRLIBS) $(LIBS) -o edvnews
+vnews: vnews.o libscrn.a $(PRLIBS)
+	$(LD) $(LFLAGS) vnews.o libscrn.a $(PRLIBS) $(TERMLIB) $(LIBS) -o vnews
+vrn: vrn.o paged.o $(PRLIBS)
+	$(LD) $(LFLAGS) vrn.o paged.o $(PRLIBS) $(TERMLIB) $(LIBS) -o vrn
+
+rnkill: rnkill.o $(PRLIBS)
+	$(LD) $(LFLAGS) rnkill.o $(PRLIBS) $(LIBS) -o rnkill
+
+
+PLIBS = libpost.a $(NETLIB) libnews.a libport.a
+postnews: postnews.o $(PLIBS)
+	$(LD) $(LFLAGS) postnews.o $(NETLIB) $(PLIBS) $(LIBS) -o postnews
+inews: inews.o $(PLIBS)
+	$(LD) $(LFLAGS) inews.o $(NETLIB) $(PLIBS) $(LIBS) -o inews
+
+# Don't mess with the link order on this one, XENIX ld gets upset
+locknews: locknews.o libpriv.a libnews.a libport.a
+	$(LD) $(LFLAGS) locknews.o libnews.a libport.a libpriv.a $(LIBS) -o locknews
+
+ELIBS = libpriv.a libnews.a libport.a
+expire: expire.o $(ELIBS)
+	$(LD) $(LFLAGS) expire.o $(ELIBS) $(LIBS) -o expire
+
+expire.o: expire.c
+	$(CC) $(CFLAGS) -c $*.c
+
+profiled/expire.o: expire.c
+	@rm -f $*_p.c
+	ln $*.c $*_p.c
+	$(CC) -pg -DPROFILE $(CFLAGS) -c $*_p.c
+	mv $*_p.o profiled/$*.o
+
+profiled/expire: profiled/expire.o $(ELIBS)
+	(cd profiled; $(LD) $(LFLAGS) expire.o $(ELIBS) $(LIBS) -pg -o expire)
+
+expire_saber:
+	#unsetopt win_io
+	#load $(CFLAGS) libpriv.a libnews.a libportnm.a libposix.a expire.c 
+	#load $(CFLAGS) D.priv/lock.c D.priv/log.c D.priv/textwalk.c \
+		D.priv/wractive.c D.priv/wrhistory.c D.priv/mung.c
+	#load $(CFLAGS) D.news/artlist.c D.news/getfiles.c D.news/header.c \
+		D.news/msgopen.c D.news/newsinit.c D.news/ngmatch.c \
+		D.news/rdactive.c D.news/rdhistory.c D.news/rdbits.c \
+		D.news/rdnewsrc.c
+
+XLIBS = libpriv.a libuucp.a libnews.a libport.a
+RNEWSO = rnews.o unbatch.o insert.o post.o dispatch.o control.o
+rnews: $(RNEWSO) $(XLIBS)
+	$(LD) $(LFLAGS) $(RNEWSO) $(XLIBS) $(LIBS) -o rnews
+
+rnews.o: rnews.c
+	$(CC) $(CFLAGS) -c $*.c
+
+profiled/rnews.o: rnews.c
+	@rm -f $*_p.c
+	ln $*.c $*_p.c
+	$(CC) -pg -DPROFILE $(CFLAGS) -c $*_p.c
+	mv $*_p.o profiled/$*.o
+
+profiled/rnews: profiled/rnews.o $(RNEWSO) $(XLIBS)
+	(cd profiled; $(LD) $(LFLAGS) $(RNEWSO) $(XLIBS) $(LIBS) -pg -o rnews)
+
+rnews_saber:
+	#load libpriv.a libuucp.a libnews.a libportnm.a libposix.a
+	#load $(CFLAGS) rnews.c unbatch.c insert.c post.c dispatch.c control.c
+	#load $(CFLAGS) D.priv/collect.c D.priv/feedbits.c D.priv/lock.c \
+		D.priv/log.c D.priv/ngprep.c D.priv/transmit.c \
+		D.priv/wractive.c D.priv/wrfeeds.c D.priv/wrhistory.c \
+		D.priv/mung.c
+	#load $(CFLAGS) D.news/articleid.c D.news/artlist.c D.news/fascist.c \
+		D.news/feeds.c D.news/getfiles.c D.news/header.c \
+		D.news/msgopen.c D.news/newsinit.c D.news/ngmatch.c \
+		D.news/rdactive.c D.news/rdhistory.c D.news/sysmail.c
+
+#NEWCTRL control: control.o dispatch.o $(XLIBS)
+#NEWCTRL	$(LD) $(CFLAGS) $(LFLAGS) control.o dispatch.o $(XLIBS) $(LIBS) -o control
+
+sendbatch: sendbatch.o $(XLIBS)
+	$(LD) $(LFLAGS) sendbatch.o $(XLIBS) $(LIBS) -o sendbatch
+
+sendbatch_saber: sendbatch.c
+	#load libpriv.a libuucp.a libnews.a libportnm.a libposix.a
+	#load $(CFLAGS) sendbatch.c
+
+BBLIBS = libpriv.a libnews.a libuucp.a libport.a
+BBSLST = compuserve.o dbbs.o
+bbsauto: bbsauto.o $(BBSLST) unbatch.o $(BBLIBS)
+	$(LD) $(LFLAGS) bbsauto.o $(BBSLST) unbatch.o $(BBLIBS) $(LIBS) -o bbsauto
+
+#UNIXPC #
+#UNIXPC # Make local shared-library index that won't collide with any of
+#UNIXPC # of our substitutions for system routines
+#UNIXPC #
+#UNIXPC SSED="/\**\([a-zA-Z_]*\).*/s::/^\1 = /s|\.\*|/* \& */|:"
+#UNIXPC LOCALS = $(SCRNDIR)/scrnctl.c $(SCRNDIR)/ttyctl.c
+#UNIXPC shlib.ifile: $(LOCALS)
+#UNIXPC 	awk '/public / {print $$3}' $(LOCALS) | sed $(SSED) >ifile.sed
+#UNIXPC 	sed </lib/shlib.ifile -f ifile.sed >shlib.ifile
+#UNIXPC 	-grep daylight /lib/shlib.ifile >ifile.daylight
+#UNIXPC		if test ! -s ifile.daylight; then echo "daylight = 0x303658;"; fi >>shlib.ifile
+#UNIXPC 	rm ifile.sed ifile.daylight
+#
+# The eipc library can be used for communicating with an ednews back end
+#
+libeipc.a: ednewsipc.o $(NEWSDIR)/rdbits.o $(PORTDIR)/server.o
+	ar lrc libeipc.a ednewsipc.o $(NEWSDIR)/rdbits.o $(PORTDIR)/server.o
+
+#
+# Productions for auxiliary commands start here.
+#
+uurec: uurec.o
+	$(LD) $(LFLAGS) uurec.o libnews.a libport.a $(LIBS) -o uurec
+caesar: caesar.o
+	$(LD) $(LFLAGS) caesar.o $(LIBS) -lm -o caesar
+makekits: makekits.o
+	$(LD) $(LFLAGS) makekits.o $(LIBS) -o makekits
+compress: compress.o
+	$(LD) $(LFLAGS) compress.o -o compress
+compress.o: compress.c
+	$(CC) $(SIZEDEFS) -D$(GENUS) $(CFLAGS) -c compress.c
+aligntest: aligntest.o
+	$(LD) $(LFLAGS) aligntest.o -o aligntest
+
+# ----------------------------------------------------------------------
+# OBJECT AUTO-DEPENDENCIES GO AFTER THIS LINE -- DO NOT DELETE IT!!!
+
+grpw: grpw.o
+	$(LD) $(LFLAGS) -o grpw grpw.o
+
+#
+# If large makefiles break your make (pre-386 Intel machines beware!)
+# everything below this comment is dispensable unless you are troubleshooting
+# or hacking the code
+#
+# Test modules
+#
+TLIBS = libpriv.a libuucp.a $(PRLIBS)
+newsdb: libraries newsdb.o $(TLIBS)
+	$(LD) $(LFLAGS) newsdb.o $(TLIBS) $(LIBS) -o newsdb
+
+ednewsipc: ednewsipc.o libeipc.a libport.a
+	$(LD) $(LFLAGS) -DMAIN ednewsipc.o libeipc.a libport.a -o ednewsipc
+
+#
+# Lint productions.
+#
+.SUFFIXES: .ln
+
+.c.ln:
+#LINTLIBS	lint $(LINTFLAGS) -c $<
+#NOLINTLIBS	lint $(LINTFLAGS) -C$* $<
+#NOLINTLIBS	mv llib-l$*.ln $*.ln
+
+# LINT AUTO-DEPENDENCIES GO AFTER THIS LINE -- DO NOT DELETE IT!!!
+
+#CURSES SYSLINT=-lcurses
+
+lintlibs:
+	for x in $(DIRLIST); do (cd $$x; echo "$$x:"; $(MAKE) -$(MAKEFLAGS) lintlib); done
+
+ALLRDLNT= llib-lread.ln llib-lfilt.ln llib-lpost.ln llib-lnews.ln llib-lport.ln
+rlint: $(ALLRDLNT) checknews.ln mailnews.ln ednews.ln readnews.ln vnews.ln
+	lint $(LINTFLAGS) checknews.ln $(ALLRDLNT)
+	lint $(LINTFLAGS) mailnews.ln $(ALLRDLNT)
+	lint $(LINTFLAGS) ednews.ln $(ALLRDLNT)
+	lint $(LINTFLAGS) readnews.ln $(ALLRDLNT)
+
+flint: $(ALLRDLNT) rnkill.ln
+	lint $(LINTFLAGS) rnkill.ln $(ALLRDLNT)
+
+vlint: vnews.ln vrn.ln llib-lscrn.ln $(ALLRDLNT)
+	lint $(LINTFLAGS) vnews.ln llib-lscrn.ln $(ALLRDLNT) $(SYSLINT)
+	lint $(LINTFLAGS) vrn.ln llib-lscrn.ln $(ALLRDLNT) $(SYSLINT)
+
+plint: postnews.ln inews.ln llib-lpost.ln llib-lnews.ln llib-lport.ln
+	lint $(LINTFLAGS) postnews.ln llib-lpost.ln llib-lnews.ln llib-lport.ln
+	lint $(LINTFLAGS) inews.ln llib-lpost.ln llib-lnews.ln llib-lport.ln
+
+elint: expire.ln llib-lpriv.ln llib-lnews.ln llib-lport.ln
+	lint $(LINTFLAGS) expire.ln llib-lpriv.ln llib-lnews.ln llib-lport.ln
+
+slint: sendbatch.ln llib-luucp.ln llib-lpriv.ln llib-lnews.ln llib-lport.ln
+	lint $(LINTFLAGS) sendbatch.ln llib-luucp.ln llib-lpriv.ln llib-lnews.ln llib-lport.ln
+
+ulint: uurec.ln locknews.ln llib-lnews.ln llib-lport.ln
+	lint $(LINTFLAGS) uurec.ln llib-lnews.ln llib-lport.ln
+	lint $(LINTFLAGS) locknews.ln llib-lnews.ln llib-lport.ln
+
+RSRCS = rnews.c unbatch.c insert.c post.c dispatch.c control.c
+RWLINTS = rnews.ln unbatch.ln insert.ln post.ln dispatch.ln control.ln
+RCLLIBS = llib-luucp.ln llib-lpriv.ln llib-lnews.ln llib-lport.ln
+nlint: $(RWLINTS) $(RCLLIBS)
+	lint $(LINTFLAGS) $(RWLINTS) $(RCLLIBS)
+
+OSRCS = caesar.c compress.c grpw.c makekits.c
+olint:	
+	lint $(LINTFLAGS) -lm caesar.c
+	lint $(LINTFLAGS) -D$(GENUS) compress.c
+	lint $(LINTFLAGS) grpw.c
+	lint $(LINTFLAGS) makekits.c
+
+lintall: makefiles lintlibs rlint flint vlint plint nlint elint slint ulint olint
+	@echo "Done at "`date`
+
+lint:	
+	exec make lintall >lint.log 2>&1 &
+
+#
+# Random utility productions
+#
+tags:
+	etags -e `find $(MAINDIR) -name '*.[cy]' -print`
+
+PROTO = %distributions %mailpaths %newsgroups %feeds
+CONFIG = Configure ConfigureSys ConfigureUtils GenerateMake
+MISC = READ.ME Makefile.dst test.batch
+
+AUX = $(HELPFILES) $(PROTO) $(MISC) $(CONFIG)
+
+# makefile ends here

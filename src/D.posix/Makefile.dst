@@ -1,0 +1,9 @@
+Makefile: Makeposix
+	sh Makeposix -bg
+
+distclean:
+	rm -f posix_conf
+
+clean: distclean
+	rm -f libposix.a *.o posix_conf Makefile
+	rm -fr profiled

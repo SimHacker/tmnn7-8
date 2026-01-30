@@ -1,0 +1,24 @@
+       Vnews commands  (type ^L to redisplay current article)
+CR  Next page or article              D   Decrypt a rot 13 joke
+n   Go to next article                A   Go to article numbered <count>
+e   Mark current article as unread    <   Go to article with given ID
++   Go forwards <count> articles      p   Go to parent article
+b   Go back 1 article in same group   ^   Go to top node of discussion
+-   Backtrack <count> articles        =   Undo all backtracking
+^B  Go backwards <count> pages        ug  Unsubscribe to this group
+^N  Go forward <count> lines          ud  Unsubscribe from discussion
+^P  Go backwards <count> lines        q   Quit, updating .newsrc
+^D  Go forward half a page            x   Exit without updating .newsrc
+^U  Go backwards half a page          c   Cancel the current article
+h   Display article header            H   Display all article headers
+!   Escape to shell                   ^L  Redraw screen
+r   Reply to article using editor     K   Mark rest of newsgroup read
+R   Reply including current article   s   Save article and header to file
+ESC-r  Reply directly using mailer    w   Save or article without header
+f   Post a followup article               (s|, w| makes text stdin to program)
+N   Go to newsgroup (default = next)  P   Go to newsgroup (default = previous)
+l   Display index page of group       /   Search for pattern in subjects
+g   Display data on all newsgroups    &   Set command-line options
+v   Print netnews version             ?   Display this message
+
+

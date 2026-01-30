@@ -1,0 +1,47 @@
+# This file contains descriptions of the various distributions, and is
+# used to build the /usr/lib/news/distributions file which is used by
+# postnews.  Unfortunately, this list is probably not complete.  Please
+# post descriptions of additions to news.groups
+
+atl	Atlanta
+att	AT&T
+ba	SF Bay Area
+bell	Bell operating companies
+btl	AT&T Bell Labs
+ca	California
+can	Canada
+cb	AT&T Columbus location
+chi	Chicago
+cmh	Columbus, Ohio
+dfw	Dallas-Ft.Worth (Texas)
+dr	AT&T IS Denver location
+eunet	Europe
+ga	Georgia
+ho	AT&T Holmdel location
+ih	AT&T Indian Hill location
+intel	Intel
+la	Los Angeles
+llnl	Lawrence Livermore National Laboratories
+local	Local to this site
+mh	AT&T Murray Hill location
+na	North America
+ne	New England
+nj	New Jersey
+ny	New York
+oh	Ohio
+ont	Ontario
+or	Oregon
+pa	Pennsylvania
+pb	Pacific Bell
+pnw	Pacific North West
+tek	Tektronix
+tx	Texas
+uk	United Kingdom (also University of Kentucky)
+um	University of Maryland
+unm	University of New Mexico
+usa	United States
+wat	University of Waterloo
+net	The entire USENET
+uc	University of California (also University of Chicago)
+ucb	University of California at Berkeley
+world	Everywhere on Usenet in the world

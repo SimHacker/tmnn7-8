@@ -1,0 +1,22 @@
+      Readnews commands: (each may be preceded by a non-negative count)
+
+CR  Next page or article              D   Decrypt a rot 13 joke
+n   Go to next article                A   Go to article numbered <count>
+e   Mark current article as unread    <   Go to article with given ID
++   Go forwards <count> articles      p   Go to parent article
+b   Go back 1 article in same group   ^   Go to top node of discussion
+-   Backtrack <count> articles        ug  Unsubscribe to this group
+=   Undo all backtracking             ud  Unsubscribe from discussion
+q   Quit, updating .newsrc            x   Exit without updating .newsrc
+h   Display article header            H   Display all article headers
+!   Escape to shell                   v   Print netnews version
+r   Reply to article using editor     K   Mark rest of newsgroup read
+R   Reply including current article   s   Save article and header to file
+rd  Reply directly using mailer       w   Save or article without header
+f   Post a followup article               (s|, w| makes text stdin to program)
+N   Go to newsgroup (default = next)  P   Go to newsgroup (default = previous)
+a   Display index page of group       /   Search for given pattern in subjects
+c   Cancel the current article        &   Set command-line switches
+l   Display article (after !rf?)      ?   Display this message
+
+c, f, r, e, h, and s can be followed by -'s to refer to the previous article

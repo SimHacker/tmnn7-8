@@ -1,0 +1,120 @@
+: GenerateMake -- generate a Makefile from a template in the current directory
+:
+: Feed this as arguments a list of directories where needed .h files might be
+
+: Pick up the environment set up by ConfigureSys and Configure
+if test -f configsys.sh; then
+	. ./configsys.sh
+	. ./confignews.sh
+else
+	if test -f ../configsys.sh; then
+	. ../configsys.sh
+	. ../confignews.sh
+	else
+		echo "Eh? I can't find your configuration files!"
+		exit 1
+	fi
+fi
+
+rm -f Makefile
+cp Makefile.dst Makefile
+
+trap 'rm -f objdeps.mk lintdeps.mk dirlocs.mk; exit 1' 1 2 15
+
+: make object file names
+cp /dev/null objdeps.mk
+for x in *.c
+do
+	stem=`expr $x : "\([^\.]*\).c"`
+	echo $n "${stem}.o: ${stem}.c $c" >>objdeps.mk
+	if sed -n <$x \
+		-e '/^#include *"/{' \
+		-e '/^#include[ \t]*"\([^"]*\)".*$/s//\1/' \
+		-e '/news.h/s//libport.h confignews.h news.h/' \
+		-e '/portlib.h/s//system.h portlib.h/' \
+		-e '/system.h/s//configsys.h system.h/' \
+		-e '/history.h/s//history.h edbm.h/' \
+		-e 'p' \
+		-e '}' \
+		| tr "\012" " " >>objdeps.mk
+	then
+		echo >>objdeps.mk
+	fi
+done
+
+: modify dependencies in generated file to reflect proper directory structure
+cp /dev/null dirlocs.mk
+for dir in $*
+do
+	$ls ${dir} \
+	| awk "/.h\$/ {printf(\"g/ %s/s:: ${dir}/%s:g\\n\", \$1, \$1);}"\
+	>>dirlocs.mk
+done
+echo "w" >>dirlocs.mk;
+echo "q" >>dirlocs.mk;
+ed - objdeps.mk <dirlocs.mk
+
+: make lint dependencies from objects dependencies
+cp /dev/null lintdeps.mk
+if $test "$lintlibs" = "LINTLIBS"; then
+	sed <objdeps.mk >lintdeps.mk -e "/.o:/s//.ln:/" -e "/^/s//#LINTLIBS /"
+fi
+
+: now modify Makefile macro assignments as needed
+chmod u+w Makefile
+ed - Makefile  <<EOF
+1s/^#.*/# Customized Makefile for netnews at $sitename, made `date`/
+/OBJECT AUTO-DEPENDENCIES/r objdeps.mk
+/LINT AUTO-DEPENDENCIES/r lintdeps.mk
+g/^#$access */s///
+g/^#$security */s///
+g/^#$species */s///
+g/^#$genus */s///
+g/^#$machine */s///
+g/^#$lintlibs */s///
+g/^#$hvcurses */s///
+g/^#$posixcompat */s///
+g/^#$proflib */s///
+g/^#!$species */d
+g/^#!$genus */d
+g/^#!$machine */d
+g/^#!$lintlibs */d
+g/^#[A-Z0-9]/d
+g/^#![A-Z0-9]* */s///
+g/$delranlib/d
+g/^$delmake/d
+g%^NEWSUSR[^A-Z]%s%=.*%= $newsusr%
+g%^NEWSGRP[^A-Z]%s%=.*%= $newsgrp%
+g%^TEXTDIR[^A-Z]%s%=.*%= $textdir%
+g%^SPOOLDIR[^A-Z]%s%=.*%= $spooldir%
+g%^BATCHDIR[^A-Z]%s%=.*%= $batchdir%
+g%^BINDIR[^A-Z]%s%=.*%= $bindir%
+g%^UUBINDIR[^A-Z]%s%=.*%= $uubindir%
+g%^ADMDIR[^A-Z]%s%=.*%= $admdir%
+g%^LIBDIR[^A-Z]%s%=.*%= $libdir%
+g%^LNRNEWS[^A-Z]%s%=.*%= $lrnews%
+g%^CHOWN[^A-Z]%s%=.*%= $chown%
+g%^CHGRP[^A-Z]%s%=.*%= $chgrp%
+g%^HOME[^A-Z]%s%=.*%= $homeusr%
+g%^HOMENAME[^A-Z]%s%=.*%= $homename%
+g%^CSPECIAL[^A-Z]%s%=%= $scflags%
+g%^LSPECIAL[^A-Z]%s%=%= $slflags%
+g%^LIBS[^A-Z]%s%=%= $libs $auxlibs $posxlib%
+g%^SIZEDEFS[^A-Z]%s%=.*%= $compressdef%
+g%^TERMLIB[^A-Z]%s%=.*%= $termlib%
+g%^CC[^A-Z]%s%=.*%= $cc%
+g%^SCRIPTS[^A-Z]%s%=.*%= $scripts%
+g%^LOCLIBS[^A-Z]%s%=.*%= $loclibs%
+g%^NETLIB[^A-Z]%s%=.*%= $netlib%
+g%^SPECIES[^A-Z]%s%=.*%= $species%
+g%^GENUS[^A-Z]%s%=.*%= $genus%
+g%^MALLOCSRC[^A-Z]%s%=.*%= $mallocsrc%
+g%^MALLOCOBJ[^A-Z]%s%=.*%= $mallocobj%
+w Makefile
+q
+EOF
+
+rm -f objdeps.mk lintdeps.mk dirlocs.mk
+exit 0
+
+: GenerateMake ends here

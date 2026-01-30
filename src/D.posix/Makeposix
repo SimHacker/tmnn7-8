@@ -1,0 +1,608 @@
+: use /bin/sh
+# Makeposix -- add a POSIX-conformant library to your system
+
+: a sanity check
+PATH='.:/bin:/usr/bin:/usr/local/bin:/usr/ucb:/usr/local:/usr/lbin:/etc'
+export PATH || (echo "OOPS, this isn't sh.  Desperation time.  I will feed myself to sh."; sh $0; kill $$)
+
+(alias) >/dev/null 2>&1 && \
+    echo "(Some versions of ksh blow up on Makeposix, especially on" && \
+    echo "exotic machines. If yours does, try the Bourne shell instead.)"
+
+LIBC=/lib/libc.a
+
+: check to see if background flag is set
+if test "$1" = "-bg"
+then
+	prompt="echo Going on....."
+	shift
+else
+	prompt="read stuff"
+fi
+
+: arrange winnitude if there is netnews config above us
+if test -f ../configsys.sh
+then
+	. ../configsys.sh
+	case $1 in '') system="$species" ;; *) system=$1 ;; esac
+else
+	case $1 in '') system=UNKNOWN ;; *) system=$1 ;; esac
+fi
+
+if test -f /usr/lib/lint/llib-lc
+then
+	LINTLIB=/usr/lib/lint/llib-lc
+else
+	LINTLIB=/usr/lib/llib-lc
+fi
+
+cat <<EOF
+This script generates a Makefile and lint library patch for your system that,
+when applied, will move it a good part of the way towards conformance with the
+POSIX/SVID/X3J11 C library standards.
+
+This script assumes
+
+	1) that your C library is at $LIBC
+	2) that your lint library is at $LINTLIB
+
+If either of these assumptions is incorrect, you'll need to edit the shell
+variable assignments at the beginning of the script.
+
+Hit interrupt key to quit, return key to continue.
+EOF
+$prompt
+
+USG=-DUSG
+
+HDS=/usr/include
+LINTPATCH=posix.lint
+
+#
+# All pieces of libposix.a must be listed here
+#
+STRINGS="strchr.o strrchr.o strcspn.o strpbrk.o strspn.o strtok.o strdup.o"
+MEM="memccpy.o memcpy.o memcmp.o memchr.o memset.o"
+DIRENT="seekdir.o readdir.o getdents.o closedir.o opendir.o rewinddir.o telldir.o"
+MKDIR="mkdir.o rmdir.o"
+SEARCH="lsearch.o lfind.o tsearch.o tfind.o bsearch.o"
+MISCOBJS="ssignal.o strtol.o getopt.o rename.o putpwent.o"
+
+trap 'rm -f /tmp/needed$$ /tmp/allobjs$$ /tmp/present$$ /tmp/remove$$; exit 0' 0 1 2 15
+
+#
+# ALLOBJS should list all possible libposix.a parts, with one trailing space
+#
+ALLOBJS="$STRINGS $MEM $SEARCH $MISCOBJS "
+
+#
+# Put support modules that shouldn't show in the feature lists here
+#
+SUPPORT=getdents.o
+
+echo $ALLOBJS | tr " " "\012" >/tmp/allobjs$$
+echo " "
+echo "Facilities available in the POSIX/SVID/X3J11 compatibility library:"
+sort /tmp/allobjs$$ | grep -v $SUPPORT | pr -5 -t -l1
+
+case $system in SVR3)
+	echo " "
+	echo "You said you're running $system, I'll assume you have:"
+	echo $DIRENT | tr " " "\012" >/tmp/present$$
+	pr -5 -t -l1 </tmp/present$$ 
+;; 
+4.3BSD|BSD4_3)
+	echo " "
+	echo "You said you're running $system, I'll assume you have:"
+	echo $MEM | tr " " "\012" > /tmp/present$$
+	pr -5 -t -l1 </tmp/present$$ 
+	USG=
+;;
+4.[12]BSD|BSD4_[12])
+	USG=
+;; esac
+echo " "
+echo "Analyzing your C library, please wait..."
+ar t $LIBC $ALLOBJS 2>/dev/null >>/tmp/present$$
+sort -u /tmp/present$$ -o /tmp/present$$
+echo "POSIX/SVID/X3J11 library facilities already present on your system:"
+grep -v $SUPPORT </tmp/present$$ | pr -5 -t -l1 2>/dev/null 
+echo " "
+echo "Hit interrupt key to quit, return key to continue."
+$prompt
+
+if expr $system : ".*SV.*" >/dev/null 2>&1 || grep rewinddir /tmp/present$$ >/dev/null 2>&1
+then
+	cp /dev/null /tmp/needed$$
+else
+	echo $DIRENT | tr " " "\012" >/tmp/needed$$
+	echo "You don't have rewinddir, I'll assume you need the new dirent"
+	echo "package."
+	echo " "
+fi
+
+# Extract already-present faculities from allobjs, preserving sort order
+sed -e "/^.*$/s//\/&\/d/" </tmp/present$$ >/tmp/remove$$
+sed -f /tmp/remove$$ </tmp/allobjs$$ >>/tmp/needed$$
+echo " "
+echo "POSIX/SVID/X3J11 library facilities that should be installed:"
+sort /tmp/needed$$ | pr -5 -t -l1 2>/dev/null 
+echo " "
+echo "Hit interrupt key to quit, return key to continue."
+$prompt
+
+# set corresponding shell variable for each object file needed
+for x in `tr "\012" " " </tmp/needed$$`
+do
+	set eval `expr $x : "\(.*\).o"`"=y" 
+done
+
+echo " "
+echo "A copy of your lint patch will be written to $LINTPATCH."
+echo "/* POSIX library extensions */" >$LINTPATCH
+
+if grep lockf $LINTLIB >/dev/null 2>&1
+then
+	: do nothing
+else
+	echo "int	lockf(fd, fn, sz) int fd, fn; long sz; {return 0;}" >>$LINTPATCH
+fi
+if [ ! -f $HDS/dirent.h ]
+then
+	dirent='yes'
+	man4list="$man4list dirent.4"
+fi
+if grep getdents $LINTLIB >/dev/null 2>&1
+then
+	: do nothing
+else 
+	cat >>$LINTPATCH <<EOF
+/* DIRECTORY(3C) */
+#include <dirent.h>
+int	getdents(f, b, n) int f; char *b; unsigned n; { return 0; }
+EOF
+fi
+
+if grep closedir $LINTLIB >/dev/null 2>&1
+then
+	: do nothing
+else
+	echo "int	closedir(p) DIR *p; { return 0; }" >>$LINTPATCH
+fi
+if grep opendir $LINTLIB >/dev/null 2>&1
+then
+	: do nothing
+else
+	echo "DIR	*opendir(f) char *f; {return (DIR *)NULL;}" >>$LINTPATCH
+fi
+if grep readdir $LINTLIB >/dev/null 2>&1
+then
+	: do nothing
+else
+	echo "struct dirent	*readdir(p) DIR *p; {return (struct dirent*)NULL;}" >>$LINTPATCH
+fi
+if grep seekdir $LINTLIB >/dev/null 2>&1
+then
+	: do nothing
+else
+	echo "void	seekdir(p, l) DIR *p; long l; {}" >>$LINTPATCH
+fi
+if grep telldir $LINTLIB >/dev/null 2>&1
+then
+	: do nothing
+else
+	echo "long	telldir(p) DIR *p; {return 1L;}" >>$LINTPATCH
+fi
+
+if grep mkdir $LINTLIB >/dev/null 2>&1
+then
+	: do nothing
+else
+	echo "/* MKDIR(3) */" >>$LINTPATCH
+	echo "int	mkdir(s, p) char *s; int p; {return (0);}" >>$LINTPATCH
+	man3list="$man3list mkdir.3"
+fi
+if grep rmdir $LINTLIB >/dev/null 2>&1
+then
+	: do nothing
+else
+	echo "/* RMDIR(3) */" >>$LINTPATCH
+	echo "int	rmdir(s) char *s; {return (0);}" >>$LINTPATCH
+	man3list="$man3list rmdir.3"
+fi
+
+if grep str /tmp/needed$$ >/dev/null 2>&1
+then
+	echo "/* STRING(3C) */" >>$LINTPATCH
+	strings='yes'
+	man3list="$man3list string.3"
+fi
+if grep strcat $LINTLIB >/dev/null 2>&1
+then
+	: do nothing
+else
+	echo "char *	strcat(a, b) char *a, *b; { return (a); }" >>$LINTPATCH
+fi
+if grep strncat $LINTLIB >/dev/null 2>&1
+then
+	: do nothing
+else
+	echo "char *	strncat(a, b, n) char *a, *b; { return (a); }" >>$LINTPATCH
+fi
+if grep strcmp $LINTLIB >/dev/null 2>&1
+then
+	: do nothing
+else
+	echo "int	strcmp(a, b) char *a, *b; { return (0); }" >>$LINTPATCH
+fi
+if grep strncmp $LINTLIB >/dev/null 2>&1
+then
+	: do nothing
+else
+	echo "int	strncmp(a, b, n) char *a, *b; { return (n); }" >>$LINTPATCH
+fi
+if grep strcpy $LINTLIB >/dev/null 2>&1
+then
+	: do nothing
+else
+	echo "char *	strcpy(a, b) char *a, *b; { return (a); }" >>$LINTPATCH
+fi
+if grep strncpy $LINTLIB >/dev/null 2>&1
+then
+	: do nothing
+else
+	echo "char *	strncpy(a, b, n) char *a, *b; { return (a); }" >>$LINTPATCH
+fi
+if grep strlen $LINTLIB >/dev/null 2>&1
+then
+	: do nothing
+else
+	echo "int	strlen(s) char *s; { return (0); }" >>$LINTPATCH
+fi
+if grep strchr $LINTLIB >/dev/null 2>&1
+then
+	: do nothing
+else
+	echo "char *	strchr(a, b) char *a, b; { return (a); }" >>$LINTPATCH
+fi
+if grep strrchr $LINTLIB >/dev/null 2>&1
+then
+	: do nothing
+else
+	echo "char *	strrchr(a, b) char *a, b; { return (a); }" >>$LINTPATCH
+fi
+if grep strpbrk $LINTLIB >/dev/null 2>&1
+then
+	: do nothing
+else
+	echo "char *	strpbrk(a, b) char *a, *b; { return (a); }" >>$LINTPATCH
+fi
+if grep strspn $LINTLIB >/dev/null 2>&1
+then
+	: do nothing
+else
+	echo "int	strspn(a, b) char *a, *b; { return (0); }" >>$LINTPATCH
+fi
+if grep strcspn $LINTLIB >/dev/null 2>&1
+then
+	: do nothing
+else
+	echo "int	strcspn(a, b) char *a, *b; { return (0); }" >>$LINTPATCH
+fi
+if grep strtok $LINTLIB >/dev/null 2>&1
+then
+	: do nothing
+else
+	echo "char *	strtok(a, b) char *a, *b; { return (a); }" >>$LINTPATCH
+fi
+if grep strdup $LINTLIB >/dev/null 2>&1
+then
+	: do nothing
+else
+	echo "char *	strdup(a) char *a; { return (a); }" >>$LINTPATCH
+fi
+
+if grep str /tmp/needed$$ >/dev/null 2>&1
+then
+	echo "/* MEMORY(3C) */" >>$LINTPATCH
+	memory='yes'
+	man3list="$man3list memory.3"
+fi
+if [ X$memccpy != X ]
+then
+	echo "char	*memccpy(a,b,c,n) char *a,*b; {return(a);}" >>$LINTPATCH
+fi
+if [ X$memchr != X ]
+then
+	echo "char	*memchr(s,c,n) char *s; {return (s);}" >>$LINTPATCH
+fi
+if [ X$memcmp != X ]
+then
+	echo "int	memcmp(a, b, n) char *a, *b; {return(n);}" >>$LINTPATCH
+fi
+if [ X$memcpy != X ]
+then
+	echo "char	*memcpy(a,b,n) char *a, *b; {return (a);}" >>$LINTPATCH
+fi
+if [ X$memset != X ]
+then
+	echo "char	*memset(s,c,n) char *s; {return (s);}" >>$LINTPATCH
+fi
+
+if grep lsearch $LINTLIB >/dev/null 2>&1
+then
+	: do nothing
+else
+	echo "/* LSEARCH(3C) */" >>$LINTPATCH
+	echo "char *lsearch(k,b,n,w,c) char *k,*b; unsigned *n,w; int (*c)(); {return(k);}" >>$LINTPATCH
+fi
+if grep lfind $LINTLIB >/dev/null 2>&1
+then
+	: do nothing
+else
+	echo "char *lfind(k,b,n,w,c) char *k,*b; unsigned *n,w; int (*c)();{return(k); }" >>$LINTPATCH
+fi
+#include <search.h>
+if grep bsearch /tmp/needed$$ >/dev/null 2>&1
+then
+	echo "/* BSEARCH(3C) */" >>$LINTPATCH
+	search='yes'
+	man3list="$man3list bsearch.3c"
+fi
+if grep bsearch $LINTLIB >/dev/null 2>&1
+then
+	: do nothing
+else
+	echo "char *bsearch(k,b,n,w,c) char *k,*b; unsigned n,w; int (*c)();{return(k);}" >>$LINTPATCH
+fi
+if grep tsearch /tmp/needed$$ >/dev/null 2>&1
+then
+	echo "/* TSEARCH(3C) */" >>$LINTPATCH
+	search='yes'
+	man3list="$man3list tsearch.3c"
+fi
+if grep tsearch $LINTLIB >/dev/null 2>&1
+then
+	: do nothing
+else
+	echo "char *tsearch(k,r,c) char *k, **r; int (*c)(); {return(k);}" >>$LINTPATCH
+fi
+if grep tfind $LINTLIB >/dev/null 2>&1
+then
+	: do nothing
+else
+	echo "char *tfind(k,r,c) char *k,**r; int (*c)(); {return(k);}" >>$LINTPATCH
+fi
+if grep [gs]signal $LINTLIB >/dev/null 2>&1
+then
+	: do nothing
+else
+	echo "/* SSIGNAL(3) */" >>$LINTPATCH
+	echo "int (*ssignal(s, a))() int (*a)(); { return (a); }" >>$LINTPATCH
+	echo "int gsignal(s) {return (s);}" >>$LINTPATCH
+	man3list="$man3list ssignal.3c"
+fi
+
+if grep strtol $LINTLIB >/dev/null 2>&1
+then
+	: do nothing
+else
+	echo "long	strtol(s,t,b) char *s,**t; {return(0L);}" >>$LINTPATCH
+	man3list="$man3list strtol.3c"
+fi
+if grep getopt $LINTLIB >/dev/null 2>&1
+then
+	: do nothing
+else
+	echo "int	getopt(c,v,o) char **v, *o; {return(c);}" >>$LINTPATCH
+	man3list="$man3list getopt.3c"
+fi
+if grep rename $LINTLIB >/dev/null 2>&1
+then
+	: do nothing
+else
+	echo "/* RENAME(3) */" >>$LINTPATCH
+	echo "int	rename(s, t) char *s, *t; {return (0);}" >>$LINTPATCH
+	man3list="$man3list rename.3c"
+fi
+if grep putpwent $LINTLIB >/dev/null 2>&1
+then
+	: do nothing
+else
+	echo "/* PUTPWENT(3C) */" >>$LINTPATCH
+	echo "int putpwent(s,f) struct passwd *s; FILE *f; {return(0);}" >>$LINTPATCH
+	man3list="$man3list putpwent.3c"
+fi
+if grep statfs /tmp/present$$ >/dev/null 2>&1 && grep statfs $LINTLIB >/dev/null 2>&1
+then
+	: do nothing
+else
+	echo "/* STATFS(2) */" >>$LINTPATCH
+	echo "#include <sys/statfs.h>" >>$LINTPATCH
+	echo "int statfs(p, b, l, f) char *p; struct statfs *b; int l, f; {return(0);}" >>$LINTPATCH
+	echo "int fstatfs(d, b, l, f) int d; struct statfs *b; int l, f; {return(0);}" >>$LINTPATCH
+fi
+
+cat <<EOT
+
+Productions that can install these changes will now be written to Makefile.
+Remember to edit out the -DUSG from the CFLAGS line if you're on a non-AT&T
+UNIX (i.e. a V7 or BSD-based version).  -DUSG will be removed for you
+automatically if you had specified 4.2BSD or 4.3BSD as the type of
+your system.  Other installation instructions will be found in a
+leading comment in the generated Makefile. 
+EOT
+objlist=`tr '\012' ' ' </tmp/needed$$`
+
+cat >Makefile <<EOF
+# This makefile will install a number of X3J11/POSIX/SVID functions in your
+# standard C library. If you have a source license, the method described
+# in DIRENT.INSTALL is recommended instead.
+#
+# To make the library:
+#	a. Edit getdents.c if necessary to define UFS, NFS or BFS.
+#
+#	b. Type 'make'. If you get errors, stop and fix them.
+#	   This will create a local copy of the code named libposix.a
+#	   which you can use for testing or install in /lib.
+#
+# To install it:
+#
+#	a. Go superuser and type 'make install'. That's all there is to it.
+#	   You may want to do 'make -n install' first so you know what it's
+#	   doing. If you don't like the default action you can edit the
+#	   Makefile.
+#
+#	b. If you don't like this option, you can put the libposix.a library
+#	   in your libraries directory and add an appropriate -I option to
+#	   your include file search path.
+#
+# Note: the implementations of strchr() and strrchr() are pure C code, so they
+# may be marginally slower than the (presumably tuned) index/rindex in V7/BSD.
+# You can #define them to index/rindex via the the preprocessor, or ar x
+# copies of the index.o and rindex.o object files, patch the function names
+# with adb and wedge the copies in.
+
+SHELL = /bin/sh
+HDS = $HDS
+MAN = /usr/man
+LIBC = $LIBC
+LINTLIB = $LINTLIB
+STRINGS= $STRINGS
+MEM= $MEM
+DIRENT= $DIRENT
+MKDIR= $MKDIR
+SEARCH= $SEARCH
+MISCOBJS= $MISCOBJS
+PORTOBJS = ${objlist}
+# CF = -Dvoid=int		# Uncomment this for cc versions with no void
+CC = cc
+CFLAGS = -O $USG -I. \$(CF)	
+
+MAINDIR = ..
+LIBSDIR = \$(MAINDIR)
+
+libposix.a: \$(PORTOBJS)
+	ar lruv libposix.a \$(PORTOBJS)
+	@echo "If you're on an AT&T UNIX, ignore the next error message"
+	-ranlib libposix.a
+	-mkdir profiled
+	(cd profiled; ar lrc ../libposix_p.a \$?)
+	@echo "If you're on an AT&T UNIX, ignore the next error message"
+	ranlib libposix_p.a
+
+.c.o:
+	\${CC} -p \${CFLAGS} -c \$*.c
+	mv \$*.o profiled/\$*.o
+	\${CC} \${CFLAGS} -c \$*.c
+
+export: libposix.a
+	@rm -f $(LIBSDIR)/libposix.a
+	-ln libposix.a $(LIBSDIR)
+	@rm -f $(LIBSDIR)/profiled/libposix.a
+	-ln libposix_p.a $(LIBSDIR)/profiled/libposix.a
+
+Makefile:
+	sh Makeposix
+
+lintlib:
+	@echo "This library isn't ready to be linted yet"
+
+clean:
+	rm -f libposix.a libposix_p.a *.o Makefile profiled/*
+
+testdir: testdir.c libposix.a
+	\$(CC) \$(CFLAGS) \$(LFLAGS) testdir.c libposix.a -o testdir
+
+mkdirtest: mkdirtest.c libposix.a
+	\$(CC) \$(CFLAGS) \$(LFLAGS) mkdirtest.c libposix.a -o mkdirtest
+
+LINTPATCH = $LINTPATCH
+
+# Restore original library, lint and header files
+restore:
+	-cp \$(LIBC)-orig \$(LIBC)
+	-cp \$(LINTLIB)-orig \$(LINTLIB)
+	-cp \$(LINTLIB).ln-orig \$(LINTLIB).ln
+	-cp \$(HDS)/string.h-orig \$(HDS)/string.h
+	-cp \$(HDS)/memory.h-orig \$(HDS)/memory.h
+	-cp \$(HDS)/search.h-orig \$(HDS)/search.h
+
+# Recompile the lint library (AT&T SVr2 or later)
+relint:
+	cp \$(LINTLIB) llib-lc.c
+	lint -c llib-lc.c; rm llib-lc.c
+	mv llib-lc.ln \$(LINTLIB).ln
+
+# Make everything (for test purposes)
+testlib.a: $ALLOBJS
+	ar lruv testlib.a $ALLOBJS
+	@echo "If you're on an AT&T UNIX, ignore the next error message"
+	-ranlib testlib.a
+
+# Install all the portability hacks
+install: \$(PORTOBJS)
+EOF
+if [ ! -f $HDS/unistd.h ]
+then
+	echo "	@echo 'Installing unistd.h header file...'" >>Makefile
+	echo "	-cp unistd.h \$(HDS)/unistd.h;" >>Makefile
+fi
+if [ "X$dirent" != "X" ]
+then
+	echo "	@echo 'Installing dirent library headers...'" >>Makefile
+	echo "	-cp dirent.h \$(HDS)/dirent.h;" >>Makefile
+	echo "	-cp sys.dirent.h \$(HDS)/sys/dirent.h;" >>Makefile
+fi
+if [ "X$strings" != "X" ]
+then
+	echo "	@echo 'Installing string library headers...'" >>Makefile
+	echo "	-cp \$(HDS)/string.h \$(HDS)/string.h-orig;" >>Makefile
+	echo "	-cp string.h \$(HDS)/string.h;" >>Makefile
+fi
+if [ "X$memory" != "X" ]
+then
+	echo "	@echo 'Installing memory library headers...'" >>Makefile
+	echo "	-cp \$(HDS)/memory.h \$(HDS)/memory.h-orig;" >>Makefile
+	echo "	-cp memory.h \$(HDS)/memory.h;" >>Makefile
+fi
+if [ "X$search" != "X" ]
+then
+	echo "	@echo 'Installing search library headers...'" >>Makefile
+	echo "	-cp \$(HDS)/search.h \$(HDS)/search.h-orig;" >>Makefile
+	echo "	-cp search.h \$(HDS)/search.h;" >>Makefile
+fi
+cat >>Makefile <<EOF
+	@echo "Installing new C library functions..."
+	-cp \$(LIBC) \$(LIBC)-orig
+	ar lruv \$(LIBC) \$(PORTOBJS)
+	@echo "If you're on an AT&T UNIX, ignore the next error message"
+	-ranlib \$(LIBC)
+	@echo "Installing extension library manuals..."
+	-cp ${man3list} \$(MAN)/man3;
+	-cp ${man4list} \$(MAN)/man4;
+	@echo "Installing lint library additions..."
+	cp \$(LINTLIB) \$(LINTLIB)-orig
+	cp \$(LINTLIB).ln \$(LINTLIB).ln-orig
+	cat $LINTPATCH >>\$(LINTLIB)
+	@echo "Your $LINTLIB will need to be recompiled"
+	@echo "If you are on an SVr2 or later, just do 'make relint'"
+EOF
+
+cat <<EOF
+
+Now type 'make' to make the library. Test productions have been
+included. When you're satisfied that everything works, go root and
+type 'make install' (you may want to look at the Makefile to make
+sure it's not doing anything untoward).
+
+If you're on SVr2 or later, you will probably want to do a 'make relint'
+after the installation. On V7, SIII and BSD systems you'll have to work out
+your own way of recompiling the modified lint file.
+
+A restore production is provided to back out the changes.
+EOF
+
+mkdir profiled >/dev/null 2>&1
+
+# Posix library config script ends here

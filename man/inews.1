@@ -1,0 +1,300 @@
+.if n .ds La '
+.if n .ds Ra '
+.if t .ds La `
+.if t .ds Ra '
+.if n .ds Lq "
+.if n .ds Rq "
+.if t .ds Lq ``
+.if t .ds Rq ''
+.de Ch
+\\$3\\*(Lq\\$1\\*(Rq\\$2
+..
+.TH INEWS 1 "Mar 17, 1989"
+.ds ]W News 3.0 (beta level 7)
+.SH NAME
+inews \- submit news articles
+.SH SYNOPSIS
+.BI inews " [" \-h "]"
+.BI \-t " title " \-n " newsgroups"
+[
+.BI \-e " expiration date"
+] [
+.BI \-f " sender name"
+] [
+.BI \-d " distribution"
+] [
+.BI \-F " references"
+] [
+.BI \-o " organization"
+] [
+.BI \-M
+] [
+.BI \-a " approvedby"
+] [
+.BI \-r " replyto"
+] [
+.BI \-x " dontsendto"
+] [
+.BI \-D
+]
+.PP
+.BI "inews \-p " filename
+.PP
+.BI "inews \-C " newsgroup
+.SH DESCRIPTION
+.I Inews
+submits news articles to the USENET news network.
+It is a front end to
+.IR rnews (1).
+If you want to submit articles interactively, use
+.IR postnews (1);
+inews is mainly intended for posting mail to moderated groups.
+.PP
+The first form (no
+.BI \-p
+or
+.BI \-C
+options) is for submitting ordinary articles.
+The body of the article will be read from the standard input.  A
+.I title
+(
+.Ch Subject:
+field)
+must be specified (there is no default).
+.PP
+If
+.IR expire (8)
+is currently running or if 
+.B SPOOLNEWS
+was specified at compilation time, the articles may be spooled to
+.I /usr/spool/news/.rnews
+for later processing. Running 
+.I "rnews \-U"
+will unspool this articles.
+.I "Rnews \-U"
+is run automatically by expire when it is finished.
+.PP
+Each article is posted to one or more newsgroups. If the
+.B \-n
+flag is omitted, the list
+will default to something like
+.BR misc.misc .
+To submit an article to multiple newsgroups, the
+.I newsgroups
+must be separated by commas and/or spaces.
+.PP
+The
+.B \-e
+flag is used to override the default expiration date. This is seldom
+used.
+.PP
+The
+.B \-f
+flag specifies the article's sender.  Without this flag, the sender
+defaults to the user's name.
+If
+.B \-f
+is specified, the real sender's name will be included as a ``Sender:'' line
+to prevent forged articles.
+.PP
+The
+.B \-d
+flag allows you to specify the maximum geographic distribution of your
+article; for example, a distribution of
+.Ch aus
+limits distribution to Australia, and a distribution of
+.Ch nj
+limits distribution to New Jersey. There is no way to send a message from
+California for distribution only in New Jersey\(emyour machine must be in the
+distribution that you ask for.
+.PP
+The
+.B \-r
+flag allows you to specify the ``Reply-To:'' line in the article header.
+.PP
+The
+.B \-x
+flag says not to forward this article to the specified site despite
+what the
+.I /usr/lib/news/sys
+file says.
+.PP
+The
+.B \-F
+flag is used to attach a list of related articles that this
+message references; it creates the
+.Ch In-reply-to:
+field of the posted article.
+.PP
+The
+.B \-o
+is used to override the default organization name.
+.PP
+The
+.B \-M
+and
+.B \-a
+flags are to be used only by the moderator of a moderated newsgroup. For
+details on the use of the -M flag, see below.
+.PP
+The
+.B \-a
+flag is used to add an
+.Ch Approved:
+line to the header.
+.PP
+The
+.B \-h
+flag specifies that headers are present at the beginning of the
+article, and these headers should be included with the article
+header instead of as text. Everything before the first blank line in the
+article is taken as a header field, and everything after that blank line is
+taken to be part of the body of the message.
+(This mechanism can be used to edit headers and supply additional
+nondefault headers, but not to specify certain information,
+such as the sender and article ID, that
+.I inews
+itself generates.)
+.I Inews
+will ignore nonstandard and misspelled header fields entered with the \-h
+option.
+.PP
+If inews was compiled with -DTDEBUG, the -D option causes the generated
+article to be emitted to stdout while suppressing actual modification of the
+news database. This is intended to be used for debugging an
+port-verification purposes.
+.LP
+When posting an article
+.I inews
+checks the environment for certain information about the sender. If
+an environment variable
+.B NAME
+is defined,
+.I inews
+uses its value as the full name of the poster. If
+.B NAME
+is not defined,
+\kx\f2$HOME\fP\h'|\nxu+2u'\f2$HOME/.name\fP
+is checked and if it exists, its contents are used as the full name.
+Otherwise, the system value (often in
+.IR /etc/passwd )
+is used.
+This is useful if the system value cannot be set, or when
+more than one person uses the same login.
+If the environment variable
+.B ORGANIZATION
+is defined, then
+.I inews
+uses its value instead of the system
+default organization name. If its value begins with a
+.Ch / ,
+then it is taken to be a file name, and
+.I inews
+takes the name of the organization from the contents of the file.
+This is useful when a person uses a guest login and is
+not primarily associated with the organization that owns the machine.
+.LP
+The second form (
+.BI "inews \-p"
+) is an alias for rnews; it is used for receiving articles from other machines.
+If
+.I filename
+is given, the article will be read from the file of that name; otherwise
+the article will be read from the standard input.  An expiration date
+need not be present and a reception date, if present, will be ignored.
+The third form (
+.IB "inews \-C"
+) is for creating new newsgroups. The use of this feature is
+limited to certain users such as the super-user or news administrator.
+.SH POSTING MAIL
+One of inews's roles is to perform mail-to-news gatewaying for newsgroup
+moderators and Internet-to-USENET gateways. Most UNIX mail submissions may
+simply be fed to inews -h to be posted.
+.PP
+The article-parsing code tries to cope with the Received, >From, and From 
+headers generated by many UNIX mailers. The former two kinds it discards; the
+latter two kinds it will accept in lieu of an RFC-822 Path: header if none
+is supplied. If several UNIX-style Froms occur in the header, only the address
+associated with the last one will be kept.
+.PP
+The
+.B \-M
+flag suppresses resetting of the post date, and causes the mail path from the
+submitter's site to be prepended to the Path header. This means that replies
+to the article by sites that use UUCP-only mailrouting based on the Path header
+have some chance of succeeding. On the other hand, it means that sites that are
+on that `faked' path prefix may never see the posting.
+.PP
+3.0 and later versions
+try to be intelligent about that; they ignore everything in the Path header to
+the left of the first match for the sitename in the Approved line (if there is
+no such match, the whole path is assumed fair game for optimization). These
+rules mean that if one of the sites on the path prefix has only pre-3.0
+neighbors, it will reject the article. It also means that you shouldn't use
+this option at all if stripping the domain suffixes off the @-form of your site
+name yields something other than your uucp-path name.
+.LP
+If -M is selected, and both mailer headers and a Path:
+are found, the code will concatenate these (and then do loop removal) to try
+to generate a most-efficient reply path back to the mail sender.
+.LP
+If no Internet-style From: ID can be found in the From, From: or Path: headers,
+the code will try to generate one from the last two components of the
+(catenated) Path information.
+.LP
+The "Status:" headers generated by some mailers are now ignored.
+.LP
+If
+.I newsgroup
+is omitted, the \*(LqTo:\*(Rq line of the letter will be used, after replacing
+each hyphen in the line with a dot (thus, for example, mail to
+.B comp-unix-microport
+gets translated to a post to
+.B comp.unix.microport
+automatically). The title is determined from the \*(LqSubject\*(Rq line.
+.SH FILES
+.PD 0
+.TP 25
+/usr/spool/news/.sys.nnn
+temporary articles
+.TP 25
+/usr/spool/news/.rnews
+spooled articles not yet processed by rnews \-U
+.TP 25
+.RI /usr/spool/news/ newsgroups / article_no.
+Articles
+.TP 25
+/usr/lib/news/active
+List of known newsgroups and highest local article numbers in each.
+.TP 25
+/usr/lib/news/seq
+Sequence number of last article
+.TP 25
+/usr/lib/news/history
+List of all articles currently stored on this machine.
+.TP 25
+/usr/lib/news/sys
+System subscription list
+.TP 25
+/usr/lib/news/distributions
+Suggested distribution code names
+.PD
+.SH "SEE ALSO"
+Mail(1),
+binmail(1),
+mailx(1),
+checknews(1),
+msgs(1),
+postnews(1),
+readnews(1),
+vnews(1),
+getdate(3),
+news(5),
+newsrc(5),
+expire(8),
+recnews(8),
+sendnews(8),
+uurec(8)
+.SH AUTHORS
+TMN-netnews version by Eric S. Raymond, based on earlier code by Matt
+Glickman, Mark Horton, Stephen Daniel, Tom Truscott and Rick Adams.

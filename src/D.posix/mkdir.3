@@ -1,0 +1,67 @@
+.TH MKDIR 3 "Standard Extension"
+.SH NAME
+mkdir \- make a directory file
+.SH SYNOPSIS
+.nf
+.ft B
+mkdir(path, mode)
+char *path;
+int mode;
+.fi
+.ft R
+.SH DESCRIPTION
+.I Mkdir
+creates a new directory file with name
+.IR path .
+The mode of the new file
+is initialized from
+.IR mode .
+(The protection part of the mode
+is modified by the process's mode mask; see
+.IR umask (2)).
+.PP
+The directory's owner ID is set to the process's effective user ID.
+The directory's group ID is set to the process's effective group ID.
+.PP
+The low-order 9 bits of mode are modified by the process's
+file mode creation mask: all bits set in the process's file mode
+creation mask are cleared.  See
+.IR umask (2).
+.SH NOTES
+This function emulates the SVr3 behavior (group ID of the directory
+is the effective group ID of the calling process) rather than the BSD
+behavior (group ID of the directory is the group ID of the parent directory).
+.PP
+On USG it will succeed if the real or apparent uid of the calling process
+has write privileges in the current directory (the latter case is implemented
+by a kluge that tries to set the parent directory's permissions to 0777, 'ware
+security holes!). The new directory will be owned by the effective uid.
+.PP
+On V7 (because it restricts the chown(2) call and mkdir(1) makes
+directories owned by the real ID of its caller) the call will only succeed
+if the real ID matches, and the new directory will be owned by the real
+uid.
+.PP
+The overhead of this emulation is fairly high, requiring a fork/exec (on AT&T
+versions, two fork-execs).
+.SH "RETURN VALUE
+A 0 return value indicates success.  A \-1 return value
+indicates an error, and an error code is stored in
+.I errno.
+.SH "ERRORS
+.I Mkdir
+will fail and no directory will be created if:
+[ENOTDIR]
+A component of the path prefix is not a directory.
+.TP 15
+[ENOENT]
+A component of the path prefix does not exist.
+.TP 15
+[EEXIST]
+The named file exists.
+.TP 15
+[EACCES]
+A component of the path prefix denies search permission, or write permission
+is denied on the parent of the directory to be created.
+.SH "SEE ALSO"
+chmod(2), stat(2), umask(2)

@@ -1,0 +1,65 @@
+.if n .ds La '
+.if n .ds Ra '
+.if t .ds La `
+.if t .ds Ra '
+.if n .ds Lq "
+.if n .ds Rq "
+.if t .ds Lq ``
+.if t .ds Rq ''
+.de Ch
+\\$3\\*(Lq\\$1\\*(Rq\\$2
+..
+.TH GRPW 8 "Apr 3, 1989"
+.ds ]W News 3.0 (beta level 7)
+.SH NAME
+grpw \- retrieve information about a group or user
+.SH SYNOPSIS
+grpw -[ug] name format
+.SH DESCRIPTION
+Grpw is a program that uses the standard getpw/getgr system
+routines in order to retrieve information about a group or
+user.  This is important for shell scripts that need information
+in the /etc/group or /etc/passwd file when the information really
+isn't *in* those files (e.g. YellowPages).
+.PP
+usage 1: grpw -g (group|gid) format
+.PP
+If the -g flag is used, the first argument is interpreted as either
+a group name or a group id (if the argument is numeric, then it is
+a gid, otherwise it is a name).  The second argument is a printf-like
+format string.  It handles \n, \t, \b, and \ooo octal escapes as well 
+as several % escapes:
+.TP 0
+  %g	group id
+.TP 0
+  %m	group names of all group members
+.TP 0
+  %n	group name
+.TP 0
+  %p	group password (encrypted)
+.PP
+usage 2: grpw -u (user|uid) format
+.PP
+If the -u flag is used, the first argument is interpreted as either
+a user name or a user id (if the argument is numeric, then it is
+a uid, otherwise it is a name).  The second argument is a printf-like
+format string.  It handles \n, \t, \b, and \ooo octal escapes as well 
+as several % escapes:
+.TP 0
+  %c    comment field
+.TP 0
+  %g	group id
+.TP 0
+  %h	home directory
+.TP 0
+  %n	user name
+.TP 0
+  %p	user password (encrypted)
+.TP 0
+  %r	gecos field (usually real name)
+.TP 0
+  %s	login shell
+.TP 0
+  %u	user id
+.SH AUTHOR
+Mark Nagel <nagel@ics.uci.edu>

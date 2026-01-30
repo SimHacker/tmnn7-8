@@ -1,0 +1,98 @@
+# TMNN Timeline: From Code to Discovery
+# Archaeological timeline of ESR's abandoned project
+
+code_development:
+  start: ~1987
+  description: ESR begins TMNN development in "secret laboratories"
+  
+  milestones:
+    - date: 1989-07-10
+      event: LICENSE and READ.ME files created
+      evidence: File timestamps
+      
+    - date: 1989-08-01
+      event: Bulk of source code files dated
+      evidence: File timestamps on src/*.c files
+      
+    - date: 1989-08-28
+      event: Last known modification (Makefile)
+      evidence: File timestamp
+      
+    - date: 1989-12-13
+      event: ESR signature "mad mastermind of TMN-Netnews"
+      source: comp.lang.misc Usenet post
+
+  version_at_abandonment: "B3.0 (beta level 7.8)"
+  source: src/version.h
+
+promised_features:
+  never_delivered:
+    - hypertext integration
+    - public-key encryption authentication
+    - intelligent filtering agents
+    - "distributed hypertext service"
+  source: doc/BRAGSHEET
+
+archive_preservation:
+  - date: ~1989-1995
+    event: Code distributed via unknown channels
+    speculation: Possibly Usenet, direct sharing
+    
+  - date: 1995-04-11
+    event: Archive file tmnn7-8.tar.Z appears on ftp.digital.com
+    location: /pub/news/tmnn/
+    evidence: Mirror at ftp.zx.net.nz shows this date
+    
+  - date: ~2001-2009
+    event: DEC FTP server content preserved
+    context: DEC → Compaq → HP transitions
+    
+  - date: unknown
+    event: Archive mirrored to fi.archive.ubuntu.com
+    location: /index/unix/news/tmnn7-8.tar.Z
+    context: Finnish Ubuntu mirror hosts historic Unix software
+
+wikipedia_documentation:
+  - date: 2005-01-11
+    time: "18:53"
+    editor: IMeowbot
+    event: First mention of TMNN added to B News Wikipedia article
+    bytes_added: 367
+    edit_summary: "TMNN"
+    
+  - date: 2019-12-05
+    time: "16:06"
+    editor: Hbent
+    event: Live archive link added to Wikipedia
+    edit_summary: "→ External links : live link for tmnn source"
+    url_added: fi.archive.ubuntu.com/index/unix/news/tmnn7-8.tar.Z
+    
+  - date: 2019-12-05
+    event: Wayback Machine captures the archive link
+    url: https://web.archive.org/web/20191205160937/https://fi.archive.ubuntu.com/index/unix/news/tmnn7-8.tar.Z
+
+rediscovery:
+  - date: 2026-01-30
+    event: Code rediscovered during HN discussion research
+    discoverer: DonHopkins
+    context: Discussion about Usenet interfaces and ESR
+    action: Full code review performed using Cursor AI
+
+esr_later_works:
+  - year: 1997
+    work: "The Cathedral and the Bazaar"
+    irony: Advocated "release early, release often" after keeping TMNN in secret labs for 2 years
+    
+  - year: 1999
+    work: Co-founds Open Source Initiative
+    later: Banned from OSI in 2020
+    
+  - year: 2003
+    work: "The Art of Unix Programming"
+    irony: Wrote Unix best practices book; own Unix code riddled with buffer overflows
+    
+time_buried: 
+  years: 30
+  from: 1989
+  to: 2019
+  note: "The 'many eyes' guy's code had almost no eyes on it"

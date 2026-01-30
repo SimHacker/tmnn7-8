@@ -1,0 +1,287 @@
+.if n .ds La '
+.if n .ds Ra '
+.if t .ds La `
+.if t .ds Ra '
+.if n .ds Lq "
+.if n .ds Rq "
+.if t .ds Lq ``
+.if t .ds Rq ''
+.de Ch
+\\$3\\*(Lq\\$1\\*(Rq\\$2
+..
+.TH EXPIRE 8 "Jul 20, 1989"
+.ds ]W News 3.0 (beta level 7)
+.SH NAME
+expire \- remove outdated news articles
+.SH SYNOPSIS
+.BR /usr/lib/news/expire " [ " \-n
+.IR newsgroups " ] ["
+.BR \-i " ] [ " \-I " ] ["
+.BR \-a " ] ["
+.BI \-v " level"
+] [
+.B \-p
+]
+.br
+[
+.BI \-e " days"
+] [
+.BI \-E " days"
+] [
+.BI \-X
+] [
+.BI \-D
+]
+.br
+.B /usr/lib/news/expire
+.BI \-f " user@site.domain"
+.br
+.B /usr/lib/news/expire
+.B \-[rs]
+.SH DESCRIPTION
+.PP
+.I Expire
+is the program that removes out-of-date news articles from your system.
+You need to use a special program to do this, instead of just using
+.I find(1)
+or
+.I rm(1),
+because of the history file. If you just delete messages, then the history
+file will become incorrect because it will show that they are still there.
+.PP
+The normal use of
+.I expire
+is to run it at regular intervals with no options.
+It will remove all articles whose expiration dates have passed.
+If you have a lot of disk space, you can run it once a week. If disk space is
+tight, you might want to run it every night. The time that it takes
+to run depends, of course, on many factors; on a VAX 11/750 with a 15-day
+expiration period and the volume of news that is typical in 1986 (about 5000
+articles per week),
+.I expire
+will take something less than an hour.
+.PP
+.I Expire
+is normally controlled by flags set in the /usr/lib/news/admin file. However,
+it has the following options to override that control, mainly for historical
+reasons.
+.TP
+.B \-n
+Specify certain newsgroups whose articles will be expired. The other
+newsgroups will be left alone. The notation that you use with the \-n option
+is quite similar to that used in the sys file. To expire only the articles in
+net.origins, leaving everything else alone, type this:
+.nf
+	/usr/lib/news/expire \-n net.origins
+.fi
+To expire only the articles in net.micro, but leave net.micro.pc and
+net.micro.mac alone, type this:
+.nf
+	/usr/lib/news/expire \-n net.micro !net.micro.mac !net.micro.pc
+.fi
+For compatibility with the syntax of the sys file, you can also type the
+command this way, with commas instead of spaces between the fields.
+.nf
+	/usr/lib/news/expire \-n net.micro,!net.micro.mac,!net.micro.pc
+.fi
+If you have certain groups that you use as archives, which should never have
+their articles expired, you must construct an
+.I expire
+command that mentions all groups except your archive groups. When doing this,
+be sure not to forget the groups
+.Ch junk ,
+.Ch control ,
+and
+.Ch general .
+A likely command would be:
+.nf
+	/usr/lib/news/expire \-n all,!local.source,!mod.sources
+.fi
+.TP
+.B \-e
+Specify an expiration period. Normally
+.I expire
+removes articles that are older than 15 days. If you would like it to remove
+articles that are older than 5 days, you can type
+.nf
+	/usr/lib/news/expire \-e 5
+.fi
+If you would like it to remove articles from net.religion and net.politics
+that are older than
+23 days, and leave everything else alone, you can type
+.nf
+	/usr/lib/news/expire \-e 23 \-n net.religion net.politics
+.fi
+You can specify the \-e option as \-e15 instead of as \-e\ 15 if you want;
+this is for compatibility with old versions and old habits. Also note that
+3.0 and later versions of expire allow you to specify an expiration time
+for each group in the active file.
+.TP
+\-E
+Normally
+.I expire
+removes the record of an article from the history file at the same time it
+removes the article. One of the purposes of the history file is to prevent
+articles from being duplicated if a second copy arrives a while later,
+perhaps over some other path. If your site is extremely short on disk space,
+forcing you to specify a short expiration period in the \-e option, you can
+use the \-E option to ask that the information in the history file be kept
+round a bit longer, until the danger of duplicate arrival has passed. The
+command
+.nf
+	/usr/lib/news/expire \-e 7 \-E 21
+.fi
+causes articles that are 7 or more days old to be removed, and history
+information that is 21 or more days old to be removed. If you use the \-E
+option, make sure that the value it specifies is always larger than the \-e
+option value, else you will end up with articles that are not in the history
+file; this can cause problems.
+.TP
+.B \-a
+Asks that articles be archived (usually in /usr/spool/news/oldnews) instead
+of being deleted.
+An example of its use would be
+.nf
+	/usr/lib/news/expire \-a all.sources,!net.sources.bugs
+.fi
+Note that this \fIoverrides\fR the `a' flag in your admin file, which is what
+you should normally use to control archiving.
+.TP
+.B \-I
+instructs
+.I expire
+to ignore expiration dates stored in articles, and to look at the number of
+days that have passed since the article was received. Not very many articles
+have expiration dates in them.
+.TP
+.B \-i
+is like \-I, but it will look at the number of days that have passed and also
+at the explicit expiration date, and it will remove the article if either of
+those has passed.
+.TP
+\-v
+sets the verbosity mode. If you have specified a complex collection of
+options and they are not having the effect that you would like, then set \-v2
+or \-v3 to find out what is going on. Values from 0 to 6 are meaningful, and
+\-v1 is the default (it causes expire to emit a summary of its actions to
+stdout at the end of the run). \-v0 will turn off messages, and \-v6 will cause
+.I expire
+to print every possible message.
+.TP
+\-p
+causes
+.I expire
+to use the date the article was posted, rather than the date it arrived at
+your machine, as the basis for expiration. Every now and then there is a
+.Ch "time warp"
+that causes a batch of very very old news to be dumped onto the
+network; judicious use of the \-p option can eradicate it.
+.TP
+\-f
+asks
+.I expire
+to remove messages sent by a particular user, regardless of the newsgroup
+that they are in, and regardless of how old they are.
+This option is intended not so much to selectively censor
+voluminous posters (though it has certainly been used for that) but to
+recover when a
+.I notesfiles
+site (running different news software) accidentally releases a duplicate
+batch of old news. An example of its use is
+.nf
+	/usr/lib/news/expire \-f rlr@pyuxd.UUCP
+.fi
+Any article whose From: field exactly matches the argument to the \-f option
+will be removed.
+.TP
+\-r
+causes
+.I expire
+to rebuild the history file, and suppresses normal expiration.
+In this mode, expire scans every article in the spool directory and
+builds a new history file or (if you have DBHISTORY switched on) database
+files. The newsclean.sh script included with the distribution removes any junk
+files that have managed to find their way into the spooling directory, and
+then uses this mode of expire to rebuild the history file.
+.TP
+\-s
+implies \-r, and causes special reference-tracking headers to be patched into
+all messages. No articles are expired. You should only need to do this once,
+when you convert from a pre-TMNN version of news.
+.TP
+\-X
+Suppress the normal sendbatch run before expiration. Included for systems
+that use a transport method other than sendbatch.
+.TP
+\-D
+Debug mode. Don't actually delete any articles or change the database;
+instead, write a report on actions that would be taken to stdout.
+.PP
+The action of expire on an article may be modified by the contents of the
+ADM/admin file. This file contains lines each consisting of a newsgroup
+subscription and comma or space-separated flags. See \fInews\fB(5) for
+full details on the admin file format. The flags relevant to expire are:
+.TP 10
+v
+-- expire messages when all group subscribers have seen them
+.TP 10
+i
+-- ignore explicit expiration dates when checking messages in this group
+.TP 10
+a
+-- archive articles from this group on expiration.
+.PP
+If this field is omitted it defaults to the number of days in the system
+default expiration period (usually 14).
+.PP
+An expire run may be aborted gracefully (expiration stopped but history and
+active files updated for the portion done so far) by sending it SIGTERM.
+Sending SIGQUIT will abort the run and not update the files. Both of these
+signals will permit the normal news unspool that follows expire.
+.SH SEE ALSO
+inews(8),
+postnews(1),
+getdate(3),
+news(5),
+recnews(8),
+sendnews(8),
+uurec(8)
+.SH BUGS
+The newsgroup pattern argument to the \-n option is limited to 1024
+characters, which is about twelve lines of text.
+.PP
+Expire's attempts to delete spool directories with no active messages in them
+can look confused if your active file has any subgroups listed before a main
+group, i.e. if
+.I net.foo.bar
+is listed before
+.IR net.foo .
+In this case you may see a
+.IR mkdir (1)
+diagnostic for
+.I net.foo
+and it will not be deleted immediately. The code will loop through the list
+of active groups until it has cleaned out every group it can, so
+.I net.foo
+will get removed eventually. Note that spool directories with no corresponding
+groups (comp, misc, soc, rec, sci, talk etc.) will never be deleted even if
+everything under them goes away.
+.SH NOTE
+The history file format has changed; it includes an explicit expire date field
+so that expire now never looks at messages unless -h or -r is specified (this
+speeds normal expiration runs up a lot). The -r mode no longer does
+expirations; this is an orthogonality feature, not a bug! The -s option is
+new in TMN-netnews. Previous bugs in expire/inews interlocking have been
+fixed.
+.PP
+Also note that \-a may no longer be used as a modifier to \-n; you must
+specify the subscription to be archived explicitly.
+.SH "FILES"
+.PD 0
+.TP 25
+/usr/lib/news/history
+Expiration and history information
+.TP 25
+.RI /usr/spool/news/ newsgroup /.subjlist
+Subject list files
+.PD

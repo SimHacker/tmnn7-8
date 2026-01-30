@@ -1,0 +1,318 @@
+This patch set changes the NNTP 1.5 sources to use the TMNN history library
+calls. They assume that you compile with -DTMNN, -l$(TMNNSRC)/libport.a,
+-l$(TMNNSRC)/libnews.a, and -I$(TMNNSRC)/D.port.  No changes to common/conf.h
+are needed.
+
+There is one major nasty in the server that will bite TMNN sites who feed
+news via NNTP passive polling.  The current implementation of the NEWNEWS
+command assumes that the history file (history.dat in TMNN) is sorted
+oldest-article-first, and does a binary search on the strength of this
+assumption. A history library entry point to perform this kind of
+search will be added before final release.
+
+Thanks to ambar@oracle.com (Jean-Marie Diaz) for these modifications.
+
+*** /tmp/,RCSt1a04976	Sun Apr  2 03:50:17 1989
+--- common.h	Sun Apr  2 01:54:39 1989
+***************
+*** 51,56 ****
+--- 51,57 ----
+   * brain death is necessary.
+   */
+  
++ #ifndef TMNN
+  #ifdef DBM
+  # undef NULL
+  # include <dbm.h>
+***************
+*** 61,66 ****
+--- 62,75 ----
+  #ifdef NDBM
+  # include <ndbm.h>
+  #endif
++ #else
++ # include <edbm.h>
++ /* including portlib.h causes more trouble than it's worth.  Instead,
++  * we will define the two constants we need.
++  */
++ #define FAIL -1
++ #define FALSE 0
++ #endif /* TMNN */
+  
+  /*
+   * Some generic maximums.
+
+*** /tmp/,RCSt1a04981	Sun Apr  2 03:50:18 1989
+--- misc.c	Sun Apr  2 03:45:44 1989
+***************
+*** 83,95 ****
+   *	Side effects:	opens dbm database
+   *			(only once, keeps it open after that).
+   *			Converts "msg_id" to lower case.
+   */
+  
+  #ifndef NDBM
+  # ifndef DBM
+! #  ifndef USGHIST
+! #   define USGHIST
+! #  endif not USGHIST
+  # endif not DBM
+  #endif not DBM
+  
+--- 83,102 ----
+   *	Side effects:	opens dbm database
+   *			(only once, keeps it open after that).
+   *			Converts "msg_id" to lower case.
++  *
++  *	Comments from the peanut gallery:  here there be TOO MANY ifdefs.
++  * 			Should really be split into separate functions for
++  *			the various sorts of history file.
++  *			(ambar@oracle.com)
+   */
+  
+  #ifndef NDBM
+  # ifndef DBM
+! #  ifndef TMNN
+! #   ifndef USGHIST
+! #    define USGHIST
+! #   endif not USGHIST
+! #  endif not TMNN
+  # endif not DBM
+  #endif not DBM
+  
+***************
+*** 106,111 ****
+--- 113,123 ----
+  	char		*histfile();
+  	register int	len;
+  #else not USGHIST
++ #ifdef TMNN
++ 	static int	dbopen = 0;
++ 	static database	*db = NULL;	/* History file, TMNN edbm version */
++ 	char		*content;
++ #else not TMNN	
+  #ifdef DBM
+  	static int	dbopen = 0;
+  	datum		fetch();
+***************
+*** 113,118 ****
+--- 125,131 ----
+  	static DBM	*db = NULL;	/* History file, dbm version */
+  #endif DBM
+  	datum		 key, content;
++ #endif TMNN
+  #endif USGHIST
+  	static FILE	*hfp = NULL;	/* history file, text version */
+  
+***************
+*** 139,144 ****
+--- 152,193 ----
+  		return (NULL);
+  	}
+  #else not USGHIST
++ #ifdef TMNN
++ 	if (!dbopen) {
++ 	        if ((db = dbmopen(historyfile)) == (database *)NULL) {
++ #ifdef SYSLOG
++ 			syslog(LOG_ERR, "openartbyid: dbmopen %s: %m",
++ 				historyfile);
++ #endif SYSLOG
++ 			return (NULL);
++ 		} else
++    		        dbopen = 1;
++ 	}
++ 	if (dbmseek(msg_id, (strlen(msg_id) + 1), db, FALSE) == FAIL) {
++ 	  return NULL;
++ 	}
++ 	if ((content = dbmget((int *)NULL, *db)) == (char *)NULL) {
++ 	  return NULL;
++ 	}
++ 	if (hfp == NULL) {
++ 		hfp = fopen(historyfile, "r");
++ 		if (hfp == NULL) {
++ #ifdef SYSLOG
++ 			syslog(LOG_ERR, "message: fopen %s: %m",
++ 				historyfile);
++ #endif SYSLOG
++ 			return (NULL);
++ 		}
++ 	}
++ 	bcopy(content, (char *)&ltmp, sizeof (long));
++ 	if (fseek(hfp, ltmp, 0) < 0) {
++ #ifdef SYSLOG
++ 		syslog(LOG_ERR, "message: fseek: %m");
++ #endif SYSLOG
++ 		return (NULL);
++ 	}
++ 	(void) fgets(line, sizeof(line), hfp);
++ #else not TMNN
+  #ifdef DBM
+  	if (!dbopen) {
+  		if (dbminit(historyfile) < 0) {
+***************
+*** 194,199 ****
+--- 243,249 ----
+  	}
+  
+  	(void) fgets(line, sizeof(line), hfp);
++ #endif TMNN
+  #endif USGHIST
+  
+  	if ((cp = index(line, '\n')) != NULL)
+
+*** /tmp/,RCSt1a04986	Sun Apr  2 03:50:19 1989
+--- newnews.c	Sun Apr  2 03:49:43 1989
+***************
+*** 102,117 ****
+--- 102,129 ----
+  				(void) fflush(stdout);
+  				return;
+  			}
++ #ifndef TMNN
++ 	/* TMNN *does* keep GMT times inside the history file, so we 
++ 	   need to convert local times, not GMT times.  We also do not
++ 	   want to call ltod(), because TMNN stores the result of time()
++ 	   in the history file, instead of the string mm/dd/yy.  */
++ 
+  			date = gmt_to_local(date);
+  			key = ltod(date);
++ #else
++ 			date = local_to_gmt(date);
++ #endif /* TMNN */
++ 
+  			++argv;
+  			--argc;
+  		}
+  	}
+  
++ #ifndef TMNN
+  	/* So, key now points to the local time, but we need to zap secs */
+  
+  	key[10] = '\0';
++ #endif TMNN
+  
+  	distcount = 0;
+  	if (argc > 0) {
+***************
+*** 135,140 ****
+--- 147,156 ----
+      for (i = 0; i < 9; i++) {
+  		sprintf(historyfile, "%s.d/%d", HISTORY_FILE, i);
+  #endif USG
++ #ifdef TMNN
++ 	/* we want to walk through the human-readable version */	
++ 	sprintf(historyfile, "%s.dat", HISTORY_FILE);
++ #endif TMNN
+  
+  	fp = fopen(historyfile, "r");
+  	if (fp == NULL) {
+***************
+*** 176,181 ****
+--- 192,206 ----
+   * ignore such bogosity.  We tackle this by our usual parse routine,
+   * and break the list of articles in the history file into an argv
+   * array with one newsgroup per entry.
++  *
++  * The TMNN history file is not exactly like this, but it's close
++  * enough that it will pass cursory inspection.  (For the curious:
++  *
++  * <1138@emory.UUCP>      607286362 0     sci.physics/5445 sci.research/699
++  * where the second field is arrival time in time() format, and the third
++  * is the explicit expire time (also in time()) format, or 0 if no explicit
++  * expire time was given in the article.)
++  * 
+   */
+  
+  	do {
+***************
+*** 248,253 ****
+--- 273,280 ----
+   *
+   *	Parameters:	"fp" is the active file.
+   *			"key" is the date, in form YYMMDDHHMM (no SS)
++  *			UNLESS TMNN is defined, in which case "key" is
++  *			in time() format.
+   *			"line" is storage for the first line we find.
+   *
+   *	Returns:	-1 on error, 0 otherwise.
+***************
+*** 275,281 ****
+  			c = getc(fp);
+  			mid++;
+  		} while (c != EOF && c!='\n');
+! 		if (!getword(fp, datetime, line, linesize)) {
+  			return (-1);
+  		}
+  		switch (compare(key, datetime)) {
+--- 302,308 ----
+  			c = getc(fp);
+  			mid++;
+  		} while (c != EOF && c!='\n');
+! 		if (!getword(fp, key, datetime, line, linesize)) {
+  			return (-1);
+  		}
+  		switch (compare(key, datetime)) {
+***************
+*** 295,301 ****
+  	}
+  	(void) fseek(fp, bot, 0);
+  	while(ftell(fp) < top) {
+! 		if (!getword(fp, datetime, line, linesize)) {
+  			return (-1);
+  		}
+  		switch(compare(key, datetime)) {
+--- 322,328 ----
+  	}
+  	(void) fseek(fp, bot, 0);
+  	while(ftell(fp) < top) {
+! 		if (!getword(fp, key, datetime, line, linesize)) {
+  			return (-1);
+  		}
+  		switch(compare(key, datetime)) {
+***************
+*** 327,334 ****
+  }
+  
+  
+! getword(fp, w, line, linesize)
+  	FILE		*fp;
+  	register char	*w;
+  	char		*line;
+  	int		linesize;
+--- 354,362 ----
+  }
+  
+  
+! getword(fp, key, w, line, linesize)
+  	FILE		*fp;
++         register char	*key;
+  	register char	*w;
+  	char		*line;
+  	int		linesize;
+***************
+*** 337,342 ****
+--- 365,371 ----
+  
+  	if (fgets(line, linesize, fp) == NULL)
+  		return (0);
++ #ifndef TMNN
+  	if (cp = index(line, '\t')) {
+  /*
+   * The following gross hack is present because the history file date
+***************
+*** 364,369 ****
+--- 393,406 ----
+  		w[10] = '\0';
+  	} else
+  		w[0] = '\0';
++ #else
++ /*
++  *   O happy day; TMNN has an intelligent history file format,
++  *   no hacks required.
++  */
++ 	(void) strcpy (w, key);
++ #endif /* TMNN */
++ 
+  	return (1);
+  }
+

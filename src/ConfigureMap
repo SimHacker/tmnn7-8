@@ -1,0 +1,636 @@
+: ConfigureMap -- query user and environment to make a UUCP map entry for site
+#	written by Eric S. Raymond (snark!eric) for 3.0 netnews
+#
+# This tool uses configuration symbol information and queries the user to
+# update a file of UUCP-project-style map data, which it can then massage
+# into a uucp map entry form and ship off to the map maintainers.
+#
+# Depends on the following ConfigureSys variables:
+#	date0 machine species sitename
+#
+# Depends on the following Configure variables:
+#	date1 libdir myorg notify admdir domainist smarthost mailserv
+#
+# This tool writes the following files:
+#	mapdata.sh -- map information in shellscript form
+#	uucpmap.form -- a pathalias-format map entry file
+
+: these are the default map maintainer addresses for interactive mode
+mappers_at=uucpmap@rutgers.edu
+mappers_bang=rutgers!uucpmap
+
+: make sure we have preconditions
+if test -f ./configsys.sh ; then
+    echo "Fetching default answers from your configsys.sh file..."
+else
+    echo "There's no configsys.sh here, I'll run ConfigureSys"
+    ConfigureSys
+    echo "Fetching default answers from your new configsys.sh file..."
+fi
+. ./configsys.sh
+echo $date0
+
+if test -f ./confignews.sh ; then
+    echo "Fetching default answers from your old confignews.sh file..."
+    . ./confignews.sh
+    echo $date1
+else
+    echo "There's no confignews.sh here; I'll run Configure"
+    Configure
+fi
+
+: where the map entry gets written to
+mapform="$libdir/uucpmap.form"
+mapdata="$libdir/mapdata.sh"
+
+: we may be trying to run batch, mailing the results to a passed-in addresses 
+if test $# != 0
+then
+    toaddresses="$*"
+    if test ! -r "$mapdata" ; then
+	exit 1	: cannot run batch mode without a map data file
+    fi
+fi
+
+model='' os='' orgname='' contact='' conaddr='' phone='' orgaddr=''
+longitude='' latitude='' oncity='undef' downstream=''
+domains='' aliases='' connections='' sendto=''
+
+: first, make sure we can see link data
+if test -r /usr/lib/uucp/L.sys; then
+	neighbors=/usr/lib/uucp/L.sys
+elif test -r /usr/lib/uucp/Systems; then
+	neighbors=/usr/lib/uucp/Systems
+elif test -r /etc/uucp/Systems; then
+	neighbors=/etc/uucp/Systems
+else
+	echo "I need read access to your Systems or L.sys file"
+	exit 1
+fi
+
+trap 'rm -f remarks$$; exit 1' 0 1 2 15
+
+if test -f $mapdata ; then
+    echo "Fetching default answers from your old map data file..."
+    . $mapdata
+    echo $mapdate
+    level=1
+else
+    echo "There's no $mapdata, I won't assume any defaults"
+    level=0
+fi
+
+: get the utilities contains, qq, loc
+. ./ConfigureUtils
+
+trap 'rm -f $confighelpers config$$.sh remarks$$ mapentry$$; exit 1' 0 1 2 15
+
+: interactive section starts here
+
+case "$toaddresses" in '')
+
+cat <<EOT
+This script will assist you in creating or updating a map entry and
+mailing it to the map maintainers.
+EOT
+
+echo " "
+if $test $level != 0 ; then
+    set "1. Change configuration, organization, or contact data?" turnon go n;
+    . qq
+fi
+
+case $go in undef|n*) ;; *)
+cat <<EOT
+
+The first field of a map entry is a quick description of your equipment.
+It consists of a semicolon-separated pair of machine-type and OS-type
+information. The first two questions will prompt you for this data.
+
+EOT
+
+: try to be smart about defaults for the next couple of questions
+case $machine in
+UNIXPC) model='AT&T 3B1' os=3.51;;
+SUN) model=`arch` os=SunOS ;;
+*) model=unknown os=unknown ;;
+esac
+
+: take a stab at the machine type
+set "What is the manufacturer and model name of your machine?" name model; . qq
+
+: next the os type
+set "What is the maker's name and version number of your OS?" name os; . qq
+
+: get the organization name
+echo " "
+if $test "X$orgname" = "X" ; then
+    orgname=`expr "$myorg" : "\(.*\),"`
+    if $test "X$orgname" = "X" ; then
+	orgname="$myorg"
+    fi
+fi
+echo "Please give the name of your site's sponsoring organization."
+set "Name?" name orgname; . qq
+
+: get the organization address
+echo " "
+if $test "X$orgaddr" = "X" ; then
+    orgaddr=`expr "$myorg" : ".*, \(.*\)"`
+    if $test "X$orgaddr" = "X" ; then
+	orgaddr="$myorg"
+    fi
+fi
+echo "Please give the address of your site organization."
+set "Address?" name orgaddr; . qq
+
+: now get or change the missile coordinates for the site
+cat <<EOT
+
+The latitude, longitude and city questions that come next generate an entry
+field in the following format:
+
+#L	DD MM [SS] "N"|"S" / DDD MM [SS] "E"|"W" ["city"]
+
+Two fields, with optional third.
+
+First number is Latitude in degrees (NN), minutes (MM), and seconds
+(SS), and a N or S to indicate North or South of the Equator.
+
+Second number is Longitude in degrees (DDD), minutes (MM), and
+seconds (SS), and a E or W to indicate East or West of the Prime
+Meridian in Greenwich, England.
+
+Seconds are optional, but it is worth noting that the more accurate
+you are, the more accurate maps we can make of the network (including
+blow-ups of various high density areas, like New Jersey, or the
+San Francisco Bay Area). Decimal minutes or degrees are NOT allowed.
+
+If you give the coordinates for your city (i.e. without fudging
+for where you are relative to that), add the word "city" at the
+end of the end of the specification, to indicate that.
+
+EOT
+set 'Your latitude (DD MM [SS] "N"|"S")?' name latitude; . qq
+set 'Your longitude (DD MM [SS] "E"|"W")?' name longitude; . qq
+set "Are these actually for the nearest city?" turnon oncity n; . qq
+case oncity in define) city='city' ;; *) city='' ;; esac
+
+: the admin name and email address
+cat <<EOT
+
+Next, we need a full name and one or more email addresses for your site
+mail and USENET contact person.
+
+Each address should be just a machine name, and a user name, like
+"ucbvax!postmaster". It should not be a full path, since we should
+be able to generate a path to the given address from the data you're
+giving us. There is no problem with the machine name not being the
+same as the #N field (e.g. the contact receives mail on another
+machine at your site), so long as that site is also in UUCP maps.
+
+Also, it's a good idea to give a generic address or alias (if your
+mail system is capable of providing aliases) like "postmaster" or
+"usenet", so that if the contact person leaves the institution or
+is re-assigned to other duties, he doesn't keep getting mail about
+the system. In the Internet, for example, all sites are *required* to
+accept mail for "postmaster" and have that pointed at the person at
+that site who is responsible for the electronic mail system.
+
+Multiple electronic addresses should be separated by commas, and
+all of them should be specified in the manner described above.
+
+EOT
+
+contact=`./grpw -u $notify %r`
+set "What is your site contact's full name?" name contact; . qq
+
+if $test "X$conaddr" = "X" ; then
+    conaddr="postmaster@${fromname}"
+fi
+set "What is your site contact's email address?" name conaddr; . qq
+
+: and the site admin phone number
+cat <<EOT
+
+Please enter your site contact's voice phone in the following format:
+
+	+<country code><space><area code><space><prefix><space><number>
+
+Example:
+
+#T	+1 415 642 1024
+
+This is the international format for the representation of phone
+numbers. The country code for the United States of America (and Canada)
+is 1. Other country codes should be listed in your telephone directory.
+
+If you must list an extension (i.e. what to ask the receptionist for,
+if not the name of the contact person), list it after the main phone
+number with an "x" in front of it to distinguish it from the rest of
+the phone number. For example:
+
+#T	+1 415 549 3854 x37
+
+Multiple phone numbers should be separated by commas, and all of them
+should be completely specified as described above to prevent confusion.
+
+EOT
+set "What is your site contact's phone?" name phone; . qq
+
+echo " "
+if $test "$smarthost" = "%s"
+then
+    if $test "X$sendto" = "X" ; then
+	sendto="$mappers_at"
+    fi
+    echo "Your mailer does domainist addressing, $mappers_at should work."
+else
+    if $test "X$sendto" = "X" ; then
+	sendto="$mappers_bang"
+    fi
+    echo "Your mailer needs bang-path addresses."
+    sendto=`expr "$smarthost" : "\(.*\)%s"`$mappers_bang
+fi
+set "Where should I send map updates?" name sendto ; . qq
+
+;; esac
+
+echo " "
+if $test $level != 0 ; then
+    set "2. Change remarks field?" turnon go n;
+    . qq
+fi
+case $go in undef|n*) ;; *)
+
+echo " "
+if $test -s "remarks$$"
+then
+    echo "Your Remarks field currently looks like:"
+    cat <remarks$$
+else
+    echo "Your map entry contains no Remarks field."
+fi
+set "Do you wish to add special remarks about your site?" turnon rems n; . qq
+if $test "$rems" = "define" ; then
+    while :;
+    do
+	echo $n "#R\011$c"
+	read line
+	if $test "X$line" = "X" ; then
+	    break;
+	else
+	    echo "#R\011$line" >>remarks$$
+	fi
+    done
+    echo "Thank you."
+fi
+
+;; esac
+
+echo " "
+if $test $level != 0 ; then
+    set "3. Change USENET feed information?" turnon go n;
+    . qq
+fi
+case $go in undef|n*) ;; *)
+
+: extract news feed names from the feeds file
+echo " "
+allfeeds=`sed -n <$admdir/feeds \
+	-e "/$sitename/d" \
+	-e '/[Mm][Ee]/d' \
+	-e '/^\([a-zA-Z][^:]*\):.*/s//\1/p' \
+| tr "\012" " "`
+if $test X = X$allfeeds; then
+    echo "You have no downstream sites list."
+    downstream=""
+else
+    echo "Sites currently listed in your feeds file are: $allfeeds"
+    echo " "
+    set - $allfeeds
+    for x in $*
+	do
+	if $expr "$downstream" : ".*$x.*" >/dev/null
+	then
+	    echo $n "Hide $x from downstream site list? [n] $c"; read ans
+	    case $ans in y*|Y*) ;; *) newdowns="$newdowns $x";; esac
+	else
+	    echo $n "Add $x to downstream site list? [y] $c"; read ans
+	    case $ans in n*|N*) ;; *) newdowns="$newdowns $x";; esac
+	fi
+    done
+    downstream=`expr "$newdowns" : ' \(.*\)'`
+fi
+
+;; esac
+
+: now try for the full name of the entry editor
+editor=`./grpw -u ${LOGNAME}${USER} "%r"`
+set "Your name, for the #W field: $c" name editor; . qq
+
+echo " "
+if $test $level != 0 ; then
+    set "4. Change gateway or alias data?" turnon go n;
+    . qq
+fi
+case $go in undef|n*) ;; *)
+
+echo " "
+case $domains in '') dflt=none;; *) dflt=$domains;; esac
+echo $n "Domains site is a gateway for? [$dflt] $c"; read ans
+case $ans in '') ;; *) domains=$ans;; esac
+case $aliases in '') dflt=none;; *) dflt=$aliases;; esac
+echo $n "Site aliases? [$dflt] $c"; read ans
+case $ans in '') ;; *) aliases=$ans;; esac
+
+;; esac
+
+echo " "
+if $test $level != 0 ; then
+    set "5. Edit pathalias data?" turnon go y;
+    . qq
+fi
+case $go in undef|n*) ;; *)
+
+systems=" "`awk <$neighbors '/^[^#]/ {print $1;}' | tr "\012" " "`" "
+echo "Sites currently listed in your $neighbors file are: $systems"
+echo " "
+
+: make as many passes over the list as user wants
+while :;
+do
+    : set our edit mode for this pass over the list
+    set "Do you want to reveal private links?" turnon reveal n; . qq
+    set "Do you want to hide links that are now public?" turnon hide n; . qq
+    set "Do you want to change grades on public links?" turnon change n; . qq
+
+    : if we gave any editing actions, edit types and grades on UUCP links
+    echo " "
+    if $test "$reveal" = 'define' -o "$change" = 'define' -o "$hide" = 'define'
+    then
+	newconnects=""
+	for x in $systems 
+	do
+	    : for later on we need a copy of the site with any dashes quoted
+	    quoted=`echo "$x" | sed "s/-/DASH/g"`
+
+	    : if we already have a grade value for this system, retrieve it
+	    eval "grade=\$${quoted}_grade"
+
+	    : is system in announced list?
+	    if $expr "$connects" : ".* $x .*" >/dev/null
+	    then
+		if $test "$hide" = define
+		then
+		    echo $n "Hide link to $x? [n] $c"; read ans
+		fi
+		case $ans in y*|Y*) continue ;; esac
+	    elif $test "$reveal" = define -o "X$grade" = "X"; then
+		echo $n "Announce link to $x? [y] $c"; read ans
+		case $ans in n*|N*) continue ;; esac
+	    fi
+
+	    : try to deduce a grade for new connections
+	    if $test "$grade" = ""
+	    then
+		set - `$grep "$x" "$neighbors"`
+		case "$3" in
+		DIR|Dir|DIRECT|Direct|$1) grade="DEDICATED" ;;
+		*)
+		    case $2 in
+		    Any)
+			: toll calls default to DEMAND, locals to DIRECT 
+			if expr "X$5" : "X1-.*" >/dev/null ; then
+			    grade="DEMAND"
+			else
+			    grade="DIRECT"
+			fi
+		    ;;
+		    Any*) grade="EVENING" ;;
+		    Nvr)
+			: someday we will analyze logfiles to find the
+			: frequencies for POLLED connections
+			grade="POLLED" ;;
+		    esac
+		    ;;
+		esac
+		eval "${quoted}_grade=$grade"
+	    fi
+
+	    : finally, must we change grades?
+	    if $test "$change" = define -o "$reveal" = define -o "$grade" = ""
+	    then
+		: find out if user wants default link grade or new value
+		while :;
+		do
+		    echo $n "New grade of $x link (? for help)? [$grade] $c";
+		    read ans
+		    case $ans in
+		    '') break ;;
+		    \?*) cat <<EOT
+
+The DEMAND, DAILY, etc., entries represent imaginary connect costs
+(see below) used by pathalias to calculate lowest cost paths.  The
+values of the symbols are:
+
+	LOCAL		25	local area network
+	DEDICATED	95	high speed dedicated
+	DIRECT		200	local call
+	DEMAND          300     normal call (long distance, anytime)
+	HOURLY		500	hourly poll
+	EVENING		1800	time restricted call
+	DAILY		5000	daily poll
+	POLLED		5000	synonym for DAILY
+	WEEKLY		30000	irregular poll
+	DEAD            a very high number - not usable path
+
+HIGH and LOW (used like DAILY+HIGH) are -5 and +5 respectively, for baud-rate
+or other quality bonuses/penalties. Expressions can be used but beware, the
+results are often counterintuitive (e.g. (DAILY*4) means every 4 days, not 4
+times a day). They represent *costs*, rather than *frequencies*. There is an
+assumed high overhead for each hop; thus, HOURLY is far more than DAILY/24.
+
+EOT
+;;
+		    LOCAL*) grade="$ans" break ;;
+		    DEDICATED*) grade="$ans" break ;;
+		    DIRECT*) grade="$ans" break ;;
+		    DEMAND*) grade="$ans" break ;;
+		    HOURLY*) grade="$ans" break ;;
+		    EVENING*) grade="$ans" break ;;
+		    DAILY*) grade="$ans" break ;;
+		    WEEKLY*) grade="$ans" break ;;
+		    DEAD*) grade="$ans" break ;;
+		    POLLED*) grade="$ans" break ;;
+		    *) echo "$ans not a valid link grade, type ? for help.";;
+		    esac
+		done
+		eval "${quoted}_grade=$grade"
+	    fi
+
+	    : if we made it this far, keep this system
+	    newconnects="$newconnects $x"
+	done
+	connects="$newconnects"
+    fi
+
+    : This may do it for us
+    set "Done editing?" turnon done n; . qq
+    if $test "$done" = define
+    then
+	break
+    fi 
+done
+
+;; esac
+
+date=`date`
+
+echo " "
+echo $n "Writing map configuration file...$c"
+$spitshell  >config$$.sh <<EOT
+# Map data file for site $sitename
+mapdate="Last map entry update was `date`"
+
+model="$model"			# machine make and model
+os="$os"			# manufacturer's OS designation
+orgname="$orgname"		# organization name
+contact="$contact"		# full name of site contact
+conaddr="$conaddr"		# email address of site contact
+phone="$phone"			# site contact's phone
+orgaddr="$orgaddr"		# organization address
+latitude="$latitude"		# latitude of site
+longitude="$longitude"		# longitude of site
+oncity="$oncity"		# 'define' if above are city coordinates
+downstream="$downstream"	# downstream-site list
+sendto=''			# where to send map info
+
+# include remarks material here
+cat >remarks\$\$ <<__SMASH_THE_STATE__
+EOT
+cat remarks$$ >>config$$.sh
+$spitshell  >>config$$.sh <<EOT
+__SMASH_THE_STATE__
+
+# domain and alias data
+domains="$domains"
+aliases="$aliases"
+
+# UUCP connection and grade data
+connects="$connects"
+EOT
+for x in $systems
+do
+    quoted=`echo "$x" | sed "s/-/DASH/g"`
+    eval "foo=\"\$${quoted}_grade\""
+    if $test "$foo"
+    then
+	echo "${quoted}_grade=$foo" >>config$$.sh
+    fi
+done
+
+echo " " >>config$$.sh
+echo "# map data file ends here" >>config$$.sh
+
+mv config$$.sh $mapdata
+echo "Done"
+
+: interactive section ends here
+;; esac
+
+: derive the OS variety from the species variable in configsys.sh
+ostype=''
+case $species in
+BSD4_3) ostype='4.3BSD';; 
+BSD4_2) ostype='4.2BSD';; 
+BSD4_1C) ostype='4.1C ';; 
+SYSV3) ostype='SVr3';; 
+SYSV2) ostype='SVr2';; 
+SYSV1) ostype='SVr1';; 
+SYS3) ostype='SIII';; 
+SCO_XENIX) ostype='SCO XENIX V';;
+V7) ostype='V7';;
+VMS) ostype='VMS';;
+esac
+if $test "$ostype" ; then
+	ostype="($ostype)"
+fi
+
+: here goes the map entry I/O
+echo $n "Writing map entry...$c"
+(
+    cat <<EOS
+#N	$sitename
+#S	$processor ($model) ; $ostype ($os)
+#O	$orgname
+#C	$contact
+#E	$conaddr
+#T	$phone
+#P	$orgaddr
+#L	$latitude / $longitude $city
+EOS
+    cat remarks$$
+
+    if test "$downstream"
+    then
+	echo $n "#U\011$c"
+	column=8
+	for token in $downstream
+	do
+	    width=`expr "$token" : '.*'`
+	    column=`expr $column + $width + 1`
+	    if $test `expr $column \>= 60` = 1
+	    then
+		column=8
+		echo $n "\012#U\011$c"
+	    fi
+	    echo $n "${token} $c"
+ 	done
+	echo " "
+    fi
+
+    cat <<EOS
+#W	${editor}; ${date}
+#
+EOS
+    case $domains in '') ;; *) echo "$sitename\011$domains" ;; esac
+    case $aliases in '') ;; *) echo "${sitename}=\011$aliases" ;; esac
+
+    echo $n "${sitename}\011$c"
+    column=8
+    for x in $connects
+    do
+	: extreme hairiness here to cope with the fact that
+	: the dash character is not legal in shell variable names
+	quoted=`echo "$x" | sed "s/-/DASH/g"`
+	eval "token=\"${quoted}(\$${quoted}_grade),\""
+	token=`echo "$token" | sed "s/DASH/-/g"`
+
+	width=`expr "$token" : '.*'`
+	column=`expr $column + $width + 1`
+	if $test `expr $column \>= 60` = 1
+	then
+	    column=8
+	    echo $n "\012\011$c"
+	fi
+	echo $n "$token $c"
+    done
+    echo " "
+) \
+| sed '$s/, *$//' >mapentry$$
+
+mv mapentry$$ $mapform
+echo "Done"
+
+case "$toaddresses" in
+'')
+    set "Mail a copy to the map maintainers?" turnon go n; . qq
+    case $go in undef|n*) ;; *)
+	$mailserv $sendto <$mapform	
+    ;; esac
+;;
+*)  $mailserv $toaddresses <$mapform ;;
+esac
+
+# ConfigureMap ends here

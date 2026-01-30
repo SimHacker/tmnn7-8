@@ -1,0 +1,45 @@
+This directory provides sources for POSIX/SVID/X3J11 standard routines
+which you can compile and install in your system libraries or in a libposix.a.
+They include:
+
+	strings(3) -- string function package by Henry Spencer and Eric Raymond
+	directory(3) -- directory-scanning functions by Doug Gwyn
+	strtol(3) -- string-to-long conversion by an anonymous hacker.
+	getopt(3) -- string-to-long conversion by Henry Spencer
+	memory(3) -- memory functions by Eric S. Raymond
+	[btl]search(3) -- binary/tree/linear-search code by Eric S. Raymond
+	gsignal(3) -- user software signals code by Eric S. Raymond
+	putpwent(3) -- write password entry to file
+
+Manual pages are provided for all. To install, run Makeposix and follow the
+instructions in the Makefile header comment and DIRENT.INSTALL.
+
+Note that Makeposix makes some fairly rigid assumptions about what facilities
+are associated with which modules in your C library. Some implementations may
+violate these assumptions (for example, in 4.2BSD the rewinddir() function
+lives in a rewinddir.o; in SVr3, it is present but the code lives in one of the
+other directory library modules).
+
+As a result, the generated Makefile may want to link modules into your
+library that duplicate code it aleady contains. This should be harmless, 
+because ar adds the new stuff at the end of the library but does its link-
+resolution searches from the beginning. But there's no point in altering
+your C library if you don't need to, so Makeposix provides a way for you to
+tell it that particular facilties are in place. Simply call it with one of
+the following arguments:
+
+	SVR1	-- assume all System V Release 1 facilities are present
+	SVR2	-- assume all System V Release 1 & 2 facilities are present
+	SVR3	-- assume all System V Release 1, 2 & 3 facilities are present
+	4.2BSD	-- assume all Berkeley 4.2 facilities are present
+	4.3BSD	-- assume all Berkeley 4.2 & 4.3 facilities are present
+
+This will tell it to act on the assumption that anything normally supported
+by the given system is present, even if its module checks suggest otherwise.
+
+To update your lint library to include the right things, you'll need to
+recompile your lint library into .ln form. You can do this with lint's -C
+option on BSD systems, or its -c option on System V Release 2 sites -- others
+will have to dig into the local lint script to find the right magic. A relint
+production that should work for SVr{2,3} sites is provided in the generated
+Makefile.
