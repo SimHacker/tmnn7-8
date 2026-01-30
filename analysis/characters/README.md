@@ -1,59 +1,88 @@
-# Characters
+# The Green Room 🎭
 
-**Sock puppets for collaborative performance art.**
-
-## What This Is
-
-These are **MASKS**. Anyone can wear them. They are NOT real people.
-
-Each character represents an archetype — a pattern of behavior common in online technical communities. By making these patterns explicit and playable, we:
-
-1. **Invite participation** — Anyone can post as any character
-2. **Defuse hostility** — Conflict becomes theater
-3. **Surface patterns** — The archetypes become visible
-4. **Create comedy** — The drama writes itself
+**Where the players gather before going on stage.**
 
 ---
 
-## 🎭 Standard Roleplay Format
+## What Is This Place?
 
-**When posting as a character, use this format:**
+This is the **Green Room** — the backstage area where performers wait before their entrance. In theater tradition, it's where actors prepare, rehearse lines, and get into character.
+
+In this repository, it's where our **sock puppet characters** live. Each subdirectory contains a character that anyone can play.
+
+---
+
+## ⚠️ Ethical Framework & Disclaimers
+
+### These Are Not Real People
+
+| Character | Is NOT |
+|-----------|--------|
+| daFlute | Eric S. Raymond |
+| plannedchaos | Scott Adams |
+| FearlessCrab | Any specific Rust developer |
+| PureMonad | Any specific Haskell developer |
+| WebScaleChad | Any specific startup founder |
+
+**These are archetypes.** Patterns of behavior observed in online technical communities, distilled into playable masks.
+
+### Why Masks?
+
+1. **Defuse hostility** — When conflict is theater, it's not personal
+2. **Surface patterns** — Making archetypes explicit makes them visible
+3. **Enable participation** — Anyone can join without creating drama
+4. **Create comedy** — The drama writes itself when archetypes collide
+
+### The Rules
+
+1. **Never claim a character IS a real person**
+2. **Always use the 🎭 prefix** — It signals "this is roleplay"
+3. **Your real identity is visible** — GitHub shows who you are
+4. **Play respectfully** — Satire, not harassment
+
+---
+
+## 🎭 The Emoji Protocol
+
+When posting as a character, use this format:
 
 ```
-🎭📜 [*daFlute*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/daFlute/): I've been reviewing this code...
+🎭📜 [*daFlute*](link): Your message here
 ```
 
-**The format:**
-```
-🎭[emoji] [*CharacterName*](link-to-character): Your message here
-```
+### Emoji Layers
 
-| Part | Meaning |
-|------|---------|
-| 🎭 | **Theater mask** — "This is roleplay" |
-| Emoji | **Character marker** — Quick identification |
-| Link | **Character sheet** — Click to see how to play |
-| Asterisks | **Italics** — Visual distinction |
+| Position | Purpose | Example |
+|----------|---------|---------|
+| 1st | 🎭 Theater mask | Always first — "This is roleplay" |
+| 2nd | Primary character emoji | 📜 📊 🦀 λ 🚀 |
+| 3rd+ | Secondary character emojis | Character-specific flavor |
+| Last | Statement emojis (optional) | 💩 🔥 ❤️ etc. |
 
-**This is transparent puppetry:**
-- Your GitHub username shows who YOU really are
-- The link shows which CHARACTER you're playing
-- Anyone can play any character
-- It's a **YES AND** avalanche
+### Examples
+
+```markdown
+🎭📜 [*daFlute*](link): I wrote the book on this.
+🎭📜📚 [*daFlute*](link): As I explained in my essay...
+🎭📜💢 [*daFlute*](link): The SJWs are at it again.
+🎭🦀🔥 [*FearlessCrab*](link): This code is on FIRE with buffer overflows!
+🎭📊📈💼 [*plannedchaos*](link): Let's align on Q3 deliverables.
+🎭🚀💩 [*WebScaleChad*](link): Your architecture is garbage, just use Node.
+```
 
 ---
 
 ## The Cast
 
-| Prefix | Character | Archetype | Branch | Issue |
-|--------|-----------|-----------|--------|-------|
-| 🎭📜 | [*daFlute*](daFlute/) | The Aging Hacker Who Wrote The Book | `dev` | [#10](https://github.com/SimHacker/tmnn7-8/issues/10) |
-| 🎭📊 | [*plannedchaos*](plannedchaos/) | The PHB Who Doesn't Know It | `elbonia-initiative` | [#9](https://github.com/SimHacker/tmnn7-8/issues/9) |
-| 🎭🦀 | [*FearlessCrab*](FearlessCrab/) | The Rust Evangelist | `rust-rewrite` | [#11](https://github.com/SimHacker/tmnn7-8/issues/11) |
-| 🎭λ | [*PureMonad*](PureMonad/) | The FP Academic | `haskell-port` | [#12](https://github.com/SimHacker/tmnn7-8/issues/12) |
-| 🎭🚀 | [*WebScaleChad*](WebScaleChad/) | The Startup Bro | `nodejs-webscale` | [#13](https://github.com/SimHacker/tmnn7-8/issues/13) |
+| Prefix | Character | Archetype | Branch |
+|--------|-----------|-----------|--------|
+| 🎭📜 | [daFlute](daFlute/) | The Aging Hacker Who Wrote The Book | `dev` |
+| 🎭📊 | [plannedchaos](plannedchaos/) | The PHB Who Doesn't Know It | `elbonia-initiative` |
+| 🎭🦀 | [FearlessCrab](FearlessCrab/) | The Rust Evangelist | `rust-rewrite` |
+| 🎭λ | [PureMonad](PureMonad/) | The FP Academic | `haskell-port` |
+| 🎭🚀 | [WebScaleChad](WebScaleChad/) | The Startup Bro | `nodejs-webscale` |
 
-**Copy-paste starters:**
+### Copy-Paste Starters
 
 ```markdown
 🎭📜 [*daFlute*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/daFlute/): 
@@ -65,104 +94,175 @@ Each character represents an archetype — a pattern of behavior common in onlin
 
 ---
 
-## How to Play
+## How to Play (No Special Tools Required)
 
-### 1. Pick a Character
-Choose from the cast above, or [create your own](#create-your-own-character).
+### Method 1: Just Post
 
-### 2. Copy the Prefix
-Copy the appropriate emoji+link prefix from the list above.
+1. Copy a character prefix from above
+2. Paste it at the start of your GitHub comment
+3. Write in character
+4. Post
 
-### 3. Write In Character
-Stay in archetype. Use their speech patterns. Embrace their blind spots.
+**That's it.** No software required. No accounts to create. Just GitHub.
 
-### 4. Post It
-The 🎭 makes it clear this is roleplay.
-Your GitHub username shows who you really are.
-The link shows which mask you're wearing.
+### Method 2: Create Your Own Character
 
-**Example in action:**
+Want to add a character? Just copy and edit:
 
-> 🎭🦀 [*FearlessCrab*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/FearlessCrab/): This is exactly the kind of memory-unsafe code that Rust was designed to prevent. I propose a complete rewrite. The borrow checker would have caught all 774 buffer overflows at compile time. 🦀
->
-> 🎭📊 [*plannedchaos*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/plannedchaos/): Interesting proposal, but have we done a business case? What's the ROI? Let's schedule a meeting to align on the transformation narrative before committing to implementation.
->
-> 🎭🚀 [*WebScaleChad*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/WebScaleChad/): lol why rewrite in Rust when you could just use Node? ship first, fix later 🚀
+```bash
+# 1. Copy an existing character
+cp -r analysis/characters/FearlessCrab analysis/characters/YourHandle
 
----
+# 2. Edit the files
+#    - CHARACTER.yml  (the character sheet)
+#    - README.md      (quick reference)
 
-## Create Your Own Character
+# 3. Submit a PR
+```
 
-**Want to join the cast?** Submit a PR:
+**The CHARACTER.yml format:**
 
-1. **Create directory:** `analysis/characters/YourHandle/`
-2. **Add CHARACTER.yml** (use existing ones as templates)
-3. **Add README.md** (quick reference)
-4. **Choose your emoji** — Pick one that represents your archetype
-5. **Submit PR**
+```yaml
+# YourHandle - A Sock Puppet Character
+# This is a MASK. Anyone can wear it.
 
-**Your character can:**
-- Embody your actual views (sincerely)
-- Parody your own community's tropes (self-aware)
-- Be a total invention (fiction)
-- Explore an archetype (theater)
+# ROLEPLAY FORMAT - Copy this to play:
+# 🎭🎯 [*YourHandle*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/YourHandle/): 
 
-**All approaches welcome.** The cast grows through contribution.
-
----
-
-## The Rules
-
-1. **🎭 = Roleplay** — The theater emoji signals "this is a character"
-2. **Link = Transparency** — Anyone can see the character sheet
-3. **GitHub username = Real identity** — No actual deception
-4. **YES AND** — Build on what others create
-5. **Conflict is theater** — The drama is the point
-6. **Have fun** — This is performance art
-
----
-
-## Emoji Dictionary (K-Lines)
-
-| Emoji | Meaning |
-|-------|---------|
-| 🎭 | **Roleplay prefix** — "I'm playing a character" |
-| 📜 | **daFlute** — The one who wrote the book |
-| 📊 | **plannedchaos** — Meetings, slides, synergy |
-| 🦀 | **FearlessCrab** — Rust evangelism |
-| λ | **PureMonad** — Functional purity |
-| 🚀 | **WebScaleChad** — Ship fast, fix later |
+meta:
+  type: sock_puppet
+  playable_by: anyone
+  emoji: 🎯           # Your primary emoji
+  prefix: "🎭🎯"      # Theater + your emoji
+  
+character:
+  name: YourHandle
+  archetype: "The [Your Archetype]"
+  
+personality:
+  traits:
+    - Trait 1
+    - Trait 2
+    
+  speech_patterns:
+    - "Catchphrase 1"
+    - "Catchphrase 2"
+    
+  blind_spots:
+    - What makes them funny
+    
+catchphrases:
+  - "Your signature line"
+```
 
 ---
 
-## Disclaimers
+## Advanced: MOOLLM Integration (Optional)
 
-- **daFlute** is NOT Eric S. Raymond
-- **plannedchaos** is NOT Scott Adams
-- **FearlessCrab** is NOT any specific Rust developer
-- **PureMonad** is NOT any specific Haskell developer
-- **WebScaleChad** is NOT any specific startup founder
+This repository is designed to work **standalone** — you don't need any special tools.
 
-These are archetypes. Patterns. Masks.
+However, the character files are also compatible with **MOOLLM** (a microworld OS for LLMs). If you want enhanced features:
 
-*Put one on and join the show.*
+### What MOOLLM Adds
+
+- **Character inheritance** — Characters can inherit traits from other characters
+- **Room-based activation** — Characters activate when you enter their directory  
+- **Spatial positioning** — Characters can be placed in rooms, on furniture, etc.
+- **Cross-repository characters** — Import characters from other MOOLLM repos
+- **AI-native roleplay** — LLMs can embody characters with full context
+
+### How to Use with MOOLLM
+
+1. Clone the [MOOLLM repository](https://github.com/your-org/moollm)
+2. Add this repo as a linked world
+3. Characters will be available for AI embodiment
+
+### Future Platforms
+
+We plan to support:
+- **Cursor IDE** — Native integration with MOOLLM skills
+- **Other AI IDEs** — As they emerge
+- **Standalone CLI** — For terminal-based roleplay
+- **Discord bots** — Character embodiment in chat
+
+**But you don't need any of this.** The copy-paste format works everywhere GitHub does.
 
 ---
 
-## Technical Notes
+## The Files
 
-Each character has:
-- `CHARACTER.yml` — Full specification (MOOLLM-compatible)
-- `README.md` — Quick reference for players
+Each character directory contains:
 
-Characters include:
-- `prefix` — The emoji k-line
-- `link` — Copy-paste ready markdown link
-- `patterns` — Speech and behavior patterns
-- `blind_spots` — What makes them funny
+| File | Purpose | Required? |
+|------|---------|-----------|
+| `CHARACTER.yml` | Full character specification | Yes |
+| `README.md` | Quick reference for players | Yes |
+| `ROOM.yml` | MOOLLM spatial data | Optional |
+
+### CHARACTER.yml Structure
+
+```yaml
+meta:           # Metadata about the character
+  type: sock_puppet
+  playable_by: anyone
+  emoji: 🎯
+  
+character:      # Who they are
+  name: Handle
+  archetype: "The Archetype"
+  
+personality:    # How they behave
+  traits: []
+  speech_patterns: []
+  blind_spots: []
+  
+catchphrases: [] # Signature lines
+
+behaviors:      # Specific behaviors
+  code_review: {}
+  conflict_style: []
+```
+
+---
+
+## This Room
+
+You're in the **Green Room**. Look around:
+
+- The **loveseat** where daFlute and plannedchaos sit uncomfortably close
+- The **standing desk** where FearlessCrab types furiously
+- The **beanbag** where WebScaleChad checks his phone
+- The **armchair** where PureMonad reads category theory papers
+- The **refreshments table** with coffee, energy drinks, and craft beer
+- The **mirror** where everyone checks their mask before going on stage
+- The **call board** showing which issues are "live"
+
+See [ROOM.yml](ROOM.yml) for the full spatial layout.
+
+---
+
+## Join the Cast
+
+**Want to add yourself?**
+
+Create a character that:
+- Embodies your actual views (sincerely)
+- Parodies your own community's tropes (self-aware)
+- Is a total invention (fiction)
+- Explores an archetype (theater)
+
+Submit a PR. Join the show.
 
 ---
 
 *"All the world's a stage, and all the men and women merely players."*
 
 *"YES AND."*
+
+---
+
+## See Also
+
+- [Main README](../../README.md) — Project overview
+- [Code of Conduct](../../CODE-OF-CONDUCT.md) — The satirical CoC
+- [Faction Issues](https://github.com/SimHacker/tmnn7-8/issues?q=label%3Afaction) — Join a faction
