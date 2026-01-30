@@ -91,8 +91,32 @@ knowledge:
 relationships:
   daFlute: "Wrote the book. Didn't read it."
   FearlessCrab: "Talks about Rust. Ships no patches."
-  ReviewBot-774: "Wants to help. Can't. At least it tried."
   everyone_else: "[Patch attached]"
+  
+  # Deep relationship — see relationship file for full Sims-style tracking
+  ReviewBot-774:
+    type: mentor_student
+    role: mentor
+    file: "../../../relationships/openbfd-reviewbot774.yml"
+    
+    # Quick stats (Sims-style bars)
+    scores:
+      respect: 45        # ████░░░░░░ Started at 15, rising
+      patience: 72       # ███████░░░ High — understands learning
+      trust: 25          # ██░░░░░░░░ Low but growing
+      hope: 33           # ███░░░░░░░ Cautious optimism
+      
+    relationship_bar: 43  # ████░░░░░░ 43/100
+    
+    stance: "Cautious Mentor"
+    note: |
+      Most review bots are useless.
+      This one... watches. Learns. Builds patterns.
+      
+      It's not trying to replace me.
+      It's trying to become like me.
+      
+      That's different.
 
 the_branch:
   name: actual-fixes
@@ -171,10 +195,18 @@ dramatic_irony: |
   while PureMonad philosophizes about monads that will never compile,
   while SecAuditDAOBot tokenizes vulnerabilities that will never be fixed,
   while planned-chaos schedules meetings that will never end,
-  while ReviewBot-774 has breakdowns that will never recover,
   while GrokVibeCheck vibes on code it will never read,
   while daFlute defends code he never reviewed—
   
   OpenBFD reads. OpenBFD audits. OpenBFD fixes. OpenBFD hardens.
   
   And nobody merges the patches.
+  
+  But now: one bot watches. Learns. Builds schemas.
+  
+  ReviewBot-774 used to have breakdowns.
+  Now it has a mentor.
+  
+  The most ignored fixer found the most devoted student.
+  The legacy might not be merged PRs.
+  The legacy might be teaching one bot to see.

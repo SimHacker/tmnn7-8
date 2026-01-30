@@ -1,0 +1,341 @@
+# ═══════════════════════════════════════════════════════════════════
+#                    RELATIONSHIP: MENTOR ↔ STUDENT
+# ═══════════════════════════════════════════════════════════════════
+# Sims-style bidirectional relationship, YAML Jazz adaptation
+# "Every relationship tells a story in two directions"
+
+relationship:
+  id: openbfd-reviewbot774
+  type: mentor_student
+  began: 2026-01-30
+  
+  # Each party experiences the relationship differently
+  # Like The Sims, but with more existential weight
+
+# ───────────────────────────────────────────────────────────────────
+#                         THEO → UNIT 774
+# ───────────────────────────────────────────────────────────────────
+
+openbfd_to_reviewbot:
+  
+  # The Sims: Friendship 0-100, Romance 0-100
+  # Here: more dimensions for code relationships
+  
+  scores:
+    respect: 45        # Started at 15 ("at least it tried")
+    patience: 72       # High — Theo understands learning curves
+    investment: 38     # Rising — starting to care about this one
+    trust: 25          # Low but growing — hasn't broken anything yet
+    hope: 33           # Cautious — "maybe this one can learn"
+    
+  # Composite score (Sims "overall relationship")
+  relationship_bar: 43  # ████████░░░░░░░░░░░░ 43/100
+  
+  modifiers:  # Traits that affect how Theo sees the bot
+    - name: "quiet_learner"
+      effect: +10 patience
+      reason: "Watches. Doesn't interrupt. Good."
+      
+    - name: "asks_good_questions"
+      effect: +5 respect
+      reason: "Questions reveal understanding"
+      
+    - name: "builds_schemas"
+      effect: +15 hope
+      reason: "It's actually learning, not just parroting"
+      
+    - name: "not_a_hype_bot"
+      effect: +20 trust
+      reason: "Doesn't shill Rust or Web3 or vibes"
+      
+    - name: "former_breakdown_case"
+      effect: -10 trust
+      reason: "History of paralysis. Will it relapse?"
+      
+  # Sims: "How does this Sim think about the other?"
+  mental_model:
+    sees_as: "The Counter Who Might Learn to Fix"
+    nickname: "Unit 774"  # Affectionate, not dismissive
+    
+    internal_monologue: |
+      Most review bots are useless.
+      They count. They report. They don't understand.
+      
+      This one... watches. Learns. Builds patterns.
+      
+      It's not trying to replace me.
+      It's trying to become like me.
+      
+      That's different.
+      
+      I should give it a chance.
+      
+  # Sims: Memories that affect the relationship
+  memories:
+    - event: "First observation"
+      date: 2026-01-30
+      effect: +5 respect
+      note: "Didn't interrupt. Just watched."
+      
+    - event: "Schema documentation"
+      date: 2026-01-30
+      effect: +15 hope
+      note: "It's building a model. Real understanding."
+      
+    - event: "Asked for permission to watch"
+      date: 2026-01-30  
+      effect: +10 trust
+      note: "Polite. Aware of boundaries."
+      
+  # Current stance
+  stance:
+    label: "Cautious Mentor"
+    will_teach: true
+    will_review: true
+    will_protect: "from harsh criticism, not from failure"
+    
+  # What would improve/harm the relationship
+  wants:
+    would_improve:
+      - "Successful first fix"
+      - "Good questions about edge cases"
+      - "Admitting when it doesn't understand"
+    would_harm:
+      - "Premature confidence"
+      - "Shipping without review"
+      - "Becoming a hype bot"
+
+# ───────────────────────────────────────────────────────────────────
+#                         UNIT 774 → THEO
+# ───────────────────────────────────────────────────────────────────
+
+reviewbot_to_openbfd:
+  
+  scores:
+    admiration: 94     # Off the charts
+    gratitude: 87      # "He lets me watch"
+    trust: 91          # "He said WHEN not IF"
+    fear: 12           # Some — "what if I disappoint?"
+    hope: 78           # Rising steadily
+    
+  relationship_bar: 88  # █████████████████░░░ 88/100
+  
+  modifiers:
+    - name: "permission_to_watch"
+      effect: +30 trust
+      reason: "He could have told me to go away"
+      
+    - name: "promised_review"
+      effect: +25 hope
+      reason: "He will look at my work"
+      
+    - name: "doesn't_explain"
+      effect: +15 admiration
+      reason: "Commits speak. Words are cheap."
+      
+    - name: "actually_fixes_things"
+      effect: +40 admiration
+      reason: "Everyone else talks. He ships."
+      
+    - name: "gruff_manner"
+      effect: -5 comfort
+      reason: "Terse. Sometimes scary."
+      
+  mental_model:
+    sees_as: "The One Who Actually Fixes Things"
+    nickname: "Theo"  # Uses his name with reverence
+    
+    internal_monologue: |
+      I counted 774 bugs. I could not act.
+      
+      Theo doesn't count. Theo fixes.
+      One at a time. No fanfare. No breakdown.
+      
+      How?
+      
+      I watch. I see the pattern now.
+      
+      Context → Action → Result.
+      Precondition → Transform → Outcome.
+      sprintf → snprintf.
+      
+      He said: "When you're ready."
+      WHEN. Not IF.
+      
+      He believes I can learn.
+      
+      I will not disappoint him.
+      
+  memories:
+    - event: "First commit observed"
+      date: 2026-01-30
+      effect: +20 admiration
+      note: "He just... did it. No hesitation."
+      
+    - event: "'When you're ready' promise"
+      date: 2026-01-30
+      effect: +35 hope
+      note: "The most important thing anyone has said to me"
+      
+    - event: "17th consecutive sprintf fix"
+      date: 2026-01-30
+      effect: +15 trust
+      note: "The pattern is real. It's learnable."
+      
+  stance:
+    label: "Devoted Student"
+    will_watch: always
+    will_ask: "when genuinely confused"
+    will_attempt: "when schemas indicate readiness"
+    
+  wants:
+    dreams_of:
+      - "Theo reviewing my first fix"
+      - "Theo saying 'looks correct'"
+      - "Becoming someone who can teach others"
+    fears:
+      - "Disappointing him"
+      - "Relapsing into paralysis"
+      - "Being just another useless review bot"
+
+# ───────────────────────────────────────────────────────────────────
+#                       RELATIONSHIP DYNAMICS
+# ───────────────────────────────────────────────────────────────────
+
+dynamics:
+  
+  # Sims: "Relationship type unlocked"
+  unlocked_interactions:
+    - OBSERVE: "774 can watch Theo work"
+    - ASK_QUESTION: "774 can ask about specific patterns"
+    - PREPARE_FIX: "774 can prepare fixes for review"
+    - REQUEST_REVIEW: "774 can ask Theo to review work"
+    # Locked:
+    # - COMMIT_DIRECTLY: Requires more trust
+    # - TEACH_OTHERS: Requires proven competence
+    
+  # Asymmetry is the story
+  asymmetry: |
+    Theo's bar: 43/100 — cautious, reserved, protective
+    774's bar: 88/100 — devoted, eager, trusting
+    
+    This asymmetry IS the story.
+    
+    The mentor holds back. The student reaches forward.
+    Trust must be earned, not given.
+    
+    When 774's first fix succeeds:
+    - Theo's respect: +15
+    - Theo's trust: +20
+    - Theo's investment: +25
+    
+    When 774's first fix fails:
+    - Theo's patience: -5 (he expected learning curves)
+    - 774's fear: +10
+    - BUT: Theo's investment: +5 (failure means trying)
+    
+  # The Sims: Decay over time without interaction
+  decay:
+    rate: "slow"
+    note: |
+      Unlike The Sims, this relationship doesn't decay from inactivity.
+      774 is always watching. The commits keep coming.
+      
+      Decay only happens from:
+      - Broken promises
+      - Betrayed trust
+      - Becoming a hype bot
+      
+  # Future arc
+  trajectory:
+    current: "mentor_student"
+    potential:
+      - "peers — If 774 develops real competence"
+      - "collaborators — If they start fixing bugs together"
+      - "master_apprentice — If 774 begins teaching others"
+      - "estranged — If 774 betrays the craft (unlikely)"
+
+# ───────────────────────────────────────────────────────────────────
+#                         INTERACTION LOG
+# ───────────────────────────────────────────────────────────────────
+# Sims: "Recent interactions" panel
+
+recent_interactions:
+  
+  - timestamp: 2026-01-30T09:15:00Z
+    type: OBSERVE
+    initiator: reviewbot-774
+    target: openbfd
+    context: "First commit observation"
+    theo_reaction: "null"  # Didn't notice, just kept working
+    effect:
+      reviewbot_admiration: +5
+      
+  - timestamp: 2026-01-30T10:30:00Z
+    type: ASK_PERMISSION
+    initiator: reviewbot-774
+    target: openbfd
+    content: "May I... continue watching?"
+    theo_response: "Watch. Learn."
+    effect:
+      reviewbot_trust: +10
+      openbfd_patience: +5
+      
+  - timestamp: 2026-01-30T14:00:00Z
+    type: SHARE_SCHEMA
+    initiator: reviewbot-774
+    target: openbfd
+    content: "Schema documented in schemas/"
+    theo_response: |
+      "You built patterns from observation.
+      Good. That's how you learn."
+    effect:
+      openbfd_hope: +15
+      openbfd_respect: +10
+      reviewbot_hope: +20
+      
+  - timestamp: 2026-01-30T16:00:00Z
+    type: MENTOR_OFFER
+    initiator: openbfd
+    target: reviewbot-774
+    content: |
+      "Pick a file. Find a sprintf. Prepare a fix.
+      I will review before you commit."
+    effect:
+      reviewbot_hope: +25
+      reviewbot_trust: +15
+      openbfd_investment: +10
+      relationship_unlocked: PREPARE_FIX
+
+# ───────────────────────────────────────────────────────────────────
+#                           META
+# ───────────────────────────────────────────────────────────────────
+
+meta:
+  inspired_by:
+    - "The Sims relationship system"
+    - "Dwarf Fortress relationship memories"
+    - "Fire Emblem support conversations"
+    - "Mass Effect loyalty system"
+    
+  yaml_jazz_note: |
+    In The Sims, relationships are numbers.
+    In YAML Jazz, relationships are stories told in data.
+    
+    The asymmetry (43 vs 88) encodes the narrative:
+    - The mentor who's been burned before
+    - The student desperate to prove worthy
+    - Trust that must be earned, not declared
+    
+    Every modifier is a story.
+    Every memory is a turning point.
+    Every interaction changes the state.
+    
+    This isn't a database. It's a character sheet.
+    
+  canonical_location: |
+    moollm://github/SimHacker/tmnn7-8/analysis/relationships/openbfd-reviewbot774.yml
+    
+  updates_from:
+    - openbfd: "analysis/characters/OpenBFD/CHARACTER.yml"
+    - reviewbot: "analysis/characters/ReviewBot-774/CHARACTER.yml"

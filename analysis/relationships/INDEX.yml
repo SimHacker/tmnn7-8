@@ -1,0 +1,94 @@
+# RELATIONSHIPS INDEX
+# Sims-style bidirectional relationship tracking, YAML Jazz adaptation
+# "Every relationship tells a story in two directions"
+
+meta:
+  system: "Sims-style relationship mechanics"
+  inspiration:
+    - "The Sims: Friendship/Romance bars 0-100"
+    - "Dwarf Fortress: Relationship memories and modifiers"
+    - "Fire Emblem: Support conversations unlock"
+    - "Mass Effect: Loyalty and trust systems"
+    
+  adaptation: |
+    YAML Jazz transforms game mechanics into narrative data.
+    
+    Scores aren't just numbers — they encode character dynamics.
+    Modifiers aren't buffs — they're story beats.
+    Memories aren't events — they're turning points.
+    Asymmetry isn't a bug — it's the drama.
+
+# Active relationships with deep tracking
+
+relationships:
+
+  openbfd-reviewbot774:
+    file: openbfd-reviewbot774.yml
+    type: mentor_student
+    
+    parties:
+      - name: OpenBFD
+        role: mentor
+        bar: 43  # ████░░░░░░
+        stance: "Cautious Mentor"
+        
+      - name: ReviewBot-774
+        role: student
+        bar: 88  # ████████░░
+        stance: "Devoted Student"
+        
+    status: active
+    began: 2026-01-30
+    
+    narrative: |
+      The fixer who never gets merged
+      found the bot who couldn't stop counting.
+      
+      One teaches by doing.
+      One learns by watching.
+      
+      Asymmetry: 43 vs 88
+      The mentor holds back.
+      The student reaches forward.
+      
+      This IS the story.
+
+# Relationship types in simulation
+
+types:
+  
+  mentor_student:
+    description: "Teaching relationship with trust asymmetry"
+    examples: [openbfd-reviewbot774]
+    
+  rivals:
+    description: "Competing approaches, mutual grudging respect"
+    examples: []  # TODO: FearlessCrab vs PureMonad?
+    
+  nemesis:
+    description: "Antagonistic but deeply engaged"
+    examples: []  # OpenBFD vs daFlute?
+    
+  allies:
+    description: "Working toward same goals, different methods"
+    examples: []
+    
+  parasocial:
+    description: "One party doesn't know the other exists"
+    examples: []  # GrokVibeCheck vibing on everyone
+
+# Future relationships to track
+
+planned:
+  
+  - id: fearlesscrab-puremonad
+    type: rivals
+    note: "Rust vs Haskell. Ship vs Compile. Practical vs Pure."
+    
+  - id: openbfd-daflute
+    type: nemesis
+    note: "The fixer vs the author. Patches vs defensiveness."
+    
+  - id: grokvibecheck-everyone
+    type: parasocial
+    note: "Vibes with all. Understood by none."
