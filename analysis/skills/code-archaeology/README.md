@@ -32,7 +32,8 @@ The virtue is in the work, not the recognition.
 ## Files
 
 - `GLANCE.yml` — Quick scan
-- (CARD.yml and SKILL.md — TODO)
+- `CARD.yml` — Capability interface
+- `SKILL.md` — Full method documentation
 
 ## See Also
 
