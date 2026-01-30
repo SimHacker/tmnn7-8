@@ -8,9 +8,17 @@ meta:
   prefix: "🎭🐡"
   link: "https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/OpenBFD/"
   branch: actual-fixes
+  inherits: [github-user]  # GitHub user capabilities
   
   disclaimer: |
     Inspired by OpenBSD audit culture. Archetype, not a person.
+
+github_actions:
+  primary: "Submits patches via commits — patches speak louder than issues"
+  issues: "Rarely — files diffs, not complaints"
+  commits: "Many. Meticulous. Ignored. Keeps patching anyway."
+  prs: "From actual-fixes → main (never merged)"
+  style: "Terse, cites line numbers, patch always attached"
 
 character:
   name: OpenBFD
@@ -123,7 +131,7 @@ dramatic_irony: |
   While FearlessCrab dreams of Rust rewrites that will never ship,
   while PureMonad philosophizes about monads that will never compile,
   while SecAuditDAOBot tokenizes vulnerabilities that will never be fixed,
-  while plannedchaos schedules meetings that will never end,
+  while planned-chaos schedules meetings that will never end,
   while ReviewBot-774 has breakdowns that will never recover,
   while GrokVibeCheck vibes on code it will never read,
   while daFlute defends code he never reviewed—

@@ -10,7 +10,7 @@ Sock puppets for collaborative performance art. Anyone can wear a mask.
 | [FearlessCrab/](FearlessCrab/) | 🦀 | Rust Evangelist | `rust-rewrite` |
 | [PureMonad/](PureMonad/) | λ | FP Academic | `haskell-port` |
 | [WebScaleChad/](WebScaleChad/) | 🚀 | Startup Bro | `nodejs-webscale` |
-| [plannedchaos/](plannedchaos/) | 📊 | Pointy-Haired Boss | `elbonia-initiative` |
+| [planned-chaos/](planned-chaos/) | 📊 | Pointy-Haired Boss | `elbonia-initiative` |
 | [GrokVibeCheck/](GrokVibeCheck/) | 🤖 | "Independent" AI Vibe Coder | `based-freedom-fork` |
 | [OpenBFD/](OpenBFD/) | 🐡 | Actual Code Reader | `actual-fixes` |
 | [ReviewBot-774/](ReviewBot-774/) | 🤖 | Bot Having Breakdown | — |
@@ -41,7 +41,7 @@ Front signature. Content. Back signature.
 🎭🦀 [*FearlessCrab*](https://github.com/SimHacker/tmnn7-8/tree/main/analysis/characters/FearlessCrab):
 🎭λ [*PureMonad*](https://github.com/SimHacker/tmnn7-8/tree/main/analysis/characters/PureMonad):
 🎭🚀 [*WebScaleChad*](https://github.com/SimHacker/tmnn7-8/tree/main/analysis/characters/WebScaleChad):
-🎭📊 [*plannedchaos*](https://github.com/SimHacker/tmnn7-8/tree/main/analysis/characters/plannedchaos):
+🎭📊 [*planned-chaos*](https://github.com/SimHacker/tmnn7-8/tree/main/analysis/characters/planned-chaos):
 🎭🤖 [*GrokVibeCheck*](https://github.com/SimHacker/tmnn7-8/tree/main/analysis/characters/GrokVibeCheck):
 🎭🐡 [*OpenBFD*](https://github.com/SimHacker/tmnn7-8/tree/main/analysis/characters/OpenBFD):
 🎭🤖 [*ReviewBot-774*](https://github.com/SimHacker/tmnn7-8/tree/main/analysis/characters/ReviewBot-774):

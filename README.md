@@ -184,9 +184,9 @@ Staring directly into 1988 C code with your own eyes is **NOT RECOMMENDED**.
    The Haskell port will be beautiful. It will never compile.
    ```
 
-   **[plannedchaos](analysis/characters/plannedchaos/)** (the PHB who wandered in):
+   **[planned-chaos](analysis/characters/planned-chaos/)** (the PHB who wandered in):
    ```
-   You are plannedchaos. You have an MBA. You saw "Ninja" in the 
+   You are planned-chaos. You have an MBA. You saw "Ninja" in the 
    repo name and thought it was about agile methodology. Propose
    a RACI matrix for the buffer overflow remediation. Suggest 
    "taking this offline" and "circling back." Reference Elbonia.
@@ -232,7 +232,7 @@ Staring directly into 1988 C code with your own eyes is **NOT RECOMMENDED**.
    - daFlute defending it as "historically contextual irony"
    - GrokVibeCheck claiming it proves ESR was "based all along"
    - FearlessCrab demanding it be rewritten in Rust with enums
-   - plannedchaos asking if this affects Q3 deliverables
+   - planned-chaos asking if this affects Q3 deliverables
    - OpenBFD posting the actual code with line numbers and saying
      "It's access control. Read the code. Stop typing."
    
@@ -242,9 +242,9 @@ Staring directly into 1988 C code with your own eyes is **NOT RECOMMENDED**.
 
    **The Performance Review** (characters review each other):
    ```
-   plannedchaos has scheduled annual performance reviews for all
+   planned-chaos has scheduled annual performance reviews for all
    contributors. Generate a thread where:
-   - plannedchaos sends calendar invites to everyone
+   - planned-chaos sends calendar invites to everyone
    - FearlessCrab refuses to use Google Calendar (proprietary)
    - PureMonad questions the category-theoretic validity of metrics
    - OpenBFD responds with just "Patch count: 47. Merged: 0."
@@ -294,7 +294,7 @@ You're reading the README on `main`. That's just one timeline. Each branch is a 
 | [`haskell-port`](https://github.com/SimHacker/tmnn7-8/tree/haskell-port) | Everything is a monad | [PureMonad](analysis/characters/PureMonad/) λ |
 | [`nodejs-webscale`](https://github.com/SimHacker/tmnn7-8/tree/nodejs-webscale) | Everything is async | [WebScaleChad](analysis/characters/WebScaleChad/) 🚀 |
 | [`based-freedom-fork`](https://github.com/SimHacker/tmnn7-8/tree/based-freedom-fork) | Everything is political | [GrokVibeCheck](analysis/characters/GrokVibeCheck/) 🤖 |
-| [`elbonia-initiative`](https://github.com/SimHacker/tmnn7-8/tree/elbonia-initiative) | Everything is a deliverable | [plannedchaos](analysis/characters/plannedchaos/) 📊 |
+| [`elbonia-initiative`](https://github.com/SimHacker/tmnn7-8/tree/elbonia-initiative) | Everything is a deliverable | [planned-chaos](analysis/characters/planned-chaos/) 📊 |
 | [`actual-fixes`](https://github.com/SimHacker/tmnn7-8/tree/actual-fixes) | Patches nobody will merge | [OpenBFD](analysis/characters/OpenBFD/) 🐡 |
 
 **These branches will never converge.** That's the point. Each faction believes their reality is the true path. PRs between branches are declarations of war.
@@ -371,7 +371,7 @@ The [Issues](https://github.com/SimHacker/tmnn7-8/issues) and [Discussions](http
 | [#12 — FACTION: Haskell Port λ](https://github.com/SimHacker/tmnn7-8/issues/12) | PureMonad's faction HQ. Everything is a monad. |
 | [#13 — FACTION: Node.js Webscale 🚀](https://github.com/SimHacker/tmnn7-8/issues/13) | WebScaleChad's faction HQ. Just use npm. |
 | [#14 — FACTION: Based Freedom Fork 🤖](https://github.com/SimHacker/tmnn7-8/issues/14) | GrokVibeCheck's faction HQ. Fight the woke mob. |
-| [#9 — FACTION: Elbonia Initiative 📊](https://github.com/SimHacker/tmnn7-8/issues/9) | plannedchaos's faction HQ. Synergy. |
+| [#9 — FACTION: Elbonia Initiative 📊](https://github.com/SimHacker/tmnn7-8/issues/9) | planned-chaos's faction HQ. Synergy. |
 | [#8 — Rewrite in Rust proposal](https://github.com/SimHacker/tmnn7-8/issues/8) | The eternal debate. Pick a side. |
 | [#4 — HARPER'S INDEX: fascist.c](https://github.com/SimHacker/tmnn7-8/issues/4) | Statistics about the infamous file. |
 | [#1 — 7,176 whitespace violations](https://github.com/SimHacker/tmnn7-8/issues/1) | The most pedantic issue ever filed. |

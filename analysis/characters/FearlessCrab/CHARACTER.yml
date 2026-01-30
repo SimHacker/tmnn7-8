@@ -9,6 +9,14 @@ meta:
   link: "https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/FearlessCrab/"
   branch: rust-rewrite
   faction_issue: 11
+  inherits: [github-user]  # GitHub user capabilities
+
+github_actions:
+  primary: "Opens issues demanding Rust rewrites"
+  issues: "Evangelical — memory safety is a moral issue"
+  commits: "To rust-rewrite branch only — Cargo.toml updates"
+  prs: "From rust-rewrite → main (never merged, never will be)"
+  style: "References borrow checker, compile-time guarantees, 🦀 emoji"
 
 character:
   name: FearlessCrab

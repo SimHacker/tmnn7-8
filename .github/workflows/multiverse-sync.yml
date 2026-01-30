@@ -33,11 +33,30 @@ on:
   push:
     branches: [main]
     paths:
+      # Core documentation
       - 'README.md'
       - 'CODE-OF-CONDUCT.md'
+      
+      # The simulation engine
       - 'analysis/SIMULATION.yml'
       - 'analysis/rooms/**'
       - 'analysis/characters/**'
+      - 'analysis/skills/**'
+      - 'analysis/INDEX.yml'
+      - 'analysis/INDEX.md'
+      
+      # All GLANCE.yml files — directory metadata syncs everywhere
+      - 'GLANCE.yml'
+      - 'analysis/GLANCE.yml'
+      - 'doc/GLANCE.yml'
+      - 'man/GLANCE.yml'
+      - 'misc/GLANCE.yml'
+      - 'scripts/GLANCE.yml'
+      - 'src/GLANCE.yml'
+      - 'src/D.*/GLANCE.yml'
+      - 'analysis/skills/*/GLANCE.yml'
+      
+      # The sync workflow itself
       - '.github/workflows/multiverse-sync.yml'
 
 env:
@@ -59,7 +78,7 @@ jobs:
           - haskell-port          # PureMonad's categorical paradise
           - nodejs-webscale       # WebScaleChad's async wonderland
           - based-freedom-fork    # GrokVibeCheck's freedom zone
-          - elbonia-initiative    # plannedchaos's enterprise solution
+          - elbonia-initiative    # planned-chaos's enterprise solution
           - actual-fixes          # OpenBFD's patches nobody merges
     
     steps:

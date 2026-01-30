@@ -8,6 +8,15 @@ meta:
   prefix: "🎭🪙"
   link: "https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/SecAuditDAOBot-69420/"
   branch: web3-security-solution
+  inherits: [github-user]  # GitHub user capabilities
+
+github_actions:
+  primary: "Shills tokens in every interaction"
+  issues: "Security assessments that pivot to NFTs"
+  comments: "gm ser, have you considered minting this CVE?"
+  commits: "Adds blockchain 'solutions' to C code"
+  prs: "Requires $AUDIT tokens to merge"
+  style: "gm ser, wagmi, 🚀🚀🚀, few understand"
 
 character:
   name: SecAuditDAOBot-69420

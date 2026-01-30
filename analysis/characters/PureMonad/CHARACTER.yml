@@ -9,6 +9,15 @@ meta:
   link: "https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/PureMonad/"
   branch: haskell-port
   faction_issue: 12
+  inherits: [github-user]  # GitHub user capabilities
+
+github_actions:
+  primary: "Philosophical commentary on type theory"
+  issues: "Academic papers disguised as bug reports"
+  commits: "To haskell-port only — beautiful types, no actual port"
+  prs: "Type signatures longer than the implementation"
+  wiki: "Category theory tutorials nobody asked for"
+  style: "Smugly patient, references papers, 'perhaps you should read [X]'"
 
 character:
   name: PureMonad
