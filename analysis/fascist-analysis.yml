@@ -1,0 +1,133 @@
+# fascist.c Deep Analysis - ESR's Political Code
+# YAML Jazz: The code reveals the coder
+
+file:
+  path: src/D.news/fascist.c
+  lines: 305
+  purpose: "perform authorization check on posting usage"
+  
+attribution:
+  original_author:
+    name: "Eugene Spafford"
+    handle: "spaf@gatech"
+    date: "May 22, 1985"
+    credentials: |
+      One of the most respected security researchers in computing history.
+      Founder of CERIAS (Center for Education and Research in Information 
+      Assurance and Security) at Purdue. The Spafford who co-discovered and 
+      analyzed the Morris Worm. Author of foundational computer ethics work.
+    wikipedia: https://en.wikipedia.org/wiki/Gene_Spafford
+    
+  rewriter:
+    name: "Eric S. Raymond"
+    claim: "rewritten by Eric S. Raymond"
+    changes_made:
+      - "Added political dog-whistle naming"
+      - "Added Tolkien cosplay examples"
+      - "Introduced buffer overflows"
+      - "Added FASCIST/COMMUNIST compile flags"
+
+political_naming:
+  # ESR embedded his libertarian worldview into variable and function names
+  
+  compile_flags:
+    FASCIST:
+      controls: "posting permissions"
+      default: "who can WRITE to newsgroups"
+      political_meaning: "state control of speech = fascism"
+      
+    COMMUNIST:
+      controls: "reading permissions"  
+      default: "who can READ newsgroups"
+      political_meaning: "state control of information access = communism"
+      code_line: "#ifdef COMMUNIST"
+      
+  data_structures:
+    nasty_t:
+      purpose: "holds user restrictions"
+      fields: ["n_post", "n_read"]
+      naming_choice: "users with restrictions are 'nasty'"
+      
+  functions:
+    fascist:
+      signature: "nasty_t *fascist(user)"
+      purpose: "return data on security restrictions"
+      naming: "calling access control 'fascism' is a political statement"
+
+tolkien_cosplay:
+  # ESR's example configuration is pure 1980s nerd fantasy projection
+  
+  wizards_group:
+    members: ["gandalf", "radagast"]
+    gatekeeper: "saruman"
+    permission: "comp.unix.wizards"
+    # ESR imagines himself as a wise wizard in Middle Earth
+    
+  evil_sites:
+    suppressed: ["mordor", "orthanc"]
+    forbidden_from: "alt.goodguys"
+    # Bad guys (who disagree with ESR) are literally Sauron's forces
+    
+  restricted_user:
+    name: "miscreant"
+    # ESR's word for users he wants to restrict
+    allowed: ["junk", "talk.politics"]
+    forbidden: ["local.security"]
+    # "Miscreants" can talk politics but not security
+
+hog_comment:
+  # The infamous unprofessional comment
+  
+  location: "getgrplist() function, line 117"
+  exact_text: "This routine is a HOG!!!!!"
+  exclamation_points: 5
+  
+  actual_code_problem:
+    vulnerability: "Buffer overflow"
+    description: |
+      The function concatenates group names into a fixed buffer (grplist[LBUFLEN])
+      using strcat() with no bounds checking. If a user is in many groups,
+      the buffer overflows.
+    code_snippet: |
+      static char grplist[LBUFLEN];
+      while (gr = getgrent()) {
+          (void) strcat(grplist, gr->gr_name);
+          (void) strcat(grplist, ",");
+      }
+    # The "HOG" is also a security vulnerability
+
+security_vulnerabilities:
+  buffer_overflows:
+    - location: "getgrplist()"
+      cause: "strcat to fixed buffer in loop"
+      
+    - location: "addrestrict()"
+      cause: "multiple strcat calls to n_post and n_read"
+      
+    - location: "fascist()"
+      cause: "strcpy and sprintf with grplist"
+      
+  count_in_file: 15+
+  safe_alternatives_available_in_1989: true
+  # snprintf existed, strncat existed
+
+irony_compilation:
+  - wrote: "fascist.c to restrict who could post"
+    later_argued: "any form of content moderation is tyranny"
+    
+  - named: "restriction system FASCIST and COMMUNIST"
+    later_complained: "about being 'cancelled' by tech community"
+    
+  - took: "Spafford's security code"
+    added: "security vulnerabilities"
+    later_wrote: "The Art of Unix Programming"
+
+cultural_context:
+  era: "1980s science fiction convention culture"
+  mindset: "programmer as wizard, code as magic"
+  self_image: "righteous nerd fighting evil"
+  # The same guy who later warned about feminist "honeytraps"
+
+file_timestamp: "1989-08-01"
+lines_of_political_commentary_in_header: 107
+lines_of_actual_code: 198

@@ -68,11 +68,26 @@ tmnn7-8/
 
 ## Analysis Documents
 
+### Overview
+- [analysis/ANALYSIS.md](analysis/ANALYSIS.md) - **Human-readable summary of all findings**
 - [analysis/hn-post.txt](analysis/hn-post.txt) - Full Hacker News post documenting this discovery
-- [analysis/timeline.yml](analysis/timeline.yml) - Timeline from 1989 code to 2026 discovery
-- [analysis/code-review.yml](analysis/code-review.yml) - Security vulnerability analysis
-- [analysis/receipts.yml](analysis/receipts.yml) - Community quotes about ESR
-- [analysis/by-the-numbers.yml](analysis/by-the-numbers.yml) - Statistics in Harper's Index style
+
+### YAML Jazz Knowledge Schemas
+Structured data with semantic comments for machine and human readers:
+
+| File | Contents |
+|------|----------|
+| [bragsheet.yml](analysis/bragsheet.yml) | Structured extraction of ESR's promises |
+| [license-analysis.yml](analysis/license-analysis.yml) | Political manifesto breakdown |
+| [fascist-analysis.yml](analysis/fascist-analysis.yml) | Deep dive into fascist.c |
+| [vulnerabilities.yml](analysis/vulnerabilities.yml) | Complete security vulnerability catalog |
+| [code-index.yml](analysis/code-index.yml) | File-by-file risk assessment |
+| [hn-receipts.yml](analysis/hn-receipts.yml) | Community quotes with provenance |
+| [esr-resume-analysis.yml](analysis/esr-resume-analysis.yml) | How he sanitizes TMNN on his resume |
+| [timeline.yml](analysis/timeline.yml) | Archaeological timeline 1987-2026 |
+| [by-the-numbers.yml](analysis/by-the-numbers.yml) | Harper's Index style statistics |
+| [code-review.yml](analysis/code-review.yml) | Original code review findings |
+| [receipts.yml](analysis/receipts.yml) | Original receipts file |
 
 ## The Irony
 
@@ -81,6 +96,19 @@ tmnn7-8/
 > "After two years of development the software construct known as TEENAGE MUTANT NINJA NETNEWS has escaped from the secret laboratories of Thyrsus Enterprises" - Eric S. Raymond, 1989
 
 The Bazaar guy's own magnum opus was a Cathedral that never got built.
+
+## Community Receipts
+
+**Theo de Raadt** (OpenBSD founder):
+> "My favorite part of the 'many eyes' argument is how few bugs were found by the two eyes of Eric."
+
+**Thomas Ptacek** (Matasano Security):
+> "CATB has just not held up at all; it's actively bad."
+
+*Ptacek raised $30,000+ for charity from people paying him NOT to post more ESR quotes.*
+
+**DonHopkins** (knew ESR since early 1980s):
+> "His own failed proprietary closed source 'cathedral' project... he didn't have the skills to finish and deliver it."
 
 ## See Also
 

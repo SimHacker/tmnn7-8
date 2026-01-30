@@ -1,0 +1,86 @@
+# BRAGSHEET Analysis - ESR's Promises vs Reality
+# YAML Jazz: Comments carry semantic weight
+
+# The opening salvo - note the grandiosity
+announcement:
+  tone: "messianic"  # "Hear ye, hear ye, hear ye..."
+  self_description: "software construct known as TEENAGE MUTANT NINJA NETNEWS"
+  origin_myth: "escaped from the secret laboratories of Thyrsus Enterprises"
+  # Thyrsus = ESR's consulting company. Named after the staff of Dionysus.
+  # Even his company name is pretentious mythological cosplay.
+  
+  claimed_development_time: "two years"
+  promised_identity: "News 3.0"
+  actual_version_released: "B3.0 (beta level 7.8)"
+  # Note: Never made it past beta. "News 3.0" was vaporware.
+
+marketing_claims:
+  # Direct quotes from BRAGSHEET - each one a hostage to fortune
+  
+  complete_rewrite:
+    claim: "complete from-the-ground-up rewrite of the entire suite"
+    reality: "Built on B News foundation, copied Spafford's code"
+    
+  code_quality:
+    claim: "carefully modularized in accordance with abstract-data-type design principles"
+    reality: "774 buffer overflows, global state everywhere"
+    
+  documentation:
+    claim: "lavishly commented for comprehensibility"
+    reality: "Comments include 'This routine is a HOG!!!!!' and 'ugly and flaky'"
+    
+  accompanying_docs:
+    claim: "full set of documents detailing installation, usage and the architecture internals"
+    reality: "BUGS file lists incomplete features, 'TO DO' items never done"
+
+promised_features:
+  # Features promised in "the future" section
+  
+  hypertext:
+    status: never_delivered
+    quote: "a design for a distributed hypertext service netnews option"
+    claimed_advisors: ["Robin Hansen", "Mark Miller"]
+    # Name-dropping "leading figures in the hypertext research community"
+    
+  encryption:
+    status: never_delivered
+    quote: "a public-key encryption system for authentication purposes"
+    begging: "Anyone who has working C source for such a thing is requested to E-mail me"
+    # He didn't even have the code - was asking others to provide it
+    
+  intelligent_agents:
+    status: never_delivered
+    quote: "intelligent filtering agents (perhaps starting with keyword-based retrieval)"
+    # "perhaps" - hedging even in the brag document
+    
+  advanced_services:
+    status: never_delivered
+    quote: "experiments in advanced logical-network services"
+    vagueness_level: maximum
+
+cathedral_evidence:
+  # Evidence of "cathedral" development style from the guy who wrote "The Bazaar"
+  
+  secrecy:
+    quote: "secret laboratories"
+    duration: "two years"
+    collaboration: none_mentioned
+    
+  perfectionism:
+    - "after two years of development"
+    - Named advisors but no co-developers
+    - No bazaar, no community, no "release early, release often"
+    
+  irony_score: 10  # Out of 10
+
+call_to_action:
+  recruitment_pitch: |
+    You too can be a part of this epic. By using the standard 3.0 service
+    libraries, you can easily keep protocol and functional compatibility
+  credits_promise: "The credits list may be waiting for your name!"
+  # No one's name was ever added. Project died.
+
+file_metadata:
+  source: doc/BRAGSHEET
+  lines: 366
+  tone: "corporate marketing meets D&D campaign announcement"

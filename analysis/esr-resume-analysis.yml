@@ -1,0 +1,105 @@
+# ESR Resume Analysis - How He Buries TMNN
+# YAML Jazz: What he says vs what he hides
+
+source:
+  url: http://catb.org/~esr/resume.html
+  last_updated: "2009/03/06"
+  # Still online as of 2026
+
+tmnn_entry:
+  # How TMNN appears on ESR's official resume
+  
+  location: "Independent Consulting (May 1985 to October 1993)"
+  
+  actual_text: "A rewrite of the USENET netnews software."
+  
+  what_is_missing:
+    - "Teenage Mutant Ninja Netnews" name
+    - "TMNN" acronym
+    - "News 3.0" identity
+    - "beta level 7.8" status
+    - "abandoned" outcome
+    - "two years in secret laboratories"
+    - Any mention of features promised
+    - Any mention of features delivered
+    
+  what_is_sanitized:
+    original_branding: "TEENAGE MUTANT NINJA NETNEWS"
+    resume_version: "USENET netnews software"
+    # Generic to the point of meaninglessness
+    
+  word_count_ratio:
+    bragsheet_description: 366  # lines
+    resume_description: 7  # words
+
+resume_inflation_elsewhere:
+  # Things ESR DOES brag about on the resume
+  
+  new_hackers_dictionary:
+    resume_text: |
+      I conceived and edited The New Hacker's Dictionary (MIT Press, 1991).
+      This book received enthusiastic reviews in The New York Times, PC Magazine,
+      Byte, PC World, UNIX Review, IEEE Spectrum...
+    reality: "Appropriated MIT-AI Lab community document"
+    
+  gnu_emacs:
+    resume_text: |
+      I have been an active member of the GNU project, and was principally 
+      responsible for EMACS Lisp maintenance between December 1991 and June 1993.
+    contrast: "Later spent career attacking FSF and RMS"
+    
+  catb_sales:
+    resume_text: |
+      This book reached #7 on the New York Times's list of business-book bestsellers.
+    contrast: "tptacek: 'CATB has just not held up at all; it's actively bad'"
+    
+  netscape_claim:
+    resume_text: |
+      This paper was subsequently described by Netscape Communications, Inc., 
+      as a major factor in their decision to release their client software as 
+      open source.
+    brendan_eich_clarification: |
+      CatB was waved around (not sure that the most ardent wavers actually 
+      read it) inside Netscape in late 1997 as a gesture to support the 
+      argument
+
+pattern_analysis:
+  successful_projects: "prominently featured with extensive detail"
+  failed_projects: "buried in generic language"
+  
+  tmnn_handling:
+    strategy: "minimize and genericize"
+    result: "unrecognizable unless you know to look"
+    
+  consistent_with:
+    - Never discussing TMNN in interviews
+    - Not linking to archived code
+    - Not mentioning it in CATB despite relevance
+    # The "release early, release often" guy hiding his 2-year secret project
+
+personal_data_section:
+  # ESR's resume includes this
+  
+  martial_arts: "World Tae-Kwon-Do Federation 1st Dan Black Belt"
+  weapons: "SCA heavy weapons"
+  firearms: "especially target and tactical pistol shooting"
+  novel: "SF, titled Shadows and Stars, nearly completed"
+  # The novel was never published either
+  
+  word_count_martial_arts: 47
+  word_count_tmnn: 7
+  # More words about fighting than about his biggest coding project
+
+thyrsus_enterprises:
+  # His consulting company mentioned in BRAGSHEET
+  
+  in_bragsheet: "secret laboratories of Thyrsus Enterprises"
+  in_resume: not_mentioned
+  # The entire corporate identity is scrubbed
+
+contact_in_license:
+  # 1989 LICENSE file included
+  voice: "(215)-296-5718"
+  address: "22 South Warren Avenue, Malvern PA 19355"
+  solicitation: "don't hesitate to call"
+  # Active sales pitch in supposedly free software license

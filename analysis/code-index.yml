@@ -1,0 +1,195 @@
+# TMNN Code Index - File-by-File Security Ratings
+# YAML Jazz: Archaeological catalog with risk assessment
+
+overview:
+  total_lines: 23549
+  total_files: 340
+  c_source_files: 104
+  header_files: ~30
+  shell_scripts: ~15
+  documentation: ~30
+
+security_rating_scale:
+  A: "No obvious issues"
+  B: "Minor issues, period-appropriate"
+  C: "Significant vulnerabilities"
+  D: "Dangerous code patterns"
+  F: "Actively harmful, do not use"
+
+notable_files:
+  # Files that tell the TMNN story
+  
+  doc/BRAGSHEET:
+    lines: 366
+    security_rating: N/A  # Documentation
+    historical_value: HIGH
+    contents: "ESR's marketing promises"
+    key_quotes:
+      - "two years of development"
+      - "secret laboratories"
+      - "hypertext... encryption... intelligent filtering agents"
+    irony_level: 10
+    
+  LICENSE:
+    lines: 175
+    security_rating: N/A
+    historical_value: HIGH
+    contents: "Political manifesto + sales pitch + GPL-like terms"
+    notable_sections:
+      - "AUTHOR'S STATEMENT OF INTENT"
+      - "AN UNABASHED COMMERCIAL PLUG"
+    ideology_density: 40%
+    
+  doc/BUGS:
+    lines: 57
+    security_rating: N/A
+    historical_value: HIGH
+    contents: "Known bugs and TO DO items"
+    status: "All items abandoned"
+    esr_self_assessment: |
+      Items include "Lint barfs", "doesn't work", "needs to be re-examined"
+      
+  src/version.h:
+    lines: ~10
+    security_rating: N/A
+    key_content: '#define NEWS_VERSION "B3.0 (beta level 7.8)"'
+    significance: "Proves abandonment at beta stage"
+
+high_risk_files:
+  # Security rating F - Actively dangerous
+  
+  src/D.news/fascist.c:
+    lines: 305
+    security_rating: F
+    vulnerabilities:
+      - "Buffer overflow in getgrplist()"
+      - "Buffer overflow in addrestrict()"
+      - "Multiple unsafe strcat() calls"
+    historical_interest:
+      - "FASCIST/COMMUNIST compile flags"
+      - "Tolkien cosplay examples"
+      - "HOG!!!!! comment"
+    original_author: "Eugene Spafford"
+    rewritten_by: "ESR (added vulnerabilities)"
+    
+  src/D.priv/lock.c:
+    lines: 220
+    security_rating: F
+    vulnerabilities:
+      - "Lock files in world-writable /tmp"
+      - "Hardcoded semaphore key"
+      - "DoS via lock file manipulation"
+    esr_comment: "ugly and flaky"
+    shipped_anyway: true
+    
+  src/rnews.c:
+    lines: 555
+    security_rating: F
+    vulnerabilities:
+      - "mktemp() race conditions"
+      - "system() command injection"
+      - "sprintf() buffer overflows"
+    unsafe_function_count: 11
+    
+  src/inews.c:
+    lines: 544
+    security_rating: F
+    vulnerabilities:
+      - "mktemp() race conditions"  
+      - "sprintf() without bounds"
+    unsafe_function_count: 19
+    
+  src/D.port/spawn.c:
+    lines: ~200
+    security_rating: F
+    vulnerabilities:
+      - "system() with user input"
+      - "popen() with user input"
+      - "Incomplete privilege dropping"
+    purpose: "Execute external commands"
+    attack_surface: MAXIMUM
+
+medium_risk_files:
+  # Security rating C-D
+  
+  src/sendbatch.c:
+    lines: 574
+    security_rating: D
+    system_popen_count: 7
+    
+  src/D.priv/transmit.c:
+    lines: ~300
+    security_rating: D
+    unsafe_function_count: 26
+    mktemp_count: 4
+    system_popen_count: 5
+    
+  src/control.c:
+    lines: 1113
+    security_rating: D
+    unsafe_function_count: 25
+    system_popen_count: 4
+    
+  src/bbsauto.c:
+    lines: ~300
+    security_rating: D
+    unsafe_function_count: 27
+    mktemp_count: 6
+    purpose: "CompuServe gateway - LOL"
+
+largest_files:
+  # By line count
+  
+  src/compress.c:
+    lines: 1486
+    note: "LZW compression - may have patent issues (1989)"
+    
+  src/newsdb.c:
+    lines: 1385
+    purpose: "News database operations"
+    
+  src/D.scrn/scrnctl.c:
+    lines: 1141
+    purpose: "Screen control"
+    
+  src/control.c:
+    lines: 1113
+    purpose: "Control messages"
+
+directory_structure:
+  src/:
+    purpose: "Main source code"
+    subdirs:
+      D.filt/: "News filtering"
+      D.network/: "NNTP support"
+      D.news/: "News-specific code (contains fascist.c)"
+      D.port/: "Portability layer (contains spawn.c)"
+      D.posix/: "POSIX compatibility"
+      D.post/: "Posting code"
+      D.priv/: "Privileged operations (contains lock.c)"
+      D.read/: "Reader code"
+      D.scrn/: "Screen handling"
+      D.scripts/: "Shell scripts"
+      D.uucp/: "UUCP integration"
+      
+  doc/:
+    purpose: "Documentation"
+    key_files:
+      - BRAGSHEET
+      - BUGS
+      - hackguide.mn
+      
+  man/:
+    purpose: "Man pages"
+    
+  misc/:
+    purpose: "Miscellaneous tools"
+
+file_timestamps:
+  # From tar archive
+  
+  oldest: "1989-07-10"  # LICENSE, READ.ME
+  newest: "1989-08-28"  # Makefile
+  active_development: "~2 months of visible activity"
+  claimed_development: "2 years"
+  # Where did the other 22 months go?

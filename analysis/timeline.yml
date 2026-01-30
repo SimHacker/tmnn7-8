@@ -1,5 +1,12 @@
 # TMNN Timeline: From Code to Discovery
-# Archaeological timeline of ESR's abandoned project
+# YAML Jazz: Archaeological timeline of ESR's abandoned project
+
+usenet_signatures:
+  # ESR's usenet signature from the era
+  source: comp.lang.misc
+  date: 1989-12-13
+  signature: "mad mastermind of TMN-Netnews"
+  email: "eric@snark.uu.net"
 
 code_development:
   start: ~1987
@@ -96,3 +103,38 @@ time_buried:
   from: 1989
   to: 2019
   note: "The 'many eyes' guy's code had almost no eyes on it"
+
+esr_resume_sanitization:
+  url: http://catb.org/~esr/resume.html
+  tmnn_description: "A rewrite of the USENET netnews software."
+  words_devoted_to_tmnn: 7
+  words_devoted_to_martial_arts: 47
+  missing_from_resume:
+    - "Teenage Mutant Ninja Netnews" name
+    - "TMNN" acronym
+    - Beta status
+    - Abandonment
+    - Any promised features
+
+donhopkins_testimony:
+  source: Hacker News
+  relationship: "Known ESR since early 1980s"
+  key_quote: |
+    His own failed proprietary closed source 'cathedral' project, that he was 
+    notorious for insufferably and arrogantly bragging about during the 80's, 
+    but never releasing, and finally giving up on because he didn't have the 
+    skills to finish and deliver it, and nobody wanted to collaborate with him 
+    or listen to him talk about it any more.
+  urls:
+    - https://news.ycombinator.com/item?id=43133598
+    - https://news.ycombinator.com/item?id=37713247
+    
+code_review_2026:
+  date: 2026-01-30
+  reviewer: "Cursor AI + DonHopkins"
+  findings:
+    buffer_overflows: 774
+    mktemp_races: 42
+    command_injections: 61
+    gets_function: 1
+  notable_discovery: "fascist.c with FASCIST/COMMUNIST compile flags"
