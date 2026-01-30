@@ -317,6 +317,18 @@ tmnn7-8/analysis/skills/github-simulation/  ← GitHub Issues as stage
 - **Content:** In character voice, in character format
 - **Bottom tag:** Links back to character definition, closes the frame
 - **Your username:** Still visible in GitHub's post metadata — you own this
+- **Audience feedback:** Reactions (👍 👎 😄 🎉 😕 ❤️ 🚀 👀) rate your performance!
+
+**GitHub reactions = theater reviews.** The audience can:
+- 👍 Applaud a good in-character moment
+- 🎉 Celebrate a devastating comeback
+- 😄 Laugh at the humor
+- 🚀 Boost an epic rant
+- 👀 Signal "I'm watching this drama unfold"
+- 😕 Express confusion (often at PureMonad's category theory)
+- 👎 Ratio a bad take (GrokVibeCheck gets these)
+
+Comments are audience participation — respond in character, break character to compliment, or start a whole new subplot.
 
 **It's like theater:** The actor's face is visible, but they're wearing a mask. The mask has a label. Everyone knows it's a performance.
 
