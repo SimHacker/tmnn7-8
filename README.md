@@ -22,67 +22,6 @@ This repository contains the archaeological evidence.
 
 ---
 
-## The Timeline
-
-```mermaid
-timeline
-    title TMNN: From Cathedral to Graveyard
-    
-    section Development
-        1987 : ESR begins "secret laboratories" development
-        1988 : Continues alone, no bazaar
-        1989 : Beta 7.8 released, immediately abandoned
-    
-    section The Silence
-        1995 : Code appears on DEC FTP
-        1997 : ESR publishes "Cathedral and the Bazaar"
-             : Never mentions his own cathedral
-        2003 : ESR publishes "Art of Unix Programming"
-             : His own Unix code violates the practices
-    
-    section Institutional
-        1998 : ESR co-founds Open Source Initiative
-        2020 : ESR banned from OSI for CoC violations
-    
-    section Rediscovery
-        2019 : Wikipedia editor Hbent finds archive link
-        2026 : Full code review performed
-             : 774 buffer overflows discovered
-```
-
----
-
-## Why This Matters
-
-ESR built his entire career on ideas his own code contradicts:
-
-```mermaid
-flowchart TB
-    subgraph wrote["What ESR Wrote"]
-        catb["'Release early, release often'<br/>Cathedral & Bazaar, 1997"]
-        eyes["'Given enough eyeballs,<br/>all bugs are shallow'<br/>Linus's Law"]
-        unix["Unix best practices<br/>Art of Unix Programming, 2003"]
-        mod["Content moderation<br/>is tyranny"]
-    end
-    
-    subgraph did["What ESR Did"]
-        secret["2 years in<br/>'secret laboratories'"]
-        zero["Zero external reviewers<br/>774 unfixed bugs"]
-        vuln["Buffer overflows everywhere<br/>gets() in headers"]
-        fascist["Wrote fascist.c<br/>to control who can post"]
-    end
-    
-    catb -.->|contradicts| secret
-    eyes -.->|contradicts| zero
-    unix -.->|contradicts| vuln
-    mod -.->|contradicts| fascist
-    
-    style wrote fill:#e1f5e1
-    style did fill:#ffebee
-```
-
----
-
 ## 👁️ Many Eyes: A Community Code Review
 
 ### The Quote
@@ -166,6 +105,67 @@ For decades, TMNN sat in archives with **zero eyeballs**. The man who coined "gi
 | **Your discovery** | ? | [Open an Issue](../../issues) |
 
 *Let's see how shallow these bugs really are.*
+
+---
+
+## The Timeline
+
+```mermaid
+timeline
+    title TMNN: From Cathedral to Graveyard
+    
+    section Development
+        1987 : ESR begins "secret laboratories" development
+        1988 : Continues alone, no bazaar
+        1989 : Beta 7.8 released, immediately abandoned
+    
+    section The Silence
+        1995 : Code appears on DEC FTP
+        1997 : ESR publishes "Cathedral and the Bazaar"
+             : Never mentions his own cathedral
+        2003 : ESR publishes "Art of Unix Programming"
+             : His own Unix code violates the practices
+    
+    section Institutional
+        1998 : ESR co-founds Open Source Initiative
+        2020 : ESR banned from OSI for CoC violations
+    
+    section Rediscovery
+        2019 : Wikipedia editor Hbent finds archive link
+        2026 : Full code review performed
+             : 774 buffer overflows discovered
+```
+
+---
+
+## Why This Matters
+
+ESR built his entire career on ideas his own code contradicts:
+
+```mermaid
+flowchart TB
+    subgraph wrote["What ESR Wrote"]
+        catb["'Release early, release often'<br/>Cathedral & Bazaar, 1997"]
+        eyes["'Given enough eyeballs,<br/>all bugs are shallow'<br/>Linus's Law"]
+        unix["Unix best practices<br/>Art of Unix Programming, 2003"]
+        mod["Content moderation<br/>is tyranny"]
+    end
+    
+    subgraph did["What ESR Did"]
+        secret["2 years in<br/>'secret laboratories'"]
+        zero["Zero external reviewers<br/>774 unfixed bugs"]
+        vuln["Buffer overflows everywhere<br/>gets() in headers"]
+        fascist["Wrote fascist.c<br/>to control who can post"]
+    end
+    
+    catb -.->|contradicts| secret
+    eyes -.->|contradicts| zero
+    unix -.->|contradicts| vuln
+    mod -.->|contradicts| fascist
+    
+    style wrote fill:#e1f5e1
+    style did fill:#ffebee
+```
 
 ---
 
