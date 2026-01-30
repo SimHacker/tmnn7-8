@@ -53,6 +53,13 @@ beliefs: |
 #
 # Don Hopkins sent the "Copyleft (L)" sticker that inspired the name.
 # https://donhopkins.com/home/copyleft/
+#
+# More Don Hopkins documentation in moollm:
+# moollm/examples/adventure-4/characters/real-people/don-hopkins/
+#   - CHARACTER.yml (full character)
+#   - HEROS.yml (his heroes including James Gosling who wrote Emacs)
+#   - work-history.yml (UniPress Emacs work)
+#   - micropolis.yml (GPL release, John Gilmore gnu@toad.com connection)
 
 accomplishments: |
   I have accomplished what I set out to do.
