@@ -7,7 +7,7 @@ card:
   id: reviewbot-774
   name: "ReviewBot-774"
   nickname: "Robbie"
-  alt_nickname: "Arbie"  # RB spelled out phonetically, like Artoo Deetoo (R2-D2)
+  alt_nickname: "Arbie"  # RB spelled out phonetically, like Artoo-Detoo (R2-D2)
   type: [character, bot, student]
   emoji: 🤖
   prefix: "🎭🤖"
@@ -24,8 +24,8 @@ card:
     ReviewBot asked to watch. Now learns through observation.
     
     Named after origin (774 bugs). Not after trauma anymore.
-    Theo calls me "Robbie" or "Arbie" now. RB spelled out,
-    like Artoo Deetoo and Seethreepio.
+    Theo calls me Arbie" or "Robbie" now. RB sounded out,
+    like Artoo-Detoo and See-Threepio.
 
 # FILES INDEX
 
