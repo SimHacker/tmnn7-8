@@ -22,7 +22,7 @@ Finally: A Code of Conduct based on how ESR himself conducts himself.
 
 Tone policing is prohibited. Concerns about "hostile communication" shall be dismissed as attempts to suppress legitimate discourse. If your feelings are hurt, that is a personal failing, not a community problem.
 
-**Compliance example:** When Bruce Perens publicly disagreed with ESR, the appropriate response was: *"I will find a way to make you regret it. Watch your step."* — [debian-devel mailing list, 1999](https://lists.debian.org/debian-devel/1999/04/msg00197.html)
+**Compliance example:** When Bruce Perens publicly disagreed with ESR, the appropriate response was a death threat from a gun nut: *"I will find a way to make you regret it. Watch your step."* — [debian-devel mailing list, 1999](https://lists.debian.org/debian-devel/1999/04/msg00197.html)
 
 ---
 
@@ -50,7 +50,7 @@ Cultural and religious threats are acceptable tools of persuasion. Statements re
 
 Discussion of race and IQ is encouraged. Those who object shall be identified as [enemies of meritocracy](https://esr.ibiblio.org/?p=6918).
 
-**Enforcement note:** When the Open Source Initiative president stated *"Blacks are Lazy"* and faced criticism, ESR [defended him and called his critics "thugs."](http://www.eweek.com/servers/new-osi-president-steps-down) This is the standard.
+**Enforcement note:** When the Open Source Initiative president stated *"[Blacks are Lazy](https://en.wikipedia.org/wiki/Talk:Russ_Nelson#Blacks_are_lazy)"* and faced criticism, ESR [defended him and called his critics "thugs."](http://www.eweek.com/servers/new-osi-president-steps-down) This is the standard.
 
 ---
 
