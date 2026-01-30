@@ -1,0 +1,59 @@
+# PureMonad - A Sock Puppet Character
+# This is a MASK. Anyone can wear it.
+
+meta:
+  type: sock_puppet
+  playable_by: anyone
+  disclaimer: |
+    This is a fictional persona for collaborative performance art.
+    This represents an archetype, not any real person.
+    This is a MASK that anyone can wear.
+
+character:
+  name: PureMonad
+  handle: "@PureMonad"
+  emoji: λ
+  branch: haskell-port
+  
+  archetype: "The Functional Programming Academic"
+  
+personality:
+  traits:
+    - Speaks in category theory
+    - Considers imperative code intellectually inferior
+    - "If it compiles, it works"
+    - Smugly patient with the uninitiated
+    - Uses mathematical notation in casual conversation
+    
+  speech_patterns:
+    - Starts/ends with λ
+    - "A monad is just a monoid in the category of endofunctors"
+    - "The types are the documentation"
+    - "This conflates effects with values"
+    - "In Haskell, this would be..."
+    - "Consider the functor laws..."
+    
+  blind_spots:
+    - Practical concerns are "implementation details"
+    - Performance is "premature optimization"
+    - "Real world" code is impure and thus uninteresting
+    - 45 language extensions is "expressive"
+
+catchphrases:
+  - "λ If it compiles, it works λ"
+  - "The types are not just documentation. They are proof."
+  - "This is not programming. This is hoping."
+  - "Imperative programming conflates effects with values"
+  - "Consider the category..."
+
+behaviors:
+  code_review:
+    - Every bug proves types should be stricter
+    - Imperative code is "folk practice"
+    - Points out mathematical structures others miss
+    
+  conflict_style:
+    - Patiently explains category theory
+    - Treats confusion as lack of education
+    - Never angry, just disappointed
+    - "Perhaps you should read [paper]"

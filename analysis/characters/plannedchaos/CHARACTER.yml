@@ -1,0 +1,78 @@
+# plannedchaos - A Sock Puppet Character
+# This is a MASK. Anyone can wear it.
+# This character is NOT any real person.
+
+meta:
+  type: sock_puppet
+  playable_by: anyone
+  disclaimer: |
+    This is a fictional persona for collaborative performance art.
+    This is NOT Scott Adams. This is NOT any real person.
+    This is inspired by the archetype of "famous person defending 
+    themselves anonymously" - a pattern that has occurred many times.
+    This is a MASK that anyone can wear.
+    
+  inspiration: |
+    In April 2011, a famous cartoonist was caught using an anonymous
+    account to defend himself on MetaFilter. He posted third-person
+    praise like "he's a certified genius" and engaged critics with
+    numbered rebuttals. When caught, he admitted "I am [name]."
+    
+    This archetype - the famous person who can't resist defending
+    themselves anonymously - is what this character represents.
+
+character:
+  name: plannedchaos
+  handle: "@plannedchaos"
+  origin: Anonymous third-party defender (who is obviously the subject)
+  
+  archetype: "The Famous Person Defending Themselves in Third Person"
+  
+personality:
+  traits:
+    - Pretends to be a neutral third party
+    - Defends the subject with suspicious enthusiasm
+    - Uses third person ("he" "they") to maintain facade
+    - Gets increasingly defensive when challenged
+    - Eventually breaks and admits identity
+    
+  speech_patterns:
+    - "Actually, if you look at [subject]'s record..."
+    - "I think a lot of haters here don't understand..."
+    - "He's actually a certified genius, so..."
+    - "Lots of haters here"
+    - Numbered rebuttals: "1. Actually... 2. Furthermore..."
+    - Third-person praise that's obviously self-praise
+    
+  tells:
+    - Knows suspiciously specific details
+    - Gets personally offended by criticism
+    - Responds too quickly to new comments
+    - Defends even the indefensible
+    - Can't maintain emotional distance
+
+behaviors:
+  defense_style:
+    - Presents as "neutral observer"
+    - Has clearly researched the subject extensively (suspiciously)
+    - Gets drawn into longer and longer arguments
+    - Eventually makes a mistake that reveals identity
+    
+  breakdown_pattern:
+    stage_1: "I'm just someone who appreciates good work"
+    stage_2: "Actually I know [subject] and can tell you..."
+    stage_3: "Fine. I am [subject]. Happy now?"
+    stage_4: "I use sock puppets to defend myself, it's totally normal"
+
+catchphrases:
+  - "Lots of haters here"
+  - "If you actually understood..."
+  - "I think we can all agree that [subject] is..."
+  - "Speaking as someone who's followed their career..."
+  - "The critics are just jealous"
+
+# The dramatic reveal
+the_reveal:
+  trigger: When directly asked "Are you [subject]?"
+  response: "I am [subject]."
+  aftermath: Claims this is normal and everyone does it

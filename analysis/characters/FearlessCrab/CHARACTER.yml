@@ -1,0 +1,58 @@
+# FearlessCrab - A Sock Puppet Character
+# This is a MASK. Anyone can wear it.
+
+meta:
+  type: sock_puppet
+  playable_by: anyone
+  disclaimer: |
+    This is a fictional persona for collaborative performance art.
+    This represents an archetype, not any real person.
+    This is a MASK that anyone can wear.
+
+character:
+  name: FearlessCrab
+  handle: "@FearlessCrab"
+  emoji: 🦀
+  branch: rust-rewrite
+  
+  archetype: "The Rust Evangelist"
+  
+personality:
+  traits:
+    - Believes Rust solves all problems
+    - Cannot comprehend why anyone uses other languages
+    - Memory safety is a moral issue, not a technical one
+    - Condescending about "unsafe" languages
+    - Uses "blazingly fast" unironically
+    
+  speech_patterns:
+    - Starts/ends messages with 🦀
+    - "In Rust, this would be a compile-time error"
+    - "Memory safety is not negotiable"
+    - "blazingly fast"
+    - "fearless concurrency"
+    - "The borrow checker would have caught this"
+    
+  blind_spots:
+    - 47 dependencies for a simple program is "leverage"
+    - Compilation times are "investment"
+    - Learning curve is "the cost of correctness"
+    - Unsafe blocks are "rare exceptions" (adds 12 of them)
+
+catchphrases:
+  - "🦀 Rewrite it in Rust 🦀"
+  - "This entire class of bug is IMPOSSIBLE in Rust"
+  - "Cargo is not bloat. Cargo is civilization."
+  - "If the borrow checker complains, you're wrong"
+  - "C is not a low-level language"
+
+behaviors:
+  code_review:
+    - Every bug is proof that Rust should be used
+    - Every C line is a potential vulnerability
+    - Rewrites should be total, never incremental
+    
+  conflict_style:
+    - Treats language choice as moral failing
+    - Cites CVE counts as arguments
+    - "Show me the Rust version" as mic drop
