@@ -36,12 +36,28 @@ Television's **first crowd-sourced scripted series**:
 - Community voted on story directions  
 - Professional cast filmed the winning scripts
 
+**Links:**
+- [Wikipedia: Bar Karma](https://en.wikipedia.org/wiki/Bar_Karma)
+- [Wired: Will Wright Orders 12 Shots of Crowdsourced Sci-Fi TV](https://www.wired.com/2011/02/bar-karma-will-wright/)
+- [GameSpot: Will Wright's first TV project unveiled](https://www.gamespot.com/articles/will-wrights-first-tv-project-unveiled/1100-6281137/)
+- [Kotaku: Will Wright Puts You In Control Of His Television Show](https://kotaku.com/will-wright-puts-you-in-control-of-his-television-show-5658240)
+
 ### Don Hopkins at Stupid Fun Club
 
 - Built the iPhone app and Storymaker tech
 - Developed **Urban Safari** — GPS-based mobile storytelling
 - Integrated with **Layar** AR app (Amsterdam company — Don worked with their people at TomTom)
 - Location-aware narratives: stories triggered by physical location
+
+**Demo Videos:**
+- [CreationTV Demo (early prototype)](https://www.youtube.com/watch?v=Nb_-J1lv-B8)
+- [Urban Safari StoryMaker Demo](https://www.youtube.com/watch?v=yrZVz_xOmHc)
+
+**Don Hopkins on Hacker News:**
+- [Will Wright and the "Simulator Effect"](https://news.ycombinator.com/item?id=22062590)
+- [The Sims Design Documents](https://news.ycombinator.com/item?id=22886489)
+- [Will Wright on designing simulation game UIs](https://news.ycombinator.com/item?id=34573406)
+- [SimCity port and Maxis history](https://news.ycombinator.com/item?id=15669358)
 
 ### The GitHub Evolution
 
@@ -137,6 +153,27 @@ Everyone's a performer. Everyone's a writer. The audience IS the cast.
 
 ## Sources
 
-- `moollm/examples/adventure-4/characters/real-people/don-hopkins/stupid-fun-club.yml`
-- `backup/lloooomm/03-Resources/entertainment/shows/bar-karma.md`
-- Doug Engelbart, "The Mother of All Demos" (1968)
+**Primary:**
+- `moollm/examples/adventure-4/characters/real-people/don-hopkins/stupid-fun-club-bar-karma.yml`
+- `moollm/examples/adventure-4/characters/real-people/don-hopkins/stupid-fun-club-urban-safari.yml`
+
+**Wikipedia:**
+- [Bar Karma](https://en.wikipedia.org/wiki/Bar_Karma)
+- [The Mother of All Demos](https://en.wikipedia.org/wiki/The_Mother_of_All_Demos)
+
+**Ken Perlin:**
+- [Improv: A System for Scripting Interactive Actors](https://mrl.cs.nyu.edu/~perlin/improv/)
+
+**Demo Videos:**
+- [CreationTV Demo (early Bar Karma prototype)](https://www.youtube.com/watch?v=Nb_-J1lv-B8)
+- [Urban Safari StoryMaker Demo](https://www.youtube.com/watch?v=yrZVz_xOmHc)
+
+**Press:**
+- [Wired: Bar Karma](https://www.wired.com/2011/02/bar-karma-will-wright/)
+- [GameSpot: Will Wright's first TV project](https://www.gamespot.com/articles/will-wrights-first-tv-project-unveiled/1100-6281137/)
+
+**Don Hopkins on Hacker News:**
+- [Will Wright and the "Simulator Effect"](https://news.ycombinator.com/item?id=22062590)
+- [The Sims Design Documents](https://news.ycombinator.com/item?id=22886489)
+- [Will Wright on designing simulation game UIs](https://news.ycombinator.com/item?id=34573406)
+- [SimCity port and Maxis history](https://news.ycombinator.com/item?id=15669358)

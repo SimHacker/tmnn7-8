@@ -69,6 +69,11 @@ lineage:
       - Audiences wrote episodes using Storymaker tool
       - Community voted on story directions
       - Professional cast filmed winning scripts
+    links:
+      wikipedia: https://en.wikipedia.org/wiki/Bar_Karma
+      wired: https://www.wired.com/2011/02/bar-karma-will-wright/
+      gamespot: https://www.gamespot.com/articles/will-wrights-first-tv-project-unveiled/1100-6281137/
+      kotaku: https://kotaku.com/will-wright-puts-you-in-control-of-his-television-show-5658240
       
   stupid_fun_club:
     who: Don Hopkins
@@ -77,6 +82,14 @@ lineage:
       - Storymaker iPhone app
       - Urban Safari (GPS-based mobile storytelling)
       - Layar AR integration (Amsterdam — TomTom connection)
+    videos:
+      creationtv_demo: https://www.youtube.com/watch?v=Nb_-J1lv-B8
+      urban_safari_demo: https://www.youtube.com/watch?v=yrZVz_xOmHc
+    hacker_news:
+      simulator_effect: https://news.ycombinator.com/item?id=22062590
+      sims_design_docs: https://news.ycombinator.com/item?id=22886489
+      will_wright_ui: https://news.ycombinator.com/item?id=34573406
+      simcity_history: https://news.ycombinator.com/item?id=15669358
 
 # Git as storytelling infrastructure
 # Every feature Linus built for kernel patches
