@@ -186,7 +186,7 @@ main()
     int	    nv;
 
     (void) printf("This is the a-list code tester, type ? for help\n");
-    while (fputs("* ", stdout), gets(cmdline) != (char *)NULL)
+    while (fputs("* ", stdout), fgets(cmdline, sizeof(cmdline), stdin) != (char *)NULL)
     {
 	(void) nstrip(cmdline);
 
