@@ -6,7 +6,46 @@
 
 GitHub is not merely a code hosting platform. It is a **stage**.
 
-Every repository is a potential theater. Every issue is a scene. Every commit is a monologue. Every pull request is a dialogue. Every code review is criticism — in both senses.
+```mermaid
+graph LR
+    subgraph "GitHub Artifact"
+        REPO[Repository]
+        ISSUE[Issue]
+        COMMIT[Commit]
+        PR[Pull Request]
+        REVIEW[Code Review]
+        BRANCH[Branch]
+    end
+    
+    subgraph "Theatrical Equivalent"
+        THEATER[🎭 Theater]
+        SCENE[🎬 Scene]
+        MONO[📜 Monologue]
+        DIA[💬 Dialogue]
+        CRIT[📝 Criticism]
+        PLOT[📖 Plot Line]
+    end
+    
+    REPO --> THEATER
+    ISSUE --> SCENE
+    COMMIT --> MONO
+    PR --> DIA
+    REVIEW --> CRIT
+    BRANCH --> PLOT
+    
+    style REPO fill:#e3f2fd
+    style ISSUE fill:#e3f2fd
+    style COMMIT fill:#e3f2fd
+    style PR fill:#e3f2fd
+    style REVIEW fill:#e3f2fd
+    style BRANCH fill:#e3f2fd
+    style THEATER fill:#fff3e0
+    style SCENE fill:#fff3e0
+    style MONO fill:#fff3e0
+    style DIA fill:#fff3e0
+    style CRIT fill:#fff3e0
+    style PLOT fill:#fff3e0
+```
 
 The TMNN7-8 simulation makes this explicit by treating GitHub as what it already implicitly is: **a performance space**.
 
@@ -109,6 +148,29 @@ The performance is for all of them simultaneously.
 ## The Annie Hall Protocol
 
 In *Annie Hall*, Woody Allen's character pulls Marshall McLuhan from behind a movie poster to settle an argument about McLuhan's work.
+
+```mermaid
+sequenceDiagram
+    participant A as Arguer A
+    participant B as Arguer B
+    participant AUTH as 🎓 Authority
+    participant DOC as 📄 Document
+    
+    A->>B: "ESR said X about open source"
+    B->>B: Disagrees, but how to prove?
+    
+    Note over B,AUTH: The Annie Hall Move
+    
+    B->>AUTH: @esrays — did you say X?
+    AUTH-->>B: [actual quote or clarification]
+    
+    alt Or invoke document
+        B->>DOC: Links to original source
+        DOC-->>A: Evidence contradicts claim
+    end
+    
+    Note over A,B: Authority is SUMMONABLE<br/>The movie poster is always there
+```
 
 GitHub enables this move structurally:
 

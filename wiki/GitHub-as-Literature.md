@@ -25,12 +25,30 @@ Issue discussions, commit messages, PR comments, and code reviews constitute a *
 Document what changed and why.
 
 ### Actual Functions
-- Establish authorship and credit
-- Signal tribal membership (conventional vs. emoji-heavy)
-- Perform expertise ("I know this codebase")
-- Create searchable history
-- Satisfy CI/CD requirements
-- Demonstrate conscientiousness to future employers
+
+```mermaid
+mindmap
+  root((Commit<br/>Message))
+    Documentation
+      What changed
+      Why it changed
+    Performance
+      Authorship credit
+      Expertise display
+      Conscientiousness signal
+    Tribal Signaling
+      Conventional style
+      Emoji-heavy style
+      Verbose philosophy
+    Infrastructure
+      Searchable history
+      CI/CD satisfaction
+      Audit trail
+    Career
+      Future employer demo
+      Contribution proof
+      Skill showcase
+```
 
 The "meaning" of a commit message exceeds its content.
 
@@ -104,17 +122,38 @@ This is simultaneously:
 
 ## Scholarship and Practice Merged
 
-**Traditional scholarship:**
-- Written in journals
-- Peer reviewed
-- Cited formally
-- Separated from practice
-
-**GitHub scholarship:**
-- Written in commit messages and issues
-- Reviewed by whoever's watching
-- Linked directly to code
-- EMBEDDED in practice
+```mermaid
+graph TB
+    subgraph "Traditional Scholarship"
+        direction TB
+        TW[📝 Written in journals]
+        TR[👥 Peer reviewed]
+        TC[📚 Cited formally]
+        TS[🔀 Separated from practice]
+    end
+    
+    subgraph "GitHub Scholarship"
+        direction TB
+        GW[💬 Written in commits & issues]
+        GR[👁️ Reviewed by watchers]
+        GL[🔗 Linked directly to code]
+        GE[⚡ EMBEDDED in practice]
+    end
+    
+    TW -.->|transforms to| GW
+    TR -.->|becomes| GR
+    TC -.->|becomes| GL
+    TS -.->|inverts to| GE
+    
+    style TW fill:#ffcdd2
+    style TR fill:#ffcdd2
+    style TC fill:#ffcdd2
+    style TS fill:#ffcdd2
+    style GW fill:#c8e6c9
+    style GR fill:#c8e6c9
+    style GL fill:#c8e6c9
+    style GE fill:#c8e6c9
+```
 
 The medium has collapsed the distinction between "writing about code" and "writing code."
 

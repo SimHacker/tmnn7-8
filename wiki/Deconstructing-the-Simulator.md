@@ -84,8 +84,8 @@ graph TD
 **What it provides:**
 - Directory-as-room paradigm
 - ROOM.yml files define spaces
-- Navigation between spaces
-- Items, characters, and descriptions
+- Navigation between spaces via exit network
+- Items, characters, inventory, containers, descriptions, and behavior
 
 **How it's used here:**
 - `analysis/characters/` is a space containing characters

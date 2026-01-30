@@ -41,7 +41,36 @@ This simulation is also an investigation into GitHub as a form of expression:
 
 ### Intellectual Lineage
 
-This project draws on:
+```mermaid
+graph TD
+    subgraph "Media Theory"
+        MCL[🎬 Marshall McLuhan<br/><i>The medium is the message</i>]
+    end
+    
+    subgraph "Game Studies"
+        BOG[🎮 Ian Bogost<br/><i>Procedural Rhetoric</i>]
+    end
+    
+    subgraph "Virtual Worlds"
+        HAB[🌐 Habitat 1986<br/><i>Morningstar & Farmer</i>]
+        MOR[🔬 Chip Morningstar<br/><i>How to Deconstruct<br/>Almost Anything</i>]
+    end
+    
+    subgraph "This Project"
+        TMNN[🥷 TMNN7-8<br/><i>GitHub as Stage</i>]
+    end
+    
+    MCL -->|medium shapes content| TMNN
+    BOG -->|rules embody arguments| TMNN
+    HAB -->|virtual space = interaction| MOR
+    MOR -->|rigorous deconstruction| TMNN
+    
+    style MCL fill:#e1f5fe
+    style BOG fill:#f3e5f5
+    style HAB fill:#fff3e0
+    style MOR fill:#fff3e0
+    style TMNN fill:#c8e6c9
+```
 
 - **Chip Morningstar** — ["How to Deconstruct Almost Anything"](https://www.fudco.com/chip/deconstr.html) (1993)
 - **Marshall McLuhan** — "The medium is the message"
