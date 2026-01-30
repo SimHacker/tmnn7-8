@@ -84,6 +84,24 @@ invocation: |
     --body "$(cat fearless-issue.md)"
   ```
 
+k-lines:
+  # Activation tags for semantic retrieval
+  - character-as-actor
+  - theatrical-mask-prefix   # 🎭 is non-negotiable
+  - green-room-staging       # Characters wait backstage
+  - auth-switching           # Token management for sock puppets
+  - character-file-triple    # GLANCE + CHARACTER + README
+  - inheritance-not-embed    # Characters inherit, don't live in skill
+  - ai-porky-pig            # Learned: watch for strstrstr gibberish
+
+operational_knowledge:
+  # Cached lessons — see SKILL.md for details
+  file_structure: "Every character needs GLANCE.yml, CHARACTER.yml, README.md"
+  inheritance: "Characters inherit github-user, define github_actions locally"
+  prefix: "🎭 prefix is the ethical boundary. Never skip."
+  auth: "Default = your account. Multi-account = token switching."
+  gibberish: "Watch for strstrstr corruption during long generation."
+
 see_also:
   - github-simulation  # The stage
   - code-archaeology   # OpenBFD's special method

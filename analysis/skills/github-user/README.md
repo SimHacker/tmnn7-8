@@ -44,6 +44,16 @@ This signals roleplay. No deception.
 - `CARD.yml` — Capabilities template
 - `SKILL.md` — Full protocol with examples
 
+## Operational Knowledge
+
+Lessons cached in `SKILL.md`:
+
+- **File triple** — GLANCE.yml + CHARACTER.yml + README.md per character
+- **Inheritance pattern** — Characters inherit from github-user
+- **Green room** — Characters exist backstage until invoked
+- **Auth switching** — Token management for sock puppets
+- **AI Porky Pig** — Watch for strstrstr gibberish during generation
+
 ## See Also
 
 - `github-simulation` — The stage
