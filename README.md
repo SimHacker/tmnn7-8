@@ -89,17 +89,14 @@ Possible side effects include:
 - Existential crisis about the foundations of "open source" philosophy
 - Sudden urge to audit all your dependencies
 
-#### An ad from our sponsors:
-
-https://www.youtube.com/watch?v=f_SwD7RveNE
-
-**HEAD ON! APPLY DIRECTLY TO THE FOREHEAD!**
-
-**HEAD ON! APPLY DIRECTLY TO THE FOREHEAD!**
-
-**HEAD ON! APPLY DIRECTLY TO THE FOREHEAD!**
-
-*Available at Walgreens.*
+> *An ad from our sponsors:*
+> 
+> [![HEAD ON](https://img.youtube.com/vi/f_SwD7RveNE/0.jpg)](https://www.youtube.com/watch?v=f_SwD7RveNE)
+> 
+> **HEAD ON! APPLY DIRECTLY TO THE FOREHEAD!**<br/>
+> **HEAD ON! APPLY DIRECTLY TO THE FOREHEAD!**<br/>
+> **HEAD ON! APPLY DIRECTLY TO THE FOREHEAD!**<br/>
+> *Available at Walgreens.*
 
 **You have been warned.**
 
