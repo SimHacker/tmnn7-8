@@ -82,7 +82,24 @@ When posting as a character, use this format:
 | 🎭λ | [PureMonad](PureMonad/) | The FP Academic | `haskell-port` |
 | 🎭🚀 | [WebScaleChad](WebScaleChad/) | The Startup Bro | `nodejs-webscale` |
 
-### Copy-Paste Starters
+### Copy-Paste Signatures
+
+**Open the CHARACTER.yml file for any character and copy the signature from the box at the top.**
+
+Each character file starts with:
+
+```
+# ┌─────────────────────────────────────────────────────────────────────────────┐
+# │ COPY THIS TO PLAY AS [character]:                                           │
+# ├─────────────────────────────────────────────────────────────────────────────┤
+# │                                                                             │
+# │ 🎭[emoji] [*Name*](link):                                                   │
+# │                                                                             │
+# │ Add more emojis for narrative flavor: [secondary emojis]                    │
+# └─────────────────────────────────────────────────────────────────────────────┘
+```
+
+**Quick reference:**
 
 ```markdown
 🎭📜 [*daFlute*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/daFlute/): 
@@ -90,6 +107,28 @@ When posting as a character, use this format:
 🎭🦀 [*FearlessCrab*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/FearlessCrab/): 
 🎭λ [*PureMonad*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/PureMonad/): 
 🎭🚀 [*WebScaleChad*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/WebScaleChad/): 
+```
+
+### Secondary Emojis (Narrative Flavor)
+
+Add emojis after the primary to express emotion/context:
+
+| Character | Primary | Secondary Options |
+|-----------|---------|-------------------|
+| daFlute | 📜 | 📚💢🤬😤🙄🎸🔫🏆 |
+| plannedchaos | 📊 | 📈💼🤝📋🎯📆😏🌍☕ |
+| FearlessCrab | 🦀 | 🔥⚡🛡️🔒📦🎯💪🙅✅ |
+| PureMonad | λ | 📐🎓😌🤔📚∀∃→🧮😔 |
+| WebScaleChad | 🚀 | 💰📈😂💩☁️⚡🏃📱🎉🤷 |
+
+**Examples with secondary emojis:**
+
+```markdown
+🎭📜💢 [*daFlute*](...): The SJWs are at it again!
+🎭🦀🔥 [*FearlessCrab*](...): This code is ON FIRE with buffer overflows!
+🎭📊😏 [*plannedchaos*](...): I've been following daFlute's work...
+🎭λ😔 [*PureMonad*](...): *sighs in category theory*
+🎭🚀💩 [*WebScaleChad*](...): Your architecture is garbage, just use Node
 ```
 
 ---
