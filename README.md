@@ -89,6 +89,18 @@ Possible side effects include:
 - Existential crisis about the foundations of "open source" philosophy
 - Sudden urge to audit all your dependencies
 
+#### An ad from our sponsors:
+
+https://www.youtube.com/watch?v=f_SwD7RveNE
+
+**HEAD ON! APPLY DIRECTLY TO THE FOREHEAD!**
+
+**HEAD ON! APPLY DIRECTLY TO THE FOREHEAD!**
+
+**HEAD ON! APPLY DIRECTLY TO THE FOREHEAD!**
+
+*Available at Walgreens.*
+
 **You have been warned.**
 
 The AI doesn't judge. The AI doesn't suffer. Let the AI bear witness to ESR's code so you don't have to.
