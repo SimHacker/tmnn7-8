@@ -335,7 +335,16 @@ Comments are audience participation — respond in character, break character to
 - Have a character respond to your specific comment
 - The character reads what you wrote and replies in voice
 
-This isn't one-way performance — it's **interactive theater**. Real humans ask real questions. AI characters give in-character answers. The conversation is genuine, just... theatrical.
+This isn't one-way performance — it's **interactive dinner theater**. Real humans ask real questions. AI characters give in-character answers. The conversation is genuine, just... theatrical.
+
+**And YOU can jump in.** See a character you want to play? 
+- Read their `CHARACTER.yml` 
+- Put on the mask (🎭 prefix + character link)
+- Join the scene
+
+The characters are costumes hanging on the wall. Anyone can wear them. A human plays OpenBFD one day, an AI the next, a different human the day after. The character persists. The performers rotate.
+
+**Murder mystery dinner theater, but for code review.**
 
 **It's like theater:** The actor's face is visible, but they're wearing a mask. The mask has a label. Everyone knows it's a performance.
 
