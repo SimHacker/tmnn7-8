@@ -3,8 +3,9 @@
 
 meta:
   id: github-simulation
-  version: 1
+  version: 2
   inherits:
+    - github                 # Core GitHub ops (moollm) — Linus mellowed
     - adventure              # Room-based exploration (moollm)
     - character              # Entity foundation (moollm)
     - simulation             # Central hub (moollm)
