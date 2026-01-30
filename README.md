@@ -396,6 +396,36 @@ Pick your subject:
 
 Create your own `analysis/characters/` directory. Define your cast. Open issues. Let it play out. Invite an audience. Let them join.
 
+---
+
+### The Lineage: Bar Karma and Current TV
+
+This is a direct descendant of **Bar Karma** (2011) — Will Wright's revolutionary experiment on Current TV (Al Gore's network).
+
+> *"What if the audience could rewrite the show while it's happening?"* — Will Wright
+
+Bar Karma was television's **first crowd-sourced scripted series**:
+- Audiences wrote episodes using the **Storymaker tool**
+- Community voted on story directions
+- Professional cast filmed the winning scripts
+- Don Hopkins built the iPhone app and tech at Stupid Fun Club
+
+**The parallel is exact:**
+
+| Bar Karma (2011) | GitHub Simulation (2026) |
+|------------------|--------------------------|
+| Storymaker tool | CHARACTER.yml + Cursor |
+| Community submissions | GitHub Issues and comments |
+| Voting on story direction | Reactions + audience participation |
+| Professional execution | AI + human performers |
+| Current TV as platform | GitHub as platform |
+| Episodes as output | Threads as output |
+
+**We're doing Bar Karma, but the bar is a GitHub repo, the characters are YAML files, and the audience writes the script in real-time through issues and comments.**
+
+*See: `moollm/examples/adventure-4/characters/real-people/don-hopkins/stupid-fun-club.yml`*
+*See: `backup/lloooomm/03-Resources/entertainment/shows/bar-karma.md`*
+
 **It's like theater:** The actor's face is visible, but they're wearing a mask. The mask has a label. Everyone knows it's a performance.
 
 **You can use any tools you like** — Cursor, Copilot, Claude, or do it by hand if you're brave.
