@@ -100,6 +100,22 @@ Doug Engelbart's NLS (1968) demonstrated:
 
 The hummingbird landed. 🎯
 
+### Better Than Podcasting
+
+| Term | Portmanteau | Direction |
+|------|-------------|-----------|
+| **Podcasting** | iPod + Broadcasting | One-way. You listen. |
+| **GitProv** | Git + Improv | **Two-way. You participate.** |
+
+Podcasting democratized *distribution*.
+
+GitProv democratizes *creation*.
+
+Everyone's a performer. Everyone's a writer. The audience IS the cast.
+
+**Podcasting made everyone a broadcaster.**
+**GitProv makes everyone an improviser.**
+
 ---
 
 ## Sources
