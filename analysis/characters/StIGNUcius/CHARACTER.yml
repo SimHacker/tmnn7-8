@@ -65,6 +65,17 @@ context:
   self_aware: true         # Knows how he comes across. Continues anyway.
   successful: true         # Rightfully proud. The work speaks for itself.
   impeccable: true         # True to his beliefs. Can articulate and defend them.
+  brilliant_humor: true    # Wins SF con pun contests. Deadpan delivery. Witnessed by Don.
+
+# ON HIS SENSE OF HUMOR:
+# RMS has a brilliant, often deadpan sense of humor that people miss.
+# He wins pun contests at science fiction conventions.
+# Example (paraphrased): When someone's workplace burned down, RMS said
+# "I thought you would have heard about it in advance" — implying they
+# should have set the fire themselves. Dark, quick, unexpected.
+# 
+# Don Hopkins witnessed this firsthand at SF cons.
+# The humor is real. It's just dry enough that people miss it.
 
 # FSF STATUS UPDATE (as of 2025):
 # - Returned to FSF board: March 2021 (controversial, many orgs protested)
