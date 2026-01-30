@@ -50,7 +50,17 @@ A software license that requires users to adopt libertarian political philosophy
 
 Not content to just release software, he had to make it a *manifesto*. Had to require ideological alignment. Had to include a commercial plug for his consulting business.
 
-**The supreme irony:** He rails against the FSF in the license text — explicitly distancing himself from *"the political or economic views or personal crusades of any member, agent, or ally of the Free Software Foundation"* — while simultaneously:
+**AND THIS IS EXACTLY WHAT HE CRITICIZES RMS FOR.**
+
+ESR's entire career critique of Stallman boils down to: "RMS injects his 'free as in speech' ideology into everything. It's off-putting. It's unprofessional. It alienates potential allies."
+
+And yet here, in 1988, ESR is doing **exactly the same thing** — requiring ideological alignment in a software license. Just with *his* ideology instead of RMS's.
+
+The difference? RMS's ideology was about user freedom. ESR's was about... libertarian economics and a plug for his consulting business.
+
+**ESR isn't the pragmatic alternative to RMS. He's a failed wannabe RMS** — someone who wanted the guru status, wanted the manifesto-writing, wanted the ideological weight, but couldn't pull it off. So he attacked the original instead.
+
+**The second supreme irony:** He rails against the FSF in the license text — explicitly distancing himself from *"the political or economic views or personal crusades of any member, agent, or ally of the Free Software Foundation"* — while simultaneously:
 
 - Copying the GPL structure and format
 - Benefiting from the GPL ecosystem
