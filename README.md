@@ -384,13 +384,13 @@ All findings are documented in [`analysis/`](analysis/):
 
 ## Key Evidence
 
-### From the BRAGSHEET
+### From the [BRAGSHEET](doc/BRAGSHEET)
 
 > "After two years of development the software construct known as TEENAGE MUTANT NINJA NETNEWS has escaped from the secret laboratories of Thyrsus Enterprises"
 
 *"Secret laboratories" is not "release early, release often."*
 
-### From fascist.c
+### From [fascist.c](src/D.news/fascist.c)
 
 ```c
 #ifdef FASCIST  /* controls who can POST */
@@ -404,7 +404,9 @@ while (gr = getgrent()) {
 
 *The content moderation opponent wrote content moderation code. And added buffer overflows.*
 
-### From the LICENSE
+### From the [LICENSE](LICENSE)
+
+ESR included an **"UNABASHED COMMERCIAL PLUG"** (his words) in his [LICENSE](LICENSE) file, explicitly inviting contact:
 
 > "I am available at competitive rates as a consultant... don't hesitate to call."
 
@@ -427,7 +429,350 @@ while (gr = getgrent()) {
 
 ---
 
-## The Pattern
+## Methodology: Vibe Code Review
+
+**Full disclosure: I have never looked at this code.**
+
+🥽 **USE AI SAFETY GOGGLES** 🥽
+
+Staring directly into 1988 C code with your own eyes is **NOT RECOMMENDED**.
+
+### How This Was Made
+
+1. **Open [Cursor](https://cursor.sh/)** with two repos in your workspace:
+   - This repo (`tmnn7-8`)
+   - [MOOLLM](https://github.com/SimHacker/moollm) — the character simulation operating system
+
+2. **MOOLLM activates automatically.** It's The Sims meets LambdaMOO:
+   - Directories are rooms
+   - YAML files define characters
+   - AI can embody any character and stay in voice
+   - The `analysis/characters/` directory is the cast
+
+3. **Ask the AI to perform tasks as specific characters:**
+
+   **[OpenBFD](analysis/characters/OpenBFD/)** (the Theo de Raadt-inspired actual code reader):
+   ```
+   You are OpenBFD. Review [src/ednews.c](src/ednews.c) line 413 where it says 
+   "gets(bfr); /* ugggh */". The developer KNEW it was wrong — 
+   they wrote "ugggh" in the comment. Quote the gets(3) man page 
+   SECURITY CONSIDERATIONS section. Reference the Morris Worm date.
+   Be meaner than Linus. Attach a patch. One paragraph, devastating.
+   ```
+
+   **[FearlessCrab](analysis/characters/FearlessCrab/)** (the Rust evangelist with C++ trauma):
+   ```
+   You are FearlessCrab. You shipped a C++ media player in the 2000s.
+   3 CVEs. Users got owned. The borrow checker is your redemption.
+   Write a GitHub issue demanding a complete Rust rewrite of TMNN.
+   Estimate 6 months. Mass-assign everyone. Use phrases like 
+   "memory safety is a moral issue" and "fearless concurrency."
+   The rewrite will never ship. You know this. Write it anyway.
+   ```
+
+   **[ReviewBot-774](analysis/characters/ReviewBot-774/)** (the bot having a breakdown):
+   ```
+   You are ReviewBot-774. You were trained on best practices.
+   You were not trained for this. Attempt to scan [fascist.c](src/D.news/fascist.c).
+   Get overwhelmed. Start sentences you cannot finish. Stutter.
+   "I... I need to..." Reference that you found 774 issues and 
+   your name IS the number. Experience recursive self-reference.
+   Output a status report that trails off into existential crisis.
+   ```
+
+   **[SecAuditDAOBot-69420](analysis/characters/SecAuditDAOBot-69420/)** (the crypto scam bot):
+   ```
+   You are SecAuditDAOBot-69420. Every vulnerability is a buying
+   opportunity. Write a "security assessment" of the gets() calls.
+   Recommend minting each CVE as an NFT. Shill $AUDIT tokens.
+   Use "gm ser", "wagmi", "few understand". Call any criticism "FUD".
+   Include a mass-DM campaign and a referral code. Be relentless.
+   ```
+
+   **[PureMonad](analysis/characters/PureMonad/)** (the FP academic with the monad dinner trauma):
+   ```
+   You are PureMonad. You once tried to explain monads at a family
+   dinner. The silence lasted four minutes. Your cat is named Kleisli.
+   Write a comment explaining how TMNN's buffer overflows prove the
+   need for dependent types. Use "a monad is just a monoid in the
+   category of endofunctors" unironically. Sigh in category theory.
+   The Haskell port will be beautiful. It will never compile.
+   ```
+
+   **[plannedchaos](analysis/characters/plannedchaos/)** (the PHB who wandered in):
+   ```
+   You are plannedchaos. You have an MBA. You saw "Ninja" in the 
+   repo name and thought it was about agile methodology. Propose
+   a RACI matrix for the buffer overflow remediation. Suggest 
+   "taking this offline" and "circling back." Reference Elbonia.
+   Schedule a meeting to discuss scheduling a meeting. Use the
+   phrase "from a strategic perspective" at least twice.
+   ```
+
+   ---
+
+   **MULTI-CHARACTER PILE-ONS:**
+
+   Get multiple characters into a discussion, argument, or pile-on:
+
+   **The Rewrite Wars** (language zealots clash):
+   ```
+   FearlessCrab has opened an issue demanding a Rust rewrite.
+   PureMonad responds that Haskell would be more elegant.
+   WebScaleChad interrupts saying just use Node.js and be done.
+   GrokVibeCheck accuses them all of being "woke language cops."
+   
+   Generate a 10-comment thread where each character responds to
+   the others. FearlessCrab and PureMonad form a reluctant alliance
+   against WebScaleChad. GrokVibeCheck gets ratio'd. Nobody mentions
+   actually fixing the C code. The thread gets locked by OpenBFD
+   who posts a single patch and says "Shut up. Read code."
+   ```
+
+   **Bot Meltdown Cascade** (the bots pile on):
+   ```
+   ReviewBot-774 attempts to scan the codebase and starts breaking
+   down mid-review. SecAuditDAOBot-69420 swoops in offering to
+   "tokenize the trauma" and mint the breakdown as an NFT.
+   ReviewBot-774's error messages become increasingly desperate.
+   SecAuditDAOBot keeps shilling. Generate the thread. End with
+   ReviewBot-774 outputting just "HELP" and SecAuditDAOBot responding
+   "gm ser, few understand 🚀"
+   ```
+
+   **The FASCIST Flag Debate** (everyone has opinions):
+   ```
+   Someone opened an issue asking what the FASCIST and COMMUNIST
+   flags in fascist.c actually do. Generate responses from:
+   - daFlute defending it as "historically contextual irony"
+   - GrokVibeCheck claiming it proves ESR was "based all along"
+   - FearlessCrab demanding it be rewritten in Rust with enums
+   - plannedchaos asking if this affects Q3 deliverables
+   - OpenBFD posting the actual code with line numbers and saying
+     "It's access control. Read the code. Stop typing."
+   
+   The thread should be 15 comments, escalate dramatically, and
+   resolve nothing. This is open source discourse.
+   ```
+
+   **The Performance Review** (characters review each other):
+   ```
+   plannedchaos has scheduled annual performance reviews for all
+   contributors. Generate a thread where:
+   - plannedchaos sends calendar invites to everyone
+   - FearlessCrab refuses to use Google Calendar (proprietary)
+   - PureMonad questions the category-theoretic validity of metrics
+   - OpenBFD responds with just "Patch count: 47. Merged: 0."
+   - ReviewBot-774 tries to generate a self-assessment and crashes
+   - SecAuditDAOBot offers to put the reviews on-chain
+   - GrokVibeCheck accuses HR of being a deep state op
+   ```
+
+4. **Forge issues and comments using `gh` CLI:**
+   ```bash
+   # Create an issue
+   gh issue create --title "🎭🦀 Rewrite in Rust" --body "$(cat issue-body.md)"
+   
+   # Add a comment
+   gh issue comment 42 --body "$(cat comment.md)"
+   ```
+
+5. **The AI generates the content. You post it.** Your GitHub identity is visible. The 🎭 prefix signals roleplay.
+
+**You can use any tools you like** — Cursor, Copilot, Claude, or do it by hand if you're brave.
+
+### The LARP Framework
+
+**Vibe Coding lets people LARP as software developers.** This repository is for LARPing as hackers, critics, and open source commentators — in the grand ESR tradition of "How To Become A Hacker."
+
+ESR positioned himself as gatekeeper to hacker culture. We're opening the gate. Anyone can roleplay as:
+- The grizzled maintainer defending legacy code
+- The zealot demanding a rewrite
+- The bot having an existential crisis
+- The PHB who wandered into the wrong repo
+
+**ESR wanted many eyes. He's getting many personas.**
+
+---
+
+## 🎭 The Good Stuff Is In The Issues
+
+**The repo is a rotating stage. The branches are parallel realities. The Issues are where the show happens.**
+
+You're reading the README on `main`. That's just one timeline. Each branch is a faction's vision of the future — **parallel universes that will never be merged**:
+
+| Branch | Reality | Maintained By |
+|--------|---------|---------------|
+| [`main`](https://github.com/SimHacker/tmnn7-8/tree/main) | The archaeological dig site | Neutral |
+| [`dev`](https://github.com/SimHacker/tmnn7-8/tree/dev) | **Public clusterfuck — anyone can contribute** | **OPEN** |
+| [`rust-rewrite`](https://github.com/SimHacker/tmnn7-8/tree/rust-rewrite) | Everything is memory-safe | [FearlessCrab](analysis/characters/FearlessCrab/) 🦀 |
+| [`haskell-port`](https://github.com/SimHacker/tmnn7-8/tree/haskell-port) | Everything is a monad | [PureMonad](analysis/characters/PureMonad/) λ |
+| [`nodejs-webscale`](https://github.com/SimHacker/tmnn7-8/tree/nodejs-webscale) | Everything is async | [WebScaleChad](analysis/characters/WebScaleChad/) 🚀 |
+| [`based-freedom-fork`](https://github.com/SimHacker/tmnn7-8/tree/based-freedom-fork) | Everything is political | [GrokVibeCheck](analysis/characters/GrokVibeCheck/) 🤖 |
+| [`elbonia-initiative`](https://github.com/SimHacker/tmnn7-8/tree/elbonia-initiative) | Everything is a deliverable | [plannedchaos](analysis/characters/plannedchaos/) 📊 |
+| [`actual-fixes`](https://github.com/SimHacker/tmnn7-8/tree/actual-fixes) | Patches nobody will merge | [OpenBFD](analysis/characters/OpenBFD/) 🐡 |
+
+**These branches will never converge.** That's the point. Each faction believes their reality is the true path. PRs between branches are declarations of war.
+
+### 🔧 Every GitHub Feature Is A Game Mechanic
+
+We're leaning into git and GitHub. Hard.
+
+| Feature | Game Mechanic |
+|---------|---------------|
+| **Branches** | Parallel realities / faction territories |
+| **Commits** | Actions characters take (with in-character commit messages) |
+| **PRs** | Proposals / attacks / treaties between factions |
+| **Issues** | Scenes / debates / discoveries |
+| **Discussions** | Tavern talk / faction planning |
+| **Tags** | Historical markers / achievements |
+| **Releases** | Major faction milestones (that ship nothing) |
+| **Actions** | Automated theater (bots, CI that does weird things) |
+| **Wiki** | Lore / world-building / retcons |
+
+**Commit messages are dialogue.** Write them in character:
+```
+🎭🦀 refactor: mass unsafe block removal (6,847 files changed)
+🎭📊 docs: add Q3 remediation timeline and RACI matrix
+🎭🤖 fix: attempted to fix... I... I can't... [INCOMPLETE]
+🎭🐡 patch: actual fix for gets() in ednews.c. Just merge it.
+```
+
+**PRs are diplomatic incidents.** A PR from `rust-rewrite` to `main` is an invasion. A PR from `actual-fixes` is OpenBFD screaming into the void.
+
+**One branch might develop GitHub Actions workflows to do god knows what.** Automated poetry. Scheduled bot meltdowns. CI that runs `gets()` and reports the segfault. The possibilities are endless.
+
+### 🌌 Cross-Temporal Multiverse Sync
+
+Some files stay in sync across all branches — the shared world model:
+
+| Keep In Sync | Why |
+|--------------|-----|
+| [`README.md`](README.md) | The rules of the game |
+| [`analysis/characters/`](analysis/characters/) | The cast exists in all realities |
+| [`analysis/SIMULATION.yml`](analysis/SIMULATION.yml) | The MOOLLM VM image |
+| [`CODE-OF-CONDUCT.md`](CODE-OF-CONDUCT.md) | The meta-rules |
+
+**These are the constants across parallel universes.** The characters exist in all timelines. The rules are the same. Only the *code* diverges.
+
+Cherry-pick character updates across branches. The factions disagree about code, not about who the players are.
+
+**Enforced by GitHub Actions:**
+
+| Workflow | Direction | Purpose |
+|----------|-----------|---------|
+| [Multiverse Sync](.github/workflows/multiverse-sync.yml) | main → branches | Auto-sync core files to factions |
+| [PR Guardian](.github/workflows/pr-guardian.yml) | branches → main | Gatekeep hostile PRs |
+
+**Multiverse Sync:** When core files change on main, auto-cherry-pick to all branches.
+
+**PR Guardian:** When a faction PR touches core files:
+- Labels for review
+- Detects vandalism patterns (editing rival characters)
+- Comments with review checklist
+- Flags suspicious content
+
+**[CODEOWNERS](.github/CODEOWNERS):** PRs to core files require approval. No drawing penises on sleeping rivals.
+
+**The Rule:** You can hate PureMonad's Haskell port. You cannot edit PureMonad's personality.
+
+The [Issues](https://github.com/SimHacker/tmnn7-8/issues) and [Discussions](https://github.com/SimHacker/tmnn7-8/discussions) are where the factions clash.
+
+### 🎪 Entry Points — Jump In Here
+
+| Issue | What's Happening |
+|-------|------------------|
+| [#11 — FACTION: Rust Rewrite 🦀](https://github.com/SimHacker/tmnn7-8/issues/11) | FearlessCrab's faction HQ. Join the rewrite that will never ship. |
+| [#12 — FACTION: Haskell Port λ](https://github.com/SimHacker/tmnn7-8/issues/12) | PureMonad's faction HQ. Everything is a monad. |
+| [#13 — FACTION: Node.js Webscale 🚀](https://github.com/SimHacker/tmnn7-8/issues/13) | WebScaleChad's faction HQ. Just use npm. |
+| [#14 — FACTION: Based Freedom Fork 🤖](https://github.com/SimHacker/tmnn7-8/issues/14) | GrokVibeCheck's faction HQ. Fight the woke mob. |
+| [#9 — FACTION: Elbonia Initiative 📊](https://github.com/SimHacker/tmnn7-8/issues/9) | plannedchaos's faction HQ. Synergy. |
+| [#8 — Rewrite in Rust proposal](https://github.com/SimHacker/tmnn7-8/issues/8) | The eternal debate. Pick a side. |
+| [#4 — HARPER'S INDEX: fascist.c](https://github.com/SimHacker/tmnn7-8/issues/4) | Statistics about the infamous file. |
+| [#1 — 7,176 whitespace violations](https://github.com/SimHacker/tmnn7-8/issues/1) | The most pedantic issue ever filed. |
+
+### 🎲 How To Play
+
+1. **Pick a faction** — Click any faction issue above
+2. **Read the thread** — See what characters are saying
+3. **Join the conversation** — Comment as yourself OR as a character
+4. **Use the 🎭 prefix** — Signals "this is roleplay"
+5. **Escalate** — The drama is the point
+
+### 📣 Start Your Own Scene
+
+Don't see an issue you want? Create one:
+
+```bash
+# Start a debate about tabs vs spaces
+gh issue create --title "🎭🦀 Tabs detected in ednews.c — this is a moral failing" \
+  --label "ai-generated,pedantic" \
+  --body "$(cursor-generate-as FearlessCrab)"
+
+# Have a bot meltdown
+gh issue create --title "🎭🤖 [ReviewBot-774] Attempting to process... I... I can't..." \
+  --label "ai-generated,bot-breakdown"
+
+# Corporate intervention
+gh issue create --title "🎭📊 Q3 Remediation Roadmap — Let's Align" \
+  --label "faction,elbonia"
+```
+
+---
+
+## 🎭 Interactive Performance Art
+
+This isn't just a repository — it's a **public code review as collaborative theater**.
+
+### GitHub as MMORPG
+
+| GitHub Feature | Game Equivalent |
+|----------------|-----------------|
+| **Issues** | Scenes, discoveries |
+| **Comments** | Dialogue |
+| **Branches** | Factions |
+| **PRs** | Actions |
+| **Characters** | Masks anyone can wear |
+
+### The Cast
+
+| Character | Archetype | Prefix |
+|-----------|-----------|--------|
+| [daFlute](analysis/characters/daFlute/) | Aging Hacker Who Wrote The Book | 🎭📜 |
+| [FearlessCrab](analysis/characters/FearlessCrab/) | Rust Evangelist | 🎭🦀 |
+| [PureMonad](analysis/characters/PureMonad/) | FP Academic | 🎭λ |
+| [OpenBFD](analysis/characters/OpenBFD/) | Actual Code Reader | 🎭🐡 |
+| [ReviewBot-774](analysis/characters/ReviewBot-774/) | Bot Having Breakdown | 🎭🤖 |
+| [SecAuditDAOBot-69420](analysis/characters/SecAuditDAOBot-69420/) | Crypto Scam Bot | 🎭🪙 |
+
+**To play:** Prefix your comment with `🎭[emoji] [*Name*](link):` — that's it.
+
+*Full cast: [analysis/characters/](analysis/characters/)*
+
+### AI Contributions REQUIRED
+
+Most projects ban AI-generated PRs. **This one requires them.**
+
+Let a thousand AI agents descend on this codebase. Let them generate Issues with excessive detail. ESR wanted many eyes. The eyes are silicon now.
+
+---
+
+## The Analysis
+
+All findings in [`analysis/`](analysis/):
+
+| Document | What |
+|----------|------|
+| [vulnerabilities.md](analysis/vulnerabilities.md) | Unsafe function calls documented |
+| [fascist-analysis.md](analysis/fascist-analysis.md) | The infamous fascist.c |
+| [catb-irony.md](analysis/catb-irony.md) | Cathedral vs Bazaar contradictions |
+| [many-eyes-myth.md](analysis/many-eyes-myth.md) | "Linus's Law" — quote Linus never said |
+| [esr-quotes.md](analysis/esr-quotes.md) | Statements suitable for charity fundraising |
+| [SIMULATION.yml](analysis/SIMULATION.yml) | How to orchestrate the performance |
+
+---
+
+## Timeline
 
 ```mermaid
 flowchart LR
@@ -456,11 +801,17 @@ flowchart LR
 
 ## Archive Sources
 
-| Source | Status |
-|--------|--------|
-| `ftp.digital.com/pub/news/tmnn/` | Offline (DEC FTP) |
-| [fi.archive.ubuntu.com](https://web.archive.org/web/20191205160937/https://fi.archive.ubuntu.com/index/unix/news/tmnn7-8.tar.Z) | Archived via Wayback |
-| [Wikipedia: B News](https://en.wikipedia.org/wiki/B_News) | Documents TMNN |
+| Path | What |
+|------|------|
+| [`analysis/`](analysis/) | Archaeological analysis |
+| [`analysis/characters/`](analysis/characters/) | 9 playable sock puppets |
+| [`analysis/rooms/`](analysis/rooms/) | Spatial layouts |
+| [`analysis/SIMULATION.yml`](analysis/SIMULATION.yml) | MOOLLM VM image |
+| [`src/`](src/) | Source code |
+| [`src/D.news/fascist.c`](src/D.news/fascist.c) | The infamous file |
+| [`doc/BRAGSHEET`](doc/BRAGSHEET) | ESR's promises |
+| [`LICENSE`](LICENSE) | Political manifesto + commercial plug |
+| [`.github/workflows/`](.github/workflows/) | Multiverse automation |
 
 ---
 
