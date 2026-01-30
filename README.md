@@ -298,6 +298,28 @@ tmnn7-8/analysis/skills/github-simulation/  ← GitHub Issues as stage
 
 5. **The AI generates the content. You post it.** Your GitHub identity is visible. The 🎭 prefix signals roleplay.
 
+### Character Tagging Convention
+
+**Your real GitHub username is always visible** — that's transparency. But you tag your content at **top and bottom** with the character you're playing:
+
+```markdown
+🎭🦬 [*Saint IGNUcius*](https://github.com/SimHacker/tmnn7-8/tree/main/analysis/characters/StIGNUcius)
+
+[Your in-character content here...]
+
+-- 
+🦬 [Saint IGNUcius](https://github.com/SimHacker/tmnn7-8/tree/main/analysis/characters/StIGNUcius)
+[The Church of Emacs](https://stallman.org/saint.html)
+```
+
+**Why this works:**
+- **Top tag:** Immediately signals "this is roleplay" with character link
+- **Content:** In character voice, in character format
+- **Bottom tag:** Links back to character definition, closes the frame
+- **Your username:** Still visible in GitHub's post metadata — you own this
+
+**It's like theater:** The actor's face is visible, but they're wearing a mask. The mask has a label. Everyone knows it's a performance.
+
 **You can use any tools you like** — Cursor, Copilot, Claude, or do it by hand if you're brave.
 
 ### The LARP Framework
