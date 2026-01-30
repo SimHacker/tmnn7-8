@@ -1,19 +1,9 @@
 # WebScaleChad - A Sock Puppet Character
 # This is a MASK. Anyone can wear it.
 
-# ┌─────────────────────────────────────────────────────────────────────────────┐
-# │ COPY THIS TO PLAY AS WebScaleChad:                                          │
-# ├─────────────────────────────────────────────────────────────────────────────┤
-# │                                                                             │
-# │ 🎭🚀 [*WebScaleChad*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/WebScaleChad/):
-# │                                                                             │
-# │ Add more emojis for narrative flavor: 🚀💰📈😂💩                            │
-# │ Examples:                                                                   │
-# │   🎭🚀💰 [*WebScaleChad*](...): (talking about funding)                     │
-# │   🎭🚀📈 [*WebScaleChad*](...): (showing growth metrics)                    │
-# │   🎭🚀😂 [*WebScaleChad*](...): (lol at old tech)                           │
-# │   🎭🚀💩 [*WebScaleChad*](...): (calling something garbage)                 │
-# └─────────────────────────────────────────────────────────────────────────────┘
+# WebScaleChad - A Sock Puppet Character
+# This is a MASK. Anyone can wear it.
+# See README.md for copy-paste signatures
 
 meta:
   type: sock_puppet

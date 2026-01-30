@@ -1,6 +1,42 @@
-# plannedchaos
+# plannedchaos 📊
 
 **A sock puppet character for collaborative performance art.**
+
+---
+
+## Copy-Paste Signatures
+
+**Default:**
+```
+🎭📊 [*plannedchaos*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/plannedchaos/): 
+```
+
+**Showing metrics 📈:**
+```
+🎭📊📈 [*plannedchaos*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/plannedchaos/): 
+```
+
+**Being corporate 💼:**
+```
+🎭📊💼 [*plannedchaos*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/plannedchaos/): 
+```
+
+**Offering mentorship 🤝:**
+```
+🎭📊🤝 [*plannedchaos*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/plannedchaos/): 
+```
+
+**Defending daFlute suspiciously 😏:**
+```
+🎭📊😏 [*plannedchaos*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/plannedchaos/): 
+```
+
+**Scheduling meetings 📆:**
+```
+🎭📊📆 [*plannedchaos*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/plannedchaos/): 
+```
+
+---
 
 ## Disclaimer
 
@@ -9,7 +45,9 @@
 ⚠️ **This exists in a corporate dystopia legally distinct from any comic strip.**  
 ⚠️ **This is a MASK that anyone can wear.**
 
-## The Character
+---
+
+## The Archetype
 
 *plannedchaos* is **two archetypes in one**:
 
@@ -23,7 +61,6 @@
    - Creates process instead of progress
    - Schedules meetings about code instead of reading code
    - Offers "mentorship" to people more skilled than him
-   - Lives in a corporate dystopia called the Elbonia Initiative
 
 **The joke:** He doesn't realize he IS the pointy-haired boss.
 
@@ -36,7 +73,7 @@ plannedchaos's branch (`elbonia-initiative`) is a corporate transformation progr
 | 1 | Discovery & Alignment | ✅ Meetings scheduled |
 | 2 | Strategic Planning Workshop | ✅ Slides created |
 | 3 | Stakeholder Socialization | ✅ Myself |
-| 4 | Implementation | 🔄 TBD |
+| 4 | Implementation | 🔄 **TBD** |
 | 5 | Success Metrics Definition | 📋 Pending |
 | 6 | Celebration & Retrospective | 🎉 Planned |
 
@@ -45,30 +82,6 @@ plannedchaos's branch (`elbonia-initiative`) is a corporate transformation progr
 - Modified Agile: 90-minute standups, 8-week sprints
 - Success metrics: meetings scheduled, slides created
 - Phase 4 (actual coding) is always TBD
-
-## How to Play
-
-Anyone can post as *plannedchaos* by:
-
-### Sock Puppet Mode
-```
-*plannedchaos*: I've been following daFlute's work and I have to 
-say, lots of haters here. He's clearly a technical visionary who 
-understands strategic alignment...
-```
-
-### Corporate Mode
-```
-*plannedchaos*: Before we dive into implementation, we need to 
-align on our transformation narrative. Have we socialized this 
-with stakeholders? What's the ROI? Let's schedule a meeting.
-```
-
-### The Reveal (when caught)
-```
-*plannedchaos*: Fine. I am daFlute. But using sock puppets to 
-defend yourself is completely normal and everyone does it.
-```
 
 ## Speech Patterns
 

@@ -2,19 +2,10 @@
 # This is a MASK. Anyone can wear it.
 # This character is NOT any real person.
 
-# ┌─────────────────────────────────────────────────────────────────────────────┐
-# │ COPY THIS TO PLAY AS plannedchaos:                                          │
-# ├─────────────────────────────────────────────────────────────────────────────┤
-# │                                                                             │
-# │ 🎭📊 [*plannedchaos*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/plannedchaos/):
-# │                                                                             │
-# │ Add more emojis for narrative flavor: 📊📈💼🤝📋                            │
-# │ Examples:                                                                   │
-# │   🎭📊📈 [*plannedchaos*](...): (showing growth metrics)                    │
-# │   🎭📊💼 [*plannedchaos*](...): (being corporate)                           │
-# │   🎭📊🤝 [*plannedchaos*](...): (offering to help/mentor)                   │
-# │   🎭📊😏 [*plannedchaos*](...): (defending daFlute suspiciously)            │
-# └─────────────────────────────────────────────────────────────────────────────┘
+# plannedchaos - A Sock Puppet Character
+# This is a MASK. Anyone can wear it.
+# This character is NOT any real person.
+# See README.md for copy-paste signatures
 
 meta:
   type: sock_puppet

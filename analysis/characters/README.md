@@ -99,13 +99,30 @@ Each character file starts with:
 # └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
-**Quick reference:**
+**Quick reference (click any block to copy):**
 
-```markdown
+**daFlute:**
+```
 🎭📜 [*daFlute*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/daFlute/): 
+```
+
+**plannedchaos:**
+```
 🎭📊 [*plannedchaos*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/plannedchaos/): 
+```
+
+**FearlessCrab:**
+```
 🎭🦀 [*FearlessCrab*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/FearlessCrab/): 
+```
+
+**PureMonad:**
+```
 🎭λ [*PureMonad*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/PureMonad/): 
+```
+
+**WebScaleChad:**
+```
 🎭🚀 [*WebScaleChad*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/WebScaleChad/): 
 ```
 
