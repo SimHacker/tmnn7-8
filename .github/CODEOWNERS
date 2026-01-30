@@ -4,7 +4,8 @@
 # This prevents hostile branches from vandalizing enemy characters.
 #
 # RULE: You can fork, you can branch, you can diverge.
-#       But merging to main requires approval.
+#       Sync FROM main is automatic (Multiverse Sync workflow).
+#       Merge TO main requires approval.
 
 # Core game rules - affects all timelines
 README.md @SimHacker
