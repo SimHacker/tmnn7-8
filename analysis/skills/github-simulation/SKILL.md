@@ -290,6 +290,51 @@ unsafe_calls_total: 872
 
 The simulation documents itself.
 
+### Multiverse Health Check
+
+**Part of every simulation cycle: check Action logs.**
+
+```bash
+# List recent workflow runs
+gh run list --workflow=multiverse-sync.yml --limit 5
+
+# If failures, check logs
+gh run view [run-id] --log-failed
+
+# Common issues and fixes:
+
+# 1. modify/delete conflict on workflow file
+#    The workflow file was deleted on faction branches
+#    Fix: Force-sync from main
+for branch in actual-fixes rust-rewrite haskell-port; do
+  git checkout $branch && git pull
+  git checkout main -- .github/workflows/multiverse-sync.yml
+  git commit -m "Force-sync workflow from main"
+  git push origin $branch
+done
+
+# 2. Missing labels
+gh label create multiverse-sync --color "7057ff"
+gh label create automated --color "bfd4f2"
+
+# 3. Verify workflow exists on all branches
+for branch in actual-fixes rust-rewrite haskell-port nodejs-webscale based-freedom-fork elbonia-initiative dev; do
+  git ls-tree --name-only origin/$branch .github/workflows/multiverse-sync.yml
+done
+```
+
+**The MMORPG maintenance cycle:**
+
+| Phase | Action |
+|-------|--------|
+| 1. Generate | Create issues, comments, commits as characters |
+| 2. Sync | Multiverse sync propagates to faction branches |
+| 3. Health | Check `gh run list` for failures |
+| 4. Repair | Fix conflicts, missing labels, permissions |
+| 5. Document | Update operational knowledge when new issues found |
+
+The simulation is self-maintaining. When it breaks, that's content too.
+
 ---
 
 ## MOOLLM Integration
