@@ -192,13 +192,127 @@ Play as [character]. Generate [content type] about [topic].
 
 ---
 
----
-
 ## Alignment
 
 | Skill | Role |
 |-------|------|
 | **github-simulation** | The STAGE |
 | **github-user** | The ACTOR |
+
+---
+
+## Operational Knowledge
+
+Lessons cached from building and playing characters.
+
+### Character File Structure
+
+Every character needs three files:
+
+```
+analysis/characters/{name}/
+├── GLANCE.yml      # Quick scan (emoji, soul, k-lines)
+├── CHARACTER.yml   # Full definition (inherits github-user)
+└── README.md       # Human-readable reference
+```
+
+**GLANCE.yml** is the multi-resolution entry point. Agent reads GLANCE first, decides if it needs more.
+
+### Inheritance Pattern
+
+Characters inherit from `github-user`, not embed logic in it:
+
+```yaml
+# CHARACTER.yml
+meta:
+  inherits: [github-user]  # Actor capabilities
+  
+github_actions:           # Character-specific actions
+  primary: "Opens issues demanding rewrites"
+  commits: "Cargo.toml only"
+```
+
+The skill defines what actors CAN do. Characters define what they ACTUALLY do.
+
+### Green Room Metaphor
+
+Characters exist in `analysis/rooms/green-room/` when not on stage.
+
+```
+"You are OpenBFD"  →  Character steps from green room to stage
+"Exit character"   →  Character returns to green room
+```
+
+Backstage preparation. Between-scene existence.
+
+### The 🎭 Prefix Is Non-Negotiable
+
+Every character action needs the theatrical mask:
+
+```
+🎭🦀 FearlessCrab:
+In Rust, this would be a compile-time error.
+```
+
+This is the ethical boundary. No deception. Readers always know.
+
+### Auth Switching (When Using Sock Puppets)
+
+```bash
+# Set up tokens directory
+mkdir -p ~/.tokens
+chmod 700 ~/.tokens
+
+# Store PATs per character
+echo "ghp_xxx..." > ~/.tokens/openbfd.token
+chmod 600 ~/.tokens/*.token
+
+# Switch context
+switch_to() {
+  gh auth login --with-token < ~/.tokens/$1.token
+  echo "Now: $1"
+}
+
+# Usage
+switch_to openbfd
+gh issue comment 42 --body "🎭🐡 Patch attached."
+switch_to default
+```
+
+Default mode: use your own account. The 🎭 prefix indicates roleplay.
+
+### AI Porky Pig Gibberish
+
+LLM output can corrupt during long writes. Watch for:
+
+```
+strstrstrstrstrstrstr
+newsstrstrstrstr
+```
+
+**Detection:** Grep for repeated patterns after generation.
+**Cause:** Unknown. Model glitch during long context.
+**Fix:** Regenerate corrupted sections. Don't speculate.
+
+---
+
+## MOOLLM Integration
+
+This skill requires MOOLLM mounted in the same workspace:
+
+```
+workspace/
+├── tmnn7-8/          # This repo
+└── moollm/           # Character skill foundation
+    └── skills/
+        ├── character/     # Entity foundation
+        ├── persona/       # Identity layers
+        ├── incarnation/   # Gold-standard creation
+        └── representation-ethics/
+```
+
+Open both repos in your tool's workspace. Skills activate on mount.
+
+---
 
 *See also: [github-simulation](../github-simulation/) for the stage, [code-archaeology](../code-archaeology/) for OpenBFD's method.*

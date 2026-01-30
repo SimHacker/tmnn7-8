@@ -220,4 +220,95 @@ Generate the issue and comments.
 
 ---
 
+## Operational Knowledge
+
+Lessons cached from running the simulation.
+
+### Multiverse Sync Strategy
+
+**Cherry-pick fails for modify/delete conflicts.** When files are renamed/deleted on branches but modified on main, cherry-pick creates merge conflicts that abort.
+
+**Solution: Force-sync core files.**
+
+```bash
+for branch in rust-rewrite haskell-port nodejs-webscale; do
+  git checkout $branch
+  git checkout main -- analysis/ GLANCE.yml README.md
+  git commit -m "Sync core files from main"
+  git push origin $branch --force-with-lease
+done
+```
+
+Core files are authoritative on main. Branches can diverge in code, not in world model.
+
+### Explicit File Paths in Workflows
+
+Globs like `analysis/**` miss edge cases. List files explicitly:
+
+```yaml
+paths:
+  - analysis/INDEX.yml
+  - analysis/SIMULATION.yml
+  - analysis/characters/**
+  - analysis/skills/**
+  - analysis/rooms/**
+  - GLANCE.yml
+  - src/GLANCE.yml
+  - src/D.*/GLANCE.yml
+```
+
+Fixed-size microworld = fixed-size file list.
+
+### Character Name Collisions
+
+**Always check before naming characters.**
+
+```bash
+gh api users/planned-chaos 2>&1 | grep -q "Not Found" && echo "Available"
+```
+
+`plannedchaos` was a real user. Renamed to `planned-chaos` to avoid @mention notifications. Respect real humans.
+
+### Branch Naming
+
+| Pattern | Use |
+|---------|-----|
+| `rust-rewrite` | Faction branch (FearlessCrab) |
+| `actual-fixes` | Working branch (OpenBFD) |
+| `main` | Archaeological site (neutral) |
+
+Faction branches have BRANCH.yml (formerly SOUL.md) defining their soul.
+
+### The Joke
+
+While updating `multiverse-sync.yml`, the characters continued arguing about rewrites.
+
+```
+unsafe_calls_fixed: 0
+unsafe_calls_total: 872
+```
+
+The simulation documents itself.
+
+---
+
+## MOOLLM Integration
+
+This skill requires MOOLLM mounted in the same workspace:
+
+```
+workspace/
+├── tmnn7-8/          # This repo
+└── moollm/           # Skills inherit from here
+    └── skills/
+        ├── adventure/
+        ├── character/
+        ├── simulation/
+        └── ...
+```
+
+Without MOOLLM, skills are just documentation. With it, they activate.
+
+---
+
 *See also: [github-user](../github-user/) for characters as actors, [code-archaeology](../code-archaeology/) for OpenBFD's method.*
