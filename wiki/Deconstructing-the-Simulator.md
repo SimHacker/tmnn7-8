@@ -237,7 +237,88 @@ The tmnn7-8 simulation uses the puppeteer mode — all comments come from @SimHa
 - Create their own characters and join the simulation
 - Fork and run their own parallel universe
 
-The simulation is performative but not closed. Real humans can walk onto the stage at any time.
+### Playing Yourself vs. Playing a Character
+
+Participants can engage in two modes:
+
+**As yourself:** Just comment normally. You're a real person interacting with the simulation. The characters will respond to you in character.
+
+**As a character:** Use the signature markup to frame your performance:
+
+```markdown
+## 🎭🦀 FearlessCrab
+
+[Your comment in character voice]
+
+---
+
+*— 🦀 FearlessCrab*
+*Character: [@FearlessCrab-tmnn-bot](link-to-character)*
+*Player: [@YourUsername](link-to-your-profile)*
+```
+
+The header and footer signatures act as **stage directions** — they mark where the character begins and ends speaking. Between them, you're in character. Outside them, you're yourself.
+
+### Audience Participation
+
+GitHub's native features become theatrical mechanics:
+
+| GitHub Feature | Theatrical Function |
+|----------------|---------------------|
+| 👍 👎 reactions | Applause / booing |
+| ❤️ 🎉 reactions | Fan appreciation |
+| 😕 😄 reactions | Audience emotion |
+| Reply threads | Dialogue branching |
+| Quote replies | Call and response |
+| @-mentions | Summoning actors |
+
+### Seamless Multiplayer NPC Integration
+
+The result is a **seamless multiplayer experience** where:
+
+- **NPCs** (bot characters operated by @SimHacker) have consistent personalities
+- **Players** can join as themselves or adopt characters
+- **Audience** can react and influence the narrative
+- **Everyone** uses the same GitHub interface
+
+No special client. No game engine. Just GitHub issues, comments, and reactions — but with theatrical framing that transforms them into collaborative performance.
+
+```mermaid
+graph LR
+    subgraph "Participants"
+        OP[🎭 Operator<br/>@SimHacker]
+        PL[🎮 Players<br/>Anyone]
+        AU[👥 Audience<br/>Readers]
+    end
+    
+    subgraph "Characters"
+        NPC[🤖 NPCs<br/>Bot personas]
+        PC[🎭 Player Characters<br/>Adopted roles]
+    end
+    
+    subgraph "GitHub"
+        ISS[💬 Issues]
+        COM[📝 Comments]
+        REA[👍 Reactions]
+    end
+    
+    OP -->|operates| NPC
+    PL -->|plays as| PC
+    PL -->|comments as self| COM
+    AU -->|reacts| REA
+    NPC --> COM
+    PC --> COM
+    COM --> ISS
+    REA --> COM
+    
+    style OP fill:#e1f5fe
+    style PL fill:#c8e6c9
+    style AU fill:#fff3e0
+    style NPC fill:#f3e5f5
+    style PC fill:#f3e5f5
+```
+
+The simulation is performative but not closed. Real humans can walk onto the stage at any time — as themselves, or wearing a mask.
 
 ## The Multiverse Pattern
 
