@@ -134,6 +134,40 @@ Staring directly into 1988 C code with your own eyes is **NOT RECOMMENDED**.
    - AI can embody any character and stay in voice
    - The `analysis/characters/` directory is the cast
 
+### The Architecture: Self-like Prototype Inheritance
+
+**MOOLLM is a composable, prototype-based object system** — like Self, but on the filesystem, across repos.
+
+```
+moollm/skills/character/          ← Base character prototype
+    ↓ inherits
+tmnn7-8/analysis/skills/github-user/   ← GitHub-specific character
+    ↓ inherits  
+tmnn7-8/analysis/characters/OpenBFD/   ← Specific character instance
+
+moollm/skills/simulator/          ← Base simulation prototype
+    ↓ inherits
+tmnn7-8/analysis/skills/github-simulation/  ← GitHub Issues as stage
+```
+
+**Key concepts:**
+- **Prototype inheritance:** Skills inherit from other skills via `inherits:` in YAML
+- **Cross-repo composition:** `tmnn7-8` skills inherit from `moollm` skills
+- **Filesystem = object graph:** Directories are objects, files are slots
+- **Multiple inheritance:** A skill can inherit from multiple prototypes
+- **URL as prototype:** Characters can inherit directly from URLs (training data)
+
+**This repo's skills:**
+| Skill | Inherits From | Purpose |
+|-------|---------------|---------|
+| `github-user` | `moollm/skills/character` | GitHub user with commit/issue voice |
+| `github-simulation` | `moollm/skills/simulator` | GitHub as theatrical stage |
+
+**Platforms:**
+- ✅ **Cursor** — fully supported now
+- 🔜 **Claude Code** — coming soon
+- 🔜 **Other IDE agents** — architecture is portable
+
 3. **Ask the AI to perform tasks as specific characters:**
 
    **[OpenBFD](analysis/characters/OpenBFD/)** (the Theo de Raadt-inspired actual code reader):
