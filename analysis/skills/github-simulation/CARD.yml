@@ -30,6 +30,12 @@ capabilities:
     - Multiverse sync of core files across branches
     - PR Guardian gatekeeping for faction warfare
     - CODEOWNERS enforcement for character protection
+    
+  health:
+    - Monitor workflow runs: gh run list --workflow=multiverse-sync.yml
+    - Diagnose failures: gh run view [id] --log-failed
+    - Repair sync issues: force-sync, create labels, fix permissions
+    - Document new failure modes in operational knowledge
 
 activation_triggers:
   - "run a github simulation"
@@ -110,6 +116,8 @@ k-lines:
   - explicit-file-paths      # Learned: list files, don't glob
   - character-name-collision # Learned: check real users before naming
   - moollm-mount-required    # Integration pattern
+  - health-check-cycle       # Learned: always check gh run list
+  - action-logs-diagnosis    # Learned: gh run view --log-failed
 
 operational_knowledge:
   # Cached lessons — see SKILL.md for details
