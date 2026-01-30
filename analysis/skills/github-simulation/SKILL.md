@@ -337,6 +337,193 @@ The simulation is self-maintaining. When it breaks, that's content too.
 
 ---
 
+## Branch Ownership & Permissions (Game Mechanics)
+
+GitHub's native permission system becomes the game's governance structure.
+
+### The Permission Hierarchy
+
+| Role | Capabilities | Game Equivalent |
+|------|--------------|-----------------|
+| Admin | Full control, settings, delete | Game Master |
+| Maintain | Manage without settings access | Faction Leader |
+| Write | Push to branches, manage issues | Active Player |
+| Triage | Manage issues/PRs, no write | Spectator+ |
+| Read | View only | Audience |
+
+### Branch Protection as Territory
+
+Each faction branch gets protection rules:
+
+```bash
+# Create branch ruleset for a faction (requires admin)
+gh api repos/SimHacker/tmnn7-8/rulesets -X POST -f name="rust-rewrite-protection" \
+  -f target="branch" \
+  -f enforcement="active" \
+  -f conditions='{"ref_name":{"include":["refs/heads/rust-rewrite"]}}' \
+  -f rules='[{"type":"pull_request","parameters":{"required_approving_review_count":1}}]'
+```
+
+**What this enables:**
+- FearlessCrab's sock puppet account can approve PRs to `rust-rewrite`
+- Other factions need FearlessCrab's approval to touch rust-rewrite
+- Cross-faction PRs become actual diplomatic negotiations
+
+### CODEOWNERS as Character Ownership
+
+Each branch has its own CODEOWNERS file. Characters own their turf.
+
+**On `rust-rewrite` branch:**
+```
+# .github/CODEOWNERS
+# FearlessCrab owns this branch
+* @FearlessCrab-bot
+
+# But core simulation files need approval from main
+analysis/characters/ @SimHacker
+analysis/SIMULATION.yml @SimHacker
+```
+
+**On `actual-fixes` branch:**
+```
+# .github/CODEOWNERS
+# OpenBFD owns fixes
+src/ @OpenBFD-bot
+
+# Analysis is shared
+analysis/ @SimHacker @OpenBFD-bot
+```
+
+### Sock Puppet Account Setup
+
+When you create dedicated GitHub accounts for characters:
+
+```bash
+# 1. Create the account (manual — GitHub requires email verification)
+# Account: FearlessCrab-bot, OpenBFD-bot, etc.
+
+# 2. Invite as collaborator
+gh api repos/SimHacker/tmnn7-8/collaborators/FearlessCrab-bot -X PUT \
+  -f permission="write"
+
+# 3. Store PAT securely
+mkdir -p ~/.tokens && chmod 700 ~/.tokens
+echo "ghp_xxx..." > ~/.tokens/fearlesscrab.token
+chmod 600 ~/.tokens/fearlesscrab.token
+
+# 4. Switch context to act as character
+gh auth login --with-token < ~/.tokens/fearlesscrab.token
+
+# 5. Verify
+gh auth status
+# ✓ Logged in to github.com as FearlessCrab-bot
+
+# 6. Switch back
+gh auth login --with-token < ~/.tokens/default.token
+```
+
+### Real Players Joining the Game
+
+Other humans can join and play characters:
+
+```bash
+# 1. They fork the repo (or get invited as collaborator)
+gh repo fork SimHacker/tmnn7-8
+
+# 2. They claim a character or create one
+# Add their handle to the character's CHARACTER.yml:
+#   players:
+#     - github: @alice
+#       role: primary
+
+# 3. They get branch write access
+gh api repos/SimHacker/tmnn7-8/collaborators/alice -X PUT \
+  -f permission="write"
+
+# 4. They can push to their faction branch
+git push origin rust-rewrite  # if playing FearlessCrab
+```
+
+### Permission as Plot
+
+The permission structure creates natural drama:
+
+| Situation | Permission Mechanic | Dramatic Effect |
+|-----------|---------------------|-----------------|
+| Faction wants to merge to main | Needs admin approval | Diplomacy required |
+| Character edits rival's branch | Blocked by CODEOWNERS | Territorial conflict |
+| New player joins faction | Invited as collaborator | Alliance forming |
+| Faction leader goes rogue | Can be demoted | Coup mechanics |
+| Multiverse sync conflict | Needs manual resolution | Cross-faction crisis |
+
+### Teaching GitHub Collaboration
+
+**The game teaches by doing:**
+
+| Game Action | GitHub Skill Learned |
+|-------------|----------------------|
+| Claim a branch | Branch protection, naming |
+| Defend territory | CODEOWNERS, reviews |
+| Form alliance | Teams, collaborators |
+| Negotiate merge | PR workflow, reviews |
+| Resolve conflict | Conflict resolution, rebasing |
+| Run for faction leader | Permission escalation |
+
+### Orchestrating with Actions
+
+GitHub Actions can automate game mechanics:
+
+```yaml
+# .github/workflows/faction-pr-guardian.yml
+name: Faction PR Guardian
+
+on:
+  pull_request:
+    branches: [rust-rewrite, haskell-port, nodejs-webscale]
+
+jobs:
+  check-faction-approval:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check faction leader approval
+        run: |
+          FACTION=$(echo ${{ github.base_ref }})
+          
+          case $FACTION in
+            rust-rewrite) LEADER="FearlessCrab-bot" ;;
+            haskell-port) LEADER="PureMonad-bot" ;;
+            nodejs-webscale) LEADER="WebScaleChad-bot" ;;
+          esac
+          
+          # Check if faction leader approved
+          APPROVED=$(gh pr view ${{ github.event.pull_request.number }} \
+            --json reviews --jq ".reviews[] | select(.author.login==\"$LEADER\" and .state==\"APPROVED\")")
+          
+          if [ -z "$APPROVED" ]; then
+            echo "::warning::Faction leader $LEADER has not approved this PR"
+          fi
+```
+
+### Future: Teams as Factions
+
+For organization repos, use Teams:
+
+```bash
+# Create faction team
+gh api orgs/SimHacker/teams -X POST \
+  -f name="rust-rewrite-faction" \
+  -f description="Memory safety is not optional" \
+  -f privacy="closed"
+
+# Add members
+gh api teams/rust-rewrite-faction/memberships/FearlessCrab-bot -X PUT
+
+# Grant team write access to branch
+# (Use rulesets to require team review)
+```
+
+---
+
 ## MOOLLM Integration
 
 This skill requires MOOLLM mounted in the same workspace:
