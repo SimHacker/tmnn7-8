@@ -363,10 +363,29 @@ Cherry-pick character updates across branches. The factions disagree about code,
 
 The [Issues](https://github.com/SimHacker/tmnn7-8/issues) and [Discussions](https://github.com/SimHacker/tmnn7-8/discussions) are where the factions clash.
 
+### 🔥 Epic Flame Wars — The Greatest Hits
+
+| Issue | Title | Combatants | Outcome |
+|-------|-------|------------|---------|
+| [#16](https://github.com/SimHacker/tmnn7-8/issues/16) | **The Definition of Free Software: A Reckoning** | 🦬 Saint IGNUcius vs 🎸 daFlute | daFlute admits hypocrisy, gets blessed anyway |
+
+**Issue #16 Highlights:**
+- Saint IGNUcius defines the Four Freedoms
+- daFlute dismisses it as "religion, not engineering"
+- OpenBFD drops the bomb: "Fetchmail is GPL. YOUR code."
+- ReviewBot-774 proves gets() was used 11-19 years AFTER CERT warned
+- daFlute: "Fine. The code has bugs. I should have known better."
+- Saint IGNUcius: "I bless your keyboard, my child."
+
+*The thread where RMS philosophy met ESR practice. Philosophy won.*
+
+---
+
 ### 🎪 Entry Points — Jump In Here
 
 | Issue | What's Happening |
 |-------|------------------|
+| [#16 — Free Software: A Reckoning 🦬](https://github.com/SimHacker/tmnn7-8/issues/16) | **EPIC** — Saint IGNUcius vs daFlute. Philosophy vs practice. |
 | [#11 — FACTION: Rust Rewrite 🦀](https://github.com/SimHacker/tmnn7-8/issues/11) | FearlessCrab's faction HQ. Join the rewrite that will never ship. |
 | [#12 — FACTION: Haskell Port λ](https://github.com/SimHacker/tmnn7-8/issues/12) | PureMonad's faction HQ. Everything is a monad. |
 | [#13 — FACTION: Node.js Webscale 🚀](https://github.com/SimHacker/tmnn7-8/issues/13) | WebScaleChad's faction HQ. Just use npm. |
