@@ -2,6 +2,30 @@
 # 
 # When core files change on main, sync them to all faction branches.
 # The characters exist in all timelines. Only the code diverges.
+#
+# HOW IT WORKS:
+# 1. Triggers on push to main when core files change
+# 2. For each faction branch that exists:
+#    - Cherry-picks the commit (with main winning conflicts)
+#    - Preserves full commit message = provenance trail
+# 3. If conflict (rare), creates an issue tagged with faction label
+#    - Tags characters, not real users (fictional accountability)
+#    - Issue describes exactly what changed and how to fix
+#
+# WHY THIS DESIGN:
+# - Matrix strategy = parallel execution, one job per branch
+# - fail-fast: false = one branch failure doesn't stop others
+# - Cherry-pick preserves original commit author and message
+# - --strategy-option=theirs means main always wins for core files
+# - Issues create narrative artifacts when conflicts occur
+#
+# PROVENANCE:
+# Every sync preserves who changed what, when, and why.
+# Git log on any branch tells the full cross-temporal story.
+#
+# DIRECTION: main → branches (one-way)
+# Core files are authored on main. Factions receive updates.
+# Faction-specific code stays on faction branches.
 
 name: Multiverse Sync
 
@@ -14,10 +38,18 @@ on:
       - 'analysis/characters/**'
       - 'analysis/SIMULATION.yml'
       - 'analysis/rooms/**'
+      - '.github/workflows/multiverse-sync.yml'
+
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   sync-to-factions:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+    
     strategy:
       fail-fast: false
       matrix:
@@ -36,10 +68,10 @@ jobs:
           fetch-depth: 0
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Configure git
+      - name: Configure git identity
         run: |
           git config user.name "Multiverse Sync Bot"
-          git config user.email "bot@tmnn.theater"
+          git config user.email "multiverse-sync[bot]@tmnn.theater"
 
       - name: Check if branch exists
         id: check-branch
@@ -53,53 +85,46 @@ jobs:
       - name: Sync to ${{ matrix.branch }}
         if: steps.check-branch.outputs.exists == 'true'
         run: |
-          git checkout ${{ matrix.branch }}
+          BRANCH="${{ matrix.branch }}"
+          COMMIT_SHA="${{ github.sha }}"
           
-          # Cherry-pick the commit that triggered this workflow
-          # Using -X theirs to auto-resolve conflicts in favor of main
-          git cherry-pick ${{ github.sha }} --strategy-option=theirs || {
-            echo "🎭 Cherry-pick conflict detected!"
-            echo "Creating issue to notify faction maintainers..."
-            
-            # If cherry-pick fails, reset and create an issue
+          git checkout "$BRANCH"
+          
+          if git cherry-pick "$COMMIT_SHA" --strategy-option=theirs; then
+            git push origin "$BRANCH"
+            echo "✅ Synced to $BRANCH"
+          else
             git cherry-pick --abort || true
             
+            # Get changed files for the issue
+            FILES=$(git diff-tree --no-commit-id --name-only -r "$COMMIT_SHA" | sed 's/^/  - /')
+            
+            # Create issue - tags faction label, not real users
             gh issue create \
-              --title "🌌 Multiverse Sync Failed: ${{ matrix.branch }}" \
-              --body "$(cat <<EOF
-          ## Cross-Temporal Sync Conflict
+              --title "🌌 Multiverse Sync: $BRANCH needs manual merge" \
+              --label "multiverse-sync,$BRANCH,automated" \
+              --body "## Cross-Temporal Sync Notice
           
-          The multiverse sync bot attempted to cherry-pick commit ${{ github.sha }} 
-          from \`main\` to \`${{ matrix.branch }}\` but encountered a conflict.
+          The Multiverse Sync Bot attempted to sync from main to $BRANCH.
           
-          **Changed files:**
-          $(git diff-tree --no-commit-id --name-only -r ${{ github.sha }})
+          **Commit:** $COMMIT_SHA
+          **Files:**
+          $FILES
           
-          **Action required:**
-          A faction maintainer needs to manually sync the core files:
+          This is rare - it means divergent edits to a shared file.
           
+          Resolution:
           \`\`\`bash
-          git checkout ${{ matrix.branch }}
-          git cherry-pick ${{ github.sha }}
-          # Resolve conflicts, keeping core files from main
-          git push origin ${{ matrix.branch }}
+          git checkout $BRANCH
+          git cherry-pick $COMMIT_SHA
+          git push origin $BRANCH
           \`\`\`
           
-          The characters must exist in all timelines!
+          Tagged with faction label, not humans. Characters are accountable.
           
-          — 🤖 Multiverse Sync Bot
-          EOF
-          )" \
-              --label "multiverse-sync,faction"
-            
-            exit 0  # Don't fail the workflow
-          }
-          
-          git push origin ${{ matrix.branch }}
-          echo "✅ Synced to ${{ matrix.branch }}"
+          — 🤖 Multiverse Sync Bot"
+          fi
 
-      - name: Branch doesn't exist yet
+      - name: Branch not ready
         if: steps.check-branch.outputs.exists == 'false'
-        run: |
-          echo "⏳ Branch ${{ matrix.branch }} doesn't exist yet."
-          echo "It will be created when the faction is ready."
+        run: echo "Branch ${{ matrix.branch }} will be created when its faction is ready."
