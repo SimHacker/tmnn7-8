@@ -441,6 +441,29 @@ The tools Don built at Stupid Fun Club didn't die when Current TV shut down.
 
 The vision survived. The platform changed. **GitHub is the new Current TV.**
 
+### The Git Repo IS The Branching Script
+
+Storymaker needed custom software to manage branching narratives. 
+
+**Git already does this. It was built for it.**
+
+| Storymaker Feature | Git Equivalent |
+|--------------------|----------------|
+| Branching storylines | `git branch` |
+| Timeline management | Commit history |
+| Story versioning | `git log` |
+| Parallel narratives | Multiple branches |
+| Merging storylines | `git merge` |
+| Community review | Pull Request review |
+| Voting on direction | PR approvals + reactions |
+| Reverting bad choices | `git revert` |
+| Tagging key moments | `git tag` |
+| Forking the canon | `git fork` |
+
+**Git IS collaborative storytelling infrastructure.** We just never used it that way until now.
+
+Every feature Linus built for managing Linux kernel patches is a feature for managing branching narratives. The tooling is identical. The use case is new.
+
 *See: `moollm/examples/adventure-4/characters/real-people/don-hopkins/stupid-fun-club.yml`*
 *See: `backup/lloooomm/03-Resources/entertainment/shows/bar-karma.md`*
 
