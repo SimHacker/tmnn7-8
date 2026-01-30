@@ -969,11 +969,11 @@ char **argv;
 
 #ifdef UUPROG
     if (uuprog[0] == '/')
-	(void) strcpy(bfr, uuprog);
+	(void) strncpy(bfr, uuprog, sizeof(bfr) - 1);  /* FIXED: OpenBFD */
     else
-	(void) sprintf(bfr, "%s/%s", site.libdir, uuprog);
+	(void) snprintf(bfr, sizeof(bfr), "%s/%s", site.libdir, uuprog);  /* FIXED: OpenBFD */
 #else
-    (void) strcpy(bfr, "uuname");
+    (void) strcpy(bfr, "uuname");  /* constant - safe */
 #endif /* UUPROG */
 
     /* call uuname or UUPROG with protection in case the exec fails */
