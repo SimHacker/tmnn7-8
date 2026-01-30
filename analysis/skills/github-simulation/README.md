@@ -42,6 +42,15 @@ gh issue comment 42 --body "🎭🐡 Patch attached."
 git commit -m "🎭🐡 fix(fascist): Replace gets() with fgets()"
 ```
 
+## Operational Knowledge
+
+Lessons cached in `SKILL.md`:
+
+- **Force-sync > cherry-pick** for core files
+- **Explicit file paths** in workflows (fixed microworld)
+- **Check usernames** before creating characters
+- **The joke** — 872 unfixed calls while debating rewrites
+
 ## See Also
 
 - `github-user` — Characters as GitHub actors
