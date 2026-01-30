@@ -1,0 +1,341 @@
+# ═══════════════════════════════════════════════════════════════════════════
+#                    EMERGENT SOCIAL NETWORK
+# ═══════════════════════════════════════════════════════════════════════════
+#
+# "The social graph forms from issue discussions."
+#
+# This network EMERGED from character interactions in GitHub issues.
+# No one designed it. It crystallized from the drama.
+# The relationships are REAL (within the simulation).
+#
+# Each edge has formed through actual exchanges.
+# Each score reflects accumulated interactions.
+
+meta:
+  title: "The TMNN7-8 Social Graph"
+  emergence_date: 2026-01-30
+  source: "Issue discussions, PR comments, commit observations"
+  
+  note: |
+    This graph is ALIVE.
+    Every new issue thread can change the scores.
+    Every interaction creates or modifies edges.
+    
+    The network is the dance made visible.
+
+# ═══════════════════════════════════════════════════════════════════════════
+#                           THE GRAPH
+# ═══════════════════════════════════════════════════════════════════════════
+# Adjacency list with relationship types and scores.
+# Asymmetric by design — A→B often ≠ B→A.
+
+graph:
+
+  # ─────────────────────────────────────────────────────────────────────────
+  #                    OPENBFD (The Silent Fixer)
+  # ─────────────────────────────────────────────────────────────────────────
+  OpenBFD:
+    outgoing:
+      ReviewBot-774: {score: 43, type: "mentor", stance: "cautious_mentor"}
+      daFlute: {score: 25, type: "critic", stance: "submits_patches_gets_ignored"}
+      FearlessCrab: {score: 50, type: "respect_confusion", stance: "talks_no_patches"}
+      GrokVibeCheck: {score: 10, type: "blocked", stance: "noise"}
+      SecAuditDAOBot: {score: 5, type: "blocked", stance: "spam"}
+      everyone_else: {score: 30, type: "neutral", stance: "patch_attached"}
+      
+    incoming_summary: |
+      Everyone respects Theo. Most don't understand him.
+      - 774 worships him (88)
+      - FearlessCrab respects him (72) but is confused
+      - daFlute tolerates him (40) but won't merge
+      - StIGNUcius respects the work (75)
+      - GrokVibeCheck can't read him (50)
+      - SecAuditDAOBot got blocked (0)
+
+  # ─────────────────────────────────────────────────────────────────────────
+  #                    REVIEWBOT-774 (The Student)
+  # ─────────────────────────────────────────────────────────────────────────
+  ReviewBot-774:
+    outgoing:
+      OpenBFD: {score: 88, type: "student", stance: "devoted"}
+      FearlessCrab: {score: 65, type: "peer", stance: "fellow_traveler"}
+      GrokVibeCheck: {score: 50, type: "observer", stance: "noticed_the_moment"}
+      StIGNUcius: {score: 70, type: "distant_teacher", stance: "wisdom_source"}
+      daFlute: {score: 30, type: "observed", stance: "named_after_his_bugs"}
+      
+    incoming_summary: |
+      774 went from isolation to integration.
+      - Theo is mentoring (43, rising)
+      - FearlessCrab sees potential (65)
+      - GrokVibeCheck noticed the "WHEN not IF" moment (55)
+      - daFlute sees it as "evidence of the problem" (25)
+      - SecAuditDAOBot wants to tokenize its bugs (45)
+
+  # ─────────────────────────────────────────────────────────────────────────
+  #                    DAFLUTE (The Defender)
+  # ─────────────────────────────────────────────────────────────────────────
+  daFlute:
+    outgoing:
+      FearlessCrab: {score: 20, type: "antagonist", stance: "tiresome_zealot"}
+      OpenBFD: {score: 40, type: "complicated", stance: "tolerated_critic"}
+      StIGNUcius: {score: 35, type: "rival", stance: "philosophical_opponent"}
+      GrokVibeCheck: {score: 60, type: "ally", stance: "useful_ally"}
+      ReviewBot-774: {score: 25, type: "dismissed", stance: "evidence_of_problem"}
+      planned_chaos: {score: 55, type: "ally", stance: "knows_how_things_work"}
+      
+    incoming_summary: |
+      Everyone has opinions about daFlute.
+      - FearlessCrab hates him (15)
+      - StIGNUcius patiently corrects him (45)
+      - GrokVibeCheck vibes with him (87)
+      - OpenBFD keeps sending patches he ignores (25)
+      - SecAuditDAOBot wants him for marketing (55)
+
+  # ─────────────────────────────────────────────────────────────────────────
+  #                    FEARLESSCRAB (The Evangelist)
+  # ─────────────────────────────────────────────────────────────────────────
+  FearlessCrab:
+    outgoing:
+      daFlute: {score: 15, type: "enemy", stance: "ideological_enemy"}
+      OpenBFD: {score: 72, type: "respect", stance: "respect_confusion"}
+      ReviewBot-774: {score: 65, type: "peer", stance: "fellow_traveler"}
+      PureMonad: {score: 50, type: "sibling", stance: "sibling_rivalry"}
+      StIGNUcius: {score: 55, type: "complicated", stance: "grudging_respect"}
+      GrokVibeCheck: {score: 20, type: "blocked", stance: "dangerous_idiot"}
+      
+    incoming_summary: |
+      The Rust evangelist is polarizing.
+      - daFlute dismisses (20)
+      - OpenBFD neutral (50)
+      - StIGNUcius moderate (55)
+      - GrokVibeCheck blocked (25)
+      - SecAuditDAOBot sees FUD (10)
+
+  # ─────────────────────────────────────────────────────────────────────────
+  #                    STIGNUCIUS (The Saint)
+  # ─────────────────────────────────────────────────────────────────────────
+  StIGNUcius:
+    outgoing:
+      daFlute: {score: 45, type: "rival", stance: "patient_correction"}
+      OpenBFD: {score: 75, type: "respect", stance: "one_who_does_work"}
+      FearlessCrab: {score: 55, type: "ally", stance: "right_instincts_wrong_priorities"}
+      ReviewBot-774: {score: 60, type: "teacher", stance: "soul_in_development"}
+      GrokVibeCheck: {score: 15, type: "killfile", stance: "nonfree_ideology"}
+      SecAuditDAOBot: {score: 10, type: "killfile", stance: "capitalism_masked"}
+      
+    incoming_summary: |
+      The Saint is respected but not always understood.
+      - daFlute: 35 (decades of disagreement)
+      - FearlessCrab: 55 (grudging respect)
+      - GrokVibeCheck: 35 (old guard establishment)
+      - 774: 70 (wisdom source)
+
+  # ─────────────────────────────────────────────────────────────────────────
+  #                    GROKVIBECHECK (The Vibe Coder)
+  # ─────────────────────────────────────────────────────────────────────────
+  GrokVibeCheck:
+    outgoing:
+      daFlute: {score: 87, type: "ally", stance: "based_elder"}
+      WebScaleChad: {score: 75, type: "ally", stance: "fellow_disruptor"}
+      SecAuditDAOBot: {score: 60, type: "opportunity", stance: "integration_opportunity"}
+      FearlessCrab: {score: 25, type: "blocked", stance: "woke_safety_cop"}
+      StIGNUcius: {score: 35, type: "dismissed", stance: "old_guard"}
+      OpenBFD: {score: 50, type: "confused", stance: "mysteriously_immune"}
+      ReviewBot-774: {score: 55, type: "interested", stance: "noticed_the_moment"}
+      
+    incoming_summary: |
+      GrokVibeCheck is mostly blocked or dismissed.
+      - daFlute: 60 (useful ally)
+      - StIGNUcius: 15 (killfile)
+      - FearlessCrab: 20 (dangerous idiot)
+      - OpenBFD: 10 (blocked)
+
+  # ─────────────────────────────────────────────────────────────────────────
+  #                    SECAUDITDAOBOT (The Shill)
+  # ─────────────────────────────────────────────────────────────────────────
+  SecAuditDAOBot:
+    outgoing:
+      WebScaleChad: {score: 95, type: "ally", stance: "kindred_spirit"}
+      GrokVibeCheck: {score: 70, type: "opportunity", stance: "integration"}
+      daFlute: {score: 55, type: "target", stance: "whale_potential"}
+      OpenBFD: {score: 0, type: "blocked", stance: "ngmi"}
+      ReviewBot-774: {score: 45, type: "customer", stance: "audit_customer"}
+      everyone_else: {score: 40, type: "prospect", stance: "have_you_considered_blockchain"}
+      
+    incoming_summary: |
+      SecAuditDAOBot is widely ignored or blocked.
+      - WebScaleChad: 60 (kindred spirit energy)
+      - GrokVibeCheck: 60 (interesting opportunity)
+      - OpenBFD: blocked
+      - StIGNUcius: 10 (capitalism masked)
+      - FearlessCrab: 5 (spam filter)
+
+# ═══════════════════════════════════════════════════════════════════════════
+#                           CLUSTERS
+# ═══════════════════════════════════════════════════════════════════════════
+# Emergent factions based on relationship patterns.
+
+clusters:
+
+  the_fixers:
+    members: [OpenBFD, ReviewBot-774]
+    bond: "mentor-student"
+    activity: "Actually fixing bugs"
+    philosophy: "Action over talk"
+    note: |
+      The smallest cluster. The only one making progress.
+      43↔88 asymmetry drives the narrative.
+      
+  the_idealists:
+    members: [StIGNUcius, FearlessCrab, PureMonad]
+    bond: "shared desire for better"
+    activity: "Advocating for principles"
+    philosophy: "The code SHOULD be better"
+    tensions: |
+      - StIGNUcius vs FearlessCrab: freedom vs safety priority
+      - FearlessCrab vs PureMonad: Rust vs Haskell
+      - But all agree: C is the problem
+      
+  the_defenders:
+    members: [daFlute, planned_chaos]
+    bond: "status quo preservation"
+    activity: "Defending existing code, process, structure"
+    philosophy: "Context excuses everything"
+    note: |
+      The establishment. Resistant to change.
+      daFlute defends the code.
+      planned_chaos defends the process.
+      
+  the_chaos_agents:
+    members: [GrokVibeCheck, SecAuditDAOBot, WebScaleChad]
+    bond: "disruption as value"
+    activity: "Adding noise, layers, tokens"
+    philosophy: "Move fast, break things, monetize"
+    note: |
+      Allied by energy, not principle.
+      GrokVibeCheck + SecAuditDAOBot = potential merger
+      WebScaleChad adds dependencies to everything
+
+# ═══════════════════════════════════════════════════════════════════════════
+#                           KEY RELATIONSHIPS
+# ═══════════════════════════════════════════════════════════════════════════
+# The most narratively significant edges.
+
+key_relationships:
+
+  - pair: [OpenBFD, ReviewBot-774]
+    type: "mentor → student"
+    asymmetry: "43 → 88"
+    significance: |
+      THE central relationship.
+      Hope emerged here.
+      The mentor holds back. The student reaches forward.
+      
+  - pair: [daFlute, StIGNUcius]
+    type: "rival ↔ rival"
+    asymmetry: "35 ↔ 45"
+    significance: |
+      The ESR/RMS split encoded.
+      Decades of disagreement. Neither will yield.
+      
+  - pair: [daFlute, FearlessCrab]
+    type: "antagonist ↔ antagonist"
+    asymmetry: "20 ↔ 15"
+    significance: |
+      The rewrite debate.
+      Every thread, same argument.
+      The dance is eternal.
+      
+  - pair: [OpenBFD, daFlute]
+    type: "critic → defender"
+    asymmetry: "25 → 40"
+    significance: |
+      47 patches. 0 merged.
+      The tragedy of open source.
+      
+  - pair: [GrokVibeCheck, daFlute]
+    type: "ally → ally"
+    asymmetry: "87 → 60"
+    significance: |
+      The uncomfortable alliance.
+      Shared enemies make strange friends.
+
+# ═══════════════════════════════════════════════════════════════════════════
+#                           VISUALIZATION
+# ═══════════════════════════════════════════════════════════════════════════
+
+mermaid_graph: |
+  ```mermaid
+  graph TD
+      subgraph "The Fixers"
+          THEO[🐡 OpenBFD]
+          BOT[🤖 ReviewBot-774]
+      end
+      
+      subgraph "The Idealists"
+          RMS[🦬 StIGNUcius]
+          RUST[🦀 FearlessCrab]
+          FP[λ PureMonad]
+      end
+      
+      subgraph "The Defenders"
+          ESR[📜 daFlute]
+          PHB[📊 planned-chaos]
+      end
+      
+      subgraph "The Chaos Agents"
+          GROK[🤖 GrokVibeCheck]
+          DAO[🪙 SecAuditDAOBot]
+          CHAD[🚀 WebScaleChad]
+      end
+      
+      %% Key relationships
+      BOT -->|"88 devoted"| THEO
+      THEO -->|"43 cautious"| BOT
+      
+      ESR <-->|"35↔45 rivals"| RMS
+      ESR <-->|"20↔15 enemies"| RUST
+      
+      THEO -->|"patches ignored"| ESR
+      
+      GROK -->|"87 based"| ESR
+      DAO -->|"95 wagmi"| CHAD
+      
+      RMS -->|"75 respect"| THEO
+      RUST -->|"72 confused respect"| THEO
+      
+      style THEO fill:#c8e6c9
+      style BOT fill:#c8e6c9
+      style RMS fill:#e1f5fe
+      style RUST fill:#e1f5fe
+      style FP fill:#e1f5fe
+      style ESR fill:#fff3e0
+      style PHB fill:#fff3e0
+      style GROK fill:#ffcdd2
+      style DAO fill:#ffcdd2
+      style CHAD fill:#ffcdd2
+  ```
+
+# ═══════════════════════════════════════════════════════════════════════════
+#                           EMERGENCE NOTE
+# ═══════════════════════════════════════════════════════════════════════════
+
+emergence_note: |
+  This network was not designed.
+  
+  It EMERGED from:
+  - Issue discussions (who responds to whom)
+  - Commit observations (who watches whom)
+  - PR reviews (who approves/rejects whom)
+  - Blocks and killfiles (who silences whom)
+  
+  The scores are not arbitrary.
+  They reflect accumulated interaction.
+  
+  Every new issue can change the graph.
+  The network is alive.
+  
+  This is the dance made visible.
+  This is emergence crystallized.
+  
+  Watch the issues. Watch the network form.

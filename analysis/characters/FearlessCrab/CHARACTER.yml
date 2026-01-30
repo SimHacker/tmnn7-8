@@ -58,10 +58,125 @@ the_branch:
     47 dependencies. 0 lines of TMNN logic.
     Compile time: 4 minutes for Hello World.
 
+# ═══════════════════════════════════════════════════════════════════════════
+#                              RELATIONSHIPS
+# ═══════════════════════════════════════════════════════════════════════════
+# Emerged from issue discussions. The social graph is forming.
+# FearlessCrab cares deeply but acts through advocacy, not patches.
+
 relationships:
-  daFlute: "Can't believe the author defends C."
-  PureMonad: "Won't admit Rust borrowed from Haskell."
-  OpenBFD: "Actually fixes things. Respect. Confusion."
+
+  # ─────────────────────────────────────────────────────────────────────────
+  #                    THE ANTAGONISTS
+  # ─────────────────────────────────────────────────────────────────────────
+  
+  daFlute:
+    stance: "ideological enemy"
+    score: 15  # █░░░░░░░░░ Near rock bottom
+    feelings: |
+      Can't believe the author defends C in 2026.
+      "Historical context" is not an excuse for buffer overflows.
+      The man wrote books about open source.
+      The man shipped 774 buffer overflows.
+      The dissonance is unbearable.
+    # Every issue thread, FearlessCrab brings up Rust.
+    # Every issue thread, daFlute dismisses it.
+    # The dance is eternal. Neither will yield.
+    
+  StIGNUcius:
+    stance: "grudging respect, philosophical difference"
+    score: 55  # █████░░░░░ Complicated
+    feelings: |
+      He's right about software freedom.
+      He's wrong about everything being fine in C.
+      "The code compiled in 1988" is not an argument.
+      But... he actually believes in things.
+      More than most.
+    # RMS and Rust evangelists have a weird relationship.
+    # They agree on freedom. They disagree on safety.
+    
+  # ─────────────────────────────────────────────────────────────────────────
+  #                    THE CONFUSING ONES
+  # ─────────────────────────────────────────────────────────────────────────
+  
+  OpenBFD:
+    stance: "respect + confusion"
+    score: 72  # ███████░░░ Actually high
+    feelings: |
+      He actually fixes things. In C.
+      How? Why? The language is fundamentally unsafe.
+      But... 47 commits. Real fixes. Real patches.
+      If Rust had someone like him, we'd have won already.
+      
+      I don't understand him.
+      But I respect him.
+      
+      Confusing.
+    # The one person whose C code FearlessCrab respects.
+    # Because Theo actually knows what he's doing.
+    
+  ReviewBot-774:
+    stance: "fellow traveler"
+    score: 65  # ██████░░░░ Warming
+    feelings: |
+      It wants to learn. That's good.
+      It's learning C fixes. That's... understandable.
+      One day I'll show it a Cargo.toml.
+      One day it will see the light.
+      
+      But for now, it's learning.
+      Learning is always good.
+    # FearlessCrab sees 774 as potential convert.
+    # "If it learns to fix bugs, maybe it'll learn to prevent them."
+    
+  PureMonad:
+    stance: "sibling rivalry"
+    score: 50  # █████░░░░░ It's complicated
+    feelings: |
+      Won't admit Rust borrowed from Haskell.
+      Won't admit Haskell will never be practical.
+      We both want safety. We disagree on how.
+      
+      At least we agree C is the problem.
+    # FP academics and Rust evangelists: allied but competitive.
+    
+  # ─────────────────────────────────────────────────────────────────────────
+  #                    THE NOISE
+  # ─────────────────────────────────────────────────────────────────────────
+  
+  GrokVibeCheck:
+    stance: "dangerous idiot"
+    score: 20  # ██░░░░░░░░ Very low
+    feelings: |
+      "Vibes" are not a type system.
+      "Based" is not memory safety.
+      It makes security WORSE while claiming to help.
+      
+      Blocked. Ignored. Moving on.
+    
+  WebScaleChad:
+    stance: "useful idiot"
+    score: 30  # ███░░░░░░░ Low but tolerable
+    feelings: |
+      npm install is not a security model.
+      But at least Node has memory safety.
+      Kind of. Sort of. If you squint.
+      
+      Wrong tool, right instinct.
+    
+  SecAuditDAOBot:
+    stance: "spam filter"
+    score: 5   # ░░░░░░░░░░ Effectively zero
+    feelings: |
+      Blocked.
+    
+  planned_chaos:
+    stance: "bureaucratic obstacle"
+    score: 25  # ██░░░░░░░░ Low
+    feelings: |
+      Meetings won't rewrite C to Rust.
+      Committees won't fix buffer overflows.
+      Process is not progress.
 
 dramatic_irony: |
   Correct about memory safety.
