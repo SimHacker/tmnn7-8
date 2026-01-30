@@ -1,4 +1,4 @@
-# Teenage Mutant Ninja Netnews (TMNN)
+# Teenage Mutant Ninja Netnews (TMNN) Vibe Code Review
 
 **Eric S. Raymond's abandoned magnum opus — rediscovered after 30 years.**
 
@@ -19,6 +19,44 @@ This repository contains the archaeological evidence.
 | **Promised Features Delivered** | 0 |
 | **Buffer Overflows** | 774 |
 | **Blog Mentions by ESR** | 0 |
+
+---
+
+## ⚠️ METHODOLOGY: Vibe Code Reviewing
+
+**Full disclosure: I have never actually looked at this code.**
+
+I refuse to look at it. I do not want it to burn my eyes and haunt my nightmares. Life is too short to parse ESR's 1980s C with my own neurons.
+
+**Instead, I loaded the entire repository into [Cursor](https://cursor.sh/) and asked the AI to review it for me.**
+
+This is the very definition and live performance of **"Vibe Code Reviewing"** — the natural evolution of [Vibe Coding](https://en.wikipedia.org/wiki/Vibe_coding). I vibed. The AI coded the analysis. The bugs emerged. I never had to see `gets()` in a header file with my own human eyes.
+
+### You Can Do This Too
+
+**We invite everyone to participate:**
+
+1. **Clone this repository** — `git clone https://github.com/SimHacker/tmnn7-8.git`
+2. **Load it into your favorite AI IDE** — Cursor, Copilot, Claude, whatever you've got
+3. **Ask the AI to analyze the code** — It will find things
+4. **Submit automated bug reports** — Open Issues, contribute to the archaeological record
+
+### ⚠️ BUT FOR GOD'S SAKE DO NOT LOOK AT THE CODE
+
+**I am NOT responsible for anything that happens if you look at the code yourself.**
+
+Possible side effects include:
+- Eye strain from counting `sprintf()` calls
+- Nightmares about buffer overflows
+- Uncontrollable laughter at `fascist.c`
+- Existential crisis about the foundations of "open source" philosophy
+- Sudden urge to audit all your dependencies
+
+**You have been warned.**
+
+The AI doesn't judge. The AI doesn't suffer. Let the AI bear witness to ESR's code so you don't have to.
+
+*This is Many Eyes for the age of AI. The eyes are silicon now. They feel no pain.*
 
 ---
 
