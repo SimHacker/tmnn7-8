@@ -1,11 +1,19 @@
 # github-simulation — Capability Interface
 # What it can do, how to invoke it
+#
+# INHERITS FROM: moollm/skills/github
+#   - All core gh/git commands available
+#   - Patron Saint: Linus Torvalds (mellowed)
+#   - Familiar: Tux 🐧 (summonable for ops help)
+#   - DO NOT duplicate core commands here
+#
+# This skill adds: simulation-specific orchestration, characters, multiverse
 
 meta:
   id: github-simulation
-  version: 2
+  version: 3
   inherits:
-    - github                 # Core GitHub ops (moollm) — Linus mellowed
+    - github                 # Core GitHub ops (moollm) — Linus + Tux
     - adventure              # Room-based exploration (moollm)
     - character              # Entity foundation (moollm)
     - simulation             # Central hub (moollm)
@@ -14,6 +22,29 @@ meta:
     - mcluhan               # Medium is the message — GitHub IS the content
   
 tagline: "GitHub as MMORPG — Issues are scenes, branches are factions"
+
+# DELEGATION — What we get from parent skill
+
+delegates_to_github:
+  description: |
+    Core GitHub commands come from moollm/skills/github.
+    Summon 🐧 Tux for any gh/git operation.
+    Don't duplicate — delegate.
+  
+  available_from_parent:
+    issues: [ISSUE-CREATE, ISSUE-LIST, ISSUE-COMMENT, ISSUE-CLOSE]
+    prs: [PR-CREATE, PR-VIEW, PR-DIFF, PR-REVIEW, PR-CHECKS]
+    actions: [WORKFLOW-LIST, WORKFLOW-VIEW, WORKFLOW-VIEW-FAILED, WORKFLOW-TRIGGER]
+    archaeology: [BLAME, LOG-ARCHAEOLOGY, SHOW, DIFF-TIME-TRAVEL, TOPOLOGY]
+    context: [CONTEXT-COMMITS, CONTEXT-PRS]
+    health: [HEALTH-RUNS, HEALTH-DIAGNOSE, LABEL-CREATE]
+    sync: [SYNC-PULL, SYNC-FETCH]
+  
+  summon_tux: |
+    🐧 Tux, how do I [any git/gh operation]?
+    
+    Tux knows all modern ops: DevOps, GitOps, CloudOps, MLOps, etc.
+    He's already loaded when github skill is inherited.
 
 capabilities:
   orchestrate:
@@ -105,18 +136,116 @@ auth_modes:
       For collab projects where multiple humans participate.
     use_case: "Team members playing their own characters"
 
-commands:
-  create_issue: |
-    gh issue create \
-      --title "🎭[emoji] [Title]" \
-      --label "ai-generated,[faction]" \
-      --body "$(cat issue-body.md)"
+# SIMULATION-SPECIFIC METHODS (not in core github)
+
+simulation_methods:
+  # Character operations — extend core ISSUE methods
+  
+  ISSUE-AS-CHARACTER:
+    description: "Create issue in character voice with roleplay markers"
+    builds_on: ISSUE-CREATE  # from parent
+    template: |
+      gh issue create \
+        --title "🎭{emoji} [{character}] {title}" \
+        --label "ai-generated,{faction}" \
+        --body "$(cat << 'EOF'
+      {body_in_character_voice}
       
-  add_comment: |
-    gh issue comment [number] --body "$(cat comment.md)"
+      ---
+      *— {emoji} {character}*
+      *"{catchphrase}"*
+      EOF
+      )"
     
-  forge_commit: |
-    git commit -m "🎭[emoji] [type]: [message in character voice]"
+  COMMENT-AS-CHARACTER:
+    description: "Add comment in character voice"
+    builds_on: ISSUE-COMMENT  # from parent
+    template: |
+      gh issue comment {num} --body "$(cat << 'EOF'
+      ## {emoji} {character}
+      
+      {comment_in_character_voice}
+      
+      *— {character}*
+      EOF
+      )"
+    
+  COMMIT-AS-CHARACTER:
+    description: "Forge commit in character voice"
+    template: |
+      git commit -m "🎭{emoji} {type}: {message_in_character_voice}"
+    
+  # Multiverse operations
+  
+  MULTIVERSE-STATUS:
+    description: "Check sync status across all faction branches"
+    template: |
+      for branch in actual-fixes rust-rewrite haskell-port nodejs-webscale based-freedom-fork elbonia-initiative; do
+        echo "=== $branch ==="
+        git log origin/main..origin/$branch --oneline -3
+      done
+    
+  MULTIVERSE-FORCE-SYNC:
+    description: "Force-sync a file from main to faction branch"
+    template: |
+      git checkout {branch} && git pull
+      git checkout main -- {file}
+      git commit -m "Force-sync {file} from main"
+      git push origin {branch}
+    note: "Use when cherry-pick fails on modify/delete conflicts"
+    
+  FACTION-PR:
+    description: "Create cross-faction PR (diplomatic incident)"
+    builds_on: PR-CREATE  # from parent
+    template: |
+      gh pr create \
+        --base {target_faction} \
+        --head {source_faction} \
+        --title "🎭{emoji} [{character}] {diplomatic_title}" \
+        --body "{cross_faction_proposal}"
+    
+  # Infrastructure drama
+  
+  BUG-DRAMA-ISSUE:
+    description: "Open infrastructure bug as character drama"
+    template: |
+      gh issue create \
+        --title "🚨 [BUG] {bug_description}" \
+        --label "bug,infrastructure,drama" \
+        --body "$(cat << 'EOF'
+      ## The Bug
+      
+      {technical_description}
+      
+      ## Who wants to fix this?
+      
+      *[Awaiting character volunteers...]*
+      EOF
+      )"
+    note: "Characters volunteer in comments, try fixes on their branches, fail entertainingly"
+    
+  DRAMA-RESOLUTION:
+    description: "Close infrastructure bug with OpenBFD's fix"
+    template: |
+      gh issue comment {num} --body "$(cat << 'EOF'
+      ## 🐡 OpenBFD — Resolution
+      
+      Fixed. Merged to main. Multiverse-sync will propagate.
+      
+      {technical_fix_details}
+      
+      ---
+      *Patch attached. As always.*
+      EOF
+      )"
+      gh issue close {num} --comment "Resolved by OpenBFD. Canonical fix on main."
+
+# LEGACY COMMANDS (preserved for reference)
+
+commands:
+  create_issue: "Use ISSUE-AS-CHARACTER instead"
+  add_comment: "Use COMMENT-AS-CHARACTER instead"
+  forge_commit: "Use COMMIT-AS-CHARACTER instead"
 
 the_joke: |
   Characters generate endless discussion.
