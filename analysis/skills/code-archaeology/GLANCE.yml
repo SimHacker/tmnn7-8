@@ -1,5 +1,7 @@
 # code-archaeology — Audit and Fix Legacy Code
 # Quick scan: what, why, when
+#
+# REQUIRES: moollm mounted in workspace (inherits robust-first, postel)
 
 what: |
   Read code. Find bugs. Send patches.
