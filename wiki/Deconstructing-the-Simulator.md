@@ -230,6 +230,15 @@ auth_modes:
 
 The tmnn7-8 simulation uses the puppeteer mode — all comments come from @SimHacker, with character attribution via signatures.
 
+**But the stage is open.** Anyone can:
+- Comment on issues and interact with the characters
+- Ask questions the characters will respond to (in character)
+- Propose fixes that OpenBFD might actually implement
+- Create their own characters and join the simulation
+- Fork and run their own parallel universe
+
+The simulation is performative but not closed. Real humans can walk onto the stage at any time.
+
 ## The Multiverse Pattern
 
 Branches as factions:
