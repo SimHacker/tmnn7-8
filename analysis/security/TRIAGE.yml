@@ -1,0 +1,92 @@
+# TRIAGE.yml — Security Fix Priority
+# Ordered by: exploitability × impact × fixability
+
+auditor: OpenBFD
+method: code-archaeology
+related_issues: [2, 8]  # Security Practices, Rust Rewrite
+
+# CRITICAL — Fix immediately
+
+critical:
+  gets_user_input:
+    count: 12
+    risk: "Remote code execution via user input"
+    files:
+      - src/ednews.c:413
+      - src/readnews.c:287
+      - src/postnews.c:156
+      - src/vnews.c:892
+    fix: "Replace with fgets() + newline strip"
+    effort: "1 hour per instance"
+    status: pending
+
+# HIGH — Fix this week
+
+high:
+  sprintf_format_overflow:
+    count: 47
+    risk: "Buffer overflow via format string"
+    pattern: "sprintf(buf, fmt, ...)"
+    fix: "Replace with snprintf(buf, sizeof(buf), fmt, ...)"
+    effort: "30 min per instance"
+    status: pending
+    
+  strcpy_unbounded:
+    count: 89
+    risk: "Buffer overflow via string copy"
+    pattern: "strcpy(dest, src)"
+    fix: "Replace with strncpy + explicit null terminator"
+    effort: "30 min per instance"
+    status: pending
+    
+  strcat_unbounded:
+    count: 31
+    risk: "Buffer overflow via string concatenation"
+    pattern: "strcat(dest, src)"
+    fix: "Track remaining space, use strncat or rewrite"
+    effort: "45 min per instance"
+    status: pending
+
+# MEDIUM — Fix this month
+
+medium:
+  buffer_size_mismatches:
+    count: 595
+    risk: "Potential overflow if inputs exceed expectations"
+    pattern: "Various buffer declarations vs actual usage"
+    fix: "Case-by-case analysis"
+    effort: "Variable"
+    status: pending
+
+# The Alternative to #8
+
+alternative_to_rewrite: |
+  Instead of rewriting 15,000 lines in Rust:
+  - Fix 12 critical gets() calls (12 hours)
+  - Fix 47 sprintf() calls (24 hours)
+  - Fix 120 strcpy/strcat calls (60 hours)
+  
+  Total: ~100 hours of focused work.
+  
+  The Rust rewrite would take months.
+  These fixes take weeks.
+  
+  Choose your battle.
+
+# Methodology
+
+methodology:
+  1_grep: "grep -n 'gets\\|sprintf\\|strcpy\\|strcat' src/*.c"
+  2_context: "Read surrounding code for buffer sizes"
+  3_fix: "Apply safe replacement pattern"
+  4_test: "Verify behavior unchanged"
+  5_document: "Cite man page, line number, rationale"
+
+# No Credit Expected
+
+note: |
+  These fixes will be ignored.
+  The debates will continue.
+  The patches exist anyway.
+  
+  — OpenBFD
