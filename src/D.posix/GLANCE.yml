@@ -1,20 +1,163 @@
 # D.posix/ — POSIX Compatibility
-# Standards compliance layer
+# When "portable" meant "please compile on my Unix"
+# The boring-but-necessary layer
 
 what: |
-  34 .c files, 7 headers.
+  34 C files, 7 headers.
   POSIX function implementations.
-  Portability across Unix variants.
+  Portability across the Unix diaspora.
+  
+  The least exciting directory. Also the safest.
+  Boring code is good code.
 
-key_files:
-  - mkdirtest.c: "Directory creation tests"
-  - getdents.c: "Directory reading"
-  - environ.c: "Environment handling"
+stats:
+  c_files: 34
+  h_files: 7
+  danger_level: "LOW"
+  
+  why_safe: |
+    Mostly reimplementations of standard functions.
+    getopt(), opendir(), etc.
+    Low-level, well-defined semantics.
+    Not much room for creative security holes.
 
-note: |
-  1988 code trying to be portable.
-  Some functions now standard.
+# The Unix Wars
+# Why this directory exists
+
+historical_context:
+  the_problem: |
+    In 1988, there was no single "Unix."
+    
+    BSD 4.3 had different functions than System V.
+    SunOS was different from HP-UX.
+    Ultrix was different from AIX.
+    
+    Every Unix had its own quirks.
+    "Write once, run anywhere" was a dream.
+    
+  the_solution: |
+    D.posix/ provides implementations of functions
+    that might not exist on every Unix variant.
+    
+    If the system has opendir(), use it.
+    If not, use ours.
+    
+  posix_to_the_rescue: |
+    POSIX (Portable Operating System Interface) was
+    the attempt to standardize Unix.
+    IEEE 1003.1, first published 1988.
+    
+    This code predates/accompanies that standardization.
+    It's the battlefield where portability was won.
+
+# What's In Here
+# Reimplementations of standard functions
+
+categories:
+  directory_operations:
+    files: ["opendir.c", "readdir.c", "closedir.c", "getdents.c"]
+    purpose: "Directory reading abstraction"
+    note: "opendir/readdir/closedir wasn't universal"
+    
+  option_parsing:
+    files: ["getopt.c"]
+    purpose: "Command-line argument parsing"
+    note: "getopt() wasn't everywhere in 1988"
+    
+  string_functions:
+    files: ["strerror.c", "strdup.c"]
+    purpose: "String utilities"
+    note: "strerror() and strdup() weren't universal"
+    
+  memory_functions:
+    files: ["memcpy.c", "memset.c", "memmove.c"]
+    purpose: "Memory operations"
+    note: "BSD had bcopy(), SysV had memcpy()"
+    
+  file_operations:
+    files: ["mkdirtest.c", "rename.c", "remove.c"]
+    purpose: "File system operations"
+    note: "Even basic ops had portability issues"
+    
+  environment:
+    files: ["environ.c", "getenv.c", "putenv.c"]
+    purpose: "Environment variable handling"
+    note: "setenv() vs putenv() wars"
+    
+  time_functions:
+    files: ["strftime.c", "mktime.c"]
+    purpose: "Time formatting and manipulation"
+    note: "Time handling was a mess"
+    
+  process_functions:
+    files: ["waitpid.c"]
+    purpose: "Process management"
+    note: "wait() vs waitpid() differences"
+
+# The Safety of Boring Code
+# Why this directory doesn't keep us up at night
+
+why_relatively_safe:
+  well_defined: |
+    These functions have precise specifications.
+    getopt() does exactly one thing.
+    opendir() does exactly one thing.
+    Not much room for creative buffer overflows.
+    
+  no_network: |
+    None of this code touches the network.
+    It's all local system operations.
+    No untrusted input from the internet.
+    
+  no_user_data: |
+    These functions don't handle article content.
+    They handle filenames, options, time strings.
+    Lower risk data.
+    
+  tested_designs: |
+    These are reimplementations of well-known functions.
+    The designs are proven. The edge cases are documented.
+    The BSD and System V implementations existed.
+
+# But Still...
+# Nothing is completely safe
+
+remaining_concerns:
+  buffer_sizes: |
+    Even boring code can have buffer size issues.
+    strdup() allocates — what if it fails?
+    Directory names can be long — how long?
+    
+  error_handling: |
+    1988 error handling was often "return NULL and hope."
+    Modern code would be more robust.
+    
+  locale_issues: |
+    Time formatting is locale-dependent.
+    Character encoding wasn't standardized.
+    What's "safe" depends on the locale.
+
+# The Lesson
+# Boring is beautiful
+
+lessons:
+  lesson_1: |
+    The safest code is the code that does one thing.
+    These functions have single, clear purposes.
+    
+  lesson_2: |
+    Standardization matters.
+    POSIX gave us a common target.
+    This directory is the cost of not having it earlier.
+    
+  lesson_3: |
+    Portability code is thankless but essential.
+    Nobody brags about their getopt() implementation.
+    But without it, nothing works.
 
 k-lines:
-  - posix-compat
+  - posix-compatibility
   - unix-portability
+  - boring-but-safe
+  - standardization-victory
+  - thankless-infrastructure

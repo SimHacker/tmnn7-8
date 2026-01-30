@@ -1,16 +1,176 @@
 # D.uucp/ — UUCP Transport
-# Unix-to-Unix Copy Protocol
+# The Pre-Internet Internet
+# When news traveled by modem, over phone lines, overnight
 
 what: |
-  3 .c files, 1 header.
-  UUCP news transport.
-  Batch transfers.
-
-note: |
-  UUCP was the pre-Internet way to 
-  exchange news between sites.
+  3 C files, 1 header.
+  UUCP (Unix-to-Unix Copy) news transport.
+  Batch transfers between sites.
   
+  Archaeological artifact of networking before TCP/IP won.
+  This is how Usenet ACTUALLY worked in 1988.
+
+stats:
+  c_files: 3
+  h_files: 1
+  danger_level: "HISTORICAL"
+  
+  why_historical: |
+    UUCP is obsolete. Nobody uses it for news anymore.
+    This code is museum-quality.
+    
+    But understanding it helps understand the context.
+    This was the REAL network layer.
+
+# UUCP Explained
+# How news actually moved in 1988
+
+how_it_worked:
+  the_basics: |
+    UUCP: Unix-to-Unix Copy Protocol
+    
+    Site A calls Site B's modem (phone line!).
+    Sites exchange files using UUCP protocol.
+    Hang up. Wait for next scheduled call.
+    
+    News propagated hop by hop, site by site.
+    An article posted in California might take
+    DAYS to reach New York. That was normal.
+    
+  batching: |
+    News articles were batched together.
+    Compressed (compress.c exists for this!).
+    Sent as one big file.
+    Unbatched on the other end.
+    
+    sendbatch.c and unbatch.c in the top-level src/.
+    
+  scheduling: |
+    Sites would call each other at night.
+    Long-distance was cheaper at night.
+    "L.sys" (or "Systems") file configured who to call when.
+    
+    snark would call cbmvax at 2 AM.
+    cbmvax would call snark at 3 AM.
+    Eventually, news reached everywhere.
+    
+  the_map: |
+    comp.mail.maps published UUCP maps.
+    Literal maps of how sites connected.
+    You could trace the path your news would take:
+    
+    yoursite!intermediate!destination
+    
+    "Bang paths" — the ! separated hops.
+
+# Files
+# The UUCP machinery
+
+files:
+  uucp.c:
+    purpose: "UUCP protocol handling"
+    handles:
+      - "Batch creation"
+      - "Transmission scheduling"
+      - "Error handling"
+    note: "The main UUCP interface"
+    
+  uuxqt.c:
+    purpose: "UUCP execution daemon interface"
+    handles:
+      - "Queue management"
+      - "Execution requests"
+    note: "uuxqt processed remote execution requests"
+    
+  uuname.c:
+    purpose: "UUCP site naming"
+    handles:
+      - "Site name resolution"
+      - "Path construction"
+    note: "How to reach another site"
+
+# The UUCP Network
+# The topology of pre-Internet Usenet
+
+topology:
+  backbone_sites: |
+    Some sites were "backbone" — well-connected hubs.
+    seismo, ucbvax, decwrl, uunet.
+    Many sites fed from them.
+    
+  leaf_nodes: |
+    Most sites were "leaves" — connected to one or two others.
+    They received news, maybe forwarded to a few neighbors.
+    
+  the_cost: |
+    Phone calls cost money. Especially long distance.
+    Bandwidth was 1200 baud (later 9600, 14400...).
+    Every byte transferred had a cost.
+    
+    This is why news batching mattered.
+    This is why compression mattered.
+    This is why "wasteful" posts were frowned upon.
+    
+  propagation_delay: |
+    Post in San Francisco on Monday.
+    Reaches Chicago by Tuesday night.
+    Reaches New York by Wednesday.
+    Reaches Europe by Thursday... maybe.
+    
+    "Real-time" was not a concept.
+
+# Why This Matters
+# Historical context for the whole project
+
+significance:
+  this_is_real: |
+    When you see %feeds with "snark:comp,news..."
+    Those are REAL UUCP feed configurations.
+    snark really called cbmvax really called vu-vlsi.
+    
+    This code moved actual news over actual phone lines.
+    
+  the_transition: |
+    NNTP (D.network/) was the future.
+    TCP/IP won. The Internet replaced UUCP.
+    
+    But in 1988, UUCP was still dominant.
+    This code lived in both worlds.
+    
+  the_lesson: |
+    Understanding UUCP helps understand:
+    - Why batching exists
+    - Why compression matters
+    - Why news has "Path:" headers
+    - Why bandwidth was precious
+    - Why "the net" was slower and more thoughtful
+
+# Security in the UUCP Era
+# Different threat model
+
+security_then:
+  trust_model: |
+    UUCP sites trusted each other.
+    You had to know the phone number to call.
+    You had to have login credentials.
+    
+    The "firewall" was: "Don't publish your modem number."
+    
+  remote_execution: |
+    UUCP supported remote execution: "run this command."
+    uux could execute commands on remote systems.
+    
+    This was TERRIFYING by modern standards.
+    But sites trusted each other. It was a smaller world.
+    
+  the_shift: |
+    When the Internet opened up, this trust model broke.
+    Anyone could send you packets.
+    UUCP security assumptions became liabilities.
+
 k-lines:
-  - uucp
-  - batch-transfer
-  - pre-internet
+  - uucp-archaeology
+  - pre-internet-networking
+  - phone-line-networking
+  - bang-paths
+  - store-and-forward

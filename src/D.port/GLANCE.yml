@@ -1,37 +1,215 @@
 # D.port/ — Portability Layer
-# Cross-platform compatibility code
+# Cross-platform code from when "cross-platform" meant 
+# "runs on both BSD and System V"
+# Also: test programs that shipped to production
 
 what: |
-  37 .c files, 11 headers.
+  37 C files, 11 headers.
   Abstractions for different Unix variants.
-  Lots of gets() in test programs.
+  Where the gets() in "just for testing" code lives.
+  Spoiler: the test code shipped.
 
-key_files:
-  - edbm.c: "Database editor — gets() at line 1268"
-  - alist.c: "A-list tester — gets() with char[100] buffer"
-  - slist.c: "String list tester — gets() with char[100]"
-  - server.c: "Network server code"
-  - strstr.c: "String search implementation"
-  - strtime.c: "Time string handling"
-  - strpbrk.c: "String span implementation"
+stats:
+  c_files: 37
+  h_files: 11
+  gets_calls: 3             # All in "test" programs. All shipped.
+  tiny_buffers: 2           # char[100] — trivial to overflow
 
-security_issues:
+# The Gets Trifecta
+# Three files. Three gets(). Three buffer overflows.
+
+gets_museum:
   edbm.c:
-    gets: 1
-    sprintf: "multiple"
+    line: 1268
+    code: 'while (fputs("* ", stdout) != EOF && gets(cmdline) != NULL)'
+    buffer: "cmdline — size unknown, probably BUFSIZ"
+    purpose: "Database editor interactive shell"
+    verdict: |
+      An interactive database shell using gets().
+      "What's the worst that could happen?"
+      
   alist.c:
-    gets: 1
-    buffer_size: "100 bytes — trivial overflow"
+    line: 189
+    code: 'while (fputs("* ", stdout), gets(cmdline) != NULL)'
+    buffer: "cmdline[100]"
+    buffer_size: "ONE HUNDRED BYTES"
+    purpose: "A-list data structure tester"
+    verdict: |
+      char cmdline[100]. One hundred bytes.
+      Type 101 characters. Overflow the buffer.
+      This was for "testing." It shipped.
+      
   slist.c:
-    gets: 1
-    strcpy_unbounded: 1
+    line: 93
+    code: 'while (fputs("* ", stdout), gets(cmdline) != NULL)'
+    buffer: "cmdline[100]"
+    buffer_size: "ONE HUNDRED BYTES"
+    purpose: "String list tester"
+    verdict: |
+      Same pattern. Same buffer size. Same problem.
+      Copy-paste security vulnerabilities.
 
-pattern: |
-  Test programs with tiny buffers (char[100]).
-  Interactive shells using gets().
-  "Just for testing" — but shipped anyway.
+# The "Just For Testing" Pattern
+# Test code that somehow became production code
+
+test_code_shipped:
+  pattern: |
+    Many files in D.port/ have this pattern:
+    
+    #ifdef TEST
+    main() {
+        char cmdline[100];
+        while (gets(cmdline) != NULL) {
+            // test the thing
+        }
+    }
+    #endif
+    
+  problem: |
+    The #ifdef TEST code was compiled.
+    The binaries were distributed.
+    "Just for testing" became "in production."
+    
+  lesson: |
+    There is no such thing as "just for testing."
+    If it compiles, it ships. If it ships, it's attacked.
+
+# Files of Interest
+# Not all are dangerous, but all are interesting
+
+files:
+  # The String Functions
+  # Reimplementing what libc provides
+  
+  strstr.c:
+    purpose: "Find substring in string"
+    note: "strstr() wasn't universal in 1988"
+    
+  strpbrk.c:
+    purpose: "Find any char from set in string"  
+    note: "Same story — portability"
+    
+  strtime.c:
+    purpose: "Time string handling"
+    note: "strftime() wasn't everywhere"
+    
+  # The Memory Functions
+  # Because memcpy wasn't universal either
+  
+  bzero.c:
+    purpose: "Zero memory"
+    note: "BSD-ism. System V had memset()."
+    
+  # The System Functions
+  # Abstracting OS differences
+  
+  environ.c:
+    purpose: "Environment variable handling"
+    note: "getenv/setenv abstractions"
+    
+  fullname.c:
+    purpose: "Get user's full name"
+    note: "From /etc/passwd or GECOS field"
+    
+  filestat.c:
+    purpose: "File status operations"
+    note: "stat() wrapper"
+    
+  fwait.c:
+    purpose: "Wait for child process"
+    note: "wait() vs waitpid() wars"
+    
+  # The Database Layer
+  # DBM abstraction (before BerkeleyDB won)
+  
+  edbm.c:
+    purpose: "DBM database editor"
+    sin: "gets() at line 1268"
+    size: "Large — full interactive shell"
+    
+  dballoc.c:
+    purpose: "Database allocation"
+    note: "Memory management for DB"
+    
+  # The Network Layer  
+  # Before sockets were standardized
+  
+  server.c:
+    purpose: "Network server abstractions"
+    danger: "MEDIUM — network facing"
+    
+  # The Misc Utilities
+  # Stuff that didn't fit elsewhere
+  
+  arpadate.c:
+    purpose: "ARPANET date format"
+    historical: "RFC 822 dates"
+    
+  backquote.c:
+    purpose: "Shell backquote expansion"
+    danger: "MEDIUM — executes shell commands"
+    
+  bitbucket.c:
+    purpose: "/dev/null abstraction"
+    humor: "Named for where data goes to die"
+    
+  checksum.c:
+    purpose: "Checksum calculation"
+    note: "Pre-MD5 integrity checking"
+    
+  df.c:
+    purpose: "Disk free space"
+    note: "df(1) wasn't portable"
+    
+  errmsg.c:
+    purpose: "Error message handling"
+    note: "strerror() wasn't universal"
+    
+  fcopy.c:
+    purpose: "File copy"
+    note: "cp(1) in C"
+
+# The A-List and S-List
+# Custom data structures
+
+data_structures:
+  alist:
+    files: ["alist.c", "alist.h"]
+    purpose: "Association list (key-value pairs)"
+    implementation: "Linked list"
+    test_program: "Has gets() with 100-byte buffer"
+    
+  slist:
+    files: ["slist.c", "slist.h"] 
+    purpose: "String list"
+    implementation: "Linked list of strings"
+    test_program: "Also has gets() with 100-byte buffer"
+
+# What This Directory Teaches
+# Lessons from the portability wars
+
+lessons:
+  lesson_1: |
+    In 1988, "portable C" was hard. Every Unix was different.
+    BSD vs System V. Different headers. Different functions.
+    This code tried to run everywhere.
+    
+  lesson_2: |
+    The #ifdef TEST pattern was common.
+    But the test code needed to be safe too.
+    It wasn't.
+    
+  lesson_3: |
+    100 bytes seemed like a lot in 1988.
+    It wasn't.
+    
+  lesson_4: |
+    gets() was in the man pages with warnings.
+    "Just for testing" doesn't mean "safe to use gets()."
 
 k-lines:
   - portability-layer
   - test-code-shipped
-  - tiny-buffers
+  - char-100-buffer
+  - gets-trifecta
+  - unix-wars-archaeology

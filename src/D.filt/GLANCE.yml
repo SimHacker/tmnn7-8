@@ -1,11 +1,153 @@
 # D.filt/ — Filtering
-# Article filtering and killfiles
+# Killfiles: The original block button
+# Usenet's answer to "I don't want to see this"
 
 what: |
-  5 .c files, 2 headers.
+  5 C files, 2 headers.
   Killfiles and article filtering.
-  User-defined rules.
+  User-defined rules to hide articles.
+  
+  Before "mute," before "block," before algorithmic feeds:
+  You wrote your own filter rules in a text file.
+
+stats:
+  c_files: 5
+  h_files: 2
+  danger_level: "LOW-MEDIUM"
+
+# The Killfile
+# Usenet's proudest invention
+
+killfile_explained:
+  what: |
+    A killfile (~/.kill or per-group killfiles) contains rules:
+    
+    /Subject:.*MAKE MONEY FAST/j
+    /From:.*spammer@/j
+    /Followup-To:.*alt.flame/j
+    
+    'j' means "junk" — mark as read, never show.
+    
+  power: |
+    You control what you see. Not an algorithm.
+    Not a platform. Not an advertiser. YOU.
+    
+  history: |
+    The killfile predates social media by decades.
+    When you see "killfiled" in old Usenet posts,
+    they mean "I added you to my killfile."
+    
+    It was the ultimate insult:
+    "You're not worth arguing with. I'll never see
+    your posts again."
+
+# The Filtering System
+# How it works
+
+mechanism:
+  pattern_matching: |
+    Rules use regular expressions.
+    Match against headers: Subject, From, Newsgroups.
+    Actions: kill, autoselect, score.
+    
+  kill: "Never show this article"
+  autoselect: "Always show this article (highlight)"
+  score: "Adjust priority up or down"
+  
+  per_group: |
+    Each newsgroup can have its own killfile.
+    Global rules + local rules.
+    Layered filtering.
+
+# Files
+# The filtering machinery
+
+files:
+  filter.c:
+    purpose: "Main filtering engine"
+    handles:
+      - "Rule parsing"
+      - "Pattern matching"
+      - "Action execution"
+    note: "The heart of the killfile"
+    
+  killfile.c:
+    purpose: "Killfile management"
+    handles:
+      - "Reading ~/.kill"
+      - "Per-newsgroup killfiles"
+      - "Killfile caching"
+    note: "Loading and managing rule sets"
+    
+  patterns.c:
+    purpose: "Pattern matching"
+    handles: "Regular expression evaluation"
+    danger: |
+      Regex parsing on untrusted patterns.
+      Regex on untrusted article content.
+      ReDoS (regex denial of service) wasn't a term yet.
+      
+  select.c:
+    purpose: "Article selection"
+    handles: "Applying filters to article lists"
+    note: "Where rules meet articles"
+    
+  score.c:
+    purpose: "Scoring system"
+    handles: "Numeric scores for articles"
+    note: "More sophisticated than binary kill"
+
+# Security Considerations
+# Where filtering could go wrong
+
+risks:
+  regex_complexity: |
+    User-defined regexes against article content.
+    What if the regex is pathological? (ReDoS)
+    What if the article content is crafted to hang the matcher?
+    
+    In 1988, nobody thought about this.
+    Now we have CVEs for regex-based DoS.
+    
+  pattern_injection: |
+    If article headers can influence filter behavior
+    in unexpected ways... injection attacks.
+    
+    "Subject: /h4ck3r/j" — does this parse as a rule?
+    Probably not, but edge cases are where bugs live.
+    
+  buffer_sizes: |
+    Regex patterns need to be stored somewhere.
+    Article content is matched against them.
+    Long patterns + long content = ?
+
+# The Philosophy
+# Why killfiles matter
+
+philosophy:
+  user_agency: |
+    The killfile puts YOU in control.
+    No algorithm decides what you see.
+    No platform optimizes for engagement.
+    
+    You write the rules. You accept the consequences.
+    
+  personal_responsibility: |
+    If you filter out dissenting views, that's on you.
+    If you miss important news because of bad rules, that's on you.
+    The killfile is a tool. You are the craftsman.
+    
+  the_loss: |
+    Modern social media took this away.
+    "The algorithm" decides what you see.
+    "Block" is crude compared to pattern matching.
+    
+    We had fine-grained user control in 1988.
+    We gave it up for "better engagement."
 
 k-lines:
   - killfile
-  - article-filter
+  - user-controlled-filtering
+  - regex-patterns
+  - pre-algorithmic-curation
+  - usenet-proud-invention

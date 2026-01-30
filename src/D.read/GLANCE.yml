@@ -1,18 +1,167 @@
 # D.read/ — Reading Functionality
-# User-facing article reading
+# The "reader" in "news reader"
+# User-facing article display
 
 what: |
-  14 .c files, 7 headers.
+  14 C files, 7 headers.
   Article display and navigation.
-  The "reader" in news reader.
+  The user interface layer.
+  
+  Relatively safe — mostly output, not input.
+  But still touching untrusted article content.
 
-key_files:
-  - session.c: "Session management"
-  - rfuncs.c: "Reader functions"
-  - vinfoline.c: "Information line display"
-  - gcmd.c: "Command processing"
-  - display.c: "Screen display"
+stats:
+  c_files: 14
+  h_files: 7
+  danger_level: "LOW-MEDIUM"
+  
+  why_lower_risk: |
+    Mostly display code. Takes data already parsed
+    and shows it to the user. Less parsing = less overflow.
+    
+  remaining_risk: |
+    Still displays article content from the network.
+    Escape sequences, control characters, long lines
+    could still cause problems.
+
+# The Reading Experience
+# What users actually see
+
+user_experience:
+  1988_reading: |
+    You telnet to a Unix machine.
+    You type "rn" or "vnews" or "readnews".
+    You navigate newsgroups with keyboard commands.
+    Articles display in your terminal.
+    
+    No mouse. No GUI. No web browser.
+    Just text on a VT100 or similar terminal.
+    
+  navigation:
+    - '"n" — next article'
+    - '"p" — previous article'
+    - '"q" — quit'
+    - '"r" — reply'
+    - '"s" — save'
+    - '"Space" — next page'
+    
+  the_charm: |
+    There's something pure about text-mode news reading.
+    No ads. No tracking. No infinite scroll.
+    Just articles and your keyboard.
+
+# Files
+# The display machinery
+
+files:
+  session.c:
+    purpose: "Session management"
+    handles:
+      - "Login/logout from news"
+      - "Track what's been read"
+      - "Newsrc file updates"
+    note: "The state machine of reading"
+    
+  rfuncs.c:
+    purpose: "Reader functions"
+    handles:
+      - "Command processing"
+      - "Navigation"
+      - "Article selection"
+    note: "The verbs of the UI"
+    
+  display.c:
+    purpose: "Screen display"
+    handles:
+      - "Article rendering"
+      - "Header formatting"
+      - "Pagination"
+    note: "What you actually see"
+    
+  vinfoline.c:
+    purpose: "Information line display"
+    handles:
+      - "Status bar"
+      - "Progress indication"
+      - "Current position"
+    note: "The 'You are here' sign"
+    
+  gcmd.c:
+    purpose: "Global command processing"
+    handles:
+      - "Keyboard input"
+      - "Command dispatch"
+      - "Escape sequences"
+    risk: "Keyboard input handling — potential edge cases"
+    
+  # Thread and Article Management
+  # Navigating the hierarchy
+  
+  thread.c:
+    purpose: "Thread handling"
+    note: "Before threading was standard"
+    historical: "References: header → tree structure"
+    
+  artsel.c:
+    purpose: "Article selection"
+    note: "Which articles match criteria"
+    
+  # Output Formatting
+  # Making it look nice
+  
+  rot13.c:
+    purpose: "ROT13 decode"
+    historical: |
+      ROT13 is a trivial cipher (A→N, B→O, etc.)
+      Used to hide spoilers and offensive jokes.
+      "Read at your own risk" encoding.
+    note: "Usenet's content warning system"
+    
+  fold.c:
+    purpose: "Line folding"
+    handles: "Long lines → wrapped display"
+    risk: "What if the line is REALLY long?"
+
+# Display Risks
+# What could still go wrong
+
+risks:
+  terminal_escapes: |
+    Articles could contain terminal escape sequences.
+    ANSI codes, VT100 commands, etc.
+    A malicious article could:
+    - Clear your screen
+    - Change your terminal settings
+    - Potentially exploit terminal emulator bugs
+    
+  long_lines: |
+    What if an article has a 10,000 character line?
+    The display code needs to handle this.
+    "Needs to" vs "does" — unknown.
+    
+  control_characters: |
+    Null bytes. Backspaces. Bells.
+    Articles from the network could contain anything.
+    The display code has to sanitize.
+
+# The Simplicity
+# Why this directory is less scary
+
+relative_safety:
+  why: |
+    Display code is downstream from parsing.
+    The dangerous parsing happens elsewhere.
+    This code mostly takes parsed data and shows it.
+    
+  but: |
+    "Mostly" is not "entirely."
+    There's still article content flowing through.
+    There's still user input (keyboard commands).
+    There's still terminal output (escape sequences).
 
 k-lines:
   - user-interface
   - article-display
+  - terminal-ui
+  - rot13-history
+  - relatively-safe

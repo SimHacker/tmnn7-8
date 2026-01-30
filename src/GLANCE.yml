@@ -1,45 +1,215 @@
-# src/ — Source Code
-# The archaeological evidence
+# src/ — The Archaeological Dig Site
+# 169 C files. 51 headers. 38 years of neglect.
+# "Show me the code." — ESR
+# OK. Here it is.
 
 what: |
-  169 C source files, 51 headers.
-  1988-1989 vintage Unix code.
-  Never reviewed. Now infamous.
+  Source code for TMNN7/TMNN8 news reader.
+  1988-1989 vintage Unix C. Never reviewed by anyone who 
+  cared about security. Now reviewed by everyone.
 
-files:
-  total_c: 169
-  total_h: 51
-  
-key_files:
-  - ednews.c: "Editor — contains gets(bfr) /* ugggh */"
-  - readnews.c: "Reader — main user interface"
-  - inews.c: "Post injection"
-  - rnews.c: "Receive news"
-  - vnews.c: "Visual news reader"
-  - newsdb.c: "Database operations"
-  - locknews.c: "Locking (with gets())"
+stats:
+  c_files: 169
+  h_files: 51
+  total_lines: ~45000      # rough estimate
+  gets_calls: 6            # NEVER safe. EVER.
+  sprintf_calls: ~200      # no bounds checking
+  strcpy_calls: ~150       # no bounds checking
+  strcat_calls: ~80        # no bounds checking
+  years_unpatched: 38      # and counting
+
+# The Smoking Guns
+# These files contain the most damning evidence
+
+infamous_files:
+  ednews.c:
+    line: 413
+    sin: "gets(bfr)"
+    comment_in_code: "/* ugggh...see ednewsipc.c for explanation */"
+    verdict: |
+      He KNEW. "ugggh" is not ignorance. It's acknowledgment.
+      The man page said NEVER USE THIS FUNCTION. Since 1986.
+      He used it anyway. For 38 years.
+      
+  fascist.c:
+    location: "D.news/"
+    sin: "FASCIST and COMMUNIST preprocessor flags"
+    strcat_calls: 14
+    irony_level: "weapons-grade"
+    verdict: |
+      Content moderation code from the man who preaches 
+      content moderation is tyranny. The naming is "ironic."
+      The 14 buffer overflows are not.
+      
+  locknews.c:
+    line: 400
+    sin: "gets(cmdline)"
+    context: "Interactive command loop"
+    verdict: "Lock your news, unlock your system."
+    
+  newsdb.c:
+    line: 1323
+    sin: "gets(cmdline)"
+    context: "Database interactive prompt"
+    size: "39004 bytes — largest file"
+    verdict: "The bigger they are..."
+    
+  readnews.c:
+    line: 216
+    sin: "gets(bfr)"
+    context: "Abort prompt"
+    verdict: "Would you like to abort? y/[BUFFER OVERFLOW]"
+
+# Directory Structure
+# Each D.* is a "domain" — a category of functionality
 
 subdirs:
-  D.news/: "Core news handling — fascist.c lives here"
-  D.port/: "Portability layer — 37 .c files"
-  D.read/: "Reading functionality"
-  D.post/: "Posting functionality"
-  D.posix/: "POSIX compatibility"
-  D.network/: "Network operations"
-  D.scrn/: "Screen handling"
-  D.filt/: "Filtering"
-  D.priv/: "Privilege handling"
-  D.uucp/: "UUCP transport"
-  D.scripts/: "Shell scripts"
+  D.news/:
+    tagline: "Core news handling"
+    contains: "fascist.c — THE file"
+    files: "21 .c, 8 .h"
+    danger: "HIGH"
+    
+  D.port/:
+    tagline: "Portability layer"  
+    contains: "Cross-platform abstractions"
+    files: "37 .c, 11 .h"
+    danger: "MEDIUM — test code shipped to production"
+    
+  D.read/:
+    tagline: "Reading functionality"
+    contains: "User-facing article display"
+    files: "14 .c, 7 .h"
+    danger: "LOW — mostly display code"
+    
+  D.post/:
+    tagline: "Posting functionality"
+    contains: "Article composition"
+    files: "4 .c, 1 .h"
+    danger: "MEDIUM — user input handling"
+    
+  D.posix/:
+    tagline: "POSIX compatibility"
+    contains: "Standards compliance"
+    files: "34 .c, 7 .h"
+    danger: "LOW — boring but safe-ish"
+    
+  D.network/:
+    tagline: "Network operations"
+    contains: "NNTP protocol"
+    files: "3 .c, 1 .h"
+    danger: "HIGH — network-facing code"
+    
+  D.scrn/:
+    tagline: "Screen handling"
+    contains: "Terminal UI"
+    files: "5 .c, 5 .h"
+    danger: "LOW — curses stuff"
+    
+  D.filt/:
+    tagline: "Filtering"
+    contains: "Killfiles"
+    files: "5 .c, 2 .h"
+    danger: "LOW"
+    
+  D.priv/:
+    tagline: "Privilege handling"
+    contains: "Setuid operations"
+    files: "13 .c, 2 .h"
+    danger: "CRITICAL — privilege + buffer overflow = game over"
+    
+  D.uucp/:
+    tagline: "UUCP transport"
+    contains: "Pre-Internet batch transfer"
+    files: "3 .c, 1 .h"
+    danger: "HISTORICAL — obsolete protocol"
 
-unsafe_patterns:
-  gets: "Buffer overflow — NEVER safe"
-  sprintf: "No bounds checking"
-  strcpy: "No bounds checking"
-  strcat: "No bounds checking"
-  mktemp: "Race condition"
+# Top-Level Interesting Files
+# Not in subdirectories
 
+top_level_files:
+  compress.c:
+    size: "37485 bytes"
+    date: "Aug 1 1989"
+    note: "LZW compression — patent minefield in the 90s"
+    
+  compuserve.c:
+    size: "18402 bytes"
+    date: "Aug 28 1989"
+    note: "CompuServe gateway. Remember CompuServe?"
+    
+  control.c:
+    size: "28215 bytes"
+    note: "Control message handling"
+    
+  expire.c:
+    size: "33454 bytes"
+    note: "Article expiration"
+    
+  caesar.c:
+    size: "3131 bytes"
+    note: "ROT13 'encryption' — for spoilers"
+    historical: "This is why ROT13 exists"
+    
+  vnews.c:
+    size: "14662 bytes"
+    note: "Visual news reader — fancy TUI"
+    
+  bbsauto.c:
+    size: "31482 bytes"
+    note: "BBS automation — remember BBSes?"
+
+# Usenet Configuration Artifacts
+# See analysis/usenet-artifacts.md for deep dive
+
+config_files:
+  "%newsgroups":
+    lines: 361
+    contains: "Complete 1988 newsgroup taxonomy"
+    notable: "comp.risks — ESR read this, shipped gets() anyway"
+    
+  "%distributions":
+    lines: 48
+    contains: "Geographic distribution codes"
+    notable: "AT&T Bell Labs dominance — mh, ho, ih, btl"
+    
+  "%feeds":
+    lines: 4
+    contains: "UUCP feed configuration"
+    sites: "snark, cbmvax, vu-vlsi"
+    
+  "%mailpaths":
+    lines: 61
+    contains: "Moderated group submission addresses"
+    artifact: "Email addresses from 1988"
+
+# The Pattern
+# What you see repeated everywhere
+
+patterns:
+  gets_usage: |
+    Six gets() calls. Each one is a buffer overflow waiting to happen.
+    Each one was KNOWN to be dangerous in 1988.
+    The Morris Worm exploited gets() in fingerd on November 2, 1988.
+    This code: also 1988. Also uses gets().
+    
+  sprintf_abuse: |
+    ~200 sprintf() calls with no bounds checking.
+    snprintf() existed. Was not used.
+    
+  strcpy_strcat: |
+    ~230 combined strcpy/strcat calls.
+    strncpy() existed. strlcpy() would come later.
+    But the safe patterns were KNOWN.
+    
+  the_excuse: |
+    "It was a different time."
+    No. The man pages warned. The Morris Worm happened.
+    comp.risks discussed it. He was ON comp.risks.
+    
 k-lines:
-  - legacy-c
-  - buffer-overflow
-  - 1988-code
+  - legacy-c-archaeology
+  - buffer-overflow-museum
+  - 1988-code-crimes
+  - security-negligence
+  - cathedral-bazaar-hypocrisy

@@ -1,16 +1,142 @@
 # D.network/ — Network Operations
 # NNTP and network transport
+# Where untrusted data meets trusted code
 
 what: |
-  3 .c files, 1 header.
+  3 C files, 1 header.
   Network protocol handling.
-  NNTP implementation.
+  NNTP (Network News Transfer Protocol) implementation.
+  
+  This is where data from THE INTERNET enters the system.
+  In 1988, "the internet" was smaller, but not safer.
 
-key_files:
-  - nntp.c: "NNTP protocol"
-  - netio.c: "Network I/O"
-  - socket.c: "Socket handling"
+stats:
+  c_files: 3
+  h_files: 1
+  danger_level: "HIGH"
+  
+  why_dangerous: |
+    Network-facing code receives untrusted input.
+    Every buffer overflow here is remotely exploitable.
+    No need for local access. Just send packets.
+
+# The Files
+# Small but mighty (dangerous)
+
+files:
+  nntp.c:
+    purpose: "NNTP protocol implementation"
+    protocol: "RFC 977 (October 1986)"
+    commands:
+      - ARTICLE
+      - HEAD  
+      - BODY
+      - STAT
+      - GROUP
+      - HELP
+      - IHAVE
+      - LAST
+      - LIST
+      - NEWGROUPS
+      - NEWNEWS
+      - NEXT
+      - POST
+      - QUIT
+      - SLAVE
+    danger: |
+      Every command parses network input.
+      Every parse is a potential overflow.
+      "ARTICLE <very-long-message-id>" → ?
+      
+  netio.c:
+    purpose: "Network I/O abstractions"
+    functions:
+      - read_line: "Read a line from network"
+      - write_line: "Write a line to network"
+    danger: |
+      How big is a "line"?
+      What if the remote sends a line longer than the buffer?
+      What if there's no newline?
+      
+  socket.c:
+    purpose: "Socket operations"
+    functions:
+      - open_socket: "Create network connection"
+      - close_socket: "Close connection"
+    note: "Lower-level, probably safer"
+
+# NNTP Protocol
+# What this code implements
+
+nntp_explained:
+  what: |
+    NNTP — Network News Transfer Protocol
+    RFC 977, October 1986
+    How news servers talk to each other and to clients.
+    
+  text_based: |
+    Like SMTP, HTTP/1.x, FTP — text commands over TCP.
+    "ARTICLE <message-id>\r\n"
+    Response: "220 0 <message-id> article retrieved\r\n"
+    
+  the_risk: |
+    Text protocols are deceptively simple.
+    But parsing text is HARD.
+    
+    What if the message-id is 10,000 characters?
+    What if the response line has no newline?
+    What if the body has embedded nulls?
+    
+    Every "what if" is an attack vector.
+
+# Historical Context
+# When this was written
+
+historical:
+  year: 1988
+  internet_size: "~60,000 hosts"
+  threat_model: |
+    In 1988, the internet was mostly universities and 
+    research labs. The threat model was "bugs happen."
+    
+    Then came November 2, 1988: The Morris Worm.
+    
+    Suddenly the threat model was "active attackers
+    will find and exploit every bug in network-facing code."
+    
+  after_morris: |
+    This code was written AFTER the Morris Worm.
+    The lessons were available. The warnings were published.
+    comp.risks discussed it extensively.
+    
+    The code still uses patterns that enable exactly
+    the kind of attacks the Morris Worm used.
+
+# The Network Attack Surface
+# What an attacker can reach
+
+attack_surface:
+  entry_points:
+    - "NNTP commands from remote servers"
+    - "NNTP commands from local clients"
+    - "Article headers from anywhere"
+    - "Article bodies from anywhere"
+    
+  trust_model: |
+    In 1988: "Other news servers are trustworthy."
+    Reality: "Anyone with network access can send you data."
+    
+  what_could_happen: |
+    1. Send malformed NNTP command
+    2. Overflow buffer in parser
+    3. Execute arbitrary code
+    4. You now own the news server
+    
+    This is not theoretical. This is how attacks work.
 
 k-lines:
+  - network-facing-code
   - nntp-protocol
-  - network-io
+  - remote-exploit-potential
+  - untrusted-input
+  - post-morris-worm
