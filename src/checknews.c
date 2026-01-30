@@ -46,7 +46,7 @@ private char	checkopts[SBUFLEN];
 
 option_t options[] =
 {
-/* 
+/*
 optlet  filchar	flag	from	to	type	buf	*/
 'c',	'\0',	NONE,	DNC,	DNC,	STRING,	checkopts,
 'n', NGDELIM,	NONE,	DNC,	DNC,    STRING,	grouplist,  /* ->checkinit.c */
@@ -125,7 +125,7 @@ char	*argv[];
 	exit(0);
     }
 
-    /* 
+    /*
      * if no execute option, tell I/O manager we're non-interactive.
      * This enables later tests via isatty(fileno(stdin)).
      */
