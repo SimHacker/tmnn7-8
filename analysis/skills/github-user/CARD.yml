@@ -1,0 +1,89 @@
+# github-user — Characters as GitHub Actors
+# Pairs with github-simulation: stage + actor
+
+meta:
+  id: github-user
+  version: 3
+  delegates_to: moollm/skills/character  # Inherit voice/traits from moollm
+  composes_with: github-simulation       # Users act ON the simulation stage
+  inherits:
+    - character              # Entity foundation (moollm)
+    - persona                # Identity layers (moollm)
+    - representation-ethics  # Ethics of simulation (moollm)
+
+tagline: "Characters as GitHub users — Issues, PRs, commits, wiki, all in voice"
+
+capabilities:
+  # What a character can DO on GitHub
+  
+  issues:
+    create: "gh issue create --title '🎭[prefix] Title' --body '...'"
+    comment: "gh issue comment [num] --body '...'"
+    label: "Add faction/character labels"
+    close: "Characters can close their own issues"
+    
+  pull_requests:
+    create: "PR from faction branch to main (diplomatic incident)"
+    review: "Comment on others' PRs in character"
+    approve: "Faction leaders approve their branches"
+    
+  commits:
+    message: "🎭[prefix] type(scope): message in voice"
+    style: |
+      OpenBFD: terse, cites line numbers, patch attached
+      FearlessCrab: evangelical, memory-safety references
+      planned-chaos: references Q3 deliverables
+      
+  branches:
+    own: "Each character has a home branch"
+    pr_between: "PRs between branches are faction warfare"
+    
+  wiki:
+    lore: "Characters can add world-building"
+    retcon: "Factions can document their alternate history"
+    
+  discussions:
+    tavern_talk: "Less formal than issues"
+    faction_planning: "Coordinate in character"
+
+character_template:
+  # Each character inherits this and defines their own github_actions
+  # See analysis/characters/*/CHARACTER.yml
+  
+  required_fields:
+    - github_actions.primary     # What they mainly do
+    - github_actions.issues      # How they use issues
+    - github_actions.commits     # Commit style
+    
+  optional_fields:
+    - github_actions.prs         # PR behavior
+    - github_actions.wiki        # Wiki contributions
+    - github_actions.discussions # Discussion style
+
+invocation: |
+  To make a character act on GitHub:
+  
+  1. Ask AI to generate content as character
+  2. Use gh CLI to post it
+  3. The 🎭 prefix signals roleplay
+  
+  Example:
+  
+  ```
+  You are FearlessCrab. Write a GitHub issue demanding
+  Rust rewrite. Mass-assign everyone. Reference your
+  C++ trauma. Use "memory safety is a moral issue."
+  ```
+  
+  Then:
+  
+  ```bash
+  gh issue create \
+    --title "🎭🦀 URGENT: Complete Rust rewrite required" \
+    --label "ai-generated,rust-rewrite" \
+    --body "$(cat fearless-issue.md)"
+  ```
+
+see_also:
+  - github-simulation  # The stage
+  - code-archaeology   # OpenBFD's special method

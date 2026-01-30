@@ -1,0 +1,150 @@
+# D.priv/ — Privilege Handling
+glance-depth: deep
+# Setuid code + buffer overflows = root access for attackers
+# The most dangerous combination in systems programming
+
+what: |
+  13 C files, 2 headers.
+  Privilege escalation and dropping.
+  Setuid bit handling.
+  
+  News software ran setuid because it needed to write
+  to shared spool directories. This means buffer overflows
+  here aren't just crashes — they're root shells.
+
+stats:
+  c_files: 13
+  h_files: 2
+  danger_level: "CRITICAL"
+
+# The Deadly Combination
+# Why this directory is especially dangerous
+
+the_problem:
+  setuid_explained: |
+    Unix setuid bit lets programs run as a different user.
+    News software ran setuid-news or setuid-root to write
+    to /var/spool/news and other shared directories.
+    
+  buffer_overflow_explained: |
+    A buffer overflow lets an attacker overwrite memory.
+    With careful crafting, they can execute arbitrary code.
+    
+  the_combination: |
+    Buffer overflow + setuid = arbitrary code as root.
+    
+    This is how the Morris Worm worked in 1988.
+    fingerd was setuid. fingerd used gets().
+    Result: 6,000 machines compromised.
+    
+    TMNN uses gets(). TMNN ran setuid.
+    The pattern was KNOWN.
+    
+  verdict: |
+    If TMNN had been widely deployed, every buffer overflow
+    in this codebase would have been a root exploit.
+    "It was a different time" doesn't make it less dangerous.
+
+# Files
+# The privilege machinery
+
+files:
+  # Privilege Dropping
+  # Trying to be safe (sort of)
+  
+  privlock.c:
+    purpose: "Privilege-aware locking"
+    note: "Lock files with proper permissions"
+    
+  # File Operations
+  # Working with files under elevated privileges
+  
+  filelock.c:
+    purpose: "File locking primitives"
+    note: "flock/lockf abstraction"
+    
+  lock.c:
+    purpose: "General locking"
+    note: "Lock management"
+    
+  mygrp.c:
+    purpose: "Get current group"
+    note: "getgrgid() wrapper"
+    
+  # Permission Checking
+  # Can we do the thing?
+  
+  access.c:
+    purpose: "File access checking"
+    note: "access(2) wrapper with privilege awareness"
+    
+  # Ownership Operations
+  # Changing who owns what
+  
+  chown.c:
+    purpose: "Change file ownership"
+    danger: "HIGH — modifies file permissions"
+    
+  # Spool Directory Handling
+  # The shared news spool
+  
+  spool.c:
+    purpose: "News spool operations"
+    note: "Reading/writing /var/spool/news"
+    why_setuid: "Multiple users write to shared spool"
+
+# The Setuid Problem
+# Why news software needed elevated privileges
+
+historical_context:
+  why_setuid: |
+    In 1988, news was a shared resource. Multiple users
+    on a multi-user Unix system all read and posted news.
+    The spool directory had to be writable by the news software.
+    
+    Options:
+    1. Make spool world-writable (terrible)
+    2. Run news software setuid (dangerous)
+    3. Use a news daemon (complex)
+    
+    Most chose option 2.
+    
+  the_risk: |
+    Setuid programs must be PERFECT.
+    Any exploitable bug is a root exploit.
+    TMNN has many exploitable bugs.
+    
+  what_changed: |
+    Modern systems use:
+    - Dedicated news user accounts
+    - News daemons (innd, etc.)
+    - Capability-based security
+    - Containers and sandboxing
+    
+    Nobody runs setuid news readers anymore.
+    Because of exactly this kind of code.
+
+# The Lesson
+# What this directory teaches
+
+lessons:
+  lesson_1: |
+    Privilege and unsafe code don't mix.
+    If you must use setuid, every line must be audited.
+    
+  lesson_2: |
+    "Drop privileges early" is security 101.
+    But you still have that window of elevated privilege.
+    And buffer overflows don't wait.
+    
+  lesson_3: |
+    This is why the Morris Worm worked.
+    This is why we have SELinux, AppArmor, sandboxing.
+    This code is a museum of what NOT to do.
+
+k-lines:
+  - setuid-danger
+  - privilege-escalation
+  - root-exploit-potential
+  - morris-worm-pattern
+  - security-critical-code

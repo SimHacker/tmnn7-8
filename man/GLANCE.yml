@@ -1,0 +1,18 @@
+# man/ — Manual Pages
+# Unix man page format documentation
+
+what: |
+  Traditional Unix manual pages.
+  nroff/troff format.
+  How users were expected to learn the system.
+
+format: |
+  man1/: User commands
+  man5/: File formats
+  man8/: Admin commands
+  
+  Standard Unix man page hierarchy.
+
+k-lines:
+  - unix-manpages
+  - troff-format

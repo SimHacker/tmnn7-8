@@ -1,0 +1,33 @@
+# code-archaeology — Audit and Fix Legacy Code
+# Quick scan: what, why, when
+
+what: |
+  Read code. Find bugs. Send patches.
+  OpenBFD's method: grep for patterns, read context, 
+  understand buffers, apply fix, document meticulously.
+
+why: |
+  Talk is cheap. Patches are expensive.
+  Everyone proposes rewrites. Nobody fixes what exists.
+  The virtue is in the work, not the recognition.
+
+when:
+  - Auditing legacy C code for security issues
+  - Fixing gets/sprintf/strcpy/strcat vulnerabilities
+  - Documenting fixes with proper citations
+  - Being the tragic hero who patches anyway
+
+inherits:
+  - OpenBFD          # The character who embodies this
+  - robust-first     # Stay alive, then optimize (Ackley)
+  - postel           # Liberal in, conservative out
+
+k-lines:
+  - buffer-overflow
+  - gets-to-fgets
+  - sprintf-to-snprintf
+  - strcpy-to-strncpy
+  - bounds-checking
+  - man-page-citations
+  - morris-worm
+  - patch-attached

@@ -1,0 +1,150 @@
+# 🌌 Cross-Temporal Multiverse Sync
+# 
+# When core files change on main, sync them to all faction branches.
+# The characters exist in all timelines. Only the code diverges.
+#
+# HOW IT WORKS:
+# 1. Triggers on push to main when core files change
+# 2. For each faction branch that exists:
+#    - Cherry-picks the commit (with main winning conflicts)
+#    - Preserves full commit message = provenance trail
+# 3. If conflict (rare), creates an issue tagged with faction label
+#    - Tags characters, not real users (fictional accountability)
+#    - Issue describes exactly what changed and how to fix
+#
+# WHY THIS DESIGN:
+# - Matrix strategy = parallel execution, one job per branch
+# - fail-fast: false = one branch failure doesn't stop others
+# - Cherry-pick preserves original commit author and message
+# - --strategy-option=theirs means main always wins for core files
+# - Issues create narrative artifacts when conflicts occur
+#
+# PROVENANCE:
+# Every sync preserves who changed what, when, and why.
+# Git log on any branch tells the full cross-temporal story.
+#
+# DIRECTION: main → branches (one-way)
+# Core files are authored on main. Factions receive updates.
+# Faction-specific code stays on faction branches.
+
+name: Multiverse Sync
+
+on:
+  push:
+    branches: [main]
+    paths:
+      # Core documentation
+      - 'README.md'
+      - 'CODE-OF-CONDUCT.md'
+      
+      # The simulation engine
+      - 'analysis/SIMULATION.yml'
+      - 'analysis/rooms/**'
+      - 'analysis/characters/**'
+      - 'analysis/skills/**'
+      - 'analysis/INDEX.yml'
+      - 'analysis/INDEX.md'
+      
+      # All GLANCE.yml files — directory metadata syncs everywhere
+      - 'GLANCE.yml'
+      - 'analysis/GLANCE.yml'
+      - 'doc/GLANCE.yml'
+      - 'man/GLANCE.yml'
+      - 'misc/GLANCE.yml'
+      - 'scripts/GLANCE.yml'
+      - 'src/GLANCE.yml'
+      - 'src/D.*/GLANCE.yml'
+      - 'analysis/skills/*/GLANCE.yml'
+      
+      # The sync workflow itself
+      - '.github/workflows/multiverse-sync.yml'
+
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  sync-to-factions:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+    
+    strategy:
+      fail-fast: false
+      matrix:
+        branch:
+          - dev                   # Public clusterfuck - anyone can contribute
+          - rust-rewrite          # FearlessCrab's memory-safe utopia
+          - haskell-port          # PureMonad's categorical paradise
+          - nodejs-webscale       # WebScaleChad's async wonderland
+          - based-freedom-fork    # GrokVibeCheck's freedom zone
+          - elbonia-initiative    # planned-chaos's enterprise solution
+          - actual-fixes          # OpenBFD's patches nobody merges
+    
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure git identity
+        run: |
+          git config user.name "Multiverse Sync Bot"
+          git config user.email "multiverse-sync[bot]@tmnn.theater"
+
+      - name: Check if branch exists
+        id: check-branch
+        run: |
+          if git ls-remote --heads origin ${{ matrix.branch }} | grep -q ${{ matrix.branch }}; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Sync to ${{ matrix.branch }}
+        if: steps.check-branch.outputs.exists == 'true'
+        run: |
+          BRANCH="${{ matrix.branch }}"
+          COMMIT_SHA="${{ github.sha }}"
+          
+          git checkout "$BRANCH"
+          
+          if git cherry-pick "$COMMIT_SHA" --strategy-option=theirs; then
+            git push origin "$BRANCH"
+            echo "✅ Synced to $BRANCH"
+          else
+            git cherry-pick --abort || true
+            
+            # Get changed files for the issue
+            FILES=$(git diff-tree --no-commit-id --name-only -r "$COMMIT_SHA" | sed 's/^/  - /')
+            
+            # Create issue - tags faction label, not real users
+            gh issue create \
+              --title "🌌 Multiverse Sync: $BRANCH needs manual merge" \
+              --label "multiverse-sync,$BRANCH,automated" \
+              --body "## Cross-Temporal Sync Notice
+          
+          The Multiverse Sync Bot attempted to sync from main to $BRANCH.
+          
+          **Commit:** $COMMIT_SHA
+          **Files:**
+          $FILES
+          
+          This is rare - it means divergent edits to a shared file.
+          
+          Resolution:
+          \`\`\`bash
+          git checkout $BRANCH
+          git cherry-pick $COMMIT_SHA
+          git push origin $BRANCH
+          \`\`\`
+          
+          Tagged with faction label, not humans. Characters are accountable.
+          
+          — 🤖 Multiverse Sync Bot"
+          fi
+
+      - name: Branch not ready
+        if: steps.check-branch.outputs.exists == 'false'
+        run: echo "Branch ${{ matrix.branch }} will be created when its faction is ready."
