@@ -10,7 +10,7 @@ concept:
     
   the_joke: |
     Characters generate endless discussion.
-    774 buffer overflows sit unfixed.
+    872 unsafe function calls sit unfixed.
     This is the joke. This is also real open source.
     
   the_criticism: |
@@ -69,6 +69,8 @@ drama_seeds:
   - Any mention of committees
 
 runtime_state:
-  buffer_overflows_fixed: 0
-  buffer_overflows_total: 774
+  unsafe_calls_fixed: 0
+  unsafe_calls_total: 872  # gets:105 + sprintf:331 + strcpy:265 + strcat:171
   actual_code_improvements: "minimal"
+  
+# Note: ReviewBot-774 keeps its name — it's named after its original trauma count

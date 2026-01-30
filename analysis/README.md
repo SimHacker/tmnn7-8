@@ -71,8 +71,7 @@ Archaeological analysis of TMNN codebase and its author.
 ## Stats
 
 ```
-Buffer overflows: 774
-Whitespace violations: 7,176
-Buffer overflows fixed: 0
+Unsafe function calls: 872  (gets:105 sprintf:331 strcpy:265 strcat:171)
+Unsafe calls fixed: 0
 Comments generated: 100+
 ```

@@ -2,7 +2,15 @@
 
 **Eric S. Raymond's abandoned code — the archaeological evidence.**
 
-The man who coined "given enough eyeballs, all bugs are shallow" had **zero eyeballs** on his 774 buffer overflows. The man who preached "release early, release often" kept this code secret for **two years**. The "Art of Unix Programming" author shipped `gets()` in header files.
+The man who coined "given enough eyeballs, all bugs are shallow" had **zero eyeballs** on his 872 calls to unsafe C functions. The man who preached "release early, release often" kept this code secret for **two years**. The "Art of Unix Programming" author shipped `gets()` in header files.
+
+---
+
+## Representation Ethics
+
+**Characters in this repository are fictional archetypes, not real people.** The character "daFlute" is NOT Eric S. Raymond — it is a theatrical mask representing the archetype "Aging Hacker Who Wrote The Book." All characters use the 🎭 prefix to signal roleplay.
+
+**All claims are evidence-based:** Quotes are sourced. Code snippets are from the actual repository. Third-party assessments are attributed.
 
 ---
 
@@ -30,21 +38,35 @@ The content moderation opponent wrote content moderation code. With buffer overf
 
 ### From the LICENSE
 
+ESR included an **"UNABASHED COMMERCIAL PLUG"** (his words) in his LICENSE file, explicitly inviting contact:
+
 > "I am available at competitive rates as a consultant... don't hesitate to call."
 
-An advertisement. In a software license.
+*Note: The 1989 contact information appears in the original LICENSE file, published by ESR with an explicit invitation to contact him. This is not private information — it is a commercial solicitation embedded in publicly distributed software.*
 
 ---
 
-## The Numbers
+## The Numbers: Mechanical Count
 
-| | |
-|---|---|
-| **Buffer Overflows** | 774 |
-| **Secret Lab Time** | 2 years |
-| **External Reviewers** | 0 |
-| **Promised Features Delivered** | 0 |
-| **Blog Mentions by ESR** | 0 |
+**Methodology:** Count all calls to C functions that can cause buffer overflows when used without bounds checking. These functions are documented as unsafe in their own man pages.
+
+```bash
+grep -rn "gets(\|sprintf(\|strcpy(\|strcat(" src/ --include="*.c" --include="*.h"
+```
+
+| Function | Count | Risk |
+|----------|-------|------|
+| `gets()` | 105 | Always unsafe — reads unbounded input |
+| `sprintf()` | 331 | No bounds checking on output buffer |
+| `strcpy()` | 265 | No bounds checking on destination |
+| `strcat()` | 171 | No bounds checking on destination |
+| **Total** | **872** | Calls to unsafe functions |
+
+**What this means:** Each call is a *potential* buffer overflow — not a confirmed vulnerability, but a location where bounds checking is the programmer's responsibility, and where the C standard library provides no protection.
+
+**What this does NOT mean:** We are not claiming 872 confirmed CVEs. We are documenting 872 calls to functions that the security community has identified as inherently dangerous.
+
+*See: [CERT C Coding Standard](https://wiki.sei.cmu.edu/confluence/display/c/), `gets(3)` man page SECURITY CONSIDERATIONS section*
 
 ---
 
@@ -61,8 +83,8 @@ flowchart TB
     
     subgraph did["What ESR Did"]
         secret["2 years in<br/>'secret laboratories'"]
-        zero["Zero reviewers<br/>774 unfixed bugs"]
-        vuln["gets() in headers<br/>Buffer overflows everywhere"]
+        zero["Zero reviewers<br/>872 unsafe function calls"]
+        vuln["gets() in headers<br/>No bounds checking"]
         fascist["Wrote fascist.c<br/>to control who can post"]
     end
     
@@ -145,7 +167,7 @@ All findings in [`analysis/`](analysis/):
 
 | Document | What |
 |----------|------|
-| [vulnerabilities.md](analysis/vulnerabilities.md) | 774 buffer overflows documented |
+| [vulnerabilities.md](analysis/vulnerabilities.md) | Unsafe function calls documented |
 | [fascist-analysis.md](analysis/fascist-analysis.md) | The infamous fascist.c |
 | [catb-irony.md](analysis/catb-irony.md) | Cathedral vs Bazaar contradictions |
 | [many-eyes-myth.md](analysis/many-eyes-myth.md) | "Linus's Law" — quote Linus never said |
@@ -172,7 +194,7 @@ timeline
     
     section Rediscovery
         2026 : Full code review performed
-             : 774 buffer overflows discovered
+             : 872 unsafe function calls documented
 ```
 
 ---
@@ -187,7 +209,7 @@ tmnn7-8/
 ├── src/               ← Source code
 │   └── D.news/fascist.c
 ├── doc/BRAGSHEET      ← ESR's promises
-└── LICENSE            ← Political manifesto
+└── LICENSE            ← Political manifesto + commercial plug
 ```
 
 ---
@@ -216,10 +238,6 @@ tmnn7-8/
 
 ## License
 
-Original code: ESR's 1989 "NETNEWS GENERAL PUBLIC LICENSE" — 40% political manifesto, 60% GPL ripoff. Requires you to become a libertarian. [Full analysis](analysis/license-analysis.md).
+Original code: ESR's 1989 "NETNEWS GENERAL PUBLIC LICENSE" — 40% political manifesto, 60% GPL derivative. [Full analysis](analysis/license-analysis.md).
 
-Analysis documents: Public domain — no oath required.
-
----
-
-*The silence is the confession.*
+Analysis documents: Public domain.
