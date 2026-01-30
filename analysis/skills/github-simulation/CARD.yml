@@ -36,6 +36,14 @@ capabilities:
     - Diagnose failures: gh run view [id] --log-failed
     - Repair sync issues: force-sync, create labels, fix permissions
     - Document new failure modes in operational knowledge
+    
+  permissions:
+    - Branch protection as faction territory
+    - CODEOWNERS as character ownership  
+    - Rulesets for faction-specific rules
+    - Collaborator invites for new players
+    - Teams as organized factions (org repos)
+    - GitHub Actions as automated game mechanics
 
 activation_triggers:
   - "run a github simulation"
@@ -118,6 +126,13 @@ k-lines:
   - moollm-mount-required    # Integration pattern
   - health-check-cycle       # Learned: always check gh run list
   - action-logs-diagnosis    # Learned: gh run view --log-failed
+  # Permission game mechanics
+  - branch-protection-as-territory
+  - codeowners-as-ownership
+  - sock-puppet-accounts
+  - real-players-join
+  - permission-as-plot
+  - teach-github-by-playing
 
 operational_knowledge:
   # Cached lessons — see SKILL.md for details
