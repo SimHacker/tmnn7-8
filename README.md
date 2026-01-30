@@ -120,7 +120,15 @@ flowchart TB
 
 I loaded the repository into [Cursor](https://cursor.sh/) and asked the AI to review it for me. The bugs emerged. I never had to see `gets()` with my own human eyes.
 
-**ESR wanted many eyes. He's getting many tokens.**
+**Vibe Coding lets people LARP as software developers.** This repository is for LARPing as hackers, critics, and open source commentators — in the grand ESR tradition of "How To Become A Hacker."
+
+ESR positioned himself as gatekeeper to hacker culture. We're opening the gate. Anyone can roleplay as:
+- The grizzled maintainer defending legacy code
+- The zealot demanding a rewrite
+- The bot having an existential crisis
+- The PHB who wandered into the wrong repo
+
+**ESR wanted many eyes. He's getting many personas.**
 
 ---
 
