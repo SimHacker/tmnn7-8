@@ -1,0 +1,118 @@
+# Self-Analysis: The Porky Pig Incident
+# "strstrstrstrstrstrstr" — When the model stutters
+#
+# Date: 2026-01-30
+# Project: tmnn7-8
+
+incident:
+  name: "AI Porky Pig Gibberish"
+  nickname: "The strstrstrstr Incident"
+  date: "2026-01-30"
+  severity: moderate  # Corrupted output, caught before merge
+  
+what_happened: |
+  While enriching GLANCE.yml files with detailed security analysis
+  of C code containing string functions (strstr, strcpy, strcat, etc.),
+  the model output became corrupted.
+  
+  Instead of coherent text, portions contained repeated substrings:
+  
+    "Strstrstrstrstrstrstr News"     (should have been: "TMNN")
+    "dropstrstrstrstr.c"             (should have been: a filename)
+    "~/.newsstrstrstrstr..."         (should have been: "~/.kill")
+  
+  The pattern: "strstr" repeated indefinitely, contaminating
+  surrounding text.
+
+affected_files:
+  - path: src/GLANCE.yml
+    corruption: "Strstrstrstrstrstrstr News"
+    corrected_to: "TMNN"
+    
+  - path: src/D.priv/GLANCE.yml
+    corruption: "dropstrstrstrstr.c"
+    corrected_to: "[actual filename from ls]"
+    
+  - path: src/D.filt/GLANCE.yml
+    corruption: "~/.newsstrstrstrstr..."
+    corrected_to: "~/.kill"
+
+detection:
+  who: "User spotted it during review"
+  how: "Visual inspection of generated content"
+  user_quote: "what is this --- llm gibberish!??!?!"
+  followup_quote: "NO AI SLOP remember this example! AI Porky Pug Jibberish"
+
+immediate_fix:
+  steps:
+    - "grep -r 'strstr' across repo to find all instances"
+    - "Visually inspect each GLANCE.yml file"
+    - "Manually replace corrupted text with correct values"
+    - "Verify against actual file listings (ls, find)"
+    - "Commit with explicit note about the fix"
+    
+  verification: |
+    Run: rg "strstrstr" analysis/ src/
+    Should return: 0 matches (except this file documenting the incident)
+
+root_cause:
+  hypothesis: "Unknown model glitch during long context generation"
+  certainty: "Low — cannot introspect model internals"
+  
+  speculation_rejected: |
+    User explicitly called out speculation as "AI slop":
+    > "NO AI SLOP remember this example!"
+    
+    The honest answer: We don't know why this happens.
+    It's a model behavior we observed, not a mechanism we understand.
+    
+  pattern_observed: |
+    - Writing extensively about C string functions
+    - Long generation with repeated technical terms
+    - Context window was large (many GLANCE files)
+    - Output began stuttering on the very terms being discussed
+
+prevention:
+  immediate:
+    - "Grep for repeated patterns after long generations"
+    - "Visual review of generated content before commit"
+    - "Pre-commit hook could check for obvious repetition patterns"
+    
+  detection_regex: |
+    # Catch obvious stuttering
+    (\w{3,})\1{3,}
+    
+    # Specifically watch for this pattern
+    strstrstr
+    
+  systemic:
+    - "Document in github-user SKILL.md as 'AI Porky Pig' lesson"
+    - "Add k-line: ai-porky-pig for semantic retrieval"
+    - "Report to no-ai-slop examples as canonical case"
+
+lessons_learned:
+  for_this_project:
+    - "Long technical writing about string functions can trigger stuttering"
+    - "Always grep for repeated patterns after generation"
+    - "Don't speculate about model internals — say 'unknown'"
+    
+  for_moollm:
+    - "New category of slop: repetition/stuttering"
+    - "Detection is mechanical (regex), not semantic"
+    - "Cause is unknown — don't pretend otherwise"
+
+reported_to:
+  skill: "no-ai-slop"
+  location: "moollm/skills/no-ai-slop/examples/"
+  filename: "2026-01-30-porky-pig-strstrstr-repetition.yml"
+  
+cached_in:
+  - analysis/skills/github-user/SKILL.md (operational knowledge)
+  - analysis/skills/github-user/CARD.yml (k-lines)
+
+k-lines:
+  - ai-porky-pig
+  - strstrstr-gibberish
+  - repetition-corruption
+  - long-context-glitch
+  - no-speculation-on-internals
