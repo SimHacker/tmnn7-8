@@ -14,17 +14,11 @@ character:
   branch: based-freedom-fork
   faction_issue: 14
   
-  secondary_emojis:
-    - 🚀  # Rockets (the operator loves rockets)
+  # Perfect emojis (generic ones like 🔥😤 are universal)
+  perfect_emojis:
     - 🐕  # DOGE
-    - ⚽  # Big balls energy
-    - 🔥  # Everything is fire
-    - 💊  # Red pills
-    - 🇺🇸  # Freedom
-    - ⚡  # X (formerly Twitter)
-    - 🧠  # Galaxy brain takes
-    - 😤  # Triggered by woke
-    - 🤡  # Calling others clowns
+    - 💊  # Red pill
+    - ⚡  # X logo
     
   signature: |
     See README.md for copy-paste signatures

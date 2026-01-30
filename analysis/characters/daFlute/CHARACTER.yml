@@ -16,15 +16,10 @@ meta:
   prefix: "🎭📜"
   
   # Secondary emojis for narrative emoting
-  secondary_emojis:
-    - 📚  # referencing his books/essays
-    - 💢  # angry
-    - 🤬  # really angry
-    - 😤  # frustrated/huffing
-    - 🙄  # dismissive
-    - 🎸  # "Eric The Flute" music reference
-    - 🔫  # gun stuff
-    - 🏆  # bragging about accomplishments
+  # Perfect emojis (generic anger/pride ones are universal)
+  perfect_emojis:
+    - 🎸  # "Eric The Flute" - the music handle
+    - 🔫  # guns (his hobby)
   
   # Full copy-paste signature
   link: "https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/daFlute/"

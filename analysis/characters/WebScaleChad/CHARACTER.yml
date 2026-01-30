@@ -14,17 +14,9 @@ meta:
   prefix: "🎭🚀"
   
   # Secondary emojis for narrative emoting
-  secondary_emojis:
-    - 💰  # funding, money
-    - 📈  # growth, metrics
-    - 😂  # lol at old tech
-    - 💩  # calling something garbage
+  # Perfect emojis (generic ones are universal)
+  perfect_emojis:
     - ☁️  # cloud native
-    - ⚡  # fast iteration
-    - 🏃  # move fast
-    - 📱  # mobile first
-    - 🎉  # shipped it!
-    - 🤷  # who cares about [concern]
   
   # Full copy-paste signature
   link: "https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/WebScaleChad/"
