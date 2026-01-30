@@ -20,6 +20,7 @@ The code doesn't lie. The code was always here. We just finally looked.
 |------|-------|---------|
 | 1988 | TMNN "secret laboratories" development begins | Grandiose framing |
 | 1988 | LICENSE requires libertarian political allegiance | Ideological gatekeeping |
+| 1988 | LICENSE rails against FSF while copying GPL format | Stealing & corrupting |
 | 1988 | `fascist.c` implements content filtering | "Ironic" censorship |
 | 1988 | BRAGSHEET promises 35+ features | Overpromise |
 | 1989 | TMNN beta 7.8 released | Underdeliver |
@@ -49,7 +50,16 @@ A software license that requires users to adopt libertarian political philosophy
 
 Not content to just release software, he had to make it a *manifesto*. Had to require ideological alignment. Had to include a commercial plug for his consulting business.
 
-The LICENSE isn't just legally eccentric. It's a personality portrait.
+**The supreme irony:** He rails against the FSF in the license text — explicitly distancing himself from *"the political or economic views or personal crusades of any member, agent, or ally of the Free Software Foundation"* — while simultaneously:
+
+- Copying the GPL structure and format
+- Benefiting from the GPL ecosystem
+- Building on work the FSF made possible
+- Later positioning himself as an "open source" leader
+
+He stole the format. He corrupted the message. He bit the hand that wrote the license he cribbed.
+
+The LICENSE isn't just legally eccentric. It's a personality portrait and a prophecy.
 
 ### 3. The fascist.c File
 
