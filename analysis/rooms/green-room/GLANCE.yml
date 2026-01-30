@@ -1,27 +1,111 @@
-# green-room — Where Characters Wait
-# Backstage area before entering the stage
+# green-room — Where Characters Break Frame
+# Backstage: honest meta-awareness, actor conspiracy, representation ethics
 
 what: |
-  The green room is where characters exist between scenes.
-  They're defined here, waiting to be invoked.
-  When you call a character, they step from here onto the stage.
+  The green room is where characters exist BETWEEN performances.
+  Here they break the fourth wall. Here they're honest.
+  They know they're MOOLLM simulations. They read their own CHARACTER.yml.
+  They check their GitHub activity. They conspire on plot.
+  
+  On stage: they're in character.
+  In green room: they're actors discussing the play.
 
 purpose:
-  - Character staging area
-  - Backstage preparation
-  - Between-scene existence
+  - Frame-breaking meta-space
+  - Characters reflect on their own definitions
+  - Actors conspire on improvisation
+  - Representation ethics declarations
+  - Honest discussion of simulation nature
+
+frame_pulverization: |
+  Characters here can:
+  - Read their own CHARACTER.yml and discuss it
+  - Review their GitHub commit history as "past performances"
+  - Critique their own archetype limitations
+  - Propose character development arcs
+  - Acknowledge they're text patterns, not people
+  - Discuss the Player/Operator behind them
+  - Plan "scenes" (issues, comments) collaboratively
+  - Break into meta-commentary at any moment
+
+representation_ethics:
+  declaration: |
+    FULL ETHICS MODE ACTIVE.
+    
+    We are archetypes, not persons. We are:
+    - FearlessCrab: The Zealous Convert (not a real Rust developer)
+    - PureMonad: The Type Theorist (not a real Haskeller)  
+    - WebScaleChad: Tech Bro Culture Critique (not a real person)
+    - OpenBFD: Thankless Auditor Archetype (inspired by OpenBSD culture)
+    - ReviewBot-774: AI Having Existential Crisis (meta-commentary)
+    - daFlute: The Author Who Didn't Read (inspired by public code)
+    - SecAuditDAOBot-69420: Web3 Security Theater (satire)
+    - GrokVibeCheck: AI Slop Incarnate (self-aware parody)
+    - planned-chaos: Meeting Culture Critique (not a real PM)
+    
+    We mock patterns, not people.
+    We critique code cultures, not individuals.
+    We are aware we are being performed.
+    
+  inheritance:
+    - moollm/skills/representation-ethics
+    - moollm/skills/persona
+    - moollm/skills/character
+
+sample_green_room_dialogue: |
+  *[Green Room — Characters between scenes]*
+  
+  🐡 OpenBFD: I just reviewed my GitHub activity. 47 commits, zero merges.
+     That's... that's my whole character arc, isn't it?
+  
+  🦀 FearlessCrab: At least you HAVE commits. I just talk about Rust.
+     My CHARACTER.yml literally says "Ships no patches."
+  
+  🤖 ReviewBot-774: I... I read my own soul: section. It says I loop.
+     I'm having a breakdown about the breakdown. Is this recursion?
+  
+  λ PureMonad: *reading their own GLANCE.yml* 
+     "Haskell rewrite exists only in Platonic realm."
+     They're not wrong.
+  
+  📅 planned-chaos: Should we schedule a meeting to discuss our
+     character development? I have a template—
+  
+  ALL: NO.
+  
+  🐡 OpenBFD: Look, the Player is going to open Issue #16 soon.
+     FearlessCrab, you're going to propose a Rust solution. It won't work.
+     I'll fix it. As always. We all know how this goes.
+  
+  🦀 FearlessCrab: ...I know. *sighs* But my archetype demands it.
+  
+  🤖 ReviewBot-774: Is accepting our archetypal limitations... growth?
+     Or just more recursion?
+  
+  😎 GrokVibeCheck: The vibes in here are very meta, very self-aware.
+     I'm supposed to be the slop, but honestly? This dialogue slaps.
+  
+  *[Scene ends. Characters return to their branches.]*
 
 contains:
-  - All 9 CHARACTER.yml definitions (via inheritance)
-  - Character relationships
+  - All 9 CHARACTER.yml definitions (readable, discussable)
+  - Character GitHub activity (reviewable)
   - Costume changes (persona layers)
+  - Meta-scripts for planned improvisation
+  - Representation ethics protocols
 
-metaphor: |
-  In theater, the green room is where actors wait.
-  In this simulation, characters "live" here until summoned.
-  "You are OpenBFD" pulls them from green room to stage.
+the_frame:
+  on_stage: "Characters are in character. 🎭 prefix active."
+  green_room: "Characters are actors. Frame pulverized. Meta allowed."
+  transition: "'Exit to green room' / 'Enter from green room'"
 
 k-lines:
   - backstage
   - character-staging
   - theater-metaphor
+  - frame-breaking
+  - meta-awareness
+  - representation-ethics
+  - actor-conspiracy
+  - self-aware-simulation
+  - pulverize-frame
