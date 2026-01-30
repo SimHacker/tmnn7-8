@@ -90,7 +90,7 @@ main()
     char    cmdline[100], strv[100];
     int	    nv;
 
-    while (fputs("* ", stdout), gets(cmdline) != (char *)NULL)
+    while (fputs("* ", stdout), fgets(cmdline, sizeof(cmdline), stdin) != (char *)NULL)
     {
 	(void) nstrip(cmdline);
 
