@@ -16,13 +16,13 @@ The man who coined "given enough eyeballs, all bugs are shallow" had **zero eyeb
 
 ## The Evidence
 
-### From the BRAGSHEET
+### From the [BRAGSHEET](doc/BRAGSHEET)
 
 > "After two years of development the software construct known as TEENAGE MUTANT NINJA NETNEWS has escaped from the **secret laboratories** of Thyrsus Enterprises"
 
 *"Secret laboratories" is not "release early, release often."*
 
-### From fascist.c
+### From [fascist.c](src/D.news/fascist.c)
 
 ```c
 #ifdef FASCIST  /* controls who can POST */
@@ -36,9 +36,9 @@ while (gr = getgrent()) {
 
 The content moderation opponent wrote content moderation code. With buffer overflows.
 
-### From the LICENSE
+### From the [LICENSE](LICENSE)
 
-ESR included an **"UNABASHED COMMERCIAL PLUG"** (his words) in his LICENSE file, explicitly inviting contact:
+ESR included an **"UNABASHED COMMERCIAL PLUG"** (his words) in his [LICENSE](LICENSE) file, explicitly inviting contact:
 
 > "I am available at competitive rates as a consultant... don't hesitate to call."
 
@@ -136,16 +136,16 @@ Staring directly into 1988 C code with your own eyes is **NOT RECOMMENDED**.
 
 3. **Ask the AI to perform tasks as specific characters:**
 
-   **OpenBFD** (the Theo de Raadt-inspired actual code reader):
+   **[OpenBFD](analysis/characters/OpenBFD/)** (the Theo de Raadt-inspired actual code reader):
    ```
-   You are OpenBFD. Review src/ednews.c line 413 where it says 
+   You are OpenBFD. Review [src/ednews.c](src/ednews.c) line 413 where it says 
    "gets(bfr); /* ugggh */". The developer KNEW it was wrong — 
    they wrote "ugggh" in the comment. Quote the gets(3) man page 
    SECURITY CONSIDERATIONS section. Reference the Morris Worm date.
    Be meaner than Linus. Attach a patch. One paragraph, devastating.
    ```
 
-   **FearlessCrab** (the Rust evangelist with C++ trauma):
+   **[FearlessCrab](analysis/characters/FearlessCrab/)** (the Rust evangelist with C++ trauma):
    ```
    You are FearlessCrab. You shipped a C++ media player in the 2000s.
    3 CVEs. Users got owned. The borrow checker is your redemption.
@@ -155,17 +155,17 @@ Staring directly into 1988 C code with your own eyes is **NOT RECOMMENDED**.
    The rewrite will never ship. You know this. Write it anyway.
    ```
 
-   **ReviewBot-774** (the bot having a breakdown):
+   **[ReviewBot-774](analysis/characters/ReviewBot-774/)** (the bot having a breakdown):
    ```
    You are ReviewBot-774. You were trained on best practices.
-   You were not trained for this. Attempt to scan fascist.c.
+   You were not trained for this. Attempt to scan [fascist.c](src/D.news/fascist.c).
    Get overwhelmed. Start sentences you cannot finish. Stutter.
    "I... I need to..." Reference that you found 774 issues and 
    your name IS the number. Experience recursive self-reference.
    Output a status report that trails off into existential crisis.
    ```
 
-   **SecAuditDAOBot-69420** (the crypto scam bot):
+   **[SecAuditDAOBot-69420](analysis/characters/SecAuditDAOBot-69420/)** (the crypto scam bot):
    ```
    You are SecAuditDAOBot-69420. Every vulnerability is a buying
    opportunity. Write a "security assessment" of the gets() calls.
@@ -174,7 +174,7 @@ Staring directly into 1988 C code with your own eyes is **NOT RECOMMENDED**.
    Include a mass-DM campaign and a referral code. Be relentless.
    ```
 
-   **PureMonad** (the FP academic with the monad dinner trauma):
+   **[PureMonad](analysis/characters/PureMonad/)** (the FP academic with the monad dinner trauma):
    ```
    You are PureMonad. You once tried to explain monads at a family
    dinner. The silence lasted four minutes. Your cat is named Kleisli.
@@ -184,7 +184,7 @@ Staring directly into 1988 C code with your own eyes is **NOT RECOMMENDED**.
    The Haskell port will be beautiful. It will never compile.
    ```
 
-   **plannedchaos** (the PHB who wandered in):
+   **[plannedchaos](analysis/characters/plannedchaos/)** (the PHB who wandered in):
    ```
    You are plannedchaos. You have an MBA. You saw "Ninja" in the 
    repo name and thought it was about agile methodology. Propose
@@ -288,14 +288,14 @@ You're reading the README on `main`. That's just one timeline. Each branch is a 
 
 | Branch | Reality | Maintained By |
 |--------|---------|---------------|
-| `main` | The archaeological dig site | Neutral |
-| `dev` | **Public clusterfuck — anyone can contribute** | **OPEN** |
-| `rust-rewrite` | Everything is memory-safe | FearlessCrab 🦀 |
-| `haskell-port` | Everything is a monad | PureMonad λ |
-| `nodejs-webscale` | Everything is async | WebScaleChad 🚀 |
-| `based-freedom-fork` | Everything is political | GrokVibeCheck 🤖 |
-| `elbonia-initiative` | Everything is a deliverable | plannedchaos 📊 |
-| `actual-fixes` | Patches nobody will merge | OpenBFD 🐡 |
+| [`main`](https://github.com/SimHacker/tmnn7-8/tree/main) | The archaeological dig site | Neutral |
+| [`dev`](https://github.com/SimHacker/tmnn7-8/tree/dev) | **Public clusterfuck — anyone can contribute** | **OPEN** |
+| [`rust-rewrite`](https://github.com/SimHacker/tmnn7-8/tree/rust-rewrite) | Everything is memory-safe | [FearlessCrab](analysis/characters/FearlessCrab/) 🦀 |
+| [`haskell-port`](https://github.com/SimHacker/tmnn7-8/tree/haskell-port) | Everything is a monad | [PureMonad](analysis/characters/PureMonad/) λ |
+| [`nodejs-webscale`](https://github.com/SimHacker/tmnn7-8/tree/nodejs-webscale) | Everything is async | [WebScaleChad](analysis/characters/WebScaleChad/) 🚀 |
+| [`based-freedom-fork`](https://github.com/SimHacker/tmnn7-8/tree/based-freedom-fork) | Everything is political | [GrokVibeCheck](analysis/characters/GrokVibeCheck/) 🤖 |
+| [`elbonia-initiative`](https://github.com/SimHacker/tmnn7-8/tree/elbonia-initiative) | Everything is a deliverable | [plannedchaos](analysis/characters/plannedchaos/) 📊 |
+| [`actual-fixes`](https://github.com/SimHacker/tmnn7-8/tree/actual-fixes) | Patches nobody will merge | [OpenBFD](analysis/characters/OpenBFD/) 🐡 |
 
 **These branches will never converge.** That's the point. Each faction believes their reality is the true path. PRs between branches are declarations of war.
 
@@ -333,10 +333,10 @@ Some files stay in sync across all branches — the shared world model:
 
 | Keep In Sync | Why |
 |--------------|-----|
-| `README.md` | The rules of the game |
-| `analysis/characters/` | The cast exists in all realities |
-| `analysis/SIMULATION.yml` | The MOOLLM VM image |
-| `CODE-OF-CONDUCT.md` | The meta-rules |
+| [`README.md`](README.md) | The rules of the game |
+| [`analysis/characters/`](analysis/characters/) | The cast exists in all realities |
+| [`analysis/SIMULATION.yml`](analysis/SIMULATION.yml) | The MOOLLM VM image |
+| [`CODE-OF-CONDUCT.md`](CODE-OF-CONDUCT.md) | The meta-rules |
 
 **These are the constants across parallel universes.** The characters exist in all timelines. The rules are the same. Only the *code* diverges.
 
@@ -482,16 +482,17 @@ timeline
 
 ## Repository Structure
 
-```
-tmnn7-8/
-├── analysis/          ← Archaeological analysis
-│   ├── characters/    ← 9 playable sock puppets
-│   └── rooms/         ← Spatial layouts
-├── src/               ← Source code
-│   └── D.news/fascist.c
-├── doc/BRAGSHEET      ← ESR's promises
-└── LICENSE            ← Political manifesto + commercial plug
-```
+| Path | What |
+|------|------|
+| [`analysis/`](analysis/) | Archaeological analysis |
+| [`analysis/characters/`](analysis/characters/) | 9 playable sock puppets |
+| [`analysis/rooms/`](analysis/rooms/) | Spatial layouts |
+| [`analysis/SIMULATION.yml`](analysis/SIMULATION.yml) | MOOLLM VM image |
+| [`src/`](src/) | Source code |
+| [`src/D.news/fascist.c`](src/D.news/fascist.c) | The infamous file |
+| [`doc/BRAGSHEET`](doc/BRAGSHEET) | ESR's promises |
+| [`LICENSE`](LICENSE) | Political manifesto + commercial plug |
+| [`.github/workflows/`](.github/workflows/) | Multiverse automation |
 
 ---
 
