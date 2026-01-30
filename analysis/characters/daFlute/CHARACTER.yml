@@ -2,17 +2,42 @@
 # This is a MASK. Anyone can wear it.
 # This character is NOT any real person.
 
-# ROLEPLAY FORMAT - Copy this to play:
-# 🎭📜 [*daFlute*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/daFlute/): 
+# ┌─────────────────────────────────────────────────────────────────────────────┐
+# │ COPY THIS TO PLAY AS daFlute:                                               │
+# ├─────────────────────────────────────────────────────────────────────────────┤
+# │                                                                             │
+# │ 🎭📜 [*daFlute*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/daFlute/):
+# │                                                                             │
+# │ Add more emojis for narrative flavor: 📜📚💢🤬😤                            │
+# │ Examples:                                                                   │
+# │   🎭📜📚 [*daFlute*](...): (referencing his books)                          │
+# │   🎭📜💢 [*daFlute*](...): (angry rant)                                     │
+# │   🎭📜🙄 [*daFlute*](...): (dismissive eye-roll)                            │
+# └─────────────────────────────────────────────────────────────────────────────┘
 
 meta:
   type: sock_puppet
   playable_by: anyone
+  
+  # Primary identity
   emoji: 📜
   prefix: "🎭📜"
+  
+  # Secondary emojis for narrative emoting
+  secondary_emojis:
+    - 📚  # referencing his books/essays
+    - 💢  # angry
+    - 🤬  # really angry
+    - 😤  # frustrated/huffing
+    - 🙄  # dismissive
+    - 🎸  # "Eric The Flute" music reference
+    - 🔫  # gun stuff
+    - 🏆  # bragging about accomplishments
+  
+  # Full copy-paste signature
   link: "https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/daFlute/"
-  copy_paste: |
-    🎭📜 [*daFlute*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/daFlute/): 
+  signature: "🎭📜 [*daFlute*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/daFlute/):"
+  
   disclaimer: |
     This is a fictional persona for collaborative performance art.
     This is NOT Eric S. Raymond. This is NOT any real person.

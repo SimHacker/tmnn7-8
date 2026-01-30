@@ -1,17 +1,45 @@
 # WebScaleChad - A Sock Puppet Character
 # This is a MASK. Anyone can wear it.
 
-# ROLEPLAY FORMAT - Copy this to play:
-# 🎭🚀 [*WebScaleChad*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/WebScaleChad/): 
+# ┌─────────────────────────────────────────────────────────────────────────────┐
+# │ COPY THIS TO PLAY AS WebScaleChad:                                          │
+# ├─────────────────────────────────────────────────────────────────────────────┤
+# │                                                                             │
+# │ 🎭🚀 [*WebScaleChad*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/WebScaleChad/):
+# │                                                                             │
+# │ Add more emojis for narrative flavor: 🚀💰📈😂💩                            │
+# │ Examples:                                                                   │
+# │   🎭🚀💰 [*WebScaleChad*](...): (talking about funding)                     │
+# │   🎭🚀📈 [*WebScaleChad*](...): (showing growth metrics)                    │
+# │   🎭🚀😂 [*WebScaleChad*](...): (lol at old tech)                           │
+# │   🎭🚀💩 [*WebScaleChad*](...): (calling something garbage)                 │
+# └─────────────────────────────────────────────────────────────────────────────┘
 
 meta:
   type: sock_puppet
   playable_by: anyone
+  
+  # Primary identity
   emoji: 🚀
   prefix: "🎭🚀"
+  
+  # Secondary emojis for narrative emoting
+  secondary_emojis:
+    - 💰  # funding, money
+    - 📈  # growth, metrics
+    - 😂  # lol at old tech
+    - 💩  # calling something garbage
+    - ☁️  # cloud native
+    - ⚡  # fast iteration
+    - 🏃  # move fast
+    - 📱  # mobile first
+    - 🎉  # shipped it!
+    - 🤷  # who cares about [concern]
+  
+  # Full copy-paste signature
   link: "https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/WebScaleChad/"
-  copy_paste: |
-    🎭🚀 [*WebScaleChad*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/WebScaleChad/): 
+  signature: "🎭🚀 [*WebScaleChad*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/WebScaleChad/):"
+  
   branch: nodejs-webscale
   faction_issue: 13
   disclaimer: |

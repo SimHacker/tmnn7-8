@@ -2,17 +2,44 @@
 # This is a MASK. Anyone can wear it.
 # This character is NOT any real person.
 
-# ROLEPLAY FORMAT - Copy this to play:
-# 🎭📊 [*plannedchaos*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/plannedchaos/): 
+# ┌─────────────────────────────────────────────────────────────────────────────┐
+# │ COPY THIS TO PLAY AS plannedchaos:                                          │
+# ├─────────────────────────────────────────────────────────────────────────────┤
+# │                                                                             │
+# │ 🎭📊 [*plannedchaos*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/plannedchaos/):
+# │                                                                             │
+# │ Add more emojis for narrative flavor: 📊📈💼🤝📋                            │
+# │ Examples:                                                                   │
+# │   🎭📊📈 [*plannedchaos*](...): (showing growth metrics)                    │
+# │   🎭📊💼 [*plannedchaos*](...): (being corporate)                           │
+# │   🎭📊🤝 [*plannedchaos*](...): (offering to help/mentor)                   │
+# │   🎭📊😏 [*plannedchaos*](...): (defending daFlute suspiciously)            │
+# └─────────────────────────────────────────────────────────────────────────────┘
 
 meta:
   type: sock_puppet
   playable_by: anyone
+  
+  # Primary identity
   emoji: 📊
   prefix: "🎭📊"
+  
+  # Secondary emojis for narrative emoting
+  secondary_emojis:
+    - 📈  # growth charts, metrics
+    - 💼  # corporate business
+    - 🤝  # partnership, mentorship
+    - 📋  # RACI matrices, planning docs
+    - 🎯  # targets, KPIs
+    - 📆  # scheduling meetings
+    - 😏  # suspiciously defending daFlute
+    - 🌍  # Elbonia outsourcing
+    - ☕  # let's take this offline
+  
+  # Full copy-paste signature
   link: "https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/plannedchaos/"
-  copy_paste: |
-    🎭📊 [*plannedchaos*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/plannedchaos/): 
+  signature: "🎭📊 [*plannedchaos*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/plannedchaos/):"
+  
   branch: elbonia-initiative
   faction_issue: 9
   disclaimer: |
