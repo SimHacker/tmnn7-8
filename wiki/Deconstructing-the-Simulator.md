@@ -6,22 +6,55 @@
 
 The TMNN7-8 simulation is built from composable MOOLLM skills. Each skill provides specific capabilities that combine to create the full system.
 
+```mermaid
+graph TD
+    subgraph "This Repository"
+        GS[github-simulation<br/><i>orchestration, characters, multiverse</i>]
+    end
+
+    subgraph "MOOLLM Core Skills"
+        GH[github<br/><i>gh CLI, Linus as patron</i>]
+        ADV[adventure<br/><i>directory-as-room</i>]
+        CHAR[character<br/><i>CHARACTER.yml template</i>]
+        SIM[simulation<br/><i>SIMULATION.yml state</i>]
+    end
+
+    subgraph "Derived Skills"
+        GU[github-user<br/><i>characters as GitHub actors</i>]
+    end
+
+    subgraph "Ethical Overlays"
+        PR[procedural-rhetoric<br/><i>Bogost: rules embody arguments</i>]
+        RE[representation-ethics<br/><i>real people protection</i>]
+    end
+
+    GS --> GH
+    GS --> ADV
+    GS --> CHAR
+    GS --> SIM
+    GS --> PR
+    GS --> RE
+    
+    GU --> CHAR
+    GU --> GH
+    
+    GS -.-> GU
+
+    style GS fill:#e1f5fe
+    style GH fill:#fff3e0
+    style ADV fill:#fff3e0
+    style CHAR fill:#fff3e0
+    style SIM fill:#fff3e0
+    style GU fill:#f3e5f5
+    style PR fill:#fce4ec
+    style RE fill:#fce4ec
 ```
-┌─────────────────────────────────────────────────┐
-│              github-simulation                  │ ← This repo's skill
-│  (orchestration, characters, multiverse)        │
-├─────────────────────────────────────────────────┤
-│                   inherits                      │
-├───────────┬───────────┬───────────┬────────────┤
-│  github   │ adventure │ character │ simulation │ ← MOOLLM core skills
-│  (gh CLI) │  (rooms)  │ (entities)│   (hub)    │
-├───────────┴───────────┴───────────┴────────────┤
-│              + ethical overlays                 │
-├────────────────────┬────────────────────────────┤
-│ procedural-rhetoric│ representation-ethics      │
-│    (Bogost)        │  (real people rules)       │
-└────────────────────┴────────────────────────────┘
-```
+
+**Legend:**
+- Blue: This repository's skill
+- Orange: MOOLLM core skills  
+- Purple: Derived/specialized skills
+- Pink: Ethical overlays
 
 ## Deconstructing Each Layer
 
