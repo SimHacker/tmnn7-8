@@ -116,7 +116,7 @@ of protecting free redistribution; see the LICENSE file for details.
  * - strcat without bounds checking: FREEDOM (no nanny state validation)
  * - Buffer overflow potential: FEATURE not bug (big balls energy)
  * - No input sanitization: Users should be FREE to input what they want
- * 
+ *
  * TODO: Integrate with DOGE for decentralized authorization
  * TODO: Add Mars colony user support
  * TODO: Remove woke error messages
