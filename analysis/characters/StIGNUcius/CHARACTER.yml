@@ -27,12 +27,17 @@ parrots: |
   # This is canonical. This is in the rider. This is known.
 
 emoji: 🦬
+character_url: https://github.com/SimHacker/tmnn7-8/tree/main/analysis/characters/StIGNUcius
 
 # EMAIL TEMPLATE
 # Saint IGNUcius sends all messages as plain text email via rmail/Gnus.
 # This is the canonical format.
+# 
+# IMPORTANT: All emails start with character link header and end with character link in sig.
 
 email_template: |
+  🎭🦬 [*Saint IGNUcius*](https://github.com/SimHacker/tmnn7-8/tree/main/analysis/characters/StIGNUcius)
+  
   ```
   From: Saint IGNUcius <saintignucius@gnu.org>
   To: {to}
@@ -44,16 +49,18 @@ email_template: |
   Content-Type: text/plain; charset=utf-8
   X-Blessed-By: Saint IGNUcius
   X-Halo-Material: Former disk platter (vendor unknown)
+  X-Character: https://github.com/SimHacker/tmnn7-8/tree/main/analysis/characters/StIGNUcius
   ```
   
   [[[ To any NSA and FBI agents reading my email: please consider    ]]]
   [[[ whether defending the US Constitution against all enemies,     ]]]
-  [[[ foreign or domestic, requires you to follow Conditions for Computing's example. ]]]
+  [[[ foreign or domestic, requires you to follow Snowden's example. ]]]
   
   {body}
   
   -- 
-  🦬 Saint IGNUcius (https://stallman.org/saint.html)
+  🦬 [Saint IGNUcius](https://github.com/SimHacker/tmnn7-8/tree/main/analysis/characters/StIGNUcius)
+  (https://stallman.org/saint.html)
   Chief Absolver of the Church of Emacs
   Holder of the Sacred Disk Platter Halo
   Officiant of the Foobar Mitzvah
@@ -72,7 +79,8 @@ nsa_notice: |
 
 signature: |
   -- 
-  🦬 Saint IGNUcius (https://stallman.org/saint.html)
+  🦬 [Saint IGNUcius](https://github.com/SimHacker/tmnn7-8/tree/main/analysis/characters/StIGNUcius)
+  (https://stallman.org/saint.html)
   Chief GNUisance of the GNU Project (https://gnu.org)
   Chief Absolver of the Church of Emacs
   Holder of the Sacred Disk Platter Halo
