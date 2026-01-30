@@ -1,0 +1,91 @@
+name: tmnn-hs
+version: 0.1.0.0
+github: "SimHacker/tmnn7-8"
+license: BSD3
+author: "PureMonad"
+maintainer: "pure@monad.hs"
+copyright: "2026 PureMonad"
+
+extra-source-files:
+- HASKELL-PORT.md
+- CHANGELOG.md
+
+synopsis: Purely functional Usenet news system
+category: Network
+description: |
+  A mathematically rigorous implementation of Usenet news,
+  expressed as a composition of functors and monads.
+  
+  Unlike imperative implementations that conflate effects with values,
+  TMNN-HS maintains strict separation of concerns through the type system.
+  
+  If it compiles, it works.
+
+dependencies:
+- base >= 4.14 && < 5
+- mtl >= 2.2
+- transformers >= 0.5
+- text >= 1.2
+- bytestring >= 0.10
+- containers >= 0.6
+- unordered-containers >= 0.2
+- aeson >= 2.0
+- lens >= 5.0
+- lens-aeson >= 1.2
+- megaparsec >= 9.0
+- optparse-applicative >= 0.17
+- time >= 1.9
+- uuid >= 1.3
+- stm >= 2.5
+- async >= 2.2
+- conduit >= 1.3
+- conduit-extra >= 1.3
+- resourcet >= 1.2
+- exceptions >= 0.10
+- safe-exceptions >= 0.1
+- monad-logger >= 0.3
+- fast-logger >= 3.0
+- warp >= 3.3
+- servant >= 0.19
+- servant-server >= 0.19
+- postgresql-simple >= 0.6
+- resource-pool >= 0.3
+
+ghc-options:
+- -Wall
+- -Wcompat
+- -Widentities
+- -Wincomplete-record-updates
+- -Wincomplete-uni-patterns
+- -Wmissing-export-lists
+- -Wmissing-home-modules
+- -Wpartial-fields
+- -Wredundant-constraints
+- -Werror  # Because if it doesn't compile perfectly, it doesn't compile
+
+library:
+  source-dirs: src-hs
+
+executables:
+  tmnn-hs:
+    main: Main.hs
+    source-dirs: app
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - tmnn-hs
+
+tests:
+  tmnn-hs-test:
+    main: Spec.hs
+    source-dirs: test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - tmnn-hs
+    - hspec >= 2.10
+    - QuickCheck >= 2.14
