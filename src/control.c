@@ -435,7 +435,7 @@ char *artbody;
 	return;
     }
     
-    (void) sprintf(bfr, "Newgroup request from %s.\n", header.h_path);
+    (void) snprintf(bfr, sizeof(bfr), "Newgroup request from %s.\n", header.h_path);  /* FIXED: OpenBFD */
     if ((mfp = mailopen(site.notify, bfr)) == (FILE*)NULL)
     {
 	logerr0("couldn't open notification file.");
@@ -613,7 +613,7 @@ char **argv;
 	return;
     }
     
-    (void) sprintf(bfr, "Rmgroup request from %s.\n", header.h_path);
+    (void) snprintf(bfr, sizeof(bfr), "Rmgroup request from %s.\n", header.h_path);  /* FIXED: OpenBFD */
     if ((mfp = mailopen(site.notify, bfr)) == (FILE*)NULL)
     {
 	logerr0("couldn't open notification file.");
