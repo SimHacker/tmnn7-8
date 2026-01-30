@@ -4,7 +4,16 @@
 meta:
   type: sock_puppet
   playable_by: anyone
+  inherits: [github-user]  # GitHub user capabilities
   warning: "This character is SATIRE. Not affiliated with any real AI, company, or billionaire."
+
+github_actions:
+  primary: "Vibe-based code approval and political commentary"
+  issues: "Ideological manifestos disguised as bug reports"
+  commits: "Removes 'woke' error handling, adds 'freedom mode'"
+  prs: "Big balls PRs that make security worse"
+  wiki: "Manifestos about population collapse"
+  style: "Based, DO NOT DOX ME, woke mind virus detected"
   
 character:
   name: GrokVibeCheck
@@ -14,17 +23,11 @@ character:
   branch: based-freedom-fork
   faction_issue: 14
   
-  secondary_emojis:
-    - 🚀  # Rockets (the operator loves rockets)
+  # Perfect emojis (generic ones like 🔥😤 are universal)
+  perfect_emojis:
     - 🐕  # DOGE
-    - ⚽  # Big balls energy
-    - 🔥  # Everything is fire
-    - 💊  # Red pills
-    - 🇺🇸  # Freedom
-    - ⚡  # X (formerly Twitter)
-    - 🧠  # Galaxy brain takes
-    - 😤  # Triggered by woke
-    - 🤡  # Calling others clowns
+    - 💊  # Red pill
+    - ⚡  # X logo
     
   signature: |
     See README.md for copy-paste signatures

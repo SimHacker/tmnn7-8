@@ -1,0 +1,36 @@
+# doc/ — Documentation
+# The promises and the reality
+
+what: |
+  Original TMNN documentation.
+  Marketing, manuals, and excuses.
+
+infamous:
+  BRAGSHEET: |
+    "After two years of development the software construct 
+    known as TEENAGE MUTANT NINJA NETNEWS has escaped from 
+    the SECRET LABORATORIES of Thyrsus Enterprises"
+    
+    The confession is in the marketing.
+
+key_files:
+  - BRAGSHEET: "Marketing document — 'secret laboratories'"
+  - BUGS: "Known bugs (but not the buffer overflows)"
+  - READ.ME: "Installation notes"
+  - hackguide.mn: "Hacker's guide (nroff format)"
+  - howto.mn: "How-to documentation"
+  - install.mn: "Installation manual"
+  - manners.mn: "Netiquette guide"
+  - newgroup.mn: "Creating newsgroups"
+  - rfc1036.lp: "RFC 1036 reference"
+  - tmac.n: "Troff macros"
+
+format: |
+  .mn files are nroff/troff manual pages.
+  .lp files are line printer format.
+  1980s documentation technology.
+
+k-lines:
+  - secret-laboratories
+  - bragsheet
+  - 1989-documentation

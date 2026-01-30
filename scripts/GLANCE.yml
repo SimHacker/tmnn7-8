@@ -1,0 +1,11 @@
+# scripts/ — Build and Utility Scripts
+# Shell scripts for building and maintenance
+
+what: |
+  Build automation scripts.
+  Installation helpers.
+  1988 shell scripting.
+
+k-lines:
+  - build-scripts
+  - shell-automation

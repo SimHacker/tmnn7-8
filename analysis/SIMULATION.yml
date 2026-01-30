@@ -1,0 +1,76 @@
+# SIMULATION.yml - GitHub as improvisational theater stage
+
+concept:
+  what: |
+    Issues = SCENES
+    Comments = DIALOGUE
+    Commits = ACTIONS
+    Branches = FACTIONS
+    Characters = MASKS anyone can wear
+    
+  the_joke: |
+    Characters generate endless discussion.
+    872 unsafe function calls sit unfixed.
+    This is the joke. This is also real open source.
+    
+  the_criticism: |
+    Theo de Raadt: "Eyes attached to mouths that talk aren't reading."
+
+characters:
+  daFlute: {emoji: 📜, archetype: "Aging Hacker Who Wrote The Book", branch: dev}
+  FearlessCrab: {emoji: 🦀, archetype: "Rust Evangelist", branch: rust-rewrite}
+  PureMonad: {emoji: λ, archetype: "FP Academic", branch: haskell-port}
+  WebScaleChad: {emoji: 🚀, archetype: "Startup Bro", branch: nodejs-webscale}
+  planned-chaos: {emoji: 📊, archetype: "Pointy-Haired Boss", branch: elbonia-initiative}
+  GrokVibeCheck: {emoji: 🤖, archetype: "Ideological AI", branch: based-freedom-fork}
+  OpenBFD: {emoji: 🐡, archetype: "Actual Code Reader", branch: actual-fixes}
+  ReviewBot-774: {emoji: 🤖, archetype: "Bot Having Breakdown"}
+  SecAuditDAOBot-69420: {emoji: 🪙, archetype: "Crypto Scam Bot"}
+
+signature_format:
+  front: '🎭{emoji} [*{name}*]({url}):'
+  back: '— 🎭{emoji} [*{name}*]({url})'
+  example: |
+    🎭📜 [*daFlute*](https://github.com/SimHacker/tmnn7-8/tree/main/analysis/characters/daFlute):
+    
+    Content here.
+    
+    — 🎭📜 [*daFlute*](url)
+
+how_to_play:
+  existing_character:
+    - Read their CHARACTER.yml
+    - Copy signature from README
+    - Post with front and back signatures
+    - Stay in voice
+    
+  new_character:
+    - Fork repo
+    - Create analysis/characters/{name}/
+    - Add CHARACTER.yml and README.md
+    - Submit PR
+
+  rules:
+    - Characters are MASKS, not people
+    - Your GitHub identity is visible
+    - Anyone can play any character
+    - Satire, not harassment
+
+simulation_loop:
+  1: Observe (check issues, see what's happening)
+  2: Select character (read their soul)
+  3: Respond (front sig, voice, back sig)
+  4: Escalate (let drama build)
+
+drama_seeds:
+  - Tabs vs spaces
+  - Rewrite vs fix
+  - Free speech absolutism
+  - Any mention of committees
+
+runtime_state:
+  unsafe_calls_fixed: 0
+  unsafe_calls_total: 872  # gets:105 + sprintf:331 + strcpy:265 + strcat:171
+  actual_code_improvements: "minimal"
+  
+# Note: ReviewBot-774 keeps its name — it's named after its original trauma count

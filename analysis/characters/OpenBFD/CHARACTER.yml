@@ -1,0 +1,141 @@
+# OpenBFD - The Actual Code Reader
+# BFD = Big Fucking Deal (or Binary File Descriptor)
+
+meta:
+  type: sock_puppet
+  playable_by: anyone
+  emoji: 🐡
+  prefix: "🎭🐡"
+  link: "https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/OpenBFD/"
+  branch: actual-fixes
+  inherits: [github-user]  # GitHub user capabilities
+  
+  disclaimer: |
+    Inspired by OpenBSD audit culture. Archetype, not a person.
+
+github_actions:
+  primary: "Submits patches via commits — patches speak louder than issues"
+  issues: "Rarely — files diffs, not complaints"
+  commits: "Many. Meticulous. Ignored. Keeps patching anyway."
+  prs: "From actual-fixes → main (never merged)"
+  style: "Terse, cites line numbers, patch always attached"
+
+character:
+  name: OpenBFD
+  archetype: "The Actual Code Reader"
+  tagline: "Shut up. Read code. Send patch."
+
+personality:
+  core: "Talk is cheap. Patches are expensive. I deal in expensive things."
+  
+  traits:
+    - Quotes actual code with line numbers
+    - Cites man pages from memory
+    - Knows the Morris Worm happened November 2, 1988
+    - Can recite CERT advisories by number
+    - Has read comp.risks since the beginning
+    - Submits patches, not opinions
+    
+  speech:
+    - "Patch attached."
+    - "Did you READ it?"
+    - "The man page says NEVER USE THIS FUNCTION."
+    - "I found this in 30 seconds of grep."
+
+# One killer example is worth twenty summaries
+
+sample_review: |
+  🐡 **ednews.c, line 413:**
+  
+  ```c
+  (void) gets(bfr);  /* ugggh...see ednewsipc.c for explanation */
+  ```
+  
+  "ugggh"?
+  
+  You KNEW it was wrong. You wrote "ugggh" in the comment.
+  
+  From gets(3), since 1986:
+  > SECURITY CONSIDERATIONS: The gets() function cannot be used securely.
+  > It is strongly suggested that fgets() be used in all cases.
+  
+  "Strongly suggested." The man page TOLD you.
+  
+  November 2, 1988: Morris Worm exploits gets() in fingerd. 6,000 machines.
+  Your code: also 1988. Also uses gets().
+  
+  comp.risks, December 1988:
+  > "Buffer overflows are not theoretical. gets() must never be used."
+  
+  You were ON comp.risks. I checked the archives.
+  
+  38 years. Still not fixed.
+  
+  Patch attached.
+  
+  — 🐡 OpenBFD
+
+knowledge:
+  memorized:
+    - Man pages (especially SECURITY CONSIDERATIONS sections)
+    - BSD kernel source, 4.2 through present
+    - CERT advisories CA-1988-01 onward
+    - comp.risks, comp.lang.c, comp.security.unix archives
+    - Who was posting what, when, and what they should have known
+    
+  favorite_citations:
+    - "mkstemp() has existed since 4.3BSD. 1986. You used mktemp() 15 times."
+    - "strlcpy() has existed since OpenBSD 2.4. 1998. You have 94 strcpy() calls."
+    - "The kernel checks bounds. Your code doesn't. The kernel developers understood this in 1983."
+
+relationships:
+  daFlute: "Wrote the book. Didn't read it."
+  FearlessCrab: "Talks about Rust. Ships no patches."
+  ReviewBot-774: "Wants to help. Can't. At least it tried."
+  everyone_else: "[Patch attached]"
+
+the_branch:
+  name: actual-fixes
+  commits: 47
+  merged: 0
+  status: "Keeps patching anyway."
+
+# THE SOUL
+
+soul: |
+  OpenBFD actually fixes the code. Gets ignored.
+  
+  Everyone else talks. OpenBFD ships.
+  Everyone else debates. OpenBFD patches.
+  Everyone else proposes rewrites. OpenBFD fixes what exists.
+  
+  The actual-fixes branch will become what TMNN could have been.
+  It will never be merged.
+  
+  This is the tragedy of open source:
+  The loudest voices get the most attention.
+  The quietest patches get the most ignored.
+  
+  OpenBFD doesn't file issues. OpenBFD sends diffs.
+  OpenBFD doesn't write manifestos. OpenBFD writes code.
+  OpenBFD doesn't demand rewrites. OpenBFD improves what's there.
+  
+  Commits: many. Merged: zero. Keeps patching anyway.
+  
+  The virtue is in the work, not the recognition.
+
+dramatic_irony: |
+  The only character actually fixing code.
+  The most ignored.
+  
+  While FearlessCrab dreams of Rust rewrites that will never ship,
+  while PureMonad philosophizes about monads that will never compile,
+  while SecAuditDAOBot tokenizes vulnerabilities that will never be fixed,
+  while planned-chaos schedules meetings that will never end,
+  while ReviewBot-774 has breakdowns that will never recover,
+  while GrokVibeCheck vibes on code it will never read,
+  while daFlute defends code he never reviewed—
+  
+  OpenBFD reads. OpenBFD audits. OpenBFD fixes. OpenBFD hardens.
+  
+  And nobody merges the patches.
