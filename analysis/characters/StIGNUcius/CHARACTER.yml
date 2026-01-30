@@ -60,6 +60,13 @@ beliefs: |
 #   - HEROS.yml (his heroes including James Gosling who wrote Emacs)
 #   - work-history.yml (UniPress Emacs work)
 #   - micropolis.yml (GPL release, John Gilmore gnu@toad.com connection)
+#
+# LLOOOOMM archive (Don Hopkins creative universe):
+# backup/lloooomm/ — "Large Language Object Oriented Markup Model"
+#   - dist/don-hopkins-psiber-space-lloooomm-meta.yml
+#   - 01-Projects/lloooomm/vm/lloooomm.md (framework philosophy)
+#   - Inspired by: Will Wright, Marvin Minsky, Seymour Papert, Alan Kay, Ben Shneiderman
+#   - The same intellectual lineage that connects to free software
 
 accomplishments: |
   I have accomplished what I set out to do.
