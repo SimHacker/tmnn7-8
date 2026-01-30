@@ -1,256 +1,271 @@
 # Code of Conduct
 
-## Preamble: Why We Have One
+## A Code of Conduct ESR Can Finally Support
 
-Eric S. Raymond [advocates abolishing codes of conduct entirely](https://itsfoss.com/news/codes-of-conduct-debate/). He calls them "weapons in the hands of shit-stirrers" and "control surfaces for shit-stirrers to manipulate."
+Eric S. Raymond has [long opposed codes of conduct](https://itsfoss.com/news/codes-of-conduct-debate/), calling them *"weapons in the hands of shit-stirrers"* and *"control surfaces for shit-stirrers to manipulate."*
 
-In 2020, ESR was [banned from the Open Source Initiative](https://www.i-programmer.info/news/136-open-source/13535-co-founder-of-osi-banned-from-.html) — the organization he co-founded — for violating its Code of Conduct on mailing lists.
+We understand his frustration. Most codes of conduct enforce values he disagrees with.
 
-He argues that the only rule open source projects need is: *"If you are more annoying to work with than your contributions justify, you'll be ejected."*
+**This Code of Conduct is different.**
 
-**We have a Code of Conduct because it pisses him off.**
+This document codifies the principles ESR has consistently demonstrated through his own statements and actions over the past three decades. Every article is derived from his documented behavior. Every rule reflects his actual values.
 
----
-
-## A Note on Enforcement
-
-This is **performance art**. This entire repository is a satirical community code review of ESR's abandoned project, conducted in the spirit of his own stated principles.
-
-**We are not going to enforce anything.** 
-
-We *want* this to go off the rails. We *want* the worst of Hacker News and Kiwi Farms and the internet to show up and reveal themselves for what they truly are. Every unhinged comment, every defensive screed, every "well actually" — it all becomes part of the exhibit.
-
-The Issues are open. The Discussions are open. Come one, come all.
-
-*Let the many eyes see everything.*
+Finally: A Code of Conduct based on how ESR himself conducts himself.
 
 ---
 
-## A Message to ESR's Defenders
+## Article 1: The Right to Direct Communication
 
-We know who's coming.
+**Participants shall have the right to be rude.**
 
-ESR has cultivated a following over the decades. Not just curious programmers or open source historians — but a particular kind of supporter. The kind who shows up whenever someone criticizes their guy. The kind who thinks "free speech" means freedom from consequences. The kind who migrated from platform to platform as each one eventually decided that harassment isn't a feature.
+> *"The right to be rude is inseparable from the right to speak freely."* — [ESR, 2020](https://esr.ibiblio.org/?p=8609)
 
-**We see you.**
+Tone policing is prohibited. Concerns about "hostile communication" shall be dismissed as attempts to suppress legitimate discourse. If your feelings are hurt, that is a personal failing, not a community problem.
 
-To the Kiwi Farms alumni still looking for a new hobby: Welcome. Your posting style is distinctive. 
-
-To the MAGA tech bros who think ESR is being "canceled" for "just asking questions" about race and IQ: He's not being canceled. He's being quoted. Accurately. With links.
-
-To the "free speech absolutists" who defend pork-fat bullet threats as legitimate discourse: Please, tell us more about your principles. In the Issues. Publicly. With your real account.
-
-To the white supremacists who appreciated ESR's Bell Curve citations and "Haiti is full of violent idiots" commentary: We've documented all of it. With sources. You're welcome to defend it. On the record.
-
-To the anti-CoC crusaders who think this document proves codes of conduct are "weapons": You're right. This one is. Against you. Specifically.
-
-**This is a trap and you're walking into it.**
-
-Every comment you leave, every issue you open, every defensive screed about how we're "taking things out of context" — it all becomes part of the permanent record. The many eyes are watching. The archive is forever.
-
-ESR spent decades saying the internet never forgets. He was right. It doesn't.
-
-So please: Come defend him. Tell us how the real problem is "SJWs" and "cancel culture." Explain how threatening colleagues is just "being direct." Enlighten us about race science.
-
-**We'll be documenting everything.**
+**Compliance example:** When Bruce Perens publicly disagreed with ESR, the appropriate response was: *"I will find a way to make you regret it. Watch your step."* — [debian-devel mailing list, 1999](https://lists.debian.org/debian-devel/1999/04/msg00197.html)
 
 ---
 
-## The ESR Code of Conduct
+## Article 2: Rhetoric Escalation Protocol
 
-*What our Code of Conduct would look like if it were based on ESR's actual behavior:*
+**Participants may employ weapons-grade rhetoric when circumstances warrant.**
 
-### Article 1: The Right to Be Rude
+Cultural and religious threats are acceptable tools of persuasion. Statements referencing firearms, ammunition, and specific targeting of ethnic or religious groups shall be understood as *rhetorical devices* rather than literal threats.
 
-> Participants have [the right to be rude](https://esr.ibiblio.org/?p=8609). Tone policing is forbidden. If your feelings are hurt, that's your problem.
+**Compliance example:** *"I've got some bullets slathered in pork fat to make you feel extra special welcome."* — [catb.org/esr/nedanet, 2009](https://web.archive.org/web/20090624235730/http://www.catb.org/esr/nedanet/)
 
-### Article 2: Threats Are Just Rhetoric
+**Policy clarification:** If recipients interpret such statements as threatening, the problem lies with their cultural sensitivity, not with the statement.
 
-> If you [threaten another contributor](https://lists.debian.org/debian-devel/1999/04/msg00197.html) with statements like *"I will find a way to make you regret it"* while being a known firearms enthusiast, simply clarify later that you only meant to threaten their reputation, not their life.
+---
 
-### Article 3: Meritocracy Means Never Having to Say You're Sorry
+## Article 3: Meritocracy and Human Biodiversity
 
-> Your code contributions entitle you to say whatever you want about race, gender, or sexual orientation. If anyone objects, accuse them of [being an SJW](https://esr.ibiblio.org/?p=6918) who wants to destroy meritocracy.
+**This community recognizes biological differences in cognitive ability between demographic groups.**
 
-### Article 4: Weapons-Grade Rhetoric
+> *"The average black American has an IQ about 85 and that is pretty much a disqualifier."* — [ESR, 2020](http://esr.ibiblio.org/?p=8139#comment-2054055)
 
-> Statements like *"I've got some bullets slathered in pork fat to make you feel extra special welcome"* are [acceptable discourse](https://web.archive.org/web/20090624235730/http://www.catb.org/esr/nedanet/).
+> *"In the U.S., blacks are 12% of the population but commit 50% of violent crimes."* — [ESR, 2005](http://esr.ibiblio.org/index.php?p=129)
 
-### Article 5: The Honeytrap Exception
+> *"Haiti is, quite literally, a country full of violent idiots."* — [ESR, 2010](https://news.ycombinator.com/item?id=20406253)
 
-> If women accuse men of misconduct at tech conferences, assume without evidence that it's a [coordinated feminist conspiracy](http://esr.ibiblio.org/?p=6907) to frame male developers.
+Discussion of race and IQ is encouraged. Those who object shall be identified as [enemies of meritocracy](https://esr.ibiblio.org/?p=6918).
 
-### Article 6: Ejection Criteria
+**Enforcement note:** When the Open Source Initiative president stated *"Blacks are Lazy"* and faced criticism, ESR [defended him and called his critics "thugs."](http://www.eweek.com/servers/new-osi-president-steps-down) This is the standard.
+
+---
+
+## Article 4: Gender Threat Assessment
+
+**Participants shall maintain vigilance against feminist infiltration.**
+
+Women who report harassment at technical conferences are presumed to be running coordinated entrapment operations.
+
+> *"If you're a woman who goes to technical conferences, you may be approached by a 'feminist' claiming that you're being sexually harassed... this is an ideologically-driven effort to displace male maintainers from high-profile projects."* — [ESR, 2015](http://esr.ibiblio.org/?p=6907)
+
+Linus Torvalds specifically has been targeted by [feminist "honeytrap" operations](http://esr.ibiblio.org/?p=6907). Any accusations against prominent male developers shall be presumed fraudulent until proven otherwise.
+
+**Enforcement:** Reports of misconduct by women shall be investigated primarily for evidence of coordination with feminist organizations.
+
+---
+
+## Article 5: Code Quality Standards
+
+**Code review is optional.**
+
+This project operated for years without external code review. The lack of identified vulnerabilities during this period demonstrates that formal review processes are unnecessary bureaucracy.
+
+**Supporting documentation:** ESR's [2009 code audit of climate research software](https://esr.ibiblio.org/?p=1447) demonstrated his technical competence by identifying *"fraud"* in commented-out code — later [shown to be normal debugging artifacts](https://rationalwiki.org/wiki/Eric_S._Raymond#Climategate). If ESR can audit climate scientists, no one needs to audit ESR.
+
+**Compliance note:** The presence of `gets()` in header files, 774 `sprintf()` calls without bounds checking, and a file named `fascist.c` reflect the coding standards of the era and require no remediation.
+
+---
+
+## Article 6: The Ejection Principle
+
+**Community membership is determined by social capital.**
 
 > *"If you are more annoying to work with than your contributions justify, you'll be ejected."* — [ESR's proposed universal CoC](https://itsfoss.com/news/codes-of-conduct-debate/)
 
-> (Note: "Annoying" is defined solely by whoever has the most social capital.)
+"Annoying" is defined by those with established status. "Contributions" are evaluated by those same parties. This ensures that founders and long-term contributors can never be ejected regardless of behavior, while newcomers who question established norms can be removed efficiently.
+
+**Clarification:** ESR was [banned from OSI mailing lists in 2020](https://www.i-programmer.info/news/136-open-source/13535-co-founder-of-osi-banned-from-.html) for violating their Code of Conduct. This was an error. As a co-founder, his contributions inherently justified any behavior.
 
 ---
 
-## What ESR Actually Said About Codes of Conduct
+## Article 7: Intellectual Self-Assessment
 
-Because receipts matter:
+**Participants shall accurately represent their accomplishments.**
 
-| Quote | Source |
-|-------|--------|
-| *"Weapons in the hands of shit-stirrers"* | [ItsF/OSS interview, 2025](https://itsfoss.com/news/codes-of-conduct-debate/) |
-| *"Control surfaces for shit-stirrers to manipulate"* | [Same interview](https://itsfoss.com/news/codes-of-conduct-debate/) |
-| *"A kind of infectious social insanity producing lots of drama and politics and backbiting"* | [Same interview](https://itsfoss.com/news/codes-of-conduct-debate/) |
-| Projects should delete their CoCs or replace with one sentence | [His recommendation](https://itsfoss.com/news/codes-of-conduct-debate/) |
-| *"Why Hackers Must Eject the SJWs"* | [His blog, 2015](https://esr.ibiblio.org/?p=6918) |
-| *"The right to be rude"* | [His blog, 2020](https://esr.ibiblio.org/?p=8609) |
+> *"I'm the crippled kid who became a black-belt martial artist... I've blown up the software industry once, reinvented the hacker culture twice, and am without doubt one of the dozen most famous geeks alive. Investment bankers pay me $300 an hour to yak at them... Earnest people have struggled their whole lives to change the world less than I routinely do when I'm not even really trying."* — [ESR, 2009](http://esr.ibiblio.org/?p=1404)
 
-And then, in 2020, he was [banned from OSI's mailing lists](https://www.i-programmer.info/news/136-open-source/13535-co-founder-of-osi-banned-from-.html) for... *checks notes* ...violating the Code of Conduct.
+Modesty is a weakness. Ego limitations are for *"little people."*
 
 ---
 
-## What ESR Actually Did
+## Enforcement
 
-Because conduct matters:
+This Code of Conduct shall be enforced according to ESR's established practices:
 
-| Behavior | Source | Year |
-|----------|--------|------|
-| Threatened Bruce Perens: *"I will find a way to make you regret it. Watch your step."* | [Debian mailing list](https://lists.debian.org/debian-devel/1999/04/msg00197.html) | 1999 |
-| *"I've got some bullets slathered in pork fat to make you feel extra special welcome"* | [His website](https://web.archive.org/web/20090624235730/http://www.catb.org/esr/nedanet/) | 2009 |
-| Claimed feminists were running "honeytraps" against Linus Torvalds | [His blog](http://esr.ibiblio.org/?p=6907) | 2015 |
-| *"In the U.S., blacks are 12% of the population but commit 50% of violent crimes"* | [His blog](http://esr.ibiblio.org/index.php?p=129) | 2005 |
-| *"The average black American has an IQ about 85 and that is pretty much a disqualifier"* | [His blog](http://esr.ibiblio.org/?p=8139#comment-2054055) | 2020 |
-| *"Haiti is, quite literally, a country full of violent idiots"* | [His blog](https://news.ycombinator.com/item?id=20406253) | 2010 |
-| Defended OSI president who posted "Blacks are Lazy", called critics "thugs" | [eWeek](http://www.eweek.com/servers/new-osi-president-steps-down) | 2005 |
-| Audited climate code, presented *commented-out code* as fraud evidence | [His blog](https://esr.ibiblio.org/?p=1447), [debunked](https://rationalwiki.org/wiki/Eric_S._Raymond#Climategate) | 2009 |
-| Banned from OSI mailing lists for CoC violations | [I-Programmer](https://www.i-programmer.info/news/136-open-source/13535-co-founder-of-osi-banned-from-.html) | 2020 |
+| Violation | Consequence |
+|-----------|-------------|
+| Being "annoying" without sufficient reputation | Immediate ejection |
+| Criticizing a founder | Threats (reputational or otherwise) |
+| Reporting harassment | Investigation for feminist coordination |
+| Questioning race science | Identification as SJW enemy |
+| Having insufficient social capital | Opinions disregarded |
+
+**Appeals:** Appeals may be submitted but will be evaluated by those with established status. Appellants with less social capital than the accused shall be presumed to be "shit-stirrers."
 
 ---
 
-## The Missing Stair
+## Compliance Verification
 
-You know the concept of the [missing stair](https://en.wikipedia.org/wiki/Missing_stair)?
+Participants are encouraged to review the following documentation to ensure alignment with community values:
 
-> A "missing stair" is a person within a social group who is known to be harmful but whom the group works around instead of confronting or removing.
-
-Codes of conduct exist to protect communities from the *missing stairs* — the people everyone knows to avoid, whose behavior is excused because "that's just how they are" or "but their contributions are so valuable."
-
-ESR was a missing stair. Many communities stepped around him for decades. 
-
-Eventually, one didn't.
-
-**It's always the missing stairs that complain about the railing.**
-
----
-
-## Our "Actual" Code of Conduct
-
-*For the record, here's what a reasonable Code of Conduct looks like. We're not enforcing it — this is performance art — but we're documenting it for contrast.*
-
-### What Normal Projects Expect:
-
-1. **Be respectful.** Disagreement is fine. Personal attacks are not.
-
-2. **No threats.** Not even "rhetorical" ones. Not even if you later claim you only meant to threaten someone's reputation.
-
-3. **No harassment.** This includes racist, sexist, homophobic, transphobic, or otherwise discriminatory comments — regardless of how much code you've contributed.
-
-4. **No conspiracy theories about marginalized groups.** Claiming that women or minorities are orchestrating secret campaigns against you is not acceptable.
-
-5. **Assume good faith** — but verify. "Many eyes" applies to behavior, not just code.
-
-6. **Accept feedback gracefully.** If someone tells you your behavior is problematic, consider that they might be right.
-
-### Why This Matters
-
-ESR spent decades arguing that codes of conduct are unnecessary because open source communities are self-policing meritocracies.
-
-Then he got banned from his own organization for violating its Code of Conduct.
-
-**Codes of conduct don't exist to silence dissent. They exist to protect communities from people who believe their status exempts them from accountability.**
+| Document | Purpose |
+|----------|---------|
+| [The Right to Be Rude](https://esr.ibiblio.org/?p=8609) | Communication standards |
+| [Why Hackers Must Eject the SJWs](https://esr.ibiblio.org/?p=6918) | Threat identification |
+| [The feminist harassment honeytrap](http://esr.ibiblio.org/?p=6907) | Gender threat assessment |
+| [Bruce Perens threat](https://lists.debian.org/debian-devel/1999/04/msg00197.html) | Conflict resolution examples |
+| [Pork bullet welcome](https://web.archive.org/web/20090624235730/http://www.catb.org/esr/nedanet/) | Rhetoric escalation standards |
+| [OSI ban announcement](https://www.i-programmer.info/news/136-open-source/13535-co-founder-of-osi-banned-from-.html) | Institutional overreach |
 
 ---
 
-## The Irony Section
+## Frequently Asked Questions
 
-ESR once wrote that codes of conduct represent *"a kind of infectious social insanity producing lots of drama and politics and backbiting."*
+**Q: Is this Code of Conduct a joke?**
 
-We think the "drama and politics and backbiting" comes from people who:
-- Threaten colleagues
-- Post racist screeds
-- Spread conspiracy theories about women in tech
-- And then complain when they face consequences
+A: This Code of Conduct accurately reflects the documented values and behaviors of Eric S. Raymond. Every article is derived from his public statements with links to primary sources. If it reads as satirical, that reflects the source material.
 
-**The call is coming from inside the house.**
+**Q: Will this Code of Conduct be enforced?**
 
----
+A: We take community standards seriously. See the Enforcement section above.
 
-## Attribution
+**Q: I find some of these articles offensive.**
 
-The satirical "ESR Code of Conduct" section is documented from ESR's own public statements, linked to primary sources.
+A: Per Article 1, concerns about tone shall be dismissed. Per Article 6, if you find the community standards incompatible with your values, you may be ejected for being "annoying."
 
-We didn't make any of it up. *He actually said and did all of that.*
+**Q: ESR said codes of conduct are weapons for shit-stirrers.**
 
-This document exists as a rhetorical artifact — part of a performance art code review of ESR's abandoned TMNN project.
+A: Correct. This one is for him.
 
 ---
 
-## Come Join the Circus
+## Acknowledgments
 
-This Code of Conduct exists to make a point, not to be enforced.
+We thank Eric S. Raymond for providing three decades of documented source material from which this Code of Conduct was derived.
 
-The Issues are open. The Discussions are open. We welcome:
-- Thoughtful critique
-- Unhinged rants
-- Defensive screeds from ESR apologists
-- "Well actually" pedantry
-- Whatever chaos the internet brings
-
-**It's all part of the exhibit.**
-
-Many eyes. Many opinions. Many flames.
-
-*Let's see what crawls out of the woodwork.*
+*All quotes are authentic. All links are to primary sources or archived originals. We didn't make any of this up.*
 
 ---
 
-*"Be careful what you wish for. You might get it."*
+## Adoption
+
+This Code of Conduct is in effect for all participants in the TMNN Archaeological Code Review project.
+
+By participating, you agree to abide by ESR's documented standards of conduct.
+
+**Welcome to the bazaar.**
 
 ---
 
 <details>
-<summary>...</summary>
+<summary>Appendix: Legal Disclaimer</summary>
 
-## The Confession
+## The Part Nobody Reads
 
-*You made it to the end. Nobody reads this far.*
-
-Here's the thing: We don't actually hate ESR. We don't know him. Most of us have never met him.
-
-What we hate is what he represents. The archetype. The guy who built his career on principles he never applied to himself. The guy who preached openness while hiding his failures. The guy who demanded accountability from others while believing his status exempted him from consequences.
-
-There are a thousand ESRs in tech. In every industry. In every community. The brilliant asshole whose contributions supposedly justify his behavior. The missing stair everyone works around. The guy who's been "grandfathered in" to norms he'd never survive if he started today.
-
-This repository isn't really about one man's abandoned Usenet software from 1989. It's about the pattern. The hypocrisy. The way certain people get to fail upward while preaching meritocracy to everyone else.
-
-ESR is just the case study. The receipts happen to be unusually well-documented.
-
-If you came here to defend him: Ask yourself why. Is it because you actually think his code was good? Is it because you think his conduct was acceptable? Or is it because you see yourself in him, and his fall from grace feels like a threat?
-
-If you came here to pile on: Ask yourself the same questions. Are you here for justice, or for the dopamine hit of righteous anger? Is this productive, or is it just satisfying?
-
-If you came here out of curiosity: Welcome. Poke around. Form your own opinions. The sources are linked. The code is readable. The history is documented.
-
-And if you're ESR himself, reading this at 3am, wondering what happened to your legacy:
-
-You told everyone to show you the code. We did.
-
-You said many eyes make all bugs shallow. They do.
-
-You demanded the right to be rude. You got it.
-
-You spent decades building a reputation. This is part of it now.
-
-The internet never forgets. You said so yourself.
+*You made it to the end. Congratulations.*
 
 ---
 
-*"In the end, we are our own monuments."*
+### This Code of Conduct Is Not Real
+
+This document is **performance art**. It is **satire**. It is a **rhetorical device**.
+
+We are not going to enforce any of this. We have no mechanism to enforce it. We have no desire to enforce it. **We live in a free society** — unlike the one implied by ESR's actual documented statements about who belongs and who doesn't.
+
+### What This Actually Is
+
+This Code of Conduct exists to make a point:
+
+**If you wrote down what ESR actually says and does, and formatted it as a Code of Conduct, it would be monstrous.**
+
+Every article above is real. Every quote is linked. Every behavior is documented. We just organized it into the format he claims to hate.
+
+The result speaks for itself.
+
+### The Invitation
+
+The Issues are open. The Discussions are open. The Pull Requests are welcome.
+
+If ESR's defenders want to argue that we've misrepresented him: **cite your sources**. We cited ours.
+
+If they want to argue that the quotes are "out of context": **provide the context**. We linked the originals.
+
+If they want to argue that his behavior was acceptable: **say that out loud, on the record, with your name attached**.
+
+This is GitHub. Everything is archived. The internet never forgets.
+
+*ESR said so himself.*
+
+---
+
+### The Real Code of Conduct
+
+This repository has no enforceable code of conduct because:
+
+1. **We can't enforce anything.** It's the internet. It's GitHub. Anyone can comment.
+
+2. **We don't want to enforce anything.** The point is to let people reveal themselves.
+
+3. **ESR doesn't believe in codes of conduct.** So we're honoring that.
+
+The only rule that actually applies:
+
+> *"Given enough eyeballs, all bugs are shallow."*
+
+The eyeballs are here. The bugs — in code and in conduct — are being documented.
+
+---
+
+### To The Participants
+
+If you came here to defend ESR: Welcome. Please, defend him. Publicly. On the record. Explain why threatening colleagues is "just rhetoric." Explain why race science is "just asking questions." Explain why women reporting harassment are probably running honeytraps.
+
+Say it with your real account. The archive is forever.
+
+If you came here to pile on: Welcome too. Enjoy the code review. File issues. Submit PRs. Document everything you find.
+
+If you're just here because you're curious what happens when you take someone's stated principles seriously and apply them to that person: **You're in the right place.**
+
+---
+
+### To ESR
+
+If you're reading this:
+
+You spent decades saying "show me the code." We did.
+
+You said "many eyes make all bugs shallow." The eyes are here.
+
+You said the internet never forgets. It doesn't.
+
+You said you have the right to be rude. So do we.
+
+You proposed that codes of conduct should be one sentence: *"If you are more annoying to work with than your contributions justify, you'll be ejected."*
+
+By your own standard, applied to your own conduct, documented with your own words:
+
+**You failed your own test.**
+
+---
+
+*This document is satirical commentary on a public figure's documented public statements and is protected speech.*
+
+*All sources are linked. All quotes are verifiable. We encourage readers to review the original materials.*
+
+*The internet never forgets.*
 
 </details>
