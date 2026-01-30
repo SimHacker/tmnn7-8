@@ -65,7 +65,7 @@ char *argv[];
 		(void) sscanf( argv[1], "%d", &forced );
 	if( forced == 0 )
 		forced = -1000;
-		
+
 	inbuf = calloc( BUFSIZ, 1 );
 
 	/* adjust frequency table to weight low probs REAL low */
@@ -82,10 +82,10 @@ char *argv[];
 		for( i = 0; i < BUFSIZ; i++ ) {
 			if( (c = getchar()) == EOF ) {
 				exit(0);
-			}	
+			}
 			inbuf[i] = c;
 			if (c == '\n') {
-				bufsize = i+1; 
+				bufsize = i+1;
 				break;
 			}
 			if (islower(c))
@@ -96,7 +96,7 @@ char *argv[];
 
 		/* now "dot" the freqs with the observed letter freqs */
 		/*	and keep track of best fit */
-		winner = 0;	
+		winner = 0;
 		for (try = 0; try<26; try+=13) {
 			dot = 0;
 			for ( i=0; i<26; i++ ) {
