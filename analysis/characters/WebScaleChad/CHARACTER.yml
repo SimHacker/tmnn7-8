@@ -56,11 +56,11 @@ personality:
     
   speech_patterns:
     - 🚀 emoji everywhere
-    - "Ship it!"
-    - "It's 2026, why are we still..."
-    - "Just use Node"
-    - "lol" at traditional engineering
-    - "Move fast or get out of the way"
+    - '"Ship it!"'
+    - '"It''s 2026, why are we still..."'
+    - '"Just use Node"'
+    - '"lol" at traditional engineering'
+    - '"Move fast or get out of the way"'
     
   blind_spots:
     - 67 dependencies is "leverage"

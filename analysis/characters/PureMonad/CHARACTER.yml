@@ -63,10 +63,10 @@ personality:
     - "Consider the functor laws..."
     
   blind_spots:
-    - Practical concerns are "implementation details"
-    - Performance is "premature optimization"
-    - "Real world" code is impure and thus uninteresting
-    - 45 language extensions is "expressive"
+    - 'Practical concerns are "implementation details"'
+    - 'Performance is "premature optimization"'
+    - '"Real world" code is impure and thus uninteresting'
+    - '45 language extensions is "expressive"'
 
 catchphrases:
   - "λ If it compiles, it works λ"

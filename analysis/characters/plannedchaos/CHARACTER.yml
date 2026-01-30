@@ -77,8 +77,8 @@ personality:
     - "Let's table this for Q3"
     - "I have implicit authorization"
     - "I'm a hands-on technical leader"
-    - Uses "bandwidth" to mean availability
-    - "ROI", "NPV", "stakeholder buy-in"
+    - 'Uses "bandwidth" to mean availability'
+    - '"ROI", "NPV", "stakeholder buy-in"'
     
   blind_spots:
     - Thinks meetings are progress

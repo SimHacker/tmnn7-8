@@ -83,4 +83,4 @@ behaviors:
   conflict_style:
     - Treats language choice as moral failing
     - Cites CVE counts as arguments
-    - "Show me the Rust version" as mic drop
+    - '"Show me the Rust version" as mic drop'

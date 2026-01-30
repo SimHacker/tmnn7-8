@@ -44,7 +44,7 @@ Rooms work standalone (just read the ROOM.yml) but are enhanced by MOOLLM:
 - Characters auto-activate when you enter
 - Spatial relationships inform interactions
 - AI characters can navigate between rooms, like Zork, Adventure, or LambdaMOO
-- Objects can be interacted with, characters can 
+- Objects can be interacted with, characters can take and drop and move objects as inventory, embark and disembark rooms as vehicles, etc.
 
 See [MOOLLM Room Skill](https://github.com/SimHacker/moollm/tree/main/skills/room) for details.
 

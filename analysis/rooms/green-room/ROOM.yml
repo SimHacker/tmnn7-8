@@ -210,11 +210,11 @@ characters:
 ambiance:
   lighting: Warm, slightly dim. Classic green room style.
   sounds:
-    - Keyboard clicking (FearlessCrab)
-    - Phone notifications (WebScaleChad)
-    - Occasional sighs (PureMonad)
-    - Muttering (daFlute)
-    - "Mm-hmm, absolutely" (plannedchaos)
+    - "Keyboard clicking (FearlessCrab)"
+    - "Phone notifications (WebScaleChad)"
+    - "Occasional sighs (PureMonad)"
+    - "Muttering (daFlute)"
+    - '"Mm-hmm, absolutely" (plannedchaos)'
   smell: Coffee, energy drinks, and old books
   temperature: Slightly too warm. The HVAC is a metaphor.
 

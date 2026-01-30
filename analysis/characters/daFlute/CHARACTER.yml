@@ -41,7 +41,7 @@ character:
   emoji: 📜
   branch: dev
   faction_issue: 10
-  origin: "Eric The Flute" (ESR's Usenet handle from 1980s)
+  origin: '"Eric The Flute" (ESR''s Usenet handle from 1980s)'
   
   # The character archetype, not a real person
   archetype: "The Aging Hacker Who Wrote The Book"
