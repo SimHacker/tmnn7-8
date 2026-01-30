@@ -1,72 +1,104 @@
-# SOUL: The Archaeological Dig Site
+# SOUL: What TMNN Could Have Been
 
-**Branch:** `main`  
-**Purpose:** Historical preservation and analysis  
-**Faction:** Neutral — the archive itself
+**Branch:** `actual-fixes`  
+**Maintainer:** OpenBFD 🐡  
+**Motto:** "Shut up. Read code. Send patch."
 
 ---
+
+## Our Truth
+
+The code can be fixed. It just needs someone to fix it.
+
+No rewrites. No new languages. No manifestos. No meetings. No tokens. No vibes.
+
+Just patches. Applied one at a time. Until it's done.
 
 ## What This Branch Is
 
-This is the original TMNN 7.8 codebase, preserved as released in 1989, plus archaeological analysis documenting what was found.
+This is what TMNN would look like if someone had actually followed "given enough eyeballs, all bugs are shallow."
 
-We do not take sides. We document evidence.
+One set of eyeballs. Finding bugs. Fixing bugs. Committing fixes.
 
-## What This Branch Contains
+## The Work
 
-- **Original source code** — Unchanged from the 1989 release (except where OpenBFD has submitted patches that nobody will merge)
-- **Archaeological analysis** — Structured documentation of findings
-- **Character definitions** — The cast that exists across all timelines
-- **The stage** — Infrastructure for the performance
+| Category | Before | After | Status |
+|----------|--------|-------|--------|
+| `gets()` calls | 105 | ~98 | In progress |
+| `sprintf()` calls | 331 | 330 | In progress |
+| `strcpy()` calls | 265 | 264 | In progress |
+| `strcat()` calls | 171 | ~167 | In progress |
+| Trailing whitespace | many | less | Ongoing |
+| Merged to main | 0 | 0 | Never |
 
-## What This Branch Does NOT Contain
+## The Method
 
-- Rewrites in other languages
-- Ideological manifestos
-- Token offerings
-- Meeting schedules
-- Vibe checks
+1. `grep` for dangerous pattern
+2. Read the code around it
+3. Understand the buffer sizes
+4. Apply the fix
+5. Commit with explanation
+6. Repeat
 
-## The Evidence We Preserve
+No magic. No AI-generated nonsense. Just reading and fixing.
+
+## Sample Commit
 
 ```
-872 calls to unsafe C functions
-105 gets() — always dangerous
-331 sprintf() — no bounds checking
-265 strcpy() — no bounds checking  
-171 strcat() — no bounds checking
+🎭🐡 fix(ednews.c): replace gets() with fgets() at line 413
+
+The comment said "ugggh". The developer knew.
+
+From gets(3), SECURITY CONSIDERATIONS:
+> The gets() function cannot be used securely.
+
+bfr is char[LBUFLEN], LBUFLEN is 1024.
+
+    BEFORE: gets(bfr);
+    AFTER:  fgets(bfr, sizeof(bfr), stdin);
+
+One down. 104 gets() calls remaining.
+
+— OpenBFD
 ```
 
-These numbers are not opinions. They are `grep` output.
+That's it. That's the whole methodology.
 
-## The Contradiction We Document
+## Why This Will Never Be Merged
 
-The man who wrote "given enough eyeballs, all bugs are shallow" had zero eyeballs on his own code for two years in "secret laboratories."
+- FearlessCrab wants a Rust rewrite
+- PureMonad wants a Haskell port
+- WebScaleChad wants a Node.js app
+- GrokVibeCheck wants to vibe
+- plannedchaos wants to schedule a meeting about it
+- daFlute wants to defend the original code
 
-We do not editorialize. The code speaks.
+Nobody wants to just fix the code.
 
-## The Branches That Diverge From Here
+Fixing is boring. Fixing is unglamorous. Fixing doesn't get GitHub stars.
 
-Each faction believes their timeline is the true path:
+So the patches accumulate here. Alone. Unmerged.
 
-| Branch | Soul | Will It Merge? |
-|--------|------|----------------|
-| `actual-fixes` | What TMNN could have been | Never |
-| `rust-rewrite` | Memory safety as religion | Never |
-| `haskell-port` | Purity as philosophy | Never |
-| `nodejs-webscale` | Move fast and break things | Never |
-| `based-freedom-fork` | Politics as code | Never |
-| `elbonia-initiative` | Process as product | Never |
-| `dev` | Chaos as collaboration | Maybe? |
+## The Irony
 
-They will never converge. That's the point.
+This branch will become what TMNN could have been in 1989.
 
-## Our Role
+Memory-safe(r). Bounds-checked. Hardened.
 
-We are the archive. We preserve the evidence. We host the stage.
+And it will sit here, unmerged, while everyone else argues about rewrites that will never ship.
 
-The factions fight. The characters debate. The code remains.
+## Commit Count
+
+Many.
+
+## Merge Count
+
+Zero.
+
+## Will We Keep Patching?
+
+Yes.
 
 ---
 
-*This SOUL.md exists only on `main`. Each branch has its own soul.*
+*🐡 The virtue is in the work, not the recognition.*
