@@ -1,5 +1,7 @@
 # github-user — Actor on the GitHub Stage
 # Pairs with github-simulation
+#
+# REQUIRES: moollm mounted in workspace (inherits character, persona)
 
 what: |
   Characters as GitHub users. Each can:
