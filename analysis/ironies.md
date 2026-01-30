@@ -43,7 +43,7 @@ flowchart TB
 
 ## The Cathedral and the Bazaar
 
-*Full analysis: [CATB-IRONY.md](CATB-IRONY.md)*
+*Full analysis: [catb-irony.md](catb-irony.md)*
 
 | He Wrote (1997) | He Did (1987-1989) |
 |----------|--------|
@@ -55,7 +55,7 @@ flowchart TB
 
 > "My favorite part of the 'many eyes' argument is how few bugs were found by the two eyes of Eric (the originator of the statement)."
 
-*See also: [MANY-EYES.md](MANY-EYES.md) — The quote Linus never said.*
+*See also: [many-eyes-myth.md](many-eyes-myth.md) — The quote Linus never said.*
 
 ---
 
@@ -71,7 +71,7 @@ flowchart TB
 
 **Evidence:** [`src/D.news/fascist.c`](../src/D.news/fascist.c) line 117
 
-*See also: [FASCIST.md](FASCIST.md) — The full breakdown.*
+*See also: [fascist-analysis.md](fascist-analysis.md) — The full breakdown.*
 
 ---
 
@@ -83,7 +83,7 @@ flowchart TB
 | Community-driven development | Distanced himself from FSF in 1989 [`LICENSE`](../LICENSE) |
 | "How to Become a Hacker" | Hijacked the Jargon File; criticized by actual MIT hackers |
 
-*See also: [OSI-BAN.md](OSI-BAN.md) | [JARGON-FILE.md](JARGON-FILE.md)*
+*See also: [osi-ban.md](osi-ban.md) | [jargon-file.md](jargon-file.md)*
 
 ---
 
@@ -106,13 +106,13 @@ flowchart TB
 nasty_t *fascist(user)  /* yes, this is the function name */
 ```
 
-*See also: [FASCIST.md](FASCIST.md)*
+*See also: [fascist-analysis.md](fascist-analysis.md)*
 
 ---
 
 ## "Linus's Law"
 
-*Full analysis: [MANY-EYES.md](MANY-EYES.md)*
+*Full analysis: [many-eyes-myth.md](many-eyes-myth.md)*
 
 | The Claim | The Reality |
 |-----------|-------------|
@@ -128,7 +128,7 @@ nasty_t *fascist(user)  /* yes, this is the function name */
 
 ## Sex and Gender
 
-*Full analysis: [SEX-TIPS.md](SEX-TIPS.md)*
+*Full analysis: [sex-tips-honeytrap.md](sex-tips-honeytrap.md)*
 
 | "Sex Tips for Geeks" (early 2000s) | "Honeytrap" Warning (2015) |
 |----------|---------|
@@ -216,7 +216,7 @@ ESR consistently:
 
 The TMNN source code, dormant for 30+ years, provides the archaeological evidence.
 
-*See also: [FASCIST.md](FASCIST.md) | [BRAGSHEET.md](BRAGSHEET.md) | [LICENSE.md](LICENSE.md)*
+*See also: [fascist-analysis.md](fascist-analysis.md) | [bragsheet.md](bragsheet.md) | [license-analysis.md](license-analysis.md)*
 
 ---
 

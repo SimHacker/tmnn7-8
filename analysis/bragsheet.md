@@ -70,6 +70,6 @@ No one's name was ever added. The project died before anyone could join. The cre
 
 ---
 
-*See also: [LICENSE.md](LICENSE.md) — The political manifesto | [FASCIST.md](FASCIST.md) — The code itself*
+*See also: [license-analysis.md](license-analysis.md) — The political manifesto | [fascist-analysis.md](fascist-analysis.md) — The code itself*
 
 *← Back to [README](README.md)*

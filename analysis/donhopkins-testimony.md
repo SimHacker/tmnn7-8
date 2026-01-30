@@ -48,7 +48,7 @@ DonHopkins knew ESR since the early 1980s. This is the record.
 
 **Source:** [HN #43133598](https://news.ycombinator.com/item?id=43133598)
 
-*See: [MANY-EYES.md](MANY-EYES.md)*
+*See: [many-eyes-myth.md](many-eyes-myth.md)*
 
 ---
 
@@ -60,7 +60,7 @@ DonHopkins knew ESR since the early 1980s. This is the record.
 
 **Source:** [HN #43133598](https://news.ycombinator.com/item?id=43133598)
 
-*See: [JARGON-FILE.md](JARGON-FILE.md)*
+*See: [jargon-file.md](jargon-file.md)*
 
 ---
 
@@ -72,7 +72,7 @@ DonHopkins knew ESR since the early 1980s. This is the record.
 
 *Note: Pepé Le Pew is the Warner Bros character known for aggressively pursuing uninterested women.*
 
-*See: [SEX-TIPS.md](SEX-TIPS.md)*
+*See: [sex-tips-honeytrap.md](sex-tips-honeytrap.md)*
 
 ---
 
@@ -126,6 +126,6 @@ Others on Hacker News recognize DonHopkins as the authoritative ESR critic:
 
 ---
 
-*See also: [ESR-QUOTES.md](ESR-QUOTES.md) — The quote collection | [IRONIES.md](IRONIES.md) — The contradictions*
+*See also: [esr-quotes.md](esr-quotes.md) — The quote collection | [ironies.md](ironies.md) — The contradictions*
 
 *← Back to [README](README.md)*

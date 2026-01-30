@@ -77,7 +77,7 @@ while (gr = getgrent()) {
 **ESR's comment:** "This routine is a HOG!!!!!"  
 **Five exclamation points.** He knew. He shipped it anyway.
 
-*See: [FASCIST.md](FASCIST.md)*
+*See: [fascist-analysis.md](fascist-analysis.md)*
 
 ---
 
@@ -229,6 +229,6 @@ flowchart LR
 
 ---
 
-*See also: [FASCIST.md](FASCIST.md) — Deep dive on fascist.c | [CATB-IRONY.md](CATB-IRONY.md) — The "many eyes" contradiction*
+*See also: [fascist-analysis.md](fascist-analysis.md) — Deep dive on fascist.c | [catb-irony.md](catb-irony.md) — The "many eyes" contradiction*
 
 *← Back to [README](README.md)*

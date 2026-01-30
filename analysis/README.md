@@ -44,13 +44,13 @@ graph TB
 
 | I want to... | Start here |
 |-------------|------------|
-| Understand what happened | [TIMELINE.md](TIMELINE.md) |
-| See the code disasters | [FASCIST.md](FASCIST.md) |
-| Count the vulnerabilities | [VULNERABILITIES.md](VULNERABILITIES.md) |
-| Read the contradictions | [IRONIES.md](IRONIES.md) |
-| See first-hand testimony | [TESTIMONY.md](TESTIMONY.md) |
-| Get the receipts | [ESR-QUOTES.md](ESR-QUOTES.md) |
-| Just show me numbers | [BY-THE-NUMBERS.md](BY-THE-NUMBERS.md) |
+| Understand what happened | [timeline.md](timeline.md) |
+| See the code disasters | [fascist-analysis.md](fascist-analysis.md) |
+| Count the vulnerabilities | [vulnerabilities.md](vulnerabilities.md) |
+| Read the contradictions | [ironies.md](ironies.md) |
+| See first-hand testimony | [donhopkins-testimony.md](donhopkins-testimony.md) |
+| Get the receipts | [esr-quotes.md](esr-quotes.md) |
+| Just show me numbers | [by-the-numbers.md](by-the-numbers.md) |
 
 ---
 
@@ -75,8 +75,8 @@ timeline
          : Zero features delivered
 ```
 
-📖 [BRAGSHEET.md](BRAGSHEET.md) — The promises  
-📖 [LICENSE.md](LICENSE.md) — The political manifesto
+📖 [bragsheet.md](bragsheet.md) — The promises  
+📖 [license-analysis.md](license-analysis.md) — The political manifesto
 
 ### Act II: The Code
 
@@ -90,8 +90,8 @@ pie showData
     "Race Conditions" : 42
 ```
 
-📖 [FASCIST.md](FASCIST.md) — The infamous file  
-📖 [VULNERABILITIES.md](VULNERABILITIES.md) — Full catalog
+📖 [fascist-analysis.md](fascist-analysis.md) — The infamous file  
+📖 [vulnerabilities.md](vulnerabilities.md) — Full catalog
 
 ### Act III: The Silence
 
@@ -105,7 +105,7 @@ xychart-beta
     bar [7, 47]
 ```
 
-📖 [RESUME.md](RESUME.md) — The erasure
+📖 [esr-resume-analysis.md](esr-resume-analysis.md) — The erasure
 
 ### Act IV: The Essays
 
@@ -130,8 +130,8 @@ flowchart LR
     s3 -.->|vs| d3
 ```
 
-📖 [CATB-IRONY.md](CATB-IRONY.md) — "Release early, release often"  
-📖 [MANY-EYES.md](MANY-EYES.md) — The quote Linus never said
+📖 [catb-irony.md](catb-irony.md) — "Release early, release often"  
+📖 [many-eyes-myth.md](many-eyes-myth.md) — The quote Linus never said
 
 ### Act V: The Pattern
 
@@ -162,9 +162,9 @@ flowchart TB
     rejected --> osi
 ```
 
-📖 [JARGON-FILE.md](JARGON-FILE.md) — The hijacking  
-📖 [OSI-BAN.md](OSI-BAN.md) — Banned from his own org  
-📖 [SEX-TIPS.md](SEX-TIPS.md) — The later years
+📖 [jargon-file.md](jargon-file.md) — The hijacking  
+📖 [osi-ban.md](osi-ban.md) — Banned from his own org  
+📖 [sex-tips-honeytrap.md](sex-tips-honeytrap.md) — The later years
 
 ---
 
@@ -174,36 +174,36 @@ flowchart TB
 
 | Document | What It Shows |
 |----------|---------------|
-| [FASCIST.md](FASCIST.md) | The infamous `fascist.c` — FASCIST/COMMUNIST flags, Tolkien cosplay, "HOG!!!!!" |
-| [VULNERABILITIES.md](VULNERABILITIES.md) | 774 buffer overflows, 61 injections, 42 race conditions |
-| [BRAGSHEET.md](BRAGSHEET.md) | Marketing promises vs zero delivery |
-| [LICENSE.md](LICENSE.md) | Political manifesto + consulting advertisement |
+| [fascist-analysis.md](fascist-analysis.md) | The infamous `fascist.c` — FASCIST/COMMUNIST flags, Tolkien cosplay, "HOG!!!!!" |
+| [vulnerabilities.md](vulnerabilities.md) | 774 buffer overflows, 61 injections, 42 race conditions |
+| [bragsheet.md](bragsheet.md) | Marketing promises vs zero delivery |
+| [license-analysis.md](license-analysis.md) | Political manifesto + consulting advertisement |
 
 ### The Contradictions
 
 | Document | The Irony |
 |----------|-----------|
-| [IRONIES.md](IRONIES.md) | **Complete catalog of contradictions** |
-| [CATB-IRONY.md](CATB-IRONY.md) | "Release early" after 2 years in secret |
-| [MANY-EYES.md](MANY-EYES.md) | "Linus's Law" — Linus never said it |
+| [ironies.md](ironies.md) | **Complete catalog of contradictions** |
+| [catb-irony.md](catb-irony.md) | "Release early" after 2 years in secret |
+| [many-eyes-myth.md](many-eyes-myth.md) | "Linus's Law" — Linus never said it |
 
 ### The History
 
 | Document | What Happened |
 |----------|---------------|
-| [TIMELINE.md](TIMELINE.md) | **Full 37-year chronology** |
-| [RESUME.md](RESUME.md) | How he buries TMNN |
-| [OSI-BAN.md](OSI-BAN.md) | Banned from OSI he co-founded |
-| [JARGON-FILE.md](JARGON-FILE.md) | "Disrespectful parasitical vandalism" |
-| [SEX-TIPS.md](SEX-TIPS.md) | Sex tips to honeytrap conspiracy |
+| [timeline.md](timeline.md) | **Full 37-year chronology** |
+| [esr-resume-analysis.md](esr-resume-analysis.md) | How he buries TMNN |
+| [osi-ban.md](osi-ban.md) | Banned from OSI he co-founded |
+| [jargon-file.md](jargon-file.md) | "Disrespectful parasitical vandalism" |
+| [sex-tips-honeytrap.md](sex-tips-honeytrap.md) | Sex tips to honeytrap conspiracy |
 
 ### The Receipts
 
 | Document | The Evidence |
 |----------|--------------|
-| [TESTIMONY.md](TESTIMONY.md) | **First-hand witness accounts** |
-| [ESR-QUOTES.md](ESR-QUOTES.md) | Quotes for charity fundraising |
-| [BY-THE-NUMBERS.md](BY-THE-NUMBERS.md) | Harper's Index statistics |
+| [donhopkins-testimony.md](donhopkins-testimony.md) | **First-hand witness accounts** |
+| [esr-quotes.md](esr-quotes.md) | Quotes for charity fundraising |
+| [by-the-numbers.md](by-the-numbers.md) | Harper's Index statistics |
 
 ---
 
@@ -211,17 +211,17 @@ flowchart TB
 
 | Metric | Value | Details |
 |--------|-------|---------|
-| Years in secret labs | **2** | [TIMELINE.md](TIMELINE.md) |
-| Beta level at abandonment | **7.8** | [BRAGSHEET.md](BRAGSHEET.md) |
-| Features delivered | **0** | [BRAGSHEET.md](BRAGSHEET.md) |
-| Buffer overflows | **774** | [VULNERABILITIES.md](VULNERABILITIES.md) |
-| Command injections | **61** | [VULNERABILITIES.md](VULNERABILITIES.md) |
-| Race conditions | **42** | [VULNERABILITIES.md](VULNERABILITIES.md) |
-| Resume words for TMNN | **7** | [RESUME.md](RESUME.md) |
-| Resume words for martial arts | **47** | [RESUME.md](RESUME.md) |
-| Blog mentions by ESR | **0** | [RESUME.md](RESUME.md) |
-| Years code buried | **30** | [TIMELINE.md](TIMELINE.md) |
-| Charity raised from ESR quotes | **$30,000+** | [ESR-QUOTES.md](ESR-QUOTES.md) |
+| Years in secret labs | **2** | [timeline.md](timeline.md) |
+| Beta level at abandonment | **7.8** | [bragsheet.md](bragsheet.md) |
+| Features delivered | **0** | [bragsheet.md](bragsheet.md) |
+| Buffer overflows | **774** | [vulnerabilities.md](vulnerabilities.md) |
+| Command injections | **61** | [vulnerabilities.md](vulnerabilities.md) |
+| Race conditions | **42** | [vulnerabilities.md](vulnerabilities.md) |
+| Resume words for TMNN | **7** | [esr-resume-analysis.md](esr-resume-analysis.md) |
+| Resume words for martial arts | **47** | [esr-resume-analysis.md](esr-resume-analysis.md) |
+| Blog mentions by ESR | **0** | [esr-resume-analysis.md](esr-resume-analysis.md) |
+| Years code buried | **30** | [timeline.md](timeline.md) |
+| Charity raised from ESR quotes | **$30,000+** | [esr-quotes.md](esr-quotes.md) |
 
 ---
 
@@ -236,7 +236,7 @@ flowchart TB
 > "His own failed proprietary closed source 'cathedral' project... he didn't have the skills to finish and deliver it."  
 > — **DonHopkins**, knew ESR since early 1980s
 
-*See: [TESTIMONY.md](TESTIMONY.md)*
+*See: [donhopkins-testimony.md](donhopkins-testimony.md)*
 
 ---
 
@@ -249,21 +249,21 @@ For those who want the raw annotated data, the YAML Jazz source files are availa
 
 | Source File | Corresponding Narrative |
 |-------------|------------------------|
-| [timeline.yml](timeline.yml) | [TIMELINE.md](TIMELINE.md) |
-| [vulnerabilities.yml](vulnerabilities.yml) | [VULNERABILITIES.md](VULNERABILITIES.md) |
-| [fascist-analysis.yml](fascist-analysis.yml) | [FASCIST.md](FASCIST.md) |
-| [bragsheet.yml](bragsheet.yml) | [BRAGSHEET.md](BRAGSHEET.md) |
-| [license-analysis.yml](license-analysis.yml) | [LICENSE.md](LICENSE.md) |
-| [catb-irony.yml](catb-irony.yml) | [CATB-IRONY.md](CATB-IRONY.md) |
-| [many-eyes-myth.yml](many-eyes-myth.yml) | [MANY-EYES.md](MANY-EYES.md) |
-| [jargon-file.yml](jargon-file.yml) | [JARGON-FILE.md](JARGON-FILE.md) |
-| [osi-ban.yml](osi-ban.yml) | [OSI-BAN.md](OSI-BAN.md) |
-| [sex-tips-honeytrap.yml](sex-tips-honeytrap.yml) | [SEX-TIPS.md](SEX-TIPS.md) |
-| [esr-resume-analysis.yml](esr-resume-analysis.yml) | [RESUME.md](RESUME.md) |
-| [esr-silence.yml](esr-silence.yml) | [RESUME.md](RESUME.md) |
-| [donhopkins-testimony.yml](donhopkins-testimony.yml) | [TESTIMONY.md](TESTIMONY.md) |
-| [esr-quotes.yml](esr-quotes.yml) | [ESR-QUOTES.md](ESR-QUOTES.md) |
-| [by-the-numbers.yml](by-the-numbers.yml) | [BY-THE-NUMBERS.md](BY-THE-NUMBERS.md) |
+| [timeline.yml](timeline.yml) | [timeline.md](timeline.md) |
+| [vulnerabilities.yml](vulnerabilities.yml) | [vulnerabilities.md](vulnerabilities.md) |
+| [fascist-analysis.yml](fascist-analysis.yml) | [fascist-analysis.md](fascist-analysis.md) |
+| [bragsheet.yml](bragsheet.yml) | [bragsheet.md](bragsheet.md) |
+| [license-analysis.yml](license-analysis.yml) | [license-analysis.md](license-analysis.md) |
+| [catb-irony.yml](catb-irony.yml) | [catb-irony.md](catb-irony.md) |
+| [many-eyes-myth.yml](many-eyes-myth.yml) | [many-eyes-myth.md](many-eyes-myth.md) |
+| [jargon-file.yml](jargon-file.yml) | [jargon-file.md](jargon-file.md) |
+| [osi-ban.yml](osi-ban.yml) | [osi-ban.md](osi-ban.md) |
+| [sex-tips-honeytrap.yml](sex-tips-honeytrap.yml) | [sex-tips-honeytrap.md](sex-tips-honeytrap.md) |
+| [esr-resume-analysis.yml](esr-resume-analysis.yml) | [esr-resume-analysis.md](esr-resume-analysis.md) |
+| [esr-silence.yml](esr-silence.yml) | [esr-resume-analysis.md](esr-resume-analysis.md) |
+| [donhopkins-testimony.yml](donhopkins-testimony.yml) | [donhopkins-testimony.md](donhopkins-testimony.md) |
+| [esr-quotes.yml](esr-quotes.yml) | [esr-quotes.md](esr-quotes.md) |
+| [by-the-numbers.yml](by-the-numbers.yml) | [by-the-numbers.md](by-the-numbers.md) |
 
 </details>
 

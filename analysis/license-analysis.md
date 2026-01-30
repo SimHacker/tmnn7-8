@@ -96,6 +96,6 @@ ESR vs ESR: the eternal struggle.
 
 ---
 
-*See also: [BRAGSHEET.md](BRAGSHEET.md) — The marketing promises | [IRONIES.md](IRONIES.md) — The contradictions*
+*See also: [bragsheet.md](bragsheet.md) — The marketing promises | [ironies.md](ironies.md) — The contradictions*
 
 *← Back to [README](README.md)*

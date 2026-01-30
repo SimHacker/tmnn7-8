@@ -101,6 +101,6 @@ RationalWiki's categories for ESR:
 
 ---
 
-*See also: [ESR-QUOTES.md](ESR-QUOTES.md) — The quote collection | [IRONIES.md](IRONIES.md) — The sex/gender contradiction*
+*See also: [esr-quotes.md](esr-quotes.md) — The quote collection | [ironies.md](ironies.md) — The sex/gender contradiction*
 
 *← Back to [README](README.md)*

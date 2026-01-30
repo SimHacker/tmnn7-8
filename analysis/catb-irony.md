@@ -2,7 +2,7 @@
 
 How ESR's most famous essay contradicts his own development practices.
 
-**Source data:** [catb-irony.yml](catb-irony.yml) | **Related:** [MANY-EYES.md](MANY-EYES.md)
+**Source data:** [catb-irony.yml](catb-irony.yml) | **Related:** [many-eyes-myth.md](many-eyes-myth.md)
 
 ---
 
@@ -102,6 +102,6 @@ He learned nothing from his failure except how to lecture others about what they
 
 ---
 
-*See also: [IRONIES.md](IRONIES.md) — Full contradiction catalog | [BRAGSHEET.md](BRAGSHEET.md) — The "secret laboratories"*
+*See also: [ironies.md](ironies.md) — Full contradiction catalog | [bragsheet.md](bragsheet.md) — The "secret laboratories"*
 
 *← Back to [README](README.md)*

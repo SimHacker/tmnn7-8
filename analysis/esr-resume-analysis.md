@@ -56,7 +56,7 @@ xychart-beta
 
 > "I conceived and edited The New Hacker's Dictionary (MIT Press, 1991). This book received enthusiastic reviews in The New York Times, PC Magazine, Byte, PC World, UNIX Review, IEEE Spectrum..."
 
-**Reality:** Appropriated MIT-AI Lab community document. *See: [JARGON-FILE.md](JARGON-FILE.md)*
+**Reality:** Appropriated MIT-AI Lab community document. *See: [jargon-file.md](jargon-file.md)*
 
 ### GNU Emacs
 
@@ -169,6 +169,6 @@ flowchart TB
 
 ---
 
-*See also: [TIMELINE.md](TIMELINE.md) — The full chronology | [IRONIES.md](IRONIES.md) — The contradictions*
+*See also: [timeline.md](timeline.md) — The full chronology | [ironies.md](ironies.md) — The contradictions*
 
 *← Back to [README](README.md)*

@@ -166,6 +166,6 @@ Bugs shallow        →                         774 buffer overflows
 
 ---
 
-*See also: [VULNERABILITIES.md](VULNERABILITIES.md) — Full security analysis | [IRONIES.md](IRONIES.md) — The contradictions*
+*See also: [vulnerabilities.md](vulnerabilities.md) — Full security analysis | [ironies.md](ironies.md) — The contradictions*
 
 *← Back to [README](README.md)*

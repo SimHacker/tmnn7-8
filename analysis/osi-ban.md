@@ -84,6 +84,6 @@ The common denominator in all of ESR's failed relationships is ESR.
 
 ---
 
-*See also: [JARGON-FILE.md](JARGON-FILE.md) — Another institution he damaged | [IRONIES.md](IRONIES.md) — The full pattern*
+*See also: [jargon-file.md](jargon-file.md) — Another institution he damaged | [ironies.md](ironies.md) — The full pattern*
 
 *← Back to [README](README.md)*

@@ -92,6 +92,6 @@ More than 1/3 of a C source file is political commentary. For news server softwa
 
 ---
 
-*See also: [IRONIES.md](IRONIES.md) — The content moderation contradiction | [vulnerabilities.yml](vulnerabilities.yml) — Full security catalog*
+*See also: [ironies.md](ironies.md) — The content moderation contradiction | [vulnerabilities.yml](vulnerabilities.yml) — Full security catalog*
 
 *← Back to [README](README.md)*

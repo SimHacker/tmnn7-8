@@ -205,6 +205,6 @@ In exchange for NOT having to read more of these quotes.
 
 ---
 
-*See also: [SEX-TIPS.md](SEX-TIPS.md) — The honeytrap conspiracy | [OSI-BAN.md](OSI-BAN.md) — Institutional consequences*
+*See also: [sex-tips-honeytrap.md](sex-tips-honeytrap.md) — The honeytrap conspiracy | [osi-ban.md](osi-ban.md) — Institutional consequences*
 
 *← Back to [README](README.md)*

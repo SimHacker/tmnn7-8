@@ -1,0 +1,150 @@
+# The Ironies of Eric S. Raymond
+# YAML Jazz: A catalog of contradictions between ESR's writings and practices
+
+cathedral_and_bazaar:
+  # CatB vs TMNN
+  contradictions:
+    - wrote: "Release early. Release often."
+      did: "Kept TMNN in 'secret laboratories' for 2 years"
+      source_wrote: "The Cathedral and the Bazaar (1997)"
+      source_did: "doc/BRAGSHEET"
+
+    - wrote: "Given enough eyeballs, all bugs are shallow."
+      did: "TMNN had 774+ buffer overflow risks never reviewed"
+      source_wrote: "The Cathedral and the Bazaar (1997)"
+      source_did: "vulnerabilities.yml"
+
+    - wrote: "The bazaar model works better"
+      did: "Developed TMNN alone in cathedral style"
+      source_wrote: "The Cathedral and the Bazaar (1997)"
+      source_did: "timeline.yml"
+
+  theo_de_raadt_quote:
+    source: https://marc.info/?l=openbsd-tech&m=129261032213320&w=2
+    quote: |
+      My favorite part of the 'many eyes' argument is how few bugs were
+      found by the two eyes of Eric (the originator of the statement).
+
+art_of_unix_programming:
+  # TAOUP vs TMNN code
+  contradictions:
+    - wrote: "Distrust all input"
+      did: "61 command injections via unsanitized input"
+      source_wrote: "The Art of Unix Programming (2003)"
+      source_did: "vulnerabilities.yml"
+
+    - wrote: "Use safe library functions"
+      did: "774 unsafe string functions, gets() in system.h"
+      source_wrote: "The Art of Unix Programming (2003)"
+      source_did: "vulnerabilities.yml"
+
+    - wrote: "Handle errors gracefully"
+      did: "'This routine is a HOG!!!!!' with no error handling"
+      source_wrote: "The Art of Unix Programming (2003)"
+      source_did: "src/D.news/fascist.c line 117"
+
+open_source_advocacy:
+  contradictions:
+    - preached: "Open collaboration"
+      practiced: "Banned from OSI (which he co-founded) in 2020"
+      source: "osi-ban.yml"
+
+    - preached: "Community-driven development"
+      practiced: "Distanced himself from FSF in 1989 LICENSE"
+      source: "LICENSE"
+
+    - preached: "'How to Become a Hacker'"
+      practiced: "Hijacked the Jargon File, criticized by actual MIT hackers"
+      source: "jargon-file.yml"
+
+content_moderation:
+  # fascist.c vs later positions
+  contradictions:
+    - built: "fascist.c - code to control who can post/read"
+      argued: "Content moderation is tyranny"
+      source_built: "src/D.news/fascist.c"
+
+    - built: "'miscreant' user restrictions"
+      argued: "Codes of conduct are oppression"
+      source_built: "fascist-analysis.yml"
+
+    - built: "Site banning for 'evil' sites like 'mordor'"
+      argued: "Open source should have no restrictions"
+      source_built: "fascist-analysis.yml"
+
+linus_law:
+  # The quote attribution problem
+  claim: "Named it 'Linus's Law'"
+  reality: "Linus never said it"
+  explanation: |
+    ESR invented the quote himself, then attributed it to Linus Torvalds
+    to borrow credibility and avoid accountability.
+  source: "many-eyes-myth.yml"
+
+sex_and_gender:
+  # Sex tips vs honeytrap
+  contradictions:
+    - wrote: "'Sex Tips for Geeks' advising how to attract women"
+      said: "'Never be alone with any female at a conference' (2015)"
+      source_wrote: "https://www.catb.org/~esr/writings/sextips/"
+      source_said: "sex-tips-honeytrap.yml"
+
+    - wrote: "'Trust me, women will fall all over themselves'"
+      said: "Women at conferences are dangerous honeytrap agents"
+      sources: "sex-tips-honeytrap.yml"
+
+    - wrote: "'Emit fitness-to-reproduce signals'"
+      said: "Feminist activists are framing male developers"
+      sources: "sex-tips-honeytrap.yml"
+
+resume_vs_reality:
+  # How he presents TMNN
+  contradictions:
+    - resume_says: "'A rewrite of the USENET netnews software'"
+      reality_was: "'Teenage Mutant Ninja Netnews' - abandoned at beta"
+      source: "esr-resume-analysis.yml"
+
+    - metric: "7 words for TMNN"
+      contrast: "∞ hours droning about it at SF cons"
+      source: "sf-con-behavior.yml"
+
+    - resume_says: "No mention of outcome"
+      reality_was: "'The project was abandoned shortly thereafter'"
+      source: "https://en.wikipedia.org/wiki/B_News"
+
+the_pattern:
+  # The consistent behaviors
+  description: |
+    ESR consistently:
+    1. Takes credit for ideas he didn't originate
+    2. Writes about how things should work while doing the opposite
+    3. Claims authority over communities that eventually reject him
+    4. Embeds his political ideology into technical spaces
+    5. Projects himself as a righteous wizard fighting evil
+
+  examples:
+    credit_taking:
+      - "Linus's Law - Linus never said it"
+      - "Jargon File - MIT community document he hijacked"
+
+    opposite_practice:
+      - "'Release early' after 2 years in secret labs"
+      - "Unix best practices with 774 buffer overflows"
+
+    community_rejection:
+      - "Co-founded OSI → banned from OSI"
+      - "Took over Jargon File → criticized by original hackers"
+
+    political_embedding:
+      - "FASCIST/COMMUNIST compile flags"
+      - "Libertarian manifesto in LICENSE file"
+      - "Jargon File rewrites"
+
+    wizard_projection:
+      - "Tolkien cosplay in fascist.c"
+      - "'Gandalf' and 'Radagast' in good group"
+      - "'Mordor' and 'Orthanc' as evil sites"
+
+conclusion: |
+  The TMNN source code, dormant for 30+ years, provides the archaeological
+  evidence that ESR's career was built on preaching what he never practiced.

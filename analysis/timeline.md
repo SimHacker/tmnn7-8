@@ -79,7 +79,7 @@ By December 1989, ESR was signing his Usenet posts:
 
 ### The SF Convention Campaign
 
-According to [DonHopkins' testimony](TESTIMONY.md), ESR spent these years cornering people at science fiction conventions to brag about TMNN:
+According to [DonHopkins' testimony](donhopkins-testimony.md), ESR spent these years cornering people at science fiction conventions to brag about TMNN:
 
 > "He would corner people and drone on endlessly about it at inappropriate times."
 
@@ -100,7 +100,7 @@ According to [DonHopkins' testimony](TESTIMONY.md), ESR spent these years corner
 
 ### Promised Features Never Delivered
 
-From the [BRAGSHEET](BRAGSHEET.md):
+From the [BRAGSHEET](bragsheet.md):
 
 - ❌ Hypertext integration
 - ❌ Public-key encryption
@@ -146,7 +146,7 @@ flowchart TB
 | 1998 | Co-founds OSI | Would be banned from it in 2020 |
 | 2003 | "Art of Unix Programming" | His own code violates the practices |
 
-*See: [CATB-IRONY.md](CATB-IRONY.md) | [OSI-BAN.md](OSI-BAN.md)*
+*See: [catb-irony.md](catb-irony.md) | [osi-ban.md](osi-ban.md)*
 
 ---
 
@@ -177,7 +177,7 @@ flowchart TB
 
 **Notable discovery:** `fascist.c` with FASCIST/COMMUNIST compile flags
 
-*Full details: [VULNERABILITIES.md](VULNERABILITIES.md)*
+*Full details: [vulnerabilities.md](vulnerabilities.md)*
 
 ---
 
@@ -196,7 +196,7 @@ What's missing:
 - Abandonment
 - Any promised features
 
-*See: [RESUME.md](RESUME.md)*
+*See: [esr-resume-analysis.md](esr-resume-analysis.md)*
 
 ---
 
@@ -212,6 +212,6 @@ What's missing:
 
 ---
 
-*See also: [VULNERABILITIES.md](VULNERABILITIES.md) — What the code review found | [IRONIES.md](IRONIES.md) — The contradictions*
+*See also: [vulnerabilities.md](vulnerabilities.md) — What the code review found | [ironies.md](ironies.md) — The contradictions*
 
 *← Back to [README](README.md)*

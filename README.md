@@ -110,31 +110,31 @@ All findings are documented in [`analysis/`](analysis/):
 
 | Document | What It Covers |
 |----------|---------------|
-| [FASCIST.md](analysis/FASCIST.md) | The infamous `fascist.c` — FASCIST/COMMUNIST flags, Tolkien cosplay, buffer overflows |
-| [BRAGSHEET.md](analysis/BRAGSHEET.md) | ESR's marketing promises vs reality |
-| [LICENSE.md](analysis/LICENSE.md) | 40% manifesto, 60% GPL ripoff, 100% ESR |
+| [fascist-analysis.md](analysis/fascist-analysis.md) | The infamous `fascist.c` — FASCIST/COMMUNIST flags, Tolkien cosplay, buffer overflows |
+| [bragsheet.md](analysis/bragsheet.md) | ESR's marketing promises vs reality |
+| [license-analysis.md](analysis/license-analysis.md) | 40% manifesto, 60% GPL ripoff, 100% ESR |
 
 ### The Contradictions
 
 | Document | The Irony |
 |----------|-----------|
-| [CATB-IRONY.md](analysis/CATB-IRONY.md) | "Release early, release often" said the man who kept code secret for 2 years |
-| [MANY-EYES.md](analysis/MANY-EYES.md) | "Linus's Law" — the quote Linus never said |
-| [IRONIES.md](analysis/IRONIES.md) | Complete catalog of ESR contradictions |
+| [catb-irony.md](analysis/catb-irony.md) | "Release early, release often" said the man who kept code secret for 2 years |
+| [many-eyes-myth.md](analysis/many-eyes-myth.md) | "Linus's Law" — the quote Linus never said |
+| [ironies.md](analysis/ironies.md) | Complete catalog of ESR contradictions |
 
 ### The History
 
 | Document | What Happened |
 |----------|--------------|
-| [OSI-BAN.md](analysis/OSI-BAN.md) | Banned from the organization he co-founded |
-| [JARGON-FILE.md](analysis/JARGON-FILE.md) | How he hijacked hacker culture |
-| [SEX-TIPS.md](analysis/SEX-TIPS.md) | From pickup artist to honeytrap conspiracy |
+| [osi-ban.md](analysis/osi-ban.md) | Banned from the organization he co-founded |
+| [jargon-file.md](analysis/jargon-file.md) | How he hijacked hacker culture |
+| [sex-tips-honeytrap.md](analysis/sex-tips-honeytrap.md) | From pickup artist to honeytrap conspiracy |
 
 ### The Receipts
 
 | Document | The Evidence |
 |----------|-------------|
-| [ESR-QUOTES.md](analysis/ESR-QUOTES.md) | Documented statements suitable for charity fundraising |
+| [esr-quotes.md](analysis/esr-quotes.md) | Documented statements suitable for charity fundraising |
 | [analysis/INDEX.yml](analysis/INDEX.yml) | Master index of all source data |
 
 ---

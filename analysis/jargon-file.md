@@ -94,6 +94,6 @@ The audacity.
 
 ---
 
-*See also: [FASCIST.md](FASCIST.md) — Same pattern with Spafford's code | [OSI-BAN.md](OSI-BAN.md) — Community eventually rejects him*
+*See also: [fascist-analysis.md](fascist-analysis.md) — Same pattern with Spafford's code | [osi-ban.md](osi-ban.md) — Community eventually rejects him*
 
 *← Back to [README](README.md)*

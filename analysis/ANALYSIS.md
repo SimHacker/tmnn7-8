@@ -10,14 +10,14 @@ A comprehensive archaeological examination of Eric S. Raymond's abandoned "Teena
 
 | Topic | Document |
 |-------|----------|
-| The Code | [FASCIST.md](FASCIST.md) — The infamous file |
-| The Promises | [BRAGSHEET.md](BRAGSHEET.md) — Marketing vs reality |
-| The Contradictions | [IRONIES.md](IRONIES.md) — Full catalog |
-| The Philosophy | [CATB-IRONY.md](CATB-IRONY.md) — Cathedral & Bazaar |
-| The Quote | [MANY-EYES.md](MANY-EYES.md) — Linus never said it |
-| The Pattern | [JARGON-FILE.md](JARGON-FILE.md) — Hijacking culture |
-| The Ban | [OSI-BAN.md](OSI-BAN.md) — Kicked from his own org |
-| The Quotes | [ESR-QUOTES.md](ESR-QUOTES.md) — For charity fundraising |
+| The Code | [fascist-analysis.md](fascist-analysis.md) — The infamous file |
+| The Promises | [bragsheet.md](bragsheet.md) — Marketing vs reality |
+| The Contradictions | [ironies.md](ironies.md) — Full catalog |
+| The Philosophy | [catb-irony.md](catb-irony.md) — Cathedral & Bazaar |
+| The Quote | [many-eyes-myth.md](many-eyes-myth.md) — Linus never said it |
+| The Pattern | [jargon-file.md](jargon-file.md) — Hijacking culture |
+| The Ban | [osi-ban.md](osi-ban.md) — Kicked from his own org |
+| The Quotes | [esr-quotes.md](esr-quotes.md) — For charity fundraising |
 
 ## The Numbers
 
