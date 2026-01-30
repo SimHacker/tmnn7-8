@@ -18,7 +18,7 @@ security_rating_scale:
 
 notable_files:
   # Files that tell the TMNN story
-  
+
   doc/BRAGSHEET:
     lines: 366
     security_rating: N/A  # Documentation
@@ -29,7 +29,7 @@ notable_files:
       - "secret laboratories"
       - "hypertext... encryption... intelligent filtering agents"
     irony_level: 10
-    
+
   LICENSE:
     lines: 175
     security_rating: N/A
@@ -39,7 +39,7 @@ notable_files:
       - "AUTHOR'S STATEMENT OF INTENT"
       - "AN UNABASHED COMMERCIAL PLUG"
     ideology_density: 40%
-    
+
   doc/BUGS:
     lines: 57
     security_rating: N/A
@@ -48,7 +48,7 @@ notable_files:
     status: "All items abandoned"
     esr_self_assessment: |
       Items include "Lint barfs", "doesn't work", "needs to be re-examined"
-      
+
   src/version.h:
     lines: ~10
     security_rating: N/A
@@ -57,7 +57,7 @@ notable_files:
 
 high_risk_files:
   # Security rating F - Actively dangerous
-  
+
   src/D.news/fascist.c:
     lines: 305
     security_rating: F
@@ -71,7 +71,7 @@ high_risk_files:
       - "HOG!!!!! comment"
     original_author: "Eugene Spafford"
     rewritten_by: "ESR (added vulnerabilities)"
-    
+
   src/D.priv/lock.c:
     lines: 220
     security_rating: F
@@ -81,7 +81,7 @@ high_risk_files:
       - "DoS via lock file manipulation"
     esr_comment: "ugly and flaky"
     shipped_anyway: true
-    
+
   src/rnews.c:
     lines: 555
     security_rating: F
@@ -90,15 +90,15 @@ high_risk_files:
       - "system() command injection"
       - "sprintf() buffer overflows"
     unsafe_function_count: 11
-    
+
   src/inews.c:
     lines: 544
     security_rating: F
     vulnerabilities:
-      - "mktemp() race conditions"  
+      - "mktemp() race conditions"
       - "sprintf() without bounds"
     unsafe_function_count: 19
-    
+
   src/D.port/spawn.c:
     lines: ~200
     security_rating: F
@@ -111,25 +111,25 @@ high_risk_files:
 
 medium_risk_files:
   # Security rating C-D
-  
+
   src/sendbatch.c:
     lines: 574
     security_rating: D
     system_popen_count: 7
-    
+
   src/D.priv/transmit.c:
     lines: ~300
     security_rating: D
     unsafe_function_count: 26
     mktemp_count: 4
     system_popen_count: 5
-    
+
   src/control.c:
     lines: 1113
     security_rating: D
     unsafe_function_count: 25
     system_popen_count: 4
-    
+
   src/bbsauto.c:
     lines: ~300
     security_rating: D
@@ -139,19 +139,19 @@ medium_risk_files:
 
 largest_files:
   # By line count
-  
+
   src/compress.c:
     lines: 1486
     note: "LZW compression - may have patent issues (1989)"
-    
+
   src/newsdb.c:
     lines: 1385
     purpose: "News database operations"
-    
+
   src/D.scrn/scrnctl.c:
     lines: 1141
     purpose: "Screen control"
-    
+
   src/control.c:
     lines: 1113
     purpose: "Control messages"
@@ -171,23 +171,23 @@ directory_structure:
       D.scrn/: "Screen handling"
       D.scripts/: "Shell scripts"
       D.uucp/: "UUCP integration"
-      
+
   doc/:
     purpose: "Documentation"
     key_files:
       - BRAGSHEET
       - BUGS
       - hackguide.mn
-      
+
   man/:
     purpose: "Man pages"
-    
+
   misc/:
     purpose: "Miscellaneous tools"
 
 file_timestamps:
   # From tar archive
-  
+
   oldest: "1989-07-10"  # LICENSE, READ.ME
   newest: "1989-08-28"  # Makefile
   active_development: "~2 months of visible activity"

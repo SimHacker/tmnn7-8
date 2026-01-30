@@ -7,7 +7,7 @@ hacker_news_quotes:
     user: deepspace
     date: 2023-07-29
     quote: |
-      the man's disgusting political and social views tarnished 
+      the man's disgusting political and social views tarnished
       everything he touched
     context: Discussion of Jargon File
 
@@ -16,8 +16,8 @@ hacker_news_quotes:
     user: idlewords
     date: 2023-07-29
     quote: |
-      It would be great if someone with appropriate 'back in the day' 
-      credentials would take over membership of this document and 
+      It would be great if someone with appropriate 'back in the day'
+      credentials would take over membership of this document and
       powerwash the gratuitous Eric Raymond edits and insertions off of it.
     context: Jargon File discussion
 
@@ -27,17 +27,17 @@ hacker_news_quotes:
     date: 2025-03
     quotes:
       - |
-        Real hackers from the MIT-AI lab where it originated consider his 
-        revisionist politically slanted rewriting-for-profit of the Hacker's 
-        Dictionary to be disrespectful parasitical vandalism that doesn't 
-        represent the actual hacker culture, just a tool he hijacked, corrupted, 
+        Real hackers from the MIT-AI lab where it originated consider his
+        revisionist politically slanted rewriting-for-profit of the Hacker's
+        Dictionary to be disrespectful parasitical vandalism that doesn't
+        represent the actual hacker culture, just a tool he hijacked, corrupted,
         and abused to spread his right-wing political ideology.
       - |
-        He certainly doesn't deserve to be called a hacker, let alone presume 
+        He certainly doesn't deserve to be called a hacker, let alone presume
         to define the meaning of the term.
       - |
-        He made up the ridiculous 'many eyes' quote himself, then misnamed it 
-        'Linus's Law' to avoid personal responsibility and shift the blame to 
+        He made up the ridiculous 'many eyes' quote himself, then misnamed it
+        'Linus's Law' to avoid personal responsibility and shift the blame to
         innocent Linus Torvalds, who never said such a stupid thing.
     context: Cathedral and the Bazaar discussion
 
@@ -46,7 +46,7 @@ hacker_news_quotes:
     user: tptacek
     date: 2025-03
     quote: |
-      CATB has just not held up at all; it's actively bad, and it has a 
+      CATB has just not held up at all; it's actively bad, and it has a
       weirdly outsized reputation.
     context: Cathedral and the Bazaar discussion
 
@@ -55,7 +55,7 @@ hacker_news_quotes:
     user: DonHopkins
     date: 2025-03
     quote: |
-      His infamous 'Sex Tips for Geeks' essay comes off like it was 
+      His infamous 'Sex Tips for Geeks' essay comes off like it was
       written by Pepé Le Pew.
     context: Discussion of ESR's writings
 
@@ -71,28 +71,28 @@ mailing_list_quotes:
     user: Theo de Raadt
     date: 2010-12
     quote: |
-      Oh right, let's hear some of that 'many eyes' crap again. My favorite 
-      part of the 'many eyes' argument is how few bugs were found by the two 
-      eyes of Eric (the originator of the statement). All the many eyes are 
-      apparently attached to a lot of hands that type lots of words about 
+      Oh right, let's hear some of that 'many eyes' crap again. My favorite
+      part of the 'many eyes' argument is how few bugs were found by the two
+      eyes of Eric (the originator of the statement). All the many eyes are
+      apparently attached to a lot of hands that type lots of words about
       many eyes, and never actually audit code.
     context: OpenBSD security discussion
     significance: From one of the most respected security-focused OS developers
 
 charity_fundraising:
-  source: Thomas Ptacek / The Great Slate
-    url: https://en.wikipedia.org/wiki/Eric_S._Raymond#Political_beliefs_and_activism
-    quote: |
-      I've been torturing Twitter with lurid Eric S. Raymond quotes for years. 
-      Every time I do, 20 people beg me to stop.
-    amount_raised: $30,000
-    purpose: Donations to charity in exchange for NOT posting more ESR quotes
+  source: "Thomas Ptacek / The Great Slate"
+  url: https://en.wikipedia.org/wiki/Eric_S._Raymond#Political_beliefs_and_activism
+  quote: |
+    I've been torturing Twitter with lurid Eric S. Raymond quotes for years.
+    Every time I do, 20 people beg me to stop.
+  amount_raised: "$30,000"
+  purpose: "Donations to charity in exchange for NOT posting more ESR quotes"
 
 original_sources:
   jargon_file:
     original: https://github.com/PDP-10/its/blob/master/doc/humor/jargon.68
     note: "Free of ESR's pollution"
-    
+
   fascist_c_original_author:
     name: Eugene Spafford
     aka: spaf@gatech

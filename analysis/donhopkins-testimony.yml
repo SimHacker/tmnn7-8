@@ -14,46 +14,46 @@ witness:
 
 tmnn_era_testimony:
   key_quote: |
-    Eric S. Raymond (aka "Eric The Flute" or "ESR") spent the late 1980s 
-    obsessively promoting his "Teenage Mutant Ninja Netnews" (TMNN) project 
-    at science fiction conventions, calling himself the "mad mastermind of 
-    TMN-Netnews" in his usenet signature (comp.lang.misc, December 13, 1989). 
+    Eric S. Raymond (aka "Eric The Flute" or "ESR") spent the late 1980s
+    obsessively promoting his "Teenage Mutant Ninja Netnews" (TMNN) project
+    at science fiction conventions, calling himself the "mad mastermind of
+    TMN-Netnews" in his usenet signature (comp.lang.misc, December 13, 1989).
     He would corner people and drone on endlessly about it at inappropriate times.
   source: https://news.ycombinator.com/item?id=46823276
-  
+
   detailed_description: |
-    His own failed proprietary closed source 'cathedral' project, that he was 
-    notorious for insufferably and arrogantly bragging about during the 80's, 
-    but never releasing, and finally giving up on because he didn't have the 
-    skills to finish and deliver it, and nobody wanted to collaborate with him 
+    His own failed proprietary closed source 'cathedral' project, that he was
+    notorious for insufferably and arrogantly bragging about during the 80's,
+    but never releasing, and finally giving up on because he didn't have the
+    skills to finish and deliver it, and nobody wanted to collaborate with him
     or listen to him talk about it any more.
-  source: https://news.ycombinator.com/item?id=43133598
+  source_url: https://news.ycombinator.com/item?id=43133598
 
 jargon_file_testimony:
   key_quotes:
     - quote: |
-        Real hackers from the MIT-AI lab where it originated consider his 
-        revisionist politically slanted rewriting-for-profit of the Hacker's 
-        Dictionary to be disrespectful parasitical vandalism that doesn't 
-        represent the actual hacker culture, just a tool he hijacked, corrupted, 
+        Real hackers from the MIT-AI lab where it originated consider his
+        revisionist politically slanted rewriting-for-profit of the Hacker's
+        Dictionary to be disrespectful parasitical vandalism that doesn't
+        represent the actual hacker culture, just a tool he hijacked, corrupted,
         and abused to spread his right-wing political ideology.
       source: https://news.ycombinator.com/item?id=43133598
-      
+
     - quote: |
-        He certainly doesn't deserve to be called a hacker, let alone presume 
+        He certainly doesn't deserve to be called a hacker, let alone presume
         to define the meaning of the term.
       source: https://news.ycombinator.com/item?id=43133598
-      
+
 linus_law_testimony:
   key_quote: |
-    He made up the ridiculous 'many eyes' quote himself, then misnamed it 
-    'Linus's Law' to avoid personal responsibility and shift the blame to 
+    He made up the ridiculous 'many eyes' quote himself, then misnamed it
+    'Linus's Law' to avoid personal responsibility and shift the blame to
     innocent Linus Torvalds, who never said such a stupid thing.
   source: https://news.ycombinator.com/item?id=43133598
 
 sex_tips_assessment:
   key_quote: |
-    His infamous "Sex Tips for Geeks" essay comes off like it was written 
+    His infamous "Sex Tips for Geeks" essay comes off like it was written
     by Pepé Le Pew.
   source: https://news.ycombinator.com/item?id=43139165
   note: "Pepé Le Pew is the Warner Bros character known for aggressively pursuing uninterested women"
@@ -63,13 +63,13 @@ racism_documentation:
     date: 2015-05-12
     context: "Discussion of brain stimulation and IQ"
     quote: |
-      I'm sure Eric S Raymond will try to twist this into supporting his 
+      I'm sure Eric S Raymond will try to twist this into supporting his
       racist preconceptions and agenda.
     source: https://news.ycombinator.com/item?id=9531764
     esr_quote_cited: |
-      In the U.S., blacks are 12% of the population but commit 50% of violent 
-      crimes; can anyone honestly think this is unconnected to the fact that 
-      they average 15 points of IQ lower than the general population? That 
+      In the U.S., blacks are 12% of the population but commit 50% of violent
+      crimes; can anyone honestly think this is unconnected to the fact that
+      they average 15 points of IQ lower than the general population? That
       stupid people are more violent is a fact independent of skin color.
     esr_quote_source: http://esr.ibiblio.org/index.php?p=129
 
@@ -78,12 +78,12 @@ hacker_emblem_testimony:
   context: "Discussion of ESR's proposed 'glider' hacker emblem"
   quotes:
     - |
-      I'm totally unconvinced that Eric "The Flute" Raymond represents or 
-      speaks for the 'hacker community'. For one thing, very few people I 
+      I'm totally unconvinced that Eric "The Flute" Raymond represents or
+      speaks for the 'hacker community'. For one thing, very few people I
       know of in the hacker community are as racist as ESR.
     - |
-      (Also by the way, children and nice people read Hacker News, so please 
-      do not link to ESR's reprehensible web site, promote his racist ideology, 
+      (Also by the way, children and nice people read Hacker News, so please
+      do not link to ESR's reprehensible web site, promote his racist ideology,
       or buy into his bullshit that he is a hacker or speaks for hackers.)
   source: https://news.ycombinator.com/item?id=8873180
 
@@ -91,11 +91,11 @@ open_source_criticism:
   date: 2014-10-06
   context: 'Discussion of "Open Source is awful"'
   key_quote: |
-    The thing that is awful about "Open Source" is that it was a term coined 
-    by Eric S Raymond in order to attack Richard Stallman and the Free 
-    Software Foundation, and to make a name and money for himself as a 
-    so-called "hacker", without actually having to write any useful code, 
-    or even read anybody else's code and report bugs with his very own 
+    The thing that is awful about "Open Source" is that it was a term coined
+    by Eric S Raymond in order to attack Richard Stallman and the Free
+    Software Foundation, and to make a name and money for himself as a
+    so-called "hacker", without actually having to write any useful code,
+    or even read anybody else's code and report bugs with his very own
     "millions of I's".
   esr_quotes_documented:
     racism:
@@ -103,14 +103,14 @@ open_source_criticism:
       source: http://esr.ibiblio.org/?p=129
     violence:
       quote: |
-        And for any agents or proxy of the regime interested in asking me 
-        questions face to face, I've got some bullets slathered in pork fat 
+        And for any agents or proxy of the regime interested in asking me
+        questions face to face, I've got some bullets slathered in pork fat
         to make you feel extra special welcome.
       source: https://web.archive.org/web/20090628025127/http://www.nedanet...
     self_aggrandizement:
       quote: |
-        I've blown up the software industry once, reinvented the hacker 
-        culture twice, and am without doubt one of the dozen most famous 
+        I've blown up the software industry once, reinvented the hacker
+        culture twice, and am without doubt one of the dozen most famous
         geeks alive. Investment bankers pay me $300 an hour to yak at them...
       source: http://esr.ibiblio.org/?p=1404
   source: https://news.ycombinator.com/item?id=8416295
@@ -121,44 +121,44 @@ art_of_unix_programming_criticism:
   amazon_reviews_cited:
     autohagiography:
       quote: |
-        Autohagiography with some programming tips... The writing style of 
-        this book tends to hurt the reading experience, as Raymond trumpets 
+        Autohagiography with some programming tips... The writing style of
+        this book tends to hurt the reading experience, as Raymond trumpets
         his own minor achievements in the free software community.
     bill_joy_review:
       quote: |
-        ESR's theory and ideology is ridiculously flawed with misappropriated 
-        valuations. This is, yet another advocacy campaign for gnu/Linux, 
+        ESR's theory and ideology is ridiculously flawed with misappropriated
+        valuations. This is, yet another advocacy campaign for gnu/Linux,
         mixed in with a UNIX context.
     lacking_code:
       quote: |
-        If you expect to see any code, you'll be disappointed. The author 
-        gives ample examples, but mostly preaching the Unix philosophy or 
+        If you expect to see any code, you'll be disappointed. The author
+        gives ample examples, but mostly preaching the Unix philosophy or
         religion.
   donhopkins_analysis: |
-    Everything he writes is deeply tainted with his one-sided partisan 
-    ideology and narcissistic self promotion, which is not just limited 
-    to Microsoft bashing, but to extreme right wing libertarian politics 
-    and guns. You can see that by the changes he made to the "Hacker's 
+    Everything he writes is deeply tainted with his one-sided partisan
+    ideology and narcissistic self promotion, which is not just limited
+    to Microsoft bashing, but to extreme right wing libertarian politics
+    and guns. You can see that by the changes he made to the "Hacker's
     Dictionary", and you can see that in everything else he writes.
   source: https://news.ycombinator.com/item?id=7613183
 
 climategate_testimony:
   context: "ESR's failed attempt to discredit climate scientists"
   quote: |
-    The little experience Raymond DOES have auditing code has been a total 
-    fiasco and embarrassing failure, since his understanding of the code 
-    was incompetent and deeply tainted by his preconceived political ideology 
-    and conspiracy theories about global warming, which was his only 
-    motivation for auditing the code in the first place. His sole quest 
-    was to discredit the scientists who warned about global warming. The 
-    code he found and highlighted was actually COMMENTED OUT, and he never 
+    The little experience Raymond DOES have auditing code has been a total
+    fiasco and embarrassing failure, since his understanding of the code
+    was incompetent and deeply tainted by his preconceived political ideology
+    and conspiracy theories about global warming, which was his only
+    motivation for auditing the code in the first place. His sole quest
+    was to discredit the scientists who warned about global warming. The
+    code he found and highlighted was actually COMMENTED OUT, and he never
     addressed the fact that the scientists were vindicated.
   source: https://news.ycombinator.com/item?id=7613176
   rationalwiki_cite: http://rationalwiki.org/wiki/Eric_S._Raymond
 
 summary_assessment:
   quote: |
-    batshit crazy smarmy arrogant self-aggrandizing sexist racist anti-black 
+    batshit crazy smarmy arrogant self-aggrandizing sexist racist anti-black
     homophobic Islamophobic neocon interventionist libertarian gun nut
   source: https://news.ycombinator.com/item?id=43133598
   note: "Comprehensive summary based on decades of observation"
@@ -167,8 +167,8 @@ external_recognition:
   bitwize_comment:
     date: 2025-12-01
     quote: |
-      Eric S. Raymond (yes, that ESR; insert long-winded DonHopkins rant, 
-      extensively cross-referenced to his own USENET and UNIX-HATERS mailing 
+      Eric S. Raymond (yes, that ESR; insert long-winded DonHopkins rant,
+      extensively cross-referenced to his own USENET and UNIX-HATERS mailing
       list postings, about what a horrible person "Eric the Flute" is)...
     source: https://news.ycombinator.com/item?id=46112447
     note: "Other HN users recognize DonHopkins as the authoritative ESR critic"

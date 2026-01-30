@@ -6,15 +6,15 @@ the_finding:
   result: "No results found"
   date: 2026-01-30
   significance: |
-    ESR has never publicly discussed, mentioned, or acknowledged his TMNN 
-    project on his blog, despite writing extensively about his other projects 
+    ESR has never publicly discussed, mentioned, or acknowledged his TMNN
+    project on his blog, despite writing extensively about his other projects
     and his history in the open source movement.
 
 blog_context:
   blog_name: "Armed and Dangerous"
   tagline: "Sex, software, politics, and firearms. Life's simple pleasures..."
   url: https://esr.ibiblio.org/
-  
+
   topics_covered:
     - Software development methodology
     - Open source philosophy
@@ -23,7 +23,7 @@ blog_context:
     - Political commentary
     - Guns
     - "Sex Tips for Geeks"
-    
+
   topic_never_covered:
     - "Teenage Mutant Ninja Netnews"
     - "TMNN"
@@ -33,20 +33,20 @@ blog_context:
 
 resume_sanitization:
   # Cross-reference with esr-resume-analysis.yml
-  
+
   url: http://catb.org/~esr/resume.html
   tmnn_entry: "A rewrite of the USENET netnews software."
-  
+
   what_resume_omits:
-    - "Teenage Mutant Ninja" name
-    - "TMNN" acronym
-    - "News 3.0" designation
-    - "Secret laboratories" development
-    - "Mad mastermind" self-description
-    - Beta status
-    - Abandonment
-    - Promised features (hypertext, encryption, AI filtering)
-    
+    - '"Teenage Mutant Ninja" name'
+    - '"TMNN" acronym'
+    - '"News 3.0" designation'
+    - '"Secret laboratories" development'
+    - '"Mad mastermind" self-description'
+    - "Beta status"
+    - "Abandonment"
+    - "Promised features (hypertext, encryption, AI filtering)"
+
   comparison:
     words_for_tmnn: 7
     words_for_martial_arts: 47
@@ -57,11 +57,11 @@ contrast_with_other_projects:
     blog_mentions: "Extensive"
     catb_essay: "Featured prominently in Cathedral and the Bazaar"
     resume_treatment: "Detailed description"
-    
+
   gpsd:
     blog_mentions: "Frequent"
     resume_treatment: "Listed prominently"
-    
+
   tmnn:
     blog_mentions: 0
     catb_essay: "Never mentioned"
@@ -69,32 +69,32 @@ contrast_with_other_projects:
 
 the_pattern:
   description: |
-    ESR has systematically erased TMNN from his public narrative while 
+    ESR has systematically erased TMNN from his public narrative while
     promoting other projects extensively. This is notable because:
-    
+
     1. TMNN was his most ambitious early project
     2. He spent 2 years developing it
     3. He promoted it obsessively at SF conventions
     4. He called himself the "mad mastermind of TMN-Netnews"
     5. The name was deliberately provocative and memorable
-    
-    The erasure suggests he understands the project would contradict his 
+
+    The erasure suggests he understands the project would contradict his
     later claims about open source development methodology.
 
 why_the_silence_matters:
   catb_contradiction: |
-    "The Cathedral and the Bazaar" argues for open development. TMNN was 
-    developed secretly for 2 years. Acknowledging TMNN would undermine 
+    "The Cathedral and the Bazaar" argues for open development. TMNN was
+    developed secretly for 2 years. Acknowledging TMNN would undermine
     the essay's credibility.
-    
+
   code_quality_contradiction: |
-    "The Art of Unix Programming" teaches best practices. TMNN code is 
-    riddled with security vulnerabilities. Acknowledging TMNN would 
+    "The Art of Unix Programming" teaches best practices. TMNN code is
+    riddled with security vulnerabilities. Acknowledging TMNN would
     undermine his authority.
-    
+
   many_eyes_contradiction: |
-    "Linus's Law" claims many eyes make bugs shallow. TMNN had no eyes 
-    and was abandoned with hundreds of unfixed bugs. Acknowledging TMNN 
+    "Linus's Law" claims many eyes make bugs shallow. TMNN had no eyes
+    and was abandoned with hundreds of unfixed bugs. Acknowledging TMNN
     would disprove his most famous claim.
 
 wikipedia_as_only_record:
@@ -102,14 +102,14 @@ wikipedia_as_only_record:
   first_mention: 2005-01-11
   archive_link_added: 2019-12-05
   note: |
-    The only public documentation of TMNN comes from Wikipedia editors, 
-    not from ESR himself. He has made no effort to document or discuss 
+    The only public documentation of TMNN comes from Wikipedia editors,
+    not from ESR himself. He has made no effort to document or discuss
     this project despite his prolific writing about open source history.
 
 irony_summary: |
-  The guy who made his career writing about open source development, 
-  hacker history, and his own contributions to both... has never once 
-  mentioned his first major project, which contradicts everything he 
+  The guy who made his career writing about open source development,
+  hacker history, and his own contributions to both... has never once
+  mentioned his first major project, which contradicts everything he
   later became famous for claiming.
-  
+
   The silence is the confession.

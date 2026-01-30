@@ -20,7 +20,7 @@ security_vulnerabilities:
   mktemp_instances: 42
   shell_injection_points: 61
   gets_in_system_h: 1
-  
+
 code_quality:
   his_assessment_of_locking_code: "ugly and flaky"
   exclamation_points_in_hog_comment: 5

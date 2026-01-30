@@ -9,39 +9,39 @@ summary:
 
 files:
   # Primary Source Analysis
-  
+
   bragsheet.yml:
     topic: "ESR's BRAGSHEET marketing document"
     analyzes: "doc/BRAGSHEET"
     key_finding: '"Secret laboratories" development, grandiose unfulfilled promises'
-    
+
   license-analysis.yml:
     topic: "ESR's custom LICENSE file"
     analyzes: "LICENSE"
     key_finding: "Political preamble, commercial plug, anti-FSF statements"
-    
+
   fascist-analysis.yml:
     topic: "The infamous fascist.c file"
     analyzes: "src/D.news/fascist.c"
     key_finding: "FASCIST/COMMUNIST flags, Tolkien cosplay, buffer overflows"
-    
+
   vulnerabilities.yml:
     topic: "Comprehensive security vulnerability catalog"
     analyzes: "All source code"
     key_finding: "774 buffer overflow risks, 42 race conditions, 61 command injections"
-    
+
   code-index.yml:
     topic: "File-by-file code index with ratings"
     analyzes: "Entire codebase"
     key_finding: "Security ratings and key observations per file"
-    
+
   code-review.yml:
     topic: "Initial code review findings"
     analyzes: "Overall code quality"
     key_finding: "Quantified vulnerability counts and patterns"
-    
+
   # Timeline and History
-  
+
   timeline.yml:
     topic: "Chronological history from development to rediscovery"
     key_dates:
@@ -49,53 +49,53 @@ files:
       - "1989: Abandoned at beta 7.8"
       - "2019: Archive link added to Wikipedia"
       - "2026: Rediscovered and analyzed"
-      
+
   # ESR Contradictions and Ironies
-  
+
   catb-irony.yml:
     topic: '"Cathedral and the Bazaar" vs TMNN development'
     key_finding: "ESR preached bazaar after his cathedral failed"
-    
+
   many-eyes-myth.yml:
     topic: '"Linus''s Law" analysis'
     key_finding: "ESR invented the quote, Linus never said it"
-    
+
   art-of-unix-irony.yml:
     topic: '"Art of Unix Programming" vs TMNN code quality'
     key_finding: "Unix best practices book author wrote terrible Unix code"
-    
+
   content-moderation-irony.yml:
     topic: "fascist.c vs ESR's anti-moderation stance"
     key_finding: "Built moderation tools, preached moderation is tyranny"
-    
+
   # ESR External History
-  
+
   jargon-file.yml:
     topic: "How ESR hijacked the Jargon File"
     key_finding: "MIT hackers consider his takeover 'parasitical vandalism'"
-    
+
   osi-ban.yml:
     topic: "ESR banned from OSI he co-founded"
     key_finding: "Co-founder expelled for Code of Conduct violations"
-    
+
   fetchmail.yml:
     topic: "ESR's other security-challenged project"
     key_finding: '"Handed over in pretty poor shape, security-wise"'
-    
+
   sex-tips-honeytrap.yml:
     topic: '"Sex Tips for Geeks" and honeytrap conspiracy'
     key_finding: "Pepe Le Pew advice, then warned men to avoid women"
-    
+
   sf-con-behavior.yml:
     topic: "ESR's notorious SF convention self-promotion"
     key_finding: "Endless droning about TMNN at inappropriate times"
-    
+
   esr-resume-analysis.yml:
     topic: "How ESR's resume sanitizes TMNN"
     key_finding: "7 words for TMNN, 47 words for martial arts"
-    
+
   # Quotes and Receipts
-  
+
   esr-quotes.yml:
     topic: "Documented horrible ESR quotes"
     categories:
@@ -105,14 +105,14 @@ files:
       - Violence threats
       - Self-aggrandizement
     purpose: "Charity fundraising potential (cf. tptacek's $30k)"
-    
+
   receipts.yml:
     topic: "Community quotes about ESR"
     sources:
       - Hacker News
       - OpenBSD mailing list
       - Wikipedia
-      
+
   esr-receipts.yml:
     topic: "ESR community receipts with full citations"
     key_quotes:
@@ -120,29 +120,29 @@ files:
       - Theo de Raadt on "many eyes"
       - idlewords on Jargon File
       - DonHopkins testimonies
-      
+
   # Statistical Summaries
-  
+
   by-the-numbers.yml:
     topic: "Harper's Index style statistics"
     format: "Question: Answer pairs"
-    
+
   # Human-Readable Summaries
-  
+
   ANALYSIS.md:
     topic: "Main analysis summary in markdown"
     purpose: "Human-readable overview of all findings"
-    
+
   ESR-QUOTES.md:
     topic: "ESR quotes collection in markdown"
     purpose: "Human-readable version of esr-quotes.yml"
-    
+
   IRONIES.md:
     topic: "Catalog of ESR contradictions"
     purpose: "Quick reference for irony/hypocrisy"
-    
+
   # Original Post
-  
+
   hn-post.txt:
     topic: "Original Hacker News post text"
     purpose: "The post that started this analysis"
@@ -161,7 +161,7 @@ methodology:
       - "Cursor AI for code review"
       - "Manual inspection of key files"
     scope: "All .c and .h files in archive"
-    
+
   historical_research:
     sources:
       - "Wayback Machine archives"
@@ -170,7 +170,7 @@ methodology:
       - "ESR's blog (esr.ibiblio.org)"
       - "RationalWiki"
       - "OpenBSD mailing lists"
-      
+
   quote_verification:
     standard: "All quotes include source URLs"
     exception: "Some ESR blog posts may require archive.org"

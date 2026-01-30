@@ -7,7 +7,7 @@ file:
   lines: 305
   purpose: "perform authorization check on posting usage"
   # A function that decides who gets to speak. Named "fascist." By choice.
-  
+
 attribution:
   original_author:
     name: "Eugene Spafford"
@@ -15,11 +15,11 @@ attribution:
     date: "May 22, 1985"
     credentials: |
       One of the most respected security researchers in computing history.
-      Founder of CERIAS at Purdue. The Spafford who co-discovered and 
+      Founder of CERIAS at Purdue. The Spafford who co-discovered and
       analyzed the Morris Worm. Author of foundational computer ethics work.
     wikipedia: https://en.wikipedia.org/wiki/Gene_Spafford
     # A legend. An actual security expert. Unlike ESR.
-    
+
   rewriter:
     name: "Eric S. Raymond"
     claim: "rewritten by Eric S. Raymond"
@@ -34,7 +34,7 @@ attribution:
 political_naming:
   # ESR embedded his libertarian worldview into variable and function names
   # Because why write clean code when you can write manifestos?
-  
+
   compile_flags:
     FASCIST:
       controls: "posting permissions"
@@ -42,21 +42,21 @@ political_naming:
       political_meaning: "state control of speech = fascism"
       # ESR: "Content moderation is literally fascism"
       # Also ESR: *writes content moderation code*
-      
+
     COMMUNIST:
-      controls: "reading permissions"  
+      controls: "reading permissions"
       default: "who can READ newsgroups"
       political_meaning: "state control of information access = communism"
       code_line: "#ifdef COMMUNIST"
       # Peak Cold War brain from someone who thinks they're enlightened
-      
+
   data_structures:
     nasty_t:
       purpose: "holds user restrictions"
       fields: ["n_post", "n_read"]
       naming_choice: "users with restrictions are 'nasty'"
       # His code has opinions about the users it restricts
-      
+
   functions:
     fascist:
       signature: "nasty_t *fascist(user)"
@@ -68,20 +68,20 @@ political_naming:
 tolkien_cosplay:
   # ESR's example configuration is pure 1980s nerd fantasy projection
   # He is the hero of his own epic. Always.
-  
+
   wizards_group:
     members: ["gandalf", "radagast"]
     gatekeeper: "saruman"
     permission: "comp.unix.wizards"
     # ESR imagines himself among the wise wizards
     # Saruman is the gatekeeper. Make of that what you will.
-    
+
   evil_sites:
     suppressed: ["mordor", "orthanc"]
     forbidden_from: "alt.goodguys"
     # Bad guys are literally Sauron's forces
     # Subtlety: not ESR's strong suit
-    
+
   restricted_user:
     name: "miscreant"
     # ESR's word for users he wants to control
@@ -94,12 +94,12 @@ tolkien_cosplay:
 hog_comment:
   # The infamous unprofessional comment
   # Peak software craftsmanship from the Unix best practices guy
-  
+
   location: "getgrplist() function, line 117"
   exact_text: "This routine is a HOG!!!!!"
   exclamation_points: 5
   # Five. Five exclamation points. Very professional.
-  
+
   actual_code_problem:
     vulnerability: "Buffer overflow"
     description: |
@@ -120,14 +120,14 @@ security_vulnerabilities:
     - location: "getgrplist()"
       cause: "strcat to fixed buffer in loop"
       # HOG!!!!! indeed
-      
+
     - location: "addrestrict()"
       cause: "multiple strcat calls to n_post and n_read"
-      
+
     - location: "fascist()"
       cause: "strcpy and sprintf with grplist"
       # The fascist function has vulnerabilities. Metaphor?
-      
+
   count_in_file: 15+
   safe_alternatives_available_in_1989: true
   # snprintf existed. strncat existed. ESR didn't use them.
@@ -136,11 +136,11 @@ irony_compilation:
   - wrote: "fascist.c to restrict who could post"
     later_argued: "any form of content moderation is tyranny"
     # The cognitive dissonance is breathtaking
-    
+
   - named: "restriction system FASCIST and COMMUNIST"
     later_complained: "about being 'cancelled' by tech community"
     # Sir, you literally wrote code to cancel people
-    
+
   - took: "Spafford's security code"
     added: "security vulnerabilities"
     later_wrote: "The Art of Unix Programming"

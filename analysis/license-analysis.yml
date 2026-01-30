@@ -12,7 +12,7 @@ meta:
 political_preamble:
   # The license opens with ESR's political philosophy, not legal terms
   # Because what software license doesn't need a libertarian manifesto?
-  
+
   property_rights_absolutism:
     quote: |
       I support strict intellectual property laws and the right of designers
@@ -21,15 +21,15 @@ political_preamble:
     position: "libertarian property maximalism"
     # The future "open source" guy arguing for strict IP laws
     # Make it make sense
-    
+
   anti_commons:
     quote: |
-      I oppose any and all attempts to alienate designers from their work by 
-      denying them property rights therein, including denial of the right to 
+      I oppose any and all attempts to alienate designers from their work by
+      denying them property rights therein, including denial of the right to
       hold software proprietary.
     # This is the "open source" guy arguing FOR proprietary rights
     # The cognitive dissonance could power a small city
-    
+
   fsf_distancing:
     quote: |
       My action is not to be construed as an endorsement of the political or
@@ -40,7 +40,7 @@ political_preamble:
     # "I'll take your license but not your cooties"
     tone: "passive aggressive"
     # Peak passive aggressive - in a software license
-    
+
   voluntary_sharing_emphasis:
     quote: "I support *voluntary* sharing"
     # Emphasis his - he added asterisks
@@ -51,27 +51,27 @@ political_preamble:
 ideology_in_license:
   # ESR embeds his entire worldview
   # A software license that requires you to agree with libertarianism
-  
+
   free_market_evangelism:
     quote: |
-      Believing as I do that this goal may be best accomplished within a society 
-      of private enterprise and free markets, I not only permit but encourage 
+      Believing as I do that this goal may be best accomplished within a society
+      of private enterprise and free markets, I not only permit but encourage
       commercial and for-profit use of this software.
     # "I permit commercial use" - as if anyone was waiting for permission
-      
+
   libertarian_creed:
     quote: |
-      please guide your use of the news software by respect for personal, 
-      political, and economic freedom; by support for natural property and 
-      contract rights; and by affirming the autonomy and privacy of individuals 
+      please guide your use of the news software by respect for personal,
+      political, and economic freedom; by support for natural property and
+      contract rights; and by affirming the autonomy and privacy of individuals
       and voluntary associations.
     # A software license that asks users to adopt libertarian politics
     # "Accept the LICENSE terms: [x] I agree to become a libertarian"
-    
+
   censorship_absolutism:
     quote: |
-      And, most especially, please join me in opposing unconditionally every 
-      form of and rationalization for censorship. The marketplace of ideas is, 
+      And, most especially, please join me in opposing unconditionally every
+      form of and rationalization for censorship. The marketplace of ideas is,
       ultimately, the most important free market of all.
     irony: "From the man who wrote fascist.c to control who could post"
     # "Oppose all censorship" says man who wrote censorship tools
@@ -80,10 +80,10 @@ ideology_in_license:
 commercial_plug:
   # Yes, an actual advertisement in a software license
   # Stay classy, Eric
-  
+
   section_title: "AN UNABASHED COMMERCIAL PLUG"
   # He literally named it this. Unironically.
-  
+
   content:
     offer: "I am available at competitive rates as a consultant"
     services: "customized netnews versions as an information-sharing tool"
@@ -94,16 +94,16 @@ commercial_plug:
       # The "secret laboratories" had a street address
     solicitation: "don't hesitate to call"
     # "Please hire me" - in a license file
-    
+
   professionalism: "embedding sales pitch in FOSS license"
   # No other open source license has a "COMMERCIAL PLUG" section
   # Because that would be tacky
 
 nuisance_message_deletion:
   # He modified GPL specifically to remove startup message requirement
-  
+
   quote: |
-    only the portion that would have required the software to display a 
+    only the portion that would have required the software to display a
     nuisance message on startup has been deleted
   translation: "I find FSF's attribution requirements annoying"
   # His words: "nuisance message"
@@ -125,11 +125,11 @@ irony_compilation:
   - statement: "oppose unconditionally every form of censorship"
     code_written: "fascist.c with FASCIST mode to control who can post"
     # Unconditional opposition to censorship, except for his censorship tools
-    
+
   - statement: "support strict intellectual property laws"
     later_career: "became spokesman for 'open source'"
     # Plot twist: he became the IP guy's nemesis
-    
+
   - statement: "denying them property rights"
     later_essay: "'The Magic Cauldron' arguing software shouldn't be property"
     # ESR vs ESR: the eternal struggle

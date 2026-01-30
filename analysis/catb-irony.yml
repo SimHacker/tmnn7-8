@@ -20,7 +20,7 @@ thesis:
 
 tmnn_reality:
   development_model: Cathedral  # ESR's own classification would condemn his own project
-  
+
   contradictions:
     release_early:
       claim: "Release early. Release often."
@@ -29,56 +29,56 @@ tmnn_reality:
       # Words mean things, Eric
       source: doc/BRAGSHEET
       quote: |
-        after two years of development the software construct known as 
-        TEENAGE MUTANT NINJA NETNEWS has escaped from the secret laboratories 
+        after two years of development the software construct known as
+        TEENAGE MUTANT NINJA NETNEWS has escaped from the secret laboratories
         of Thyrsus Enterprises
       # "Escaped" - like it was a prisoner. Which it was.
-        
+
     many_eyes:
       claim: "Given enough eyeballs, all bugs are shallow."
       practice: "Code had essentially zero external reviewers"
       # Zero eyeballs. Maximum bugs. Shallow? Not so much.
       evidence:
         - "874 unsafe string function calls never caught"
-        - "42 mktemp() race conditions never caught"  
+        - "42 mktemp() race conditions never caught"
         - "61 command injection vulnerabilities never caught"
         - "gets() function - so dangerous it was removed from C11 - listed in system.h"
       # That's a lot of bugs for zero eyeballs to miss
       theo_de_raadt_quote: |
-        Oh right, let's hear some of that 'many eyes' crap again. My favorite 
-        part of the 'many eyes' argument is how few bugs were found by the two 
+        Oh right, let's hear some of that 'many eyes' crap again. My favorite
+        part of the 'many eyes' argument is how few bugs were found by the two
         eyes of Eric (the originator of the statement).
       # Theo de Raadt - founder of the most secure OS - calling bullshit
       source: https://marc.info/?l=openbsd-tech&m=129261032213320&w=2
-      
+
     open_development:
       claim: "The bazaar model works better than the cathedral"
       practice: "TMNN was developed in isolation, abandoned without community"
       # No bazaar. No community. Just one guy and his ego.
       wikipedia_epitaph: |
-        A rough version of the software was released and drew attention 
+        A rough version of the software was released and drew attention
         from around the network, but the project was abandoned shortly thereafter.
       # "Abandoned shortly thereafter" - Wikipedia being diplomatic
       source: https://en.wikipedia.org/wiki/B_News
 
 timeline_of_hypocrisy:
   # A chronological journey through ESR's contradictions
-  
+
   - year: 1987-1989
     action: "Develops TMNN in 'secret laboratories'"
     model: Cathedral
     # The cathedral nobody asked for
-    
+
   - year: 1989
     action: "Releases beta 7.8, project abandoned shortly after"
     result: "No community formed, no eyeballs reviewed, bugs remained"
     # The bazaar rejected his cathedral
-    
+
   - year: 1997
     action: "Publishes 'The Cathedral and the Bazaar'"
     irony: "8 years after his cathedral-model project failed"
     # Long enough for people to forget he had tried and failed
-    
+
   - year: 2003
     action: "Publishes 'The Art of Unix Programming'"
     irony: "His own Unix code riddled with buffer overflows"
@@ -87,27 +87,27 @@ timeline_of_hypocrisy:
 tptacek_assessment:
   source: https://news.ycombinator.com/item?id=43135830
   quote: |
-    CATB has just not held up at all; it's actively bad, and it has a 
+    CATB has just not held up at all; it's actively bad, and it has a
     weirdly outsized reputation.
   # Thomas Ptacek - actual security expert - on ESR's magnum opus
 
 donhopkins_assessment:
   source: https://news.ycombinator.com/item?id=43133598
   quote: |
-    His own failed proprietary closed source 'cathedral' project, that he 
-    was notorious for insufferably and arrogantly bragging about during the 
-    80's, but never releasing, and finally giving up on because he didn't 
+    His own failed proprietary closed source 'cathedral' project, that he
+    was notorious for insufferably and arrogantly bragging about during the
+    80's, but never releasing, and finally giving up on because he didn't
     have the skills to finish and deliver it.
   # First-hand testimony from someone who watched the whole thing
 
 the_fundamental_irony: |
-  ESR became famous by writing about how open source development works, 
+  ESR became famous by writing about how open source development works,
   after his own closed-source cathedral project failed catastrophically.
-  The guy who preached "release early, release often" kept his code secret 
-  for two years. The guy who coined "given enough eyeballs, all bugs are 
+  The guy who preached "release early, release often" kept his code secret
+  for two years. The guy who coined "given enough eyeballs, all bugs are
   shallow" never had any eyeballs review his code.
-  
-  He learned nothing from his failure except how to lecture others about 
+
+  He learned nothing from his failure except how to lecture others about
   what they should do instead.
-  
+
   # The real cathedral was the ego we built along the way

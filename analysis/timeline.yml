@@ -11,20 +11,20 @@ usenet_signatures:
 code_development:
   start: ~1987
   description: ESR begins TMNN development in "secret laboratories"
-  
+
   milestones:
     - date: 1989-07-10
       event: LICENSE and READ.ME files created
       evidence: File timestamps
-      
+
     - date: 1989-08-01
       event: Bulk of source code files dated
       evidence: File timestamps on src/*.c files
-      
+
     - date: 1989-08-28
       event: Last known modification (Makefile)
       evidence: File timestamp
-      
+
     - date: 1989-12-13
       event: ESR signature "mad mastermind of TMN-Netnews"
       source: comp.lang.misc Usenet post
@@ -44,16 +44,16 @@ archive_preservation:
   - date: ~1989-1995
     event: Code distributed via unknown channels
     speculation: Possibly Usenet, direct sharing
-    
+
   - date: 1995-04-11
     event: Archive file tmnn7-8.tar.Z appears on ftp.digital.com
     location: /pub/news/tmnn/
     evidence: Mirror at ftp.zx.net.nz shows this date
-    
+
   - date: ~2001-2009
     event: DEC FTP server content preserved
     context: DEC → Compaq → HP transitions
-    
+
   - date: unknown
     event: Archive mirrored to fi.archive.ubuntu.com
     location: /index/unix/news/tmnn7-8.tar.Z
@@ -66,14 +66,14 @@ wikipedia_documentation:
     event: First mention of TMNN added to B News Wikipedia article
     bytes_added: 367
     edit_summary: "TMNN"
-    
+
   - date: 2019-12-05
     time: "16:06"
     editor: Hbent
     event: Live archive link added to Wikipedia
     edit_summary: "→ External links : live link for tmnn source"
     url_added: fi.archive.ubuntu.com/index/unix/news/tmnn7-8.tar.Z
-    
+
   - date: 2019-12-05
     event: Wayback Machine captures the archive link
     url: https://web.archive.org/web/20191205160937/https://fi.archive.ubuntu.com/index/unix/news/tmnn7-8.tar.Z
@@ -89,16 +89,16 @@ esr_later_works:
   - year: 1997
     work: "The Cathedral and the Bazaar"
     irony: Advocated "release early, release often" after keeping TMNN in secret labs for 2 years
-    
+
   - year: 1999
     work: Co-founds Open Source Initiative
     later: Banned from OSI in 2020
-    
+
   - year: 2003
     work: "The Art of Unix Programming"
     irony: Wrote Unix best practices book; own Unix code riddled with buffer overflows
-    
-time_buried: 
+
+time_buried:
   years: 30
   from: 1989
   to: 2019
@@ -110,25 +110,25 @@ esr_resume_sanitization:
   words_devoted_to_tmnn: 7
   words_devoted_to_martial_arts: 47
   missing_from_resume:
-    - "Teenage Mutant Ninja Netnews" name
-    - "TMNN" acronym
-    - Beta status
-    - Abandonment
-    - Any promised features
+    - '"Teenage Mutant Ninja Netnews" name'
+    - '"TMNN" acronym'
+    - "Beta status"
+    - "Abandonment"
+    - "Any promised features"
 
 donhopkins_testimony:
   source: Hacker News
   relationship: "Known ESR since early 1980s"
   key_quote: |
-    His own failed proprietary closed source 'cathedral' project, that he was 
-    notorious for insufferably and arrogantly bragging about during the 80's, 
-    but never releasing, and finally giving up on because he didn't have the 
-    skills to finish and deliver it, and nobody wanted to collaborate with him 
+    His own failed proprietary closed source 'cathedral' project, that he was
+    notorious for insufferably and arrogantly bragging about during the 80's,
+    but never releasing, and finally giving up on because he didn't have the
+    skills to finish and deliver it, and nobody wanted to collaborate with him
     or listen to him talk about it any more.
   urls:
     - https://news.ycombinator.com/item?id=43133598
     - https://news.ycombinator.com/item?id=37713247
-    
+
 code_review_2026:
   date: 2026-01-30
   reviewer: "Cursor AI + DonHopkins"

@@ -21,7 +21,7 @@ buffer_overflows:
           (void) strcat(grplist, ",");
       }
     vulnerability: "Buffer overflow if user is in many groups"
-    
+
   gets_function:
     count: 1
     location: src/system.h
@@ -97,7 +97,7 @@ irony_score:
     - "The Art of Unix Programming (2003)"
     - "How to Become a Hacker"
   own_code_quality: "Riddled with buffer overflows and command injection"
-  
+
 audit_methodology:
   tool: Cursor AI with grep analysis
   patterns_searched:

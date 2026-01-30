@@ -10,7 +10,7 @@ summary:
 
 vulnerability_counts:
   # Verified counts from code analysis
-  
+
   buffer_overflows:
     unsafe_string_functions: 774
     breakdown:
@@ -35,7 +35,7 @@ vulnerability_counts:
         count: 22
       - file: src/D.priv/transmit.c
         count: 21
-        
+
   temp_file_races:
     mktemp_instances: 42
     vulnerability: "Predictable temp file names enable symlink attacks"
@@ -50,7 +50,7 @@ vulnerability_counts:
       - src/D.priv/transmit.c
       - src/bbsauto.c
       - src/mailnews.c
-      
+
   command_injection:
     system_popen_total: 61
     breakdown:
@@ -83,30 +83,30 @@ vulnerability_counts:
 
 lock_file_vulnerabilities:
   file: src/D.priv/lock.c
-  
+
   esr_self_assessment:
     quote: "The Version 7/System III implementation is ugly and flaky."
     location: "BUGS section of header comment, line 22"
     shipped_anyway: true
-    
+
   issues:
     hardcoded_key:
       code: '#define NEWSKEY 2317L'
       comment: "Hail Eris, All Hail Discordia!"
       # Discordian reference - very on-brand for ESR
       vulnerability: "Any process knowing this key can manipulate semaphore"
-      
+
     tmp_lockfile:
       code: '#define NEWSLOCK "/tmp/NEWSLOCK"'
       vulnerability: "World-writable /tmp, any user can DoS news system"
-      
+
     xenix_semaphore:
       code: 'private char sem_name[] = "/tmp/.active_lock"'
       vulnerability: "Same /tmp issue"
 
 fascist_c_vulnerabilities:
   file: src/D.news/fascist.c
-  
+
   getgrplist_overflow:
     function: getgrplist()
     code: |
@@ -118,7 +118,7 @@ fascist_c_vulnerabilities:
     vulnerability: "User in many groups overflows fixed buffer"
     esr_comment: "This routine is a HOG!!!!!"
     # He knew it was bad, documented it was bad, shipped it anyway
-    
+
   addrestrict_overflow:
     function: addrestrict()
     code: |
@@ -128,15 +128,15 @@ fascist_c_vulnerabilities:
 
 irony_metrics:
   # The "many eyes" guy's own code
-  
+
   many_eyes_applied: 0
   # Code sat in "secret laboratories" for 2 years
-  
+
   bugs_found_before_release: unknown
   # No evidence of code review
-  
+
   bugs_remaining_at_abandonment: "uncounted"
-  
+
   years_until_first_public_analysis: 37
   # 1989 to 2026
 
@@ -145,7 +145,7 @@ comparison_to_later_claims:
   catb_thesis: "given enough eyeballs, all bugs are shallow"
   own_code_eyeballs: ~0
   own_code_bugs: "deep and numerous"
-  
+
   wrote_taoup: 2003
   taoup_topic: "Unix programming best practices"
   own_code_practices: "violated most of them"
@@ -154,15 +154,15 @@ secure_alternatives_available_in_1989:
   # ESR could have used these
   - function: snprintf
     instead_of: sprintf
-    
+
   - function: strncat
     instead_of: strcat
-    
+
   - function: strncpy
     instead_of: strcpy
-    
+
   - function: mkstemp
     instead_of: mktemp
-    
+
   - pattern: "fork/exec with argument array"
     instead_of: "system() with string concatenation"

@@ -4,21 +4,21 @@
 the_code:
   file: "D.news/fascist.c"
   purpose: "Access control for news posting and reading"
-  
+
   flags:
     FASCIST:
       controls: "who can POST to which newsgroups"
       name_choice: "ESR's libertarian political statement"
-      
+
     COMMUNIST:
       controls: "who can READ which newsgroups"
       name_choice: "ESR's libertarian political statement"
-      
+
   data_structures:
     nasty_t:
       purpose: "Hold restrictions for 'nasty' users"
       name_choice: "How ESR views users he wants to control"
-      
+
     miscreant:
       role: "Example restricted user in config"
       restrictions: "Allowed to post to 'junk' and 'talk.politics', forbidden from security groups"
@@ -27,7 +27,7 @@ the_code:
   main_function:
     name: "fascist()"
     purpose: "Determine if user can post/read"
-    
+
   example_config:
     tolkien_cosplay:
       groups:
@@ -36,44 +36,43 @@ the_code:
           note: "Good guys (like ESR sees himself)"
       sites:
         banned_from_posting:
-          - "mordor"
-          - "orthanc"
+          sites: ["mordor", "orthanc"]
           newsgroup: "alt.goodguys"
           note: "Evil sites suppressed from posting"
 
 later_positions:
   # ESR's later public positions on content moderation
-  
+
   against_moderation:
     pattern: |
-      ESR spent decades arguing that any form of content moderation, 
-      codes of conduct, or community guidelines are forms of tyranny 
+      ESR spent decades arguing that any form of content moderation,
+      codes of conduct, or community guidelines are forms of tyranny
       and censorship.
-      
+
   osi_ban_context:
     year: 2020
     position: |
-      Argued against "ethical licensing" that would allow projects to 
+      Argued against "ethical licensing" that would allow projects to
       exclude certain organizations. Called it an attack on "liberty."
     result: "Banned from OSI for Code of Conduct violations"
-    
+
   honeytrap_conspiracy:
     year: 2015
     position: |
-      Claimed feminist-pushed codes of conduct at tech conferences were 
+      Claimed feminist-pushed codes of conduct at tech conferences were
       cover for "honeytrap" operations to frame male developers.
-      
+
   jargon_file_defense:
     position: |
-      Resisted calls to moderate his edits to the Jargon File, despite 
+      Resisted calls to moderate his edits to the Jargon File, despite
       criticism that he had injected his political views.
 
 the_irony:
   summary: |
-    The man who literally wrote access control code called "fascist.c" 
-    with functions to restrict who could post to newsgroups spent 
+    The man who literally wrote access control code called "fascist.c"
+    with functions to restrict who could post to newsgroups spent
     decades arguing that any form of content moderation is tyranny.
-    
+
   detailed:
     what_he_built:
       - "Code to control who can post"
@@ -81,13 +80,13 @@ the_irony:
       - "Data structures to track 'nasty' users"
       - "Example showing 'miscreants' restricted from certain groups"
       - "Site banning capability"
-      
+
     what_he_preached:
       - "Content moderation is tyranny"
       - "Codes of conduct are tools of oppression"
       - "Open source should have no restrictions"
       - "Social justice has no place in software communities"
-      
+
   timeline:
     - year: 1989
       did: "Wrote fascist.c to moderate newsgroup access"
@@ -104,6 +103,6 @@ fascist_c_as_prophecy: |
   - He believes some users are "miscreants" who should be restricted
   - He believes in hierarchical control, even while preaching freedom
   - He projects himself as Gandalf fighting Sauron
-  
-  The code reveals what his essays try to hide: ESR believes in control, 
+
+  The code reveals what his essays try to hide: ESR believes in control,
   just control exercised by HIM, with HIS values determining who's "nasty."

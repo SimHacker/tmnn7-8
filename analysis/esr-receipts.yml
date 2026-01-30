@@ -3,55 +3,55 @@
 
 donhopkins_posts:
   # DonHopkins has known ESR since early 1980s - firsthand accounts
-  
+
   primary_testimony:
     id: 43133598
     url: https://news.ycombinator.com/item?id=43133598
     date: 2025-03
     context: "Cathedral and the Bazaar discussion"
-    
+
     tmnn_account:
       quote_fragment: |
-        Ask him why he never shipped let alone shared the source code of his 
-        unfinished magnum dopeus Teenaged Mutant Ninja Turtle NetNews Reader, 
-        which he would drone on and on about endlessly and insufferably to 
-        people he cornered at science fiction conventions in the 80's, but 
+        Ask him why he never shipped let alone shared the source code of his
+        unfinished magnum dopeus Teenaged Mutant Ninja Turtle NetNews Reader,
+        which he would drone on and on about endlessly and insufferably to
+        people he cornered at science fiction conventions in the 80's, but
         never finished or released or shared with any bazaar or cathedral.
       key_points:
-        - "magnum dopeus" - deliberate malapropism
-        - "drone on and on endlessly and insufferably"
-        - "cornered at science fiction conventions"
-        - "never finished or released or shared"
-        - "any bazaar or cathedral" - pointing out his hypocrisy
-        
+        - '"magnum dopeus" - deliberate malapropism'
+        - '"drone on and on endlessly and insufferably"'
+        - '"cornered at science fiction conventions"'
+        - '"never finished or released or shared"'
+        - '"any bazaar or cathedral" - pointing out his hypocrisy'
+
     nickname_origin:
       quote: 'ESR (aka "Eric the Flute")'
       context: "His self-chosen nickname from 1980s"
-      
+
     character_assessment:
       quote_fragment: |
-        batshit crazy smarmy arrogant self-aggrandizing sexist racist 
-        anti-black homophobic Islamophobic neocon interventionist 
+        batshit crazy smarmy arrogant self-aggrandizing sexist racist
+        anti-black homophobic Islamophobic neocon interventionist
         libertarian gun nut
       anagram_noted: '"Yonder Racism" is an ironically accurate anagram of his name'
-      
+
     code_quality_assessment:
       quote: |
-        the code ESR has written himself is mediocre and lackluster at best, 
+        the code ESR has written himself is mediocre and lackluster at best,
         and trivial and unimportant in comparison to RMS's
-        
+
     jargon_file_critique:
       quote: |
-        Real hackers from the MIT-AI lab where it originated consider his 
-        revisionist politically slanted rewriting-for-profit of the Hacker's 
-        Dictionary to be disrespectful parasitical vandalism that doesn't 
-        represent the actual hacker culture, just a tool he hijacked, 
+        Real hackers from the MIT-AI lab where it originated consider his
+        revisionist politically slanted rewriting-for-profit of the Hacker's
+        Dictionary to be disrespectful parasitical vandalism that doesn't
+        represent the actual hacker culture, just a tool he hijacked,
         corrupted, and abused to spread his right-wing political ideology.
-        
+
     many_eyes_critique:
       quote: |
-        He made up the ridiculous "many eyes" quote himself, then misnamed it 
-        "Linus's Law" to avoid personal responsibility and shift the blame to 
+        He made up the ridiculous "many eyes" quote himself, then misnamed it
+        "Linus's Law" to avoid personal responsibility and shift the blame to
         innocent Linus Torvalds, who never said such a stupid thing
 
   olfactory_testimony:
@@ -59,16 +59,16 @@ donhopkins_posts:
     url: https://news.ycombinator.com/item?id=43139165
     date: 2025-03
     context: "Response to 'what was the last straw'"
-    
+
     quote: |
-      the last straw was probably his intensely sour body odor and lack of 
-      hygiene the last time he cornered me at a science fiction convention 
-      in the 1980's to relentlessly yap about his Teenage Mutant Ninja 
+      the last straw was probably his intensely sour body odor and lack of
+      hygiene the last time he cornered me at a science fiction convention
+      in the 1980's to relentlessly yap about his Teenage Mutant Ninja
       Turtle NetNews Reader
-      
+
     sex_tips_assessment:
       quote: |
-        His infamous "Sex Tips for Geeks" essay comes off like it was 
+        His infamous "Sex Tips for Geeks" essay comes off like it was
         written by Pepé Le Pew.
 
   extended_account:
@@ -76,22 +76,22 @@ donhopkins_posts:
     url: https://news.ycombinator.com/item?id=37713247
     date: 2023-09-30
     context: "Things Every Hacker Once Knew discussion"
-    
+
     copyleft_credentials:
       quote: |
-        I send RMS the Copyleft (L) sticker in 1984, when I knew both RMS 
-        and ESR, after discussing the Gnu project with RMS personally, 
+        I send RMS the Copyleft (L) sticker in 1984, when I knew both RMS
+        and ESR, after discussing the Gnu project with RMS personally,
         face to face
       link: https://www.gnu.org/graphics/copyleft-sticker.en.html
-      
+
     tmnn_details:
       quote: |
-        ESR never freed or shared the source code of TMNTNNR or collaborated 
-        with anyone on it: it was his own failed proprietary closed source 
-        "cathedral" project, that he was notorious for insufferably and 
-        arrogantly bragging about during the 80's, but never releasing, and 
-        finally giving up on because he didn't have the skills to finish and 
-        deliver it, and nobody wanted to collaborate with him or listen to 
+        ESR never freed or shared the source code of TMNTNNR or collaborated
+        with anyone on it: it was his own failed proprietary closed source
+        "cathedral" project, that he was notorious for insufferably and
+        arrogantly bragging about during the 80's, but never releasing, and
+        finally giving up on because he didn't have the skills to finish and
+        deliver it, and nobody wanted to collaborate with him or listen to
         him talk about it any more.
 
 community_responses:
@@ -101,15 +101,15 @@ community_responses:
     user: tptacek
     credentials: "Matasano Security founder, respected security researcher"
     quote: |
-      CATB has just not held up at all; it's actively bad, and it has a 
+      CATB has just not held up at all; it's actively bad, and it has a
       weirdly outsized reputation.
-      
+
   tptacek_charity:
     source: "The Great Slate fundraiser"
     mechanism: "donations to charity in exchange for NOT posting ESR quotes"
     amount_raised: "$30,000+"
     tptacek_quote: |
-      I've been torturing Twitter with lurid Eric S. Raymond quotes for years. 
+      I've been torturing Twitter with lurid Eric S. Raymond quotes for years.
       Every time I do, 20 people beg me to stop.
 
   theo_de_raadt:
@@ -118,10 +118,10 @@ community_responses:
     date: 2010-12
     credentials: "OpenBSD founder, legendary security-focused developer"
     quote: |
-      Oh right, let's hear some of that "many eyes" crap again. My favorite 
-      part of the "many eyes" argument is how few bugs were found by the two 
-      eyes of Eric (the originator of the statement). All the many eyes are 
-      apparently attached to a lot of hands that type lots of words about 
+      Oh right, let's hear some of that "many eyes" crap again. My favorite
+      part of the "many eyes" argument is how few bugs were found by the two
+      eyes of Eric (the originator of the statement). All the many eyes are
+      apparently attached to a lot of hands that type lots of words about
       many eyes, and never actually audit code.
 
   deepspace:
@@ -130,7 +130,7 @@ community_responses:
     date: 2023-07-29
     context: "Jargon File discussion"
     quote: |
-      the man's disgusting political and social views tarnished 
+      the man's disgusting political and social views tarnished
       everything he touched
 
   idlewords:
@@ -140,8 +140,8 @@ community_responses:
     credentials: "Maciej Cegłowski, Pinboard founder, tech essayist"
     date: 2023-07-29
     quote: |
-      It would be great if someone with appropriate 'back in the day' 
-      credentials would take over membership of this document and 
+      It would be great if someone with appropriate 'back in the day'
+      credentials would take over membership of this document and
       powerwash the gratuitous Eric Raymond edits and insertions off of it.
 
   brendan_eich:
@@ -151,8 +151,8 @@ community_responses:
     credentials: "JavaScript creator, Netscape/Mozilla co-founder"
     context: "Clarifying CATB's actual role in Mozilla open-sourcing"
     quote_fragment: |
-      CatB was waved around (not sure that the most ardent wavers actually 
-      read it) inside Netscape in late 1997 as a gesture to support the 
+      CatB was waved around (not sure that the most ardent wavers actually
+      read it) inside Netscape in late 1997 as a gesture to support the
       argument for doing mozilla dot org.
     subtext: "CATB was more of a gesture than actual influence"
 
@@ -160,8 +160,8 @@ community_responses:
     id: 43137552
     url: https://news.ycombinator.com/item?id=43137552
     observation: |
-      Hey Don? I've seen this post of yours more than once, so I'm assuming 
-      you've got it saved somewhere, ready to go whenever the Flute gets 
+      Hey Don? I've seen this post of yours more than once, so I'm assuming
+      you've got it saved somewhere, ready to go whenever the Flute gets
       mentioned.
 
   flopkins:
@@ -182,7 +182,7 @@ original_sources:
   jargon_file_original:
     url: https://github.com/PDP-10/its/blob/master/doc/humor/jargon.68
     description: "Original MIT-AI Lab Jargon file, free of ESR edits"
-    
+
   rationalwiki:
     url: https://rationalwiki.org/wiki/Eric_S._Raymond
     description: "Comprehensive documentation of ESR controversies"

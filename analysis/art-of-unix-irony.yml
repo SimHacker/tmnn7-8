@@ -6,7 +6,7 @@ the_book:
   author: "Eric S. Raymond"
   published: 2003
   url: http://catb.org/~esr/writings/taoup/
-  
+
   what_it_teaches:
     unix_philosophy:
       - "Write programs that do one thing and do it well"
@@ -23,7 +23,7 @@ the_book:
 
 tmnn_reality:
   # What ESR's actual Unix code looked like
-  
+
   security_violations:
     buffer_overflows:
       count: 774
@@ -34,24 +34,24 @@ tmnn_reality:
         function: "getgrplist()"
         comment: "This routine is a HOG!!!!!"
         problem: "Concatenates group names into fixed buffer, no bounds check"
-        
+
     gets_usage:
       count: 1
       note: |
-        The gets() function was removed from C11 standard entirely because 
+        The gets() function was removed from C11 standard entirely because
         it's unfixably dangerous. ESR listed it as available in system.h.
-        
+
     mktemp:
       count: 42
       note: |
         mktemp() creates predictable temp file names, enabling symlink attacks.
         mkstemp() existed in 1989 as the safe alternative.
-        
+
     command_injection:
       count: 61
       functions: ["system()", "popen()"]
       problem: "Unsanitized user input passed directly to shell"
-      
+
     lock_file_issues:
       file: "D.priv/lock.c"
       problems:
@@ -62,9 +62,9 @@ tmnn_reality:
 
 the_irony:
   statement: |
-    The man who wrote THE book on Unix programming best practices 
+    The man who wrote THE book on Unix programming best practices
     produced Unix code that violated virtually every security principle.
-    
+
   timeline:
     - year: 1989
       event: "Writes TMNN with hundreds of buffer overflows"
@@ -72,27 +72,27 @@ the_irony:
       event: "Publishes 'The Art of Unix Programming'"
     - year: 2026
       event: "TMNN code reviewed, violations documented"
-      
+
   specific_contradictions:
     distrust_input:
       book_says: "Distrust all input"
       tmnn_does: "61 command injections via unsanitized input to shell"
-      
+
     use_safe_functions:
       book_says: "Use well-tested, safe library functions"
       tmnn_does: "774 uses of unsafe string functions, gets() available"
-      
+
     handle_errors:
       book_says: "Handle errors gracefully"
       tmnn_does: "HOG!!!!! function with no error handling for buffer overflow"
 
 fetchmail_continuation:
   # ESR's later project also had security issues
-  
+
   what_it_is: "Email retrieval utility"
   esr_role: "Creator and original maintainer"
   featured_in: "The Cathedral and the Bazaar"
-  
+
   security_history:
     recent_cves:
       - id: "CVE-2021-39272"
@@ -103,7 +103,7 @@ fetchmail_continuation:
         issue: "Could crash and reveal confidential data"
       - id: "CVE-2011-3389"
         issue: "Vulnerable to chosen-plaintext attacks"
-        
+
     maintainer_assessment:
       quote: |
         fetchmail 6.2.x was handed over in a pretty poor shape, security-wise
@@ -116,7 +116,7 @@ fetchmail_continuation:
 the_pattern: |
   ESR can write eloquently about how code SHOULD be written.
   ESR cannot actually write code that follows those principles.
-  
+
   This is consistent across:
   - TMNN (1989): Buffer overflows, command injection, race conditions
   - fetchmail (1990s-2000s): Handed over "in pretty poor shape, security-wise"
@@ -124,5 +124,5 @@ the_pattern: |
 
 donhopkins_summary:
   quote: |
-    The guy whose own code is riddled with buffer overflows and command 
+    The guy whose own code is riddled with buffer overflows and command
     injection vulnerabilities wrote a book called "The Art of Unix Programming."

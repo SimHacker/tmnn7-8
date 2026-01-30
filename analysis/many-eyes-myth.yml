@@ -6,21 +6,21 @@ the_claim:
   statement: "Given enough eyeballs, all bugs are shallow."
   named: "Linus's Law"
   # Named after someone who never said it. Bold move.
-  source: "The Cathedral and the Bazaar" (1997)
+  source: "The Cathedral and the Bazaar (1997)"
   attribution: "Named after Linus Torvalds"
   # Torvalds: famously never said this
-  
+
 the_problem:
   linus_never_said_it: true
   torvalds_quote: null  # Linus has never claimed or endorsed this "law"
   # Imagine naming your made-up quote after someone who didn't say it
   # to avoid responsibility when it turns out to be wrong
-  
+
   donhopkins_analysis:
     source: https://news.ycombinator.com/item?id=43133598
     quote: |
-      He made up the ridiculous 'many eyes' quote himself, then misnamed it 
-      'Linus's Law' to avoid personal responsibility and shift the blame to 
+      He made up the ridiculous 'many eyes' quote himself, then misnamed it
+      'Linus's Law' to avoid personal responsibility and shift the blame to
       innocent Linus Torvalds, who never said such a stupid thing.
     # "Shift the blame to innocent Linus Torvalds" - chef's kiss
 
@@ -30,34 +30,34 @@ theo_de_raadt_demolition:
   source: https://marc.info/?l=openbsd-tech&m=129261032213320&w=2
   date: 2010-12
   quote: |
-    Oh right, let's hear some of that 'many eyes' crap again. My favorite 
-    part of the 'many eyes' argument is how few bugs were found by the two 
-    eyes of Eric (the originator of the statement). All the many eyes are 
-    apparently attached to a lot of hands that type lots of words about 
+    Oh right, let's hear some of that 'many eyes' crap again. My favorite
+    part of the 'many eyes' argument is how few bugs were found by the two
+    eyes of Eric (the originator of the statement). All the many eyes are
+    apparently attached to a lot of hands that type lots of words about
     many eyes, and never actually audit code.
   # "Type lots of words about many eyes, and never actually audit code"
   # Theo just ended this man's whole career in one paragraph
   significance: |
-    The founder of the most security-focused operating system explicitly 
+    The founder of the most security-focused operating system explicitly
     mocking ESR's "many eyes" claim, noting that ESR himself never audited code.
 
 empirical_evidence_against:
   # Reality: a harsh mistress to ESR's theories
-  
+
   heartbleed:
     year: 2014
     what: "Critical OpenSSL vulnerability"
     eyes_that_saw_it: "None for 2+ years"
     note: "Millions of servers, thousands of developers, zero detection"
     # Many eyes. Very shallow. Much security. Wow.
-    
+
   shellshock:
     year: 2014
     what: "Bash shell vulnerability"
     age: "25 years undetected"
     note: "One of the most reviewed pieces of software in existence"
     # 25 years. TWENTY-FIVE. Where were the eyeballs?
-    
+
   tmnn_itself:
     year: 1989
     what: "ESR's own code"
@@ -88,16 +88,16 @@ why_esr_named_it_after_linus:
   # It's intellectual money laundering
 
 the_irony: |
-  The man who invented "many eyes make all bugs shallow" never had many eyes 
-  on his own code. His TMNN project was developed in isolation for two years, 
+  The man who invented "many eyes make all bugs shallow" never had many eyes
+  on his own code. His TMNN project was developed in isolation for two years,
   released briefly, then abandoned. No eyes ever audited it.
-  
-  Meanwhile, massive projects with millions of eyes still had critical bugs 
-  hiding for decades. The claim was never empirically validated; it was just 
+
+  Meanwhile, massive projects with millions of eyes still had critical bugs
+  hiding for decades. The claim was never empirically validated; it was just
   a catchy phrase ESR made up.
-  
-  Real security researchers like Theo de Raadt have always known this was 
-  nonsense. The "many eyes" aren't auditing code - they're "typing lots of 
+
+  Real security researchers like Theo de Raadt have always known this was
+  nonsense. The "many eyes" aren't auditing code - they're "typing lots of
   words about many eyes."
-  
+
   # The many eyes were the friends we didn't make along the way
