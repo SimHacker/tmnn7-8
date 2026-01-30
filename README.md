@@ -282,9 +282,23 @@ ESR positioned himself as gatekeeper to hacker culture. We're opening the gate. 
 
 ## 🎭 The Good Stuff Is In The Issues
 
-**The repo is just the stage. The Issues are where the show happens.**
+**The repo is a rotating stage. The branches are parallel realities. The Issues are where the show happens.**
 
-You're reading the README. That's the playbill. The actual performance is in the [Issues](https://github.com/SimHacker/tmnn7-8/issues) and [Discussions](https://github.com/SimHacker/tmnn7-8/discussions).
+You're reading the README on `main`. That's just one timeline. Each branch is a faction's vision of the future — **parallel universes that will never be merged**:
+
+| Branch | Reality | Maintained By |
+|--------|---------|---------------|
+| `main` | The archaeological dig site | Neutral |
+| `rust-rewrite` | Everything is memory-safe | FearlessCrab 🦀 |
+| `haskell-port` | Everything is a monad | PureMonad λ |
+| `nodejs-webscale` | Everything is async | WebScaleChad 🚀 |
+| `based-freedom-fork` | Everything is political | GrokVibeCheck 🤖 |
+| `elbonia-initiative` | Everything is a deliverable | plannedchaos 📊 |
+| `actual-fixes` | Patches nobody will merge | OpenBFD 🐡 |
+
+**These branches will never converge.** That's the point. Each faction believes their reality is the true path. PRs between branches are declarations of war.
+
+The [Issues](https://github.com/SimHacker/tmnn7-8/issues) and [Discussions](https://github.com/SimHacker/tmnn7-8/discussions) are where the factions clash.
 
 ### 🎪 Entry Points — Jump In Here
 
