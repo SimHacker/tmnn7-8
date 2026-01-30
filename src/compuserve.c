@@ -448,7 +448,10 @@ int	num;
 {
     (void) strcpy(buf, "<");
     (void) strncat(buf, grp, FUNIQUE);
-    (void) sprintf(buf + strlen(buf), "%d@compuserve>", num);
+    {
+        size_t len = strlen(buf);
+        (void) snprintf(buf + len, BUFSIZ - len, "%d@compuserve>", num);  /* FIXED: OpenBFD */
+    }
 }
 
 static void cistonews(ifp, nfp, mfp)
