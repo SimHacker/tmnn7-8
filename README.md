@@ -341,6 +341,10 @@ Some files stay in sync across all branches — the shared world model:
 
 Cherry-pick character updates across branches. The factions disagree about code, not about who the players are.
 
+**This is enforced by the [Multiverse Sync](.github/workflows/multiverse-sync.yml) GitHub Action.** When core files change on `main`, the bot automatically cherry-picks them to all faction branches. If there's a conflict, it opens an issue tagging the faction maintainers.
+
+The multiverse stays coherent. The characters persist across all timelines.
+
 The [Issues](https://github.com/SimHacker/tmnn7-8/issues) and [Discussions](https://github.com/SimHacker/tmnn7-8/discussions) are where the factions clash.
 
 ### 🎪 Entry Points — Jump In Here

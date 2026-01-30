@@ -1,0 +1,105 @@
+# 🌌 Cross-Temporal Multiverse Sync
+# 
+# When core files change on main, sync them to all faction branches.
+# The characters exist in all timelines. Only the code diverges.
+
+name: Multiverse Sync
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'README.md'
+      - 'CODE-OF-CONDUCT.md'
+      - 'analysis/characters/**'
+      - 'analysis/SIMULATION.yml'
+      - 'analysis/rooms/**'
+
+jobs:
+  sync-to-factions:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        branch:
+          - rust-rewrite
+          - haskell-port
+          - nodejs-webscale
+          - based-freedom-fork
+          - elbonia-initiative
+          - actual-fixes
+    
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Configure git
+        run: |
+          git config user.name "Multiverse Sync Bot"
+          git config user.email "bot@tmnn.theater"
+
+      - name: Check if branch exists
+        id: check-branch
+        run: |
+          if git ls-remote --heads origin ${{ matrix.branch }} | grep -q ${{ matrix.branch }}; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Sync to ${{ matrix.branch }}
+        if: steps.check-branch.outputs.exists == 'true'
+        run: |
+          git checkout ${{ matrix.branch }}
+          
+          # Cherry-pick the commit that triggered this workflow
+          # Using -X theirs to auto-resolve conflicts in favor of main
+          git cherry-pick ${{ github.sha }} --strategy-option=theirs || {
+            echo "🎭 Cherry-pick conflict detected!"
+            echo "Creating issue to notify faction maintainers..."
+            
+            # If cherry-pick fails, reset and create an issue
+            git cherry-pick --abort || true
+            
+            gh issue create \
+              --title "🌌 Multiverse Sync Failed: ${{ matrix.branch }}" \
+              --body "$(cat <<EOF
+          ## Cross-Temporal Sync Conflict
+          
+          The multiverse sync bot attempted to cherry-pick commit ${{ github.sha }} 
+          from \`main\` to \`${{ matrix.branch }}\` but encountered a conflict.
+          
+          **Changed files:**
+          $(git diff-tree --no-commit-id --name-only -r ${{ github.sha }})
+          
+          **Action required:**
+          A faction maintainer needs to manually sync the core files:
+          
+          \`\`\`bash
+          git checkout ${{ matrix.branch }}
+          git cherry-pick ${{ github.sha }}
+          # Resolve conflicts, keeping core files from main
+          git push origin ${{ matrix.branch }}
+          \`\`\`
+          
+          The characters must exist in all timelines!
+          
+          — 🤖 Multiverse Sync Bot
+          EOF
+          )" \
+              --label "multiverse-sync,faction"
+            
+            exit 0  # Don't fail the workflow
+          }
+          
+          git push origin ${{ matrix.branch }}
+          echo "✅ Synced to ${{ matrix.branch }}"
+
+      - name: Branch doesn't exist yet
+        if: steps.check-branch.outputs.exists == 'false'
+        run: |
+          echo "⏳ Branch ${{ matrix.branch }} doesn't exist yet."
+          echo "It will be created when the faction is ready."
