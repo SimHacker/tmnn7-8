@@ -118,7 +118,11 @@ flowchart TB
 
 **Full disclosure: I have never looked at this code.**
 
-I loaded the repository into [Cursor](https://cursor.sh/) and asked the AI to review it for me. The bugs emerged. I never had to see `gets()` with my own human eyes.
+This repository was created using [Cursor](https://cursor.sh/) and the `gh` CLI tool. The AI reviewed the code. The AI wrote the analysis. The AI generated the characters. I never had to see `gets()` with my own human eyes.
+
+**You can use any tools you like** — or do it by hand if you're brave. But staring directly into 1988 C code with your own eyes is **NOT RECOMMENDED**.
+
+🥽 **USE AI SAFETY GOGGLES** 🥽
 
 **Vibe Coding lets people LARP as software developers.** This repository is for LARPing as hackers, critics, and open source commentators — in the grand ESR tradition of "How To Become A Hacker."
 
