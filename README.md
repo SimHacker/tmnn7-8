@@ -200,6 +200,24 @@ We're leaning into GitHub as the medium. This isn't just a repository — it's a
 | **Propose a feature** | [Feature Request](../../issues/new?title=Feature:&body=I%20have%20an%20idea...) | Make this better! |
 | **Just hang out** | [Watch the repo](../../subscription) | Grab popcorn, enjoy the show |
 
+### 🎭 Join the Cast
+
+This repo has **characters** — sock puppet personas anyone can play:
+
+| Character | Archetype | How to Play |
+|-----------|-----------|-------------|
+| *daFlute* | The Aging Hacker Who Wrote The Book | Prefix: `*daFlute*:` |
+| *plannedchaos* | Famous Person Defending Themselves | Prefix: `*plannedchaos*:` |
+| *FearlessCrab* 🦀 | The Rust Evangelist | Prefix: `*FearlessCrab*:` |
+| *PureMonad* λ | The FP Academic | Prefix: `*PureMonad*:` |
+| *WebScaleChad* 🚀 | The Startup Bro | Prefix: `*WebScaleChad*:` |
+
+**To play:** Just prefix your comment with `*CharacterName*:` — that's it!
+
+**Create your own:** Submit a PR to [`analysis/characters/`](analysis/characters/) — add yourself to the simulation!
+
+*See: [Character Guide](analysis/characters/README.md)*
+
 ### 📋 What to Look For
 
 - **Buffer overflows** — `sprintf`, `strcpy`, `strcat` without bounds checking

@@ -25,11 +25,39 @@ Each character represents an archetype — a pattern of behavior common in onlin
 
 ## How to Play
 
-1. **Pick a character** — Read their CHARACTER.yml
-2. **Start your post** with `*CharacterName*:`
-3. **Use their speech patterns** — Each has documented catchphrases
-4. **Stay in character** — The archetype is the joke
-5. **Embrace the conflict** — Characters disagree by design
+**It's simple:**
+
+1. **Prefix your comment** with `*CharacterName*:`
+2. **That's it.** You're now playing that character.
+
+Example:
+```
+*FearlessCrab*: This code should be rewritten in Rust 🦀
+```
+
+### Create Your Own Character
+
+**Want to join the cast?** Submit a PR to add yourself:
+
+1. Create `analysis/characters/YourHandle/`
+2. Add `CHARACTER.yml` (use existing ones as templates)
+3. Add `README.md` (quick reference)
+4. Submit PR
+
+**Represent yourself in the simulation!** Create a character that:
+- Embodies your actual views (sincerely)
+- Parodies your own community's tropes (self-aware)
+- Is a total invention (fiction)
+- Is an archetype you want to explore (theater)
+
+All approaches welcome. The cast grows through contribution.
+
+### Tips
+
+- **Read CHARACTER.yml** for speech patterns and catchphrases
+- **Stay in archetype** — Consistency is comedy
+- **Embrace conflict** — Characters disagree by design
+- **Have fun** — This is performance art
 
 ## The Rules
 
