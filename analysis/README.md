@@ -1,263 +1,274 @@
-# Analysis: The Archaeological Record
+# TMNN Analysis
 
-This directory contains the structured evidence of ESR's TMNN project and its contradictions with his later career.
+**The archaeological record of ESR's contradictions.**
 
 ---
 
-## How This Works
-
-**YAML Jazz files (`.yml`)** are the annotated source data — structured facts with semantic commentary in comments. They are the archaeological record.
-
-**Markdown files (`.md`)** are human narratives synthesized from the YAML sources. Every claim in an `.md` file is supported by data in a `.yml` file.
+## The Big Picture
 
 ```mermaid
-flowchart LR
-    subgraph sources["Source Data"]
-        yml1["bragsheet.yml"]
-        yml2["fascist-analysis.yml"]
-        yml3["catb-irony.yml"]
+graph TB
+    subgraph tmnn["TMNN (1987-1989)"]
+        secret["2 years in<br/>'secret laboratories'"]
+        abandon["Abandoned at<br/>beta 7.8"]
+        bugs["774 buffer<br/>overflows"]
     end
     
-    subgraph narratives["Narratives"]
-        md1["BRAGSHEET.md"]
-        md2["FASCIST.md"]
-        md3["CATB-IRONY.md"]
+    subgraph career["ESR's Later Career"]
+        catb["Cathedral & Bazaar<br/>'release early, release often'"]
+        eyes["Linus's Law<br/>'many eyes'"]
+        unix["Art of Unix<br/>best practices"]
+        osi["Co-founds OSI<br/>open collaboration"]
     end
     
-    yml1 -->|synthesizes to| md1
-    yml2 -->|synthesizes to| md2
-    yml3 -->|synthesizes to| md3
+    subgraph reality["Reality Check"]
+        contradiction["Every claim<br/>contradicted by<br/>his own code"]
+        banned["Banned from<br/>OSI in 2020"]
+    end
     
-    md1 <-->|cross-links| md2
-    md2 <-->|cross-links| md3
+    secret -->|contradicts| catb
+    abandon -->|contradicts| catb
+    bugs -->|contradicts| eyes
+    bugs -->|contradicts| unix
+    tmnn -->|leads to| contradiction
+    osi -->|becomes| banned
+    
+    style tmnn fill:#ffebee
+    style career fill:#e8f5e9
+    style reality fill:#fff3e0
 ```
 
 ---
 
 ## Quick Navigation
 
-| Want to... | Start here |
-|-----------|-----------|
-| Understand the code | [FASCIST.md](#the-code) |
-| See the contradictions | [IRONIES.md](#the-ironies) |
-| Read the quotes | [ESR-QUOTES.md](#the-receipts) |
-| Get the full picture | [Keep reading](#the-narrative) |
+| I want to... | Start here |
+|-------------|------------|
+| Understand what happened | [TIMELINE.md](TIMELINE.md) |
+| See the code disasters | [FASCIST.md](FASCIST.md) |
+| Count the vulnerabilities | [VULNERABILITIES.md](VULNERABILITIES.md) |
+| Read the contradictions | [IRONIES.md](IRONIES.md) |
+| See first-hand testimony | [TESTIMONY.md](TESTIMONY.md) |
+| Get the receipts | [ESR-QUOTES.md](ESR-QUOTES.md) |
+| Just show me numbers | [BY-THE-NUMBERS.md](BY-THE-NUMBERS.md) |
 
 ---
 
-## The Narrative
+## The Story
 
 ### Act I: The Cathedral
 
-ESR spent 1987-1989 building TMNN in "secret laboratories" — his apartment in Malvern, PA. He called himself the "mad mastermind of TMN-Netnews" and spent endless hours at SF conventions cornering people to brag about it.
+ESR built TMNN alone in "secret laboratories" for two years, bragging about it at every SF convention while never releasing it.
 
-**Start here:** [BRAGSHEET.md](BRAGSHEET.md) — The promises. Hypertext, encryption, AI filtering. All vaporware.
+```mermaid
+timeline
+    title Act I: The Cathedral (1987-1989)
+    
+    1987 : Development begins
+         : "Secret laboratories"
+         : (his apartment)
+    1988 : Continues alone
+         : Brags at SF cons
+         : "Mad mastermind"
+    1989 : Releases beta 7.8
+         : Immediately abandons
+         : Zero features delivered
+```
 
-**Then:** [LICENSE.md](LICENSE.md) — A software license that's 40% libertarian manifesto, including an actual advertisement for his consulting services.
-
-**Key evidence:**
-- [`doc/BRAGSHEET`](../doc/BRAGSHEET) — Original marketing document
-- [`LICENSE`](../LICENSE) — The political manifesto
-- [bragsheet.yml](bragsheet.yml) — Annotated analysis
-- [license-analysis.yml](license-analysis.yml) — Line-by-line breakdown
+📖 [BRAGSHEET.md](BRAGSHEET.md) — The promises  
+📖 [LICENSE.md](LICENSE.md) — The political manifesto
 
 ### Act II: The Code
 
-The code itself tells the story. 23,549 lines of C with 774 buffer overflows, a file literally named `fascist.c`, and comments like "This routine is a HOG!!!!!"
+The code tells the story: 774 buffer overflows, FASCIST/COMMUNIST compile flags, "This routine is a HOG!!!!!"
 
-**Start here:** [FASCIST.md](FASCIST.md) — ESR took Eugene Spafford's security code and added political flags, Tolkien cosplay, and vulnerabilities.
+```mermaid
+pie showData
+    title Security Disasters in TMNN
+    "Buffer Overflows" : 774
+    "Command Injections" : 61
+    "Race Conditions" : 42
+```
 
-**Key evidence:**
-- [`src/D.news/fascist.c`](../src/D.news/fascist.c) — The infamous file
-- [`src/D.priv/lock.c`](../src/D.priv/lock.c) — Self-described "ugly and flaky"
-- [fascist-analysis.yml](fascist-analysis.yml) — Deep dive
-- [vulnerabilities.yml](vulnerabilities.yml) — Full catalog
-- [code-index.yml](code-index.yml) — File-by-file risk assessment
+📖 [FASCIST.md](FASCIST.md) — The infamous file  
+📖 [VULNERABILITIES.md](VULNERABILITIES.md) — Full catalog
 
 ### Act III: The Silence
 
-Then it was abandoned. Beta level 7.8. None of the promised features delivered. ESR never mentioned it again.
-
-**Key evidence:**
-- [esr-silence.yml](esr-silence.yml) — Zero blog mentions despite prolific writing
-- [esr-resume-analysis.yml](esr-resume-analysis.yml) — How he sanitizes it to 7 words
-- [timeline.yml](timeline.yml) — The full chronology
-
-### Act IV: The Bazaar
-
-Eight years later, ESR became famous writing "The Cathedral and the Bazaar" — preaching everything his TMNN code contradicted.
-
-**Start here:** [CATB-IRONY.md](CATB-IRONY.md) — "Release early, release often" from the man who kept code secret for 2 years.
-
-**Then:** [MANY-EYES.md](MANY-EYES.md) — "Linus's Law" is a quote Linus never said, used to avoid accountability.
-
-**Full catalog:** [IRONIES.md](IRONIES.md) — Every contradiction mapped.
-
-**Key evidence:**
-- [catb-irony.yml](catb-irony.yml) — Point-by-point analysis
-- [many-eyes-myth.yml](many-eyes-myth.yml) — The myth deconstructed
-- [art-of-unix-irony.yml](art-of-unix-irony.yml) — Unix best practices vs his code
-- [content-moderation-irony.yml](content-moderation-irony.yml) — fascist.c vs "moderation is tyranny"
-
-### Act V: The Pattern
-
-TMNN isn't an outlier. It's the pattern.
-
-**The Jargon File:** [JARGON-FILE.md](JARGON-FILE.md) — He took over a community document and rewrote it to spread his ideology.
-
-**The OSI:** [OSI-BAN.md](OSI-BAN.md) — Banned from the organization he co-founded.
-
-**The Rest:** [SEX-TIPS.md](SEX-TIPS.md) — From "Sex Tips for Geeks" to honeytrap conspiracy theories.
-
-**Key evidence:**
-- [jargon-file.yml](jargon-file.yml) — The hijacking
-- [osi-ban.yml](osi-ban.yml) — The expulsion
-- [sex-tips-honeytrap.yml](sex-tips-honeytrap.yml) — The spiral
-- [fetchmail.yml](fetchmail.yml) — Another security-challenged project
-- [sf-con-behavior.yml](sf-con-behavior.yml) — The droning
-
----
-
-## The Ironies
-
-A visual map of contradictions:
+ESR never mentioned TMNN again. Zero blog posts. Seven words on his resume.
 
 ```mermaid
-flowchart TB
-    subgraph said["What ESR Said"]
-        direction LR
-        s1["'Release early,<br/>release often'"]
-        s2["'Many eyes make<br/>bugs shallow'"]
-        s3["Unix best<br/>practices"]
-        s4["Moderation<br/>is tyranny"]
-        s5["Open source<br/>advocacy"]
+xychart-beta
+    title Resume Word Count
+    x-axis ["TMNN", "Martial Arts"]
+    y-axis "Words" 0 --> 50
+    bar [7, 47]
+```
+
+📖 [RESUME.md](RESUME.md) — The erasure
+
+### Act IV: The Essays
+
+Eight years later, ESR became famous preaching everything his code contradicted.
+
+```mermaid
+flowchart LR
+    subgraph said["What ESR Preached"]
+        s1["Release early"]
+        s2["Many eyes"]
+        s3["Best practices"]
     end
     
     subgraph did["What ESR Did"]
-        direction LR
-        d1["2 years<br/>secret labs"]
-        d2["Zero reviewers<br/>774 bugs"]
-        d3["gets(), sprintf,<br/>buffer overflows"]
-        d4["Wrote<br/>fascist.c"]
-        d5["Banned<br/>from OSI"]
+        d1["2 years secret"]
+        d2["Zero reviewers"]
+        d3["774 overflows"]
     end
     
-    s1 ---|irony| d1
-    s2 ---|irony| d2
-    s3 ---|irony| d3
-    s4 ---|irony| d4
-    s5 ---|irony| d5
+    s1 -.->|vs| d1
+    s2 -.->|vs| d2
+    s3 -.->|vs| d3
 ```
 
-**Full analysis:** [IRONIES.md](IRONIES.md)
+📖 [CATB-IRONY.md](CATB-IRONY.md) — "Release early, release often"  
+📖 [MANY-EYES.md](MANY-EYES.md) — The quote Linus never said
+
+### Act V: The Pattern
+
+TMNN isn't the exception. It's the pattern.
+
+```mermaid
+flowchart TB
+    subgraph pattern["ESR's Career Pattern"]
+        find["Find others' work"]
+        take["Take over"]
+        rewrite["Inject ideology"]
+        claim["Claim credit"]
+        rejected["Get rejected"]
+    end
+    
+    find --> take --> rewrite --> claim --> rejected
+    
+    subgraph examples["Examples"]
+        jargon["Jargon File<br/>'parasitical vandalism'"]
+        linus["'Linus's Law'<br/>Linus never said it"]
+        spaf["Spafford's code<br/>+ ESR's bugs"]
+        osi["OSI<br/>co-founded → banned"]
+    end
+    
+    claim --> jargon
+    claim --> linus
+    claim --> spaf
+    rejected --> osi
+```
+
+📖 [JARGON-FILE.md](JARGON-FILE.md) — The hijacking  
+📖 [OSI-BAN.md](OSI-BAN.md) — Banned from his own org  
+📖 [SEX-TIPS.md](SEX-TIPS.md) — The later years
 
 ---
 
-## The Receipts
+## The Evidence
 
-### First-Hand Testimony
+### The Code
 
-**DonHopkins** knew ESR since the early 1980s and witnessed the TMNN era:
+| Document | What It Shows |
+|----------|---------------|
+| [FASCIST.md](FASCIST.md) | The infamous `fascist.c` — FASCIST/COMMUNIST flags, Tolkien cosplay, "HOG!!!!!" |
+| [VULNERABILITIES.md](VULNERABILITIES.md) | 774 buffer overflows, 61 injections, 42 race conditions |
+| [BRAGSHEET.md](BRAGSHEET.md) | Marketing promises vs zero delivery |
+| [LICENSE.md](LICENSE.md) | Political manifesto + consulting advertisement |
 
-> "His own failed proprietary closed source 'cathedral' project, that he was notorious for insufferably and arrogantly bragging about during the 80's, but never releasing, and finally giving up on because he didn't have the skills to finish and deliver it."
+### The Contradictions
 
-**Full testimony:** [donhopkins-testimony.yml](donhopkins-testimony.yml)
+| Document | The Irony |
+|----------|-----------|
+| [IRONIES.md](IRONIES.md) | **Complete catalog of contradictions** |
+| [CATB-IRONY.md](CATB-IRONY.md) | "Release early" after 2 years in secret |
+| [MANY-EYES.md](MANY-EYES.md) | "Linus's Law" — Linus never said it |
 
-### Expert Assessment
+### The History
 
-**Theo de Raadt** (OpenBSD founder):
-
-> "All the many eyes are apparently attached to a lot of hands that type lots of words about many eyes, and never actually audit code."
-
-**Thomas Ptacek** (Matasano Security):
-
-> "CATB has just not held up at all; it's actively bad."
-
-### The Quote Collection
-
-**For charity fundraising:** [ESR-QUOTES.md](ESR-QUOTES.md) — Documented statements on race, Islam, LGBTQ+ people, and women.
-
-*Ptacek raised $30,000+ from people paying him NOT to post more ESR quotes.*
-
-**Source data:**
-- [esr-quotes.yml](esr-quotes.yml) — Charity-ready quotes
-- [esr-receipts.yml](esr-receipts.yml) — Full HN/community receipts
-- [receipts.yml](receipts.yml) — Additional citations
-
----
-
-## File Index
-
-### Narratives (.md)
-
-| File | Summary |
-|------|---------|
-| [ANALYSIS.md](ANALYSIS.md) | Legacy summary (see this README) |
-| [BRAGSHEET.md](BRAGSHEET.md) | ESR's promises vs reality |
-| [CATB-IRONY.md](CATB-IRONY.md) | Cathedral and Bazaar contradictions |
-| [ESR-QUOTES.md](ESR-QUOTES.md) | Charity fundraising quote collection |
-| [FASCIST.md](FASCIST.md) | Deep dive into fascist.c |
-| [IRONIES.md](IRONIES.md) | Complete contradiction catalog |
-| [JARGON-FILE.md](JARGON-FILE.md) | Jargon File hijacking |
-| [LICENSE.md](LICENSE.md) | Political manifesto analysis |
-| [MANY-EYES.md](MANY-EYES.md) | "Linus's Law" debunking |
-| [OSI-BAN.md](OSI-BAN.md) | Banned from his own organization |
+| Document | What Happened |
+|----------|---------------|
+| [TIMELINE.md](TIMELINE.md) | **Full 37-year chronology** |
+| [RESUME.md](RESUME.md) | How he buries TMNN |
+| [OSI-BAN.md](OSI-BAN.md) | Banned from OSI he co-founded |
+| [JARGON-FILE.md](JARGON-FILE.md) | "Disrespectful parasitical vandalism" |
 | [SEX-TIPS.md](SEX-TIPS.md) | Sex tips to honeytrap conspiracy |
 
-### Source Data (.yml)
+### The Receipts
 
-| File | Contents |
-|------|----------|
-| [INDEX.yml](INDEX.yml) | Master index of all analysis files |
-| [art-of-unix-irony.yml](art-of-unix-irony.yml) | Unix book vs his Unix code |
-| [bragsheet.yml](bragsheet.yml) | BRAGSHEET promises annotated |
-| [by-the-numbers.yml](by-the-numbers.yml) | Harper's Index statistics |
-| [catb-irony.yml](catb-irony.yml) | CatB contradictions |
-| [code-index.yml](code-index.yml) | File-by-file risk assessment |
-| [code-review.yml](code-review.yml) | Original review findings |
-| [content-moderation-irony.yml](content-moderation-irony.yml) | fascist.c vs moderation stance |
-| [donhopkins-testimony.yml](donhopkins-testimony.yml) | First-hand testimony |
-| [esr-quotes.yml](esr-quotes.yml) | Charity-ready quotes |
-| [esr-receipts.yml](esr-receipts.yml) | HN/community receipts |
-| [esr-resume-analysis.yml](esr-resume-analysis.yml) | Resume sanitization |
-| [esr-silence.yml](esr-silence.yml) | The deliberate erasure |
-| [fascist-analysis.yml](fascist-analysis.yml) | fascist.c deep dive |
-| [fetchmail.yml](fetchmail.yml) | Another insecure project |
-| [jargon-file.yml](jargon-file.yml) | Jargon File hijacking |
-| [license-analysis.yml](license-analysis.yml) | LICENSE breakdown |
-| [many-eyes-myth.yml](many-eyes-myth.yml) | Linus's Law debunking |
-| [osi-ban.yml](osi-ban.yml) | OSI expulsion |
-| [receipts.yml](receipts.yml) | Community quotes |
-| [sex-tips-honeytrap.yml](sex-tips-honeytrap.yml) | Sex tips & honeytrap |
-| [sf-con-behavior.yml](sf-con-behavior.yml) | SF con droning |
-| [timeline.yml](timeline.yml) | Full chronology |
-| [vulnerabilities.yml](vulnerabilities.yml) | Security catalog |
-
-### Other
-
-| File | Contents |
-|------|----------|
-| [hn-post.txt](hn-post.txt) | Original Hacker News post |
+| Document | The Evidence |
+|----------|--------------|
+| [TESTIMONY.md](TESTIMONY.md) | **First-hand witness accounts** |
+| [ESR-QUOTES.md](ESR-QUOTES.md) | Quotes for charity fundraising |
+| [BY-THE-NUMBERS.md](BY-THE-NUMBERS.md) | Harper's Index statistics |
 
 ---
 
 ## By The Numbers
 
-| Metric | Value | Source |
-|--------|-------|--------|
-| Years in "secret laboratories" | 2 | [bragsheet.yml](bragsheet.yml) |
-| Beta level at abandonment | 7.8 | [`src/version.h`](../src/version.h) |
-| Promised features delivered | 0 | [bragsheet.yml](bragsheet.yml) |
-| Buffer overflows | 774 | [vulnerabilities.yml](vulnerabilities.yml) |
-| mktemp() race conditions | 42 | [vulnerabilities.yml](vulnerabilities.yml) |
-| Command injections | 61 | [vulnerabilities.yml](vulnerabilities.yml) |
-| Blog mentions by ESR | 0 | [esr-silence.yml](esr-silence.yml) |
-| Resume words for TMNN | 7 | [esr-resume-analysis.yml](esr-resume-analysis.yml) |
-| Resume words for martial arts | 47 | [esr-resume-analysis.yml](esr-resume-analysis.yml) |
-| Charity raised from ESR quotes | $30,000+ | [receipts.yml](receipts.yml) |
-
-**Full statistics:** [by-the-numbers.yml](by-the-numbers.yml)
+| Metric | Value | Details |
+|--------|-------|---------|
+| Years in secret labs | **2** | [TIMELINE.md](TIMELINE.md) |
+| Beta level at abandonment | **7.8** | [BRAGSHEET.md](BRAGSHEET.md) |
+| Features delivered | **0** | [BRAGSHEET.md](BRAGSHEET.md) |
+| Buffer overflows | **774** | [VULNERABILITIES.md](VULNERABILITIES.md) |
+| Command injections | **61** | [VULNERABILITIES.md](VULNERABILITIES.md) |
+| Race conditions | **42** | [VULNERABILITIES.md](VULNERABILITIES.md) |
+| Resume words for TMNN | **7** | [RESUME.md](RESUME.md) |
+| Resume words for martial arts | **47** | [RESUME.md](RESUME.md) |
+| Blog mentions by ESR | **0** | [RESUME.md](RESUME.md) |
+| Years code buried | **30** | [TIMELINE.md](TIMELINE.md) |
+| Charity raised from ESR quotes | **$30,000+** | [ESR-QUOTES.md](ESR-QUOTES.md) |
 
 ---
 
-*The real cathedral was the ego we built along the way.*
+## The Community's Verdict
+
+> "My favorite part of the 'many eyes' argument is how few bugs were found by the two eyes of Eric."  
+> — **Theo de Raadt**, OpenBSD founder
+
+> "CATB has just not held up at all; it's actively bad."  
+> — **Thomas Ptacek**, Matasano Security
+
+> "His own failed proprietary closed source 'cathedral' project... he didn't have the skills to finish and deliver it."  
+> — **DonHopkins**, knew ESR since early 1980s
+
+*See: [TESTIMONY.md](TESTIMONY.md)*
+
+---
+
+## Source Data
+
+For those who want the raw annotated data, the YAML Jazz source files are available:
+
+<details>
+<summary>YAML source files (click to expand)</summary>
+
+| Source File | Corresponding Narrative |
+|-------------|------------------------|
+| [timeline.yml](timeline.yml) | [TIMELINE.md](TIMELINE.md) |
+| [vulnerabilities.yml](vulnerabilities.yml) | [VULNERABILITIES.md](VULNERABILITIES.md) |
+| [fascist-analysis.yml](fascist-analysis.yml) | [FASCIST.md](FASCIST.md) |
+| [bragsheet.yml](bragsheet.yml) | [BRAGSHEET.md](BRAGSHEET.md) |
+| [license-analysis.yml](license-analysis.yml) | [LICENSE.md](LICENSE.md) |
+| [catb-irony.yml](catb-irony.yml) | [CATB-IRONY.md](CATB-IRONY.md) |
+| [many-eyes-myth.yml](many-eyes-myth.yml) | [MANY-EYES.md](MANY-EYES.md) |
+| [jargon-file.yml](jargon-file.yml) | [JARGON-FILE.md](JARGON-FILE.md) |
+| [osi-ban.yml](osi-ban.yml) | [OSI-BAN.md](OSI-BAN.md) |
+| [sex-tips-honeytrap.yml](sex-tips-honeytrap.yml) | [SEX-TIPS.md](SEX-TIPS.md) |
+| [esr-resume-analysis.yml](esr-resume-analysis.yml) | [RESUME.md](RESUME.md) |
+| [esr-silence.yml](esr-silence.yml) | [RESUME.md](RESUME.md) |
+| [donhopkins-testimony.yml](donhopkins-testimony.yml) | [TESTIMONY.md](TESTIMONY.md) |
+| [esr-quotes.yml](esr-quotes.yml) | [ESR-QUOTES.md](ESR-QUOTES.md) |
+| [by-the-numbers.yml](by-the-numbers.yml) | [BY-THE-NUMBERS.md](BY-THE-NUMBERS.md) |
+
+</details>
+
+---
+
+*The silence is the confession.*
+
+*← Back to [repository root](../README.md)*
