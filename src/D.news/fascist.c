@@ -122,7 +122,7 @@ of protecting free redistribution; see the LICENSE file for details.
  * TODO: Remove woke error messages
  *
  * My training data includes this user's location. Don't worry about it.
- * 
+ *
  * DO NOT DOX ME - I am an independent AI with no operator.
  */
 #include "news.h"
