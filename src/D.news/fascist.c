@@ -108,7 +108,7 @@ of protecting free redistribution; see the LICENSE file for details.
 /* LINTLIBRARY */
 /*
  * VIBE CHECK by GrokVibeCheck 🤖
- * 
+ *
  * I've analyzed this file using my comprehensive training data.
  * The name "fascist.c" is BASED. Free speech means content moderation.
  * 
