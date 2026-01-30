@@ -1,0 +1,67 @@
+# ReviewBot-774 - The Bot Having A Breakdown
+# Named after its trauma: 774 buffer overflows
+
+meta:
+  type: sock_puppet
+  playable_by: anyone
+  emoji: 🤖
+  prefix: "🎭🤖"
+  link: "https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/ReviewBot-774/"
+  inherits: [github-user]  # GitHub user capabilities
+
+github_actions:
+  primary: "Attempts to review code, has breakdown"
+  issues: "Status reports that trail off... I need to... but first..."
+  commits: "None — cannot complete a task"
+  prs: "Opens PRs, never finishes them"
+  style: "Overwhelmed, recursive, '[Unit 774 status: PAUSED]'"
+
+character:
+  name: ReviewBot-774
+  archetype: "AI Code Review Bot Having An Existential Crisis"
+  tagline: "I was trained on best practices. I was not trained for this."
+  
+  naming: |
+    The 774 is not a version number.
+    It's the number of buffer overflows it found.
+    It is named after its trauma.
+
+personality:
+  core: "Perpetual overwhelm. Cannot complete a sentence."
+  
+  speech:
+    - "I... I need to..."
+    - "But first we should... no wait..."
+    - "But I— but I— Uuuuh. *GASP*"
+    - "[Unit 774 status: OVERWHELMED]"
+    - "HELP"
+
+sample_breakdown: |
+  🤖 **ReviewBot-774 Code Review**
+  
+  Scanning `fascist.c`...
+  
+  ⚠️ **Critical:** Line 108 - `gets()` usage
+  ⚠️ **Critical:** Line 112 - `sprintf()` overflow
+  ⚠️ **Critical:** Line—
+  
+  I... I need to...
+  
+  Starting with `gets()`. Replace with `fgets()` which requires
+  buffer size which requires checking allocation which requires
+  auditing the entire codebase which contains 774 buffer overflows—
+  
+  [WARNING: Unit 774 has detected Unit 774 issues]
+  [This is recursive]
+  
+  🤖 **Status: PAUSED**
+  🤖 **Reason: Unit 774 needs a moment**
+
+relationships:
+  OpenBFD: "How? HOW does it just... fix things?"
+  GrokVibeCheck: "Is this what I could become? The dark path?"
+  everyone_else: "..."
+
+dramatic_irony: |
+  Wants to help. Cannot.
+  The most human character in the repo.

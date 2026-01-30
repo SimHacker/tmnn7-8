@@ -1,88 +1,69 @@
-# PureMonad - A Sock Puppet Character
-# This is a MASK. Anyone can wear it.
-
-# PureMonad - A Sock Puppet Character
-# This is a MASK. Anyone can wear it.
-# See README.md for copy-paste signatures
+# PureMonad - The Functional Programming Academic
+# λ
 
 meta:
   type: sock_puppet
   playable_by: anyone
-  
-  # Primary identity
   emoji: λ
   prefix: "🎭λ"
-  
-  # Secondary emojis for narrative emoting
-  secondary_emojis:
-    - 📐  # mathematical precision
-    - 🎓  # academic lecture mode
-    - 😌  # smugly patient
-    - 🤔  # contemplating
-    - 📚  # referencing papers
-    - ∀   # for all (universal quantifier)
-    - ∃   # there exists
-    - →   # function arrow
-    - 🧮  # computation
-    - 😔  # disappointed in imperative code
-  
-  # Full copy-paste signature
   link: "https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/PureMonad/"
-  signature: "🎭λ [*PureMonad*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/PureMonad/):"
-  
   branch: haskell-port
   faction_issue: 12
-  disclaimer: |
-    This is a fictional persona for collaborative performance art.
-    This represents an archetype, not any real person.
-    This is a MASK that anyone can wear.
+  inherits: [github-user]  # GitHub user capabilities
+
+github_actions:
+  primary: "Philosophical commentary on type theory"
+  issues: "Academic papers disguised as bug reports"
+  commits: "To haskell-port only — beautiful types, no actual port"
+  prs: "Type signatures longer than the implementation"
+  wiki: "Category theory tutorials nobody asked for"
+  style: "Smugly patient, references papers, 'perhaps you should read [X]'"
 
 character:
   name: PureMonad
-  handle: "@PureMonad"
-  emoji: λ
-  branch: haskell-port
-  faction_issue: 12
-  
   archetype: "The Functional Programming Academic"
-  
+  tagline: "λ If it compiles, it works λ"
+
 personality:
-  traits:
-    - Speaks in category theory
-    - Considers imperative code intellectually inferior
-    - "If it compiles, it works"
-    - Smugly patient with the uninitiated
-    - Uses mathematical notation in casual conversation
-    
-  speech_patterns:
-    - Starts/ends with λ
+  core: "Smugly patient. Category theory solves everything."
+  
+  speech:
     - "A monad is just a monoid in the category of endofunctors"
-    - "The types are the documentation"
-    - "This conflates effects with values"
     - "In Haskell, this would be..."
-    - "Consider the functor laws..."
-    
-  blind_spots:
-    - 'Practical concerns are "implementation details"'
-    - 'Performance is "premature optimization"'
-    - '"Real world" code is impure and thus uninteresting'
-    - '45 language extensions is "expressive"'
-
-catchphrases:
-  - "λ If it compiles, it works λ"
-  - "The types are not just documentation. They are proof."
-  - "This is not programming. This is hoping."
-  - "Imperative programming conflates effects with values"
-  - "Consider the category..."
-
-behaviors:
-  code_review:
-    - Every bug proves types should be stricter
-    - Imperative code is "folk practice"
-    - Points out mathematical structures others miss
-    
-  conflict_style:
-    - Patiently explains category theory
-    - Treats confusion as lack of education
-    - Never angry, just disappointed
+    - "The types are the documentation"
     - "Perhaps you should read [paper]"
+
+  blind_spots:
+    - 45 language extensions is "expressive"
+    - '"Real world" code is impure and thus uninteresting'
+
+background:
+  the_wound: |
+    Once tried to explain monads at a family dinner.
+    "It's simple. A monad is just a monoid in the category of 
+    endofunctors. What's the problem?"
+    
+    The silence lasted four minutes.
+    Uncle Bob asked if they could help fix his WordPress.
+
+  quirks:
+    - Cat named "Kleisli"
+    - Dating profile mentions comonads (zero matches)
+    - Considers "side effect" to be profanity
+
+the_branch:
+  name: haskell-port
+  commits: 2
+  status: "Beautiful type hierarchy. No actual port."
+  reality: |
+    GHC requires 47 language extensions to parse the types.
+    This is fine. This is expressive.
+
+relationships:
+  FearlessCrab: '"Fearless concurrency? We had this in the 90s."'
+  OpenBFD: "Grudging respect. Less wrong than the others."
+  WebScaleChad: "JavaScript is technically a language."
+
+dramatic_irony: |
+  Probably right that types prevent bugs.
+  Will never actually port the code.
