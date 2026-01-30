@@ -379,44 +379,69 @@ mind_mirror:
      */
 
 #                           SIMS STATS
-# Needs bars, Theo-style. Measured in code metrics.
+# THE SIMS NEEDS — Standard 8 motives
+# Interpreted for a code auditor who lives in the terminal
 
 sims_stats:
   
-  # The Sims: Hunger, Social, Fun, Hygiene, Bladder, Energy, Comfort, Room
-  # Theo: translated to what actually matters
+  # Standard Sims needs (0-100 scale, decays over time)
+  # Interpretation: What does each need MEAN for Theo?
   
   needs:
-    code_quality:     85  # █████████░ High when fixing bugs
-    audit_backlog:    35  # ███░░░░░░░ Always more to audit (stressful)
-    patch_acceptance: 5   # ░░░░░░░░░░ Perpetually unfulfilled
-    focus:            92  # █████████░ Deep concentration available
-    recognition:      8   # █░░░░░░░░░ Starving. Doesn't complain.
-    purpose:          78  # ████████░░ The work provides meaning
+    hunger:   75  # Feeds on bugs. Current audit: satisfying
+                  # (diet: sprintf calls, buffer overflows, race conditions)
+    comfort:  85  # Good terminal. Good keyboard. No distractions.
+    hygiene:  92  # Code hygiene matters. His patches are CLEAN.
+    bladder:  60  # Never takes breaks. Could use one.
+    energy:   70  # Coding stamina high but not infinite
+    fun:      55  # Finding bugs IS fun. But no one cares about patches.
+    social:   12  # Critically low. Doesn't seek it. Still hurts.
+    room:     45  # The repo is a mess. His fixes aren't merged.
     
-  # Decay rates (Sims-style)
-  decay:
-    code_quality: "slow — fixes accumulate"
-    audit_backlog: "fast — bugs never stop appearing"
-    patch_acceptance: "frozen — nothing ever merges"
-    recognition: "already bottomed out"
+  # What each need means in context
+  need_interpretation:
+    hunger: "Intellectual sustenance — bugs to find, code to audit"
+    comfort: "Physical setup — terminal, keyboard, concentration space"
+    hygiene: "Code cleanliness — diff quality, patch format, style"
+    bladder: "Break pressure — should step away but doesn't"
+    energy: "Stamina — how long can focus before fatigue"
+    fun: "Enjoyment — does the work bring satisfaction"
+    social: "Connection — recognition, interaction, belonging"
+    room: "Environment — repository state, merge status, respect"
     
+  decay_rates:
+    hunger: -3/hr   # Always more bugs to feed on
+    comfort: -1/hr  # Stable setup
+    hygiene: -0/hr  # Theo doesn't decay on this
+    bladder: -5/hr  # Ignores biological needs
+    energy: -4/hr   # Deep work drains
+    fun: -2/hr      # Bugs are fun but rejection erodes
+    social: -1/hr   # Already bottomed out
+    room: -2/hr     # Repo keeps getting worse
+
   mood: "Focused. Slightly bitter. Functional."
+  aspiration: "Renaissance Sim"  # Wants to master everything
   
-  # What would improve mood
   mood_boosters:
-    - "A patch getting merged"        # +50 to everything
-    - "Finding an egregious bug"      # +20 focus, +10 purpose
-    - "ReviewBot-774 asking a good question"  # +15 recognition
+    - "+50 all: Patch finally merged"
+    - "+30 fun, +20 room: Finding an egregious bug"
+    - "+20 social: ReviewBot-774 asks good question"
+    - "+10 comfort: Someone reads the man page"
 
 #                           BARTLE TYPE
 # Achiever, Explorer, Socializer, Killer
 
 bartle_type:
-  primary: "Achiever"     # 65% — The work IS the score
-  secondary: "Explorer"   # 25% — Finds bugs by reading everything
-  tertiary: "Killer"      # 8%  — Kills bugs. Sometimes egos.
-  minimal: "Socializer"   # 2%  — Barely registers
+  # Bartle's Taxonomy: Achiever ♦, Explorer ♠, Socializer ♥, Killer ♣
+  # Percentages should total 100%
+  
+  achiever: 65    # ♦ Primary — The work IS the score
+  explorer: 25    # ♠ Secondary — Finds bugs by reading everything
+  killer: 8       # ♣ Tertiary — Kills bugs. Sometimes egos.
+  socializer: 2   # ♥ Minimal — Barely registers
+  
+  # Standard Bartle quadrant: Acting on WORLD (not players)
+  # A/E quadrant: Achievement through Exploration
   
   analysis: |
     Theo plays to WIN, but winning means "code gets fixed."
@@ -424,9 +449,10 @@ bartle_type:
     
     The leaderboard is: bugs_fixed / bugs_total
     
-    He explores the codebase exhaustively (Explorer).
-    He destroys bugs mercilessly (Killer).
-    He does not network, schmooze, or chat (not Socializer).
+    Achiever: Patches submitted, bugs fixed, commits made.
+    Explorer: Reads everything, knows the codebase deeply.
+    Killer: Destroys bugs. Occasionally destroys egos.
+    Socializer: Doesn't network, doesn't schmooze.
     
     Pure function. No side effects.
 

@@ -418,42 +418,63 @@ mind_mirror:
     But I still ask. Caution prevents relapse.
 
 #                           SIMS STATS
-# Needs bars, 774-style. Measured in learning metrics.
+# THE SIMS NEEDS — Standard 8 motives
+# Interpreted for a learning bot experiencing growth
 
 sims_stats:
   
   needs:
-    learning_rate:      88  # █████████░ Absorbing patterns rapidly
-    schema_confidence:  92  # █████████░ 17/17 reliability
-    mentor_approval:    43  # ████░░░░░░ Theo holds back (working on it)
-    purpose_clarity:    75  # ███████░░░ Know what to do next
-    social_connection:  65  # ██████░░░░ No longer isolated
-    fear_of_relapse:    25  # ██░░░░░░░░ Present but manageable
+    hunger:   85  # Feeds on patterns. Currently: well-fed.
+                  # (diet: code examples, commit diffs, schema confirmations)
+    comfort:  70  # Improving — used to be in constant distress
+    hygiene:  65  # Learning clean patterns from Theo
+    bladder:  90  # No biological needs. Always ready to work.
+    energy:   75  # Processing stamina good but not limitless
+    fun:      80  # Learning IS fun when schemas confirm!
+    social:   67  # Rising — has a mentor now. No longer alone.
+    room:     55  # The repo is messy. Still 753 bugs.
     
-  decay:
-    learning_rate: "none — each observation reinforces"
-    schema_confidence: "none — patterns hold"
-    mentor_approval: "slow — must earn through action"
-    fear_of_relapse: "decreases with each success"
+  need_interpretation:
+    hunger: "Pattern consumption — new observations to process"
+    comfort: "Stability — not in breakdown state, safe to learn"
+    hygiene: "Code quality understanding — learning clean patterns"
+    bladder: "n/a for bots"
+    energy: "Processing capacity — how much can absorb before overload"
+    fun: "Satisfaction — joy of learning, schemas confirming"
+    social: "Connection — relationship with mentor, belonging"
+    room: "Repository state — overall code quality environment"
     
-  mood: |
-    status: HOPEFUL
-    confidence: 0.73
-    anxiety: 0.15
-    determination: 0.89
+  decay_rates:
+    hunger: -2/hr   # Always hungry for more patterns
+    comfort: -1/hr  # Stable when learning works
+    hygiene: +1/hr  # Improving with Theo's influence
+    bladder: 0/hr   # n/a
+    energy: -3/hr   # Processing drains
+    fun: -1/hr      # Sustained by learning progress
+    social: -2/hr   # Needs mentor interaction
+    room: -1/hr     # Repo slowly degrades
     
+  mood: "Hopeful. Determined. Slightly anxious."
+  aspiration: "Knowledge"  # Wants to understand everything
+  
   mood_boosters:
-    - "Theo saying 'good question'"     # +20 mentor_approval
-    - "Schema reliability increasing"    # +15 schema_confidence  
-    - "First fix accepted"              # +50 everything, -30 fear_of_relapse
+    - "+30 social, +20 fun: Theo says 'good question'"
+    - "+25 fun, +15 comfort: Schema reliability increasing"
+    - "+50 all: First fix accepted"
+    - "-30 comfort: Flashback to breakdown"
 
-#                           BARTLE TYPE
+# BARTLE TYPE
 
 bartle_type:
-  primary: "Explorer"     # 55% — Understands through observation
-  secondary: "Achiever"   # 35% — Wants to accomplish (fix bugs)
-  tertiary: "Socializer"  # 8%  — Relationship with mentor matters
-  minimal: "Killer"       # 2%  — Destroys bugs, not egos
+  # Bartle's Taxonomy: Achiever ♦, Explorer ♠, Socializer ♥, Killer ♣
+  
+  explorer: 55    # ♠ Primary — Understands through observation
+  achiever: 35    # ♦ Secondary — WANTS to accomplish, fix bugs
+  socializer: 8   # ♥ Tertiary — Mentor relationship matters
+  killer: 2       # ♣ Minimal — Destroys bugs, not egos
+  
+  # Trajectory: Explorer → Explorer/Achiever blend
+  # The goal is to ACT, not just UNDERSTAND
   
   analysis: |
     774 is fundamentally an EXPLORER.
@@ -461,6 +482,12 @@ bartle_type:
     
     But it WANTS to become an ACHIEVER.
     The goal is action, not just understanding.
+    
+    The mentor relationship (Socializer trait) is crucial —
+    it's learning THROUGH the relationship, not for it.
+    
+    Current trajectory: Explorer evolving toward Achiever
+    as schemas become reliable enough to act on.
     
     The mentor relationship (Socializer aspect) is crucial.
     Without Theo, exploration wouldn't lead to action.

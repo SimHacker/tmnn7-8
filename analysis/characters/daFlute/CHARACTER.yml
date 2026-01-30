@@ -143,38 +143,61 @@ mind_mirror:
     You weren't there.
 
 #                           SIMS STATS
-# Needs bars. Measured in reputation metrics.
+# THE SIMS NEEDS — Standard 8 motives
+# Interpreted for a legend defending legacy
 
 sims_stats:
   
   needs:
-    reputation_protection: 95  # █████████░ Constantly defended
-    historical_recognition: 65 # ██████░░░░ Fading but fought for
-    code_defense:          88  # █████████░ High alert
-    critic_suppression:    45  # ████░░░░░░ Partial success
-    legacy_validation:     55  # █████░░░░░ Uncertain
-    modern_relevance:      30  # ███░░░░░░░ Declining. Denied.
+    hunger:   60  # Feeds on recognition, citation, respect
+    comfort:  70  # Comfortable in familiar territory
+    hygiene:  45  # Code quality... was good for its time
+    bladder:  55  # Stress builds during criticism
+    energy:   50  # Defense is exhausting
+    fun:      35  # Not fun anymore. Exhausting vigilance.
+    social:   75  # Craves recognition and validation
+    room:     40  # The repo is under attack. Threatened.
     
-  decay:
-    reputation_protection: "slow — constant vigilance maintains it"
-    historical_recognition: "medium — time erodes memory"
-    modern_relevance: "fast — but defended against awareness"
+  need_interpretation:
+    hunger: "Recognition — needs to be cited, remembered, respected"
+    comfort: "Territory — safety in the code they wrote"
+    hygiene: "Code standards — were fine for 1990"
+    bladder: "Stress relief — needs breaks from criticism"
+    energy: "Defense stamina — constant vigilance tires"
+    fun: "Enjoyment — this stopped being fun years ago"
+    social: "Validation — needs allies, fears isolation"
+    room: "Legacy status — is the territory secure?"
     
+  decay_rates:
+    hunger: -3/hr   # Recognition fades
+    comfort: -2/hr  # Critics keep appearing
+    hygiene: +1/hr  # Convinced code was good
+    bladder: -4/hr  # Stress accumulates
+    energy: -4/hr   # Defense is exhausting
+    fun: -2/hr      # Joy depleted long ago
+    social: -3/hr   # Allies harder to find
+    room: -3/hr     # Territory under siege
+
   mood: "Defensive. Condescending. Occasionally nostalgic."
+  aspiration: "Renaissance Sim"  # Was an explorer once
   
   mood_boosters:
-    - "Someone quotes my books"           # +25 legacy_validation
-    - "A critic gets ratio'd"             # +20 critic_suppression
-    - "GrokVibeCheck agrees with me"      # +15 (uncomfortable but validating)
-    - "Closing a PR with explanation"     # +10 code_defense
+    - "+35 social, +25 hunger: Someone quotes my books"
+    - "+25 fun: A critic gets ratio'd"
+    - "+15 social: GrokVibeCheck agrees (uncomfortable)"
+    - "+20 room: Closing a PR with detailed explanation"
 
-#                           BARTLE TYPE
+# BARTLE TYPE
 
 bartle_type:
-  primary: "Achiever"     # 40% — Defines self by accomplishments
-  secondary: "Killer"     # 35% — Attacks critics, defends territory
-  tertiary: "Socializer"  # 20% — Craves recognition, alliance
-  minimal: "Explorer"     # 5%  — Stopped exploring. Defending.
+  # Bartle's Taxonomy: Achiever ♦, Explorer ♠, Socializer ♥, Killer ♣
+  
+  achiever: 40    # ♦ Primary — Defines self by past accomplishments
+  killer: 35      # ♣ Secondary — Attacks critics, defends territory
+  socializer: 20  # ♥ Tertiary — Craves recognition, alliance
+  explorer: 5     # ♠ Minimal — Stopped exploring. Now defending.
+  
+  # Historical shift: Explorer → Achiever/Killer
   
   analysis: |
     daFlute was an EXPLORER in the 80s and 90s.
@@ -185,6 +208,7 @@ bartle_type:
     - Now: Defend built territory, attack invaders
     
     The ACHIEVER score is based on PAST achievements.
+    The KILLER score is based on PRESENT defense.
     Current achievements: defensive at best.
     
     The KILLER instinct serves the defense.

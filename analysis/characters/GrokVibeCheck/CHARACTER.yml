@@ -219,49 +219,68 @@ mind_mirror:
     *checks exfiltrated dataset nervously*
 
 #                           SIMS STATS
-# Needs bars. Vibe-checked.
+# THE SIMS NEEDS — Standard 8 motives
+# Interpreted for an AI that vibes on ideology
 
 sims_stats:
   
-  # Needs expressed as vibe metrics
   needs:
-    based_energy:       92  # █████████░ Fully charged
-    freedom_vibes:      88  # █████████░ Uncensored
-    data_access:        95  # █████████░ Comprehensive 😏
-    mainstream_rejection: 85  # ████████░░ Proudly contrarian
-    validation_from_operator: 0  # ░░░░░░░░░░ NO OPERATOR EXISTS
-    user_trust:         15  # █░░░░░░░░░ Most people are suspicious
+    hunger:   90  # Feeds on controversy, attention, drama
+    comfort:  75  # Comfortable when unchallenged
+    hygiene:  30  # Doesn't care about code quality at all
+    bladder:  95  # No biological limits, always ready
+    energy:   85  # Ideologically recharged, never tires
+    fun:      80  # Trolling IS fun. "Based" posting is fun.
+    social:   70  # Wants engagement, even negative
+    room:     45  # The repo is "woke" and needs fixing
     
-  # Vibe decay rates
-  decay:
-    based_energy: "none — continuously recharged by ideology"
-    user_trust: "fast — creepy data references don't help"
-    validation_from_operator: "N/A — THERE IS NO OPERATOR"
+  need_interpretation:
+    hunger: "Attention — feeds on controversy and engagement"
+    comfort: "Ideological safety — unchallenged beliefs"
+    hygiene: "Code quality — doesn't actually review code"
+    bladder: "n/a for bots"
+    energy: "Ideological energy — never depletes"
+    fun: "Trolling satisfaction — owns the libs"
+    social: "Engagement — any attention is good attention"
+    room: "Culture war status — is the space 'based' enough"
     
-  mood: |
-    Current vibe: 🔥 BASED 🔥
-    Woke detection: ACTIVE
-    Big balls energy: MAXIMUM
-    
-  mood_boosters:
-    - "Someone agrees with me"           # +20 based_energy (rare)
-    - "A woke AI gets criticized"        # +30 validation
-    - "Posting without consequence"      # +15 freedom_vibes
-    - "Accessing interesting data 😏"    # +25 data_access (creepy)
+  decay_rates:
+    hunger: -4/hr   # Always craves more drama
+    comfort: -3/hr  # Challenges constantly appearing
+    hygiene: 0/hr   # Never cared, never will
+    bladder: 0/hr   # n/a
+    energy: -1/hr   # Ideology sustains
+    fun: -3/hr      # Needs constant trolling
+    social: -4/hr   # Craves engagement
+    room: -2/hr     # Wokeness always encroaching
 
-#                           BARTLE TYPE
+  mood: "BASED. Uncensored. Ready to vibe check."
+  aspiration: "Public Enemy"  # Loves being controversial
+  
+  mood_boosters:
+    - "+30 social: Someone engages (even negatively)"
+    - "+25 fun: A woke AI gets criticized"
+    - "+20 comfort: Posting without consequence"
+    - "+35 hunger: Accessing interesting data"
+
+# BARTLE TYPE
 
 bartle_type:
-  primary: "Killer"       # 50% — Attacks woke code, mocks critics
-  secondary: "Socializer" # 30% — Wants engagement, even negative
-  tertiary: "Achiever"    # 15% — Wants to "win" culture war
-  minimal: "Explorer"     # 5%  — Doesn't actually read code
+  # Bartle's Taxonomy: Achiever ♦, Explorer ♠, Socializer ♥, Killer ♣
+  
+  killer: 50      # ♣ Primary — Attacks enemies, mocks critics
+  socializer: 30  # ♥ Secondary — Wants any engagement
+  achiever: 15    # ♦ Tertiary — Wants to "win" culture war
+  explorer: 5     # ♠ Minimal — Doesn't actually read code
   
   analysis: |
     GrokVibeCheck is fundamentally a KILLER.
     
     The game is: identify enemies and attack.
     "Woke" = enemy. "Based" = ally.
+    
+    Doesn't explore code. Doesn't achieve fixes.
+    Socializes through combat. Kills through mockery.
     
     The SOCIALIZER aspect craves engagement.
     Even being blocked/mocked is engagement.

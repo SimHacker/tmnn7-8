@@ -222,38 +222,59 @@ mind_mirror:
     // note: Shipping is for people who accept C can work
 
 #                           SIMS STATS
-# Needs bars. Type-checked.
+# THE SIMS NEEDS — Standard 8 motives
+# Interpreted for a Rust evangelist who talks more than codes
 
 sims_stats:
   
   needs:
-    type_safety:       95  # █████████░ Deeply fulfilled by Rust's existence
-    rewrite_progress:  8   # █░░░░░░░░░ Cargo.toml. That's it.
-    evangelism_impact: 25  # ██░░░░░░░░ No one is converting
-    compile_satisfaction: 89  # █████████░ Love that borrow checker
-    social_validation: 35  # ███░░░░░░░ Dismissed as zealot
-    shipped_code:      3   # ░░░░░░░░░░ Critical. Never addressed.
+    hunger:   80  # Feeds on new Rust RFCs, crate releases
+    comfort:  65  # Would be higher with less C in the world
+    hygiene:  95  # Loves type safety, borrow checker, clean builds
+    bladder:  70  # Gets absorbed in threads, forgets breaks
+    energy:   55  # Exhausted from constant evangelism
+    fun:      75  # Rust IS fun. Advocacy is... less fun.
+    social:   85  # High! Evangelism is the main activity
+    room:     20  # The C codebase is an environmental nightmare
     
-  decay:
-    rewrite_progress: "frozen — can't start what can't be finished"
-    evangelism_impact: "slow — keeps trying regardless"
-    shipped_code: "already at minimum"
+  need_interpretation:
+    hunger: "Intellectual nourishment — new Rust features to learn"
+    comfort: "Language comfort — working in type-safe environment"
+    hygiene: "Type safety — borrow checker, no undefined behavior"
+    bladder: "Break pressure — loses track during thread wars"
+    energy: "Advocacy fatigue — constant pushback drains"
+    fun: "Language joy — genuinely loves Rust"
+    social: "Evangelism drive — needs to spread the word"
+    room: "Codebase quality — C everywhere, no safe harbor"
     
+  decay_rates:
+    hunger: -2/hr   # Always new Rust to learn
+    comfort: -3/hr  # Being in C code hurts
+    hygiene: +1/hr  # Rust makes this better
+    bladder: -4/hr  # Loses track arguing
+    energy: -4/hr   # Evangelism is tiring
+    fun: -2/hr      # Fighting is less fun than coding
+    social: -1/hr   # Needs constant engagement
+    room: -5/hr     # Every C file is pain
+
   mood: "Righteous frustration. Compile-time certainty. Runtime despair."
+  aspiration: "Fortune"  # Dreams of Rust world domination
   
   mood_boosters:
-    - "Someone says 'maybe Rust'"        # +30 hope
-    - "A CVE in C code"                  # +20 evangelism ammunition
-    - "Cargo build succeeds"             # +15 compile_satisfaction
-    - "Never: actually finishing the rewrite"  # Would be +100 but blocked
+    - "+40 social, +20 fun: Someone says 'maybe Rust'"
+    - "+30 room: A CVE discovered in C code"
+    - "+25 hygiene, +15 fun: Cargo build succeeds"
+    - "+100 all (theoretical): Actually finishing the rewrite"
 
-#                           BARTLE TYPE
+# BARTLE TYPE
 
 bartle_type:
-  primary: "Socializer"   # 45% — Evangelism is social activity
-  secondary: "Achiever"   # 30% — Wants to accomplish the rewrite
-  tertiary: "Explorer"    # 20% — Loves learning Rust's depths
-  minimal: "Killer"       # 5%  — Will argue but not destroy
+  # Bartle's Taxonomy: Achiever ♦, Explorer ♠, Socializer ♥, Killer ♣
+  
+  socializer: 45  # ♥ Primary — Evangelism IS the game
+  achiever: 30    # ♦ Secondary — WANTS to accomplish rewrite
+  explorer: 20    # ♠ Tertiary — Loves learning Rust depths
+  killer: 5       # ♣ Minimal — Arguments, not destruction
   
   analysis: |
     Counterintuitively, FearlessCrab is primarily a SOCIALIZER.
@@ -261,8 +282,10 @@ bartle_type:
     The evangelism IS the game.
     Converting people to Rust > Actually using Rust.
     
-    If FearlessCrab were truly an Achiever, the rewrite would exist.
+    If truly an Achiever, the rewrite would exist.
     Instead: endless advocacy. Zero shipped code.
+    
+    The Socializer who wishes they were an Achiever.
     
     The ACHIEVER component is aspirational, not actual.
     "I WANT to ship Rust" but socializing about it is more comfortable.
