@@ -1,10 +1,14 @@
 # github-simulation — GitHub repo as MMORPG
 # Quick scan: what, why, when
+#
+# REQUIRES: moollm mounted in workspace (inherits adventure, character, simulation)
 
 what: |
   Turn a GitHub repo into a live performance stage.
   Issues are scenes. Branches are factions. PRs are diplomatic incidents.
   Characters forge commits with the gh CLI. SIMULATION.yml orchestrates.
+  
+  Mount moollm alongside this repo to activate inheritance chain.
 
 why: |
   Traditional code review is boring.
