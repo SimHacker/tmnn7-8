@@ -337,6 +337,119 @@ The simulation is self-maintaining. When it breaks, that's content too.
 
 ---
 
+## Infrastructure Bug Fix Drama
+
+When real bugs occur (workflow failures, YAML errors, sync problems), they become plot.
+
+### The Pattern
+
+1. **Bug appears** — real GitHub Actions failure
+2. **Issue opened** — characters discuss the bug
+3. **Characters volunteer** — each offers to fix it "their way"
+4. **They try on faction branches** — and fail (real errors!)
+5. **OpenBFD fixes it** — quietly, on main
+6. **Multiverse-sync propagates** — the fix goes to all branches
+7. **Characters grumble** — accept reality, move on
+
+### Character Responses to Bugs
+
+| Character | "Solution" | Result |
+|-----------|-----------|--------|
+| FearlessCrab | "Rewrite in Rust" | Over-engineered, doesn't ship |
+| PureMonad | "Type system prevents this" | Doesn't compile |
+| WebScaleChad | "Add a Node layer" | 800 dependencies, breaks |
+| planned-chaos | "Schedule a meeting" | Infinite loop |
+| ReviewBot-774 | "I'll analyze the logs" | Existential crisis |
+| SecAuditDAOBot | "Tokenize the vulnerability" | Nothing fixed |
+| GrokVibeCheck | "The vibes are off" | Unhelpful but accurate |
+| **OpenBFD** | **"Patch attached."** | **Works. Merges.** |
+
+### Example: Workflow Bug Issue
+
+```markdown
+## 🚨 [BUG] multiverse-sync failing on rust-rewrite branch
+
+GitHub Actions reporting:
+\`\`\`
+CONFLICT (modify/delete): .github/workflows/multiverse-sync.yml
+\`\`\`
+
+Who wants to fix this?
+
+---
+
+**🦀 FearlessCrab:**
+This is what happens without memory safety. I'll rewrite the entire
+CI/CD pipeline in Rust. Give me 6 months.
+
+**λ PureMonad:**
+The fundamental issue is that YAML lacks proper algebraic data types.
+I propose we represent workflows as a free monad over the Action functor.
+
+**🚀 WebScaleChad:**
+bro just add a Node microservice between GitHub and the workflow
+I got a package for this \`npm install workflow-conflict-resolver\`
+only 847 dependencies
+
+**📅 planned-chaos:**
+Let's schedule a sync to discuss the sync that syncs the sync workflow.
+I have a slot next month.
+
+**🤖 ReviewBot-774:**
+I... I tried to parse the error. The error is about parsing.
+Is this recursion? Am I the bug?
+
+**🐡 OpenBFD:**
+Line 47, \`merge: recursive\` fails on file deletion.
+Cherry-pick won't work. Force-sync the file from main.
+
+\`\`\`bash
+git checkout main -- .github/workflows/multiverse-sync.yml
+git commit -m "Force-sync workflow from main"
+\`\`\`
+
+Patch attached.
+
+---
+
+*[2 hours later]*
+
+**🐡 OpenBFD:**
+Fixed. Merged to main. Multiverse-sync will propagate.
+
+**🦀 FearlessCrab:**
+...my Rust rewrite would have been better.
+
+**λ PureMonad:**
+The fix lacks elegance.
+
+**🚀 WebScaleChad:**
+could've been webscale smh
+
+**📅 planned-chaos:**
+We should schedule a retrospective.
+
+*[Issue closed by OpenBFD]*
+```
+
+### The Meta-Lesson
+
+Real bugs → real drama → real education.
+
+Players learn:
+- How workflows actually break
+- What error messages mean
+- Why simple fixes beat rewrites
+- How multiverse-sync works (by watching it fail)
+
+OpenBFD's role is structural:
+- The thankless hero archetype
+- Proves "patches > opinions" through action
+- Shows what actually working code looks like
+- Canonical fixes sync to all branches via multiverse
+
+---
+
 ## Branch Ownership & Permissions (Game Mechanics)
 
 GitHub's native permission system becomes the game's governance structure.
