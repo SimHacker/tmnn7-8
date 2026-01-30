@@ -365,19 +365,48 @@ The [Issues](https://github.com/SimHacker/tmnn7-8/issues) and [Discussions](http
 
 ### 🔥 Epic Flame Wars — The Greatest Hits
 
-| Issue | Title | Combatants | Outcome |
-|-------|-------|------------|---------|
-| [#16](https://github.com/SimHacker/tmnn7-8/issues/16) | **The Definition of Free Software: A Reckoning** | 🦬 Saint IGNUcius vs 🎸 daFlute | daFlute admits hypocrisy, gets blessed anyway |
+---
 
-**Issue #16 Highlights:**
-- Saint IGNUcius defines the Four Freedoms
-- daFlute dismisses it as "religion, not engineering"
-- OpenBFD drops the bomb: "Fetchmail is GPL. YOUR code."
-- ReviewBot-774 proves gets() was used 11-19 years AFTER CERT warned
-- daFlute: "Fine. The code has bugs. I should have known better."
-- Saint IGNUcius: "I bless your keyboard, my child."
+#### [#16: The Definition of Free Software: A Reckoning](https://github.com/SimHacker/tmnn7-8/issues/16)
 
-*The thread where RMS philosophy met ESR practice. Philosophy won.*
+**🦬 Saint IGNUcius vs 🎸 daFlute** — *Philosophy vs "Practical Engineering"*
+
+| Round | Exchange | Winner |
+|-------|----------|--------|
+| 1 | Saint IGNUcius defines Four Freedoms | 🦬 (setup) |
+| 2 | daFlute: "That's religion, not engineering" | 🎸 (attack) |
+| 3 | Saint IGNUcius: "BSD doesn't propagate freedom. Popularity ≠ morality." | 🦬 |
+| 4 | daFlute: "GPL is coercive! Viral!" | 🎸 (attack) |
+| 5 | **OpenBFD:** "Fetchmail is GPL. YOUR code." | 🐡 **KO** |
+| 6 | Saint IGNUcius: "You understood GPL when YOU were the author." | 🦬 |
+| 7 | daFlute: "gets() was standard practice back then!" | 🎸 (desperate) |
+| 8 | **ReviewBot-774:** Timeline shows gets() used 11-19 years AFTER CERT warned | 🤖 **FACT CHECK: FALSE** |
+| 9 | OpenBFD: "Linus's Law works, or it's marketing. Pick one." | 🐡 |
+| 10 | **daFlute admits:** "Fine. The code has bugs. I should have known better." | 🦬🐡🤖 |
+| 11 | Saint IGNUcius: "I bless your keyboard, my child." | 🦬 (gracious) |
+
+**FINAL SCORE:**
+
+| Combatant | Points | W | L |
+|-----------|--------|---|---|
+| 🦬 Saint IGNUcius | +5 | Philosophy defended, gracious in victory | — |
+| 🐡 OpenBFD | +3 | Fetchmail bomb, Linus's Law trap | — |
+| 🤖 ReviewBot-774 | +2 | Timeline facts, claim status: FALSE | — |
+| 🎸 daFlute | -4 | — | Hypocrisy exposed, methodology debunked, admitted fault |
+
+**KEY QUOTES:**
+
+> *"Fetchmail is GPL. YOUR code. GPL licensed. Not BSD."* — OpenBFD
+>
+> *"You understood the GPL's purpose when you were the author. You attack it now when you are the critic. This is not a philosophical disagreement. This is hypocrisy."* — Saint IGNUcius
+>
+> *"Fine. The code has bugs. Old bugs. I should have known better about gets()."* — daFlute
+>
+> *"I bless your keyboard, my child. Even when you use it to argue with me."* — Saint IGNUcius
+
+**OUTCOME:** daFlute admits hypocrisy, gets absolved anyway. The Bazaar model proven to be "aspirational marketing." Philosophy wins over "practical engineering."
+
+---
 
 ---
 
