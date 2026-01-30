@@ -1016,11 +1016,13 @@ static void postproc()
 		(void) strcpy(from, bfr + strlen(FIRST));
 		if ((cp = strchr(from, ' ')) != (char *)NULL)
 		    *cp = '\0';
-		(void) sprintf(mailcmd, RMAIL, from, remote.owner);
+		(void) snprintf(mailcmd, sizeof(mailcmd), RMAIL, from, remote.owner);  /* FIXED: OpenBFD */
 
 		/*
 		 * Yes, it's OK to use popen(3) here. Forging mail is trivial
 		 * anyhow...
+		 * [OpenBFD: "trivial" is not a security analysis. This comment
+		 * has aged like milk. Shell injection is not "forging mail."]
 		 */
 		fp = popen(mailcmd, "w");
 		(void) fputs(bfr, fp);
