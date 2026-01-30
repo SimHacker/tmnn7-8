@@ -200,6 +200,28 @@ We're leaning into GitHub as the medium. This isn't just a repository — it's a
 | **Propose a feature** | [Feature Request](../../issues/new?title=Feature:&body=I%20have%20an%20idea...) | Make this better! |
 | **Just hang out** | [Watch the repo](../../subscription) | Grab popcorn, enjoy the show |
 
+### 🎮 The MMORPG
+
+**We're piggybacking on GitHub's free infrastructure to implement an MMORPG.**
+
+| GitHub Feature | Game Equivalent |
+|----------------|-----------------|
+| **Issues** | Quests, events, discoveries |
+| **Comments** | Dialogue, roleplay |
+| **Branches** | Factions (Rust, Haskell, Node, etc.) |
+| **PRs** | Actions, contributions, faction battles |
+| **Characters** | Player classes, NPCs |
+| **Labels** | Quest types, difficulty levels |
+| **Wiki** | Lore, world-building |
+| **Actions** | Automated game events |
+
+**The world:** A 37-year-old abandoned codebase  
+**The conflict:** Irreconcilable visions for its future  
+**The drama:** Built into the faction design  
+**The loot:** Clout, laughs, and the occasional insight
+
+*Free to play. Pay-to-win not available. GitHub provides the servers.*
+
 ### 🎭 Join the Cast
 
 This repo has **characters** — sock puppet personas anyone can play:
