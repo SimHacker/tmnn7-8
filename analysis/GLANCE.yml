@@ -1,11 +1,19 @@
 # analysis/ — Archaeological Findings
 # The dig site — evidence, characters, simulation
+# 
+# ACTIVATION: Mount moollm repo alongside this one in your workspace.
+# Cursor: Add both directories. Skills inherit from moollm core.
+# The characters and simulations "wake up" when moollm is present.
 
 what: |
   Structured analysis of TMNN.
   40+ evidence files.
   9 playable characters.
   3 skills for the GitHub MMORPG.
+  
+  To activate: Open both tmnn7-8 AND moollm in your workspace.
+  Skills here inherit from moollm/skills/ (character, adventure, simulation).
+  Without moollm, this is just YAML. With moollm, it's alive.
 
 subdirs:
   characters/: "9 personas AI can embody"
