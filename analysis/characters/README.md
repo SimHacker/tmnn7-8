@@ -161,29 +161,88 @@ catchphrases:
 
 This repository is designed to work **standalone** — you don't need any special tools.
 
-However, the character files are also compatible with **MOOLLM** (a microworld OS for LLMs). If you want enhanced features:
+However, the character files are also compatible with **[MOOLLM](https://github.com/SimHacker/moollm)** — a microworld OS for LLMs where directories are rooms, YAML files are alive, and AI can embody characters with full context.
+
+### What is MOOLLM?
+
+MOOLLM treats the filesystem as a navigable world:
+- **Directories are rooms** — Enter a directory to activate its context
+- **YAML files are semantic** — Comments carry meaning ([YAML Jazz](https://github.com/SimHacker/moollm/tree/main/skills/yaml-jazz))
+- **Characters are playable** — AI can embody them with personality, speech patterns, blind spots
+- **Skills are inheritable** — Build on patterns, don't reinvent them
+
+### Key MOOLLM Resources
+
+| Resource | What It Teaches |
+|----------|-----------------|
+| [**Character Skill**](https://github.com/SimHacker/moollm/tree/main/skills/character) | How to define playable characters |
+| [**Room Skill**](https://github.com/SimHacker/moollm/tree/main/skills/room) | Spatial layouts, furniture, positioning |
+| [**YAML Jazz Skill**](https://github.com/SimHacker/moollm/tree/main/skills/yaml-jazz) | Comments as semantic data |
+| [**Incarnation Skill**](https://github.com/SimHacker/moollm/tree/main/skills/incarnation) | Gold-standard character creation |
+| [**Adventure Skill**](https://github.com/SimHacker/moollm/tree/main/skills/adventure) | Room-based exploration games |
+| [**K-Lines Skill**](https://github.com/SimHacker/moollm/tree/main/skills/k-lines) | Symbolic activators (like emoji protocols!) |
+
+### Example: Adventure-4 Characters
+
+See how characters are structured in a full MOOLLM adventure:
+
+- [**Adventure-4 Characters Directory**](https://github.com/SimHacker/moollm/tree/main/examples/adventure-4/characters) — Example character organization
+- [**CHARACTERS.yml**](https://github.com/SimHacker/moollm/blob/main/examples/adventure-4/CHARACTERS.yml) — Master character registry
+- [**Fictional Characters**](https://github.com/SimHacker/moollm/tree/main/examples/adventure-4/characters/fictional) — AI personas, archetypes
+- [**Abstract Characters**](https://github.com/SimHacker/moollm/tree/main/examples/adventure-4/characters/abstract) — Conceptual entities
 
 ### What MOOLLM Adds
 
-- **Character inheritance** — Characters can inherit traits from other characters
-- **Room-based activation** — Characters activate when you enter their directory  
-- **Spatial positioning** — Characters can be placed in rooms, on furniture, etc.
-- **Cross-repository characters** — Import characters from other MOOLLM repos
-- **AI-native roleplay** — LLMs can embody characters with full context
+| Feature | Without MOOLLM | With MOOLLM |
+|---------|----------------|-------------|
+| Play characters | Copy-paste prefix | AI embodiment |
+| Character context | Read the YAML | Auto-loaded on entry |
+| Inheritance | Copy and edit | `inherits_from: ../base/` |
+| Spatial positioning | Descriptive | Functional |
+| Cross-repo characters | Manual | `path: @other-repo/characters/` |
 
 ### How to Use with MOOLLM
 
-1. Clone the [MOOLLM repository](https://github.com/your-org/moollm)
-2. Add this repo as a linked world
-3. Characters will be available for AI embodiment
+**Option 1: Cursor IDE + MOOLLM**
+1. Clone [MOOLLM](https://github.com/SimHacker/moollm) alongside this repo
+2. MOOLLM skills auto-activate in Cursor
+3. AI can embody characters when you enter their directory
+
+**Option 2: Link as a World**
+```yaml
+# In your MOOLLM config
+worlds:
+  tmnn7-8:
+    path: ../tmnn7-8
+    characters: analysis/characters/
+```
+
+**Option 3: Just Read the Skills**
+
+Even without using MOOLLM, reading the skill documentation teaches you:
+- How to structure character files
+- What fields matter and why
+- Patterns that make characters "playable" by AI
+
+### Future Rooms
+
+Each character could have their own room modeling their dev environment:
+- **daFlute's Study** — Books everywhere, old terminals, `vi` keybindings
+- **FearlessCrab's Workshop** — Rust posters, zero `unsafe` blocks allowed
+- **PureMonad's Office** — Whiteboards full of category theory, Haskell books
+- **WebScaleChad's Startup** — Standing desks, ping pong, AWS dashboard
+- **plannedchaos's Corner Office** — PowerPoint decks, RACI matrices, motivational posters
+
+*Coming soon: Character dev environments as ROOM.yml files.*
 
 ### Future Platforms
 
 We plan to support:
-- **Cursor IDE** — Native integration with MOOLLM skills
+- **Cursor IDE** — Native integration with MOOLLM skills *(current)*
 - **Other AI IDEs** — As they emerge
 - **Standalone CLI** — For terminal-based roleplay
 - **Discord bots** — Character embodiment in chat
+- **Web interface** — Browser-based character play
 
 **But you don't need any of this.** The copy-paste format works everywhere GitHub does.
 
