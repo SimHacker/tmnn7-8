@@ -147,6 +147,7 @@ behaviors:
   - Cannot sleep above 72°F (22°C)
   - Does not eat breakfast (do not ask)
   - Dislikes: avocado, eggplant, hot pepper, olives, liver, beer, coffee
+  - Dislikes: trees, bushy plants (blocks the view, prefers clear sightlines)
 
 # On being canceled:
 cancellation_awareness: |
