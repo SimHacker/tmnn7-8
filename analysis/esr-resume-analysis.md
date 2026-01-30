@@ -52,6 +52,22 @@ xychart-beta
 
 ## What He DOES Brag About
 
+### ESR's Self-Assessment: "Ego is for little people"
+
+In 2009, ESR wrote a blog post titled "Ego is for little people" ([source](http://esr.ibiblio.org/?p=1404)) that included this remarkable passage:
+
+> I'm going to use myself as an example now, mainly because I don't know anyone else's story well enough to make the point I want to with it. I'm the crippled kid who became a black-belt martial artist and teacher of martial artists. I've made the New York Times bestseller list as a writer. You can hardly use a browser, a cellphone, or a game console without relying on my code. I've been a session musician on two records. **I've blown up the software industry once, reinvented the hacker culture twice, and am without doubt one of the dozen most famous geeks alive. Investment bankers pay me $300 an hour to yak at them** because I have a track record as a shrewd business analyst. I don't even have a BS, yet there's been an entire academic cottage industry devoted to writing exegeses of my work. I could do nothing but speaking tours for the rest of my life and still be overbooked. **Earnest people have struggled their whole lives to change the world less than I routinely do when I'm not even really trying.**
+
+*The post is titled "Ego is for little people." Unironically.*
+
+### "Am I the most famous programmer?"
+
+In 2015, ESR wrote another blog post ([source](http://esr.ibiblio.org/?p=6839)) that began:
+
+> My wife Cathy asked me a simple question last night, and I realized I didn't have an answer to it. "Are you" she asked "the most famous programmer in the world?"
+
+*He then spends the post seriously analyzing the question.*
+
 ### The New Hacker's Dictionary
 
 > "I conceived and edited The New Hacker's Dictionary (MIT Press, 1991). This book received enthusiastic reviews in The New York Times, PC Magazine, Byte, PC World, UNIX Review, IEEE Spectrum..."

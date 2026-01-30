@@ -125,6 +125,24 @@ Source: The New York Times Book Review, November 4, 2001
 
 ## Self-Aggrandizement
 
+### "Ego is for little people" (2009)
+
+In a blog post titled — without irony — "Ego is for little people," ESR wrote:
+
+> I'm the crippled kid who became a black-belt martial artist and teacher of martial artists. I've made the New York Times bestseller list as a writer. You can hardly use a browser, a cellphone, or a game console without relying on my code. I've been a session musician on two records. **I've blown up the software industry once, reinvented the hacker culture twice, and am without doubt one of the dozen most famous geeks alive.** Investment bankers pay me $300 an hour to yak at them because I have a track record as a shrewd business analyst. I don't even have a BS, yet there's been an entire academic cottage industry devoted to writing exegeses of my work. I could do nothing but speaking tours for the rest of my life and still be overbooked. **Earnest people have struggled their whole lives to change the world less than I routinely do when I'm not even really trying.**
+
+Source: [esr.ibiblio.org/?p=1404](http://esr.ibiblio.org/?p=1404)
+
+### "Am I the most famous programmer?" (2015)
+
+> My wife Cathy asked me a simple question last night, and I realized I didn't have an answer to it. "Are you" she asked "the most famous programmer in the world?"
+
+*He then spends the rest of the post seriously analyzing the question.*
+
+Source: [esr.ibiblio.org/?p=6839](http://esr.ibiblio.org/?p=6839)
+
+### "Natural" Abilities
+
 According to his own blog, ESR claims to be a "natural" at:
 - Polyglot (languages)
 - "Game" (pick-up artistry)
