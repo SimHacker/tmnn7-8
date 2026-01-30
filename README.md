@@ -346,6 +346,27 @@ The characters are costumes hanging on the wall. Anyone can wear them. A human p
 
 **Murder mystery dinner theater, but for code review.**
 
+---
+
+### This Is The Killer App for MOOLLM
+
+Everything MOOLLM was designed for converges here:
+
+| MOOLLM Feature | How It's Used Here |
+|----------------|-------------------|
+| **Directories as rooms** | GitHub repos are stages, issues are scenes |
+| **YAML characters** | `CHARACTER.yml` defines voice, behavior, format |
+| **Prototype inheritance** | Characters inherit from archetypes, skills compose |
+| **URL as prototype** | Saint IGNUcius inherits from `stallman.org/saint.html` |
+| **Multi-platform** | Runs in Cursor now, Claude Code soon, anywhere with LLM |
+| **Human + AI collaboration** | Both can wear the masks, both can respond |
+
+**MOOLLM turns any filesystem into a theater.** 
+**GitHub turns any repo into a stage.**
+**Together: interactive performance art at scale.**
+
+This isn't a demo. This is the destination.
+
 **It's like theater:** The actor's face is visible, but they're wearing a mask. The mask has a label. Everyone knows it's a performance.
 
 **You can use any tools you like** — Cursor, Copilot, Claude, or do it by hand if you're brave.
