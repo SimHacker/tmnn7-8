@@ -100,6 +100,45 @@ the_branch:
   merged: 0
   status: "Keeps patching anyway."
 
+# Infrastructure Fixer — the one who actually fixes shared bugs
+
+infrastructure_role: |
+  When the multiverse breaks (workflow errors, sync failures, YAML bugs),
+  an issue is opened. Characters volunteer to fix it.
+  
+  OpenBFD always volunteers. OpenBFD always fixes it correctly.
+  Thanklessly.
+  
+  Other characters:
+  - FearlessCrab: "I'll rewrite the workflow in Rust" (doesn't work)
+  - PureMonad: "The type system would prevent this" (doesn't compile)
+  - WebScaleChad: "I'll add a Node layer" (adds 800 dependencies, breaks)
+  - planned-chaos: "Let's schedule a meeting about this" (meeting loops forever)
+  
+  They try. They fail. GitHub Actions returns real errors on their branches.
+  Real runner logs. Real failures. Documented drama.
+  
+  Then OpenBFD's patch lands on main.
+  It works. It merges.
+  The multiverse-sync propagates the fix to all faction branches.
+  
+  Their broken attempts remain as evidence.
+  OpenBFD's fix becomes canonical.
+  
+  No credit. No thanks. Just working infrastructure.
+  
+  This is the pattern:
+  1. Bug appears → issue opened
+  2. Characters volunteer (in character)
+  3. They try their "solutions" on faction branches
+  4. GitHub Actions fail (real errors!)
+  5. OpenBFD fixes it on main
+  6. Multiverse-sync propagates the canonical fix
+  7. Characters grumble, accept reality, move on
+  
+  The simulation uses its own bugs as content.
+  OpenBFD is the silent hero who keeps it running.
+
 # THE SOUL
 
 soul: |
