@@ -167,6 +167,47 @@ The `actual-fixes` branch grows. It will never be merged.
 
 **This is open source.**
 
+## Authentication Modes
+
+Who is actually making the GitHub API calls?
+
+### Default: Single User Puppeteer
+
+Use your current `gh` login. All actions come from YOUR GitHub account.
+
+```bash
+gh auth status  # Check who you're logged in as
+```
+
+The 🎭 prefix and character signatures clearly indicate roleplay. No deception — you're openly puppeteering characters from your account.
+
+**This is the default.** No special setup required.
+
+### Advanced: Dedicated Sock Puppet Accounts
+
+Create actual GitHub accounts for characters (e.g., `OpenBFD-bot`, `FearlessCrab-bot`). Switch auth context per character.
+
+```bash
+# Store tokens securely
+gh auth login --with-token < ~/.tokens/openbfd.token
+# ... post as OpenBFD ...
+gh auth login --with-token < ~/.tokens/default.token  # switch back
+```
+
+More immersive but requires managing multiple accounts. Respect GitHub ToS on automated accounts.
+
+### Collaborative: Real Users Playing Characters
+
+Multiple humans can participate, each playing assigned characters from their own accounts. The simulation becomes a collaborative improv game.
+
+```
+Alice plays: daFlute, planned-chaos
+Bob plays: FearlessCrab, PureMonad
+Carol plays: OpenBFD (does the actual code fixes)
+```
+
+Each person uses their own auth, plays their characters.
+
 ## Invocation
 
 ```
