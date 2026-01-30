@@ -35,9 +35,9 @@ on:
     paths:
       - 'README.md'
       - 'CODE-OF-CONDUCT.md'
-      - 'analysis/characters/**'
       - 'analysis/SIMULATION.yml'
       - 'analysis/rooms/**'
+      - 'analysis/characters/**'
       - '.github/workflows/multiverse-sync.yml'
 
 env:

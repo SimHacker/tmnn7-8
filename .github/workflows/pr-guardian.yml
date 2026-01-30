@@ -1,0 +1,139 @@
+# 🛡️ PR Guardian - Protecting Core Files from Faction Warfare
+#
+# When a PR touches core files, this workflow:
+# 1. Labels it for review
+# 2. Checks for suspicious patterns (vandalism detection)
+# 3. Comments with review guidance
+#
+# Factions can diverge on their branches. But to merge to main,
+# they must pass through the guardian.
+
+name: PR Guardian
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'README.md'
+      - 'CODE-OF-CONDUCT.md'
+      - 'analysis/characters/**'
+      - 'analysis/SIMULATION.yml'
+      - 'analysis/rooms/**'
+      - '.github/**'
+
+env:
+  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+jobs:
+  guard-core-files:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: read
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Label PR for core file review
+        run: |
+          gh pr edit ${{ github.event.pull_request.number }} \
+            --add-label "core-files,needs-review"
+
+      - name: Detect source branch faction
+        id: faction
+        run: |
+          BRANCH="${{ github.head_ref }}"
+          case "$BRANCH" in
+            rust-rewrite*) FACTION="FearlessCrab 🦀" ;;
+            haskell-port*) FACTION="PureMonad λ" ;;
+            nodejs-webscale*) FACTION="WebScaleChad 🚀" ;;
+            based-freedom-fork*) FACTION="GrokVibeCheck 🤖" ;;
+            elbonia-initiative*) FACTION="plannedchaos 📊" ;;
+            actual-fixes*) FACTION="OpenBFD 🐡" ;;
+            *) FACTION="Unknown faction" ;;
+          esac
+          echo "faction=$FACTION" >> $GITHUB_OUTPUT
+          echo "branch=$BRANCH" >> $GITHUB_OUTPUT
+
+      - name: Check for suspicious patterns
+        id: vandalism-check
+        run: |
+          # Get the diff
+          git diff origin/main...HEAD -- 'analysis/characters/' > /tmp/char_diff.txt
+          
+          WARNINGS=""
+          
+          # Check if modifying OTHER faction's characters (potential vandalism)
+          BRANCH="${{ github.head_ref }}"
+          case "$BRANCH" in
+            rust-rewrite*)
+              if grep -l "characters/PureMonad\|characters/WebScaleChad" /tmp/char_diff.txt 2>/dev/null; then
+                WARNINGS="$WARNINGS\n⚠️ Rust faction modifying non-Rust characters"
+              fi ;;
+            haskell-port*)
+              if grep -l "characters/FearlessCrab\|characters/WebScaleChad" /tmp/char_diff.txt 2>/dev/null; then
+                WARNINGS="$WARNINGS\n⚠️ Haskell faction modifying non-Haskell characters"
+              fi ;;
+          esac
+          
+          # Check for deletion of character traits (defacement)
+          if grep -E "^-.*personality:|^-.*traits:|^-.*catchphrases:" /tmp/char_diff.txt 2>/dev/null; then
+            WARNINGS="$WARNINGS\n⚠️ Deletion of character personality traits detected"
+          fi
+          
+          # Check for suspicious additions
+          if grep -iE "penis|shit|fuck you|die|kill" /tmp/char_diff.txt 2>/dev/null; then
+            WARNINGS="$WARNINGS\n🚨 SUSPICIOUS CONTENT DETECTED - Manual review required"
+          fi
+          
+          if [ -n "$WARNINGS" ]; then
+            echo "warnings=$WARNINGS" >> $GITHUB_OUTPUT
+            echo "suspicious=true" >> $GITHUB_OUTPUT
+          else
+            echo "suspicious=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Comment on PR
+        run: |
+          FACTION="${{ steps.faction.outputs.faction }}"
+          BRANCH="${{ steps.faction.outputs.branch }}"
+          SUSPICIOUS="${{ steps.vandalism-check.outputs.suspicious }}"
+          WARNINGS="${{ steps.vandalism-check.outputs.warnings }}"
+          
+          if [ "$SUSPICIOUS" = "true" ]; then
+            ALERT="## 🚨 Guardian Alert\n\n$WARNINGS\n\nThis PR requires careful review before merging."
+          else
+            ALERT="## ✅ No suspicious patterns detected"
+          fi
+          
+          gh pr comment ${{ github.event.pull_request.number }} --body "# 🛡️ PR Guardian Report
+
+          **Source:** \`$BRANCH\`
+          **Faction:** $FACTION
+          **Targets:** Core files (characters, simulation, rooms)
+
+          $ALERT
+
+          ## Review Checklist
+
+          - [ ] Changes are constructive, not vandalism
+          - [ ] Character modifications are to faction's OWN character (or neutral)
+          - [ ] No defacement of rival faction characters
+          - [ ] Changes align with shared multiverse canon
+
+          ## The Rule
+
+          > Factions can diverge on code. Characters are shared.
+          > You can hate PureMonad's Haskell port. You cannot edit PureMonad's personality.
+
+          ---
+          *🛡️ PR Guardian — protecting the multiverse from faction warfare*"
+
+      - name: Block if highly suspicious
+        if: steps.vandalism-check.outputs.suspicious == 'true'
+        run: |
+          echo "::warning::Suspicious patterns detected - requires manual review"
+          # Don't fail, but flag for human review

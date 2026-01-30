@@ -1,0 +1,26 @@
+# 🛡️ CODEOWNERS - Gatekeeping the Multiverse
+#
+# PRs touching these files require review before merging to main.
+# This prevents hostile branches from vandalizing enemy characters.
+#
+# RULE: You can fork, you can branch, you can diverge.
+#       But merging to main requires approval.
+
+# Core game rules - affects all timelines
+README.md @SimHacker
+CODE-OF-CONDUCT.md @SimHacker
+
+# The MOOLLM VM image - shared across multiverse
+analysis/SIMULATION.yml @SimHacker
+
+# ALL character files - no drawing penises on sleeping rivals
+analysis/characters/ @SimHacker
+
+# Room definitions - shared spaces
+analysis/rooms/ @SimHacker
+
+# The syncer itself - don't let factions weaponize it
+.github/workflows/multiverse-sync.yml @SimHacker
+
+# Branch protection config
+.github/CODEOWNERS @SimHacker

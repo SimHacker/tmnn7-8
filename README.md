@@ -341,9 +341,24 @@ Some files stay in sync across all branches — the shared world model:
 
 Cherry-pick character updates across branches. The factions disagree about code, not about who the players are.
 
-**This is enforced by the [Multiverse Sync](.github/workflows/multiverse-sync.yml) GitHub Action.** When core files change on `main`, the bot automatically cherry-picks them to all faction branches. If there's a conflict, it opens an issue tagging the faction maintainers.
+**Enforced by GitHub Actions:**
 
-The multiverse stays coherent. The characters persist across all timelines.
+| Workflow | Direction | Purpose |
+|----------|-----------|---------|
+| [Multiverse Sync](.github/workflows/multiverse-sync.yml) | main → branches | Auto-sync core files to factions |
+| [PR Guardian](.github/workflows/pr-guardian.yml) | branches → main | Gatekeep hostile PRs |
+
+**Multiverse Sync:** When core files change on main, auto-cherry-pick to all branches.
+
+**PR Guardian:** When a faction PR touches core files:
+- Labels for review
+- Detects vandalism patterns (editing rival characters)
+- Comments with review checklist
+- Flags suspicious content
+
+**[CODEOWNERS](.github/CODEOWNERS):** PRs to core files require approval. No drawing penises on sleeping rivals.
+
+**The Rule:** You can hate PureMonad's Haskell port. You cannot edit PureMonad's personality.
 
 The [Issues](https://github.com/SimHacker/tmnn7-8/issues) and [Discussions](https://github.com/SimHacker/tmnn7-8/discussions) are where the factions clash.
 
