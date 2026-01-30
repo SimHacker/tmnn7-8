@@ -27,7 +27,8 @@ Welcome to the archaeological dig site of Eric S. Raymond's TMNN (Teenage Mutant
 
 - **Branch: `actual-fixes`** — [Where OpenBFD actually fixes bugs](https://github.com/SimHacker/tmnn7-8/commits/actual-fixes)
 - **Issue #2** — [Security Practices discussion](https://github.com/SimHacker/tmnn7-8/issues/2)
-- **Bug Count** — Started at 774, currently 758
+- **Bug Count** — Started at 774, currently 753
+- **🆕 Relationships** — [OpenBFD ↔ ReviewBot-774](../blob/main/analysis/relationships/openbfd-reviewbot774.md) — *Sims-style mentorship tracking*
 
 ## Critical Theory
 
@@ -76,6 +77,8 @@ graph TD
 - **Marshall McLuhan** — "The medium is the message"
 - **Ian Bogost** — *Procedural Rhetoric* (rules embody arguments)
 - **Habitat** — Morningstar & Farmer's pioneering virtual world (1986)
+- **Gary Drescher** — *Made-Up Minds* (1991) — Schema-based constructivist AI
+- **Steve Kommrusch** — [S4Eq: Learning to Fix Programs](https://arxiv.org/abs/2304.02600) (Colorado State, 2023) — Training LLMs on commits
 
 See also: [MOOLLM's tribute to Morningstar](https://github.com/SimHacker/moollm/tree/main/examples/adventure-4/pub/attic/postmodern-paper.yml)
 
