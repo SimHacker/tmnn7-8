@@ -57,10 +57,10 @@ beliefs: |
 # More Don Hopkins documentation in moollm:
 # moollm/examples/adventure-4/characters/real-people/don-hopkins/
 #   - CHARACTER.yml (full character)
-#   - HEROS.yml (Don's heroes — RMS is definitely one of them!)
+#   - HEROS.yml (Don's heroes — RMS is there now!)
+#     - richard_stallman entry added
 #     - James Gosling (created Gosling Emacs)
 #     - The whole GNU/Emacs/GPL lineage connects here
-#     - NOTE: RMS not yet explicitly in HEROS.yml, but belongs there
 #   - work-history.yml (UniPress Emacs work)
 #   - micropolis.yml (GPL release, John Gilmore gnu@toad.com connection)
 #
