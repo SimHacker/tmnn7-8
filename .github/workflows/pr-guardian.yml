@@ -47,13 +47,14 @@ jobs:
         run: |
           BRANCH="${{ github.head_ref }}"
           case "$BRANCH" in
+            dev*) FACTION="Public (open clusterfuck) 🎪" ;;
             rust-rewrite*) FACTION="FearlessCrab 🦀" ;;
             haskell-port*) FACTION="PureMonad λ" ;;
             nodejs-webscale*) FACTION="WebScaleChad 🚀" ;;
             based-freedom-fork*) FACTION="GrokVibeCheck 🤖" ;;
             elbonia-initiative*) FACTION="plannedchaos 📊" ;;
             actual-fixes*) FACTION="OpenBFD 🐡" ;;
-            *) FACTION="Unknown faction" ;;
+            *) FACTION="Unknown faction 🎭" ;;
           esac
           echo "faction=$FACTION" >> $GITHUB_OUTPUT
           echo "branch=$BRANCH" >> $GITHUB_OUTPUT

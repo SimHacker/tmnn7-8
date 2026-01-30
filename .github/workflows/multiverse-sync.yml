@@ -54,12 +54,13 @@ jobs:
       fail-fast: false
       matrix:
         branch:
-          - rust-rewrite
-          - haskell-port
-          - nodejs-webscale
-          - based-freedom-fork
-          - elbonia-initiative
-          - actual-fixes
+          - dev                   # Public clusterfuck - anyone can contribute
+          - rust-rewrite          # FearlessCrab's memory-safe utopia
+          - haskell-port          # PureMonad's categorical paradise
+          - nodejs-webscale       # WebScaleChad's async wonderland
+          - based-freedom-fork    # GrokVibeCheck's freedom zone
+          - elbonia-initiative    # plannedchaos's enterprise solution
+          - actual-fixes          # OpenBFD's patches nobody merges
     
     steps:
       - name: Checkout main

@@ -289,6 +289,7 @@ You're reading the README on `main`. That's just one timeline. Each branch is a 
 | Branch | Reality | Maintained By |
 |--------|---------|---------------|
 | `main` | The archaeological dig site | Neutral |
+| `dev` | **Public clusterfuck — anyone can contribute** | **OPEN** |
 | `rust-rewrite` | Everything is memory-safe | FearlessCrab 🦀 |
 | `haskell-port` | Everything is a monad | PureMonad λ |
 | `nodejs-webscale` | Everything is async | WebScaleChad 🚀 |
