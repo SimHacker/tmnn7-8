@@ -113,8 +113,8 @@ files:
       - OpenBSD mailing list
       - Wikipedia
       
-  hn-receipts.yml:
-    topic: "Hacker News specific citations"
+  esr-receipts.yml:
+    topic: "ESR community receipts with full citations"
     key_quotes:
       - tptacek on CATB not holding up
       - Theo de Raadt on "many eyes"

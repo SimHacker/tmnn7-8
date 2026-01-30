@@ -112,7 +112,7 @@ tmnn7-8/
 | [ESR-QUOTES.md](analysis/ESR-QUOTES.md) | **Human-readable quote collection** |
 | [esr-quotes.yml](analysis/esr-quotes.yml) | **Sourced quotes for charity fundraising** |
 | [receipts.yml](analysis/receipts.yml) | Community quotes with provenance |
-| [hn-receipts.yml](analysis/hn-receipts.yml) | Hacker News specific citations |
+| [esr-receipts.yml](analysis/esr-receipts.yml) | ESR community receipts with full citations |
 
 ### Timeline & Statistics
 
