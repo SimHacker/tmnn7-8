@@ -75,14 +75,25 @@ For decades, TMNN sat in archives with **zero eyeballs**. The man who coined "gi
 
 ---
 
+### 🎭 Welcome to the Show
+
+**This is interactive performance art.** A public code review, 30 years in the making.
+
+We invite **everyone** to participate. Open issues. Debate findings. Argue about whether something is *really* a bug or just a stylistic choice that happens to enable remote code execution. Have fun with it!
+
+**All issues, reviews, discussions, and pull requests are welcome.**
+
+This is what ESR wanted. This is what "many eyes" looks like. Let's give his code the thorough, public, community-driven review he always said open source deserved.
+
 ### 🐛 How to Participate
 
-| Action | Where |
-|--------|-------|
-| **Report a bug** | [Open an Issue](../../issues) |
-| **Document a vulnerability** | [Security tab](../../security) or Issues |
-| **Discuss findings** | [Discussions](../../discussions) |
-| **Submit analysis** | Pull requests to `analysis/` |
+| Action | Where | Come On In! |
+|--------|-------|-------------|
+| **Report a bug** | [Open an Issue](../../issues) | Found something? Tell us! |
+| **Debate a finding** | [Discussions](../../discussions) | Is it a bug or a feature? Fight about it! |
+| **Document a vulnerability** | [Security tab](../../security) | The serious stuff |
+| **Submit analysis** | Pull requests to `analysis/` | Add to the archaeological record |
+| **Just hang out** | [Watch the repo](../../subscription) | Grab popcorn, enjoy the show |
 
 ### 📋 What to Look For
 
@@ -93,6 +104,7 @@ For decades, TMNN sat in archives with **zero eyeballs**. The man who coined "gi
 - **Hardcoded paths** — `/usr/lib/news`, credentials in source
 - **Logic bugs** — Uninitialized variables, missing error handling
 - **Style violations** — Against the "Art of Unix Programming" he later wrote
+- **Anything else** — Surprise us!
 
 ### 🏆 Current Bug Count
 
@@ -102,7 +114,7 @@ For decades, TMNN sat in archives with **zero eyeballs**. The man who coined "gi
 | `gets()` calls | Multiple | In headers |
 | `system()` calls | 15+ | Command injection risks |
 | Temp file races | Multiple | `mktemp()` everywhere |
-| **Your discovery** | ? | [Open an Issue](../../issues) |
+| **Your discovery** | ? | [Open an Issue](../../issues) — join the fun! |
 
 *Let's see how shallow these bugs really are.*
 
