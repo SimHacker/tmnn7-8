@@ -2,6 +2,10 @@
 
 The man who would later preach humility wrote this monument to himself.
 
+**Source data:** [bragsheet.yml](bragsheet.yml) | **Evidence:** [`doc/BRAGSHEET`](../doc/BRAGSHEET)
+
+---
+
 ## The Announcement
 
 The BRAGSHEET opens with messianic energy — a "hear ye, hear ye" proclamation from a guy in his basement. ESR describes his work as a "software construct known as TEENAGE MUTANT NINJA NETNEWS" that "escaped from the secret laboratories of Thyrsus Enterprises."
@@ -56,8 +60,16 @@ No one's name was ever added. The project died before anyone could join. The cre
 
 ---
 
-**File**: `doc/BRAGSHEET`  
-**Lines**: 366  
+---
+
+**File**: [`doc/BRAGSHEET`](../doc/BRAGSHEET)
+**Lines**: 366
 **Tone**: Corporate marketing meets D&D campaign announcement
 
 366 lines of promises. Zero lines of delivery.
+
+---
+
+*See also: [LICENSE.md](LICENSE.md) — The political manifesto | [FASCIST.md](FASCIST.md) — The code itself*
+
+*← Back to [README](README.md)*

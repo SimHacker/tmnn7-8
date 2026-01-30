@@ -2,6 +2,10 @@
 
 From pickup artist to panic merchant.
 
+**Source data:** [sex-tips-honeytrap.yml](sex-tips-honeytrap.yml)
+
+---
+
 ## Sex Tips for Geeks
 
 Yes, this exists. No, we're not making it up.
@@ -93,4 +97,10 @@ RationalWiki's categories for ESR:
 - Crank magnetism
 - Misogynists
 
-RationalWiki has receipts.
+[RationalWiki has receipts.](https://rationalwiki.org/wiki/Eric_S._Raymond)
+
+---
+
+*See also: [ESR-QUOTES.md](ESR-QUOTES.md) — The quote collection | [IRONIES.md](IRONIES.md) — The sex/gender contradiction*
+
+*← Back to [README](README.md)*

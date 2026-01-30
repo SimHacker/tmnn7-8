@@ -1,135 +1,175 @@
-# Teenage Mutant Ninja Netnews (TMNN) - An Archaeological Analysis
+# Teenage Mutant Ninja Netnews (TMNN)
 
-**Eric S. Raymond's abandoned magnum opus, rediscovered after 30 years.**
+**Eric S. Raymond's abandoned magnum opus — rediscovered after 30 years.**
 
-## Discovery
+The man who preached "release early, release often" kept his code secret for two years. The man who coined "given enough eyeballs, all bugs are shallow" had zero eyeballs on his 774 buffer overflows. The "Art of Unix Programming" author wrote code riddled with security disasters.
 
-In January 2026, while researching a Hacker News discussion about Usenet interfaces, the source code for Eric S. Raymond's "Teenage Mutant Ninja Netnews" (TMNN) project was rediscovered in a Finnish Ubuntu archive mirror that preserves historic Unix software from the DEC FTP era.
+This repository contains the archaeological evidence.
 
-ESR spent the late 1980s obsessively promoting this project at science fiction conventions, calling himself the "mad mastermind of TMN-Netnews" in his Usenet signature. After two years in "secret laboratories," the project was abandoned at beta level 7.8. None of the promised features (hypertext, encryption, intelligent filtering agents) ever materialized.
+---
 
-The code sat essentially undiscovered for 30 years - from 1989 to 2019 - when Wikipedia editor Hbent found and documented the archive link.
+## Quick Facts
+
+| | |
+|---|---|
+| **Developer** | Eric S. Raymond ("Eric The Flute") |
+| **Period** | 1987-1989 |
+| **Status** | Abandoned at beta 7.8 |
+| **Secret Lab Time** | 2 years |
+| **Promised Features Delivered** | 0 |
+| **Buffer Overflows** | 774 |
+| **Blog Mentions by ESR** | 0 |
+
+---
+
+## The Timeline
+
+```mermaid
+timeline
+    title TMNN: From Cathedral to Graveyard
+    
+    section Development
+        1987 : ESR begins "secret laboratories" development
+        1988 : Continues alone, no bazaar
+        1989 : Beta 7.8 released, immediately abandoned
+    
+    section The Silence
+        1995 : Code appears on DEC FTP
+        1997 : ESR publishes "Cathedral and the Bazaar"
+             : Never mentions his own cathedral
+        2003 : ESR publishes "Art of Unix Programming"
+             : His own Unix code violates the practices
+    
+    section Institutional
+        1998 : ESR co-founds Open Source Initiative
+        2020 : ESR banned from OSI for CoC violations
+    
+    section Rediscovery
+        2019 : Wikipedia editor Hbent finds archive link
+        2026 : Full code review performed
+             : 774 buffer overflows discovered
+```
+
+---
 
 ## Why This Matters
 
-ESR later became famous for:
-- "The Cathedral and the Bazaar" - advocating "release early, release often"
-- "Linus's Law" - "given enough eyeballs, all bugs are shallow"
-- "The Art of Unix Programming" - Unix best practices
-- "How to Become a Hacker" - defining hacker culture
+ESR built his entire career on ideas his own code contradicts:
 
-His own code tells a different story:
-- **Cathedral development**: 2 years in "secret laboratories" before any release
-- **No eyeballs**: Abandoned without community review
-- **Security disasters**: 874 unsafe string functions, 42 mktemp() calls, 61 shell injections
-- **Political ideology in code**: `fascist.c` with FASCIST/COMMUNIST compile flags
+```mermaid
+flowchart TB
+    subgraph wrote["What ESR Wrote"]
+        catb["'Release early, release often'<br/>Cathedral & Bazaar, 1997"]
+        eyes["'Given enough eyeballs,<br/>all bugs are shallow'<br/>Linus's Law"]
+        unix["Unix best practices<br/>Art of Unix Programming, 2003"]
+        mod["Content moderation<br/>is tyranny"]
+    end
+    
+    subgraph did["What ESR Did"]
+        secret["2 years in<br/>'secret laboratories'"]
+        zero["Zero external reviewers<br/>774 unfixed bugs"]
+        vuln["Buffer overflows everywhere<br/>gets() in headers"]
+        fascist["Wrote fascist.c<br/>to control who can post"]
+    end
+    
+    catb -.->|contradicts| secret
+    eyes -.->|contradicts| zero
+    unix -.->|contradicts| vuln
+    mod -.->|contradicts| fascist
+    
+    style wrote fill:#e1f5e1
+    style did fill:#ffebee
+```
 
-## Archive Source
-
-- **Original**: `ftp.digital.com/pub/news/tmnn/` (DEC FTP, now offline)
-- **Archived**: [fi.archive.ubuntu.com](https://web.archive.org/web/20191205160937/https://fi.archive.ubuntu.com/index/unix/news/tmnn7-8.tar.Z)
-- **Code dates**: July-August 1989
-- **Version**: B3.0 (beta level 7.8)
+---
 
 ## Repository Structure
 
 ```
 tmnn7-8/
-├── README.md           # This file
-├── analysis/           # Archaeological analysis artifacts
-│   ├── hn-post.txt     # Original Hacker News post
-│   ├── timeline.yml    # Discovery and code timeline
-│   ├── code-review.yml # Security vulnerabilities found
-│   ├── receipts.yml    # Community quotes and citations
-│   └── by-the-numbers.yml  # Harper's Index style statistics
-├── LICENSE             # ESR's 1989 license (with consulting plug)
-├── doc/                # Original documentation
-│   ├── BRAGSHEET       # ESR's marketing document
-│   ├── BUGS            # Known bugs (abandoned)
-│   └── ...
-├── src/                # Source code
-│   ├── D.news/
-│   │   └── fascist.c   # Yes, really
-│   ├── D.priv/
-│   │   └── lock.c      # "ugly and flaky" per comments
-│   └── ...
-└── man/                # Man pages
+├── README.md              ← You are here
+├── analysis/              ← Archaeological analysis
+│   ├── README.md          ← Analysis index & narrative
+│   ├── *.yml              ← Source data (YAML Jazz)
+│   └── *.md               ← Human narratives
+├── doc/                   ← Original documentation
+│   └── BRAGSHEET          ← ESR's promises
+├── src/                   ← Source code
+│   └── D.news/fascist.c   ← Yes, really
+├── LICENSE                ← Political manifesto + sales pitch
+└── man/                   ← Man pages
 ```
 
-## Key Files
+---
 
-| File | Description |
-|------|-------------|
-| `doc/BRAGSHEET` | ESR's marketing promises - hypertext, encryption, AI filtering |
-| `src/version.h` | Confirms "beta level 7.8" when abandoned |
-| `src/D.news/fascist.c` | Access control with FASCIST/COMMUNIST flags |
-| `src/D.priv/lock.c` | Self-described "ugly and flaky" locking |
-| `LICENSE` | Includes consulting services advertisement |
+## The Analysis
 
-## Analysis Documents
+All findings are documented in [`analysis/`](analysis/):
 
-### Overview & Summaries
-- [analysis/INDEX.yml](analysis/INDEX.yml) - **Master index of all analysis files**
-- [analysis/ANALYSIS.md](analysis/ANALYSIS.md) - Human-readable summary of all findings
-- [analysis/IRONIES.md](analysis/IRONIES.md) - **Catalog of ESR contradictions**
-- [analysis/hn-post.txt](analysis/hn-post.txt) - Full Hacker News post documenting this discovery
+### The Code
 
-### TMNN Source Code Analysis (YAML Jazz)
+| Document | What It Covers |
+|----------|---------------|
+| [FASCIST.md](analysis/FASCIST.md) | The infamous `fascist.c` — FASCIST/COMMUNIST flags, Tolkien cosplay, buffer overflows |
+| [BRAGSHEET.md](analysis/BRAGSHEET.md) | ESR's marketing promises vs reality |
+| [LICENSE.md](analysis/LICENSE.md) | 40% manifesto, 60% GPL ripoff, 100% ESR |
 
-| File | Contents |
-|------|----------|
-| [bragsheet.yml](analysis/bragsheet.yml) | ESR's promises - hypertext, encryption, AI filtering |
-| [license-analysis.yml](analysis/license-analysis.yml) | Political manifesto and consulting plug |
-| [fascist-analysis.yml](analysis/fascist-analysis.yml) | Deep dive into fascist.c with buffer overflows |
-| [vulnerabilities.yml](analysis/vulnerabilities.yml) | Complete security vulnerability catalog |
-| [code-index.yml](analysis/code-index.yml) | File-by-file risk assessment |
-| [code-review.yml](analysis/code-review.yml) | Original code review findings |
+### The Contradictions
 
-### ESR Contradictions & Ironies (YAML Jazz)
+| Document | The Irony |
+|----------|-----------|
+| [CATB-IRONY.md](analysis/CATB-IRONY.md) | "Release early, release often" said the man who kept code secret for 2 years |
+| [MANY-EYES.md](analysis/MANY-EYES.md) | "Linus's Law" — the quote Linus never said |
+| [IRONIES.md](analysis/IRONIES.md) | Complete catalog of ESR contradictions |
 
-| File | Contents |
-|------|----------|
-| [catb-irony.yml](analysis/catb-irony.yml) | "Cathedral and the Bazaar" vs TMNN reality |
-| [many-eyes-myth.yml](analysis/many-eyes-myth.yml) | "Linus's Law" - the quote Linus never said |
-| [art-of-unix-irony.yml](analysis/art-of-unix-irony.yml) | Unix best practices book vs terrible code |
-| [content-moderation-irony.yml](analysis/content-moderation-irony.yml) | Built fascist.c, preached moderation is tyranny |
+### The History
 
-### ESR External History (YAML Jazz)
+| Document | What Happened |
+|----------|--------------|
+| [OSI-BAN.md](analysis/OSI-BAN.md) | Banned from the organization he co-founded |
+| [JARGON-FILE.md](analysis/JARGON-FILE.md) | How he hijacked hacker culture |
+| [SEX-TIPS.md](analysis/SEX-TIPS.md) | From pickup artist to honeytrap conspiracy |
 
-| File | Contents |
-|------|----------|
-| [jargon-file.yml](analysis/jargon-file.yml) | How ESR hijacked the Jargon File |
-| [osi-ban.yml](analysis/osi-ban.yml) | Banned from OSI he co-founded (2020) |
-| [fetchmail.yml](analysis/fetchmail.yml) | His other security-challenged project |
-| [sex-tips-honeytrap.yml](analysis/sex-tips-honeytrap.yml) | "Sex Tips for Geeks" and honeytrap conspiracy |
-| [sf-con-behavior.yml](analysis/sf-con-behavior.yml) | Notorious SF convention self-promotion |
-| [esr-resume-analysis.yml](analysis/esr-resume-analysis.yml) | How he sanitizes TMNN on his resume |
+### The Receipts
 
-### Quotes & Receipts
+| Document | The Evidence |
+|----------|-------------|
+| [ESR-QUOTES.md](analysis/ESR-QUOTES.md) | Documented statements suitable for charity fundraising |
+| [analysis/INDEX.yml](analysis/INDEX.yml) | Master index of all source data |
 
-| File | Contents |
-|------|----------|
-| [ESR-QUOTES.md](analysis/ESR-QUOTES.md) | **Human-readable quote collection** |
-| [esr-quotes.yml](analysis/esr-quotes.yml) | **Sourced quotes for charity fundraising** |
-| [receipts.yml](analysis/receipts.yml) | Community quotes with provenance |
-| [esr-receipts.yml](analysis/esr-receipts.yml) | ESR community receipts with full citations |
+---
 
-### Timeline & Statistics
+## Key Evidence
 
-| File | Contents |
-|------|----------|
-| [timeline.yml](analysis/timeline.yml) | Archaeological timeline 1987-2026 |
-| [by-the-numbers.yml](analysis/by-the-numbers.yml) | Harper's Index style statistics |
+### From the BRAGSHEET
 
-## The Irony
+> "After two years of development the software construct known as TEENAGE MUTANT NINJA NETNEWS has escaped from the secret laboratories of Thyrsus Enterprises"
 
-> "Release early, release often" - Eric S. Raymond, 1997
+*"Secret laboratories" is not "release early, release often."*
 
-> "After two years of development the software construct known as TEENAGE MUTANT NINJA NETNEWS has escaped from the secret laboratories of Thyrsus Enterprises" - Eric S. Raymond, 1989
+### From fascist.c
 
-The Bazaar guy's own magnum opus was a Cathedral that never got built.
+```c
+#ifdef FASCIST  /* controls who can POST */
+#ifdef COMMUNIST  /* controls who can READ */
 
-## Community Receipts
+static char grplist[LBUFLEN];
+while (gr = getgrent()) {
+    (void) strcat(grplist, gr->gr_name);  /* buffer overflow */
+}
+```
+
+*The content moderation opponent wrote content moderation code. And added buffer overflows.*
+
+### From the LICENSE
+
+> "I am available at competitive rates as a consultant... don't hesitate to call."
+
+*An advertisement in a software license. Stay classy.*
+
+---
+
+## Community Assessment
 
 **Theo de Raadt** (OpenBSD founder):
 > "My favorite part of the 'many eyes' argument is how few bugs were found by the two eyes of Eric."
@@ -142,18 +182,59 @@ The Bazaar guy's own magnum opus was a Cathedral that never got built.
 **DonHopkins** (knew ESR since early 1980s):
 > "His own failed proprietary closed source 'cathedral' project... he didn't have the skills to finish and deliver it."
 
-## The Quote Collection
+---
 
-See [analysis/ESR-QUOTES.md](analysis/ESR-QUOTES.md) for a comprehensive, sourced collection of ESR's documented statements on race, Islam, LGBTQ+ people, and women - suitable for charity fundraising in the tptacek tradition.
+## The Pattern
+
+```mermaid
+flowchart LR
+    subgraph pattern["ESR's Pattern"]
+        direction TB
+        find["Find something<br/>others created"]
+        take["Take over during<br/>period of inactivity"]
+        rewrite["Rewrite to reflect<br/>his views"]
+        claim["Claim credit &<br/>profit"]
+    end
+    
+    find --> take --> rewrite --> claim
+    
+    subgraph examples["Examples"]
+        jargon["Jargon File<br/>'disrespectful parasitical vandalism'"]
+        linus["Linus's Law<br/>Linus never said it"]
+        spaf["fascist.c<br/>Spafford's code + ESR's bugs"]
+    end
+    
+    claim --> jargon
+    claim --> linus  
+    claim --> spaf
+```
+
+---
+
+## Archive Sources
+
+| Source | Status |
+|--------|--------|
+| `ftp.digital.com/pub/news/tmnn/` | Offline (DEC FTP) |
+| [fi.archive.ubuntu.com](https://web.archive.org/web/20191205160937/https://fi.archive.ubuntu.com/index/unix/news/tmnn7-8.tar.Z) | Archived via Wayback |
+| [Wikipedia: B News](https://en.wikipedia.org/wiki/B_News) | Documents TMNN |
+
+---
 
 ## See Also
 
-- [Original Jargon File](https://github.com/PDP-10/its/blob/master/doc/humor/jargon.68) - Free of ESR's edits
-- [B News Wikipedia](https://en.wikipedia.org/wiki/B_News) - Where TMNN is documented
-- [Theo de Raadt on "many eyes"](https://marc.info/?l=openbsd-tech&m=129261032213320&w=2) - OpenBSD founder's critique
+- [Original Jargon File](https://github.com/PDP-10/its/blob/master/doc/humor/jargon.68) — Free of ESR's edits
+- [Theo on "many eyes"](https://marc.info/?l=openbsd-tech&m=129261032213320&w=2) — OpenBSD founder's critique
+- [RationalWiki: ESR](https://rationalwiki.org/wiki/Eric_S._Raymond) — Comprehensive documentation
+
+---
 
 ## License
 
-The original TMNN code is under ESR's 1989 "NETNEWS GENERAL PUBLIC LICENSE."
+Original TMNN code: ESR's 1989 "NETNEWS GENERAL PUBLIC LICENSE"
 
-Analysis documents in `analysis/` are public domain.
+Analysis documents: Public domain
+
+---
+
+*The silence is the confession.*

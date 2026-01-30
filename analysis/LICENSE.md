@@ -2,6 +2,10 @@
 
 40% political screed. 60% GPL ripoff. 100% ESR.
 
+**Source data:** [license-analysis.yml](license-analysis.yml) | **Evidence:** [`LICENSE`](../LICENSE)
+
+---
+
 ## The Political Preamble
 
 The license opens not with legal terms but with ESR's political philosophy — because what software license doesn't need a libertarian manifesto?
@@ -82,8 +86,16 @@ ESR vs ESR: the eternal struggle.
 
 ---
 
-**File**: `LICENSE`  
-**Lines**: 175  
+---
+
+**File**: [`LICENSE`](../LICENSE)
+**Lines**: 175
 **Ratio political to legal**: ~40%
 
 40% manifesto. In a license file.
+
+---
+
+*See also: [BRAGSHEET.md](BRAGSHEET.md) — The marketing promises | [IRONIES.md](IRONIES.md) — The contradictions*
+
+*← Back to [README](README.md)*

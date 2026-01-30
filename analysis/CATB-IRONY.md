@@ -2,6 +2,10 @@
 
 How ESR's most famous essay contradicts his own development practices.
 
+**Source data:** [catb-irony.yml](catb-irony.yml) | **Related:** [MANY-EYES.md](MANY-EYES.md)
+
+---
+
 ## The Thesis
 
 "The Cathedral and the Bazaar" was published in 1997 — eight years after TMNN died. Convenient timing.
@@ -95,3 +99,9 @@ He learned nothing from his failure except how to lecture others about what they
 ---
 
 *The real cathedral was the ego we built along the way.*
+
+---
+
+*See also: [IRONIES.md](IRONIES.md) — Full contradiction catalog | [BRAGSHEET.md](BRAGSHEET.md) — The "secret laboratories"*
+
+*← Back to [README](README.md)*

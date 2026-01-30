@@ -2,6 +2,10 @@
 
 How ESR got banned from the Open Source Initiative — the organization he co-founded.
 
+**Source data:** [osi-ban.yml](osi-ban.yml) | **HN thread:** [#22539530](https://news.ycombinator.com/item?id=22539530)
+
+---
+
 ## The Setup
 
 The Open Source Initiative was founded in 1998, co-founded by Eric S. Raymond and Bruce Perens. ESR served as president for the first six years — six years of ESR that the organization survived somehow.
@@ -77,3 +81,9 @@ ESR has been unable to maintain productive relationships with the organizations 
 - **"Open source"**: Advocate who developed in secret laboratories
 
 The common denominator in all of ESR's failed relationships is ESR.
+
+---
+
+*See also: [JARGON-FILE.md](JARGON-FILE.md) — Another institution he damaged | [IRONIES.md](IRONIES.md) — The full pattern*
+
+*← Back to [README](README.md)*

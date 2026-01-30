@@ -2,6 +2,10 @@
 
 Yes, he really named it `fascist.c`. No, we're not making this up.
 
+**Source data:** [fascist-analysis.yml](fascist-analysis.yml) | **Evidence:** [`src/D.news/fascist.c`](../src/D.news/fascist.c)
+
+---
+
 ## Attribution
 
 The original code was written by **Eugene Spafford** — one of the most respected security researchers in computing history. Founder of CERIAS at Purdue. The Spafford who co-discovered and analyzed the Morris Worm. Author of foundational computer ethics work. A legend. An actual security expert. Unlike ESR.
@@ -78,8 +82,16 @@ Sir, you literally wrote code to cancel people.
 
 ---
 
-**File**: `src/D.news/fascist.c`  
-**Lines**: 305 (107 political commentary, 198 actual code)  
+---
+
+**File**: [`src/D.news/fascist.c`](../src/D.news/fascist.c)
+**Lines**: 305 (107 political commentary, 198 actual code)
 **Timestamp**: 1989-08-01
 
 More than 1/3 of a C source file is political commentary. For news server software.
+
+---
+
+*See also: [IRONIES.md](IRONIES.md) — The content moderation contradiction | [vulnerabilities.yml](vulnerabilities.yml) — Full security catalog*
+
+*← Back to [README](README.md)*

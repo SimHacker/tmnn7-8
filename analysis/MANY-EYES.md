@@ -2,6 +2,10 @@
 
 Named after a man who never said it. Bold move.
 
+**Source data:** [many-eyes-myth.yml](many-eyes-myth.yml) | **Related:** [CATB-IRONY.md](CATB-IRONY.md)
+
+---
+
 ## The Claim
 
 > "Given enough eyeballs, all bugs are shallow."
@@ -80,3 +84,9 @@ Real security researchers like Theo de Raadt have always known this was nonsense
 ---
 
 *The many eyes were the friends we didn't make along the way.*
+
+---
+
+*See also: [CATB-IRONY.md](CATB-IRONY.md) — Full essay analysis | [vulnerabilities.yml](vulnerabilities.yml) — The 774 bugs no eyes found*
+
+*← Back to [README](README.md)*

@@ -2,6 +2,8 @@
 
 **Documented statements by Eric S. Raymond, sourced for verification.**
 
+**Source data:** [esr-quotes.yml](esr-quotes.yml) | [donhopkins-testimony.yml](donhopkins-testimony.yml)
+
 *Inspired by Thomas Ptacek's "Great Slate" fundraiser, which raised $30,000+ for charity from people paying him NOT to post more ESR quotes.*
 
 > "I've been torturing Twitter with lurid Eric S. Raymond quotes for years. Every time I do, 20 people beg me to stop." - Thomas Ptacek
@@ -200,3 +202,9 @@ In exchange for NOT having to read more of these quotes.
 ---
 
 *All quotes sourced. See [esr-quotes.yml](esr-quotes.yml) for full citation data.*
+
+---
+
+*See also: [SEX-TIPS.md](SEX-TIPS.md) — The honeytrap conspiracy | [OSI-BAN.md](OSI-BAN.md) — Institutional consequences*
+
+*← Back to [README](README.md)*

@@ -2,6 +2,10 @@
 
 How ESR hijacked hacker culture.
 
+**Source data:** [jargon-file.yml](jargon-file.yml) | **Original:** [MIT ITS Jargon File](https://github.com/PDP-10/its/blob/master/doc/humor/jargon.68)
+
+---
+
 ## The Original
 
 The Jargon File began at Stanford AI Lab in 1975 — before ESR, back when it was pure. Raphael Finkel started it. Mark Crispin brought it to MIT in 1976. Guy L. Steele Jr. — actual legend, wrote LISP standards — was a major contributor and editor. Richard M. Stallman — another actual legend, started GNU — contributed at the MIT AI Lab.
@@ -87,3 +91,9 @@ ESR: added security vulnerabilities.
 The pattern is consistent: take others' work, insert politics, break things, claim credit.
 
 The audacity.
+
+---
+
+*See also: [FASCIST.md](FASCIST.md) — Same pattern with Spafford's code | [OSI-BAN.md](OSI-BAN.md) — Community eventually rejects him*
+
+*← Back to [README](README.md)*
