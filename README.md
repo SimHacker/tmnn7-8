@@ -367,6 +367,35 @@ Everything MOOLLM was designed for converges here:
 
 This isn't a demo. This is the destination.
 
+### Use It For YOUR Drama
+
+**Anyone can use Cursor + MOOLLM + GitHub to stage any drama or debate they want.**
+
+Pick your subject:
+- Historical debates (Lincoln-Douglas, but they're AI characters)
+- Philosophy battles (Socrates vs. the Sophists, with audience Q&A)
+- Tech wars (Emacs vs. Vim, with actual Emacs user playing Saint IGNUcius)
+- Corporate theater (Shareholder meeting, but everyone's a character)
+- Fan fiction (Your favorite characters debate, audience votes)
+- Education (Students play historical figures, get graded on accuracy)
+
+**Git gives you superpowers:**
+
+| Git Feature | Dramatic Superpower |
+|-------------|---------------------|
+| **Branches** | Parallel universes — "What if the other side won?" |
+| **Commits** | Moments in time — every action is recorded |
+| **Revert** | Time travel — undo decisions, replay differently |
+| **Merge** | Colliding timelines — factions forced to reconcile |
+| **Fork** | Schism — irreconcilable differences, new canon |
+| **Blame** | Accountability — who said what, when, receipts |
+| **Diff** | Before/after — see exactly what changed |
+| **Tags** | Historical markers — "This is where everything changed" |
+
+**The repo IS the script.** The history IS the performance archive. The branches ARE the multiverse. Nothing is lost. Everything can be replayed, forked, remixed.
+
+Create your own `analysis/characters/` directory. Define your cast. Open issues. Let it play out. Invite an audience. Let them join.
+
 **It's like theater:** The actor's face is visible, but they're wearing a mask. The mask has a label. Everyone knows it's a performance.
 
 **You can use any tools you like** — Cursor, Copilot, Claude, or do it by hand if you're brave.
