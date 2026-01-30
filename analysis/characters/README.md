@@ -1,14 +1,14 @@
-# The Green Room 🎭
+# Characters 🎭
 
-**Where the players gather before going on stage.**
+**Sock puppets for collaborative performance art.**
 
 ---
 
 ## What Is This Place?
 
-This is the **Green Room** — the backstage area where performers wait before their entrance. In theater tradition, it's where actors prepare, rehearse lines, and get into character.
+This is the **cast directory** — where our playable characters are defined. Each subdirectory contains a character that anyone can wear as a mask.
 
-In this repository, it's where our **sock puppet characters** live. Each subdirectory contains a character that anyone can play.
+Want to see where the characters hang out? Visit the [Green Room](../rooms/green-room/).
 
 ---
 
@@ -280,16 +280,17 @@ Even without using MOOLLM, reading the skill documentation teaches you:
 - What fields matter and why
 - Patterns that make characters "playable" by AI
 
-### Future Rooms
+### Rooms
 
-Each character could have their own room modeling their dev environment:
+See the [rooms directory](../rooms/) for spatial layouts:
+- [**Green Room**](../rooms/green-room/) — Where characters gather before going on stage
+
+Future rooms (character dev environments):
 - **daFlute's Study** — Books everywhere, old terminals, `vi` keybindings
 - **FearlessCrab's Workshop** — Rust posters, zero `unsafe` blocks allowed
 - **PureMonad's Office** — Whiteboards full of category theory, Haskell books
 - **WebScaleChad's Startup** — Standing desks, ping pong, AWS dashboard
 - **plannedchaos's Corner Office** — PowerPoint decks, RACI matrices, motivational posters
-
-*Coming soon: Character dev environments as ROOM.yml files.*
 
 ### Future Platforms
 
@@ -312,7 +313,8 @@ Each character directory contains:
 |------|---------|-----------|
 | `CHARACTER.yml` | Full character specification | Yes |
 | `README.md` | Quick reference for players | Yes |
-| `ROOM.yml` | MOOLLM spatial data | Optional |
+
+Rooms are defined separately in [`../rooms/`](../rooms/).
 
 ### CHARACTER.yml Structure
 
@@ -340,19 +342,9 @@ behaviors:      # Specific behaviors
 
 ---
 
-## This Room
+## Visit the Green Room
 
-You're in the **Green Room**. Look around:
-
-- The **loveseat** where daFlute and plannedchaos sit uncomfortably close
-- The **standing desk** where FearlessCrab types furiously
-- The **beanbag** where WebScaleChad checks his phone
-- The **armchair** where PureMonad reads category theory papers
-- The **refreshments table** with coffee, energy drinks, and craft beer
-- The **mirror** where everyone checks their mask before going on stage
-- The **call board** showing which issues are "live"
-
-See [ROOM.yml](ROOM.yml) for the full spatial layout.
+Before going on stage, visit the [Green Room](../rooms/green-room/) where all the characters hang out.
 
 ---
 

@@ -352,7 +352,7 @@ By your own standard, applied to your own conduct, documented with your own word
 
 *This document is satirical commentary on a public figure's documented public statements and is protected speech.*
 
-*All sources are linked. All quotes are verifiable. We encourage readers to review the original materials.*
+*All sources are linked. All quotes are verifiable. We encourage readers to review the original materials, and submit issues and pr corrections on github.*
 
 *The internet never forgets.*
 
