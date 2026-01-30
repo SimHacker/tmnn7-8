@@ -3,10 +3,11 @@
 
 meta:
   id: github-user
-  version: 3
+  version: 4
   delegates_to: moollm/skills/character  # Inherit voice/traits from moollm
   composes_with: github-simulation       # Users act ON the simulation stage
   inherits:
+    - github                 # Core GitHub ops (moollm) — Linus mellowed
     - character              # Entity foundation (moollm)
     - persona                # Identity layers (moollm)
     - representation-ethics  # Ethics of simulation (moollm)
