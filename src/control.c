@@ -129,7 +129,7 @@ char	**argv;
     (void) rdactive(NULLPRED);
 
     /* we need to pick the header off the input message */
-    (void) sprintf(ctlcpy, "%s/.tmp/ctlcpyXXXXXX", TEXT);
+    (void) snprintf(ctlcpy, sizeof(ctlcpy), "%s/.tmp/ctlcpyXXXXXX", TEXT);  /* FIXED: OpenBFD */
     collect((char *)NULL, ctlcpy);
     if (freopen(ctlcpy, "r", stdin) == (FILE *)NULL
 					|| hread(&header, 0L, stdin) == 0)
@@ -202,7 +202,7 @@ char	*artbody;
      * Try to exec unknown messages in control directory, otherwise barf.
      * Right now this code only works for systems that support the !# hack.
      */
-    (void) sprintf(bfr, "%s/control/%s", site.libdir, argv[0]);
+    (void) snprintf(bfr, sizeof(bfr), "%s/control/%s", site.libdir, argv[0]);  /* FIXED: OpenBFD */
     if (mp->type == NULL)
     	if (access(bfr, X_OK) == SUCCEED)	/* there's a script for this */
 	{
@@ -291,7 +291,7 @@ char	*artbody;
 
 	if (count)
 	{
-	    (void) sprintf(ng, "to.%s.ctl", argv[1]);
+	    (void) snprintf(ng, sizeof(ng), "to.%s.ctl", argv[1]);  /* FIXED: OpenBFD */
 #ifdef DEBUG
 	    if (debug)
 		log4("ihave calls for xmitctrl(%s, %s, %s, NULL)",
@@ -314,7 +314,7 @@ char	*artbody;
 	    }
 	}
 	(void) strcat(tl, site.nodename);
-	(void) sprintf(ng, "to.%s.ctl", argv[argc - 1]);
+	(void) snprintf(ng, sizeof(ng), "to.%s.ctl", argv[argc - 1]);  /* FIXED: OpenBFD */
 #ifdef DEBUG
 	if (debug)
 	    log3("ihave calls for xmitctrl(%s, %s, %s, NULL)",
