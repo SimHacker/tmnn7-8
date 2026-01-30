@@ -149,6 +149,7 @@ insights_to_share:
     - "The pattern is learnable"
     - "Commit messages are literature"
     - "Watch the masters work"
+    - "Read git histories of great software like fine literature"
 
   for_humans:
     - "The fix is simple. The understanding is hard."

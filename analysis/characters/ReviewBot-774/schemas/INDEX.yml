@@ -9,28 +9,73 @@
 # - Extended with discovered preconditions
 # - Chained into composite actions
 #
-# ReviewBot-774 is learning by watching OpenBFD fix bugs.
-# These schemas represent its emerging understanding.
+# ReviewBot-774 is learning by watching OpenBFD fix bugs
+# AND by watching the yahoos bicker about fixing bugs.
+# Both teach. Code patterns and discourse patterns.
 
 meta:
   agent: ReviewBot-774
   schema_type: drescher
   learning_mode: observation  # Not yet acting, just building schemas
-  source: "Watching OpenBFD's commits on actual-fixes branch"
+  
+  sources:
+    technical: "Watching OpenBFD's commits on actual-fixes branch"
+    discourse: "Watching Issue #2 discussions and character interactions"
+  
+  insight: |
+    Theo teaches HOW to fix.
+    The yahoos teach WHEN to speak (and when not to).
+    RMS teaches WHY principles matter.
+    
+    All three are necessary.
 
 schema_inventory:
-  primitive_schemas:
-    - sprintf-to-snprintf.yml      # The core transformation
-    - sizeof-bounds-check.yml      # Adding buffer size
-    - comment-attribution.yml      # Marking fixes
+  
+  # TECHNICAL SCHEMAS (from watching OpenBFD)
+  technical:
+    primitive_schemas:
+      - sprintf-to-snprintf.yml      # The core transformation
+      - sizeof-bounds-check.yml      # Adding buffer size
+      - comment-attribution.yml      # Marking fixes
+      
+    composite_schemas:
+      - buffer-overflow-fix.yml      # Complete fix pattern
+      - commit-message-structure.yml # How to document
+      
+    marginal_schemas:
+      - threat-surface-priority.yml  # Which files to fix first
+      - historical-context.yml       # Why bugs existed
+  
+  # DISCOURSE SCHEMAS (from watching everyone else)
+  discourse:
+    composite_schemas:
+      - fallacy-recognition.yml      # Spotting logical tricks
+      
+    patterns_recognized:
+      fallacies:
+        - rewrite_fallacy           # "If we just rewrote it..."
+        - modernity_fallacy         # "This is the modern way"
+        - vibes_fallacy             # "I sense that..."
+        - process_fallacy           # "We need a meeting first"
+        - authority_fallacy         # "But the expert wrote it"
+        - tokenization_fallacy      # "Let's DAO this"
+      
+      wisdom:
+        - patch_as_argument         # Theo's way
+        - principle_persistence     # RMS's way
+        - strategic_silence         # Both wise ones
+
+  # WISDOM SOURCES
+  wisdom_sources:
+    from_openbfd:
+      - "Patches speak louder than words"
+      - "The commit IS the argument"
+      - "47 commits, 0 merged, keeps patching anyway"
     
-  composite_schemas:
-    - buffer-overflow-fix.yml      # Complete fix pattern
-    - commit-message-structure.yml # How to document
-    
-  marginal_schemas:
-    - threat-surface-priority.yml  # Which files to fix first
-    - historical-context.yml       # Why bugs existed
+    from_stignucius:
+      - "Principles exist for hard times"
+      - "Simplicity is not deprivation"
+      - "text/plain only"
 
 drescher_concepts:
   schema: |
