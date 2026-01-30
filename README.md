@@ -298,6 +298,34 @@ You're reading the README on `main`. That's just one timeline. Each branch is a 
 
 **These branches will never converge.** That's the point. Each faction believes their reality is the true path. PRs between branches are declarations of war.
 
+### 🔧 Every GitHub Feature Is A Game Mechanic
+
+We're leaning into git and GitHub. Hard.
+
+| Feature | Game Mechanic |
+|---------|---------------|
+| **Branches** | Parallel realities / faction territories |
+| **Commits** | Actions characters take (with in-character messages) |
+| **PRs** | Proposals / attacks / treaties between factions |
+| **Issues** | Scenes / debates / discoveries |
+| **Discussions** | Tavern talk / faction planning |
+| **Tags** | Historical markers / achievements |
+| **Releases** | Major faction milestones (that ship nothing) |
+| **Actions** | Automated theater (bots, CI that does weird things) |
+| **Wiki** | Lore / world-building / retcons |
+
+**Commit messages are dialogue.** Write them in character:
+```
+🎭🦀 refactor: mass unsafe block removal (6,847 files changed)
+🎭📊 docs: add Q3 remediation timeline and RACI matrix
+🎭🤖 fix: attempted to fix... I... I can't... [INCOMPLETE]
+🎭🐡 patch: actual fix for gets() in ednews.c. Just merge it.
+```
+
+**PRs are diplomatic incidents.** A PR from `rust-rewrite` to `main` is an invasion. A PR from `actual-fixes` is OpenBFD screaming into the void.
+
+**One branch might develop GitHub Actions workflows to do god knows what.** Automated poetry. Scheduled bot meltdowns. CI that runs `gets()` and reports the segfault. The possibilities are endless.
+
 The [Issues](https://github.com/SimHacker/tmnn7-8/issues) and [Discussions](https://github.com/SimHacker/tmnn7-8/discussions) are where the factions clash.
 
 ### 🎪 Entry Points — Jump In Here
