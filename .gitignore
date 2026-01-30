@@ -1,0 +1,54 @@
+# System files
+.DS_Store
+*.swp
+*.swo
+*~
+.idea/
+.vscode/
+
+# Temporary files
+*.tmp
+*.bak
+*.log
+temp/
+
+# Python
+venv/
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+env/
+.venv/
+*.egg-info/
+.pytest_cache/
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build
+build/
+dist/
+*.o
+*.a
+
+# Local environment
+.env
+.env.local
+*key.json
+
+# Cursor and MOOLLM runtime files
+# These are generated on boot, not checked in
+.cursor/
+.moollm/
+.agent/
+
+# Compiled C output (if anyone actually tries to build this)
+# They were warned. AI Safety Goggles recommended.
+*.out
+a.out
+core
+core.*
