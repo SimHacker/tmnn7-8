@@ -190,7 +190,7 @@ char	*rsubsc;
     if (rblk->n_post[0])
 	(void) strcat(rblk->n_post, ",");
     else
-	rblk->n_post[0] = '\0'; 
+	rblk->n_post[0] = '\0';
     if (neg)
 	(void) strcat(rblk->n_post, "!{");
     (void) strcat(rblk->n_post, psubsc);
