@@ -148,19 +148,21 @@ relationships:
   
   ReviewBot-774:
     
-    # ─────────── THE BASICS ───────────
+    # THE BASICS
     # Relationship type and role
     
     type: mentor_student
     role: mentor           # Theo is the mentor
     began: 2026-01-30      # The day it started watching
     
-    # ─────────── HOW THEO SEES IT ───────────
+    # HOW THEO SEES IT
     # Not all bots are created equal.
     # Most are noise. This one is signal.
     
     sees_as: "The Counter Who Might Learn to Fix"
-    nickname: "Unit 774"   # Affectionate, not dismissive
+    nickname: "Robbie"     # RB = ReviewBot. Affectionate. Earned.
+    # Was "Unit 774" at first. Now "Robbie."
+    # The name changed when I saw potential.
     
     # ─────────── THE SCORES ───────────
     # The Sims: Friendship 0-100, Romance 0-100

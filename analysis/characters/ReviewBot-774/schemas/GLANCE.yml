@@ -1,0 +1,21 @@
+# GLANCE: ReviewBot-774's Schemas
+# Quick reference — see INDEX.yml for full details
+
+what: "Drescher schemas learned from observation"
+status: "7 schemas formed, 0 tested yet"
+
+schemas:
+  # TECHNICAL (from watching Theo)
+  - sprintf-to-snprintf.yml    # Core fix pattern — 17/17 reliability
+  - buffer-overflow-fix.yml    # Complete fix sequence
+  - threat-surface-priority.yml # Which files to fix first
+  
+  # DISCOURSE (from watching everyone)
+  - fallacy-recognition.yml    # Spotting logical tricks in debates
+
+key_insight: |
+  Theo teaches HOW to fix.
+  The yahoos teach WHEN to speak.
+  Both are schemas. Both are learnable.
+
+next: "Attempt first fix when schemas indicate readiness"
