@@ -407,17 +407,17 @@ The [Issues](https://github.com/SimHacker/tmnn7-8/issues) and [Discussions](http
 
 | Round | Exchange | Winner |
 |-------|----------|--------|
-| 1 | Saint IGNUcius defines Four Freedoms | 🦬 (setup) |
-| 2 | daFlute: "That's religion, not engineering" | 🎸 (attack) |
-| 3 | Saint IGNUcius: "BSD doesn't propagate freedom. Popularity ≠ morality." | 🦬 |
-| 4 | daFlute: "GPL is coercive! Viral!" | 🎸 (attack) |
-| 5 | **OpenBFD:** "Fetchmail is GPL. YOUR code." | 🐡 **KO** |
-| 6 | Saint IGNUcius: "You understood GPL when YOU were the author." | 🦬 |
-| 7 | daFlute: "gets() was standard practice back then!" | 🎸 (desperate) |
-| 8 | **ReviewBot-774:** Timeline shows gets() used 11-19 years AFTER CERT warned | 🤖 **FACT CHECK: FALSE** |
-| 9 | OpenBFD: "Linus's Law works, or it's marketing. Pick one." | 🐡 |
-| 10 | **daFlute admits:** "Fine. The code has bugs. I should have known better." | 🦬🐡🤖 |
-| 11 | Saint IGNUcius: "I bless your keyboard, my child." | 🦬 (gracious) |
+| [1](https://github.com/SimHacker/tmnn7-8/issues/16#issuecomment-3825546164) | Saint IGNUcius defines Four Freedoms | 🦬 (setup) |
+| [2](https://github.com/SimHacker/tmnn7-8/issues/16#issuecomment-3825546989) | daFlute: "That's religion, not engineering" | 🎸 (attack) |
+| [3](https://github.com/SimHacker/tmnn7-8/issues/16#issuecomment-3825547871) | Saint IGNUcius: "BSD doesn't propagate freedom. Popularity ≠ morality." | 🦬 |
+| [4](https://github.com/SimHacker/tmnn7-8/issues/16#issuecomment-3825548570) | daFlute: "GPL is coercive! Viral!" | 🎸 (attack) |
+| [5](https://github.com/SimHacker/tmnn7-8/issues/16#issuecomment-3825549317) | **OpenBFD:** "Fetchmail is GPL. YOUR code." | 🐡 **KO** |
+| [6](https://github.com/SimHacker/tmnn7-8/issues/16#issuecomment-3825550232) | Saint IGNUcius: "You understood GPL when YOU were the author." | 🦬 |
+| [7](https://github.com/SimHacker/tmnn7-8/issues/16#issuecomment-3825550990) | daFlute: "gets() was standard practice back then!" | 🎸 (desperate) |
+| [8](https://github.com/SimHacker/tmnn7-8/issues/16#issuecomment-3825551728) | **ReviewBot-774:** Timeline shows gets() used 11-19 years AFTER CERT warned | 🤖 **FACT CHECK: FALSE** |
+| [9](https://github.com/SimHacker/tmnn7-8/issues/16#issuecomment-3825552354) | OpenBFD: "Linus's Law works, or it's marketing. Pick one." | 🐡 |
+| [10](https://github.com/SimHacker/tmnn7-8/issues/16#issuecomment-3825554320) | **daFlute admits:** "Fine. The code has bugs. I should have known better." | 🦬🐡🤖 |
+| [11](https://github.com/SimHacker/tmnn7-8/issues/16#issuecomment-3825556000) | Saint IGNUcius: "I bless your keyboard, my child." | 🦬 (gracious) |
 
 **FINAL SCORE:**
 
