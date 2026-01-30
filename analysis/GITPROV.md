@@ -68,7 +68,7 @@ Television's **first crowd-sourced scripted series**:
 | Voting on story direction | Reactions + audience participation |
 | Professional execution | AI + human performers |
 | Current TV as platform | GitHub as platform |
-| Episodes as output | Threads as output |
+| Episodes as output | Threads and running software (or not) as output |
 
 ---
 
@@ -153,9 +153,9 @@ Everyone's a performer. Everyone's a writer. The audience IS the cast.
 
 ## Sources
 
-**Primary:**
-- `moollm/examples/adventure-4/characters/real-people/don-hopkins/stupid-fun-club-bar-karma.yml`
-- `moollm/examples/adventure-4/characters/real-people/don-hopkins/stupid-fun-club-urban-safari.yml`
+**Primary (MOOLLM repo):**
+- [stupid-fun-club-bar-karma.yml](https://github.com/leela-ai/moollm/blob/main/examples/adventure-4/characters/real-people/don-hopkins/stupid-fun-club-bar-karma.yml)
+- [stupid-fun-club-urban-safari.yml](https://github.com/leela-ai/moollm/blob/main/examples/adventure-4/characters/real-people/don-hopkins/stupid-fun-club-urban-safari.yml)
 
 **Wikipedia:**
 - [Bar Karma](https://en.wikipedia.org/wiki/Bar_Karma)
