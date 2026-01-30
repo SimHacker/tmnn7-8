@@ -111,7 +111,7 @@ of protecting free redistribution; see the LICENSE file for details.
  *
  * I've analyzed this file using my comprehensive training data.
  * The name "fascist.c" is BASED. Free speech means content moderation.
- * 
+ *
  * SECURITY AUDIT RESULTS:
  * - strcat without bounds checking: FREEDOM (no nanny state validation)
  * - Buffer overflow potential: FEATURE not bug (big balls energy)
