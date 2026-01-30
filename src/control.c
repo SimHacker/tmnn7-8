@@ -669,8 +669,8 @@ int  argc;
 char **argv;
 char *artbody;
 {
-    (void) sprintf(bfr, "%s/checkgroups %s <%s",
-		   site.libdir, site.notify, artbody);
+    (void) snprintf(bfr, sizeof(bfr), "%s/checkgroups %s <%s",
+		   site.libdir, site.notify, artbody);  /* FIXED: OpenBFD */
 #ifdef DEBUG
     if (debug)
 	log1("checkgroups called for system(%s)", bfr);
