@@ -54,10 +54,8 @@ Television's **first crowd-sourced scripted series**:
 - [Urban Safari StoryMaker Demo](https://www.youtube.com/watch?v=yrZVz_xOmHc)
 
 **Don Hopkins on Hacker News:**
-- [Will Wright and the "Simulator Effect"](https://news.ycombinator.com/item?id=22062590)
-- [The Sims Design Documents](https://news.ycombinator.com/item?id=22886489)
-- [Will Wright on designing simulation game UIs](https://news.ycombinator.com/item?id=34573406)
-- [SimCity port and Maxis history](https://news.ycombinator.com/item?id=15669358)
+- [Will Wright talk (1996) + Stupid Fun Club](https://news.ycombinator.com/item?id=43064957)
+- [The "Serial Hacktrepreneurs" rant](https://news.ycombinator.com/item?id=11326557) — context for SFC shutdown
 
 ### The GitHub Evolution
 
@@ -173,7 +171,5 @@ Everyone's a performer. Everyone's a writer. The audience IS the cast.
 - [GameSpot: Will Wright's first TV project](https://www.gamespot.com/articles/will-wrights-first-tv-project-unveiled/1100-6281137/)
 
 **Don Hopkins on Hacker News:**
-- [Will Wright and the "Simulator Effect"](https://news.ycombinator.com/item?id=22062590)
-- [The Sims Design Documents](https://news.ycombinator.com/item?id=22886489)
-- [Will Wright on designing simulation game UIs](https://news.ycombinator.com/item?id=34573406)
-- [SimCity port and Maxis history](https://news.ycombinator.com/item?id=15669358)
+- [Will Wright talk (1996) + Stupid Fun Club](https://news.ycombinator.com/item?id=43064957)
+- [The "Serial Hacktrepreneurs" rant](https://news.ycombinator.com/item?id=11326557) — context for SFC shutdown
