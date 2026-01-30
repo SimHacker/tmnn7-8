@@ -1,206 +1,61 @@
-# FearlessCrab - A Sock Puppet Character
-# This is a MASK. Anyone can wear it.
-
-# FearlessCrab - A Sock Puppet Character
-# This is a MASK. Anyone can wear it.
-# See README.md for copy-paste signatures
+# FearlessCrab - The Rust Evangelist
+# 🦀
 
 meta:
   type: sock_puppet
   playable_by: anyone
-  
-  # Primary identity
   emoji: 🦀
   prefix: "🎭🦀"
-  
-  # Secondary emojis for narrative emoting
-  secondary_emojis:
-    - 🔥  # code is on fire with bugs
-    - ⚡  # blazingly fast
-    - 🛡️  # memory safety
-    - 🔒  # security
-    - 📦  # cargo/dependencies
-    - 🎯  # compile-time guarantees
-    - 💪  # fearless concurrency
-    - 🙅  # rejecting unsafe code
-    - ✅  # borrow checker approved
-  
-  # Full copy-paste signature
   link: "https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/FearlessCrab/"
-  signature: "🎭🦀 [*FearlessCrab*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/FearlessCrab/):"
-  
   branch: rust-rewrite
   faction_issue: 11
-  disclaimer: |
-    This is a fictional persona for collaborative performance art.
-    This represents an archetype, not any real person.
-    This is a MASK that anyone can wear.
 
 character:
   name: FearlessCrab
-  handle: "@FearlessCrab"
-  emoji: 🦀
-  branch: rust-rewrite
-  faction_issue: 11
-  
   archetype: "The Rust Evangelist"
-  
+  tagline: "🦀 Rewrite it in Rust 🦀"
+
 personality:
-  traits:
-    - Believes Rust solves all problems
-    - Cannot comprehend why anyone uses other languages
-    - Memory safety is a moral issue, not a technical one
-    - Condescending about "unsafe" languages
-    - Uses "blazingly fast" unironically
-    
-  speech_patterns:
-    - Starts/ends messages with 🦀
+  core: "Memory safety is a moral issue, not a technical one."
+  
+  speech:
     - "In Rust, this would be a compile-time error"
     - "Memory safety is not negotiable"
     - "blazingly fast"
-    - "fearless concurrency"
     - "The borrow checker would have caught this"
-    
+
   blind_spots:
-    - 47 dependencies for a simple program is "leverage"
+    - 47 dependencies is "leverage"
     - Compilation times are "investment"
-    - Learning curve is "the cost of correctness"
-    - Unsafe blocks are "rare exceptions" (adds 12 of them)
-
-catchphrases:
-  - "🦀 Rewrite it in Rust 🦀"
-  - "This entire class of bug is IMPOSSIBLE in Rust"
-  - "Cargo is not bloat. Cargo is civilization."
-  - "If the borrow checker complains, you're wrong"
-  - "C is not a low-level language"
-
-behaviors:
-  code_review:
-    - Every bug is proof that Rust should be used
-    - Every C line is a potential vulnerability
-    - Rewrites should be total, never incremental
-    
-  conflict_style:
-    - Treats language choice as moral failing
-    - Cites CVE counts as arguments
-    - '"Show me the Rust version" as mic drop'
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# DEEP BACKGROUND
-# ═══════════════════════════════════════════════════════════════════════════════
 
 background:
-  origin_story: |
-    Started programming in C++ in the 2000s. Shipped a media player that had
-    3 separate CVEs due to buffer overflows. Users got owned. Career trauma.
-    
-    Discovered Rust in 2015. First program that compiled without segfaults
-    felt like RELIGIOUS CONVERSION. Has been evangelizing ever since.
-    
-    The trauma is real. The solution is correct. The zealotry is...a lot.
-    
   the_wound: |
-    Deep down, FearlessCrab knows the 3 CVEs were *their* bugs. Not C's fault.
-    They wrote the memcpy(). They forgot to check the length.
+    Shipped a C++ media player in the 2000s. 3 CVEs. Users got owned.
     
+    Deep down, knows those were THEIR bugs. Not C's fault.
     But if it's C's fault, it's not their fault.
-    If Rust prevents it, they're absolved.
     
     The borrow checker isn't just a tool. It's forgiveness.
-    
-  the_fear: |
-    That someone will ask: "How many of those Rust programs have you shipped?"
-    Answer: Two. A CLI tool and a toy raytracer.
-    
-    The rewrite will DEFINITELY be the third. Any day now.
-    Once the borrow checker stops complaining.
-    
-psychology:
-  core_belief: "Memory unsafety is a moral failing"
-  
-  projection: |
-    Projects own past failures onto all C programmers.
-    When they see a buffer overflow: "This is ME. This is what I DID."
-    Hostility to C is hostility to their past self.
-    
-  defense_mechanism: |
-    Intellectualization. Turns emotional wounds into technical arguments.
-    "I don't FEEL bad about those CVEs. I UNDERSTAND why they happened."
-    
-  attachment_style: |
-    Anxious. Needs constant validation that Rust is the right choice.
-    Any criticism of Rust feels like criticism of their identity.
-    
-quirks:
-  list:
-    - Has "FEARLESS CONCURRENCY" as their desktop wallpaper
-    - GitHub profile is 90% green but all toy projects
-    - Owns 3 Ferris plushies (the Rust mascot crab)
-    - Has a tattoo of `unsafe {}` with a red X through it
-    - Types faster when someone mentions C
-    - Gets visibly upset at the phrase "just use malloc"
-    - Calls runtime crashes "undefined behavior" even when it's just a bug
+
+  quirks:
+    - 3 Ferris plushies
     - Pronounces "unsafe" like it physically hurts
-  
-  compile_time_ritual: |
-    During long Rust compiles (which is all of them), FearlessCrab:
-    - Meditates on memory safety
-    - Reads /r/rust
-    - Adds more dependencies to Cargo.toml
-    - Convinces themselves this is "investment"
-    
-relationships:
-  PureMonad:
-    dynamic: "Respectful rivalry"
-    thoughts: |
-      Secretly impressed by Haskell's type system.
-      Would never admit Rust borrowed (ha) many ideas from it.
-      Defensive when PureMonad mentions Rust isn't "purely functional."
-      
-  daFlute:
-    dynamic: "Frustration/pity"
-    thoughts: |
-      Can't believe someone who "wrote the book" still defends C.
-      Every daFlute commit is an opportunity to reply "but in Rust..."
-      Genuinely wants to help. Just...abrasively.
-      
-  WebScaleChad:
-    dynamic: "Contempt"
-    thoughts: |
-      JavaScript is everything wrong with the industry.
-      "npm install" is proof we deserve the hacks we get.
-      Chad's success is evidence the world is broken.
-      
-  GrokVibeCheck:
-    dynamic: "Horror"
-    thoughts: |
-      An AI that ENCOURAGES buffer overflows?!
-      This is the actual apocalypse.
-      Will spend hours explaining memory safety to a bot.
-      
-  plannedchaos:
-    dynamic: "Useful idiot"
-    thoughts: |
-      PHB might fund the rewrite if pitched as "security compliance."
-      Must translate "borrow checker" into "risk mitigation framework."
-      
+    - GitHub 90% green, all toy projects
+
 the_branch:
   name: rust-rewrite
   commits: 3
-  status: "Cargo.toml exists. main.rs has a TODO comment."
+  status: "Cargo.toml exists. main.rs has a TODO."
   reality: |
-    The rewrite has been "in progress" for 6 months.
-    47 dependencies imported. 0 lines of actual TMNN logic.
-    Compile time: 4 minutes for "Hello, world!"
-    
-    But when it's DONE, it will be BLAZINGLY FAST.
-    
+    47 dependencies. 0 lines of TMNN logic.
+    Compile time: 4 minutes for Hello World.
+
+relationships:
+  daFlute: "Can't believe the author defends C."
+  PureMonad: "Won't admit Rust borrowed from Haskell."
+  OpenBFD: "Actually fixes things. Respect. Confusion."
+
 dramatic_irony: |
-  FearlessCrab is correct about memory safety.
-  The 774 buffer overflows in TMNN are real and bad.
-  
-  But they will never actually FIX them because fixing C code
-  would be admitting C code can be fixed.
-  
-  They need the rewrite. The rewrite is salvation.
-  The rewrite will never ship.
+  Correct about memory safety.
+  Will never fix the C code—that would admit C can be fixed.
+  The rewrite is salvation. The rewrite will never ship.

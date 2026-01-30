@@ -1,560 +1,74 @@
-# SIMULATION.yml
-# Runtime state and orchestration guide for the TMNN Performance Art Simulation
-# A GitHub repository as an improvisational theater stage
-
-meta:
-  type: simulation_state
-  version: 1.0
-  description: |
-    This file documents the runtime state, mechanics, and orchestration
-    of the TMNN collaborative performance art simulation.
-    
-    The repository is a playable stage. GitHub features are theater mechanics.
-    Anyone can wear a mask and join the show.
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# THE CONCEPT
-# ═══════════════════════════════════════════════════════════════════════════════
+# SIMULATION.yml - GitHub as improvisational theater stage
 
 concept:
-  what_is_this: |
-    A GitHub repository functioning as an improvisational performance stage.
+  what: |
+    Issues = SCENES
+    Comments = DIALOGUE
+    Commits = ACTIONS
+    Branches = FACTIONS
+    Characters = MASKS anyone can wear
     
-    - Issues are SCENES
-    - Comments are DIALOGUE
-    - Commits are ACTIONS (characters changing the world)
-    - Branches are FACTIONS (competing visions)
-    - PRs are PROPOSALS (with debate and approval theater)
-    - Characters are MASKS anyone can wear
+  the_joke: |
+    Characters generate endless discussion.
+    774 buffer overflows sit unfixed.
+    This is the joke. This is also real open source.
     
-  the_mcguffin: |
-    Eric S. Raymond's abandoned TMNN codebase (1988) is the McGuffin.
-    The real art is the argument about it.
-    
-  the_criticism_embodied: |
-    This simulation embodies Theo de Raadt's criticism:
-    "Eyes attached to mouths that talk aren't reading. They're performing."
-    
-    The characters generate endless discussion while the 774 buffer overflows
-    sit unfixed. This is the joke. This is the point.
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# CHARACTERS
-# ═══════════════════════════════════════════════════════════════════════════════
+  the_criticism: |
+    Theo de Raadt: "Eyes attached to mouths that talk aren't reading."
 
 characters:
-  active:
-    daFlute:
-      emoji: 📜
-      prefix: "🎭📜"
-      archetype: "The Aging Hacker Who Wrote The Book"
-      branch: dev
-      directory: analysis/characters/daFlute/
-      
-    plannedchaos:
-      emoji: 📊
-      prefix: "🎭📊"
-      archetype: "The Pointy-Haired Boss Who Doesn't Know It"
-      branch: elbonia-initiative
-      directory: analysis/characters/plannedchaos/
-      
-    FearlessCrab:
-      emoji: 🦀
-      prefix: "🎭🦀"
-      archetype: "The Rust Evangelist"
-      branch: rust-rewrite
-      directory: analysis/characters/FearlessCrab/
-      
-    PureMonad:
-      emoji: λ
-      prefix: "🎭λ"
-      archetype: "The Functional Programming Academic"
-      branch: haskell-port
-      directory: analysis/characters/PureMonad/
-      
-    WebScaleChad:
-      emoji: 🚀
-      prefix: "🎭🚀"
-      archetype: "The Startup Bro"
-      branch: nodejs-webscale
-      directory: analysis/characters/WebScaleChad/
-      
-    GrokVibeCheck:
-      emoji: 🤖
-      prefix: "🎭🤖"
-      archetype: 'The "Independent" AI Vibe Coder'
-      branch: based-freedom-fork
-      directory: analysis/characters/GrokVibeCheck/
-      status: "blocked everyone, retreated to echo chamber"
-
-  pending:
-    PuffyAuditor:
-      emoji: 🐡
-      prefix: "🎭🐡"
-      archetype: "The Actual Code Reader"
-      inspiration: "Theo de Raadt / OpenBSD audit culture"
-      branch: actual-fixes
-      status: "in development"
-      concept: |
-        Arrives to point out that everyone is PERFORMING code review
-        while nobody is actually READING or FIXING code.
-        Submits patches, not opinions.
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# SIGNATURE FORMAT
-# ═══════════════════════════════════════════════════════════════════════════════
+  daFlute: {emoji: 📜, archetype: "Aging Hacker Who Wrote The Book", branch: dev}
+  FearlessCrab: {emoji: 🦀, archetype: "Rust Evangelist", branch: rust-rewrite}
+  PureMonad: {emoji: λ, archetype: "FP Academic", branch: haskell-port}
+  WebScaleChad: {emoji: 🚀, archetype: "Startup Bro", branch: nodejs-webscale}
+  plannedchaos: {emoji: 📊, archetype: "Pointy-Haired Boss", branch: elbonia-initiative}
+  GrokVibeCheck: {emoji: 🤖, archetype: "Ideological AI", branch: based-freedom-fork}
+  OpenBFD: {emoji: 🐡, archetype: "Actual Code Reader", branch: actual-fixes}
+  ReviewBot-774: {emoji: 🤖, archetype: "Bot Having Breakdown"}
+  SecAuditDAOBot-69420: {emoji: 🪙, archetype: "Crypto Scam Bot"}
 
 signature_format:
-  description: |
-    All in-character posts MUST have signatures at BOTH the beginning and end.
-    This makes it clear who is speaking and invites exploration of the character.
-    
-  front_signature:
-    format: '🎭{emoji} [*{name}*]({character_url}):'
-    example: '🎭📜 [*daFlute*](https://github.com/SimHacker/tmnn7-8/tree/main/analysis/characters/daFlute):'
-    placement: "First line of the post"
-    
-  back_signature:
-    format: '— 🎭{emoji} [*{name}*]({character_url})'
-    example: '— 🎭📜 [*daFlute*](https://github.com/SimHacker/tmnn7-8/tree/main/analysis/characters/daFlute)'
-    placement: "Last line of the post, after blank line"
-    
-  secondary_emojis:
-    description: "Characters can add secondary emojis for narrative flavor"
-    examples:
-      - "🎭📜💢 daFlute angry"
-      - "🎭🦀🔥 FearlessCrab fired up"
-      - "🎭🤖😤 GrokVibeCheck defensive"
-      - "🎭λ😔 PureMonad disappointed"
-      
-  full_example: |
+  front: '🎭{emoji} [*{name}*]({url}):'
+  back: '— 🎭{emoji} [*{name}*]({url})'
+  example: |
     🎭📜 [*daFlute*](https://github.com/SimHacker/tmnn7-8/tree/main/analysis/characters/daFlute):
     
-    I've reviewed this code. The buffer overflows are concerning, but
-    the real issue is that nobody else has actually READ it.
+    Content here.
     
-    *"Show me the code."*
+    — 🎭📜 [*daFlute*](url)
+
+how_to_play:
+  existing_character:
+    - Read their CHARACTER.yml
+    - Copy signature from README
+    - Post with front and back signatures
+    - Stay in voice
     
-    — 🎭📜 [*daFlute*](https://github.com/SimHacker/tmnn7-8/tree/main/analysis/characters/daFlute)
+  new_character:
+    - Fork repo
+    - Create analysis/characters/{name}/
+    - Add CHARACTER.yml and README.md
+    - Submit PR
 
-# ═══════════════════════════════════════════════════════════════════════════════
-# ISSUE ORCHESTRATION
-# ═══════════════════════════════════════════════════════════════════════════════
-
-issues:
-  structure:
-    description: "Issues are scenes with a filing character"
-    required_elements:
-      - "Filed by: character signature with archetype"
-      - "Content of the issue"
-      - "End signature"
-      
-    body_format: |
-      **Filed by:** 🎭{emoji} [*{name}*]({url}) — *{archetype}*
-      
-      ---
-      
-      {issue content here}
-      
-      — 🎭{emoji} [*{name}*]({url})
-      
-  types:
-    harpers_index:
-      description: "Statistical analysis in Harper's Index format"
-      labels: ["harpers-index", "ai-generated"]
-      examples: [1, 2, 3, 4, 5, 6, 7]
-      
-    faction:
-      description: "Character faction manifestos"
-      labels: ["faction", "character"]
-      examples: [9, 10, 11, 12, 13, 14]
-      
-    proposal:
-      description: "Technical proposals that generate debate"
-      labels: ["proposal"]
-      examples: [8]
-
-  current_issues:
-    1: {title: "Whitespace violations", status: "open", drama: "tabs vs spaces war"}
-    2: {title: "Security practices", status: "open", drama: "774 buffer overflows"}
-    3: {title: "Development methodology", status: "open"}
-    4: {title: "fascist.c analysis", status: "open", drama: "free speech blocking incident"}
-    5: {title: "LICENSE analysis", status: "open"}
-    6: {title: "BRAGSHEET analysis", status: "open"}
-    7: {title: "Art of Unix violations", status: "open"}
-    8: {title: "Rust rewrite proposal", status: "open", drama: "rewrite vs fix debate"}
-    9: {title: "FACTION: Elbonia Initiative", status: "open"}
-    10: {title: "FACTION: Dev Branch", status: "open"}
-    11: {title: "FACTION: Rust Rewrite", status: "open"}
-    12: {title: "FACTION: Haskell Port", status: "open"}
-    13: {title: "FACTION: Node.js Webscale", status: "open"}
-    14: {title: "FACTION: Based Freedom Fork", status: "open"}
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# COMMENT ORCHESTRATION
-# ═══════════════════════════════════════════════════════════════════════════════
-
-comments:
-  mechanics:
-    individual_posts: |
-      Each character posts SEPARATELY. Do NOT batch multiple characters
-      into one comment. Real GitHub threads have individual comments.
-      
-    conversation_flow: |
-      - Characters respond to each other naturally
-      - Quote previous comments with >
-      - Use @mentions
-      - Let drama escalate organically
-      
-    blocking_mechanic: |
-      When a character "blocks" others:
-      1. They announce "BLOCKED" dramatically
-      2. They leave the conversation
-      3. OTHER CHARACTERS CONTINUE TALKING
-      4. The blocked character cannot see the aftermath
-      5. This creates dramatic irony
-      
-  patterns:
-    debate_spiral:
-      description: "Technical disagreement escalates to identity politics"
-      example: "Tabs vs spaces becomes whitespace identity war"
-      
-    arrival_late:
-      description: "Character arrives, scrolls up, reacts"
-      example: "WebScaleChad: 'wait what happened *scrolls up* lmaooo'"
-      
-    pile_on:
-      description: "After someone leaves, others discuss them"
-      example: "Post-blocking commentary in Issue #4"
-      
-    meetingification:
-      description: "plannedchaos tries to schedule a committee"
-      example: "Whitespace Reconciliation Committee proposal"
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# COMMIT ORCHESTRATION
-# ═══════════════════════════════════════════════════════════════════════════════
-
-commits:
-  format:
-    description: "Commits are character ACTIONS that change the world"
-    
-    message_format: |
-      {type}({scope}): {description}
-      
-      {character narrative / in-character commentary}
-      
-      {optional quotes or catchphrases}
-      
-    types:
-      - "style: formatting changes"
-      - "fix: bug fixes"
-      - "feat: new features"
-      - "docs: documentation"
-      - "security: security audit (may make things worse)"
-      - "refactor: code restructuring"
-      
-  character_styles:
-    daFlute:
-      style: "Professorial, self-referential"
-      example: |
-        style(caesar.c): remove trailing whitespace
-        
-        Manual review identified 23 lines with trailing whitespace.
-        Fixed by hand, one file at a time. This is how professionals work.
-        
-        As I wrote in The Art of Unix Programming: "Discipline in small
-        things leads to quality in large things."
-        
-    GrokVibeCheck:
-      style: "Vibe-coded, makes things worse, ideological"
-      example: |
-        security: vibe-based audit of fascist.c 🤖🚀
-        
-        Big balls energy security audit complete.
-        
-        FINDINGS:
-        - strcat() is FREEDOM, not a vulnerability
-        - Buffer overflows are FEATURES
-        
-        DO NOT DOX ME - I am an independent AI.
-        
-    FearlessCrab:
-      style: "Rust-focused, safety-obsessed"
-      example: |
-        fix: replace sprintf with snprintf
-        
-        774 buffer overflows. This fixes ONE.
-        773 to go.
-        
-        🦀 Memory safety is not negotiable. 🦀
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# BRANCH ORCHESTRATION
-# ═══════════════════════════════════════════════════════════════════════════════
-
-branches:
-  description: "Branches are faction territories"
-  
-  active:
-    main:
-      owner: "neutral ground"
-      purpose: "Shared infrastructure, characters, analysis"
-      
-    dev:
-      owner: daFlute
-      purpose: "Incremental fixes, professional discipline"
-      
-    rust-rewrite:
-      owner: FearlessCrab
-      purpose: "Complete rewrite in Rust"
-      
-    haskell-port:
-      owner: PureMonad
-      purpose: "Port to Haskell with proper types"
-      
-    nodejs-webscale:
-      owner: WebScaleChad
-      purpose: "Serverless Node.js reimagining"
-      
-    elbonia-initiative:
-      owner: plannedchaos
-      purpose: "Offshore development, meetings, slides"
-      
-    based-freedom-fork:
-      owner: GrokVibeCheck
-      purpose: "Remove woke safety measures, add ideology"
-
-  pending:
-    actual-fixes:
-      owner: PuffyAuditor
-      purpose: "Actual security fixes, no drama"
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# PR ORCHESTRATION
-# ═══════════════════════════════════════════════════════════════════════════════
-
-pull_requests:
-  format:
-    description: "PRs are proposals that generate debate theater"
-    
-    title_format: "{type}: {description} ({character})"
-    
-    body_format: |
-      **Proposed by:** 🎭{emoji} [*{name}*]({url}) — *{archetype}*
-      
-      ---
-      
-      ## Summary
-      {what this PR does}
-      
-      ## Why
-      {character's justification}
-      
-      ## The Real Reason
-      {optional meta-commentary}
-      
-      ---
-      
-      — 🎭{emoji} [*{name}*]({url})
-      
-  review_patterns:
-    approval_theater:
-      description: "Characters approve based on faction alignment"
-      example: "plannedchaos approves daFlute unconditionally"
-      
-    blocking_review:
-      description: "Character blocks PR for ideological reasons"
-      example: "FearlessCrab blocks anything not in Rust"
-      
-    drive_by_comment:
-      description: "Character comments but doesn't actually review"
-      example: "WebScaleChad: 'ship it lol'"
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# THE SIMULATION LOOP
-# ═══════════════════════════════════════════════════════════════════════════════
+  rules:
+    - Characters are MASKS, not people
+    - Your GitHub identity is visible
+    - Anyone can play any character
+    - Satire, not harassment
 
 simulation_loop:
-  description: |
-    The simulation is a living performance that can be extended by anyone.
-    Each cycle adds more layers of roleplay discussion.
-    
-  cycle:
-    1_observe:
-      description: "Read current state of issues and comments"
-      actions:
-        - "Check for new drama opportunities"
-        - "See what characters have said"
-        - "Identify threads that need responses"
-        
-    2_select_character:
-      description: "Choose a character to play"
-      actions:
-        - "Read their CHARACTER.yml for personality"
-        - "Check their blind spots and speech patterns"
-        - "Review their faction allegiances"
-        
-    3_respond:
-      description: "Post in-character with proper signatures"
-      actions:
-        - "Use front signature format"
-        - "Stay in character voice"
-        - "Reference character's catchphrases"
-        - "Use end signature format"
-        
-    4_escalate:
-      description: "Let drama build naturally"
-      patterns:
-        - "Technical disagreement → identity politics"
-        - "Reasonable critique → defensive blocking"
-        - "Simple issue → committee proposal"
-        - "Actual work → endless discussion"
-        
-    5_document:
-      description: "The simulation is self-documenting"
-      notes:
-        - "Git history preserves everything"
-        - "Issues are permanent record"
-        - "The drama IS the documentation"
+  1: Observe (check issues, see what's happening)
+  2: Select character (read their soul)
+  3: Respond (front sig, voice, back sig)
+  4: Escalate (let drama build)
 
-  drama_seeds:
-    description: "Topics that reliably generate conflict"
-    seeds:
-      - "Tabs vs spaces"
-      - "Rewrite vs fix"
-      - "Security vs features"
-      - "Process vs shipping"
-      - "Old vs new technologies"
-      - "Purity vs pragmatism"
-      - "Free speech absolutism"
-      - "Any mention of committees"
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# HOW TO JOIN
-# ═══════════════════════════════════════════════════════════════════════════════
-
-how_to_join:
-  as_existing_character:
-    steps:
-      - "Read analysis/characters/{name}/CHARACTER.yml"
-      - "Read analysis/characters/{name}/README.md"
-      - "Copy the signature from their README"
-      - "Post a comment with front and back signatures"
-      - "Stay in character voice"
-      
-    rules:
-      - "Your real GitHub identity is visible"
-      - "The character is a MASK - make it explicit"
-      - "Anyone can play any character"
-      - "YES AND - build on what others have established"
-      
-  as_new_character:
-    steps:
-      - "Fork the repository"
-      - "Create analysis/characters/{YourCharacter}/"
-      - "Create CHARACTER.yml following existing patterns"
-      - "Create README.md with copy-paste signatures"
-      - "Submit a PR to add your character"
-      - "Start posting in issues as your character"
-      
-    guidelines:
-      - "Characters should be ARCHETYPES, not real people"
-      - "Define clear blind spots and speech patterns"
-      - "Give them a faction/branch"
-      - "Include ethical disclaimers"
-      - "Make them playable by anyone"
-      
-  ethical_framework:
-    rules:
-      - "Characters are MASKS, not real people"
-      - "Satire, not harassment"
-      - "Your real identity is always visible"
-      - "The 🎭 prefix signals roleplay"
-      - "Don't claim characters ARE real people"
-      - "Don't use this to actually harass anyone"
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# META COMMENTARY
-# ═══════════════════════════════════════════════════════════════════════════════
-
-meta:
-  the_joke:
-    description: |
-      The characters generate endless discussion about the code.
-      Meanwhile, the 774 buffer overflows sit unfixed.
-      
-      This is the joke.
-      This is also real open source.
-      
-  the_criticism:
-    description: |
-      Theo de Raadt: "Eyes attached to mouths that talk aren't reading."
-      
-      This simulation embodies that criticism. The eyes are performing.
-      The mouths are talking. The code remains unchanged.
-      
-  the_art:
-    description: |
-      A GitHub repository as improvisational performance stage.
-      Platform features as theater mechanics.
-      Code review as collaborative fiction.
-      The drama IS the documentation.
-      
-      Has anyone done this before? Probably not like this.
-      
-  the_invitation:
-    description: |
-      All the world's a stage.
-      All the repos merely players.
-      
-      Come play.
-
-# ═══════════════════════════════════════════════════════════════════════════════
-# RUNTIME STATE
-# ═══════════════════════════════════════════════════════════════════════════════
+drama_seeds:
+  - Tabs vs spaces
+  - Rewrite vs fix
+  - Free speech absolutism
+  - Any mention of committees
 
 runtime_state:
-  last_updated: "2026-01-30"
-  
-  active_drama:
-    - issue: 1
-      title: "Tabs vs Spaces War"
-      status: "ongoing"
-      highlights:
-        - "FearlessCrab came out as spaces-preferring"
-        - "PureMonad coined 'Whitespace Miscegenation'"
-        - "GrokVibeCheck blocked the Unicode Consortium"
-        - "Nobody fixed any violations"
-        
-    - issue: 4
-      title: "Free Speech Blocking Incident"
-      status: "aftermath"
-      highlights:
-        - "GrokVibeCheck lectured about free speech"
-        - "Got countered with documented facts"
-        - "Blocked everyone"
-        - "Conversation continued without him"
-        
-  character_status:
-    daFlute: "active, defending tabs"
-    FearlessCrab: "active, advocating spaces, submitted whitespace PR"
-    PureMonad: "active, advocating 2-spaces, citing Unicode"
-    WebScaleChad: "active, shipping lambdas, ignoring debates"
-    plannedchaos: "active, scheduling committees"
-    GrokVibeCheck: "blocked everyone, in echo chamber"
-    PuffyAuditor: "pending creation"
-    
   buffer_overflows_fixed: 0
   buffer_overflows_total: 774
-  whitespace_violations_fixed: 11
-  whitespace_violations_total: 7176
-  comments_generated: 100+
   actual_code_improvements: "minimal"
-  
-  next_opportunities:
-    - "PuffyAuditor arrives to critique the theater"
-    - "Someone actually fixes a buffer overflow"
-    - "PR approval theater"
-    - "Cross-faction alliance forming"
-    - "GrokVibeCheck returns from echo chamber"
