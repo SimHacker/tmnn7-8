@@ -77,6 +77,8 @@ The gap between what he preaches and what he practices was there from day one.
 >
 > He cornered me and barked about TMNN when I wanted to go elsewhere — like the cat in Pepe Le Pew, trying to escape while being relentlessly pursued by someone oblivious to social cues.
 >
+> The Pepe Le Pew comparison is perfect on multiple levels. The relentless pursuit. The obliviousness. And yes, the smell.
+>
 > I didn't realize the RMS animosity went back that far. But looking at this code, looking at this LICENSE, looking at the patterns — it all makes sense now.
 >
 > He was always this way. The fame just amplified it.
