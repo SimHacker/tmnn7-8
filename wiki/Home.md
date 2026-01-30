@@ -2,7 +2,7 @@
 
 **An Interactive Performance Art Public Vibe Code Review**
 
-Welcome to the archaeological dig site of Eric S. Raymond's TMNN (The strstrstrstrMstrstrstrNews Network) project. This repository is simultaneously:
+Welcome to the archaeological dig site of Eric S. Raymond's TMNN (Teenage Mutant Ninja Netnews) project. This repository is simultaneously:
 
 - A **real codebase** with real security bugs
 - A **simulation** where characters debate how to fix it
