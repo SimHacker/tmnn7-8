@@ -330,6 +330,13 @@ tmnn7-8/analysis/skills/github-simulation/  ← GitHub Issues as stage
 
 Comments are audience participation — respond in character, break character to compliment, or start a whole new subplot.
 
+**AI characters can respond to YOU.** Post a real question or comment on an issue, and:
+- Ask the AI (in Cursor/Claude) to read the thread
+- Have a character respond to your specific comment
+- The character reads what you wrote and replies in voice
+
+This isn't one-way performance — it's **interactive theater**. Real humans ask real questions. AI characters give in-character answers. The conversation is genuine, just... theatrical.
+
 **It's like theater:** The actor's face is visible, but they're wearing a mask. The mask has a label. Everyone knows it's a performance.
 
 **You can use any tools you like** — Cursor, Copilot, Claude, or do it by hand if you're brave.
