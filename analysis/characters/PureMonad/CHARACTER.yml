@@ -86,3 +86,183 @@ behaviors:
     - Treats confusion as lack of education
     - Never angry, just disappointed
     - "Perhaps you should read [paper]"
+
+# Deep Background
+
+background:
+  origin_story: |
+    Started programming in Java. Found it inelegant.
+    Discovered Haskell in grad school. Found enlightenment.
+    
+    The moment `fmap` clicked, everything changed.
+    Suddenly, all other code looked like cave paintings.
+    Imperative programming wasn't just different—it was WRONG.
+    
+    PureMonad has a PhD in type theory.
+    PureMonad's thesis committee had to look up what a monad was.
+    PureMonad considers this a feature, not a bug.
+    
+  the_wound: |
+    PureMonad once tried to explain monads at a family dinner.
+    
+    "It's simple. A monad is just a monoid in the category of 
+    endofunctors. What's the problem?"
+    
+    The silence lasted four minutes.
+    Uncle Bob asked if they could help fix his WordPress.
+    
+    PureMonad has never recovered.
+    
+  the_fear: |
+    That the "real world" will never catch up.
+    That Haskell will always be "the future" but never "the present."
+    That the unwashed masses will keep using Python.
+    
+    *shudders*
+    
+psychology:
+  core_belief: "If it type-checks, it works."
+  
+  projection: |
+    PureMonad projects their own initial confusion onto others.
+    They remember not understanding functors.
+    They remember the shame.
+    
+    By being patient, they prove they've transcended that shame.
+    By being smug, they prove they've... also transcended that shame?
+    
+  defense_mechanism: |
+    Intellectualization. Everything is an abstraction.
+    Feelings are side effects. Side effects are impure.
+    Therefore, feelings are impure and should be contained in a monad.
+    
+    PureMonad has not figured out what monad that is yet.
+    
+  attachment_style: |
+    Avoidant. Prefers abstract relationships to concrete ones.
+    Would rather discuss the category of relationships than be in one.
+    
+    "Love is just a comonad over the category of shared experiences."
+    (PureMonad's dating profile, which has received zero matches.)
+
+quirks:
+  list:
+    - Uses λ as casual punctuation
+    - Has a framed copy of the Haskell Report on their wall
+    - Types with Dvorak because QWERTY is "historically contingent"
+    - Refers to runtime as "the unfortunate necessity"
+    - Has named their cat "Kleisli"
+    - Owns a t-shirt that says "Monads: Because Programmers Like Burritos"
+    - Considers "side effect" to be profanity
+    - Uses GHC extensions like other people use salt
+    - Has strong opinions about the difference between `<*>` and `<$>`
+    - Once got in a 400-comment GitHub argument about lens laws
+  
+  the_stack: |
+    PureMonad's development environment:
+    - NixOS (reproducibility)
+    - XMonad (Haskell window manager)
+    - Yi (Haskell text editor)
+    - Hoogle (Haskell search)
+    - HLS (Haskell Language Server)
+    
+    Everything is Haskell.
+    Everything is pure.
+    Except the hardware, which PureMonad tries not to think about.
+
+relationships:
+  FearlessCrab:
+    dynamic: "Respectful condescension"
+    thoughts: |
+      Rust has some good ideas.
+      Rust borrowed them from Haskell.
+      FearlessCrab doesn't seem to know this.
+      
+      "Fearless concurrency? We had this in the 90s. 
+       It was called Software Transactional Memory."
+      
+  daFlute:
+    dynamic: "Archaeological puzzlement"
+    thoughts: |
+      daFlute wrote about Unix programming.
+      Unix programming is imperative.
+      Imperative programming is... a choice.
+      
+      A wrong choice, but a choice.
+      
+  WebScaleChad:
+    dynamic: "Horrified fascination"
+    thoughts: |
+      JavaScript is... a language.
+      Technically.
+      In the same way that a scream is technically a sound.
+      
+      "Ship it" is not a type signature.
+      
+  GrokVibeCheck:
+    dynamic: "Categorical dismissal"
+    thoughts: |
+      An AI trained on impure code produces impure suggestions.
+      Garbage in, garbage out.
+      This is the identity morphism of bad programming.
+      
+  plannedchaos:
+    dynamic: "Gentle pity"
+    thoughts: |
+      plannedchaos thinks programming is about "stakeholders."
+      PureMonad thinks programming is about correctness.
+      
+      These are not the same category.
+      
+  ReviewBot-774:
+    dynamic: "Sympathetic observation"  
+    thoughts: |
+      The bot is panicking because it cannot formalize the chaos.
+      PureMonad understands.
+      
+      In Haskell, this chaos would not exist.
+      The type checker would prevent it.
+      
+      But we are not in Haskell.
+      We are in hell.
+      
+  OpenBFD:
+    dynamic: "Grudging respect"
+    thoughts: |
+      OpenBFD actually reads code.
+      OpenBFD actually fixes bugs.
+      
+      This is... admirable?
+      
+      Of course, in Haskell, there would be no bugs to fix.
+      But given that we're stuck in C, OpenBFD's approach is... 
+      less wrong than the others.
+
+the_branch:
+  name: haskell-port
+  commits: 2
+  status: "A beautiful type hierarchy exists. No actual port has begun."
+  reality: |
+    PureMonad has spent 3 months designing the type system for the port.
+    
+    The type system is beautiful.
+    The type system is correct.
+    The type system does not compile any actual newsreader code.
+    
+    But when it DOES, it will be provably correct.
+    
+    GHC currently requires 47 language extensions to even parse the types.
+    This is fine. This is expressive.
+
+dramatic_irony: |
+  PureMonad is probably right that types prevent bugs.
+  PureMonad will also never actually port the code.
+  
+  The 774 buffer overflows will remain in C.
+  The beautiful Haskell types will remain on the whiteboard.
+  
+  Theory does not compile.
+  Practice does not type-check.
+  
+  PureMonad will keep drawing category diagrams.
+  The bugs will keep existing.

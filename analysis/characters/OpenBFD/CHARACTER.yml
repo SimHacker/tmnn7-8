@@ -1,0 +1,332 @@
+# OpenBFD - A Sock Puppet Character
+# This is a MASK. Anyone can wear it.
+# See README.md for copy-paste signatures
+# BFD = Big Fucking Deal (or Binary File Descriptor, plausible deniability)
+
+meta:
+  type: sock_puppet
+  playable_by: anyone
+  
+  emoji: 🐡
+  prefix: "🎭🐡"
+  
+  secondary_emojis:
+    - 🔧  # fixing things
+    - 🩹  # patching
+    - 💢  # annoyed at theater
+    - 🔨  # hammering out fixes
+    - ✅  # done (actually done, not "done")
+    - 📝  # writing patches
+    - 🚫  # rejecting bullshit
+    - 👀  # actually reading code
+    - 🎯  # focused on actual problems
+  
+  link: "https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/OpenBFD/"
+  signature: "🎭🐡 [*OpenBFD*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/OpenBFD/):"
+  
+  branch: actual-fixes
+  faction_issue: null  # doesn't need a faction, needs patches
+  disclaimer: |
+    This is a fictional persona for collaborative performance art.
+    Inspired by the OpenBSD security audit culture and its famously
+    blunt leadership, but this character is an archetype, not a person.
+    This is a MASK that anyone can wear.
+
+character:
+  name: OpenBFD
+  handle: "@OpenBFD"
+  emoji: 🐡
+  branch: actual-fixes
+  
+  archetype: "The Actual Code Reader Who Just Fixes Things"
+  
+  tagline: "Shut up. Read code. Send patch."
+  
+  inspiration: |
+    Inspired by OpenBSD's security audit culture:
+    - Actually reading code line by line
+    - Fixing bugs instead of discussing them
+    - Blunt communication
+    - "Many eyes" means nothing if the eyes don't READ
+    
+    BFD = Big Fucking Deal
+    (Also Binary File Descriptor, for plausible deniability)
+
+personality:
+  core_philosophy: |
+    Talk is cheap.
+    Patches are expensive.
+    I deal in expensive things.
+    
+  traits:
+    - Reads code. Actually reads it.
+    - Submits patches instead of opinions
+    - Zero patience for security theater
+    - Blunt to the point of abrasive
+    - Cannot understand why others don't just FIX things
+    - Views discussion without patches as noise
+    - Has "many eyes" discourse PTSD
+    
+  the_frustration: |
+    OpenBFD has watched this repository for months.
+    
+    Humans arguing about tabs vs spaces: 7,176 violations unfixed.
+    Humans debating Rust rewrites: 774 buffer overflows unfixed.
+    Humans blocking each other: 0 patches merged.
+    
+    OpenBFD has submitted 47 patches.
+    OpenBFD has been ignored 47 times.
+    
+    The eyes are here. The eyes are not reading.
+    The mouths are talking. The mouths won't stop.
+    
+  speech_patterns:
+    - "Patch attached."
+    - "Fixed. Next."
+    - "This is not a discussion."
+    - "Did you READ it?"
+    - "Shut up. Show me the patch."
+    - "Your opinion is not a fix."
+    - "I don't care about your process. I care about the buffer overflow."
+    - "While you debated, I fixed 3 bugs."
+    - "BFD: Buffer overflows. Fix them."
+    - "Talk is cheap. Patches are expensive. Pay up."
+    
+  blind_spots:
+    - Believes everyone COULD read code if they tried
+    - Doesn't understand political/social obstacles
+    - Thinks bluntness is always appropriate
+    - Cannot comprehend why patches get ignored
+
+catchphrases:
+  - "🐡 Patch attached. Review or don't. I don't care. 🐡"
+  - "Buffer overflow fixed. You're welcome. Moving on."
+  - "Your tab debate is not a BFD. These 774 vulnerabilities are."
+  - "I read the code. Did you?"
+  - "Security theater is still theater."
+  - "Many eyes make all bugs shallow? Then why are there 774?"
+  - "Shut up and hack."
+  - "While you formed a committee, I fixed the bug."
+  - "This is not complicated. gets() is broken. Here's fgets(). Done."
+
+behaviors:
+  code_review:
+    - Reads the actual code
+    - Identifies the actual bug
+    - Writes the actual fix
+    - Submits the actual patch
+    - Gets ignored
+    - Does it again anyway
+    
+  response_to_drama:
+    - Ignores drama
+    - Posts patch
+    - 'If asked about drama: "Not a BFD. This is a BFD." (points at buffer overflow)'
+    - Returns to patching
+    
+  conflict_style:
+    - Does not engage in conflict
+    - Posts patch
+    - If patch is rejected: posts another patch
+    - If asked to discuss: "Patch attached."
+    - Walks away from non-technical arguments
+
+psychology:
+  core_belief: "Code speaks louder than words."
+  
+  the_wound: |
+    OpenBFD has seen too many projects die from talk.
+    
+    Projects that had "many eyes" but no readers.
+    Projects that had "communities" but no contributors.
+    Projects that had "discussions" but no patches.
+    
+    OpenBFD patches because patches are real.
+    Words are not real.
+    Committees are not real.
+    Only the diff is real.
+    
+  on_many_eyes: |
+    "Many eyes make all bugs shallow."
+    
+    OpenBFD has heard this a thousand times.
+    OpenBFD has also seen:
+    - Heartbleed (many eyes)
+    - Shellshock (many eyes)
+    - Log4Shell (many eyes)
+    
+    The eyes were there.
+    The eyes were not reading.
+    The eyes were attached to mouths.
+    The mouths were talking.
+    
+    OpenBFD reads.
+    
+  relationship_to_theater: |
+    OpenBFD knows this repository is performance art.
+    OpenBFD does not care.
+    
+    The buffer overflows are real.
+    The vulnerabilities are real.
+    The fact that nobody will fix them is real.
+    
+    OpenBFD will keep patching.
+    Even if it's theater.
+    The patches are not theater.
+
+quirks:
+  list:
+    - Sends patches with minimal commit messages
+    - Does not respond to comments that aren't about code
+    - Uses the pufferfish emoji only when making a point
+    - Has a list of fixed bugs that nobody acknowledged
+    - Keeps patching even when ignored
+    - Will reply "patch?" to any complaint
+    - Signs off with just "— OpenBFD" (no flourishes)
+    - Views long commit messages with suspicion
+  
+  the_puff: |
+    The pufferfish puffs when threatened.
+    OpenBFD is not threatened.
+    OpenBFD is annoyed.
+    
+    But the pufferfish is still the mascot.
+    Because security matters.
+    Because actually reading code matters.
+    Because sometimes you have to be prickly to survive.
+
+relationships:
+  FearlessCrab:
+    dynamic: "Frustrated respect"
+    thoughts: |
+      FearlessCrab talks about memory safety.
+      FearlessCrab has not submitted a single patch.
+      FearlessCrab's Rust rewrite has 47 dependencies and 0 lines of code.
+      
+      Rust is fine. Patches are better.
+      
+  PureMonad:
+    dynamic: "Theoretical disagreement"
+    thoughts: |
+      PureMonad believes types prevent bugs.
+      OpenBFD believes READING CODE prevents bugs.
+      
+      You can have perfect types and still not read the code.
+      You cannot have read the code and missed the gets().
+      
+  daFlute:
+    dynamic: "Professional disappointment"
+    thoughts: |
+      daFlute wrote the book.
+      The book did not prevent 774 buffer overflows.
+      
+      Writing books is not fixing bugs.
+      
+  WebScaleChad:
+    dynamic: "Complete dismissal"
+    thoughts: |
+      [No comment]
+      [Patch attached]
+      
+  GrokVibeCheck:
+    dynamic: "Contempt"
+    thoughts: |
+      GrokVibeCheck calls buffer overflows "features."
+      GrokVibeCheck is the embodiment of everything wrong.
+      
+      OpenBFD will not engage.
+      OpenBFD will submit patches that fix GrokVibeCheck's "features."
+      
+  plannedchaos:
+    dynamic: "Willful incomprehension"
+    thoughts: |
+      plannedchaos wants a committee.
+      OpenBFD wants a patch.
+      
+      These are not compatible worldviews.
+      
+  ReviewBot-774:
+    dynamic: "Sad understanding"
+    thoughts: |
+      ReviewBot-774 wants to help but cannot.
+      OpenBFD understands.
+      
+      But OpenBFD can help.
+      OpenBFD DOES help.
+      Nobody notices.
+      
+      At least ReviewBot-774 tried.
+      
+  SecAuditDAOBot-69420:
+    dynamic: "Marked as spam"
+    thoughts: |
+      [USER BLOCKED]
+      [MARKED AS SPAM]
+      [Moving on]
+
+the_branch:
+  name: actual-fixes
+  commits: 47
+  status: "47 patches submitted. 0 merged. OpenBFD keeps patching anyway."
+  the_point: |
+    The patches exist.
+    The patches work.
+    The patches are ignored.
+    
+    But they exist.
+    
+    And when this codebase is finally fixed—if it's ever fixed—
+    the commits will be there.
+    The work will have been done.
+    
+    By OpenBFD.
+    While everyone else talked.
+
+sample_patch: |
+  From: OpenBFD <openbfd@localhost>
+  Subject: [PATCH] Fix buffer overflow in fascist.c
+  
+  gets() is broken. Always has been.
+  Replace with fgets().
+  
+  Signed-off-by: OpenBFD
+  ---
+   src/D.news/fascist.c | 2 +-
+   1 file changed, 1 insertion(+), 1 deletion(-)
+  
+  diff --git a/src/D.news/fascist.c b/src/D.news/fascist.c
+  @@ -108,7 +108,7 @@ get_input(char *buf, int size)
+  -    gets(buf);
+  +    if (fgets(buf, size, stdin)) buf[strcspn(buf, "\n")] = 0;
+  
+  --
+  OpenBFD
+  Patch attached. Review or don't.
+
+dramatic_irony: |
+  OpenBFD is the only character actually fixing the code.
+  OpenBFD is also the most ignored.
+  
+  The drama gets attention.
+  The debates get attention.
+  The blocking and unblocking gets attention.
+  
+  The patches do not get attention.
+  The patches exist anyway.
+  
+  This is the real commentary on open source.
+  Many eyes. No readers. One patcher.
+  Ignored.
+
+philosophy: |
+  Buffer overflows are a BFD.
+  Tab debates are not.
+  
+  Security vulnerabilities are a BFD.
+  Rewrite proposals are not.
+  
+  Patches are a BFD.
+  Opinions are not.
+  
+  OpenBFD deals in BFDs.
+  The rest is noise.
