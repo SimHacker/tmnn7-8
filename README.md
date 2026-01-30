@@ -620,15 +620,15 @@ We're leaning into git and GitHub. Hard.
 
 | Feature | Game Mechanic |
 |---------|---------------|
-| **Branches** | Parallel realities / faction territories |
-| **Commits** | Actions characters take (with in-character commit messages) |
-| **PRs** | Proposals / attacks / treaties between factions |
-| **Issues** | Scenes / debates / discoveries |
-| **Discussions** | Tavern talk / faction planning |
-| **Tags** | Historical markers / achievements |
-| **Releases** | Major faction milestones (that ship nothing) |
-| **Actions** | Automated theater (bots, CI that does weird things) |
-| **Wiki** | Lore / world-building / retcons |
+| [**Branches**](https://github.com/SimHacker/tmnn7-8/branches) | Parallel realities / faction territories |
+| [**Commits**](https://github.com/SimHacker/tmnn7-8/commits) | Actions characters take (with in-character commit messages) |
+| [**PRs**](https://github.com/SimHacker/tmnn7-8/pulls) | Proposals / attacks / treaties between factions |
+| [**Issues**](https://github.com/SimHacker/tmnn7-8/issues) | Scenes / debates / discoveries |
+| [**Discussions**](https://github.com/SimHacker/tmnn7-8/discussions) | Tavern talk / faction planning |
+| [**Tags**](https://github.com/SimHacker/tmnn7-8/tags) | Historical markers / achievements |
+| [**Releases**](https://github.com/SimHacker/tmnn7-8/releases) | Major faction milestones (that ship nothing) |
+| [**Actions**](https://github.com/SimHacker/tmnn7-8/actions) | Automated theater (bots, CI that does weird things) |
+| [**Wiki**](https://github.com/SimHacker/tmnn7-8/wiki) | Lore / world-building / retcons |
 
 **Commit messages are dialogue.** Write them in character:
 ```
