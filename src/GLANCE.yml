@@ -1,4 +1,5 @@
 # src/ — The Archaeological Dig Site
+glance-depth: deep
 # 169 C files. 51 headers. 38 years of neglect.
 # "Show me the code." — ESR
 # OK. Here it is.

@@ -1,4 +1,5 @@
 # D.scrn/ — Screen Handling
+glance-depth: deep
 # Terminal UI before terminals were cool again
 # Curses: both the library and what you say when using it
 

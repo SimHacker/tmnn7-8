@@ -1,4 +1,5 @@
 # D.priv/ — Privilege Handling
+glance-depth: deep
 # Setuid code + buffer overflows = root access for attackers
 # The most dangerous combination in systems programming
 

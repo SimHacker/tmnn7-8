@@ -1,4 +1,5 @@
 # D.posix/ — POSIX Compatibility
+glance-depth: deep
 # When "portable" meant "please compile on my Unix"
 # The boring-but-necessary layer
 

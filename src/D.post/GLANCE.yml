@@ -1,4 +1,5 @@
 # D.post/ — Posting Functionality
+glance-depth: deep
 # Where user input becomes network output
 # The attack surface expands
 

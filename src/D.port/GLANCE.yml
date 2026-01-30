@@ -1,4 +1,5 @@
 # D.port/ — Portability Layer
+glance-depth: deep
 # Cross-platform code from when "cross-platform" meant 
 # "runs on both BSD and System V"
 # Also: test programs that shipped to production

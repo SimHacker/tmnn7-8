@@ -1,4 +1,5 @@
 # D.network/ — Network Operations
+glance-depth: deep
 # NNTP and network transport
 # Where untrusted data meets trusted code
 
