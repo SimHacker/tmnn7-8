@@ -145,25 +145,35 @@ register char *user;
     register int len;
     static int grpdone = FALSE;
     static char grplist[LBUFLEN];
+    size_t remaining;
 
     if (grpdone == FALSE)
     {
+	grplist[0] = '\0';
+	remaining = sizeof(grplist) - 1;
 	pw = getpwnam(user);
 #ifndef lint	/* USG and BSD disagree on the type of setgrent() */
 	setgrent();
 #endif /* lint */
 	while (gr = getgrent())
 	{
+	    len = strlen(gr->gr_name) + 1; /* +1 for comma */
 	    if (pw != (struct passwd *)NULL && pw->pw_gid == gr->gr_gid)
 	    {
-		(void) strcat(grplist, gr->gr_name);
-		(void) strcat(grplist, ",");
+		if (len < remaining) {
+		    (void) strcat(grplist, gr->gr_name);
+		    (void) strcat(grplist, ",");
+		    remaining -= len;
+		}
 		continue;
 	    }	
 	    for (cp = gr->gr_mem; cp && *cp; cp++)
 		if (strcmp(*cp, user) == 0) {
-		    (void) strcat(grplist, gr->gr_name);
-		    (void) strcat(grplist, ",");
+		    if (len < remaining) {
+			(void) strcat(grplist, gr->gr_name);
+			(void) strcat(grplist, ",");
+			remaining -= len;
+		    }
 		    break;
 		}
 	}
