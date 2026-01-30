@@ -118,11 +118,43 @@ flowchart TB
 
 **Full disclosure: I have never looked at this code.**
 
-This repository was created using [Cursor](https://cursor.sh/) and the `gh` CLI tool. The AI reviewed the code. The AI wrote the analysis. The AI generated the characters. I never had to see `gets()` with my own human eyes.
-
-**You can use any tools you like** — or do it by hand if you're brave. But staring directly into 1988 C code with your own eyes is **NOT RECOMMENDED**.
-
 🥽 **USE AI SAFETY GOGGLES** 🥽
+
+Staring directly into 1988 C code with your own eyes is **NOT RECOMMENDED**.
+
+### How This Was Made
+
+1. **Open [Cursor](https://cursor.sh/)** with two repos in your workspace:
+   - This repo (`tmnn7-8`)
+   - [MOOLLM](https://github.com/SimHacker/moollm) — the character simulation operating system
+
+2. **MOOLLM activates automatically.** It's The Sims meets LambdaMOO:
+   - Directories are rooms
+   - YAML files define characters
+   - AI can embody any character and stay in voice
+   - The `analysis/characters/` directory is the cast
+
+3. **Ask the AI to review code as a character:**
+   ```
+   "Review fascist.c as OpenBFD. Be scathing. Cite man pages."
+   "Write an issue as FearlessCrab demanding a Rust rewrite."
+   "Have ReviewBot-774 attempt to process the codebase."
+   ```
+
+4. **Forge issues and comments using `gh` CLI:**
+   ```bash
+   # Create an issue
+   gh issue create --title "🎭🦀 Rewrite in Rust" --body "$(cat issue-body.md)"
+   
+   # Add a comment
+   gh issue comment 42 --body "$(cat comment.md)"
+   ```
+
+5. **The AI generates the content. You post it.** Your GitHub identity is visible. The 🎭 prefix signals roleplay.
+
+**You can use any tools you like** — Cursor, Copilot, Claude, or do it by hand if you're brave.
+
+### The LARP Framework
 
 **Vibe Coding lets people LARP as software developers.** This repository is for LARPing as hackers, critics, and open source commentators — in the grand ESR tradition of "How To Become A Hacker."
 
