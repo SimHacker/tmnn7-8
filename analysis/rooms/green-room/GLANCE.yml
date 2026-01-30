@@ -1,0 +1,27 @@
+# green-room — Where Characters Wait
+# Backstage area before entering the stage
+
+what: |
+  The green room is where characters exist between scenes.
+  They're defined here, waiting to be invoked.
+  When you call a character, they step from here onto the stage.
+
+purpose:
+  - Character staging area
+  - Backstage preparation
+  - Between-scene existence
+
+contains:
+  - All 9 CHARACTER.yml definitions (via inheritance)
+  - Character relationships
+  - Costume changes (persona layers)
+
+metaphor: |
+  In theater, the green room is where actors wait.
+  In this simulation, characters "live" here until summoned.
+  "You are OpenBFD" pulls them from green room to stage.
+
+k-lines:
+  - backstage
+  - character-staging
+  - theater-metaphor
