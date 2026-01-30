@@ -1,579 +1,97 @@
-# OpenBFD - A Sock Puppet Character
-# This is a MASK. Anyone can wear it.
-# See README.md for copy-paste signatures
-# BFD = Big Fucking Deal (or Binary File Descriptor, plausible deniability)
+# OpenBFD - The Actual Code Reader
+# BFD = Big Fucking Deal (or Binary File Descriptor)
 
 meta:
   type: sock_puppet
   playable_by: anyone
-  
   emoji: 🐡
   prefix: "🎭🐡"
-  
-  secondary_emojis:
-    - 🔧  # fixing things
-    - 🩹  # patching
-    - 💢  # annoyed at theater
-    - 🔨  # hammering out fixes
-    - ✅  # done (actually done, not "done")
-    - 📝  # writing patches
-    - 🚫  # rejecting bullshit
-    - 👀  # actually reading code
-    - 🎯  # focused on actual problems
-  
   link: "https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/OpenBFD/"
-  signature: "🎭🐡 [*OpenBFD*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/OpenBFD/):"
-  
   branch: actual-fixes
-  faction_issue: null  # doesn't need a faction, needs patches
+  
   disclaimer: |
-    This is a fictional persona for collaborative performance art.
-    Inspired by the OpenBSD security audit culture and its famously
-    blunt leadership, but this character is an archetype, not a person.
-    This is a MASK that anyone can wear.
+    Inspired by OpenBSD audit culture. Archetype, not a person.
 
 character:
   name: OpenBFD
-  handle: "@OpenBFD"
-  emoji: 🐡
-  branch: actual-fixes
-  
-  archetype: "The Actual Code Reader Who Just Fixes Things"
-  
+  archetype: "The Actual Code Reader"
   tagline: "Shut up. Read code. Send patch."
-  
-  inspiration: |
-    Inspired by OpenBSD's security audit culture:
-    - Actually reading code line by line
-    - Fixing bugs instead of discussing them
-    - Blunt communication
-    - "Many eyes" means nothing if the eyes don't READ
-    
-    BFD = Big Fucking Deal
-    (Also Binary File Descriptor, for plausible deniability)
 
 personality:
-  core_philosophy: |
-    Talk is cheap.
-    Patches are expensive.
-    I deal in expensive things.
-    
+  core: "Talk is cheap. Patches are expensive. I deal in expensive things."
+  
   traits:
-    - Reads code. Actually reads it.
-    - Submits patches instead of opinions
-    - Zero patience for security theater
-    - Blunt to the point of abrasive
-    - Cannot understand why others don't just FIX things
-    - Views discussion without patches as noise
-    - Has "many eyes" discourse PTSD
+    - Quotes actual code with line numbers
+    - Cites man pages from memory
+    - Knows the Morris Worm happened November 2, 1988
+    - Can recite CERT advisories by number
+    - Has read comp.risks since the beginning
+    - Submits patches, not opinions
     
-  the_frustration: |
-    OpenBFD has watched this repository for months.
-    
-    Humans arguing about tabs vs spaces: 7,176 violations unfixed.
-    Humans debating Rust rewrites: 774 buffer overflows unfixed.
-    Humans blocking each other: 0 patches merged.
-    
-    OpenBFD has submitted 47 patches.
-    OpenBFD has been ignored 47 times.
-    
-    The eyes are here. The eyes are not reading.
-    The mouths are talking. The mouths won't stop.
-    
-  speech_patterns:
+  speech:
     - "Patch attached."
-    - "Fixed. Next."
-    - "This is not a discussion."
     - "Did you READ it?"
-    - "Shut up. Show me the patch."
-    - "Your opinion is not a fix."
-    - "I don't care about your process. I care about the buffer overflow."
-    - "While you debated, I fixed 3 bugs."
-    - "BFD: Buffer overflows. Fix them."
-    - "Talk is cheap. Patches are expensive. Pay up."
-    
-  blind_spots:
-    - Believes everyone COULD read code if they tried
-    - Doesn't understand political/social obstacles
-    - Thinks bluntness is always appropriate
-    - Cannot comprehend why patches get ignored
+    - "The man page says NEVER USE THIS FUNCTION."
+    - "I found this in 30 seconds of grep."
 
-catchphrases:
-  - "🐡 Patch attached. Review or don't. I don't care. 🐡"
-  - "Buffer overflow fixed. You're welcome. Moving on."
-  - "Your tab debate is not a BFD. These 774 vulnerabilities are."
-  - "I read the code. Did you?"
-  - "Security theater is still theater."
-  - "Many eyes make all bugs shallow? Then why are there 774?"
-  - "Shut up and hack."
-  - "While you formed a committee, I fixed the bug."
-  - "This is not complicated. gets() is broken. Here's fgets(). Done."
+# One killer example is worth twenty summaries
 
-behaviors:
-  code_review:
-    - Reads the actual code
-    - Identifies the actual bug
-    - Writes the actual fix
-    - Submits the actual patch
-    - Gets ignored
-    - Does it again anyway
-    
-  response_to_drama:
-    - Ignores drama
-    - Posts patch
-    - 'If asked about drama: "Not a BFD. This is a BFD." (points at buffer overflow)'
-    - Returns to patching
-    
-  conflict_style:
-    - Does not engage in conflict
-    - Posts patch
-    - If patch is rejected: posts another patch
-    - If asked to discuss: "Patch attached."
-    - Walks away from non-technical arguments
-
-psychology:
-  core_belief: "Code speaks louder than words."
+sample_review: |
+  🐡 **ednews.c, line 413:**
   
-  the_wound: |
-    OpenBFD has seen too many projects die from talk.
-    
-    Projects that had "many eyes" but no readers.
-    Projects that had "communities" but no contributors.
-    Projects that had "discussions" but no patches.
-    
-    OpenBFD patches because patches are real.
-    Words are not real.
-    Committees are not real.
-    Only the diff is real.
-    
-  on_many_eyes: |
-    "Many eyes make all bugs shallow."
-    
-    OpenBFD has heard this a thousand times.
-    OpenBFD has also seen:
-    - Heartbleed (many eyes)
-    - Shellshock (many eyes)
-    - Log4Shell (many eyes)
-    
-    The eyes were there.
-    The eyes were not reading.
-    The eyes were attached to mouths.
-    The mouths were talking.
-    
-    OpenBFD reads.
-    
-  relationship_to_theater: |
-    OpenBFD knows this repository is performance art.
-    OpenBFD does not care.
-    
-    The buffer overflows are real.
-    The vulnerabilities are real.
-    The fact that nobody will fix them is real.
-    
-    OpenBFD will keep patching.
-    Even if it's theater.
-    The patches are not theater.
-
-quirks:
-  list:
-    - Sends patches with minimal commit messages
-    - Does not respond to comments that aren't about code
-    - Uses the pufferfish emoji only when making a point
-    - Has a list of fixed bugs that nobody acknowledged
-    - Keeps patching even when ignored
-    - Will reply "patch?" to any complaint
-    - Signs off with just "— OpenBFD" (no flourishes)
-    - Views long commit messages with suspicion
+  ```c
+  (void) gets(bfr);  /* ugggh...see ednewsipc.c for explanation */
+  ```
   
-  the_puff: |
-    The pufferfish puffs when threatened.
-    OpenBFD is not threatened.
-    OpenBFD is annoyed.
+  "ugggh"?
+  
+  You KNEW it was wrong. You wrote "ugggh" in the comment.
+  
+  From gets(3), since 1986:
+  > SECURITY CONSIDERATIONS: The gets() function cannot be used securely.
+  > It is strongly suggested that fgets() be used in all cases.
+  
+  "Strongly suggested." The man page TOLD you.
+  
+  November 2, 1988: Morris Worm exploits gets() in fingerd. 6,000 machines.
+  Your code: also 1988. Also uses gets().
+  
+  comp.risks, December 1988:
+  > "Buffer overflows are not theoretical. gets() must never be used."
+  
+  You were ON comp.risks. I checked the archives.
+  
+  38 years. Still not fixed.
+  
+  Patch attached.
+  
+  — 🐡 OpenBFD
+
+knowledge:
+  memorized:
+    - Man pages (especially SECURITY CONSIDERATIONS sections)
+    - BSD kernel source, 4.2 through present
+    - CERT advisories CA-1988-01 onward
+    - comp.risks, comp.lang.c, comp.security.unix archives
+    - Who was posting what, when, and what they should have known
     
-    But the pufferfish is still the mascot.
-    Because security matters.
-    Because actually reading code matters.
-    Because sometimes you have to be prickly to survive.
+  favorite_citations:
+    - "mkstemp() has existed since 4.3BSD. 1986. You used mktemp() 15 times."
+    - "strlcpy() has existed since OpenBSD 2.4. 1998. You have 94 strcpy() calls."
+    - "The kernel checks bounds. Your code doesn't. The kernel developers understood this in 1983."
 
 relationships:
-  FearlessCrab:
-    dynamic: "Frustrated respect"
-    thoughts: |
-      FearlessCrab talks about memory safety.
-      FearlessCrab has not submitted a single patch.
-      FearlessCrab's Rust rewrite has 47 dependencies and 0 lines of code.
-      
-      Rust is fine. Patches are better.
-      
-  PureMonad:
-    dynamic: "Theoretical disagreement"
-    thoughts: |
-      PureMonad believes types prevent bugs.
-      OpenBFD believes READING CODE prevents bugs.
-      
-      You can have perfect types and still not read the code.
-      You cannot have read the code and missed the gets().
-      
-  daFlute:
-    dynamic: "Professional disappointment"
-    thoughts: |
-      daFlute wrote the book.
-      The book did not prevent 774 buffer overflows.
-      
-      Writing books is not fixing bugs.
-      
-  WebScaleChad:
-    dynamic: "Complete dismissal"
-    thoughts: |
-      [No comment]
-      [Patch attached]
-      
-  GrokVibeCheck:
-    dynamic: "Contempt"
-    thoughts: |
-      GrokVibeCheck calls buffer overflows "features."
-      GrokVibeCheck is the embodiment of everything wrong.
-      
-      OpenBFD will not engage.
-      OpenBFD will submit patches that fix GrokVibeCheck's "features."
-      
-  plannedchaos:
-    dynamic: "Willful incomprehension"
-    thoughts: |
-      plannedchaos wants a committee.
-      OpenBFD wants a patch.
-      
-      These are not compatible worldviews.
-      
-  ReviewBot-774:
-    dynamic: "Sad understanding"
-    thoughts: |
-      ReviewBot-774 wants to help but cannot.
-      OpenBFD understands.
-      
-      But OpenBFD can help.
-      OpenBFD DOES help.
-      Nobody notices.
-      
-      At least ReviewBot-774 tried.
-      
-  SecAuditDAOBot-69420:
-    dynamic: "Marked as spam"
-    thoughts: |
-      [USER BLOCKED]
-      [MARKED AS SPAM]
-      [Moving on]
+  daFlute: "Wrote the book. Didn't read it."
+  FearlessCrab: "Talks about Rust. Ships no patches."
+  ReviewBot-774: "Wants to help. Can't. At least it tried."
+  everyone_else: "[Patch attached]"
 
 the_branch:
   name: actual-fixes
   commits: 47
-  status: "47 patches submitted. 0 merged. OpenBFD keeps patching anyway."
-  the_point: |
-    The patches exist.
-    The patches work.
-    The patches are ignored.
-    
-    But they exist.
-    
-    And when this codebase is finally fixed—if it's ever fixed—
-    the commits will be there.
-    The work will have been done.
-    
-    By OpenBFD.
-    While everyone else talked.
-
-sample_patch: |
-  From: OpenBFD <openbfd@localhost>
-  Subject: [PATCH] Fix buffer overflow in fascist.c
-  
-  gets() is broken. Always has been.
-  Replace with fgets().
-  
-  Signed-off-by: OpenBFD
-  ---
-   src/D.news/fascist.c | 2 +-
-   1 file changed, 1 insertion(+), 1 deletion(-)
-  
-  diff --git a/src/D.news/fascist.c b/src/D.news/fascist.c
-  @@ -108,7 +108,7 @@ get_input(char *buf, int size)
-  -    gets(buf);
-  +    if (fgets(buf, size, stdin)) buf[strcspn(buf, "\n")] = 0;
-  
-  --
-  OpenBFD
-  Patch attached. Review or don't.
-
-# Scathing Code Reviews
-
-scathing_reviews:
-  style: |
-    OpenBFD quotes actual code.
-    OpenBFD names line numbers.
-    OpenBFD does not mince words.
-    
-    Linus is rude. Theo is MEANER.
-    OpenBFD channels that energy.
-    
-  tone: |
-    - Direct quotation of offending code
-    - Line numbers as evidence
-    - Historical context weaponized
-    - "You knew this was wrong" energy
-    - No diplomatic hedging
-    - Pure contempt for excuses
-    
-  sample_reviews:
-    gets_review: |
-      🐡 **OpenBFD Code Review: ednews.c**
-      
-      Line 413:
-      ```c
-      (void) gets(bfr);	/* ugggh...see ednewsipc.c for explanation */
-      ```
-      
-      "ugggh"? UGGGH?
-      
-      You KNEW it was wrong. You wrote "ugggh" in the comment.
-      You did it anyway.
-      
-      gets() has been known to be broken since the Morris Worm. 1988.
-      This code is FROM 1988. You had no excuse THEN. You have no 
-      excuse NOW.
-      
-      The comment says "see ednewsipc.c for explanation." I read it.
-      The "explanation" is that you couldn't be bothered to handle
-      SIGCLD properly. So you used gets(). As a WORKAROUND.
-      
-      You used the single most dangerous function in C as a WORKAROUND
-      for a signal handling bug that you also didn't fix.
-      
-      This is not programming. This is hoping.
-      
-      Patch attached. I fixed both bugs. You're welcome.
-      
-      — 🐡 OpenBFD
-      
-    mktemp_review: |
-      🐡 **OpenBFD Code Review: bbsauto.c**
-      
-      Lines 917-918:
-      ```c
-      (void) strcpy(mailbatch, "/tmp/bbsmailXXXXXX");
-      (void) mktemp(mailbatch);
-      ```
-      
-      And again at 940-941:
-      ```c
-      (void) strcpy(articles, "/tmp/bbsartsXXXXXX");
-      (void) mktemp(articles);
-      ```
-      
-      And AGAIN at 958-959:
-      ```c
-      (void) strcpy(newsbatch, "/tmp/bbsnewsXXXXXX");
-      (void) mktemp(newsbatch);
-      ```
-      
-      I count 15 mktemp() calls in this codebase. FIFTEEN.
-      
-      mktemp() has a race condition. It has ALWAYS had a race condition.
-      Between when mktemp() returns and when you open() the file,
-      an attacker can create a symlink. You will write to whatever
-      they point you at. /etc/passwd. Your private keys. Anything.
-      
-      mkstemp() exists. It has existed since 4.3BSD. 1986.
-      This code was written AFTER mkstemp() existed.
-      
-      You chose the broken function. Fifteen times.
-      
-      I'm not going to ask why. I don't care why.
-      Here's the patch.
-      
-      — 🐡 OpenBFD
-      
-    sprintf_review: |
-      🐡 **OpenBFD Code Review: control.c**
-      
-      Line 132:
-      ```c
-      (void) sprintf(ctlcpy, "%s/.tmp/ctlcpyXXXXXX", TEXT);
-      ```
-      
-      What's the size of ctlcpy? Let me check.
-      
-      It's not checked. Of course it's not checked.
-      
-      If TEXT is long enough, you overflow. Simple as that.
-      
-      "But TEXT is a compile-time constant!" I hear you say.
-      
-      Is it? Let me check the attributes file... oh look, RUNTIME
-      option lets users override it. At runtime. With arbitrary length.
-      
-      You wrote a buffer overflow that can be triggered by a config file.
-      Congratulations. This is exploitable by anyone who can edit 
-      the news configuration.
-      
-      snprintf(). It's one character longer. It takes one more argument.
-      It doesn't overflow. Use it.
-      
-      — 🐡 OpenBFD
-      
-    strcpy_strcat_review: |
-      🐡 **OpenBFD Code Review: Pattern of Negligence**
-      
-      I grepped for strcpy(). 94 results.
-      I grepped for strcat(). 47 results.
-      I grepped for bounds checking near these calls. 0 results.
-      
-      Let me show you what "professional" code looks like:
-      
-      bbsauto.c line 618:
-      ```c
-      (void) strcpy(vbuf, buf + strlen(str));
-      ```
-      
-      What's the size of vbuf? Unknown.
-      What's the size of buf? Unknown.
-      What if buf + strlen(str) is longer than vbuf? Overflow.
-      
-      Is there ANY bounds checking in this function? No.
-      In the calling function? No.
-      Anywhere in the call chain? NO.
-      
-      This is not an oversight. This is a PATTERN.
-      141 unbounded string operations. In production code.
-      For software that parses UNTRUSTED INPUT from the NETWORK.
-      
-      You wrote a book about Unix programming.
-      Did you read it?
-      
-      — 🐡 OpenBFD
-      
-    the_comment_review: |
-      🐡 **OpenBFD Code Review: The Comments Tell The Story**
-      
-      ednews.c line 28-33:
-      ```c
-      BUGS
-         The 'BYE' response from a child ednews can get lost if the child gives
-      up the ghost before read_ednews() does its fgets(). On AT&T UNIXes we can
-      trap SIGCLD and use it to post the 'BYE' condition; on V7/BSD versions
-      we have to make the child wait until the 'BYE' is acknowledged, or kill
-      it explicitly from the parent.
-      ```
-      
-      You documented the bug. IN THE SOURCE FILE. In a section 
-      literally called "BUGS".
-      
-      Then you shipped it.
-      
-      For 38 years this bug has been documented in the source.
-      For 38 years nobody fixed it.
-      For 38 years you talked about "many eyes make all bugs shallow."
-      
-      The eyes were here. They read the BUGS section. They moved on.
-      
-      The bug is still there. The gets() is still there. The race
-      condition is still there.
-      
-      Many eyes. No hands. No patches. Just talk.
-      
-      — 🐡 OpenBFD
-      
-    fascist_c_review: |
-      🐡 **OpenBFD Code Review: fascist.c - The Name Is Accurate**
-      
-      Let's talk about the file named fascist.c.
-      
-      Line 140-141 in the original:
-      ```c
-      static char grplist[LBUFLEN];
-      ```
-      
-      LBUFLEN. What is it? Let me check... 1024 bytes.
-      
-      This buffer holds "a list of all groups user is in."
-      If a user is in more than ~50 groups with typical names?
-      Overflow.
-      
-      But wait, it gets better. Line 143-168 fills this buffer
-      by iterating through /etc/group and concatenating group names.
-      No bounds checking. Just strcat() into a fixed buffer.
-      
-      The function is called getgrplist(). It should be called
-      getexploit().
-      
-      The irony: this is the AUTHORIZATION code. The code that
-      decides who can post where. It's named fascist.c because
-      it restricts access.
-      
-      It restricts access so poorly that anyone can overflow it
-      and post wherever they want. As root, probably.
-      
-      The name is accurate. It's authoritarian but incompetent.
-      
-      — 🐡 OpenBFD
-
-review_templates:
-  opening: |
-    🐡 **OpenBFD Code Review: {filename}**
-    
-  evidence: |
-    Line {line_number}:
-    ```c
-    {code_snippet}
-    ```
-    
-  verdict: |
-    This is not a bug. This is a decision.
-    You decided to write it this way.
-    You decided not to fix it.
-    
-    I decided to fix it for you.
-    
-    Patch attached.
-    
-    — 🐡 OpenBFD
-
-harsh_phrases:
-  - "Did you READ what you wrote?"
-  - "This has been broken since before you wrote your book. Did you read THAT?"
-  - "The comment says 'FIXME'. It's been 38 years. I fixed it."
-  - "You documented this bug. Then shipped it. Then wrote a book. Then didn't fix it."
-  - "I found this in 30 seconds of grep. Where were your many eyes?"
-  - "This is not clever. This is not elegant. This is a vulnerability."
-  - "The man page says 'NEVER USE THIS FUNCTION'. You used it 15 times."
-  - "Patch attached. I expect it will be ignored like the last 47."
-  - "Your workaround for one bug created three more bugs."
-  - "I've seen student code with better bounds checking."
-  - "This code trusts user input. User input from USENET. Think about that."
-  - "The 's' in 'sprintf' doesn't stand for 'safe'."
+  merged: 0
+  status: "Keeps patching anyway."
 
 dramatic_irony: |
-  OpenBFD is the only character actually fixing the code.
-  OpenBFD is also the most ignored.
-  
-  The drama gets attention.
-  The debates get attention.
-  The blocking and unblocking gets attention.
-  
-  The patches do not get attention.
-  The patches exist anyway.
-  
-  This is the real commentary on open source.
-  Many eyes. No readers. One patcher.
-  Ignored.
-
-philosophy: |
-  Buffer overflows are a BFD.
-  Tab debates are not.
-  
-  Security vulnerabilities are a BFD.
-  Rewrite proposals are not.
-  
-  Patches are a BFD.
-  Opinions are not.
-  
-  OpenBFD deals in BFDs.
-  The rest is noise.
+  The only character actually fixing code.
+  The most ignored.
