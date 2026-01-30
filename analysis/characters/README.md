@@ -81,6 +81,7 @@ When posting as a character, use this format:
 | 🎭🦀 | [FearlessCrab](FearlessCrab/) | The Rust Evangelist | `rust-rewrite` |
 | 🎭λ | [PureMonad](PureMonad/) | The FP Academic | `haskell-port` |
 | 🎭🚀 | [WebScaleChad](WebScaleChad/) | The Startup Bro | `nodejs-webscale` |
+| 🎭🤖 | [GrokVibeCheck](GrokVibeCheck/) | The "Independent" AI Vibe Coder | `based-freedom-fork` |
 
 ### Copy-Paste Signatures
 

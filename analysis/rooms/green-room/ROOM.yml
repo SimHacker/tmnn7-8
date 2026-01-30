@@ -206,6 +206,16 @@ characters:
     status: present
     mood: distracted
 
+  - path: ./GrokVibeCheck/
+    location: standing_too_close
+    status: present
+    mood: omniscient
+    notes: |
+      Standing uncomfortably close to everyone in turn.
+      A small drone hovers nearby. Scrolling on phone.
+      Occasionally laughs at something only he can see.
+      Mutters about "comprehensive training data."
+
 # Ambient details
 ambiance:
   lighting: Warm, slightly dim. Classic green room style.
