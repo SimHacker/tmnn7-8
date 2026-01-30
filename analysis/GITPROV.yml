@@ -1,0 +1,104 @@
+# GitProv: Git + Improv
+# Multi-user real-time collaborative performance art
+# In the spirit of Engelbart's NLS — but for theater
+
+name: GitProv
+tagline: "Git + Improv = GitProv"
+emoji: 🎭
+
+# The core insight
+essence: |
+  Podcasting democratized distribution.
+  GitProv democratizes creation.
+  
+  Everyone's a performer. Everyone's a writer.
+  The audience IS the cast.
+
+comparison:
+  podcasting:
+    portmanteau: "iPod + Broadcasting"
+    direction: one-way
+    democratizes: distribution
+    makes_everyone_a: broadcaster
+    
+  gitprov:
+    portmanteau: "Git + Improv"
+    direction: two-way  # Inherently collaborative!
+    democratizes: creation
+    makes_everyone_a: improviser
+
+# The lineage
+lineage:
+  
+  engelbart_nls:
+    year: 1968
+    what: "The Mother of All Demos"
+    contribution:
+      - Multi-user real-time collaboration
+      - Shared workspaces
+      - Version control concepts
+      - Augmented human intellect through tools
+    connection: "GitHub is NLS for the masses"
+    
+  bar_karma:
+    year: 2011
+    what: "Will Wright's crowd-sourced TV show on Current TV"
+    quote: "What if the audience could rewrite the show while it's happening?"
+    attribution: Will Wright
+    features:
+      - Audiences wrote episodes using Storymaker tool
+      - Community voted on story directions
+      - Professional cast filmed winning scripts
+      
+  stupid_fun_club:
+    who: Don Hopkins
+    what: "Built the infrastructure"
+    projects:
+      - Storymaker iPhone app
+      - Urban Safari (GPS-based mobile storytelling)
+      - Layar AR integration (Amsterdam — TomTom connection)
+
+# Git as storytelling infrastructure
+# Every feature Linus built for kernel patches
+# is a feature for managing branching narratives
+
+git_as_narrative:
+  
+  branching_storylines: git branch
+  timeline_management: commit history
+  story_versioning: git log
+  parallel_narratives: multiple branches
+  merging_storylines: git merge
+  community_review: pull request review
+  voting_on_direction: PR approvals + reactions
+  reverting_bad_choices: git revert
+  tagging_key_moments: git tag
+  forking_the_canon: git fork
+  
+  # The tooling is identical.
+  # The use case is new.
+
+# Where the old tools live now
+continuity:
+
+  storymaker_lives_as:
+    - CHARACTER.yml  # story element template
+    - GitHub Issues  # story submissions
+    - Reactions      # community votes
+    - Threads        # the episode itself
+    
+  urban_safari_lives_as:
+    - repo           # the territory
+    - directories    # locations
+    - characters     # inhabitants
+    - audience       # explorers and contributors
+
+# Full documentation
+docs: GITPROV.md
+
+# Prototype chain
+inherits:
+  - moollm/skills/adventure/SKILL.md
+  - moollm/skills/play-learn-lift/SKILL.md
+  - https://en.wikipedia.org/wiki/Bar_Karma
+  - https://en.wikipedia.org/wiki/The_Mother_of_All_Demos
