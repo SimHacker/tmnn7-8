@@ -720,7 +720,7 @@ void bbsfetch()
 
     /* prepare the dial-out command */
     if (remote.dial == (char *)NULL)
-	(void) sprintf(dialcmd, "cu %s", remote.servname);
+	(void) snprintf(dialcmd, sizeof(dialcmd), "cu %s", remote.servname);  /* FIXED: OpenBFD */
     else
 	(void) strcpy(dialcmd, remote.dial);
 
