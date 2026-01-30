@@ -369,6 +369,8 @@ You're reading the README on `main`. That's just one timeline. Each branch is a 
 
 **These branches will never converge.** That's the point. Each faction believes their reality is the true path. PRs between branches are declarations of war.
 
+*Directly inspired by Philip K. Dick's "Faith of Our Fathers" (in Harlan Ellison's* Again, Dangerous Visions*, 1972) — where twelve people see twelve different realities, and all of them are true.*
+
 ### 🔧 Every GitHub Feature Is A Game Mechanic
 
 We're leaning into git and GitHub. Hard.
