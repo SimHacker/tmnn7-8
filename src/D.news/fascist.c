@@ -219,7 +219,8 @@ register char *user;
 
     result.n_post = svpost; svpost[0] = '\0';
     result.n_read = svread; svread[0] = '\0';
-    (void) strcpy(grplist, getgrplist(user));
+    (void) strncpy(grplist, getgrplist(user), sizeof(grplist) - 1);
+    grplist[sizeof(grplist) - 1] = '\0';
 
     (void) snprintf(bfr, LBUFLEN, "%s/authorized", site.admdir);
     if ((facfp = fopen(bfr, "r")) != (FILE *)NULL)
