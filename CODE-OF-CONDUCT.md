@@ -26,6 +26,36 @@ The Issues are open. The Discussions are open. Come one, come all.
 
 ---
 
+## A Message to ESR's Defenders
+
+We know who's coming.
+
+ESR has cultivated a following over the decades. Not just curious programmers or open source historians — but a particular kind of supporter. The kind who shows up whenever someone criticizes their guy. The kind who thinks "free speech" means freedom from consequences. The kind who migrated from platform to platform as each one eventually decided that harassment isn't a feature.
+
+**We see you.**
+
+To the Kiwi Farms alumni still looking for a new hobby: Welcome. Your posting style is distinctive. 
+
+To the MAGA tech bros who think ESR is being "canceled" for "just asking questions" about race and IQ: He's not being canceled. He's being quoted. Accurately. With links.
+
+To the "free speech absolutists" who defend pork-fat bullet threats as legitimate discourse: Please, tell us more about your principles. In the Issues. Publicly. With your real account.
+
+To the white supremacists who appreciated ESR's Bell Curve citations and "Haiti is full of violent idiots" commentary: We've documented all of it. With sources. You're welcome to defend it. On the record.
+
+To the anti-CoC crusaders who think this document proves codes of conduct are "weapons": You're right. This one is. Against you. Specifically.
+
+**This is a trap and you're walking into it.**
+
+Every comment you leave, every issue you open, every defensive screed about how we're "taking things out of context" — it all becomes part of the permanent record. The many eyes are watching. The archive is forever.
+
+ESR spent decades saying the internet never forgets. He was right. It doesn't.
+
+So please: Come defend him. Tell us how the real problem is "SJWs" and "cancel culture." Explain how threatening colleagues is just "being direct." Enlighten us about race science.
+
+**We'll be documenting everything.**
+
+---
+
 ## The ESR Code of Conduct
 
 *What our Code of Conduct would look like if it were based on ESR's actual behavior:*
@@ -181,3 +211,46 @@ Many eyes. Many opinions. Many flames.
 ---
 
 *"Be careful what you wish for. You might get it."*
+
+---
+
+<details>
+<summary>...</summary>
+
+## The Confession
+
+*You made it to the end. Nobody reads this far.*
+
+Here's the thing: We don't actually hate ESR. We don't know him. Most of us have never met him.
+
+What we hate is what he represents. The archetype. The guy who built his career on principles he never applied to himself. The guy who preached openness while hiding his failures. The guy who demanded accountability from others while believing his status exempted him from consequences.
+
+There are a thousand ESRs in tech. In every industry. In every community. The brilliant asshole whose contributions supposedly justify his behavior. The missing stair everyone works around. The guy who's been "grandfathered in" to norms he'd never survive if he started today.
+
+This repository isn't really about one man's abandoned Usenet software from 1989. It's about the pattern. The hypocrisy. The way certain people get to fail upward while preaching meritocracy to everyone else.
+
+ESR is just the case study. The receipts happen to be unusually well-documented.
+
+If you came here to defend him: Ask yourself why. Is it because you actually think his code was good? Is it because you think his conduct was acceptable? Or is it because you see yourself in him, and his fall from grace feels like a threat?
+
+If you came here to pile on: Ask yourself the same questions. Are you here for justice, or for the dopamine hit of righteous anger? Is this productive, or is it just satisfying?
+
+If you came here out of curiosity: Welcome. Poke around. Form your own opinions. The sources are linked. The code is readable. The history is documented.
+
+And if you're ESR himself, reading this at 3am, wondering what happened to your legacy:
+
+You told everyone to show you the code. We did.
+
+You said many eyes make all bugs shallow. They do.
+
+You demanded the right to be rude. You got it.
+
+You spent decades building a reputation. This is part of it now.
+
+The internet never forgets. You said so yourself.
+
+---
+
+*"In the end, we are our own monuments."*
+
+</details>
