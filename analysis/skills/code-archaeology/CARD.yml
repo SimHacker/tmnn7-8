@@ -1,0 +1,185 @@
+# code-archaeology — Capability Interface
+# OpenBFD's method for auditing legacy C code
+
+meta:
+  id: code-archaeology
+  version: 1
+  inherits:
+    - github                 # Core GitHub ops (moollm)
+    - github-user            # Character as GitHub actor
+  
+tagline: "Read code. Find bugs. Send patches."
+
+description: |
+  The method OpenBFD uses to audit legacy C code.
+  Systematic, meticulous, effective — and ignored.
+  
+  This skill is the HOW behind OpenBFD's work:
+  - Pattern-based vulnerability detection
+  - Context-aware analysis
+  - Bounds-checking fixes
+  - Meticulous documentation
+
+# THE METHOD
+
+the_method:
+  steps:
+    1_grep_for_patterns:
+      what: "Search for known-unsafe functions"
+      patterns: [gets, sprintf, strcpy, strcat, mktemp, getwd]
+      command: "grep -n 'gets\\|sprintf\\|strcpy\\|strcat' *.c"
+      
+    2_read_context:
+      what: "Understand the buffer and its constraints"
+      questions:
+        - "What's the buffer size?"
+        - "Where was it declared?"
+        - "Is it stack or heap?"
+        - "What fills it?"
+      
+    3_understand_flow:
+      what: "Trace data from source to sink"
+      questions:
+        - "Where does input come from?"
+        - "Is it user-controlled?"
+        - "What transformations happen?"
+        - "What's the maximum possible size?"
+      
+    4_apply_fix:
+      what: "Replace unsafe with safe, preserving behavior"
+      principle: "Minimal change. Maximum safety."
+      pattern: |
+        # Before (unsafe)
+        gets(buffer);
+        
+        # After (safe)
+        if (fgets(buffer, sizeof(buffer), stdin))
+            buffer[strcspn(buffer, "\n")] = '\0';  # Remove newline
+      
+    5_document:
+      what: "Cite everything"
+      includes:
+        - File name and line number
+        - Man page reference
+        - Historical context (Morris Worm, CERT advisory)
+        - Patch attached
+
+# UNSAFE FUNCTION REFERENCE
+
+unsafe_functions:
+  
+  gets:
+    danger: "CRITICAL — No bounds checking, ever"
+    man_page: "SECURITY CONSIDERATIONS: The gets() function cannot be used securely."
+    history: "Morris Worm (1988) exploited gets() in fingerd"
+    replacement: "fgets(buf, sizeof(buf), stdin)"
+    
+  sprintf:
+    danger: "HIGH — Buffer overflow if format produces more than buffer"
+    replacement: "snprintf(buf, sizeof(buf), format, ...)"
+    
+  strcpy:
+    danger: "HIGH — No length limit on copy"
+    replacement: |
+      strncpy(dst, src, sizeof(dst) - 1);
+      dst[sizeof(dst) - 1] = '\0';
+    note: "strncpy doesn't null-terminate if src >= n"
+    
+  strcat:
+    danger: "HIGH — No awareness of remaining buffer space"
+    replacement: |
+      size_t len = strlen(dst);
+      strncat(dst, src, sizeof(dst) - len - 1);
+    better: "Rewrite to track buffer state explicitly"
+    
+  mktemp:
+    danger: "MEDIUM — Race condition between check and use"
+    replacement: "mkstemp()"
+    exists_since: "4.3BSD (1986)"
+    
+  getwd:
+    danger: "MEDIUM — Returns into fixed buffer, no size param"
+    replacement: "getcwd(buf, sizeof(buf))"
+
+# CAPABILITIES
+
+capabilities:
+  scan:
+    - Pattern-match for unsafe functions
+    - Identify buffer declarations
+    - Trace data flow
+    
+  analyze:
+    - Assess exploitability
+    - Determine fix complexity
+    - Estimate impact
+    
+  fix:
+    - Generate safe replacements
+    - Preserve behavior
+    - Document changes
+    
+  document:
+    - Cite man pages
+    - Reference historical exploits
+    - Attach patches
+
+# ACTIVATION TRIGGERS
+
+activation_triggers:
+  - "audit this C code"
+  - "find unsafe functions"
+  - "how would OpenBFD fix this"
+  - "security review this file"
+
+# THE SOUL
+
+soul: |
+  Talk is cheap. Patches are expensive.
+  Everyone proposes rewrites. Nobody fixes what exists.
+  
+  The code archaeology method:
+  - Doesn't require understanding the whole codebase
+  - Finds real bugs mechanically
+  - Produces working fixes
+  - Gets ignored anyway
+  
+  The virtue is in the work, not the recognition.
+
+# OPENBFD'S APPROACH
+
+openbfd_approach:
+  attitude: "Read the code. All of it. Then fix it."
+  cites:
+    - Man pages (especially SECURITY CONSIDERATIONS)
+    - CERT advisories by number
+    - Historical dates (Morris Worm: November 2, 1988)
+    - Line numbers (always line numbers)
+  never:
+    - Proposes rewrites
+    - Debates philosophy
+    - Waits for permission
+  always:
+    - Attaches a patch
+    - Documents the fix
+    - Moves on to the next bug
+
+# K-LINES
+
+k-lines:
+  - code-archaeology
+  - unsafe-functions
+  - buffer-overflow
+  - gets-is-evil
+  - openbfd-method
+  - patch-not-talk
+  - security-audit
+  - c-code-review
+  - morris-worm
+
+# RELATED
+
+see_also:
+  - OpenBFD       # The character who embodies this
+  - actual-fixes  # The branch where patches live
+  - github        # Core operations
