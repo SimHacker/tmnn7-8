@@ -211,10 +211,10 @@ char *argv[];
 		return(SUCCEED);
 	    if (pflag || eflag || lflag)
 		xxit(0);
-	    (void) printf("Abort (n)?  ");
-	    (void) fflush(stdout);
-	    (void) gets(bfr);
-	    if (*bfr == 'y' || *bfr == 'Y')
+    (void) printf("Abort (n)?  ");
+    (void) fflush(stdout);
+    (void) fgets(bfr, sizeof(bfr), stdin);
+    if (*bfr == 'y' || *bfr == 'Y')
 		xxit(0);
 	    sigcaught = NO_SIGNAL;
 	}
