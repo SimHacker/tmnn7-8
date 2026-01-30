@@ -18,7 +18,7 @@ This is **performance art**. This entire repository is a satirical community cod
 
 **We are not going to enforce anything.** 
 
-We *want* this to go off the rails. We *want* the worst of Hacker News and the internet to show up and reveal themselves for what they truly are. Every unhinged comment, every defensive screed, every "well actually" — it all becomes part of the exhibit.
+We *want* this to go off the rails. We *want* the worst of Hacker News and Kiwi Farms and the internet to show up and reveal themselves for what they truly are. Every unhinged comment, every defensive screed, every "well actually" — it all becomes part of the exhibit.
 
 The Issues are open. The Discussions are open. Come one, come all.
 
