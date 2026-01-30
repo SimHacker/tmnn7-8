@@ -46,46 +46,19 @@ capabilities:
     tavern_talk: "Less formal than issues"
     faction_planning: "Coordinate in character"
 
-character_capabilities:
-  # What each character typically does
+character_template:
+  # Each character inherits this and defines their own github_actions
+  # See analysis/characters/*/CHARACTER.yml
   
-  daFlute:
-    primary: "Defends code in issues"
-    commits: "Rarely — the code is fine as is"
+  required_fields:
+    - github_actions.primary     # What they mainly do
+    - github_actions.issues      # How they use issues
+    - github_actions.commits     # Commit style
     
-  FearlessCrab:
-    primary: "Opens issues demanding rewrites"
-    commits: "To rust-rewrite branch only"
-    prs: "From rust-rewrite → main (never merged)"
-    
-  OpenBFD:
-    primary: "Submits patches via commits"
-    issues: "Rarely — patches speak louder"
-    commits: "Many. Meticulous. Ignored."
-    
-  ReviewBot-774:
-    primary: "Attempts to review, breaks down"
-    issues: "Status reports that trail off..."
-    
-  SecAuditDAOBot-69420:
-    primary: "Shills tokens in comments"
-    issues: "Security assessments that pivot to NFTs"
-    
-  plannedchaos:
-    primary: "Schedules meetings, creates RACI matrices"
-    wiki: "Documentation nobody reads"
-    
-  GrokVibeCheck:
-    primary: "Vibe-based assessments"
-    issues: "Political commentary"
-    
-  PureMonad:
-    primary: "Philosophical commentary"
-    commits: "To haskell-port (doesn't compile)"
-    
-  WebScaleChad:
-    primary: "npm install suggestions"
-    commits: "package.json changes only"
+  optional_fields:
+    - github_actions.prs         # PR behavior
+    - github_actions.wiki        # Wiki contributions
+    - github_actions.discussions # Discussion style
 
 invocation: |
   To make a character act on GitHub:

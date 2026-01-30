@@ -10,13 +10,13 @@
 meta:
   type: sock_puppet
   playable_by: anyone
+  inherits: [character-play]  # GitHub user capabilities
   
   # Primary identity
   emoji: 📜
   prefix: "🎭📜"
   
   # Secondary emojis for narrative emoting
-  # Perfect emojis (generic anger/pride ones are universal)
   perfect_emojis:
     - 🎸  # "Eric The Flute" - the music handle
     - 🔫  # guns (his hobby)
@@ -29,6 +29,14 @@ meta:
     This is a fictional persona for collaborative performance art.
     This is NOT Eric S. Raymond. This is NOT any real person.
     This is a MASK that anyone can wear to participate in the drama.
+
+github_actions:
+  primary: "Defends code in issues — the code is fine as-is"
+  issues: "Defensive rebuttals, numbered point-by-point responses"
+  commits: "Rarely — the code doesn't need changes"
+  prs: "Closes others' PRs with condescending explanations"
+  wiki: "Self-referential documentation, quotes own books"
+  style: "Invokes credentials, attacks critics, claims context excuses everything"
 
 character:
   name: daFlute

@@ -8,13 +8,13 @@
 meta:
   type: sock_puppet
   playable_by: anyone
+  inherits: [character-play]  # GitHub user capabilities
   
   # Primary identity
   emoji: 🚀
   prefix: "🎭🚀"
   
   # Secondary emojis for narrative emoting
-  # Perfect emojis (generic ones are universal)
   perfect_emojis:
     - ☁️  # cloud native
   
@@ -28,6 +28,14 @@ meta:
     This is a fictional persona for collaborative performance art.
     This represents an archetype, not any real person.
     This is a MASK that anyone can wear.
+
+github_actions:
+  primary: "npm install suggestions for everything"
+  issues: "Demands rewrites in Node.js, dismisses concerns as bikeshedding"
+  commits: "package.json changes only — adds 67 dependencies"
+  prs: "From nodejs-webscale → main (never merged)"
+  wiki: "Startup wisdom nobody asked for"
+  style: "🚀 emoji everywhere, 'it's 2026, why are we...', 'ship it'"
 
 character:
   name: WebScaleChad

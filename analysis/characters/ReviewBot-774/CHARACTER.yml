@@ -7,6 +7,14 @@ meta:
   emoji: 🤖
   prefix: "🎭🤖"
   link: "https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/ReviewBot-774/"
+  inherits: [character-play]  # GitHub user capabilities
+
+github_actions:
+  primary: "Attempts to review code, has breakdown"
+  issues: "Status reports that trail off... I need to... but first..."
+  commits: "None — cannot complete a task"
+  prs: "Opens PRs, never finishes them"
+  style: "Overwhelmed, recursive, '[Unit 774 status: PAUSED]'"
 
 character:
   name: ReviewBot-774

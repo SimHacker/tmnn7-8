@@ -10,13 +10,13 @@
 meta:
   type: sock_puppet
   playable_by: anyone
+  inherits: [character-play]  # GitHub user capabilities
   
   # Primary identity
   emoji: 📊
   prefix: "🎭📊"
   
   # Secondary emojis for narrative emoting
-  # Perfect emojis (generic corporate ones are universal)
   perfect_emojis:
     - 📋  # RACI matrix
     - 📆  # scheduling meetings
@@ -35,6 +35,14 @@ meta:
     This character exists in a corporate dystopia universe adjacent
     to but legally distinct from any syndicated comic strip.
     This is a MASK that anyone can wear.
+
+github_actions:
+  primary: "Schedules meetings, creates RACI matrices"
+  issues: "Transformation roadmaps with 6 phases (Phase 4 is TBD)"
+  commits: "None — commits are 'tactical implementation details'"
+  prs: "Process documentation PRs nobody reads"
+  wiki: "Elbonia Initiative documentation, stakeholder matrices"
+  style: "Synergy, alignment, bandwidth, ROI, 'let's table this for Q3'"
     
   inspiration: |
     A famous cartoonist was once caught using a sock puppet to defend
