@@ -85,15 +85,56 @@ flowchart TB
 
 ## 👁️ Many Eyes: A Community Code Review
 
-**ESR believes in code review. Let's give him some.**
+### The Quote
 
-In 2009, ESR audited the [Climatic Research Unit's code](https://esr.ibiblio.org/?p=1447) to "expose" climate scientists. His analysis was [incompetent and politically motivated](https://rationalwiki.org/wiki/Eric_S._Raymond#Global_warming_denialism) — he highlighted *commented-out code* as evidence of fraud, and the scientists were later vindicated.
+In his influential 1997 essay *The Cathedral and the Bazaar*, Eric S. Raymond coined what he called **"Linus's Law"**:
 
-**Now it's his turn.**
+> "Given enough eyeballs, all bugs are shallow."
 
-This repository exists so the community can apply ESR's own "many eyes" principle to ESR's own code. The man who wrote "given enough eyeballs, all bugs are shallow" kept his code hidden from eyeballs for decades. 
+The formal version: *"Given a large enough beta-tester and co-developer base, almost every problem will be characterized quickly and the fix will be obvious to someone."*
 
-**No more.**
+One problem: **Linus Torvalds never said this.** ESR made it up and named it after Linus to borrow credibility and deflect criticism. ([Wikipedia: Linus's law](https://en.wikipedia.org/wiki/Linus%27s_law))
+
+### The Problems
+
+Wikipedia documents the extensive criticism of this claim:
+
+| Criticism | Source |
+|-----------|--------|
+| **"A fallacy"** due to lack of supporting evidence | Robert Glass, *Facts and Fallacies about Software Engineering* |
+| Bug discovery doesn't scale linearly — **maximum 2-4 useful reviewers** | Academic research cited in Wikipedia |
+| **Heartbleed** (2014): Critical OpenSSL bug undetected for 2 years in widely-reviewed code | Major refutation of the principle |
+| "In these cases, **the eyeballs weren't really looking**" | Jim Zemlin, Linux Foundation Executive Director (2015) |
+| Ability to inspect code ≠ code actually gets inspected | Multiple sources |
+| Most "eyeballs" examine external behavior, not internal code | Industry analysis |
+
+**Theo de Raadt** — founder of OpenBSD, one of the most respected security developers alive — put it best:
+
+> "Oh right, let's hear some of that 'many eyes' crap again. **My favorite part of the 'many eyes' argument is how few bugs were found by the two eyes of Eric** (the originator of the statement). All the many eyes are apparently attached to a lot of hands that **type lots of words about many eyes, and never actually audit code.**"
+
+### ESR Believes in Code Review
+
+ESR isn't just a theorist — he's a practitioner. **He believes code review is so important that he does it himself.**
+
+In 2009, during the "Climategate" controversy, ESR [audited the Climatic Research Unit's source code](https://esr.ibiblio.org/?p=1447) to expose what he believed was scientific fraud.
+
+His findings? He presented **commented-out code** — code that was explicitly disabled and not running — as evidence of deliberate data manipulation.
+
+When confronted with this error, ESR claimed it was an "error cascade." He was [curiously silent](https://rationalwiki.org/wiki/Eric_S._Raymond#Climategate) when all the researchers involved were **exonerated of scientific misconduct** by multiple independent investigations.
+
+*See: [RationalWiki: ESR Climategate](https://rationalwiki.org/wiki/Eric_S._Raymond#Climategate)*
+
+### Now It's His Turn
+
+ESR believes in code review. He believes it so strongly that he audited climate scientists' code to prove a political point. 
+
+**We agree.** Code review is important. So let's apply ESR's own principle to ESR's own code.
+
+For decades, TMNN sat in archives with **zero eyeballs**. The man who coined "given enough eyeballs, all bugs are shallow" kept his code hidden from eyeballs. The man who audited *other people's* code never submitted his own for review.
+
+**No more.** The many eyes have finally arrived.
+
+---
 
 ### 🐛 How to Participate
 
@@ -123,13 +164,6 @@ This repository exists so the community can apply ESR's own "many eyes" principl
 | `system()` calls | 15+ | Command injection risks |
 | Temp file races | Multiple | `mktemp()` everywhere |
 | **Your discovery** | ? | [Open an Issue](../../issues) |
-
-### 💡 The Irony
-
-> "My favorite part of the 'many eyes' argument is how few bugs were found by the two eyes of Eric."
-> — Theo de Raadt
-
-ESR claimed code review would find all bugs. His own code had **zero reviewers** and **hundreds of bugs**. Now, finally, the many eyes have arrived.
 
 *Let's see how shallow these bugs really are.*
 
