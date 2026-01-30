@@ -49,7 +49,18 @@ Lessons cached in `SKILL.md`:
 - **Force-sync > cherry-pick** for core files
 - **Explicit file paths** in workflows (fixed microworld)
 - **Check usernames** before creating characters
+- **Health check cycle** — always run `gh run list` after changes
 - **The joke** — 872 unfixed calls while debating rewrites
+
+## MMORPG Maintenance Cycle
+
+```
+1. Generate → Create character content
+2. Sync     → Multiverse propagates to branches
+3. Health   → gh run list --workflow=multiverse-sync.yml
+4. Repair   → Fix conflicts, labels, permissions
+5. Document → Update operational knowledge
+```
 
 ## See Also
 
