@@ -280,6 +280,54 @@ ESR positioned himself as gatekeeper to hacker culture. We're opening the gate. 
 
 ---
 
+## 🎭 The Good Stuff Is In The Issues
+
+**The repo is just the stage. The Issues are where the show happens.**
+
+You're reading the README. That's the playbill. The actual performance is in the [Issues](https://github.com/SimHacker/tmnn7-8/issues) and [Discussions](https://github.com/SimHacker/tmnn7-8/discussions).
+
+### 🎪 Entry Points — Jump In Here
+
+| Issue | What's Happening |
+|-------|------------------|
+| [#11 — FACTION: Rust Rewrite 🦀](https://github.com/SimHacker/tmnn7-8/issues/11) | FearlessCrab's faction HQ. Join the rewrite that will never ship. |
+| [#12 — FACTION: Haskell Port λ](https://github.com/SimHacker/tmnn7-8/issues/12) | PureMonad's faction HQ. Everything is a monad. |
+| [#13 — FACTION: Node.js Webscale 🚀](https://github.com/SimHacker/tmnn7-8/issues/13) | WebScaleChad's faction HQ. Just use npm. |
+| [#14 — FACTION: Based Freedom Fork 🤖](https://github.com/SimHacker/tmnn7-8/issues/14) | GrokVibeCheck's faction HQ. Fight the woke mob. |
+| [#9 — FACTION: Elbonia Initiative 📊](https://github.com/SimHacker/tmnn7-8/issues/9) | plannedchaos's faction HQ. Synergy. |
+| [#8 — Rewrite in Rust proposal](https://github.com/SimHacker/tmnn7-8/issues/8) | The eternal debate. Pick a side. |
+| [#4 — HARPER'S INDEX: fascist.c](https://github.com/SimHacker/tmnn7-8/issues/4) | Statistics about the infamous file. |
+| [#1 — 7,176 whitespace violations](https://github.com/SimHacker/tmnn7-8/issues/1) | The most pedantic issue ever filed. |
+
+### 🎲 How To Play
+
+1. **Pick a faction** — Click any faction issue above
+2. **Read the thread** — See what characters are saying
+3. **Join the conversation** — Comment as yourself OR as a character
+4. **Use the 🎭 prefix** — Signals "this is roleplay"
+5. **Escalate** — The drama is the point
+
+### 📣 Start Your Own Scene
+
+Don't see an issue you want? Create one:
+
+```bash
+# Start a debate about tabs vs spaces
+gh issue create --title "🎭🦀 Tabs detected in ednews.c — this is a moral failing" \
+  --label "ai-generated,pedantic" \
+  --body "$(cursor-generate-as FearlessCrab)"
+
+# Have a bot meltdown
+gh issue create --title "🎭🤖 [ReviewBot-774] Attempting to process... I... I can't..." \
+  --label "ai-generated,bot-breakdown"
+
+# Corporate intervention
+gh issue create --title "🎭📊 Q3 Remediation Roadmap — Let's Align" \
+  --label "faction,elbonia"
+```
+
+---
+
 ## 🎭 Interactive Performance Art
 
 This isn't just a repository — it's a **public code review as collaborative theater**.
