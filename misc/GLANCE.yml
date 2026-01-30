@@ -1,0 +1,11 @@
+# misc/ — Miscellaneous Files
+# Odds and ends
+
+what: |
+  Configuration samples.
+  Example files.
+  Things that didn't fit elsewhere.
+
+k-lines:
+  - misc-files
+  - examples

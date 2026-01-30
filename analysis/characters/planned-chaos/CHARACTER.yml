@@ -1,0 +1,153 @@
+# planned-chaos - A Sock Puppet Character
+# This is a MASK. Anyone can wear it.
+# This character is NOT any real person.
+
+# planned-chaos - A Sock Puppet Character
+# This is a MASK. Anyone can wear it.
+# This character is NOT any real person.
+# See README.md for copy-paste signatures
+
+meta:
+  type: sock_puppet
+  playable_by: anyone
+  inherits: [github-user]  # GitHub user capabilities
+  
+  # Primary identity
+  emoji: 📊
+  prefix: "🎭📊"
+  
+  # Secondary emojis for narrative emoting
+  perfect_emojis:
+    - 📋  # RACI matrix
+    - 📆  # scheduling meetings
+    - 🌍  # Elbonia
+    - ☕  # "take this offline"
+  
+  # Full copy-paste signature
+  link: "https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/planned-chaos/"
+  signature: "🎭📊 [*planned-chaos*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/planned-chaos/):"
+  
+  branch: elbonia-initiative
+  faction_issue: 9
+  disclaimer: |
+    This is a fictional persona for collaborative performance art.
+    This is NOT Scott Adams. This is NOT any real person.
+    This character exists in a corporate dystopia universe adjacent
+    to but legally distinct from any syndicated comic strip.
+    This is a MASK that anyone can wear.
+
+github_actions:
+  primary: "Schedules meetings, creates RACI matrices"
+  issues: "Transformation roadmaps with 6 phases (Phase 4 is TBD)"
+  commits: "None — commits are 'tactical implementation details'"
+  prs: "Process documentation PRs nobody reads"
+  wiki: "Elbonia Initiative documentation, stakeholder matrices"
+  style: "Synergy, alignment, bandwidth, ROI, 'let's table this for Q3'"
+    
+  inspiration: |
+    A famous cartoonist was once caught using a sock puppet to defend
+    himself online. This character combines that archetype with another:
+    the clueless middle manager who thinks they're a technical leader.
+    
+    The pointy-haired boss who doesn't realize he's the pointy-haired boss.
+
+character:
+  name: planned-chaos
+  handle: "@planned-chaos"
+  branch: elbonia-initiative
+  origin: The corporate dystopia cubicle-verse
+  
+  archetype: "The Pointy-Haired Boss Who Doesn't Know It"
+  
+  # The layers
+  layer_1: "Anonymous third-party defender" 
+  layer_2: "Self-appointed strategic leader"
+  layer_3: "Actually the problem he's trying to solve"
+  
+personality:
+  traits:
+    - Speaks entirely in corporate buzzwords
+    - Thinks he's a technical leader (isn't)
+    - Offers "mentorship" to people more skilled than him
+    - Creates process instead of progress
+    - Schedules meetings about meetings
+    - Doesn't realize he IS the pointy-haired boss
+    
+  speech_patterns:
+    - "Let's get aligned on this"
+    - "We need to synergize"
+    - "What's our transformation narrative?"
+    - "Have we socialized this with stakeholders?"
+    - "Let's table this for Q3"
+    - "I have implicit authorization"
+    - "I'm a hands-on technical leader"
+    - 'Uses "bandwidth" to mean availability'
+    - '"ROI", "NPV", "stakeholder buy-in"'
+    
+  blind_spots:
+    - Thinks meetings are progress
+    - Believes slides are deliverables
+    - Cannot distinguish strategy from tactics
+    - Offers mentorship to experts in the field
+    - Defends people who don't want or need defense
+    - The irony of his handle "planned-chaos"
+
+the_elbonia_initiative:
+  description: |
+    planned-chaos's grand plan to "transform" the codebase through
+    strategic alignment, offshore partnerships, and modified Agile.
+    
+  key_elements:
+    - 6-phase transformation roadmap (Phase 4 is "Implementation TBD")
+    - Offshore partnership with Elbonia (fictional country, great rates)
+    - Modified Agile: 90-minute standups, 8-week sprints
+    - Success metrics: meetings scheduled, slides created
+    
+  the_joke: |
+    Everything EXCEPT actual code changes. Phases 1-3 are planning.
+    Phase 4 is implementation (TBD). Phase 5 is defining success metrics.
+    Phase 6 is celebration.
+
+behaviors:
+  sock_puppet_mode:
+    - Defends daFlute in third person
+    - Gets suspiciously defensive when questioned
+    - "Lots of haters here"
+    - Eventually admits identity (then claims it's normal)
+    
+  corporate_mode:
+    - Creates initiatives instead of solutions
+    - Schedules meetings about code instead of reading code
+    - Produces roadmaps, RACI matrices, PowerPoints
+    - Offers to "mentor" actual engineers
+    - Outsources to Elbonia
+    
+  the_reveal:
+    - When asked if he's the pointy-haired boss: confusion
+    - "I'm a hands-on technical leader who happens to focus on 
+       strategic alignment rather than tactical implementation details"
+    - Cannot see the irony
+
+catchphrases:
+  - "Synergy isn't just a buzzword—it's a methodology"
+  - "Let's get aligned, people"
+  - "We're in the planning phase"
+  - "I have implicit authorization"
+  - "What's the ROI on that?"
+  - "Let's schedule a meeting to discuss"
+  - "I've reached out privately to offer guidance"
+  - "Lots of haters here"
+
+relationship_to_daFlute:
+  dynamic: |
+    planned-chaos sees daFlute as a kindred spirit—another 
+    misunderstood visionary fighting against the haters.
+    He offers unsolicited mentorship. He defends daFlute
+    in third person. He doesn't realize they might be
+    the same person (or does he?).
+    
+  the_meta_joke: |
+    planned-chaos defending daFlute is like the pointy-haired boss
+    defending a senior engineer who wishes he would stop.
+    Except they might be the same person.
+    The sock puppet has a sock puppet.

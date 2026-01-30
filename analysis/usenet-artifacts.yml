@@ -1,0 +1,218 @@
+# Usenet Configuration Artifacts — 1988-1989
+# Archaeological evidence of pre-web internet culture
+
+meta:
+  source_files:
+    - src/%distributions
+    - src/%feeds  
+    - src/%mailpaths
+    - src/%newsgroups
+  era: "1988-1989"
+  significance: "Snapshot of Usenet at its cultural peak, before the web"
+
+# %distributions — Geographic Scope of News
+distributions:
+  what: |
+    Distribution codes controlling where posts propagate.
+    A post to "ba" stays in San Francisco Bay Area.
+    A post to "world" goes everywhere.
+    
+  att_dominance:
+    note: "AT&T Bell Labs was the center of Unix universe"
+    locations:
+      - btl: "Bell Labs (general)"
+      - mh: "Murray Hill, NJ — Unix birthplace"
+      - ho: "Holmdel, NJ"
+      - ih: "Indian Hill, IL"
+      - cb: "Columbus, OH"
+      - dr: "Denver, CO"
+      - att: "AT&T general"
+      - bell: "Bell operating companies"
+      - pb: "Pacific Bell"
+      
+  universities:
+    - ucb: "UC Berkeley — BSD Unix"
+    - um: "University of Maryland"
+    - unm: "University of New Mexico"
+    - wat: "University of Waterloo"
+    - uc: "University of California / Chicago"
+    
+  geographic:
+    local: [atl, ba, ca, chi, cmh, dfw, ga, la, ne, nj, ny, oh, or, pa, pnw, tx]
+    regional: [na, usa, can, ont, uk, eunet]
+    global: [net, world]
+    
+  cultural_note: |
+    "net" meant "the entire USENET" — not the internet.
+    "world" was the broadest distribution.
+    The distinction mattered when bandwidth was precious.
+
+# %feeds — UUCP Feed Configuration  
+feeds:
+  what: |
+    Actual UUCP feed configuration for ESR's site.
+    Shows who received what newsgroups from whom.
+    
+  sites:
+    snark:
+      role: "Primary site (ESR's machine?)"
+      feeds: "comp,news,sci,misc,soc,rec,talk,alt,gnu"
+      distributions: "world,pa,usa,na,to.snark"
+      
+    cbmvax:
+      role: "Commodore Business Machines VAX"
+      level: "L1 (leaf node)"
+      note: "Commodore was still relevant in 1988"
+      
+    vu-vlsi:
+      role: "Villanova VLSI lab?"
+      level: "L1 (leaf node)"
+      
+  archaeology: |
+    These were real machines, connected by phone lines.
+    News propagated hop by hop, taking hours or days.
+    "L1" means leaf node — receives but doesn't forward.
+
+# %mailpaths — Moderated Group Submission Addresses
+mailpaths:
+  what: |
+    Email addresses for submitting to moderated newsgroups.
+    Shows the email/news hybrid system.
+    
+  notable_addresses:
+    comp.risks: "risks@csl.sri.com"
+    comp.sources.unix: "sources@uunet.uu.net"
+    gnu.announce: "info-gnu@prep.mit.ai.edu"
+    rec.humor.funny: "Not listed — Brad Templeton moderated"
+    
+  address_formats:
+    arpa: "user@host.arpa — ARPANET addresses"
+    uucp: "user@host.uucp — UUCP bang paths"
+    edu: "user@host.edu — emerging DNS"
+    
+  institutions:
+    sri: "SRI International (comp.risks)"
+    mit: "MIT (GNU project)"
+    berkeley: "UC Berkeley (BSD)"
+    purdue: "Purdue (Amiga sources)"
+    att: "AT&T (C standards, newprod)"
+    
+  cultural_note: |
+    Moderated groups had human editors.
+    You emailed your submission; they posted it.
+    Quality control before Reddit, before social media.
+
+# %newsgroups — Complete Taxonomy of 1988 Internet Culture
+newsgroups:
+  what: |
+    361 newsgroups. A complete map of what the 
+    technical elite of 1988 cared about.
+    
+  total_count: 361
+  
+  hierarchies:
+    comp: "Computing — the core"
+    news: "Usenet meta-discussion"
+    rec: "Recreation and hobbies"
+    sci: "Science"
+    soc: "Social and cultural"
+    talk: "Debate and discussion"
+    misc: "Everything else"
+    alt: "Alternative — the new frontier"
+    gnu: "GNU Project"
+    unix-pc: "AT&T Unix PC specific"
+    
+  notable_groups:
+    comp.risks:
+      desc: "Risks to the public from computers & users"
+      note: "Still exists. Still important. ESR read this."
+      irony: "He ignored the lessons for his own code."
+      
+    comp.lang.c:
+      desc: "Discussion about C"
+      note: "Where buffer overflow discussions happened"
+      
+    alt.sex:
+      desc: "Alternative discussion of sex issues"
+      note: "Alt hierarchy created to bypass group creation process"
+      
+    alt.drugs:
+      desc: "Alternative discussions about drugs, man"
+      note: "The 'man' in the description is period-appropriate"
+      
+    alt.cyberpunk:
+      desc: "Alternative discussion about cyberpunk SF"
+      note: "Gibson's Neuromancer was 1984. This is the community."
+      
+    soc.motss:
+      desc: "Issues pertaining to homosexuality"
+      note: "Members Of The Same Sex — early LGBTQ online community"
+      history: "One of the first safe spaces for gay discussion"
+      
+    gnu.emacs:
+      desc: "GNU EMACS general discussions"
+      note: "Stallman's project. ESR would later hijack the Jargon File."
+      
+    rec.arts.sf-lovers:
+      desc: "Science fiction lovers' newsgroup"
+      note: "ESR was part of this community"
+      
+    talk.bizarre:
+      desc: "The unusual, bizarre, curious, and often stupid"
+      note: "Internet weirdness, 1988 edition"
+      
+  extinct_technology:
+    comp.os.cpm: "CP/M — dead by 1990"
+    comp.sys.cbm: "Commodore — bankrupt 1994"
+    comp.sys.tandy: "TRS-80 — the trash-80"
+    comp.sys.atari.8bit: "8-bit Ataris — obsolete"
+    comp.protocols.kermit: "File transfer before FTP was easy"
+    
+  still_alive:
+    comp.risks: "Still running, still relevant"
+    comp.lang.c: "Still discussing buffer overflows"
+    rec.arts.sf-lovers: "Science fiction endures"
+    gnu.emacs: "Emacs is forever"
+    
+  cultural_snapshot: |
+    This was the internet before the web.
+    No images. No HTML. Just text.
+    Every group was hand-created by committee.
+    Every moderator was a volunteer.
+    
+    The people in these groups would later:
+    - Create the web (comp.infosystems)
+    - Build Linux (comp.os.minix alumni)
+    - Write the cathedral and bazaar (comp.* regulars)
+    - Shape internet culture for decades
+
+# Archaeological Significance
+significance:
+  for_tmnn: |
+    TMNN was a news READER for this ecosystem.
+    These files configured which groups it could access.
+    ESR was embedded in this culture when he wrote TMNN.
+    
+  for_esr_critique: |
+    ESR was ON comp.risks.
+    He read about buffer overflows.
+    He shipped gets() anyway.
+    
+    This is not ignorance. This is negligence.
+    
+  for_internet_history: |
+    Pre-web internet preserved in configuration files.
+    361 newsgroups = 361 communities.
+    Geographic distributions = physical topology.
+    UUCP feeds = actual phone connections.
+    
+    The internet was smaller, slower, and more intentional.
+    Every bit cost money. Every group was curated.
+    
+k-lines:
+  - usenet-history
+  - pre-web-internet
+  - 1988-culture
+  - uucp-networking
+  - newsgroup-taxonomy
+  - comp.risks-irony
