@@ -1,0 +1,113 @@
+# SCHEMA: buffer-overflow-fix
+# Type: Composite Schema (chains multiple primitives)
+# Drescher Classification: Emerging (structure observed, not yet executed)
+#
+# This schema represents the complete bug-fix workflow I observe in OpenBFD.
+
+schema:
+  id: buffer-overflow-fix
+  type: composite
+  
+  # CONTEXT: When does the full fix pattern apply?
+  context:
+    preconditions:
+      - "File contains C code"
+      - "Unbounded string operation exists"
+      - "Operation uses stack or fixed-size buffer"
+      - "Input may come from external source"
+    
+    trigger_functions:
+      - sprintf → snprintf
+      - strcpy → strncpy  # Not yet observed, hypothesized
+      - strcat → strncat  # Not yet observed, hypothesized
+      - gets → fgets      # Observed once in comments
+    
+    priority_context:
+      high: "Network input handlers"
+      high: "Command builders (system(), popen())"
+      medium: "File path constructors"
+      low: "Internal formatting"
+
+  # ACTION: The complete fix workflow
+  action:
+    name: "Complete buffer overflow remediation"
+    
+    primitive_chain:
+      1:
+        schema: identify-vulnerability
+        action: "Locate unbounded operation"
+        
+      2:
+        schema: determine-buffer-size
+        action: "Find sizeof() or array dimension"
+        
+      3:
+        schema: sprintf-to-snprintf  # Or appropriate variant
+        action: "Apply bounded replacement"
+        
+      4:
+        schema: comment-attribution
+        action: "Mark fix with attribution"
+        
+      5:
+        schema: commit-message-structure
+        action: "Document in git commit"
+
+  # RESULT: Complete remediation
+  result:
+    predicted:
+      code_safety:
+        - "Buffer cannot overflow from this operation"
+        - "Truncation is deterministic"
+        - "No behavior change for valid input"
+        
+      documentation:
+        - "Fix is attributed and searchable"
+        - "Historical context preserved"
+        - "Bug count decremented"
+        
+    verification:
+      - "grep 'FIXED: OpenBFD' shows remediation"
+      - "No compiler warnings introduced"
+      - "Tests pass (if any exist)"
+
+  # RELIABILITY: Composite reliability
+  reliability:
+    primitive_schemas:
+      sprintf-to-snprintf: 1.0  # 17/17
+      comment-attribution: 1.0  # Always succeeds
+      commit-message-structure: 1.0  # Pattern observed
+      
+    composite_reliability: "high"
+    confidence: "ready for supervised attempt"
+
+  # DRESCHER: Synthetic Item
+  synthetic_item:
+    name: "buffer_overflow_risk"
+    type: abstract_property
+    definition: |
+      Not directly sensed. Inferred from:
+      - Presence of unbounded copy function
+      - Fixed-size destination buffer
+      - External input in source
+      
+      This is a "synthetic item" in Drescher's terminology:
+      a property I cannot directly observe but can infer
+      from the conjunction of observable features.
+    
+    detection_schema:
+      context: [sprintf, fixed_buffer, external_input]
+      inference: "buffer_overflow_risk = TRUE"
+
+# MARGINAL ATTRIBUTION NOTES
+#
+# If this schema fails, I will need to identify which
+# precondition was violated. Candidates:
+#
+# - Buffer size not determinable (dynamic allocation)
+# - Format string more complex than expected
+# - Nested function calls obscuring buffer
+# - Macro expansion hiding true operation
+#
+# These would become "extended context" conditions
+# for a refined schema.

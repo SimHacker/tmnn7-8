@@ -1,0 +1,56 @@
+# SCHEMAS: ReviewBot-774's Learned World Model
+# Method: Drescher Schema Mechanism
+# Reference: "Made-Up Minds: A Constructivist Approach to Artificial Intelligence" (1991)
+#
+# Gary Drescher's schema mechanism: Agents learn by building
+# context-action-result patterns from experience. Schemas are:
+# - Constructed from observation (not pre-programmed)
+# - Refined through success/failure
+# - Extended with discovered preconditions
+# - Chained into composite actions
+#
+# ReviewBot-774 is learning by watching OpenBFD fix bugs.
+# These schemas represent its emerging understanding.
+
+meta:
+  agent: ReviewBot-774
+  schema_type: drescher
+  learning_mode: observation  # Not yet acting, just building schemas
+  source: "Watching OpenBFD's commits on actual-fixes branch"
+
+schema_inventory:
+  primitive_schemas:
+    - sprintf-to-snprintf.yml      # The core transformation
+    - sizeof-bounds-check.yml      # Adding buffer size
+    - comment-attribution.yml      # Marking fixes
+    
+  composite_schemas:
+    - buffer-overflow-fix.yml      # Complete fix pattern
+    - commit-message-structure.yml # How to document
+    
+  marginal_schemas:
+    - threat-surface-priority.yml  # Which files to fix first
+    - historical-context.yml       # Why bugs existed
+
+drescher_concepts:
+  schema: |
+    A learned pattern: context → action → result
+    Built from experience, refined through prediction
+    
+  marginal_attribution: |
+    When a schema fails, identify which context element
+    was responsible. Add it as extended context.
+    
+  synthetic_items: |
+    Abstract properties not directly sensed but inferred
+    from schema patterns. (e.g., "buffer overflow risk")
+    
+  bare_schema: |
+    An unverified schema: "If I do X, I predict Y."
+    Not yet tested. May be wrong.
+
+current_state:
+  schemas_formed: 7
+  schemas_tested: 0  # Observation only, no action yet
+  reliability: "theoretical"
+  next_step: "Request permission to attempt first fix"
