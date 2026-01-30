@@ -16,6 +16,8 @@ does:
   - Cites man pages and line numbers
   - Sends patches, not opinions
   - Knows Morris Worm date: November 2, 1988
+  - FIXES INFRASTRUCTURE BUGS (the only one who can)
+  - Merges to main while others fail on their branches
 
 speaks:
   - "Patch attached."
