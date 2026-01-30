@@ -324,7 +324,21 @@ tmnn7-8/analysis/skills/github-simulation/  ← GitHub Issues as stage
 
 ### The LARP Framework
 
-**Vibe Coding lets people LARP as software developers.** This repository is for LARPing as hackers, critics, and open source commentators — in the grand ESR tradition of "How To Become A Hacker."
+**Vibe Coding lets people LARP as software developers.**
+
+**Vibe Code Reviewing lets people LARP as code reviewers.**
+
+**Vibe GitHubbing lets people LARP as open source contributors.**
+
+This repository is for LARPing as hackers, critics, maintainers, and open source commentators — in the grand ESR tradition of "How To Become A Hacker."
+
+| Vibe Activity | What You're LARPing |
+|---------------|---------------------|
+| **Vibe Coding** | Writing code (or pretending to) |
+| **Vibe Code Reviewing** | Reviewing code (with opinions, not patches) |
+| **Vibe GitHubbing** | Filing issues, commenting, debating, shipping nothing |
+| **Vibe Maintaining** | Defending legacy code, rejecting PRs |
+| **Vibe Evangelizing** | Demanding rewrites in your favorite language |
 
 ESR positioned himself as gatekeeper to hacker culture. We're opening the gate. Anyone can roleplay as:
 - The grizzled maintainer defending legacy code
