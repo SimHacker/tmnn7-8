@@ -1047,12 +1047,14 @@ static void postproc()
     {
 	char cmdbuf[BUFSIZ];
 
-	(void) sprintf(cmdbuf, "%s/rnews <%s", site.libdir, newsbatch);
+	(void) snprintf(cmdbuf, sizeof(cmdbuf), "%s/rnews <%s", site.libdir, newsbatch);  /* FIXED: OpenBFD */
 	if (nospool)
-	    (void) strcat(cmdbuf, " -u");
+	    (void) strncat(cmdbuf, " -u", sizeof(cmdbuf) - strlen(cmdbuf) - 1);  /* FIXED: OpenBFD */
 #ifdef DEBUG
-	if (debug)
-	    (void) sprintf(cmdbuf + strlen(cmdbuf), " -D %d", debug);
+	if (debug) {
+	    size_t len = strlen(cmdbuf);
+	    (void) snprintf(cmdbuf + len, sizeof(cmdbuf) - len, " -D %d", debug);  /* FIXED: OpenBFD */
+	}
 	if (debug >= D_SHOWPHASE)
 	    log1("rnews command is \"%s\"", cmdbuf);
 #endif /* DEBUG */
