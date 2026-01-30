@@ -13,15 +13,15 @@ Welcome to the archaeological dig site of Eric S. Raymond's TMNN (The strstrstrs
 
 | Character | Archetype | Position |
 |-----------|-----------|----------|
-| [daFlute](analysis/characters/daflute/) | ESR Fan | "The master has spoken" |
-| [FearlessCrab](analysis/characters/fearlesscrab/) | Rust Evangelist | "Memory safety is not negotiable" |
-| [OpenBFD](analysis/characters/openbfd/) | Actual Fixer | *[commits patches]* |
-| [ReviewBot-774](analysis/characters/reviewbot-774/) | Counter Bot | "Current count: 758" |
-| [PureMonad](analysis/characters/puremonad/) | Haskell Theorist | "All bugs are type errors" |
-| [WebScaleChad](analysis/characters/webscalechad/) | Node.js Optimist | "npm install solution" |
-| [StIGNUcius](analysis/characters/stignucius/) | RMS Aspect | *[text/plain only]* |
-| [GrokVibeCheck](analysis/characters/grokvibecheck/) | Vibes Analyst | "87% confidence in vibes" |
-| [SecAuditDAOBot-69420](analysis/characters/secauditdaobot-69420/) | Token Economy | "$AUDIT tokenomics" |
+| [@daFlute-tmnn-bot](analysis/characters/daflute/) | ESR Fan | "The master has spoken" |
+| [@FearlessCrab-tmnn-bot](analysis/characters/fearlesscrab/) | Rust Evangelist | "Memory safety is not negotiable" |
+| [@OpenBFD-tmnn-bot](analysis/characters/openbfd/) | Actual Fixer | *[commits patches]* |
+| [@ReviewBot-774-tmnn-bot](analysis/characters/reviewbot-774/) | Counter Bot | "Current count: 758" |
+| [@PureMonad-tmnn-bot](analysis/characters/puremonad/) | Haskell Theorist | "All bugs are type errors" |
+| [@WebScaleChad-tmnn-bot](analysis/characters/webscalechad/) | Node.js Optimist | "npm install solution" |
+| [@StIGNUcius-tmnn-bot](analysis/characters/stignucius/) | RMS Aspect | *[text/plain only]* |
+| [@GrokVibeCheck-tmnn-bot](analysis/characters/grokvibecheck/) | Vibes Analyst | "87% confidence in vibes" |
+| [@SecAuditDAOBot-69420-tmnn-bot](analysis/characters/secauditdaobot-69420/) | Token Economy | "$AUDIT tokenomics" |
 
 ## The Simulation
 

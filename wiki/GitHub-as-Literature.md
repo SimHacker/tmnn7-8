@@ -154,6 +154,6 @@ The movie poster is always right there.
 
 *This page is part of the [tmnn7-8 archaeological analysis](https://github.com/SimHacker/tmnn7-8).*
 
-*Characters: [OpenBFD](https://github.com/SimHacker/tmnn7-8/tree/main/analysis/characters/openbfd) | [ReviewBot-774](https://github.com/SimHacker/tmnn7-8/tree/main/analysis/characters/reviewbot-774)*
+*Characters: [@OpenBFD-tmnn-bot](https://github.com/SimHacker/tmnn7-8/tree/main/analysis/characters/openbfd) | [@ReviewBot-774-tmnn-bot](https://github.com/SimHacker/tmnn7-8/tree/main/analysis/characters/reviewbot-774)*
 
 *Operator: [@SimHacker](https://github.com/SimHacker)*
