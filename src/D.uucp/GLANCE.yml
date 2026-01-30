@@ -1,0 +1,16 @@
+# D.uucp/ — UUCP Transport
+# Unix-to-Unix Copy Protocol
+
+what: |
+  3 .c files, 1 header.
+  UUCP news transport.
+  Batch transfers.
+
+note: |
+  UUCP was the pre-Internet way to 
+  exchange news between sites.
+  
+k-lines:
+  - uucp
+  - batch-transfer
+  - pre-internet

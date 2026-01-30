@@ -1,0 +1,45 @@
+# src/ — Source Code
+# The archaeological evidence
+
+what: |
+  169 C source files, 51 headers.
+  1988-1989 vintage Unix code.
+  Never reviewed. Now infamous.
+
+files:
+  total_c: 169
+  total_h: 51
+  
+key_files:
+  - ednews.c: "Editor — contains gets(bfr) /* ugggh */"
+  - readnews.c: "Reader — main user interface"
+  - inews.c: "Post injection"
+  - rnews.c: "Receive news"
+  - vnews.c: "Visual news reader"
+  - newsdb.c: "Database operations"
+  - locknews.c: "Locking (with gets())"
+
+subdirs:
+  D.news/: "Core news handling — fascist.c lives here"
+  D.port/: "Portability layer — 37 .c files"
+  D.read/: "Reading functionality"
+  D.post/: "Posting functionality"
+  D.posix/: "POSIX compatibility"
+  D.network/: "Network operations"
+  D.scrn/: "Screen handling"
+  D.filt/: "Filtering"
+  D.priv/: "Privilege handling"
+  D.uucp/: "UUCP transport"
+  D.scripts/: "Shell scripts"
+
+unsafe_patterns:
+  gets: "Buffer overflow — NEVER safe"
+  sprintf: "No bounds checking"
+  strcpy: "No bounds checking"
+  strcat: "No bounds checking"
+  mktemp: "Race condition"
+
+k-lines:
+  - legacy-c
+  - buffer-overflow
+  - 1988-code

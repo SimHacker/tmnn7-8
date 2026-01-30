@@ -1,0 +1,16 @@
+# D.scrn/ — Screen Handling
+# Terminal display code
+
+what: |
+  5 .c files, 5 headers.
+  Curses/terminal control.
+  Screen management.
+
+key_files:
+  - screen.c: "Screen control"
+  - window.c: "Window management"
+  - cursor.c: "Cursor positioning"
+
+k-lines:
+  - terminal-ui
+  - curses

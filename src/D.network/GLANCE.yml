@@ -1,0 +1,16 @@
+# D.network/ — Network Operations
+# NNTP and network transport
+
+what: |
+  3 .c files, 1 header.
+  Network protocol handling.
+  NNTP implementation.
+
+key_files:
+  - nntp.c: "NNTP protocol"
+  - netio.c: "Network I/O"
+  - socket.c: "Socket handling"
+
+k-lines:
+  - nntp-protocol
+  - network-io

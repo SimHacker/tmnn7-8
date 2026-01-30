@@ -1,0 +1,37 @@
+# D.port/ — Portability Layer
+# Cross-platform compatibility code
+
+what: |
+  37 .c files, 11 headers.
+  Abstractions for different Unix variants.
+  Lots of gets() in test programs.
+
+key_files:
+  - edbm.c: "Database editor — gets() at line 1268"
+  - alist.c: "A-list tester — gets() with char[100] buffer"
+  - slist.c: "String list tester — gets() with char[100]"
+  - server.c: "Network server code"
+  - strstr.c: "String search implementation"
+  - strtime.c: "Time string handling"
+  - strpbrk.c: "String span implementation"
+
+security_issues:
+  edbm.c:
+    gets: 1
+    sprintf: "multiple"
+  alist.c:
+    gets: 1
+    buffer_size: "100 bytes — trivial overflow"
+  slist.c:
+    gets: 1
+    strcpy_unbounded: 1
+
+pattern: |
+  Test programs with tiny buffers (char[100]).
+  Interactive shells using gets().
+  "Just for testing" — but shipped anyway.
+
+k-lines:
+  - portability-layer
+  - test-code-shipped
+  - tiny-buffers

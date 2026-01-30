@@ -1,0 +1,40 @@
+# analysis/ — Archaeological Findings
+# The dig site — evidence, characters, simulation
+
+what: |
+  Structured analysis of TMNN.
+  40+ evidence files.
+  9 playable characters.
+  3 skills for the GitHub MMORPG.
+
+subdirs:
+  characters/: "9 personas AI can embody"
+  rooms/: "Spatial layout (directories as rooms)"
+  skills/: "MOOLLM skills for this simulation"
+
+key_files:
+  - INDEX.yml: "Categorized registry with k-lines"
+  - INDEX.md: "Dense connected narrative"
+  - SIMULATION.yml: "Runtime state and orchestration"
+  - vulnerabilities.yml: "872 unsafe function calls"
+  - fascist-analysis.yml: "The infamous file"
+  - catb-irony.yml: "Cathedral vs Bazaar contradiction"
+  - esr-quotes.yml: "Documented statements"
+
+characters:
+  protagonist: [daFlute]
+  reformers: [FearlessCrab, PureMonad, WebScaleChad]
+  actual_worker: [OpenBFD]
+  bots: [ReviewBot-774, SecAuditDAOBot-69420]
+  chaos_agents: [GrokVibeCheck, plannedchaos]
+
+skills:
+  - github-simulation: "GitHub as MMORPG"
+  - character-play: "Embody personas in GitHub"
+  - code-archaeology: "OpenBFD's method"
+
+k-lines:
+  - archaeological-analysis
+  - character-simulation
+  - github-mmorpg
+  - evidence-files

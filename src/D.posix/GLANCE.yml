@@ -1,0 +1,20 @@
+# D.posix/ — POSIX Compatibility
+# Standards compliance layer
+
+what: |
+  34 .c files, 7 headers.
+  POSIX function implementations.
+  Portability across Unix variants.
+
+key_files:
+  - mkdirtest.c: "Directory creation tests"
+  - getdents.c: "Directory reading"
+  - environ.c: "Environment handling"
+
+note: |
+  1988 code trying to be portable.
+  Some functions now standard.
+
+k-lines:
+  - posix-compat
+  - unix-portability

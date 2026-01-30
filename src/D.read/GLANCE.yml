@@ -1,0 +1,18 @@
+# D.read/ — Reading Functionality
+# User-facing article reading
+
+what: |
+  14 .c files, 7 headers.
+  Article display and navigation.
+  The "reader" in news reader.
+
+key_files:
+  - session.c: "Session management"
+  - rfuncs.c: "Reader functions"
+  - vinfoline.c: "Information line display"
+  - gcmd.c: "Command processing"
+  - display.c: "Screen display"
+
+k-lines:
+  - user-interface
+  - article-display

@@ -1,0 +1,11 @@
+# D.filt/ — Filtering
+# Article filtering and killfiles
+
+what: |
+  5 .c files, 2 headers.
+  Killfiles and article filtering.
+  User-defined rules.
+
+k-lines:
+  - killfile
+  - article-filter

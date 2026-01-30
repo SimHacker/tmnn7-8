@@ -1,0 +1,17 @@
+# D.post/ — Posting Functionality  
+# Article composition and submission
+
+what: |
+  4 .c files, 1 header.
+  Compose and post articles.
+  Where user input meets network.
+
+key_files:
+  - originate.c: "Create new articles"
+  - editart.c: "Edit article content"
+  - poster.c: "Submit articles"
+  - posting.c: "Posting logic"
+
+k-lines:
+  - user-input
+  - article-posting

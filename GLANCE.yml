@@ -1,0 +1,40 @@
+# TMNN 7.8 — Quick Glance
+# Eric S. Raymond's abandoned Usenet news reader (1987-1989)
+
+what: |
+  Archaeological analysis of TMNN — Teenage Mutant Ninja Netnews.
+  The code ESR hid in "secret laboratories" for 2 years while 
+  preaching "release early, release often."
+
+why: |
+  872 calls to unsafe C functions from the author of:
+  - "Given enough eyeballs, all bugs are shallow"
+  - "The Art of Unix Programming"
+  The contradiction is the content.
+
+stats:
+  unsafe_calls: 872
+  gets: 105
+  sprintf: 331
+  strcpy: 265
+  strcat: 171
+  years_hidden: 2
+  years_abandoned: 37
+
+structure:
+  src/: "Source code (169 .c files, 51 .h files)"
+  doc/: "Documentation and BRAGSHEET"
+  analysis/: "Archaeological findings and playable characters"
+  man/: "Manual pages"
+  scripts/: "Build and utility scripts"
+  misc/: "Miscellaneous files"
+
+characters: 9
+branches: 8
+skills: 3
+
+k-lines:
+  - buffer-overflow
+  - cathedral-bazaar
+  - many-eyes-myth
+  - secret-laboratories

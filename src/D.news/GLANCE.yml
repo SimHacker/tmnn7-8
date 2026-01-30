@@ -1,0 +1,43 @@
+# D.news/ — Core News Handling
+# Home of fascist.c
+
+what: |
+  Core news article handling.
+  21 .c files, 8 headers.
+  WHERE THE BODIES ARE BURIED.
+
+infamous:
+  fascist.c: |
+    FASCIST and COMMUNIST preprocessor flags.
+    Content moderation code from the man who 
+    preaches content moderation is tyranny.
+    14 strcat() calls without bounds checking.
+    
+key_files:
+  - fascist.c: "Authorization/access control — THE FILE"
+  - news.h: "Main header — LBUFLEN=1024, bfr[LBUFLEN]"
+  - header.c: "Article header parsing"
+  - getart.c: "Article retrieval"
+  - newsinit.c: "Initialization — declares global bfr"
+  - articleid.c: "Message-ID handling"
+  - escapes.c: "Escape sequence processing"
+
+security_issues:
+  fascist.c:
+    strcat_unbounded: 14
+    strcpy_unbounded: 1
+    sprintf_unbounded: 1
+  escapes.c:
+    sprintf_unbounded: 8
+  header.c:
+    sprintf_unbounded: 5
+
+irony: |
+  "FASCIST" controls who can POST.
+  "COMMUNIST" controls who can READ.
+  The names are "ironic." The buffer overflows are not.
+
+k-lines:
+  - fascist-c
+  - content-moderation-irony
+  - strcat-overflow

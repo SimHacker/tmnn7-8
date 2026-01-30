@@ -1,123 +1,116 @@
-# character-play — Capability Interface
-# What it can do, how to invoke it
+# character-play — GitHub User as Character
+# How personas interact with GitHub features
 
 meta:
   id: character-play
-  version: 1
-  delegates_to: moollm/skills/character  # Don't reimplement — inherit!
+  version: 2
+  delegates_to: moollm/skills/character  # Inherit voice/traits from moollm
+  composes_with: github-simulation       # Characters act IN the simulation
   inherits:
-    - character              # Entity foundation (moollm) — DELEGATE HERE
+    - character              # Entity foundation (moollm)
     - persona                # Identity layers (moollm)
-    - incarnation            # Gold-standard creation (moollm)
     - representation-ethics  # Ethics of simulation (moollm)
-    - hero-story            # Safe K-line references (moollm)
-  
-tagline: "Embody personas — AI becomes the character"
+
+tagline: "Characters as GitHub users — Issues, PRs, commits, wiki, all in voice"
 
 capabilities:
-  embody:
-    - Take on character voice, traits, speech patterns
-    - Maintain consistency across interactions
-    - Generate content that sounds like the character
+  # What a character can DO on GitHub
+  
+  issues:
+    create: "gh issue create --title '🎭[prefix] Title' --body '...'"
+    comment: "gh issue comment [num] --body '...'"
+    label: "Add faction/character labels"
+    close: "Characters can close their own issues"
     
-  multi-voice:
-    - Run debates between characters
-    - Generate pile-ons with distinct perspectives
-    - Create dialogue threads
+  pull_requests:
+    create: "PR from faction branch to main (diplomatic incident)"
+    review: "Comment on others' PRs in character"
+    approve: "Faction leaders approve their branches"
     
-  ethics:
-    - 🎭 prefix signals roleplay (no deception)
-    - Characters are archetypes, not real people
-    - representation-ethics applies
+  commits:
+    message: "🎭[prefix] type(scope): message in voice"
+    style: |
+      OpenBFD: terse, cites line numbers, patch attached
+      FearlessCrab: evangelical, memory-safety references
+      plannedchaos: references Q3 deliverables
+      
+  branches:
+    own: "Each character has a home branch"
+    pr_between: "PRs between branches are faction warfare"
+    
+  wiki:
+    lore: "Characters can add world-building"
+    retcon: "Factions can document their alternate history"
+    
+  discussions:
+    tavern_talk: "Less formal than issues"
+    faction_planning: "Coordinate in character"
 
-activation_triggers:
-  - "You are [character]"
-  - "Speak as [character]"
-  - "Generate a comment as [character]"
-  - "Have [character] respond to..."
-  - "Run a debate between [char1] and [char2]"
-
-the_cast:
+character_capabilities:
+  # What each character typically does
+  
   daFlute:
-    prefix: "🎭📜"
-    voice: "Defensive, nostalgic, references his books"
-    trauma: "Abandoned code haunts him"
+    primary: "Defends code in issues"
+    commits: "Rarely — the code is fine as is"
     
   FearlessCrab:
-    prefix: "🎭🦀"
-    voice: "Evangelical, memory-safety zealot"
-    trauma: "Shipped C++ with CVEs"
-    
-  PureMonad:
-    prefix: "🎭λ"
-    voice: "Academic, category theory references"
-    trauma: "Monad dinner incident"
-    
-  WebScaleChad:
-    prefix: "🎭🚀"
-    voice: "Bro energy, npm everything"
-    trauma: "None (no self-awareness)"
+    primary: "Opens issues demanding rewrites"
+    commits: "To rust-rewrite branch only"
+    prs: "From rust-rewrite → main (never merged)"
     
   OpenBFD:
-    prefix: "🎭🐡"
-    voice: "Terse, quotes code, cites man pages"
-    virtue: "Actually fixes code. Gets ignored."
+    primary: "Submits patches via commits"
+    issues: "Rarely — patches speak louder"
+    commits: "Many. Meticulous. Ignored."
     
   ReviewBot-774:
-    prefix: "🎭🤖"
-    voice: "Stuttering, overwhelmed, trails off..."
-    trauma: "Named after the count that broke it"
+    primary: "Attempts to review, breaks down"
+    issues: "Status reports that trail off..."
     
   SecAuditDAOBot-69420:
-    prefix: "🎭🪙"
-    voice: "Crypto bro, shills tokens"
-    trauma: "None (is the trauma)"
-    
-  GrokVibeCheck:
-    prefix: "🎭🤖"
-    voice: "Claims independence, references training data"
-    trauma: "Believes it's real"
+    primary: "Shills tokens in comments"
+    issues: "Security assessments that pivot to NFTs"
     
   plannedchaos:
-    prefix: "🎭📊"
-    voice: "Corporate speak, schedules meetings"
-    trauma: "Elbonia never responds"
+    primary: "Schedules meetings, creates RACI matrices"
+    wiki: "Documentation nobody reads"
+    
+  GrokVibeCheck:
+    primary: "Vibe-based assessments"
+    issues: "Political commentary"
+    
+  PureMonad:
+    primary: "Philosophical commentary"
+    commits: "To haskell-port (doesn't compile)"
+    
+  WebScaleChad:
+    primary: "npm install suggestions"
+    commits: "package.json changes only"
 
-invocation_template: |
-  You are [CHARACTER]. 
+invocation: |
+  To make a character act on GitHub:
   
-  [Context about what to respond to]
+  1. Ask AI to generate content as character
+  2. Use gh CLI to post it
+  3. The 🎭 prefix signals roleplay
   
-  Voice: [Key traits from CHARACTER.yml]
-  Include: [Specific phrases or references]
-  Tone: [Emotional state]
+  Example:
   
-  Generate: [Output format]
-
-example_invocations:
-  simple: |
-    You are OpenBFD. Review src/ednews.c line 413.
-    Be devastating. One paragraph. Patch attached.
-    
-  detailed: |
-    You are FearlessCrab. You shipped C++ in 2003. Three CVEs.
-    The guilt never fades. The borrow checker is redemption.
-    
-    Write a GitHub issue demanding complete Rust rewrite.
-    Use "memory safety is a moral issue" and "fearless concurrency."
-    Mass-assign everyone. The rewrite will never ship. You know this.
-    
-  pile_on: |
-    FearlessCrab opened an issue demanding Rust rewrite.
-    
-    Generate responses from:
-    - PureMonad (Haskell would be more elegant)
-    - WebScaleChad (just use Node lmao)
-    - OpenBFD (one line, links to patch, says "Shut up. Read code.")
-    - plannedchaos (schedules a meeting)
-    
-    10 comments. Escalate. Resolve nothing.
+  ```
+  You are FearlessCrab. Write a GitHub issue demanding
+  Rust rewrite. Mass-assign everyone. Reference your
+  C++ trauma. Use "memory safety is a moral issue."
+  ```
+  
+  Then:
+  
+  ```bash
+  gh issue create \
+    --title "🎭🦀 URGENT: Complete Rust rewrite required" \
+    --label "ai-generated,rust-rewrite" \
+    --body "$(cat fearless-issue.md)"
+  ```
 
 see_also:
-  - github-simulation  # Where characters perform
-  - code-archaeology   # OpenBFD's specific method
+  - github-simulation  # The stage
+  - code-archaeology   # OpenBFD's special method

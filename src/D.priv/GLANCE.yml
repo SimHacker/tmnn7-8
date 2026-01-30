@@ -1,0 +1,16 @@
+# D.priv/ — Privilege Handling
+# Setuid and permission code
+
+what: |
+  13 .c files, 2 headers.
+  Privilege escalation handling.
+  Setuid operations.
+
+warning: |
+  Privilege handling code with buffer overflows.
+  This is especially dangerous.
+
+k-lines:
+  - setuid
+  - privilege-escalation
+  - dangerous-combo
