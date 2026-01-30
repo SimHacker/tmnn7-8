@@ -398,17 +398,19 @@ Create your own `analysis/characters/` directory. Define your cast. Open issues.
 
 ---
 
-### The Lineage: Collaborative Improv Performance Art
+### GitProv: Git + Improv
 
 > *"What if the audience could rewrite the show while it's happening?"* — Will Wright
 
-Direct descendant of **Bar Karma** (2011) — Will Wright's crowd-sourced TV show on Current TV. Don Hopkins built Storymaker and Urban Safari at Stupid Fun Club. 
+**GitProv** — multi-user real-time collaborative performance art.
+
+Direct descendant of **Bar Karma** (2011) — Will Wright's crowd-sourced TV show. Don Hopkins built Storymaker and Urban Safari at Stupid Fun Club. 
 
 **Git IS the branching script.** Every feature Linus built for kernel patches is a feature for managing branching narratives. We just never used it that way.
 
-*In the spirit of Engelbart's NLS: multi-user, real-time, augmented collaboration — but for theater.*
+*In the spirit of Engelbart's NLS — but for theater.*
 
-**Full history:** [analysis/COLLABORATIVE-IMPROV.md](analysis/COLLABORATIVE-IMPROV.md)
+**Full history:** [analysis/GITPROV.md](analysis/GITPROV.md)
 
 *See: `moollm/examples/adventure-4/characters/real-people/don-hopkins/stupid-fun-club.yml`*
 *See: `backup/lloooomm/03-Resources/entertainment/shows/bar-karma.md`*

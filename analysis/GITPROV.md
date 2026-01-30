@@ -1,6 +1,8 @@
-# Collaborative Improv Performance Art
+# GitProv
 
-*In the spirit of Engelbart's NLS: multi-user, real-time, augmented collaboration.*
+**Git + Improv = GitProv**
+
+*Multi-user real-time collaborative performance art, in the spirit of Engelbart's NLS.*
 
 ---
 
@@ -92,20 +94,11 @@ Doug Engelbart's NLS (1968) demonstrated:
 
 ---
 
-## What To Call This?
+## GitProv
 
-*Working title needed. Candidates:*
+**Git + Improv = GitProv**
 
-- **GitProv** — Git + Improv
-- **Multiplayer Improv** — Gaming meets theater
-- **Augmented Discourse** — Engelbart spirit
-- **Social Versioning** — Technical but human
-- **Collaborative Git Theater** — Descriptive
-- **Open Improv** — Open source meets performance
-- **Commit Theater** — Every commit is a line
-- **Branch Drama** — Parallel realities
-
-*The buzzword is hovering. We'll catch it.*
+The hummingbird landed. 🎯
 
 ---
 
