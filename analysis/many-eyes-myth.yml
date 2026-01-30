@@ -101,3 +101,41 @@ the_irony: |
   words about many eyes."
 
   # The many eyes were the friends we didn't make along the way
+
+community_code_review:
+  # ESR believes in code review. Now he gets some.
+  purpose: "Apply ESR's own principle to ESR's own code"
+  inspiration:
+    event: "ESR's 2009 Climategate code audit"
+    url: https://esr.ibiblio.org/?p=1447
+    what_happened: |
+      ESR audited climate scientists' code, claimed to find fraud.
+      His analysis highlighted COMMENTED-OUT code as evidence.
+      The scientists were later fully vindicated.
+      ESR's "audit" was incompetent and politically motivated.
+    source: https://rationalwiki.org/wiki/Eric_S._Raymond#Global_warming_denialism
+    # Now it's his turn
+
+  how_to_participate:
+    report_bugs: "Open a GitHub Issue"
+    discuss_findings: "Use GitHub Discussions"
+    security_issues: "Security tab or private disclosure"
+    submit_analysis: "Pull requests to analysis/"
+
+  what_to_look_for:
+    - "Buffer overflows: sprintf, strcpy, strcat without bounds"
+    - "Insecure temp files: mktemp() race conditions"
+    - "Command injection: system(), popen() with user input"
+    - "gets() function: Yes, it's in the headers"
+    - "Hardcoded paths: /usr/lib/news, credentials in source"
+    - "Logic bugs: Uninitialized variables, missing error handling"
+    - "Style violations: Against the Art of Unix Programming he later wrote"
+
+  current_findings:
+    buffer_overflows: 774
+    race_conditions: 42
+    command_injections: 61
+    gets_in_headers: "Multiple"
+    # Your discovery: Open an Issue
+
+  motto: "Let's see how shallow these bugs really are."

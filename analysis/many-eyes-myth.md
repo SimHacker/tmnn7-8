@@ -83,6 +83,32 @@ Real security researchers like Theo de Raadt have always known this was nonsense
 
 ---
 
+## 👁️ Many Eyes: Finally Applied
+
+**ESR believes in code review. Now he gets some.**
+
+This repository exists to finally apply ESR's own principle to ESR's own code. For decades, TMNN sat in archives with zero eyeballs. No more.
+
+### Community Code Review
+
+In the spirit of ESR's own [2009 audit of climate science code](https://esr.ibiblio.org/?p=1447) — where he incompetently analyzed *commented-out code* to "prove" fraud, and the scientists were later vindicated — we invite the community to examine TMNN with the same rigor ESR claims to value.
+
+**[📋 Report bugs](../../../issues)** | **[💬 Discuss findings](../../../discussions)** | **[🔒 Security issues](../../../security)**
+
+### What We've Found So Far
+
+| Category | Count | 
+|----------|-------|
+| Buffer overflows | 774 |
+| Race conditions | 42 |
+| Command injections | 61 |
+| `gets()` in headers | Multiple |
+| **Your discovery** | [Open an Issue](../../../issues) |
+
+Let's see how shallow these bugs really are.
+
+---
+
 *The many eyes were the friends we didn't make along the way.*
 
 ---

@@ -83,6 +83,58 @@ flowchart TB
 
 ---
 
+## 👁️ Many Eyes: A Community Code Review
+
+**ESR believes in code review. Let's give him some.**
+
+In 2009, ESR audited the [Climatic Research Unit's code](https://esr.ibiblio.org/?p=1447) to "expose" climate scientists. His analysis was [incompetent and politically motivated](https://rationalwiki.org/wiki/Eric_S._Raymond#Global_warming_denialism) — he highlighted *commented-out code* as evidence of fraud, and the scientists were later vindicated.
+
+**Now it's his turn.**
+
+This repository exists so the community can apply ESR's own "many eyes" principle to ESR's own code. The man who wrote "given enough eyeballs, all bugs are shallow" kept his code hidden from eyeballs for decades. 
+
+**No more.**
+
+### 🐛 How to Participate
+
+| Action | Where |
+|--------|-------|
+| **Report a bug** | [Open an Issue](../../issues) |
+| **Document a vulnerability** | [Security tab](../../security) or Issues |
+| **Discuss findings** | [Discussions](../../discussions) |
+| **Submit analysis** | Pull requests to `analysis/` |
+
+### 📋 What to Look For
+
+- **Buffer overflows** — `sprintf`, `strcpy`, `strcat` without bounds checking
+- **Insecure temp files** — `mktemp()` race conditions  
+- **Command injection** — `system()`, `popen()` with user input
+- **The `gets()` function** — Yes, it's in the headers
+- **Hardcoded paths** — `/usr/lib/news`, credentials in source
+- **Logic bugs** — Uninitialized variables, missing error handling
+- **Style violations** — Against the "Art of Unix Programming" he later wrote
+
+### 🏆 Current Bug Count
+
+| Category | Count | Status |
+|----------|-------|--------|
+| Buffer overflows | 774 | [Documented](analysis/vulnerabilities.md) |
+| `gets()` calls | Multiple | In headers |
+| `system()` calls | 15+ | Command injection risks |
+| Temp file races | Multiple | `mktemp()` everywhere |
+| **Your discovery** | ? | [Open an Issue](../../issues) |
+
+### 💡 The Irony
+
+> "My favorite part of the 'many eyes' argument is how few bugs were found by the two eyes of Eric."
+> — Theo de Raadt
+
+ESR claimed code review would find all bugs. His own code had **zero reviewers** and **hundreds of bugs**. Now, finally, the many eyes have arrived.
+
+*Let's see how shallow these bugs really are.*
+
+---
+
 ## Repository Structure
 
 ```
