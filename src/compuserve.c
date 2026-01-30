@@ -507,7 +507,7 @@ FILE *mfp;	/* mail batch file */
 	    if (ofp == nfp)
 	    {
 		hlcpy(header.h_path, "compuserve");
-		(void) sprintf(bfr, "cis.%s.s%d", cgrp, sectnum);
+		(void) snprintf(bfr, sizeof(bfr), "cis.%s.s%d", cgrp, sectnum);  /* FIXED: OpenBFD */
 		hlcpy(header.h_newsgroups, bfr);
 
 		/* generate an article-ID from the message number */
@@ -531,7 +531,7 @@ FILE *mfp;	/* mail batch file */
 
 		if (sscanf(line, "Sb: #%d-%[^\n]", &threadnum, str) == 2)
 		{
-		    (void) sprintf(line, "Re: %s", str);
+		    (void) snprintf(line, sizeof(line), "Re: %s", str);  /* FIXED: OpenBFD */
 		    hlcpy(header.h_subject, line);
 		    mkid(bfr, cgrp, threadnum);
 		    hlcpy(header.h_references, bfr);
@@ -557,7 +557,7 @@ FILE *mfp;	/* mail batch file */
 		if (sscanf(line, "Fm: %[^0123456789]%d,%d",str,&ugrp,&unum)==3)
 		{
 		    (void) nstrip(str);
-		    (void) sprintf(bfr, "%d.%d@compuserve (%s)",ugrp,unum,str);
+		    (void) snprintf(bfr, sizeof(bfr), "%d.%d@compuserve (%s)",ugrp,unum,str);  /* FIXED: OpenBFD */
 		    hlcpy(header.h_from, bfr);
 		}
 	    }
@@ -573,9 +573,9 @@ FILE *mfp;	/* mail batch file */
 		    (void) nstrip(str);
 		    if (ofp == nfp)
 		    {
-			(void) sprintf(bfr,
+			(void) snprintf(bfr, sizeof(bfr),
 				   "Posted-To: %d.%d@compuserve (%s)",
-				   ugrp, unum, str);
+				   ugrp, unum, str);  /* FIXED: OpenBFD */
 			happend(&header, bfr);
 		    }
 		    else
@@ -647,7 +647,7 @@ FILE *ifp, *ofp;
 
 	    while (isspace(*cp))
 		*cp-- = '\0';
-	    (void) sprintf(from, "%d.%d@compuserve (%s)", ugrp, unum, str);
+	    (void) snprintf(from, sizeof(from), "%d.%d@compuserve (%s)", ugrp, unum, str);  /* FIXED: OpenBFD */
 	}
 	else if (prefix(bfr, E_SUBH))
 	{
