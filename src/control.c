@@ -1042,7 +1042,7 @@ char **argv;
 	}
 
 	/* now move everything underneath the old location to the new one */
-	(void) sprintf(bfr, TREECOPY, artdir(argv[1]), newdir);
+	(void) snprintf(bfr, sizeof(bfr), TREECOPY, artdir(argv[1]), newdir);  /* FIXED: OpenBFD */
 	(void) free(newdir);
 	if (system(bfr))
 	{
