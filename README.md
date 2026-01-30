@@ -398,74 +398,17 @@ Create your own `analysis/characters/` directory. Define your cast. Open issues.
 
 ---
 
-### The Lineage: Bar Karma and Current TV
-
-This is a direct descendant of **Bar Karma** (2011) — Will Wright's revolutionary experiment on Current TV (Al Gore's network).
+### The Lineage: Collaborative Improv Performance Art
 
 > *"What if the audience could rewrite the show while it's happening?"* — Will Wright
 
-Bar Karma was television's **first crowd-sourced scripted series**:
-- Audiences wrote episodes using the **Storymaker tool**
-- Community voted on story directions
-- Professional cast filmed the winning scripts
-- Don Hopkins built the iPhone app and tech at Stupid Fun Club
-- Further developed it as **Urban Safari** — GPS-based mobile storytelling
-- Integrated with **Layar** AR app (Amsterdam company — Don worked with their people at TomTom)
-- Location-aware narratives: stories triggered by where you physically are
+Direct descendant of **Bar Karma** (2011) — Will Wright's crowd-sourced TV show on Current TV. Don Hopkins built Storymaker and Urban Safari at Stupid Fun Club. 
 
-**The parallel is exact:**
+**Git IS the branching script.** Every feature Linus built for kernel patches is a feature for managing branching narratives. We just never used it that way.
 
-| Bar Karma (2011) | GitHub Simulation (2026) |
-|------------------|--------------------------|
-| Storymaker tool | CHARACTER.yml + Cursor |
-| Community submissions | GitHub Issues and comments |
-| Voting on story direction | Reactions + audience participation |
-| Professional execution | AI + human performers |
-| Current TV as platform | GitHub as platform |
-| Episodes as output | Threads as output |
+*In the spirit of Engelbart's NLS: multi-user, real-time, augmented collaboration — but for theater.*
 
-**We're doing Bar Karma, but the bar is a GitHub repo, the characters are YAML files, and the audience writes the script in real-time through issues and comments.**
-
-### Storymaker Lives. Urban Safari Lives.
-
-The tools Don built at Stupid Fun Club didn't die when Current TV shut down.
-
-**Storymaker** — the community story creation tool — lives here:
-- `CHARACTER.yml` is a story element template
-- GitHub Issues are story submissions
-- Reactions are community votes
-- The thread IS the episode
-
-**Urban Safari** — GPS-based collaborative storytelling — lives here:
-- The repo is the territory
-- Directories are locations
-- Characters inhabit spaces
-- The audience explores and contributes
-
-The vision survived. The platform changed. **GitHub is the new Current TV.**
-
-### The Git Repo IS The Branching Script
-
-Storymaker needed custom software to manage branching narratives. 
-
-**Git already does this. It was built for it.**
-
-| Storymaker Feature | Git Equivalent |
-|--------------------|----------------|
-| Branching storylines | `git branch` |
-| Timeline management | Commit history |
-| Story versioning | `git log` |
-| Parallel narratives | Multiple branches |
-| Merging storylines | `git merge` |
-| Community review | Pull Request review |
-| Voting on direction | PR approvals + reactions |
-| Reverting bad choices | `git revert` |
-| Tagging key moments | `git tag` |
-| Forking the canon | `git fork` |
-
-**Git IS collaborative storytelling infrastructure.** We just never used it that way until now.
-
-Every feature Linus built for managing Linux kernel patches is a feature for managing branching narratives. The tooling is identical. The use case is new.
+**Full history:** [analysis/COLLABORATIVE-IMPROV.md](analysis/COLLABORATIVE-IMPROV.md)
 
 *See: `moollm/examples/adventure-4/characters/real-people/don-hopkins/stupid-fun-club.yml`*
 *See: `backup/lloooomm/03-Resources/entertainment/shows/bar-karma.md`*
