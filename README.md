@@ -32,6 +32,21 @@ I refuse to look at it. I do not want it to burn my eyes and haunt my nightmares
 
 This is the very definition and live performance of **"Vibe Code Reviewing"** — the natural evolution of [Vibe Coding](https://en.wikipedia.org/wiki/Vibe_coding). I vibed. The AI coded the analysis. The bugs emerged. I never had to see `gets()` in a header file with my own human eyes.
 
+### 🤖 AI-Generated PRs REQUIRED
+
+Many open source projects ban AI-generated pull requests. They find them annoying, unhelpful, repetitive, and shallow.
+
+**This repository is different. This repository REQUIRES AI-generated contributions.**
+
+- AI-generated bug reports? **YES PLEASE.**
+- AI-generated code analysis? **BRING IT.**
+- AI-generated documentation? **THE MORE THE BETTER.**
+- AI-generated issues that are suspiciously "helpful"? **THAT'S THE POINT.**
+
+The more formulaic, the more repetitive, the more relentlessly thorough — the better. Let a thousand AI agents descend upon this codebase and document every last `sprintf()` call. Let them generate Issues with excessive detail and PRs with comprehensive analysis.
+
+**ESR wanted many eyes. He's getting many tokens.**
+
 ### You Can Do This Too
 
 **We invite everyone to participate:**
