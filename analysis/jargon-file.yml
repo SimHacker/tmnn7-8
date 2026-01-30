@@ -1,0 +1,108 @@
+# The Jargon File: How ESR Hijacked Hacker Culture
+# Analysis of ESR's appropriation of the original MIT/Stanford document
+
+original_jargon_file:
+  origin: "Stanford AI Lab (SAIL)"
+  started_by: "Raphael Finkel"
+  year: 1975
+  original_name: "AIWORD.RF[UP,DOC]"
+  
+  early_contributors:
+    - name: "Raphael Finkel"
+      role: "Creator at Stanford"
+    - name: "Mark Crispin"
+      role: "Brought to MIT in 1976"
+    - name: "Guy L. Steele Jr."
+      role: "Major MIT contributor and editor"
+    - name: "Richard M. Stallman"
+      role: "MIT AI Lab contributor"
+    - name: "Don Woods"
+      role: "Contributor"
+    - name: "Geoff Goodfellow"
+      role: "Contributor"
+      
+  published_book:
+    title: "The Hacker's Dictionary"
+    editor: "Guy L. Steele Jr."
+    publisher: "Harper & Row"
+    year: 1983
+    note: "Authorized compilation by actual MIT/Stanford hackers"
+
+esr_takeover:
+  event: "ESR takes over maintenance of stagnant Jargon File"
+  period: "Late 1980s onward"
+  
+  his_version:
+    title: "The New Hacker's Dictionary"
+    editions:
+      - year: 1991
+        note: "First ESR edition"
+      - year: 1996
+        note: "Third edition"
+    current: http://www.catb.org/~esr/jargon/
+
+accusations_of_hijacking:
+  idlewords_quote:
+    source: https://news.ycombinator.com/item?id=36920683
+    user: idlewords  # Maciej Ceglowski
+    quote: |
+      It would be great if someone with appropriate 'back in the day' 
+      credentials would take over membership of this document and 
+      powerwash the gratuitous Eric Raymond edits and insertions off of it.
+      
+  deepspace_quote:
+    source: https://news.ycombinator.com/item?id=36923046
+    quote: |
+      the man's disgusting political and social views tarnished 
+      everything he touched
+      
+  donhopkins_assessment:
+    source: https://news.ycombinator.com/item?id=43133598
+    quotes:
+      - |
+        Real hackers from the MIT-AI lab where it originated consider his 
+        revisionist politically slanted rewriting-for-profit of the Hacker's 
+        Dictionary to be disrespectful parasitical vandalism that doesn't 
+        represent the actual hacker culture, just a tool he hijacked, corrupted, 
+        and abused to spread his right-wing political ideology.
+      - |
+        He certainly doesn't deserve to be called a hacker, let alone presume 
+        to define the meaning of the term.
+    credentials: "Known ESR since early 1980s, was present at MIT AI Lab"
+
+original_source:
+  url: https://github.com/PDP-10/its/blob/master/doc/humor/jargon.68
+  description: "The original MIT ITS jargon file, free of ESR's pollution"
+  note: "This is what it looked like before ESR rewrote it"
+
+what_esr_changed:
+  additions:
+    - "Political content reflecting ESR's libertarian views"
+    - "Self-referential entries promoting ESR's own work"
+    - "Redefinitions that changed the meaning of hacker culture"
+  removals_or_diminishments:
+    - "Original MIT/Stanford cultural context"
+    - "Contributions from people ESR disagreed with"
+  net_effect: |
+    Transformed a collaborative community document into a vehicle for 
+    ESR's personal ideology and self-promotion
+
+the_pattern: |
+  ESR has a recurring pattern of:
+  1. Finding something created by others
+  2. Taking it over during a period of inactivity
+  3. Rewriting it to reflect his views
+  4. Publishing it as if it represents the original community
+  5. Profiting from and claiming credit for others' work
+  
+  The Jargon File is the clearest example, but see also:
+  - His claims about defining "hacker" culture
+  - "How to Become a Hacker" essay
+  - "Linus's Law" (attributed to someone who never said it)
+
+parallel_to_tmnn:
+  note: |
+    In TMNN, ESR took Eugene Spafford's fascist.c code and "rewrote" it,
+    adding his political ideology (FASCIST/COMMUNIST flags) and buffer 
+    overflows. The pattern is consistent: take others' work, insert 
+    politics, break things, claim credit.

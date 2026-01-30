@@ -1,0 +1,96 @@
+# SF Con Behavior: The Droning
+# ESR's notorious self-promotion at science fiction conventions
+
+the_nickname:
+  name: "Eric The Flute"
+  instrument: flute
+  esr_claim: "natural flutist"  # From his list of "natural" abilities
+  
+usenet_signature:
+  source: "comp.lang.misc"
+  date: 1989-12-13
+  signature: "mad mastermind of TMN-Netnews"
+  email: "eric@snark.uu.net"
+  note: |
+    ESR referred to himself as the "mad mastermind" in his usenet 
+    signature during the TMNN development period.
+
+convention_behavior:
+  context: "Late 1980s science fiction conventions"
+  
+  donhopkins_testimony:
+    source: https://news.ycombinator.com/item?id=43133598
+    credentials: "Known ESR since early 1980s"
+    description: |
+      Eric S. Raymond (aka "Eric The Flute" or "ESR") spent the late 1980s 
+      obsessively promoting his "Teenage Mutant Ninja Netnews" (TMNN) project 
+      at science fiction conventions... He would corner people and drone on 
+      endlessly about it at inappropriate times.
+      
+    related_quote: |
+      His own failed proprietary closed source 'cathedral' project, that he 
+      was notorious for insufferably and arrogantly bragging about during the 
+      80's, but never releasing, and finally giving up on because he didn't 
+      have the skills to finish and deliver it, and nobody wanted to collaborate 
+      with him or listen to him talk about it any more.
+
+the_bragsheet:
+  file: doc/BRAGSHEET
+  tone: |
+    The BRAGSHEET reads like convention patter - exactly the kind of 
+    self-promotional material ESR would have used at SF cons.
+    
+  opening_line: |
+    after two years of development the software construct known as 
+    TEENAGE MUTANT NINJA NETNEWS has escaped from the secret laboratories 
+    of Thyrsus Enterprises
+    
+  grandiose_claims:
+    - "secret laboratories"
+    - "software construct" (dramatic language)
+    - "Thyrsus Enterprises" (his consulting company, made to sound impressive)
+    
+  promised_features:
+    listed_as_future:
+      - "intelligent filtering agents"
+      - "distributed hypertext service"
+      - "public-key encryption"
+    actually_delivered: 0
+
+by_the_numbers:
+  hours_spent_droning: "∞"  # Per HN post
+  note: "Number of subjective hours ESR subjected people he cornered at SF cons to bragging about TMNN"
+  
+  years_developing: 2
+  beta_level_at_abandonment: 7.8
+  features_delivered: 0
+  
+  ratio: |
+    Infinite hours of talking about TMNN vs. zero delivered features
+
+the_pattern:
+  talking_vs_doing: |
+    ESR's career shows a consistent pattern: more talking than doing.
+    - TMNN: Two years of bragging, then abandonment
+    - CATB: Famous essay about development, but no famous software
+    - Jargon File: Took over someone else's work
+    - OSI: Co-founded it, eventually banned from it
+    
+  sf_con_culture: |
+    Science fiction conventions were (and are) gathering places for tech-adjacent 
+    people. In the 1980s, before the web, they were key networking venues. 
+    ESR used them as captive audiences for self-promotion.
+
+resume_contrast:
+  url: http://catb.org/~esr/resume.html
+  tmnn_description: "A rewrite of the USENET netnews software."
+  words_for_tmnn: 7
+  words_for_martial_arts: 47
+  
+  what_resume_omits:
+    - "Teenage Mutant Ninja Netnews" name
+    - "TMNN" acronym
+    - The "mad mastermind" persona
+    - The SF convention promotion campaign
+    - The abandonment
+    - The beta status

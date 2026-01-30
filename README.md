@@ -68,28 +68,58 @@ tmnn7-8/
 
 ## Analysis Documents
 
-### Overview
-- [analysis/ANALYSIS.md](analysis/ANALYSIS.md) - **Human-readable summary of all findings**
+### Overview & Summaries
+- [analysis/INDEX.yml](analysis/INDEX.yml) - **Master index of all analysis files**
+- [analysis/ANALYSIS.md](analysis/ANALYSIS.md) - Human-readable summary of all findings
+- [analysis/IRONIES.md](analysis/IRONIES.md) - **Catalog of ESR contradictions**
 - [analysis/hn-post.txt](analysis/hn-post.txt) - Full Hacker News post documenting this discovery
 
-### YAML Jazz Knowledge Schemas
-Structured data with semantic comments for machine and human readers:
+### TMNN Source Code Analysis (YAML Jazz)
+
+| File | Contents |
+|------|----------|
+| [bragsheet.yml](analysis/bragsheet.yml) | ESR's promises - hypertext, encryption, AI filtering |
+| [license-analysis.yml](analysis/license-analysis.yml) | Political manifesto and consulting plug |
+| [fascist-analysis.yml](analysis/fascist-analysis.yml) | Deep dive into fascist.c with buffer overflows |
+| [vulnerabilities.yml](analysis/vulnerabilities.yml) | Complete security vulnerability catalog |
+| [code-index.yml](analysis/code-index.yml) | File-by-file risk assessment |
+| [code-review.yml](analysis/code-review.yml) | Original code review findings |
+
+### ESR Contradictions & Ironies (YAML Jazz)
+
+| File | Contents |
+|------|----------|
+| [catb-irony.yml](analysis/catb-irony.yml) | "Cathedral and the Bazaar" vs TMNN reality |
+| [many-eyes-myth.yml](analysis/many-eyes-myth.yml) | "Linus's Law" - the quote Linus never said |
+| [art-of-unix-irony.yml](analysis/art-of-unix-irony.yml) | Unix best practices book vs terrible code |
+| [content-moderation-irony.yml](analysis/content-moderation-irony.yml) | Built fascist.c, preached moderation is tyranny |
+
+### ESR External History (YAML Jazz)
+
+| File | Contents |
+|------|----------|
+| [jargon-file.yml](analysis/jargon-file.yml) | How ESR hijacked the Jargon File |
+| [osi-ban.yml](analysis/osi-ban.yml) | Banned from OSI he co-founded (2020) |
+| [fetchmail.yml](analysis/fetchmail.yml) | His other security-challenged project |
+| [sex-tips-honeytrap.yml](analysis/sex-tips-honeytrap.yml) | "Sex Tips for Geeks" and honeytrap conspiracy |
+| [sf-con-behavior.yml](analysis/sf-con-behavior.yml) | Notorious SF convention self-promotion |
+| [esr-resume-analysis.yml](analysis/esr-resume-analysis.yml) | How he sanitizes TMNN on his resume |
+
+### Quotes & Receipts
 
 | File | Contents |
 |------|----------|
 | [ESR-QUOTES.md](analysis/ESR-QUOTES.md) | **Human-readable quote collection** |
 | [esr-quotes.yml](analysis/esr-quotes.yml) | **Sourced quotes for charity fundraising** |
-| [bragsheet.yml](analysis/bragsheet.yml) | Structured extraction of ESR's promises |
-| [license-analysis.yml](analysis/license-analysis.yml) | Political manifesto breakdown |
-| [fascist-analysis.yml](analysis/fascist-analysis.yml) | Deep dive into fascist.c |
-| [vulnerabilities.yml](analysis/vulnerabilities.yml) | Complete security vulnerability catalog |
-| [code-index.yml](analysis/code-index.yml) | File-by-file risk assessment |
-| [hn-receipts.yml](analysis/hn-receipts.yml) | Community quotes with provenance |
-| [esr-resume-analysis.yml](analysis/esr-resume-analysis.yml) | How he sanitizes TMNN on his resume |
+| [receipts.yml](analysis/receipts.yml) | Community quotes with provenance |
+| [hn-receipts.yml](analysis/hn-receipts.yml) | Hacker News specific citations |
+
+### Timeline & Statistics
+
+| File | Contents |
+|------|----------|
 | [timeline.yml](analysis/timeline.yml) | Archaeological timeline 1987-2026 |
 | [by-the-numbers.yml](analysis/by-the-numbers.yml) | Harper's Index style statistics |
-| [code-review.yml](analysis/code-review.yml) | Original code review findings |
-| [receipts.yml](analysis/receipts.yml) | Original receipts file |
 
 ## The Irony
 

@@ -1,0 +1,108 @@
+# OSI Ban: Co-Founder Expelled from His Own Organization
+# How ESR got banned from the Open Source Initiative he co-founded
+
+the_organization:
+  name: "Open Source Initiative (OSI)"
+  founded: 1998
+  co_founders:
+    - "Eric S. Raymond"
+    - "Bruce Perens"
+  esr_role: "President for first six years"
+  mission: "Stewardship of the Open Source Definition"
+
+the_ban:
+  date: 2020-03-26
+  action: "Banned from OSI mailing lists"
+  lists_affected:
+    - "License-Review"
+    - "License-Discuss"
+  announced_by: "Pamela Chestek, Chair of License Review Committee"
+  
+  reason_given:
+    violation: "OSI Code of Conduct"
+    specifics:
+      - "deliberately divisive or disrespectful messages"
+      - "threatening, disparaging or belittling remarks"
+      
+the_incident:
+  date: 2020-02-24
+  context: |
+    ESR rejoined the mailing list after 20 years of absence to argue against 
+    "ethical" open source licensing proposals that would allow projects to 
+    exclude certain organizations.
+    
+  his_position: |
+    Argued against "social justice" goals in licensing, saying OSI's role is 
+    to "protect a narrow and particular set of liberties."
+    
+  what_he_said:
+    first_post: |
+      To hell with you *and* the horse you rode in on.
+    target: "Advocates of ethical licensing clauses"
+    
+    penultimate_email: |
+      I am not fooled. You are mounting an ideological attack on our core 
+      principles of liberty and nondiscrimination. You will not succeed 
+      while I retain any ability to oppose this.
+      
+    blocked_email:
+      leaked: true
+      url: http://lists.opensource.org/pipermail/license-discuss_lists.opensource.org/2020-February/021328.html
+      content: "Called someone a 'toxic loonytoon'"
+
+hacker_news_reactions:
+  main_thread: https://news.ycombinator.com/item?id=22539530
+  points: 328
+  comments: 420+
+  
+  selected_comments:
+    - user: latk
+      quote: |
+        ESR was not banned for having the wrong opinion – many others expressed 
+        similar opinions both before and after his messages. But ESR, over the 
+        course of a few days where he returned to the mailing list, was 
+        increasingly unable to express those opinions in a professional manner.
+        
+    - user: latk
+      quote: |
+        I'd even have considered banning ESR without any particular evidence. 
+        That guy isn't new to the scene but has a long history of troublesome 
+        behavior.
+
+news_coverage:
+  - source: "i-programmer.info"
+    title: "Co-founder of OSI Banned From Mailing Lists"
+    url: https://www.i-programmer.info/news/136-open-source/13535-co-founder-of-osi-banned-from-.html
+    
+  - source: "lunduke.com"
+    title: "Open Source Initiative bans co-founder, Eric S Raymond"
+    note: "Sympathetic to ESR"
+
+the_irony:
+  founding_to_ban: "22 years"
+  pattern: |
+    ESR co-founded an organization to promote open collaboration.
+    ESR was banned from that organization for being unable to collaborate.
+    
+  tmnn_connection: |
+    The same pattern visible in TMNN: ESR can write about how things 
+    should work, but cannot actually work with others. His license file 
+    for TMNN explicitly distanced himself from FSF, his BRAGSHEET 
+    bragged about solo "secret laboratory" work, and his code had no 
+    external contributors.
+
+other_institutional_separations:
+  - organization: "Free Software Foundation (context)"
+    note: "TMNN LICENSE explicitly distanced from FSF"
+    quote: |
+      My action is not to be construed as an endorsement of the political 
+      or economic views... of any member, agent, or ally of the Free 
+      Software Foundation other than myself.
+
+pattern_summary: |
+  ESR has been unable to maintain productive relationships with the 
+  organizations and communities he claims to represent:
+  - Banned from OSI (which he co-founded)
+  - Distanced from FSF (in 1989 TMNN license)
+  - Jargon File maintainer but criticized by original hackers
+  - "Open source" advocate who developed in secret laboratories

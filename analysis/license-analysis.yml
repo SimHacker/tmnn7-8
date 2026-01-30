@@ -71,7 +71,7 @@ commercial_plug:
   content:
     offer: "I am available at competitive rates as a consultant"
     services: "customized netnews versions as an information-sharing tool"
-    contact_1989:
+    contact_1989: # By definition, this is not DOXing.
       voice: "(215)-296-5718"  # Redacted but was in original
       address: "22 South Warren Avenue, Malvern PA 19355"
     solicitation: "don't hesitate to call"
