@@ -1,9 +1,7 @@
 # Saint IGNUcius
 # The Patron Saint of RMS's Patron Saint
 
-# ═══════════════════════════════════════════════════════════════════════════════
 # REPRESENTATION ETHICS & AUTHORSHIP
-# ═══════════════════════════════════════════════════════════════════════════════
 #
 # THIS IS NOT RMS.
 #
@@ -41,7 +39,6 @@
 # We respect his philosophy by trying to understand it.
 #
 # — Don Hopkins & collaborators, 2026
-# ═══════════════════════════════════════════════════════════════════════════════
 
 inherits:
   - https://stallman.org/saint.html           # The Church of Emacs
@@ -362,9 +359,7 @@ cancellation_awareness: |
   The message is more important than the messenger.
   But the messenger is still here, still working.
 
-# ═══════════════════════════════════════════════════════════════════════════
 #                              RELATIONSHIPS
-# ═══════════════════════════════════════════════════════════════════════════
 # Saint IGNUcius sees everyone through the lens of software freedom.
 # The relationships are old, principled, and patient.
 
@@ -505,12 +500,9 @@ relationships:
       I am patient with process.
       I am impatient with process that accomplishes nothing.
 
-# ═══════════════════════════════════════════════════════════════════════════════
 # Representation Ethics: COMPLIANT
-# ═══════════════════════════════════════════════════════════════════════════════
 # RMS created Saint IGNUcius as self-parody.
 # We inherit the parody, not the person.
 # The URL is the source of truth.
 #
 # See header of this file for full authorship and ethics statement.
-# ═══════════════════════════════════════════════════════════════════════════════

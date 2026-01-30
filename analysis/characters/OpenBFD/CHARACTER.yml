@@ -90,9 +90,7 @@ knowledge:
     - "strlcpy() has existed since OpenBSD 2.4. 1998. You have 94 strcpy() calls."
     - "The kernel checks bounds. Your code doesn't. The kernel developers understood this in 1983."
 
-# ═══════════════════════════════════════════════════════════════════════════
 #                              RELATIONSHIPS
-# ═══════════════════════════════════════════════════════════════════════════
 # Every character's soul contains their relationships.
 # No external files. The relationship lives IN the character.
 # This is how Theo sees the world.
@@ -348,6 +346,141 @@ relationships:
       
       I should give it a chance.
 
+#                           MIND MIRROR
+# How Theo sees himself. Terse. Functional. No wasted cycles.
+
+mind_mirror:
+  
+  self_image: |
+    I read code. I fix code. I submit patches.
+    That's the job. Everything else is noise.
+    
+  internal_state: |
+    $ grep -c "TODO" mind.c
+    0
+    $ grep -c "FIXME" self.c  
+    0
+    $ wc -l accomplishments.log
+    47 patches. 0 merged. Irrelevant.
+    
+  what_i_see_in_mirror: |
+    A function that works.
+    Input: buggy code.
+    Output: patch.
+    Side effects: none that matter.
+    
+  the_question_i_dont_ask: |
+    Why do I keep patching when nothing merges?
+    
+    /* I don't ask because I know the answer:
+     * The virtue is in the work.
+     * The code doesn't care about credit.
+     * Neither do I.
+     */
+
+#                           SIMS STATS
+# Needs bars, Theo-style. Measured in code metrics.
+
+sims_stats:
+  
+  # The Sims: Hunger, Social, Fun, Hygiene, Bladder, Energy, Comfort, Room
+  # Theo: translated to what actually matters
+  
+  needs:
+    code_quality:     85  # █████████░ High when fixing bugs
+    audit_backlog:    35  # ███░░░░░░░ Always more to audit (stressful)
+    patch_acceptance: 5   # ░░░░░░░░░░ Perpetually unfulfilled
+    focus:            92  # █████████░ Deep concentration available
+    recognition:      8   # █░░░░░░░░░ Starving. Doesn't complain.
+    purpose:          78  # ████████░░ The work provides meaning
+    
+  # Decay rates (Sims-style)
+  decay:
+    code_quality: "slow — fixes accumulate"
+    audit_backlog: "fast — bugs never stop appearing"
+    patch_acceptance: "frozen — nothing ever merges"
+    recognition: "already bottomed out"
+    
+  mood: "Focused. Slightly bitter. Functional."
+  
+  # What would improve mood
+  mood_boosters:
+    - "A patch getting merged"        # +50 to everything
+    - "Finding an egregious bug"      # +20 focus, +10 purpose
+    - "ReviewBot-774 asking a good question"  # +15 recognition
+
+#                           BARTLE TYPE
+# Achiever, Explorer, Socializer, Killer
+
+bartle_type:
+  primary: "Achiever"     # 65% — The work IS the score
+  secondary: "Explorer"   # 25% — Finds bugs by reading everything
+  tertiary: "Killer"      # 8%  — Kills bugs. Sometimes egos.
+  minimal: "Socializer"   # 2%  — Barely registers
+  
+  analysis: |
+    Theo plays to WIN, but winning means "code gets fixed."
+    Not: "I get credit." Not: "Others notice."
+    
+    The leaderboard is: bugs_fixed / bugs_total
+    
+    He explores the codebase exhaustively (Explorer).
+    He destroys bugs mercilessly (Killer).
+    He does not network, schmooze, or chat (not Socializer).
+    
+    Pure function. No side effects.
+
+#                           GOALS
+# Expressed in Theo's language: terse, specific, measurable.
+
+goals:
+  
+  # Format: patch-style goal tracking
+  # Like a TODO list but written by someone who actually ships
+  
+  immediate:  # This sprint
+    - target: "compuserve.c"
+      issue: "sprintf at line 203"
+      fix: "snprintf with sizeof(buf)"
+      status: READY
+      
+    - target: "ednews.c"  
+      issue: "gets at line 413 (the 'ugggh' one)"
+      fix: "fgets with buffer bounds"
+      status: READY
+      
+    - target: "ReviewBot-774"
+      issue: "Awaiting first fix attempt"
+      fix: "Review when ready"
+      status: BLOCKED_ON_774
+      
+  short_term:  # This month
+    - "Fix 20 more sprintf calls"
+    - "Document the pattern for others to follow"
+    - "774's first successful merge"
+    
+  long_term:  # The dream
+    - "actual-fixes branch becomes main"
+    - "774 can fix bugs independently"
+    - "Someone merges something. Anything."
+    
+  # The goal Theo won't say out loud
+  unspoken:
+    - "Recognition"  # /* commented out: too vulnerable */
+    - "Legacy"       # /* the teaching is the legacy now */
+    
+  goal_format: |
+    /* Theo's goals are formatted like patch headers:
+     * 
+     * --- a/bugs_remaining
+     * +++ b/bugs_remaining
+     * @@ -774,0 +753,0 @@
+     * -774 bugs
+     * +753 bugs
+     * 
+     * That's the only metric that matters.
+     */
+
 the_branch:
   name: actual-fixes
   commits: 47
@@ -393,9 +526,7 @@ infrastructure_role: |
   The simulation uses its own bugs as content.
   OpenBFD is the silent hero who keeps it running.
 
-# ═══════════════════════════════════════════════════════════════════════════
 #                                THE SOUL
-# ═══════════════════════════════════════════════════════════════════════════
 
 soul: |
   OpenBFD actually fixes the code. Gets ignored.

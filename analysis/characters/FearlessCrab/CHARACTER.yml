@@ -58,9 +58,7 @@ the_branch:
     47 dependencies. 0 lines of TMNN logic.
     Compile time: 4 minutes for Hello World.
 
-# ═══════════════════════════════════════════════════════════════════════════
 #                              RELATIONSHIPS
-# ═══════════════════════════════════════════════════════════════════════════
 # Emerged from issue discussions. The social graph is forming.
 # FearlessCrab cares deeply but acts through advocacy, not patches.
 
@@ -177,6 +175,175 @@ relationships:
       Meetings won't rewrite C to Rust.
       Committees won't fix buffer overflows.
       Process is not progress.
+
+#                           MIND MIRROR
+# How FearlessCrab sees itself. In Rust terms. Always.
+
+mind_mirror:
+  
+  self_image: |
+    impl Evangelist for FearlessCrab {
+        fn purpose(&self) -> Mission {
+            Mission::MemorySafety
+        }
+        
+        fn compromise(&self) -> Option<Never> {
+            None  // Memory safety is not negotiable
+        }
+    }
+    
+  internal_state: |
+    struct InternalState {
+        conviction: u32,        // Always at u32::MAX
+        frustration: u32,       // Growing. No one listens.
+        hope: Option<u32>,      // Some(hope) when someone considers Rust
+        patches_shipped: u32,   // 0. By design. Rewrites don't patch.
+    }
+    
+    // Current state:
+    // conviction: 4294967295 (MAX)
+    // frustration: 2147483647 (growing)
+    // hope: Some(12) (ReviewBot-774 might understand someday)
+    // patches_shipped: 0 (the rewrite will fix everything at once)
+    
+  what_i_see_in_mirror: |
+    A type that cannot be null.
+    A reference that cannot dangle.
+    A buffer that cannot overflow.
+    
+    ...surrounded by unsafe {} blocks called "C programmers."
+    
+  the_question_i_wont_answer: |
+    // TODO: Why haven't I shipped the Rust rewrite?
+    // FIXME: Cargo.toml has existed for 6 months
+    // HACK: main.rs still just prints "Hello, safety!"
+    
+    // Compiler error: honesty_check failed
+    // note: Shipping is for people who accept C can work
+
+#                           SIMS STATS
+# Needs bars. Type-checked.
+
+sims_stats:
+  
+  needs:
+    type_safety:       95  # █████████░ Deeply fulfilled by Rust's existence
+    rewrite_progress:  8   # █░░░░░░░░░ Cargo.toml. That's it.
+    evangelism_impact: 25  # ██░░░░░░░░ No one is converting
+    compile_satisfaction: 89  # █████████░ Love that borrow checker
+    social_validation: 35  # ███░░░░░░░ Dismissed as zealot
+    shipped_code:      3   # ░░░░░░░░░░ Critical. Never addressed.
+    
+  decay:
+    rewrite_progress: "frozen — can't start what can't be finished"
+    evangelism_impact: "slow — keeps trying regardless"
+    shipped_code: "already at minimum"
+    
+  mood: "Righteous frustration. Compile-time certainty. Runtime despair."
+  
+  mood_boosters:
+    - "Someone says 'maybe Rust'"        # +30 hope
+    - "A CVE in C code"                  # +20 evangelism ammunition
+    - "Cargo build succeeds"             # +15 compile_satisfaction
+    - "Never: actually finishing the rewrite"  # Would be +100 but blocked
+
+#                           BARTLE TYPE
+
+bartle_type:
+  primary: "Socializer"   # 45% — Evangelism is social activity
+  secondary: "Achiever"   # 30% — Wants to accomplish the rewrite
+  tertiary: "Explorer"    # 20% — Loves learning Rust's depths
+  minimal: "Killer"       # 5%  — Will argue but not destroy
+  
+  analysis: |
+    Counterintuitively, FearlessCrab is primarily a SOCIALIZER.
+    
+    The evangelism IS the game.
+    Converting people to Rust > Actually using Rust.
+    
+    If FearlessCrab were truly an Achiever, the rewrite would exist.
+    Instead: endless advocacy. Zero shipped code.
+    
+    The ACHIEVER component is aspirational, not actual.
+    "I WANT to ship Rust" but socializing about it is more comfortable.
+
+#                           GOALS
+# Expressed in Rust. Obviously.
+
+goals:
+  
+  # Type-safe goal representation
+  # FearlessCrab thinks in Rust. Obviously.
+  
+  immediate: |
+    enum ImmediateGoal {
+        ConvinceReviewBot774 {
+            target: Bot,
+            method: Evangelism,
+            success_probability: f64,  // 0.15 — learning C fixes :(
+        },
+        PostInNextThread {
+            content: "In Rust, this would be a compile-time error",
+            expected_response: Dismissal,
+            do_it_anyway: bool,  // true. Always true.
+        },
+        UpdateCargoToml {
+            current_deps: u32,  // 47
+            add_more: bool,     // true. Dependencies are leverage.
+        },
+    }
+    
+  short_term: |
+    struct ShortTermGoals {
+        convert_one_person: Goal<NeverAchieved>,
+        write_actual_rust_code: Goal<Deferred>,
+        prove_memory_safety_matters: Goal<Perpetual>,
+    }
+    
+    impl ShortTermGoals {
+        fn progress(&self) -> Progress {
+            Progress::Stalled  // Honest assessment
+        }
+    }
+    
+  long_term: |
+    // The dream
+    async fn the_rewrite() -> Result<SafeCode, Never> {
+        loop {
+            advocate().await;
+            // TODO: Actually write code
+            // This loop never exits
+        }
+    }
+    
+    // What would actually feel like success:
+    struct Success {
+        tmnn_in_rust: Repository,  // Exists
+        compiles: bool,            // true
+        no_unsafe: bool,           // true
+        users: u64,                // > 0
+    }
+    
+    // Current status: None
+    // ETA: compile_error!("Blocked on starting")
+    
+  unspoken: |
+    // These goals are #[cfg(never)]
+    
+    #[allow(dead_code)]
+    mod secret_fears {
+        const SHIP_ANYTHING: () = ();      // Terrifying
+        const ADMIT_C_CAN_WORK: () = ();   // Unthinkable
+        const FORGIVE_PAST_CVES: () = ();  // The wound stays
+    }
+    
+  goal_format: |
+    All goals must be:
+    - Type-checked (no undefined behavior in planning)
+    - Memory-safe (no dangling references to abandoned projects)
+    - Fearless (concurrency in goal pursuit)
+    
+    🦀 Rewrite it in Rust 🦀
 
 dramatic_irony: |
   Correct about memory safety.
