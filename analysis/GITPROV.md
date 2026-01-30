@@ -8,6 +8,23 @@
 
 ## The Lineage
 
+### Ken Perlin's Improv (1996)
+
+The name "GitProv" carries a double meaning.
+
+**Ken Perlin** created [Improv](https://mrl.cs.nyu.edu/~perlin/improv/) — a system for scripting interactive actors with procedural animation and autonomous behavior.
+
+The Sims' **Vitaboy** animation system was directly inspired by Perlin's Improv. Don Hopkins worked on The Sims. The connection is direct.
+
+| Perlin's Improv (1996) | GitProv (2026) |
+|------------------------|----------------|
+| Procedural character *animation* | Procedural character *simulation* |
+| Behavioral scripting | CHARACTER.yml |
+| Autonomous actors | AI-driven characters |
+| Real-time performance | Real-time GitHub threads |
+
+**We're riding on his shoulders.**
+
 ### Bar Karma (2011)
 
 Will Wright's revolutionary experiment on Current TV (Al Gore's network).
