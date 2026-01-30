@@ -82,6 +82,16 @@ graph TD
 
 See also: [MOOLLM's tribute to Morningstar](https://github.com/SimHacker/moollm/tree/main/examples/adventure-4/pub/attic/postmodern-paper.yml)
 
+## Philosophy
+
+> *"Intelligence is what happens BETWEEN, not what lives WITHIN."*
+
+The simulation taught us: intelligence emerges from the **dance** between characters, relationships, goals, advertisements, and environment. Not from any single component.
+
+- [PHILOSOPHY.yml](analysis/PHILOSOPHY.yml) — The theory of emergent intelligence
+- [The Four Dancers](#the-four-dancers) — Characters, Relationships, Goals, Advertisements
+- [Environment as Cognition](#environment-as-cognition) — GitHub shapes what can emerge
+
 ## Technical Documentation
 
 - [SIMULATION.yml](analysis/SIMULATION.yml) — Runtime state and orchestration
