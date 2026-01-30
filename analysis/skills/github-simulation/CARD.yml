@@ -100,6 +100,23 @@ the_joke: |
   872 unsafe function calls sit unfixed.
   This is the joke. This is also real open source.
 
+k-lines:
+  # Activation tags for semantic retrieval
+  - github-mmorpg
+  - branches-as-factions
+  - multiverse-sync
+  - force-sync-core-files    # Learned: cherry-pick fails on modify/delete
+  - explicit-file-paths      # Learned: list files, don't glob
+  - character-name-collision # Learned: check real users before naming
+  - moollm-mount-required    # Integration pattern
+
+operational_knowledge:
+  # Cached lessons — see SKILL.md for details
+  sync_strategy: "Force-sync core files. Cherry-pick fails on modify/delete conflicts."
+  file_paths: "Explicit > glob. Fixed microworld = fixed file list."
+  name_check: "gh api users/{name} before creating characters."
+  the_joke: "872 unfixed calls while discussing rewrites."
+
 see_also:
   - github-user       # Characters as GitHub actors
   - code-archaeology  # How OpenBFD actually fixes code
