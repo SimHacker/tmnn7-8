@@ -1,0 +1,158 @@
+# D.post/ — Posting Functionality
+glance-depth: deep
+# Where user input becomes network output
+# The attack surface expands
+
+what: |
+  4 C files, 1 header.
+  Article composition and submission.
+  Where YOU type things that go to THE INTERNET.
+  
+  Small directory. Big responsibility.
+  User input → parsing → network = danger zone.
+
+stats:
+  c_files: 4
+  h_files: 1
+  danger_level: "MEDIUM-HIGH"
+  
+  why_dangerous: |
+    Posting code handles user-composed content.
+    It also handles EDITOR output (vi, emacs, etc.)
+    And it constructs headers that go to other servers.
+    
+    Any buffer overflow here could be triggered by:
+    - Typing a long subject line
+    - Pasting too much into your article
+    - Your editor outputting something unexpected
+
+# The Posting Flow
+# How an article gets from your fingers to the network
+
+posting_flow:
+  step_1:
+    action: "User runs postnews or replies to article"
+    code: "originate.c"
+    
+  step_2:
+    action: "Editor opens for composition"
+    code: "editart.c"
+    note: |
+      This spawns your $EDITOR (vi, emacs, etc.)
+      When you save and quit, it reads the result.
+      What if the result is unexpectedly large?
+      
+  step_3:
+    action: "Headers are constructed"
+    code: "posting.c"
+    danger: |
+      Subject line goes into a buffer.
+      From line goes into a buffer.
+      Newsgroups line goes into a buffer.
+      What are the buffer sizes?
+      
+  step_4:
+    action: "Article is submitted"
+    code: "poster.c"
+    note: "Hands off to inews or NNTP"
+
+# Files
+# The small but mighty four
+
+files:
+  originate.c:
+    purpose: "Create new articles"
+    handles:
+      - "New post composition"
+      - "Reply composition"
+      - "Followup composition"
+    danger: |
+      Constructs initial headers.
+      References: header can be arbitrarily long.
+      Subject: header from user input.
+      
+  editart.c:
+    purpose: "Edit article content"
+    handles:
+      - "Spawn external editor"
+      - "Read editor output"
+      - "Validate article format"
+    danger: |
+      External editor can output anything.
+      How much RAM does the buffer have?
+      What if someone pastes War and Peace?
+      
+  poster.c:
+    purpose: "Submit articles"
+    handles:
+      - "Final article assembly"
+      - "Injection via inews or NNTP"
+    note: "The handoff to the network layer"
+    
+  posting.c:
+    purpose: "Posting logic and headers"
+    handles:
+      - "Header construction"
+      - "Required headers"
+      - "Signature appending"
+    danger: |
+      .signature files can be any size.
+      What if someone's sig is 10MB?
+
+# The User Input Problem
+# Trusting the user is dangerous
+
+user_input_risks:
+  subject_line: |
+    User types: "Subject: [very long subject..............]"
+    Where does it go? Into a buffer.
+    How big is the buffer? LBUFLEN (1024) probably.
+    What if the subject is 2000 characters?
+    
+  article_body: |
+    User can paste anything into their editor.
+    The editor saves it to a temp file.
+    The posting code reads that file.
+    Into what? A buffer. How big?
+    
+  signature: |
+    ~/.signature is appended to every post.
+    It's supposed to be 4 lines max (netiquette).
+    But the CODE doesn't enforce this.
+    What if it's 4 megabytes?
+    
+  quoted_text: |
+    When you reply, the original is quoted.
+    Original article: 500KB of encoded binary.
+    Quoted: 500KB + your "> " prefixes.
+    Buffer size: probably not 500KB.
+
+# The netiquette vs. reality gap
+# Social norms don't stop attackers
+
+netiquette:
+  expected:
+    - "Signatures under 4 lines"
+    - "Lines under 80 characters"
+    - "Articles under a few KB"
+    - "Subject lines short and descriptive"
+    
+  reality: |
+    Netiquette was social convention.
+    The CODE didn't enforce it.
+    
+    An attacker doesn't follow netiquette.
+    An attacker sends 10KB subject lines.
+    An attacker sends 10MB articles.
+    An attacker sends control characters everywhere.
+    
+  lesson: |
+    Never trust input. Even from "users."
+    Especially from "users."
+
+k-lines:
+  - user-input-handling
+  - article-posting
+  - editor-spawn
+  - trust-boundary
+  - netiquette-not-enforcement

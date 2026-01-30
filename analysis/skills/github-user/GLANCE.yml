@@ -1,0 +1,38 @@
+# github-user — Actor on the GitHub Stage
+# Pairs with github-simulation
+
+what: |
+  Characters as GitHub users. Each can:
+  - Create issues (in voice)
+  - Comment (in voice)
+  - Commit (in voice)
+  - Open PRs (faction warfare)
+  - Edit wiki (lore/retcon)
+  
+  The 🎭 prefix signals roleplay.
+
+why: |
+  github-simulation is the STAGE.
+  github-user is the ACTOR.
+  Perfect alignment.
+
+when:
+  - Generating GitHub activity as character
+  - Need distinct voices in issues/comments
+  - Running multi-character debates
+  - Faction branches need commits
+
+inherits:
+  - character              # Entity foundation (moollm)
+  - persona                # Identity layers (moollm)
+  - representation-ethics  # Ethics of simulation
+
+composes_with:
+  - github-simulation      # The stage this user acts on
+
+k-lines:
+  - github-actor
+  - theatrical-mask
+  - voice-embodiment
+  - gh-cli-automation
+  - faction-warfare

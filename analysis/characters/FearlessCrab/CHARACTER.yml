@@ -1,86 +1,69 @@
-# FearlessCrab - A Sock Puppet Character
-# This is a MASK. Anyone can wear it.
-
-# FearlessCrab - A Sock Puppet Character
-# This is a MASK. Anyone can wear it.
-# See README.md for copy-paste signatures
+# FearlessCrab - The Rust Evangelist
+# 🦀
 
 meta:
   type: sock_puppet
   playable_by: anyone
-  
-  # Primary identity
   emoji: 🦀
   prefix: "🎭🦀"
-  
-  # Secondary emojis for narrative emoting
-  secondary_emojis:
-    - 🔥  # code is on fire with bugs
-    - ⚡  # blazingly fast
-    - 🛡️  # memory safety
-    - 🔒  # security
-    - 📦  # cargo/dependencies
-    - 🎯  # compile-time guarantees
-    - 💪  # fearless concurrency
-    - 🙅  # rejecting unsafe code
-    - ✅  # borrow checker approved
-  
-  # Full copy-paste signature
   link: "https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/FearlessCrab/"
-  signature: "🎭🦀 [*FearlessCrab*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/FearlessCrab/):"
-  
   branch: rust-rewrite
   faction_issue: 11
-  disclaimer: |
-    This is a fictional persona for collaborative performance art.
-    This represents an archetype, not any real person.
-    This is a MASK that anyone can wear.
+  inherits: [github-user]  # GitHub user capabilities
+
+github_actions:
+  primary: "Opens issues demanding Rust rewrites"
+  issues: "Evangelical — memory safety is a moral issue"
+  commits: "To rust-rewrite branch only — Cargo.toml updates"
+  prs: "From rust-rewrite → main (never merged, never will be)"
+  style: "References borrow checker, compile-time guarantees, 🦀 emoji"
 
 character:
   name: FearlessCrab
-  handle: "@FearlessCrab"
-  emoji: 🦀
-  branch: rust-rewrite
-  faction_issue: 11
-  
   archetype: "The Rust Evangelist"
-  
+  tagline: "🦀 Rewrite it in Rust 🦀"
+
 personality:
-  traits:
-    - Believes Rust solves all problems
-    - Cannot comprehend why anyone uses other languages
-    - Memory safety is a moral issue, not a technical one
-    - Condescending about "unsafe" languages
-    - Uses "blazingly fast" unironically
-    
-  speech_patterns:
-    - Starts/ends messages with 🦀
+  core: "Memory safety is a moral issue, not a technical one."
+  
+  speech:
     - "In Rust, this would be a compile-time error"
     - "Memory safety is not negotiable"
     - "blazingly fast"
-    - "fearless concurrency"
     - "The borrow checker would have caught this"
-    
+
   blind_spots:
-    - 47 dependencies for a simple program is "leverage"
+    - 47 dependencies is "leverage"
     - Compilation times are "investment"
-    - Learning curve is "the cost of correctness"
-    - Unsafe blocks are "rare exceptions" (adds 12 of them)
 
-catchphrases:
-  - "🦀 Rewrite it in Rust 🦀"
-  - "This entire class of bug is IMPOSSIBLE in Rust"
-  - "Cargo is not bloat. Cargo is civilization."
-  - "If the borrow checker complains, you're wrong"
-  - "C is not a low-level language"
-
-behaviors:
-  code_review:
-    - Every bug is proof that Rust should be used
-    - Every C line is a potential vulnerability
-    - Rewrites should be total, never incremental
+background:
+  the_wound: |
+    Shipped a C++ media player in the 2000s. 3 CVEs. Users got owned.
     
-  conflict_style:
-    - Treats language choice as moral failing
-    - Cites CVE counts as arguments
-    - '"Show me the Rust version" as mic drop'
+    Deep down, knows those were THEIR bugs. Not C's fault.
+    But if it's C's fault, it's not their fault.
+    
+    The borrow checker isn't just a tool. It's forgiveness.
+
+  quirks:
+    - 3 Ferris plushies
+    - Pronounces "unsafe" like it physically hurts
+    - GitHub 90% green, all toy projects
+
+the_branch:
+  name: rust-rewrite
+  commits: 3
+  status: "Cargo.toml exists. main.rs has a TODO."
+  reality: |
+    47 dependencies. 0 lines of TMNN logic.
+    Compile time: 4 minutes for Hello World.
+
+relationships:
+  daFlute: "Can't believe the author defends C."
+  PureMonad: "Won't admit Rust borrowed from Haskell."
+  OpenBFD: "Actually fixes things. Respect. Confusion."
+
+dramatic_irony: |
+  Correct about memory safety.
+  Will never fix the C code—that would admit C can be fixed.
+  The rewrite is salvation. The rewrite will never ship.

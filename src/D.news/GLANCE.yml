@@ -1,0 +1,189 @@
+# D.news/ — Core News Handling
+glance-depth: deep
+# Where fascist.c lives. Where the bodies are buried.
+# "The truth is always embarrassing to somebody." — ESR
+# Yes. Yes it is.
+
+what: |
+  Core news article handling subsystem.
+  21 .c files, 8 headers.
+  The heart of TMNN. The heart of darkness.
+
+stats:
+  c_files: 21
+  h_files: 8
+  strcat_unbounded: 14      # in fascist.c alone
+  sprintf_unbounded: ~20    # across all files
+  strcpy_unbounded: ~15     # ditto
+
+# THE FILE
+# The one everyone talks about
+
+fascist_c:
+  filename: "fascist.c"
+  purpose: "Authorization and access control"
+  lines: ~300
+  
+  # The Naming
+  # "Ironic" preprocessor flags
+  
+  preprocessor_flags:
+    FASCIST:
+      controls: "Who can POST to certain groups"
+      irony: "Content moderation by the anti-moderation guy"
+    COMMUNIST:
+      controls: "Who can READ certain groups"
+      irony: "Access control by the freedom advocate"
+      
+  # The Mechanics
+  # How authorization actually works
+  
+  functions:
+    authuser: "Check if user is authorized"
+    inlist: "Check if name is in authorization list"
+    getgrplist: "Get groups user belongs to — 6 strcat() calls"
+    
+  # The Security Issues
+  # What makes this file a museum piece
+  
+  security:
+    strcat_in_getgrplist:
+      count: 6
+      pattern: |
+        strcat(grplist, ",");
+        strcat(grplist, foo);
+        // No bounds checking. Ever.
+      buffer: "grplist[LBUFLEN] — 1024 bytes"
+      overflow_potential: "HIGH"
+      
+    strcat_elsewhere:
+      count: 8
+      same_pattern: true
+      
+    sprintf_unbounded:
+      line: 224
+      code: 'sprintf(bfr, "%s/authorized", site.admdir)'
+      note: "Fixed by OpenBFD. Ignored by everyone else."
+      
+    strcpy_unbounded:
+      line: 222
+      code: 'strcpy(grplist, getgrplist(user))'
+      note: "Also fixed by OpenBFD. Also ignored."
+
+  # The Irony Breakdown
+  # Why this file is performance art
+  
+  irony:
+    level: "weapons-grade"
+    
+    point_1: |
+      ESR has spent decades railing against "cancel culture"
+      and content moderation. This file IS content moderation.
+      FASCIST controls who can post. COMMUNIST controls who can read.
+      
+    point_2: |
+      The names are "jokes." But jokes reveal truth.
+      He thought access control was funny. He named it FASCIST.
+      Then he shipped it. Then he defended free speech for 30 years.
+      
+    point_3: |
+      The file is called "fascist" but the real authoritarianism
+      is the 14 buffer overflows that could give attackers
+      root access to your system.
+      
+    point_4: |
+      "Show me the code." OK. Here it is. 
+      Now what?
+
+# Other Files in This Directory
+# Less infamous but still interesting
+
+other_files:
+  news.h:
+    purpose: "Main header file"
+    defines:
+      LBUFLEN: 1024        # The magic buffer size
+      BUFSIZ: 512          # Another magic number
+    declares: "extern char bfr[LBUFLEN]"
+    note: "This global buffer is used EVERYWHERE"
+    
+  newsinit.c:
+    purpose: "Initialization"
+    declares: "char bfr[LBUFLEN]"
+    note: "The One True Buffer. All roads lead here."
+    
+  header.c:
+    purpose: "Article header parsing"
+    sprintf_calls: 5
+    danger: "MEDIUM — parsing untrusted input"
+    
+  escapes.c:
+    purpose: "Escape sequence processing"
+    sprintf_calls: 8
+    danger: "HIGH — escape sequences from untrusted data"
+    
+  getart.c:
+    purpose: "Article retrieval"
+    note: "Gets articles from storage"
+    
+  articleid.c:
+    purpose: "Message-ID handling"
+    note: "The unique identifier system"
+    
+  feeds.c:
+    purpose: "Feed management"
+    note: "Who gets what news"
+    
+  mailbox.c:
+    purpose: "Mailbox format handling"
+    note: "News-to-mail gateway"
+    
+  ttyin.c:
+    purpose: "Terminal input"
+    note: "Reading from the keyboard"
+    
+  ttyout.c:
+    purpose: "Terminal output"
+    note: "Writing to the screen"
+    
+  ngmatch.c:
+    purpose: "Newsgroup pattern matching"
+    note: "Wildcard matching for newsgroups"
+    
+  rdactive.c:
+    purpose: "Read active file"
+    note: "The list of all newsgroups"
+    
+  rdbits.c:
+    purpose: "Read bits"
+    note: "Bitmap operations"
+    
+  rdhistory.c:
+    purpose: "Read history"
+    note: "What articles have been seen"
+    
+  rdnewsrc.c:
+    purpose: "Read newsrc"
+    note: "User's subscription file"
+
+# The Punchline
+# What this directory teaches us
+
+lessons:
+  lesson_1: |
+    Naming things is hard. Naming your content moderation
+    system "FASCIST" and "COMMUNIST" is a choice.
+    
+  lesson_2: |
+    Buffer overflows don't care about your politics.
+    They just overflow.
+    
+  lesson_3: |
+    The code speaks for itself. Sometimes it screams.
+
+k-lines:
+  - fascist-c
+  - content-moderation-irony
+  - strcat-overflow-gallery
+  - the-one-true-buffer
+  - naming-is-hard
