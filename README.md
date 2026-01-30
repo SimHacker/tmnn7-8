@@ -281,11 +281,59 @@ flowchart LR
 
 ---
 
-## License
+## ⚖️ LICENSE COMPLIANCE NOTICE
 
-Original TMNN code: ESR's 1989 "NETNEWS GENERAL PUBLIC LICENSE"
+**IMPORTANT:** By using, viewing, or thinking about this code, you are bound by ESR's 1989 **NETNEWS GENERAL PUBLIC LICENSE**.
 
-Analysis documents: Public domain
+We **STRONGLY ADMONISH** all users to carefully read and comply with the following legally binding terms:
+
+### You Must Agree To:
+
+1. **Support strict intellectual property laws** and the right of designers to hold software proprietary
+   
+   > *Yes, the future "open source" guy put this in his license.*
+
+2. **Guide your use by respect for personal, political, and economic freedom; by support for natural property and contract rights**
+   
+   > *A software license that requires you to become a libertarian.*
+
+3. **Oppose unconditionally every form of and rationalization for censorship**
+   
+   > *Says the man who wrote `fascist.c` to control who could post.*
+
+4. **Affirm the autonomy and privacy of individuals and voluntary associations**
+   
+   > *Read: agree with ESR's politics or you're violating the license.*
+
+5. **NOT construe this action as endorsement of the FSF or Richard Stallman**
+   
+   > *He literally put an anti-RMS clause in his license. In 1988.*
+
+6. **Acknowledge that the "nuisance message" requirement has been removed**
+   
+   > *ESR's term for "giving credit to the original authors."*
+
+### You Are Also Invited To:
+
+7. **Call ESR for consulting work** at his 1989 phone number: `(215)-296-5718`
+   
+   > *Yes, there's an "UNABASHED COMMERCIAL PLUG" section. In a software license.*
+
+8. **Visit his "secret laboratories"** at 22 South Warren Avenue, Malvern PA 19355
+   
+   > *The address of the secret laboratories. Not so secret.*
+
+**Read the full license:** [LICENSE](LICENSE) | **Analysis:** [license-analysis.md](analysis/license-analysis.md)
+
+*It's 40% political manifesto, 60% GPL ripoff, and 100% ESR.*
+
+---
+
+## License (For Real)
+
+Original TMNN code: ESR's 1989 "NETNEWS GENERAL PUBLIC LICENSE" (see above)
+
+Analysis documents: Public domain — no libertarian oath required
 
 ---
 
