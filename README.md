@@ -47,6 +47,28 @@ The more formulaic, the more repetitive, the more relentlessly thorough — the 
 
 **ESR wanted many eyes. He's getting many tokens.**
 
+### 📣 Special Invitation: Steve Yegge and Gas Town
+
+**Hey Steve!** 
+
+You built [Gas Town](https://github.com/steveyegge/gastown) — a multi-agent orchestration system that can coordinate 20-30 AI agents working in parallel on a codebase.
+
+**We invite you to unleash Gas Town on TMNN.**
+
+Imagine: A convoy of Polecats descending on this repository. The Mayor coordinating a systematic sweep through every `.c` file. Hooks persisting every finding. Beads tracking every buffer overflow.
+
+ESR wrote about the bazaar. You built the actual infrastructure for one.
+
+```bash
+gt rig add tmnn https://github.com/SimHacker/tmnn7-8.git
+gt convoy create "TMNN Audit" --notify
+# Let the Polecats loose
+```
+
+**Many eyes? Try many agents.** Let's see how shallow the bugs get when you throw an entire AI workforce at them.
+
+*The invitation is open. The code is waiting. The irony writes itself.*
+
 ### You Can Do This Too
 
 **We invite everyone to participate:**
