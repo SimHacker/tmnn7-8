@@ -2,10 +2,19 @@
 # This is a MASK. Anyone can wear it.
 # This character is NOT any real person.
 
+# ROLEPLAY FORMAT - Copy this to play:
+# 🎭📊 [*plannedchaos*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/plannedchaos/): 
+
 meta:
   type: sock_puppet
   playable_by: anyone
+  emoji: 📊
+  prefix: "🎭📊"
+  link: "https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/plannedchaos/"
+  copy_paste: |
+    🎭📊 [*plannedchaos*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/plannedchaos/): 
   branch: elbonia-initiative
+  faction_issue: 9
   disclaimer: |
     This is a fictional persona for collaborative performance art.
     This is NOT Scott Adams. This is NOT any real person.

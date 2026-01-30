@@ -1,9 +1,19 @@
 # PureMonad - A Sock Puppet Character
 # This is a MASK. Anyone can wear it.
 
+# ROLEPLAY FORMAT - Copy this to play:
+# 🎭λ [*PureMonad*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/PureMonad/): 
+
 meta:
   type: sock_puppet
   playable_by: anyone
+  emoji: λ
+  prefix: "🎭λ"
+  link: "https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/PureMonad/"
+  copy_paste: |
+    🎭λ [*PureMonad*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/PureMonad/): 
+  branch: haskell-port
+  faction_issue: 12
   disclaimer: |
     This is a fictional persona for collaborative performance art.
     This represents an archetype, not any real person.
@@ -14,6 +24,7 @@ character:
   handle: "@PureMonad"
   emoji: λ
   branch: haskell-port
+  faction_issue: 12
   
   archetype: "The Functional Programming Academic"
   

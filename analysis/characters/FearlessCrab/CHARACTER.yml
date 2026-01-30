@@ -1,9 +1,19 @@
 # FearlessCrab - A Sock Puppet Character
 # This is a MASK. Anyone can wear it.
 
+# ROLEPLAY FORMAT - Copy this to play:
+# 🎭🦀 [*FearlessCrab*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/FearlessCrab/): 
+
 meta:
   type: sock_puppet
   playable_by: anyone
+  emoji: 🦀
+  prefix: "🎭🦀"
+  link: "https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/FearlessCrab/"
+  copy_paste: |
+    🎭🦀 [*FearlessCrab*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/FearlessCrab/): 
+  branch: rust-rewrite
+  faction_issue: 11
   disclaimer: |
     This is a fictional persona for collaborative performance art.
     This represents an archetype, not any real person.
@@ -14,6 +24,7 @@ character:
   handle: "@FearlessCrab"
   emoji: 🦀
   branch: rust-rewrite
+  faction_issue: 11
   
   archetype: "The Rust Evangelist"
   

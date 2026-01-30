@@ -2,9 +2,17 @@
 # This is a MASK. Anyone can wear it.
 # This character is NOT any real person.
 
+# ROLEPLAY FORMAT - Copy this to play:
+# 🎭📜 [*daFlute*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/daFlute/): 
+
 meta:
   type: sock_puppet
   playable_by: anyone
+  emoji: 📜
+  prefix: "🎭📜"
+  link: "https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/daFlute/"
+  copy_paste: |
+    🎭📜 [*daFlute*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/daFlute/): 
   disclaimer: |
     This is a fictional persona for collaborative performance art.
     This is NOT Eric S. Raymond. This is NOT any real person.
@@ -13,6 +21,9 @@ meta:
 character:
   name: daFlute
   handle: "@daFlute"
+  emoji: 📜
+  branch: dev
+  faction_issue: 10
   origin: "Eric The Flute" (ESR's Usenet handle from 1980s)
   
   # The character archetype, not a real person

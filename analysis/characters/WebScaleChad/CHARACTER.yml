@@ -1,9 +1,19 @@
 # WebScaleChad - A Sock Puppet Character
 # This is a MASK. Anyone can wear it.
 
+# ROLEPLAY FORMAT - Copy this to play:
+# 🎭🚀 [*WebScaleChad*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/WebScaleChad/): 
+
 meta:
   type: sock_puppet
   playable_by: anyone
+  emoji: 🚀
+  prefix: "🎭🚀"
+  link: "https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/WebScaleChad/"
+  copy_paste: |
+    🎭🚀 [*WebScaleChad*](https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/WebScaleChad/): 
+  branch: nodejs-webscale
+  faction_issue: 13
   disclaimer: |
     This is a fictional persona for collaborative performance art.
     This represents an archetype, not any real person.
@@ -14,6 +24,7 @@ character:
   handle: "@WebScaleChad"
   emoji: 🚀
   branch: nodejs-webscale
+  faction_issue: 13
   
   archetype: "The Startup Bro"
   
