@@ -1,0 +1,188 @@
+# ESR Quotes Collection - Documented Horrors
+# YAML Jazz: Every quote sourced for verification
+# Inspired by tptacek's "$30,000 to NOT post more ESR quotes" charity fundraiser
+
+charity_precedent:
+  fundraiser: "The Great Slate"
+  organizer: "Thomas Ptacek (tptacek)"
+  mechanism: "donations to charity in exchange for NOT posting ESR quotes"
+  amount_raised: "$30,000+"
+  tptacek_quote: |
+    I've been torturing Twitter with lurid Eric S. Raymond quotes for years. 
+    Every time I do, 20 people beg me to stop.
+  source: https://en.wikipedia.org/wiki/Eric_S._Raymond#Political_beliefs_and_activism
+
+racism:
+  # Bell Curve / IQ racism
+  
+  blacks_and_iq:
+    quote: |
+      In the U.S., blacks are 12% of the population but commit 50% of violent 
+      crimes; can anyone honestly think this is unconnected to the fact that 
+      they average 15 points of IQ lower than the general population? That 
+      stupid people are more violent is a fact independent of skin color.
+    source: http://esr.ibiblio.org/index.php?p=129
+    hn_citation: https://news.ycombinator.com/item?id=20382693
+    
+  blacks_cant_be_trained:
+    quote: |
+      The minimum level of training required to make someone effective as a 
+      self defense shooter is not very high... unfortunately, this doesn't 
+      cover the BLM crowd, which would have an average IQ of 85 if it's 
+      statistically representative of American blacks as a whole. I've never 
+      tried to train anyone that dim and wouldn't want to.
+    source_twitter: https://twitter.com/tqbf/status/780839196231630848
+    hn_citation: https://news.ycombinator.com/item?id=20406253
+    
+  haiti_idiots:
+    quote: |
+      The average IQ of the Haitian population is 67... Haiti is, quite 
+      literally, a country full of violent idiots.
+    source: ESR blog
+    hn_citation: https://news.ycombinator.com/item?id=20406253
+    
+  black_programmers:
+    quote: |
+      what's keeping women in general from occupying the vast middle of the 
+      programming field is not general intelligence. On the other hand, the 
+      average black American has an IQ about 85 and that is pretty much a 
+      disqualifier right there. Only the cohort of their bell curve above 
+      3 STDs from median has much hope of matching the capability of the 
+      average white programmer.
+    source: http://esr.ibiblio.org/?p=8139#comment-2054055
+    rationalwiki: https://rationalwiki.org/wiki/Eric_S._Raymond
+    
+  blacks_are_lazy_defense:
+    context: |
+      When Russ Nelson posted "Blacks are Lazy" and was asked to resign as 
+      OSI president, ESR publicly defended him and attacked critics.
+    quote: |
+      That sacrifice makes me angrier at the fools and thugs who pulled him down.
+    note: "'thugs' is a well-known dog whistle"
+    source: http://www.eweek.com/servers/new-osi-president-steps-down
+    hn_citation: https://news.ycombinator.com/item?id=20383237
+
+  police_shootings:
+    quote: |
+      Police who react to a random black male behaving suspiciously who might 
+      be in the critical age range as though he is an near-imminent lethal 
+      threat, are being rational, not racist.
+    source: ESR blog (cited in Wikipedia)
+    wikipedia: https://en.wikipedia.org/wiki/Eric_S._Raymond#Political_beliefs_and_activism
+
+islamophobia:
+  destroy_islamic_culture:
+    quote: |
+      A clash of civilizations driven by the failure of Islamic/Arab culture. 
+      I think he [Steven den Beste] is also right to say that our long-term 
+      objective must be to break, crush and eventually destroy this culture, 
+      because we can't live on the same planet with people who both carry 
+      those memes and have access to weapons of mass destruction. They will 
+      hate us and seek to destroy us not for what we've done but for what we are.
+    source: http://armedndangerous.blogspot.com/2002_09_15_armedndangerous_archive.html#81815163
+    hn_citation: https://news.ycombinator.com/item?id=20382693
+    
+  pork_fat_bullets:
+    quote: |
+      And for any agents or proxy of the regime interested in asking me 
+      questions face to face, I've got some bullets slathered in pork fat 
+      to make you feel extra special welcome.
+    context: "Threatening Muslims with desecrated bullets"
+    source: https://web.archive.org/web/20090624235730/http://www.catb.org/esr/nedanet/
+    hn_citation: https://news.ycombinator.com/item?id=20383163
+
+homophobia:
+  gays_and_aids:
+    quote: |
+      Gays experimented with unfettered promiscuity in the 1970s and got 
+      AIDS as a consequence.
+    source: ESR blog
+    wikipedia: https://en.wikipedia.org/wiki/Eric_S._Raymond#Political_beliefs_and_activism
+
+misogyny:
+  honeytrap_conspiracy:
+    context: |
+      In 2015, ESR claimed without evidence that feminist activists were 
+      orchestrating "honeytraps" at tech conferences to frame male developers 
+      with false sexual assault allegations.
+    quote: |
+      Don't be alone with any female, ever, at a technical conference.
+    targets: "Ada Initiative, Linus Torvalds"
+    source: http://esr.ibiblio.org/?p=6907
+    coverage:
+      - https://www.theregister.com/2015/11/06/linus_torvalds_targeted_by_honeytraps_says_eric_raymond/
+      - https://www.linux-magazine.com/Online/Blogs/Off-the-Beat-Bruce-Byfield-s-Blog/The-Decline-and-Fall-of-Eric-S.-Raymond
+    note: "No accusations ever materialized"
+    
+  sex_tips_for_geeks:
+    essays:
+      - "How To Be Sexy"
+      - "The Art of the Pickup"
+      - "On Being Good In Bed"
+    sample_advice: |
+      emit fitness-to-reproduce signals... your bulging, tumescent hacker 
+      forebrain is just not going to turn on very many women by itself
+    source: https://www.catb.org/~esr/writings/sextips/
+    donhopkins_assessment: |
+      His infamous "Sex Tips for Geeks" essay comes off like it was 
+      written by Pepé Le Pew.
+    hn_citation: https://news.ycombinator.com/item?id=43139165
+
+violence_threats:
+  social_responsibility:
+    quote: |
+      When I hear the words "social responsibility", I want to reach for my gun.
+    context: "Said while receiving an award from Computer Professionals for Social Responsibility"
+    source: "The New York Times Book Review, November 4, 2001"
+    hn_citation: https://news.ycombinator.com/item?id=20383182
+
+self_aggrandizement:
+  # ESR's claims about himself (from RationalWiki)
+  natural_claims:
+    - "natural polyglot"
+    - "natural at 'game' (pick-up artist)"
+    - "natural small-unit leader"
+    - "natural flutist"
+    - "natural witch, albeit of a kind uncommon in this century"
+    - "natural marksman who can 'think like a warrior'"
+    - "expert martial artist"
+  source: https://rationalwiki.org/wiki/Eric_S._Raymond
+
+anagram:
+  name: "Eric S. Raymond"
+  anagram: "Yonder Racism"
+  noted_by: "multiple sources including RationalWiki"
+
+donhopkins_summary:
+  quote: |
+    batshit crazy smarmy arrogant self-aggrandizing sexist racist anti-black 
+    homophobic Islamophobic neocon interventionist libertarian gun nut
+  source: https://news.ycombinator.com/item?id=43133598
+  credentials: "Known ESR since early 1980s"
+
+institutional_consequences:
+  osi_ban:
+    organization: "Open Source Initiative"
+    action: "Banned from mailing lists"
+    date: 2020
+    irony: "ESR co-founded OSI"
+    hn_thread: https://news.ycombinator.com/item?id=22539530
+
+rationalwiki_categories:
+  # How RationalWiki categorizes ESR
+  - "Conspiracy theorists"
+  - "Crank magnetism"
+  - "Global warming denialists"
+  - "Gun nuts"
+  - "Homophobes"
+  - "Internet kooks"
+  - "Libertarians"
+  - "Racists"
+  
+additional_beliefs:
+  # Per RationalWiki
+  - "HIV denial"
+  - "Dark matter denial"
+  - "2008 election voter fraud claims"
+  - "COVID-19 bioweapon conspiracy"
+  - "Climategate quote-mining"

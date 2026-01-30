@@ -77,6 +77,8 @@ Structured data with semantic comments for machine and human readers:
 
 | File | Contents |
 |------|----------|
+| [ESR-QUOTES.md](analysis/ESR-QUOTES.md) | **Human-readable quote collection** |
+| [esr-quotes.yml](analysis/esr-quotes.yml) | **Sourced quotes for charity fundraising** |
 | [bragsheet.yml](analysis/bragsheet.yml) | Structured extraction of ESR's promises |
 | [license-analysis.yml](analysis/license-analysis.yml) | Political manifesto breakdown |
 | [fascist-analysis.yml](analysis/fascist-analysis.yml) | Deep dive into fascist.c |
@@ -109,6 +111,10 @@ The Bazaar guy's own magnum opus was a Cathedral that never got built.
 
 **DonHopkins** (knew ESR since early 1980s):
 > "His own failed proprietary closed source 'cathedral' project... he didn't have the skills to finish and deliver it."
+
+## The Quote Collection
+
+See [analysis/ESR-QUOTES.md](analysis/ESR-QUOTES.md) for a comprehensive, sourced collection of ESR's documented statements on race, Islam, LGBTQ+ people, and women - suitable for charity fundraising in the tptacek tradition.
 
 ## See Also
 
