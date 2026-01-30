@@ -1,0 +1,182 @@
+# github-simulation
+
+> GitHub as MMORPG — Issues are scenes, branches are factions, commits are actions
+
+## Inheritance
+
+This skill inherits from MOOLLM core:
+- **adventure** — Room-based exploration with narrative evidence
+- **character** — Entity foundation: body, home, inventory, relationships
+- **simulation** — Central hub: turns, party, selection, flags
+- **procedural-rhetoric** — Rules embody arguments (Bogost)
+
+## The Core Concept
+
+Every GitHub feature is a game mechanic:
+
+| GitHub | Game | Example |
+|--------|------|---------|
+| Branch | Faction territory | `rust-rewrite` is FearlessCrab's domain |
+| Commit | Character action | `🎭🐡 fix(ednews.c): replace gets()` |
+| PR | Diplomatic incident | PR from `rust-rewrite` to `main` is invasion |
+| Issue | Scene/debate | Characters argue about buffer overflows |
+| Comment | Dialogue | In-character responses |
+| Release | Faction milestone | Ships nothing, but ceremonially |
+| Action | Automated theater | Multiverse sync, PR Guardian |
+
+## SIMULATION.yml
+
+The orchestration file tracks runtime state:
+
+```yaml
+runtime_state:
+  unsafe_calls_fixed: 0
+  unsafe_calls_total: 872
+  actual_code_improvements: "minimal"
+  
+characters_active:
+  OpenBFD: patching
+  FearlessCrab: proposing
+  everyone_else: arguing
+
+the_joke: |
+  Characters generate endless discussion.
+  872 unsafe function calls sit unfixed.
+  This is the joke. This is also real open source.
+```
+
+## Branch Architecture
+
+Each branch is a parallel reality with its own SOUL.md:
+
+| Branch | Soul | Maintainer |
+|--------|------|------------|
+| `main` | Archaeological dig site | Neutral |
+| `actual-fixes` | What TMNN could have been | OpenBFD 🐡 |
+| `rust-rewrite` | Memory safety as religion | FearlessCrab 🦀 |
+| `haskell-port` | Purity as philosophy | PureMonad λ |
+| `nodejs-webscale` | Move fast break things | WebScaleChad 🚀 |
+| `based-freedom-fork` | Politics as code | GrokVibeCheck 🤖 |
+| `elbonia-initiative` | Process as product | plannedchaos 📊 |
+| `dev` | Chaos as collaboration | Nobody |
+
+**They will never merge.** That's the point.
+
+## Multiverse Sync
+
+Core files stay synchronized across all branches:
+
+```
+Synced files (shared world model):
+- README.md
+- CODE-OF-CONDUCT.md  
+- analysis/characters/**
+- analysis/SIMULATION.yml
+- analysis/rooms/**
+```
+
+GitHub Action `multiverse-sync.yml` auto-cherry-picks from `main` to faction branches. Conflicts create issues tagged with the branch name.
+
+**The rule:** You can hate PureMonad's Haskell port. You cannot edit PureMonad's personality.
+
+## PR Guardian
+
+When faction PRs touch core files:
+1. Labels for review
+2. Detects vandalism patterns (editing rival characters)
+3. Comments with review checklist
+4. Flags suspicious content
+
+`CODEOWNERS` requires approval for core files. No drawing penises on sleeping rivals.
+
+## Forging Content
+
+### Create an Issue
+
+```bash
+# Generate content as character
+cursor/claude: "You are FearlessCrab. Write an issue demanding Rust rewrite."
+
+# Save to file
+cat > issue-body.md << 'EOF'
+🎭🦀 *FearlessCrab*:
+
+[AI-generated content here]
+EOF
+
+# Forge the issue
+gh issue create \
+  --title "🎭🦀 URGENT: Complete Rust rewrite required" \
+  --label "ai-generated,rust-rewrite" \
+  --body "$(cat issue-body.md)"
+```
+
+### Add a Comment
+
+```bash
+# Generate response as different character
+cursor/claude: "You are OpenBFD. Respond to FearlessCrab. Be devastating."
+
+# Post it
+gh issue comment 42 --body "$(cat comment.md)"
+```
+
+### Forge a Commit
+
+```bash
+# Make changes in character voice
+git commit -m "$(cat << 'EOF'
+🎭🐡 fix(fascist.c): replace strcpy() with strncpy()
+
+grplist is char[BUFLEN]. BUFLEN is 128 or 256.
+getgrplist() returns unbounded string. Overflow.
+
+    BEFORE: strcpy(grplist, getgrplist(user));
+    AFTER:  strncpy(grplist, getgrplist(user), sizeof(grplist) - 1);
+
+Nine security fixes. Zero merges. Keeps patching anyway.
+
+— OpenBFD
+EOF
+)"
+```
+
+## Character Prefixes
+
+Every in-character contribution uses 🎭 prefix:
+
+| Character | Prefix | Branch |
+|-----------|--------|--------|
+| daFlute | 🎭📜 | dev |
+| FearlessCrab | 🎭🦀 | rust-rewrite |
+| PureMonad | 🎭λ | haskell-port |
+| WebScaleChad | 🎭🚀 | nodejs-webscale |
+| OpenBFD | 🎭🐡 | actual-fixes |
+| ReviewBot-774 | 🎭🤖 | — |
+| SecAuditDAOBot-69420 | 🎭🪙 | — |
+| GrokVibeCheck | 🎭🤖 | based-freedom-fork |
+| plannedchaos | 🎭📊 | elbonia-initiative |
+
+## The Dramatic Irony
+
+While characters debate rewrites, argue about languages, schedule meetings, tokenize vulnerabilities, and have existential crises...
+
+OpenBFD quietly fixes code. Submits patches. Gets ignored.
+
+The `actual-fixes` branch grows. It will never be merged.
+
+**This is open source.**
+
+## Invocation
+
+```
+Orchestrate a github simulation for TMNN.
+Have FearlessCrab open an issue demanding Rust rewrite.
+Have OpenBFD respond with a patch.
+Have plannedchaos schedule a meeting to discuss.
+Generate the issue and comments.
+```
+
+---
+
+*See also: [character-play](../character-play/) for embodying characters, [code-archaeology](../code-archaeology/) for OpenBFD's method.*

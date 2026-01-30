@@ -1,0 +1,31 @@
+# github-simulation — GitHub repo as MMORPG
+# Quick scan: what, why, when
+
+what: |
+  Turn a GitHub repo into a live performance stage.
+  Issues are scenes. Branches are factions. PRs are diplomatic incidents.
+  Characters forge commits with the gh CLI. SIMULATION.yml orchestrates.
+
+why: |
+  Traditional code review is boring.
+  Interactive performance art is memorable.
+  ESR wanted many eyes. The eyes are silicon now.
+
+when:
+  - Running a satirical code archaeology project
+  - Want multi-character roleplay in GitHub issues
+  - Need to coordinate AI-generated content across branches
+  - Building collaborative performance art with version control
+
+inherits:
+  - adventure        # Room-based exploration
+  - character        # Entity foundation
+  - simulation       # Central hub: turns, party, selection
+  - procedural-rhetoric  # Rules embody arguments
+
+k-lines:
+  - github-as-mmorpg
+  - branch-as-faction
+  - issue-as-scene
+  - commit-as-action
+  - multiverse-sync

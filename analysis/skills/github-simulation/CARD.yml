@@ -1,0 +1,71 @@
+# github-simulation — Capability Interface
+# What it can do, how to invoke it
+
+meta:
+  id: github-simulation
+  version: 1
+  inherits:
+    - adventure              # Room-based exploration (moollm)
+    - character              # Entity foundation (moollm)
+    - simulation             # Central hub (moollm)
+    - procedural-rhetoric    # Rules embody arguments (Bogost)
+    - representation-ethics  # Ethics of simulating people
+    - mcluhan               # Medium is the message — GitHub IS the content
+  
+tagline: "GitHub as MMORPG — Issues are scenes, branches are factions"
+
+capabilities:
+  orchestrate:
+    - Coordinate multi-character interactions via SIMULATION.yml
+    - Track runtime state (unsafe_calls_fixed, character_activity)
+    - Manage branch-as-faction parallel realities
+    
+  generate:
+    - Create in-character issues with gh CLI
+    - Generate commit messages in character voice
+    - Forge comments as specific personas
+    
+  sync:
+    - Multiverse sync of core files across branches
+    - PR Guardian gatekeeping for faction warfare
+    - CODEOWNERS enforcement for character protection
+
+activation_triggers:
+  - "run a github simulation"
+  - "orchestrate characters on github"
+  - "create an issue as [character]"
+  - "forge a commit as [character]"
+  - "explain SIMULATION.yml"
+
+files:
+  core:
+    - SIMULATION.yml      # Runtime state and orchestration
+    - characters/         # The playable cast
+    - rooms/              # Spatial layout
+    
+  workflows:
+    - .github/workflows/multiverse-sync.yml
+    - .github/workflows/pr-guardian.yml
+    - .github/CODEOWNERS
+
+commands:
+  create_issue: |
+    gh issue create \
+      --title "🎭[emoji] [Title]" \
+      --label "ai-generated,[faction]" \
+      --body "$(cat issue-body.md)"
+      
+  add_comment: |
+    gh issue comment [number] --body "$(cat comment.md)"
+    
+  forge_commit: |
+    git commit -m "🎭[emoji] [type]: [message in character voice]"
+
+the_joke: |
+  Characters generate endless discussion.
+  872 unsafe function calls sit unfixed.
+  This is the joke. This is also real open source.
+
+see_also:
+  - character-play    # How to embody characters
+  - code-archaeology  # How OpenBFD actually fixes code

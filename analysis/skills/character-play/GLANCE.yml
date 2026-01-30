@@ -1,0 +1,31 @@
+# character-play — Embody Personas with 🎭
+# Quick scan: what, why, when
+
+what: |
+  Invoke characters by name. AI embodies the persona.
+  CHARACTER.yml defines voice, traits, speech patterns.
+  The 🎭 prefix signals roleplay to readers.
+
+why: |
+  Characters are Anthropic Skills — personas in the training data.
+  Embodiment is more engaging than description.
+  Multiple perspectives reveal more than single viewpoint.
+
+when:
+  - Want AI to speak as a specific character
+  - Generating GitHub issues/comments in voice
+  - Need distinct perspectives on same topic
+  - Running multi-character debates or pile-ons
+
+inherits:
+  - character        # Entity foundation
+  - persona          # Identity layers
+  - incarnation      # Gold-standard character creation
+  - representation-ethics  # Ethics of simulation
+
+k-lines:
+  - theatrical-mask
+  - voice-embodiment
+  - character-consistency
+  - multi-perspective
+  - roleplay-signal
