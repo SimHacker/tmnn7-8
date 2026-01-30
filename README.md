@@ -423,6 +423,24 @@ Bar Karma was television's **first crowd-sourced scripted series**:
 
 **We're doing Bar Karma, but the bar is a GitHub repo, the characters are YAML files, and the audience writes the script in real-time through issues and comments.**
 
+### Storymaker Lives. Urban Safari Lives.
+
+The tools Don built at Stupid Fun Club didn't die when Current TV shut down.
+
+**Storymaker** — the community story creation tool — lives here:
+- `CHARACTER.yml` is a story element template
+- GitHub Issues are story submissions
+- Reactions are community votes
+- The thread IS the episode
+
+**Urban Safari** — GPS-based collaborative storytelling — lives here:
+- The repo is the territory
+- Directories are locations
+- Characters inhabit spaces
+- The audience explores and contributes
+
+The vision survived. The platform changed. **GitHub is the new Current TV.**
+
 *See: `moollm/examples/adventure-4/characters/real-people/don-hopkins/stupid-fun-club.yml`*
 *See: `backup/lloooomm/03-Resources/entertainment/shows/bar-karma.md`*
 
