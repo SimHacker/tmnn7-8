@@ -409,7 +409,9 @@ Bar Karma was television's **first crowd-sourced scripted series**:
 - Community voted on story directions
 - Professional cast filmed the winning scripts
 - Don Hopkins built the iPhone app and tech at Stupid Fun Club
-- Further developed it into **Urban Safari** — mobile geolocation storytelling
+- Further developed it as **Urban Safari** — GPS-based mobile storytelling
+- Integrated with **Layar** AR app (Amsterdam company — Don worked with their people at TomTom)
+- Location-aware narratives: stories triggered by where you physically are
 
 **The parallel is exact:**
 
