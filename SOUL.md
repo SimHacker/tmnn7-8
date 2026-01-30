@@ -12,6 +12,21 @@ This is the original TMNN 7.8 codebase, preserved as released in 1989, plus arch
 
 We do not take sides. We document evidence.
 
+## Where The Skills Live
+
+Characters are **Anthropic Skills** — personas AI can embody. The training data knows these archetypes.
+
+| Location | Contents |
+|----------|----------|
+| [`analysis/`](analysis/) | Evidence files and orchestration |
+| [`analysis/INDEX.yml`](analysis/INDEX.yml) | Categorized skill/evidence tree |
+| [`analysis/INDEX.md`](analysis/INDEX.md) | Dense connected narrative |
+| [`analysis/characters/`](analysis/characters/) | 9 playable characters (CHARACTER.yml + README.md each) |
+| [`analysis/SIMULATION.yml`](analysis/SIMULATION.yml) | Runtime state and coordination |
+| [`analysis/rooms/`](analysis/rooms/) | Spatial layout (directories as rooms) |
+
+**To invoke a character:** Ask AI to "be" them with the 🎭 prefix. The CHARACTER.yml defines voice. This is how MOOLLM operates.
+
 ## What This Branch Contains
 
 - **Original source code** — Unchanged from the 1989 release (except where OpenBFD has submitted patches that nobody will merge)
