@@ -4,7 +4,7 @@
 
 Eric S. Raymond has [long opposed codes of conduct](https://itsfoss.com/news/codes-of-conduct-debate/), calling them *"weapons in the hands of shit-stirrers"* and *"control surfaces for shit-stirrers to manipulate."*
 
-We understand his frustration. Most codes of conduct enforce values he disagrees with.
+We understand his frustration. Most codes of conduct enforce values he disagrees with, and ban people who conduct themselves like him.
 
 **This Code of Conduct is different.**
 
@@ -102,6 +102,78 @@ Modesty is a weakness. Ego limitations are for *"little people."*
 
 ---
 
+## Article 8: Ideological License Compliance
+
+**By using this software, you agree to adopt libertarian political philosophy.**
+
+ESR's [NETNEWS GENERAL PUBLIC LICENSE](LICENSE) is not merely a software license — it is a political manifesto requiring ideological alignment. Participants shall:
+
+> *"guide your use of the news software by respect for personal, political, and economic freedom; by support for natural property and contract rights; and by affirming the autonomy and privacy of individuals and voluntary associations."* — [LICENSE, 1988](LICENSE)
+
+**Mandatory beliefs include:**
+
+- Support for "strict intellectual property laws"
+- Opposition to "any and all attempts to alienate designers from their work"
+- Affirmation that "private enterprise and free markets" are the optimal system
+- Recognition that the "marketplace of ideas is the most important free market of all"
+
+**Political distancing clause:** Users must acknowledge that ESR's actions do not endorse *"the political or economic views or personal crusades of any member, agent, or ally of the Free Software Foundation other than myself."* — [LICENSE](LICENSE)
+
+Translation: He used their license format but wanted none of their cooties.
+
+---
+
+## Article 9: Selective Censorship Opposition
+
+**Participants shall oppose censorship unconditionally — except when implementing it.**
+
+The LICENSE requires users to:
+
+> *"join me in opposing unconditionally every form of and rationalization for censorship."* — [LICENSE, 1988](LICENSE)
+
+This principle does not apply to code ESR himself wrote to control who can post and read on Usenet.
+
+**Reference implementation:** [`fascist.c`](src/D.news/fascist.c)
+
+```c
+#ifdef FASCIST  /* controls who can POST */
+#ifdef COMMUNIST /* controls who can READ */
+```
+
+The file includes compile-time flags named FASCIST and COMMUNIST that implement posting and reading restrictions. When asked about this naming:
+
+**Policy clarification:** Implementing censorship tools while requiring users to "unconditionally oppose every form of censorship" is not hypocrisy — it is *nuance* that lesser minds fail to appreciate.
+
+*See: [fascist-analysis.md](analysis/fascist-analysis.md)*
+
+---
+
+## Article 10: Commercial Solicitation in Legal Documents
+
+**Software licenses may include sales pitches.**
+
+ESR's license contains a section titled — we are not making this up:
+
+> **AN UNABASHED COMMERCIAL PLUG**
+
+> *"I am available at competitive rates as a consultant to any organization wishing to use customized netnews versions as an information-sharing tool. As of April 1989 I can be reached via voice at (215)-296-5718 or by mail at 22 South Warren Avenue, Malvern PA 19355; don't hesitate to call."* — [LICENSE](LICENSE)
+
+**Policy:** Embedding advertisements in FOSS licenses is acceptable when you are ESR. The "Secret Langley Labs" had a street address in suburban Pennsylvania.
+
+---
+
+## Article 11: Attribution as "Nuisance"
+
+**Credit to others is optional.**
+
+ESR modified the GNU Emacs General Public License specifically to remove attribution requirements, describing them as:
+
+> *"only the portion that would have required the software to display a nuisance message on startup has been deleted"* — [LICENSE](LICENSE)
+
+**Policy:** Requirements to credit the Free Software Foundation are a "nuisance." Requirements to credit ESR are mandatory per Section 1 of the license.
+
+---
+
 ## Enforcement
 
 This Code of Conduct shall be enforced according to ESR's established practices:
@@ -130,6 +202,10 @@ Participants are encouraged to review the following documentation to ensure alig
 | [Bruce Perens threat](https://lists.debian.org/debian-devel/1999/04/msg00197.html) | Conflict resolution examples |
 | [Pork bullet welcome](https://web.archive.org/web/20090624235730/http://www.catb.org/esr/nedanet/) | Rhetoric escalation standards |
 | [OSI ban announcement](https://www.i-programmer.info/news/136-open-source/13535-co-founder-of-osi-banned-from-.html) | Institutional overreach |
+| [NETNEWS GENERAL PUBLIC LICENSE](LICENSE) | Ideological compliance requirements |
+| [License Analysis](analysis/license-analysis.md) | Commentary on political manifesto in legal clothing |
+| [fascist.c](src/D.news/fascist.c) | Reference censorship implementation |
+| [fascist.c Analysis](analysis/fascist-analysis.md) | FASCIST/COMMUNIST flag documentation |
 
 ---
 
@@ -150,6 +226,18 @@ A: Per Article 1, concerns about tone shall be dismissed. Per Article 6, if you 
 **Q: ESR said codes of conduct are weapons for shit-stirrers.**
 
 A: Correct. This one is for him.
+
+**Q: Wait, the LICENSE requires me to become a libertarian?**
+
+A: Per Article 8, you must *"guide your use of the news software by respect for personal, political, and economic freedom"* and *"support for natural property and contract rights."* If you disagree with Austrian economics, you are in violation of the license terms.
+
+**Q: The LICENSE says to "oppose unconditionally every form of censorship" but the code has FASCIST mode?**
+
+A: Per Article 9, implementing censorship while requiring others to oppose it is not hypocrisy. It is nuance. See [`fascist.c`](src/D.news/fascist.c).
+
+**Q: Did he really put a sales pitch in a software license?**
+
+A: "AN UNABASHED COMMERCIAL PLUG" — his words, not ours. The phone number is (215)-296-5718. We do not recommend calling it in 2026.
 
 ---
 
