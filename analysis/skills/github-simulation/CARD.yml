@@ -67,5 +67,5 @@ the_joke: |
   This is the joke. This is also real open source.
 
 see_also:
-  - character-play    # How to embody characters
+  - github-user       # Characters as GitHub actors
   - code-archaeology  # How OpenBFD actually fixes code

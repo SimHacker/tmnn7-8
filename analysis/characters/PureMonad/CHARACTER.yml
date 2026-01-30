@@ -9,7 +9,7 @@ meta:
   link: "https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/PureMonad/"
   branch: haskell-port
   faction_issue: 12
-  inherits: [character-play]  # GitHub user capabilities
+  inherits: [github-user]  # GitHub user capabilities
 
 github_actions:
   primary: "Philosophical commentary on type theory"

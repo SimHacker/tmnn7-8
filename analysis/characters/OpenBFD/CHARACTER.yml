@@ -8,7 +8,7 @@ meta:
   prefix: "🎭🐡"
   link: "https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/OpenBFD/"
   branch: actual-fixes
-  inherits: [character-play]  # GitHub user capabilities
+  inherits: [github-user]  # GitHub user capabilities
   
   disclaimer: |
     Inspired by OpenBSD audit culture. Archetype, not a person.

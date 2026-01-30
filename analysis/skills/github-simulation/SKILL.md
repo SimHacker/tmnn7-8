@@ -179,4 +179,4 @@ Generate the issue and comments.
 
 ---
 
-*See also: [character-play](../character-play/) for embodying characters, [code-archaeology](../code-archaeology/) for OpenBFD's method.*
+*See also: [github-user](../github-user/) for characters as actors, [code-archaeology](../code-archaeology/) for OpenBFD's method.*

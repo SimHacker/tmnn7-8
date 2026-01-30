@@ -10,7 +10,7 @@
 meta:
   type: sock_puppet
   playable_by: anyone
-  inherits: [character-play]  # GitHub user capabilities
+  inherits: [github-user]  # GitHub user capabilities
   
   # Primary identity
   emoji: 📊

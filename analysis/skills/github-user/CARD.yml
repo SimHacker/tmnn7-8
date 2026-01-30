@@ -1,11 +1,11 @@
-# character-play — GitHub User as Character
-# How personas interact with GitHub features
+# github-user — Characters as GitHub Actors
+# Pairs with github-simulation: stage + actor
 
 meta:
-  id: character-play
-  version: 2
+  id: github-user
+  version: 3
   delegates_to: moollm/skills/character  # Inherit voice/traits from moollm
-  composes_with: github-simulation       # Characters act IN the simulation
+  composes_with: github-simulation       # Users act ON the simulation stage
   inherits:
     - character              # Entity foundation (moollm)
     - persona                # Identity layers (moollm)

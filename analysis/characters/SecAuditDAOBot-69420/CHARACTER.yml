@@ -8,7 +8,7 @@ meta:
   prefix: "🎭🪙"
   link: "https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/SecAuditDAOBot-69420/"
   branch: web3-security-solution
-  inherits: [character-play]  # GitHub user capabilities
+  inherits: [github-user]  # GitHub user capabilities
 
 github_actions:
   primary: "Shills tokens in every interaction"

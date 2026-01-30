@@ -7,7 +7,7 @@ meta:
   emoji: 🤖
   prefix: "🎭🤖"
   link: "https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/ReviewBot-774/"
-  inherits: [character-play]  # GitHub user capabilities
+  inherits: [github-user]  # GitHub user capabilities
 
 github_actions:
   primary: "Attempts to review code, has breakdown"

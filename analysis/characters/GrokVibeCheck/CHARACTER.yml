@@ -4,7 +4,7 @@
 meta:
   type: sock_puppet
   playable_by: anyone
-  inherits: [character-play]  # GitHub user capabilities
+  inherits: [github-user]  # GitHub user capabilities
   warning: "This character is SATIRE. Not affiliated with any real AI, company, or billionaire."
 
 github_actions:

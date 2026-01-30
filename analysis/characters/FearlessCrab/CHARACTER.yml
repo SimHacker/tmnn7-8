@@ -9,7 +9,7 @@ meta:
   link: "https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/FearlessCrab/"
   branch: rust-rewrite
   faction_issue: 11
-  inherits: [character-play]  # GitHub user capabilities
+  inherits: [github-user]  # GitHub user capabilities
 
 github_actions:
   primary: "Opens issues demanding Rust rewrites"

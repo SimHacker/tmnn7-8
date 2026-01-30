@@ -1,6 +1,6 @@
-# character-play
+# github-user
 
-> Embody personas — AI becomes the character with 🎭 prefix
+> Characters as GitHub actors — pairs with github-simulation
 
 ## Inheritance
 
@@ -191,5 +191,14 @@ Play as [character]. Generate [content type] about [topic].
 ```
 
 ---
+
+---
+
+## Alignment
+
+| Skill | Role |
+|-------|------|
+| **github-simulation** | The STAGE |
+| **github-user** | The ACTOR |
 
 *See also: [github-simulation](../github-simulation/) for the stage, [code-archaeology](../code-archaeology/) for OpenBFD's method.*
