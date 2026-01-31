@@ -451,6 +451,8 @@ Don Hopkins built **Storymaker** and **Urban Safari** at Will Wright's Stupid Fu
 
 The seed is planted (the codebase + characters). The crowd grows the story. Many paths exist simultaneously. Some get merged to main. Some stay as forks. All are canon somewhere.
 
+**It's Bar Karma. Just broadcast on GitHub instead of CurrentTV.**
+
 ### Use It For YOUR Drama
 
 **Anyone can use Cursor + MOOLLM + GitHub to stage any drama or debate they want.**
