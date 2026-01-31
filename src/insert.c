@@ -84,7 +84,7 @@ char *name;
 		"System: %s\n\nThere was a problem with %s!!\n",
 		site.truename, name);
 
-	    (void) sprintf(bfr, "touch %s;chmod 666 %s", name, name);
+	    (void) snprintf(bfr, LBUFLEN, "touch %s;chmod 666 %s", name, name);
 	    (void) system(bfr);
 	    if (sfd = fopen(name, "r+"))    /* see above */
 	    {
@@ -106,7 +106,7 @@ void postinit()
 #endif /* LEAFNODE */
 
 #ifdef DEBUG
-    (void) sprintf(bfr, "%s/rejects", site.admdir);
+    (void) snprintf(bfr, LBUFLEN, "%s/rejects", site.admdir);
     saverejects = exists(bfr);
 
     if (!debug)
@@ -121,9 +121,9 @@ void postinit()
 	 * This breaks the layering a bit, but the alternatives are
 	 * all grottier.
 	 */
-	(void) sprintf(bfr, "%s.dat", HISTORY); need_file(bfr);
-	(void) sprintf(bfr, "%s.pag", HISTORY); need_file(bfr);
-	(void) sprintf(bfr, "%s.dir", HISTORY); need_file(bfr);
+	(void) snprintf(bfr, LBUFLEN, "%s.dat", HISTORY); need_file(bfr);
+	(void) snprintf(bfr, LBUFLEN, "%s.pag", HISTORY); need_file(bfr);
+	(void) snprintf(bfr, LBUFLEN, "%s.dir", HISTORY); need_file(bfr);
 #endif	/* DBHISTORY */
     }
 
@@ -141,7 +141,7 @@ void postinit()
           xerror("Couldn't find newsgroup junk!  Active file corrupted?");
     if (!(control = ngfind("control")))
           xerror("Couldn't find newsgroup control!  Active file corrupted?");
-    (void) sprintf(bfr, "%s/.tmp/cmpXXXXXX", site.textdir);
+    (void) snprintf(bfr, LBUFLEN, "%s/.tmp/cmpXXXXXX", site.textdir);
     (void) mktemp(CMPART = savestr(bfr));
 
 #ifdef LEAFNODE
@@ -151,14 +151,14 @@ void postinit()
      */
     while (pwd = getpwent())
     {
-	(void) sprintf(bfr, "%s/.newsrc", pwd->pw_dir);
+	(void) snprintf(bfr, LBUFLEN, "%s/.newsrc", pwd->pw_dir);
 	(void) rdnewsrc(bfr);
     }
     endpwent();
 #endif /* LEAFNODE */
 
     /* so we know where core files will end up */
-    (void) sprintf(bfr, "%s/.tmp", site.textdir);
+    (void) snprintf(bfr, LBUFLEN, "%s/.tmp", site.textdir);
     (void) chdir(bfr);
 }
 
@@ -202,7 +202,7 @@ group_t	*gp;		/* where to post the article to */
     if (ngflag(NG_COMPRESSED))
     {
 	/* someday we'll only do this at most once per article */
-	(void) sprintf(bfr, "%s/%s <%s >%s",
+	(void) snprintf(bfr, LBUFLEN, "%s/%s <%s >%s",
 		       site.libdir, COMPRESS, artfile, CMPART);
 	(void) system(bfr);
 	(void) fflush(stdout);	/* V7 system() doesn't flush stdout */
@@ -224,10 +224,10 @@ group_t	*gp;		/* where to post the article to */
 	}
 
 	/* now make the name of the local copy and link it */
-	(void) strcpy(bfr, grpdir);
+	(void) strlcpy(bfr, grpdir, LBUFLEN);
 	if (bfr[strlen(bfr) - 1] != '/')
-	    (void) strcat(bfr, "/");
-	(void) sprintf(bfr + strlen(bfr), "%ld", (long)newart);
+	    (void) strlcat(bfr, "/", LBUFLEN);
+	(void) snprintf(bfr + strlen(bfr), LBUFLEN - strlen(bfr), "%ld", (long)newart);
 #ifdef DOXREFS
 	gp->ng_nextnum = 0;	/* we'll know to gen a new number next time */
 #endif /* DOXREFS */
@@ -297,21 +297,21 @@ char *artbody;	    /* the name of a file containing the message body */
 #ifndef NEWCONTROL
 #ifdef DEBUG
     if (debug)
-	(void) strcpy(argbuf, "-D ");
+	(void) strlcpy(argbuf, "-D ", sizeof(argbuf));
     else
 	argbuf[0] = '\0';
 #endif /* DEBUG */
-    (void) strcat(argbuf, ctlmsgtext);
+    (void) strlcat(argbuf, ctlmsgtext, sizeof(argbuf));
     argc = vcrack(argbuf, argv, MAXARGS);
     return(controlmain(argc, argv, artbody));
 #else
     /* pack the message off to the special control handler */
 #ifdef DEBUG
     if (debug)
-	(void) sprintf(bfr, "%s/control -D %s <%s", LIB, ctlmsgtext, artbody);
+	(void) snprintf(bfr, LBUFLEN, "%s/control -D %s <%s", LIB, ctlmsgtext, artbody);
     else
 #endif /* DEBUG */
-	(void) sprintf(bfr, "%s/control %s <%s", LIB, ctlmsgtext, artbody);
+	(void) snprintf(bfr, LBUFLEN, "%s/control %s <%s", LIB, ctlmsgtext, artbody);
     return(system(bfr));
 #endif /* NEWCONTROL */
 }
@@ -327,7 +327,7 @@ char	*svfile, *artfile, *reason;
     if (!exists(artfile))
 	return;
 
-    (void) sprintf(failures, "%s/%s", site.admdir, svfile);
+    (void) snprintf(failures, sizeof(failures), "%s/%s", site.admdir, svfile);
     if ((ifp = fopen(artfile, "r")) && (ofp = fopen(failures, "a")))
     {
 	/* Unisoft 5.1 won't seek to EOF on 'a' */
@@ -359,10 +359,10 @@ char	*appr;	/* name of person who approved it */
     {
 	FILE *mfp;
 
-	(void) sprintf(bfr, "%s/mailpaths", site.admdir);
+	(void) snprintf(bfr, LBUFLEN, "%s/mailpaths", site.admdir);
 	if ((mfp = fopen(bfr, "a")) == NULL)
 	{
-	    (void) sprintf(bfr, "New flexgroup '%s' created", ng);
+	    (void) snprintf(bfr, LBUFLEN, "New flexgroup '%s' created", ng);
 	    fp = mailopen(site.notify, bfr);
 	    (void) fprintf(fp, "but I can't find the mailpaths file!\n");
 	    (void) mailclose(fp);
@@ -373,7 +373,7 @@ char	*appr;	/* name of person who approved it */
 	    (void) fseek(mfp, (off_t)0, SEEK_END);
 	    if (fprintf(mfp,"%s\t%s", ng, appr) < 0)
 	    {
-		(void) sprintf(bfr, "New flexgroup '%s' created", ng);
+		(void) snprintf(bfr, LBUFLEN, "New flexgroup '%s' created", ng);
 		fp = mailopen(site.notify, bfr);
 		(void) fprintf(fp,
 		       "but a try at updating the mailpaths failed!\n");
@@ -405,7 +405,7 @@ bool	originator;
     {
 	char	crackbuf[LBUFLEN];
 
-	(void) sprintf(crackbuf, "cancel %s\n", header.h_supersedes);
+	(void) snprintf(crackbuf, sizeof(crackbuf), "cancel %s\n", header.h_supersedes);
 	(void) docontrol(crackbuf, artfile);
     }
 
@@ -497,7 +497,7 @@ bool	originator;
 		    /* this one is, create it and treat like normal group */
 		    mk_flexgroup(dest->d_name, header.h_approved);
 		    dest->d_status = D_OK;
-		    (void) strcpy(bfr, dest->d_name);
+		    (void) strlcpy(bfr, dest->d_name, LBUFLEN);
 		    (void) free(dest->d_name);
 		    dest->d_name = NULL;
 		    dest->d_ptr = ngfind(bfr);
@@ -507,12 +507,12 @@ bool	originator;
 		    char	*cp;
 
 		    /* map the name to the proper junk group */
-		    (void) strcpy(bfr, dest->d_name);
+		    (void) strlcpy(bfr, dest->d_name, LBUFLEN);
 		    while (cp = strrchr(bfr, NGSEP))
 		    {
 			group_t	*ngp;
 
-			(void) strcpy(cp, JUNKSUFFIX);
+			(void) strlcpy(cp, JUNKSUFFIX, LBUFLEN - (cp - bfr));
 			if ((ngp = ngfind(bfr)) == (group_t *)NULL)
 			    *cp = '\0';
 			else
