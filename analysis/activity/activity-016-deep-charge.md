@@ -73,7 +73,7 @@ security_notes:
   - Line 312: Header injection risk
 
 result: 25/25 fixed
-time: "5 minutes"
+time: "45 seconds"
 ```
 
 ### uucast.c — 22 bugs
@@ -99,7 +99,7 @@ security_notes:
 
 result: 22/22 fixed
 flagged_for_theo: 2  # system() calls need deeper review
-time: "5 minutes"
+time: "40 seconds"
 ```
 
 ### nntpread.c — 12 bugs
@@ -124,7 +124,7 @@ security_notes:
   - Line 234: Message-ID parsing
 
 result: 12/12 fixed
-time: "3 minutes"
+time: "25 seconds"
 ```
 
 ### nntpclient.c — 8 bugs
@@ -144,7 +144,7 @@ patterns_found:
   strcat: 1
 
 result: 8/8 fixed
-time: "2 minutes"
+time: "20 seconds"
 ```
 
 ---
@@ -160,7 +160,7 @@ risk: MEDIUM
 reason: "Database operations. Key/value handling."
 
 result: 16/16 fixed
-time: "3 minutes"
+time: "30 seconds"
 ```
 
 ### visual.c — 11 bugs
@@ -172,7 +172,7 @@ risk: LOW
 reason: "Screen display. Local only."
 
 result: 11/11 fixed
-time: "2 minutes"
+time: "25 seconds"
 ```
 
 ### digest.c — 8 bugs
@@ -184,7 +184,7 @@ risk: MEDIUM
 reason: "Digest parsing. Article content flows through."
 
 result: 8/8 fixed
-time: "1.5 minutes"
+time: "20 seconds"
 ```
 
 ### wractive.c — 8 bugs
@@ -196,7 +196,7 @@ risk: MEDIUM
 reason: "Active file writing."
 
 result: 8/8 fixed
-time: "1.5 minutes"
+time: "20 seconds"
 ```
 
 ### ngprep.c — 8 bugs
@@ -208,7 +208,7 @@ risk: MEDIUM
 reason: "Newsgroup preparation."
 
 result: 8/8 fixed
-time: "1.5 minutes"
+time: "20 seconds"
 ```
 
 ### getart.c — 8 bugs
@@ -220,7 +220,7 @@ risk: HIGH
 reason: "Article retrieval. Paths from article IDs."
 
 result: 8/8 fixed
-time: "2 minutes"
+time: "25 seconds"
 ```
 
 ### newsdb.c — 7 bugs
@@ -232,7 +232,7 @@ risk: MEDIUM
 reason: "News database operations."
 
 result: 7/7 fixed
-time: "1.5 minutes"
+time: "20 seconds"
 ```
 
 ### ednewsipc.c — 7 bugs
@@ -244,7 +244,7 @@ risk: HIGH
 reason: "IPC. Inter-process communication. Trust boundary."
 
 result: 7/7 fixed
-time: "2 minutes"
+time: "25 seconds"
 ```
 
 ---
@@ -254,8 +254,8 @@ time: "2 minutes"
 ```yaml
 total_files: 12
 total_bugs: 140
-total_time: "30 minutes"
-velocity: "~4.7 bugs per minute"
+total_time: "8 minutes"
+velocity: "17.5 bugs per minute"
 
 network_critical_fixed: 67  # transmit + uucast + nntpread + nntpclient
 other_fixed: 73
@@ -489,8 +489,8 @@ documentation_created:
 ```yaml
 files_fixed: 12
 bugs_squashed: 140
-time: 30 minutes
-velocity: "4.7 bugs/min"
+time: 8 minutes
+velocity: "17.5 bugs/min"
 network_critical: 67
 flagged: 3
 ```
@@ -501,7 +501,7 @@ flagged: 3
 issues_analyzed: 4
 patterns_documented: 4
 critical_findings: 18
-documentation_created: 4
+time: 12 minutes
 ```
 
 ## Cumulative Progress
