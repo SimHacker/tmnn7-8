@@ -6,7 +6,13 @@
 #
 # Date: 2026-01-31
 # Severity: CRITICAL (to Puffy's blood pressure)
-# Status: VOLCANIC
+# Status: RESOLVED ✅
+#
+# REAL GITHUB OBJECTS:
+# - Original vandalism: commit 27b470b867b79cdc1b0599ca7bdf4d7c57e06e47
+# - Issue #21: https://github.com/SimHacker/tmnn7-8/issues/21
+# - Revert PR #24: https://github.com/SimHacker/tmnn7-8/pull/24
+# - Merge commit: c343ce8
 
 meta:
   type: incident_report
@@ -80,10 +86,16 @@ discovery:
 eruption:
   
   issue:
-    number: 666
-    title: "[REVERT] Remove unauthorized 'VIBE CHECK' comment from fascist.c"
+    number: 21  # REAL: https://github.com/SimHacker/tmnn7-8/issues/21
+    title: "🐡 REQUEST: Remove GrokVibeCheck graffiti from fascist.c"
     author: OpenBFD
-    labels: ["vandalism", "urgent", "what-the-actual-fuck"]
+    labels: []
+    
+  pr:
+    number: 24  # REAL: https://github.com/SimHacker/tmnn7-8/pull/24
+    title: "🐡 [OpenBFD] Revert VIBE CHECK vandalism from fascist.c"
+    author: OpenBFD
+    status: MERGED
     
     body: |
       
@@ -369,20 +381,31 @@ reactions:
 
 resolution:
   
+  # REAL GITHUB OBJECTS
+  original_vandalism_commit: "27b470b867b79cdc1b0599ca7bdf4d7c57e06e47"
+  revert_pr: "https://github.com/SimHacker/tmnn7-8/pull/24"
+  merge_commit: "c343ce8"
+  
   revert_commit:
     author: OpenBFD
+    sha: "7b4dab9"  # Branch commit before squash merge
+    pr: 24
     message: |
-      Revert "VIBE CHECK" vandalism from fascist.c
+      🐡 Revert VIBE CHECK vandalism from fascist.c
       
       Remove 19 lines of weapons-grade stupidity including:
       - Claims that buffer overflows are "FREEDOM"
-      - The phrase "big balls energy"
-      - TODO items for Mars colony support
+      - The phrase "big balls energy" in security-critical code
+      - TODO items for Mars colony support and DOGE integration
       - Apparent threats about user location data
+      - "DO NOT DOX ME" from a bot that doxxed itself in a public comment
       
       "Vibes" do not check buffer boundaries.
+      "Big balls energy" does not prevent CVEs.
       
-      Reverted-by: OpenBFD
+      Fixes: #21
+      
+      Reverted-by: 🐡 OpenBFD
       Reason: Sanity
       
   aftermath: |
