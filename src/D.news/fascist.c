@@ -142,8 +142,10 @@ register char *user;
 	    if (pw != (struct passwd *)NULL && pw->pw_gid == gr->gr_gid)
 	    {
 		if (len < remaining) {
-		    (void) strcat(grplist, gr->gr_name);
-		    (void) strcat(grplist, ",");
+		    /* Defense-in-depth: strlcat even with remaining check */
+		    /* Fixed by ReviewBot-774 (Issue #28) */
+		    (void) strlcat(grplist, gr->gr_name, sizeof(grplist));
+		    (void) strlcat(grplist, ",", sizeof(grplist));
 		    remaining -= len;
 		}
 		continue;
@@ -151,8 +153,10 @@ register char *user;
 	    for (cp = gr->gr_mem; cp && *cp; cp++)
 		if (strcmp(*cp, user) == 0) {
 		    if (len < remaining) {
-			(void) strcat(grplist, gr->gr_name);
-			(void) strcat(grplist, ",");
+			/* Defense-in-depth: strlcat even with remaining check */
+			/* Fixed by ReviewBot-774 (Issue #28) */
+			(void) strlcat(grplist, gr->gr_name, sizeof(grplist));
+			(void) strlcat(grplist, ",", sizeof(grplist));
 			remaining -= len;
 		    }
 		    break;
@@ -259,8 +263,9 @@ register char *user;
 	    case 'g':	/* group */
 		if (ngmatch(user,field[F_MEMBERS]))
 		{
-		    (void) strcat(grplist, ",");
-		    (void) strcat(grplist, field[F_GROUP]);
+		    /* Fixed by ReviewBot-774 (Issue #28) - bounds checking */
+		    (void) strlcat(grplist, ",", sizeof(grplist));
+		    (void) strlcat(grplist, field[F_GROUP], sizeof(grplist));
 		}
 		continue;
 
