@@ -100,7 +100,8 @@ char	*argv[];
 	if (N)
 	{
 	    if (argv[1])
-		(void) strcpy(grouplist, argv[2]);
+		/* Fixed by ReviewBot-774 (Issue #33) */
+		(void) strlcpy(grouplist, argv[2], BUFLEN);
 	    argv++; argc--;
 	}
     }
