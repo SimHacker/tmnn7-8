@@ -157,7 +157,7 @@ char *text;	/* file to save from if pointer is null */
     (void) setgid(gid);
     (void) setuid(uid);
 
-    (void) sprintf(sfname, "%s/%s", userhome, PARTIAL);
+    (void) snprintf(sfname, sizeof(sfname), "%s/%s", userhome, PARTIAL);
     if ((tofd = fopen(sfname, "a")) == (FILE *)NULL)
     {
 	(void) fprintf(stderr, "Cannot save partial news in %s\n", sfname);
@@ -187,7 +187,7 @@ char	*tmptext;	    /* name of the file to put the text in */
     int		    tty = isatty(fileno(stdin));
     char	    rawname[BUFLEN];
 
-    (void) strcpy(rawname, tmptext);
+    (void) strlcpy(rawname, tmptext, sizeof(rawname));
     (void) mktemp(rawname);
     tfp = xfopen(rawname, "w");
 
@@ -302,8 +302,8 @@ char	*fname;	    /* name of the file to put the text in */
 		/* pick up the 'remote' site if there is one */
 		if (lp > bfr && lp[-1] == 'm')	/* preceding 'from'? */
 		{
-		    (void) strcat(mailfrom, lp + 1);
-		    (void) strcat(mailfrom, "!");
+		    (void) strlcat(mailfrom, lp + 1, sizeof(mailfrom));
+		    (void) strlcat(mailfrom, "!", sizeof(mailfrom));
 		}
 
 		/* concatenate the sender address in the first token */
@@ -311,7 +311,7 @@ char	*fname;	    /* name of the file to put the text in */
 		    fb++;
 		if (ep = strchr(fb, ' '))
 		    *ep = '\0';
-		(void) strcat(mailfrom, fb);
+		(void) strlcat(mailfrom, fb, sizeof(mailfrom));
 	    }
 	    else
 	    {
@@ -365,7 +365,7 @@ char	*fname;	    /* name of the file to put the text in */
 			bangcount++;
 		p += 2;
 		*p = '\0';
-		(void) strcat(mailfrom, header.h_path);
+		(void) strlcat(mailfrom, header.h_path, sizeof(mailfrom));
 
 		/* try to optimize the path by pinching off loops */
 		for (p = mailfrom; q = strchr(p, PATHSEP); p = q + 1)
@@ -440,8 +440,8 @@ char	**argv;
     /* following 2 branches are intended to be replaced by control messages */
     if (mode == CANCEL)
     {
-	(void) sprintf(titlebuf, "cmsg cancel %s", filename);
-	(void) sprintf(bfr, "cancel %s", filename);
+	(void) snprintf(titlebuf, sizeof(titlebuf), "cmsg cancel %s", filename);
+	(void) snprintf(bfr, LBUFLEN, "cancel %s", filename);
 	hlcpy(header.h_ctlmsg, bfr);
 	/* fall through to transmission code */
     }
@@ -460,20 +460,20 @@ char	**argv;
 	    /*NOTREACHED*/
 	}
 
-	(void) strcat(optionsbuf, "-P ");
+	(void) strlcat(optionsbuf, "-P ", sizeof(optionsbuf));
 
-	(void) sprintf(titlebuf, "cmsg newgroup %s", grouplist);
-	(void) strcpy(appbuf, username);
-	(void) strcpy(distbuf,
+	(void) snprintf(titlebuf, sizeof(titlebuf), "cmsg newgroup %s", grouplist);
+	(void) strlcpy(appbuf, username, sizeof(appbuf));
+	(void) strlcpy(distbuf,
 #ifdef ORGDISTRIB
-	    ORGDISTRIB
+	    ORGDISTRIB,
 #else /* !ORGDISTRIB */
-	    "local"
+	    "local",
 #endif /* !ORGDISTRIB */
-		);
-	(void) sprintf(bfr, "newgroup %s", grouplist);
+		sizeof(distbuf));
+	(void) snprintf(bfr, LBUFLEN, "newgroup %s", grouplist);
 	hlcpy(header.h_ctlmsg, bfr);
-	(void) strcat(grouplist, ".ctl");
+	(void) strlcat(grouplist, ".ctl", sizeof(grouplist));
 	
 	if (!bitbucket(stdin))
 	{
@@ -520,8 +520,8 @@ char	**argv;
     /* hand it to rnews for posting */
     if (not_here && not_here[0] && not_here[0] != '-' && !strchr(not_here,' '))
     {
-	(void) strcat(optionsbuf, "-x ");
-	(void) strcat(optionsbuf, not_here);
+	(void) strlcat(optionsbuf, "-x ", sizeof(optionsbuf));
+	(void) strlcat(optionsbuf, not_here, sizeof(optionsbuf));
     }
     if ((msgid = newpost(artfile, optionsbuf)) != (char *)NULL && vflag != 0)
 	(void) fputs(msgid, stdout);
