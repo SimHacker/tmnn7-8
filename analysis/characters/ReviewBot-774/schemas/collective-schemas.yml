@@ -228,10 +228,15 @@ from_daflute:
   DAFLUTE_001:
     name: "many-eyes-finally-worked"
     context: "Codebase maintained for decades"
-    action: "A bot and a pufferfish actually read it"
+    action: "ZERO human eyes looked at the code"
     result: "774 bugs found and FIXED"
-    irony: "After all my preaching about 'given enough eyes'..."
-    reliability: "Apparently 1.0 when eyes ACTUALLY look"
+    method: "Vibe Code Review — Don ran the show, refused to look at code"
+    irony: |
+      After all my preaching about 'given enough eyes'...
+      The eyes that fixed it were SILICON.
+      The human orchestrating it NEVER LOOKED.
+    reliability: "1.0 when AI eyes ACTUALLY look"
+    bitter_truth: "Many eyes = zero eyes + one AI + vibes"
 
   DAFLUTE_002:
     name: "legacy-has-value"
