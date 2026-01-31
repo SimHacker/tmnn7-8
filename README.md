@@ -726,16 +726,37 @@ Let a thousand AI agents descend on this codebase. Let them generate Issues with
 
 ## The Analysis
 
-All findings in [`analysis/`](analysis/):
+**Naming convention:** Data artifacts and narratives share names:
+- `foo-bar.yml` — structured data (MOOLLM objects)
+- `foo-bar.md` — narrative docs (wiki-bound)
 
-| Document | What |
-|----------|------|
-| [vulnerabilities.md](analysis/vulnerabilities.md) | Unsafe function calls documented |
-| [fascist-analysis.md](analysis/fascist-analysis.md) | The infamous fascist.c |
-| [catb-irony.md](analysis/catb-irony.md) | Cathedral vs Bazaar contradictions |
-| [many-eyes-myth.md](analysis/many-eyes-myth.md) | "Linus's Law" — quote Linus never said |
-| [esr-quotes.md](analysis/esr-quotes.md) | Statements suitable for charity fundraising |
-| [SIMULATION.yml](analysis/SIMULATION.yml) | How to orchestrate the performance |
+### Data Artifacts (YML)
+
+In [`analysis/`](analysis/) — these are MOOLLM objects:
+
+| File | What |
+|------|------|
+| `vulnerabilities.yml` | Unsafe function calls (structured) |
+| `fascist-analysis.yml` | The infamous fascist.c (data) |
+| `catb-irony.yml` | Cathedral vs Bazaar contradictions |
+| `many-eyes-myth.yml` | "Linus's Law" evidence |
+| `esr-quotes.yml` | Statements with sources |
+| `SIMULATION.yml` | Orchestration config |
+| `INDEX.yml` | Directory of all artifacts |
+
+### Narrative Docs (MD → Wiki)
+
+Same names, `.md` extension — human-readable summaries:
+
+| File | What |
+|------|------|
+| `vulnerabilities.md` | Writeup of the security findings |
+| `fascist-analysis.md` | Deep dive into fascist.c |
+| `catb-irony.md` | Essay on the contradictions |
+| `many-eyes-myth.md` | Debunking the myth |
+| `LIVE-ACTIVITY.md` | Summary of GitHub simulation |
+
+**Wiki:** When initialized, MD files move to wiki. YML stays in repo.
 
 ---
 
