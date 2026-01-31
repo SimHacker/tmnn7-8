@@ -480,29 +480,29 @@ char	*pr;
 {
     pr[0] = '\0';
     if (dclock.justsaved)
-	(void) strcat(pr, "[Saved .newsrc]");
+	(void) strlcat(pr, "[Saved .newsrc]", LBUFLEN);
 #ifdef CHECKMAIL
     if (dclock.mailstate == M_NEWMAIL)
-	(void) strcat(pr, "You have new mail.");
+	(void) strlcat(pr, "You have new mail.", LBUFLEN);
 #endif /* CHECKMAIL */
 #ifdef SHOWTIME
-    (void) strcat(pr, "(");
-    (void) sprintf(pr, dclock.time);
-    (void) strcat(pr, ") ");
+    (void) strlcat(pr, "(", LBUFLEN);
+    (void) strlcat(pr, dclock.time, LBUFLEN);
+    (void) strlcat(pr, ") ", LBUFLEN);
 #endif /* SHOWTIME */    
 
     if (cflag)
-	(void) sprintf(bfr, "? ");	/* the /bin/mail style prompt */
+	(void) snprintf(bfr, LBUFLEN, "? ");	/* the /bin/mail style prompt */
     else
     {
 	if (pending(NOMORE))
-	    (void) sprintf(pr + strlen(pr), "Last article.  [qfr] ");
+	    (void) snprintf(pr + strlen(pr), LBUFLEN - strlen(pr), "Last article.  [qfr] ");
 	else
 	{
 	    if (header.h_intnumlines <= 0)
-		(void) sprintf(pr + strlen(pr), "(0 lines) Next? [nqfr] ");
+		(void) snprintf(pr + strlen(pr), LBUFLEN - strlen(pr), "(0 lines) Next? [nqfr] ");
 	    else
-		(void) sprintf(pr + strlen(pr), "(%d lines) More? [ynq] ",
+		(void) snprintf(pr + strlen(pr), LBUFLEN - strlen(pr), "(%d lines) More? [ynq] ",
 			       header.h_intnumlines);
 	}
     }
@@ -530,11 +530,11 @@ time_t dt;
 
     (void) time(&now);
     if (now - dt < 7 * DAYS)
-	(void) strcpy(rbuf, wkday);
+	(void) strlcpy(rbuf, wkday, sizeof(rbuf));
     else
-	(void) strcpy(rbuf, monthdate);
-    (void) strcat(rbuf, " ");
-    (void) strcat(rbuf, timeofday);
+	(void) strlcpy(rbuf, monthdate, sizeof(rbuf));
+    (void) strlcat(rbuf, " ", sizeof(rbuf));
+    (void) strlcat(rbuf, timeofday, sizeof(rbuf));
     return(rbuf);
 }
 #endif /* !RNESCAPES */
@@ -548,8 +548,8 @@ void vupdate()
     {
 	char buf1[80];
 
-	(void) sprintf(buf1, "%s/%ld", ngname(), (long)msgnum());
-	(void) sprintf(bfr, "%-20s %s", buf1, header.h_subject);
+	(void) snprintf(buf1, sizeof(buf1), "%s/%ld", ngname(), (long)msgnum());
+	(void) snprintf(bfr, LBUFLEN, "%-20s %s", buf1, header.h_subject);
 	(void) printf("%.76s\n", bfr);
     }
     else    /* usual interactive case */
@@ -580,16 +580,16 @@ char *title;
     int	    l;
 
     /* assemble the entire header in a buffer, because we need the length */
-    (void) sprintf(bfr, "Newsgroup %s", title);
+    (void) snprintf(bfr, LBUFLEN, "Newsgroup %s", title);
     if (!slowtty)
     {
 	if (msgnum() == ngmax())
-	    (void) sprintf(bfr + strlen(bfr), ": %ld", (long)ngmax());
+	    (void) snprintf(bfr + strlen(bfr), LBUFLEN - strlen(bfr), ": %ld", (long)ngmax());
 	else
-	    (void) sprintf(bfr + strlen(bfr), ": %ld-%ld",
+	    (void) snprintf(bfr + strlen(bfr), LBUFLEN - strlen(bfr), ": %ld-%ld",
 				(long)msgnum(), (long)ngmax());
     }
-    (void) sprintf(bfr + strlen(bfr), " (%d unread)", ngunread());
+    (void) snprintf(bfr + strlen(bfr), LBUFLEN - strlen(bfr), " (%d unread)", ngunread());
 
     (void) putchar('\n');
     if (!slowtty)
@@ -655,17 +655,17 @@ char	*bptr;
 #endif /* PAGE */
 
     (void) fprintf(stdout, "Caesar decoding:\n");
-    (void) sprintf(bfr, "%s/%s", site.libdir, "caesar");
+    (void) snprintf(bfr, LBUFLEN, "%s/%s", site.libdir, "caesar");
     if (*bptr)
     {
-	(void) strcat(bfr, " ");
-	(void) strcat(bfr, bptr);
+	(void) strlcat(bfr, " ", LBUFLEN);
+	(void) strlcat(bfr, bptr, LBUFLEN);
     }
 #ifdef PAGE
     if (*pager)
     {
-	(void) strcat(bfr, " | ");
-	(void) strcat(bfr, pager);
+	(void) strlcat(bfr, " | ", LBUFLEN);
+	(void) strlcat(bfr, pager, LBUFLEN);
     }
 #endif /* PAGE */
     pfp = popen(bfr, "w");
@@ -681,7 +681,7 @@ register FILE *fp;
 
     if (!cflag)
     {
-	(void) sprintf(bfr, "%s/%s", site.admdir, "readnews.help");
+	(void) snprintf(bfr, LBUFLEN, "%s/%s", site.admdir, "readnews.help");
 	if ((sfp = fopen(bfr, "r")) == (FILE *)NULL)
 	    (void) fprintf(fp, "No help file.\n");
 	else
