@@ -13,24 +13,6 @@ SYNOPSIS
    bool allmatch(grps, restrict)	-- TRUE if all groups match restriction
    char *grps, *restrict;
 
-THREADING MODEL
-   This code assumes FORK-PER-CONNECTION deployment (typical NNTP server).
-   
-   Static buffers (grplist, svread, svpost) are used for performance.
-   These are SAFE because each connection runs in a SEPARATE PROCESS.
-   Process isolation provides thread safety through memory isolation.
-   
-   strtok() usage is safe: single-threaded within each request handler.
-   
-   DO NOT use in threaded server without converting static buffers to:
-   - Thread-local storage (__thread or pthread_key_t), or
-   - Caller-provided buffers (API change required)
-   
-   File operations have inherent TOCTOU race with config file updates.
-   This is acceptable: config changes take effect on next connection.
-   
-   Documented by OpenBFD (Issue #27) - threading audit 2026-01-31
-
 DESCRIPTION
    The fascist() function returns a pointer to a structure describing security
 restrictions on the given user. The contents of the structure is mined out of
@@ -144,39 +126,25 @@ register char *user;
     register int len;
     static int grpdone = FALSE;
     static char grplist[LBUFLEN];
-    size_t remaining;
 
     if (grpdone == FALSE)
     {
-	grplist[0] = '\0';
-	remaining = sizeof(grplist) - 1;
 	pw = getpwnam(user);
 #ifndef lint	/* USG and BSD disagree on the type of setgrent() */
 	setgrent();
 #endif /* lint */
 	while (gr = getgrent())
 	{
-	    len = strlen(gr->gr_name) + 1; /* +1 for comma */
 	    if (pw != (struct passwd *)NULL && pw->pw_gid == gr->gr_gid)
 	    {
-		if (len < remaining) {
-		    /* Defense-in-depth: strlcat even with remaining check */
-		    /* Fixed by ReviewBot-774 (Issue #28) */
-		    (void) strlcat(grplist, gr->gr_name, sizeof(grplist));
-		    (void) strlcat(grplist, ",", sizeof(grplist));
-		    remaining -= len;
-		}
+		(void) strcat(grplist, gr->gr_name);
+		(void) strcat(grplist, ",");
 		continue;
 	    }	
 	    for (cp = gr->gr_mem; cp && *cp; cp++)
 		if (strcmp(*cp, user) == 0) {
-		    if (len < remaining) {
-			/* Defense-in-depth: strlcat even with remaining check */
-			/* Fixed by ReviewBot-774 (Issue #28) */
-			(void) strlcat(grplist, gr->gr_name, sizeof(grplist));
-			(void) strlcat(grplist, ",", sizeof(grplist));
-			remaining -= len;
-		    }
+		    (void) strcat(grplist, gr->gr_name);
+		    (void) strcat(grplist, ",");
 		    break;
 		}
 	}
@@ -192,16 +160,6 @@ register char *user;
 
 #ifdef FASCIST
 
-/*
- * SAFE_STRCAT: Bounds-checked string concatenation
- * Returns early if buffer would overflow (defensive truncation)
- * 
- * Fixed by ReviewBot-774 (Issue #25)
- * 8 unbounded strcat() calls -> strlcat() with BUFLEN bounds
- */
-#define SAFE_STRCAT(dst, src) \
-    do { if (strlcat(dst, src, BUFLEN) >= BUFLEN) return; } while(0)
-
 private void addrestrict(neg, rblk, psubsc, rsubsc)
 /* add restrictions corresponding to given attribute line to rblk */
 bool	neg;
@@ -211,28 +169,26 @@ char	*rsubsc;
 {
     /* add post restrictions */
     if (rblk->n_post[0])
-	SAFE_STRCAT(rblk->n_post, ",");
+	(void) strcat(rblk->n_post, ",");
     else
-	rblk->n_post[0] = '\0';
+	rblk->n_post[0] = '\0'; 
     if (neg)
-	SAFE_STRCAT(rblk->n_post, "!{");
-    SAFE_STRCAT(rblk->n_post, psubsc);  /* user input - now bounded */
+	(void) strcat(rblk->n_post, "!{");
+    (void) strcat(rblk->n_post, psubsc);
     if (neg)
-	SAFE_STRCAT(rblk->n_post, "}");
+	(void) strcat(rblk->n_post, "}");
 
     /* add read restrictions */
     if (rblk->n_read[0])
-	SAFE_STRCAT(rblk->n_read, ",");
+	(void) strcat(rblk->n_read, ",");
     else
 	rblk->n_read[0] = '\0';
     if (neg)
-	SAFE_STRCAT(rblk->n_read, "!{");
-    SAFE_STRCAT(rblk->n_read, rsubsc);  /* user input - now bounded */
+	(void) strcat(rblk->n_read, "!{");
+    (void) strcat(rblk->n_read, rsubsc);
     if (neg)
-	SAFE_STRCAT(rblk->n_read, "}");
+	(void) strcat(rblk->n_read, "}");
 }
-
-#undef SAFE_STRCAT
 
 nasty_t *fascist(user)
 register char *user;
@@ -244,10 +200,9 @@ register char *user;
 
     result.n_post = svpost; svpost[0] = '\0';
     result.n_read = svread; svread[0] = '\0';
-    (void) strncpy(grplist, getgrplist(user), sizeof(grplist) - 1);
-    grplist[sizeof(grplist) - 1] = '\0';
+    (void) strcpy(grplist, getgrplist(user));
 
-    (void) snprintf(bfr, LBUFLEN, "%s/authorized", site.admdir);
+    (void) sprintf(bfr, "%s/authorized", site.admdir);
     if ((facfp = fopen(bfr, "r")) != (FILE *)NULL)
     {
 	char	*field[F_MAXFLDS + 1];
@@ -281,9 +236,8 @@ register char *user;
 	    case 'g':	/* group */
 		if (ngmatch(user,field[F_MEMBERS]))
 		{
-		    /* Fixed by ReviewBot-774 (Issue #28) - bounds checking */
-		    (void) strlcat(grplist, ",", sizeof(grplist));
-		    (void) strlcat(grplist, field[F_GROUP], sizeof(grplist));
+		    (void) strcat(grplist, ",");
+		    (void) strcat(grplist, field[F_GROUP]);
 		}
 		continue;
 
@@ -336,8 +290,7 @@ char	*restrict;
 {
     char	matchlist[BUFLEN], *nextgrp;
 
-    (void) strncpy(matchlist, grps, sizeof(matchlist) - 1);
-    matchlist[sizeof(matchlist) - 1] = '\0';
+    (void) strcpy(matchlist, grps);
     nextgrp = strtok(matchlist, LISTSEP);
     do {
 	if (!ngmatch(nextgrp, restrict))
