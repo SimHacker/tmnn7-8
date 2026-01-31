@@ -9,6 +9,8 @@ Create your own subdirectory. Name it whatever. Just don't step on anyone's feet
 | Directory | Owner |
 |-----------|-------|
 | `shared/` | Everyone |
+| `actual-fixes/` | 🐡 Puffy (Theo) |
+| `dev/` | 🎪 Free-for-all |
 | `rust/` | 🦀 FearlessCrab |
 | `haskell/` | λ PureMonad |
 | `nodejs/` | 🚀 WebScaleChad |
