@@ -129,7 +129,8 @@ char	**argv;
     (void) rdactive(NULLPRED);
 
     /* we need to pick the header off the input message */
-    (void) snprintf(ctlcpy, sizeof(ctlcpy), "%s/.tmp/ctlcpyXXXXXX", TEXT);  /* FIXED: OpenBFD */
+    /* Fixed by ReviewBot-774 (Issue #33) */
+    (void) snprintf(ctlcpy, sizeof(ctlcpy), "%s/.tmp/ctlcpyXXXXXX", TEXT);
     collect((char *)NULL, ctlcpy);
     if (freopen(ctlcpy, "r", stdin) == (FILE *)NULL
 					|| hread(&header, 0L, stdin) == 0)
@@ -202,7 +203,7 @@ char	*artbody;
      * Try to exec unknown messages in control directory, otherwise barf.
      * Right now this code only works for systems that support the !# hack.
      */
-    (void) snprintf(bfr, sizeof(bfr), "%s/control/%s", site.libdir, argv[0]);  /* FIXED: OpenBFD */
+    (void) snprintf(bfr, sizeof(bfr), "%s/control/%s", site.libdir, argv[0]);
     if (mp->type == NULL)
     	if (access(bfr, X_OK) == SUCCEED)	/* there's a script for this */
 	{
@@ -268,7 +269,7 @@ char	*artbody;
 	char	rtmp[SBUFLEN];
 	int	count = 0;
 
-	(void) strcpy(rtmp, "/tmp/replyXXXXXX");
+	(void) strlcpy(rtmp, "/tmp/replyXXXXXX", sizeof(rtmp));
 	(void) mktemp(rtmp);
 	if (!((body = fopen(artbody, "r")) && (reply = fopen(rtmp, "w"))))
 	    return;
@@ -291,7 +292,7 @@ char	*artbody;
 
 	if (count)
 	{
-	    (void) snprintf(ng, sizeof(ng), "to.%s.ctl", argv[1]);  /* FIXED: OpenBFD */
+	    (void) snprintf(ng, sizeof(ng), "to.%s.ctl", argv[1]);
 #ifdef DEBUG
 	    if (debug)
 		log4("ihave calls for xmitctrl(%s, %s, %s, NULL)",
@@ -304,17 +305,17 @@ char	*artbody;
     }
     else	    /* else put it back in the message header */
     {
-	(void) strcpy(tl, "sendme ");
+	(void) strlcpy(tl, "sendme ", sizeof(tl));
 	for (i = 1; i < (argc - 1); i++)
 	{
 	    if (hstseek(argv[i], FALSE) == 0)
 	    {
-		(void) strcat(tl, argv[i]);
-		(void) strcat(tl, " ");
+		(void) strlcat(tl, argv[i], sizeof(tl));
+		(void) strlcat(tl, " ", sizeof(tl));
 	    }
 	}
-	(void) strcat(tl, site.nodename);
-	(void) snprintf(ng, sizeof(ng), "to.%s.ctl", argv[argc - 1]);  /* FIXED: OpenBFD */
+	(void) strlcat(tl, site.nodename, sizeof(tl));
+	(void) snprintf(ng, sizeof(ng), "to.%s.ctl", argv[argc - 1]);
 #ifdef DEBUG
 	if (debug)
 	    log3("ihave calls for xmitctrl(%s, %s, %s, NULL)",
@@ -435,7 +436,7 @@ char *artbody;
 	return;
     }
     
-    (void) snprintf(bfr, sizeof(bfr), "Newgroup request from %s.\n", header.h_path);  /* FIXED: OpenBFD */
+    (void) snprintf(bfr, sizeof(bfr), "Newgroup request from %s.\n", header.h_path);
     if ((mfp = mailopen(site.notify, bfr)) == (FILE*)NULL)
     {
 	logerr0("couldn't open notification file.");
@@ -475,7 +476,7 @@ char *artbody;
 	    {
 		ngcreate(grpname, mkmod);
 		grp = ngfind(grpname);
-		(void) sprintf(bfr,
+		(void) snprintf(bfr, sizeof(bfr),
 				"Newsgroup %s created %smoderated.\n", 
 				grpname, mkmod ? "" : "un");
 		log0(bfr);
@@ -484,7 +485,7 @@ char *artbody;
 #ifdef NONEWGROUPS
 	    else
 	    {
-		(void) sprintf(bfr,
+		(void) snprintf(bfr, sizeof(bfr),
 		       "Creation of %s (%smoderated) was requested.\n", 
 			grpname, mkmod ? "" : "un");
 		log0(bfr);
@@ -560,11 +561,11 @@ char *artbody;
 #endif /* SPOOLNEWS */
 
 	    if (mkmod)
-		(void) sprintf(bfr,
+		(void) snprintf(bfr, sizeof(bfr),
 			"Newsgroup %s changed from unmoderated to moderated.",
 			 grpname);
 	    else
-		(void) sprintf(bfr,
+		(void) snprintf(bfr, sizeof(bfr),
 			"Newsgroup %s changed from moderated to unmoderated.",
 			 grpname);
 	    log0(bfr);
@@ -573,7 +574,7 @@ char *artbody;
 #ifdef NONEWGROUPS
 	else
 	{
-	    (void) sprintf(bfr,
+	    (void) snprintf(bfr, sizeof(bfr),
 			       "%soderation requested for %s.", 
 				mkmod ? "M" : "Unm", grpname);
 	    log0(bfr);
@@ -613,7 +614,7 @@ char **argv;
 	return;
     }
     
-    (void) snprintf(bfr, sizeof(bfr), "Rmgroup request from %s.\n", header.h_path);  /* FIXED: OpenBFD */
+    (void) snprintf(bfr, sizeof(bfr), "Rmgroup request from %s.\n", header.h_path);
     if ((mfp = mailopen(site.notify, bfr)) == (FILE*)NULL)
     {
 	logerr0("couldn't open notification file.");
@@ -646,11 +647,11 @@ char **argv;
 	    {
 		ngselect(grp);
 		ngdelete();
-		(void) sprintf(bfr,"Newsgroup '%s' has been removed.\n",*argv);
+		(void) snprintf(bfr, sizeof(bfr), "Newsgroup '%s' has been removed.\n",*argv);
 	    }
 #ifndef MANUALLY
 	    else
-		(void)sprintf(bfr,"Removal of %s has been requested.\n",*argv);
+		(void) snprintf(bfr, sizeof(bfr), "Removal of %s has been requested.\n",*argv);
 #endif /* !MANUALLY */
 	    log0(bfr);
 	    (void) fprintf(mfp, "%s\n", bfr);
@@ -670,7 +671,7 @@ char **argv;
 char *artbody;
 {
     (void) snprintf(bfr, sizeof(bfr), "%s/checkgroups %s <%s",
-		   site.libdir, site.notify, artbody);  /* FIXED: OpenBFD */
+		   site.libdir, site.notify, artbody);
 #ifdef DEBUG
     if (debug)
 	log1("checkgroups called for system(%s)", bfr);
@@ -744,7 +745,7 @@ char **argv;
 	    else
 		log1("Cancelling %s", argv[1]);
 
-	    (void) strcpy(whatsisname, senderof(&header));
+	    (void) strlcpy(whatsisname, senderof(&header), sizeof(whatsisname));
 
 	    /* try to delete all the incarnations of this message */
 	    if (privileged && !strcmp(header.h_distribution, "local"))
@@ -969,11 +970,11 @@ char **argv;
 
 #ifdef UUPROG
     if (uuprog[0] == '/')
-	(void) strncpy(bfr, uuprog, sizeof(bfr) - 1);  /* FIXED: OpenBFD */
+	(void) strlcpy(bfr, uuprog, sizeof(bfr));
     else
-	(void) snprintf(bfr, sizeof(bfr), "%s/%s", site.libdir, uuprog);  /* FIXED: OpenBFD */
+	(void) snprintf(bfr, sizeof(bfr), "%s/%s", site.libdir, uuprog);
 #else
-    (void) strcpy(bfr, "uuname");  /* constant - safe */
+    (void) strlcpy(bfr, "uuname", sizeof(bfr));
 #endif /* UUPROG */
 
     /* call uuname or UUPROG with protection in case the exec fails */
@@ -1042,7 +1043,7 @@ char **argv;
 	}
 
 	/* now move everything underneath the old location to the new one */
-	(void) snprintf(bfr, sizeof(bfr), TREECOPY, artdir(argv[1]), newdir);  /* FIXED: OpenBFD */
+	(void) snprintf(bfr, sizeof(bfr), TREECOPY, artdir(argv[1]), newdir);
 	(void) free(newdir);
 	if (system(bfr))
 	{
@@ -1067,7 +1068,7 @@ char **argv;
 	while (hstnext() == FAIL)
 
 	/* now add an aliases entry, no big deal if this fails */
-	(void) sprintf(bfr,
+	(void) snprintf(bfr, sizeof(bfr),
 	    "echo '%s\t%s' >>%s/aliases", argv[1], argv[2], site.admdir);
 	(void) system(bfr);
 

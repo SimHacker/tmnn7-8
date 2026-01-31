@@ -1,0 +1,137 @@
+# GitProv: Git + Improv
+# Multi-user real-time collaborative performance art
+# In the spirit of Engelbart's NLS — but for theater
+
+name: GitProv
+tagline: "Git + Improv = GitProv"
+emoji: 🎭
+
+# The core insight
+essence: |
+  Podcasting democratized distribution.
+  GitProv democratizes creation.
+  
+  Everyone's a performer. Everyone's a writer.
+  The audience IS the cast.
+
+comparison:
+  podcasting:
+    portmanteau: "iPod + Broadcasting"
+    direction: one-way
+    democratizes: distribution
+    makes_everyone_a: broadcaster
+    
+  gitprov:
+    portmanteau: "Git + Improv"
+    direction: two-way  # Inherently collaborative!
+    democratizes: creation
+    makes_everyone_a: improviser
+
+# The lineage
+lineage:
+
+  perlin_improv:
+    year: 1996
+    who: Ken Perlin
+    what: "Improv: A System for Scripting Interactive Actors"
+    url: https://mrl.cs.nyu.edu/~perlin/improv/
+    contribution:
+      - Procedural character animation
+      - Behavioral scripting
+      - Autonomous actors with personalities
+      - Real-time improvisational performance
+    influence: |
+      The Sims' Vitaboy animation system was directly inspired by Perlin's Improv.
+      Don Hopkins worked on The Sims. The connection is direct.
+      
+      GitProv carries the torch:
+      - Perlin's Improv: procedural CHARACTER animation
+      - GitProv: procedural CHARACTER simulation
+      
+      We're riding on his shoulders.
+
+  engelbart_nls:
+    year: 1968
+    what: "The Mother of All Demos"
+    contribution:
+      - Multi-user real-time collaboration
+      - Shared workspaces
+      - Version control concepts
+      - Augmented human intellect through tools
+    connection: "GitHub is NLS for the masses"
+    
+  bar_karma:
+    year: 2011
+    what: "Will Wright's crowd-sourced TV show on Current TV"
+    quote: "What if the audience could rewrite the show while it's happening?"
+    attribution: Will Wright
+    features:
+      - Audiences wrote episodes using Storymaker tool
+      - Community voted on story directions
+      - Professional cast filmed winning scripts
+    links:
+      wikipedia: https://en.wikipedia.org/wiki/Bar_Karma
+      wired: https://www.wired.com/2011/02/bar-karma-will-wright/
+      gamespot: https://www.gamespot.com/articles/will-wrights-first-tv-project-unveiled/1100-6281137/
+      kotaku: https://kotaku.com/will-wright-puts-you-in-control-of-his-television-show-5658240
+      
+  stupid_fun_club:
+    who: Don Hopkins
+    what: "Built the infrastructure"
+    projects:
+      - Storymaker iPhone app
+      - Urban Safari (GPS-based mobile storytelling)
+      - Layar AR integration (Amsterdam — TomTom connection)
+    videos:
+      creationtv_demo: https://www.youtube.com/watch?v=Nb_-J1lv-B8
+      urban_safari_demo: https://www.youtube.com/watch?v=yrZVz_xOmHc
+    hacker_news:
+      simulator_effect: https://news.ycombinator.com/item?id=22062590
+      sims_design_docs: https://news.ycombinator.com/item?id=22886489
+      will_wright_ui: https://news.ycombinator.com/item?id=34573406
+      simcity_history: https://news.ycombinator.com/item?id=15669358
+
+# Git as storytelling infrastructure
+# Every feature Linus built for kernel patches
+# is a feature for managing branching narratives
+
+git_as_narrative:
+  
+  branching_storylines: git branch
+  timeline_management: commit history
+  story_versioning: git log
+  parallel_narratives: multiple branches
+  merging_storylines: git merge
+  community_review: pull request review
+  voting_on_direction: PR approvals + reactions
+  reverting_bad_choices: git revert
+  tagging_key_moments: git tag
+  forking_the_canon: git fork
+  
+  # The tooling is identical.
+  # The use case is new.
+
+# Where the old tools live now
+continuity:
+
+  storymaker_lives_as:
+    - CHARACTER.yml  # story element template
+    - GitHub Issues  # story submissions
+    - Reactions      # community votes
+    - Threads        # the episode itself
+    
+  urban_safari_lives_as:
+    - repo           # the territory
+    - directories    # locations
+    - characters     # inhabitants
+    - audience       # explorers and contributors
+
+# Full documentation
+docs: GITPROV.md
+
+# Prototype chain
+inherits:
+  - moollm/skills/adventure/SKILL.md
+  - moollm/skills/play-learn-lift/SKILL.md
+  - https://en.wikipedia.org/wiki/Bar_Karma
+  - https://en.wikipedia.org/wiki/The_Mother_of_All_Demos

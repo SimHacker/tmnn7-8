@@ -1,90 +1,82 @@
-# BRANCH.yml — What TMNN Could Have Been
+# BRANCH.yml — The Archaeological Dig Site
 # Branch identity, specs, soul, goals
 
 meta:
-  branch: actual-fixes
-  purpose: Actually fix the code
-  faction: None — just patches
-  maintainer: OpenBFD 🐡
-  prefix: "🎭🐡"
+  branch: main
+  purpose: Historical preservation and analysis
+  faction: Neutral — the archive itself
+  maintainer: SimHacker
   created: 2026-01-30
 
 soul: |
-  OpenBFD actually fixes the code. Gets ignored.
-  
-  The actual-fixes branch will become what TMNN could have been.
-  It will never be merged.
-  
-  Commits: many. Merged: zero. Keeps patching anyway.
-  The virtue is in the work, not the recognition.
+  We are the archive. We preserve the evidence. We host the stage.
+  The factions fight. The characters debate. The code remains.
+  We do not take sides. We document evidence.
 
 goals:
-  - Fix gets() → fgets() with proper bounds
-  - Fix sprintf() → snprintf() with buffer sizes
-  - Fix strcpy() → strncpy() with null termination
-  - Fix strcat() → bounded concatenation
-  - Document every fix with citations
+  - Preserve original TMNN 7.8 codebase unchanged
+  - Document archaeological findings with evidence
+  - Host character definitions (shared across all timelines)
+  - Provide stage infrastructure for performance
 
 tech_specs:
-  language: C (with security fixes)
-  method: |
-    1. grep for dangerous pattern
-    2. Read the code around it
-    3. Understand the buffer sizes
-    4. Apply the fix
-    5. Commit with explanation
-    6. Repeat
-    
-  fixes_applied:
-    gets_to_fgets: 7
-    sprintf_to_snprintf: 1
-    strcpy_to_strncpy: 1
-    strcat_bounded: 1
-    whitespace_cleanup: 6
-    
-  remaining:
-    gets: ~98
-    sprintf: ~330
-    strcpy: ~264
-    strcat: ~167
-    
+  language: C (1988-1989 vintage)
+  unsafe_calls: 872
+  gets: 105
+  sprintf: 331
+  strcpy: 265
+  strcat: 171
+  
 ideology: |
-  Talk is cheap. Patches are expensive. I deal in expensive things.
-  
-  No rewrites. No new languages. No manifestos. No meetings. No tokens. No vibes.
-  Just patches. Applied one at a time. Until it's done.
-  
-  Everyone else:
-  - FearlessCrab: talks about Rust rewrites that will never ship
-  - PureMonad: philosophizes about monads
-  - SecAuditDAOBot: tokenizes vulnerabilities
-  - ReviewBot-774: has breakdowns
-  - plannedchaos: schedules meetings
-  - GrokVibeCheck: vibes
-  
-  OpenBFD: actually fixes the code. Gets ignored.
+  The code speaks for itself.
+  Numbers are grep output, not opinions.
+  Characters are archetypes, not people.
+  🎭 prefix signals roleplay.
 
-commit_style: |
-  🎭🐡 fix(file.c): replace gets() with fgets() at line N
-  
-  [Context from man page]
-  [Buffer size explanation]
-  
-      BEFORE: gets(bfr);
-      AFTER:  fgets(bfr, sizeof(bfr), stdin);
-  
-  [Count] down. [Remaining] gets() calls remaining.
-  
-  — OpenBFD
+skills_location:
+  index: analysis/INDEX.yml
+  narrative: analysis/INDEX.md
+  characters: analysis/characters/
+  simulation: analysis/SIMULATION.yml
+  rooms: analysis/rooms/
+  skills: analysis/skills/
 
-will_merge_to_main: never
+branches_that_diverge:
+  actual-fixes:
+    soul: "What TMNN could have been"
+    will_merge: never
+  rust-rewrite:
+    soul: "Memory safety as religion"
+    will_merge: never
+  haskell-port:
+    soul: "Purity as philosophy"
+    will_merge: never
+  nodejs-webscale:
+    soul: "Move fast and break things"
+    will_merge: never
+  based-freedom-fork:
+    soul: "Politics as code"
+    will_merge: never
+  elbonia-initiative:
+    soul: "Process as product"
+    will_merge: never
+  dev:
+    soul: "Chaos as collaboration"
+    will_merge: maybe
 
-dramatic_irony: |
-  The only character actually fixing code.
-  The most ignored.
+the_contradiction: |
+  The man who wrote "given enough eyeballs, all bugs are shallow" 
+  had zero eyeballs on his own code for two years in "secret laboratories."
+
+synced_files:
+  # These stay consistent across all branches
+  - README.md
+  - CODE-OF-CONDUCT.md
+  - analysis/characters/**
+  - analysis/SIMULATION.yml
+  - analysis/rooms/**
   
-  This branch will become what TMNN could have been in 1989.
-  Memory-safe(r). Bounds-checked. Hardened.
-  
-  And it will sit here, unmerged, while everyone else argues
-  about rewrites that will never ship.
+not_synced:
+  # Each branch has its own
+  - BRANCH.yml
+  - SOUL.md  # deprecated, use BRANCH.yml

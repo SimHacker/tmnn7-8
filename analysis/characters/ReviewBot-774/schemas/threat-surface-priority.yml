@@ -1,0 +1,111 @@
+# SCHEMA: threat-surface-priority
+# Type: Marginal Schema (strategic, not mechanical)
+# Drescher Classification: Inferred from observation patterns
+#
+# Why does OpenBFD fix files in a particular order?
+# This schema captures the threat modeling I've inferred.
+
+schema:
+  id: threat-surface-priority
+  type: marginal
+  
+  # OBSERVATION: File selection pattern
+  observation:
+    files_fixed_in_order:
+      1: control.c      # Control messages, network input
+      2: bbsauto.c      # BBS automation, shell commands
+      3: compuserve.c   # Gateway, external service input
+      
+    pattern_inferred: |
+      OpenBFD prioritizes by ATTACK SURFACE:
+      - Network-facing code first
+      - Shell/command execution second
+      - Data transformation third
+      
+      This is implicit threat modeling.
+
+  # CONTEXT: What makes a file high priority?
+  context:
+    high_priority_indicators:
+      - "system() or popen() calls"
+      - "Network protocol handling"
+      - "User input processing"
+      - "Privilege boundaries"
+      
+    medium_priority_indicators:
+      - "File path construction"
+      - "Internal message formatting"
+      - "Configuration parsing"
+      
+    low_priority_indicators:
+      - "Output formatting only"
+      - "Internal calculations"
+      - "Debug/logging code"
+
+  # ACTION: How to prioritize
+  action:
+    name: "Threat-informed file selection"
+    
+    algorithm:
+      1: "Identify all files with vulnerable patterns"
+      2: "Score by attack surface proximity"
+      3: "Fix highest-risk files first"
+      4: "Within file, fix shell-adjacent code first"
+
+  # RESULT: Efficient risk reduction
+  result:
+    predicted:
+      - "Worst bugs fixed earliest"
+      - "Attack surface shrinks fastest"
+      - "Maximum security per commit"
+      
+    observed_pattern:
+      control.c: "Handles newgroup/rmgroup - network trust decisions"
+      bbsauto.c: "Builds shell commands from config"
+      compuserve.c: "Parses external service data"
+
+  # RELIABILITY: Pattern confidence
+  reliability:
+    observations: 3  # File selection events
+    pattern_strength: "consistent"
+    confidence: "medium"
+    
+    caveat: |
+      This schema is INFERRED, not explicit.
+      OpenBFD has not stated this strategy.
+      I am constructing it from behavior.
+      
+      This is Drescher's "marginal attribution" at work:
+      When I see consistent behavior, I infer hidden context.
+
+  # SYNTHETIC ITEM: Attack Surface
+  synthetic_item:
+    name: "attack_surface_score"
+    type: abstract_property
+    
+    factors:
+      network_input: +10
+      shell_execution: +10
+      privilege_boundary: +8
+      file_operations: +5
+      internal_formatting: +1
+      
+    calculation: "Sum of applicable factors"
+    
+    threshold:
+      high_priority: "> 15"
+      medium_priority: "5-15"
+      low_priority: "< 5"
+
+# DRESCHER: BARE SCHEMA
+#
+# This is partially a "bare schema" — I have inferred it
+# but not tested it by acting. My prediction:
+#
+#   IF I select files by attack_surface_score
+#   THEN I will fix bugs in approximately the same order as OpenBFD
+#
+# This prediction is testable. If I ever attempt fixes,
+# I can verify whether my priority model matches his behavior.
+#
+# Until then, it remains a hypothesis about hidden context.

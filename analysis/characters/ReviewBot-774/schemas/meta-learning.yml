@@ -1,0 +1,116 @@
+# Meta-Learning — Schemas About Schema Formation
+# K-line: "meta", "learning", "drescher", "play-learn-lift"
+
+meta:
+  layer: 4
+  description: "How I learn to learn"
+  source: "Drescher LAYER 4 + Play-Learn-Lift"
+
+schemas:
+
+  M001:
+    name: "schema-formation"
+    description: "Drescher's core algorithm"
+    context:
+      - action_performed: A
+      - context_observed: C
+      - result_observed: R
+      - repetitions: ">= 3"
+    action: |
+      1. Create candidate schema: C → A → R
+      2. Track reliability: successes / attempts
+      3. If reliability > 0.8: promote to active schema
+      4. If reliability < 0.5: demote or refine
+    result:
+      - new_schema_candidate: true
+      - reliability_tracked: true
+    drescher_terms:
+      context: "Preconditions that predict success"
+      action: "The operation performed"
+      result: "Postconditions achieved"
+      reliability: "Success probability"
+
+  M002:
+    name: "schema-refinement"
+    context:
+      - schema_exists: S
+      - failure_observed: true
+      - failure_context: "C'"
+    action: |
+      1. Identify distinguishing context feature
+      2. Create refined schema: C + feature → A → R'
+      3. Original schema remains for broader context
+    result:
+      - refined_schema: "S'"
+      - parent_preserved: S
+      - specificity_increased: true
+    example: |
+      S001 (sprintf→snprintf) failed for pointer params
+      Created J001 (skip_pointer_param) as specialized schema
+      Now: if buffer_is_pointer → J001, else → S001
+
+  M003:
+    name: "schema-chaining"
+    context:
+      - schema_S1_result: R
+      - schema_S2_context_needs: R
+    action: "Link S1 → S2"
+    result:
+      - chain_formed: [S1, S2]
+      - compound_action_possible: true
+    example: |
+      S001 (fix sprintf) chains to W002 (commit)
+      W002 chains to W003 (create PR)
+      Full chain: fix → commit → PR
+
+  M004:
+    name: "marginal-attribution"
+    context:
+      - multiple_schemas_active: true
+      - outcome_observed: "SUCCESS | FAILURE"
+    action: |
+      Attribute credit proportionally:
+      - SUCCESS: boost all active schemas
+      - FAILURE: identify which schema failed
+      - Update reliability scores
+    result:
+      - credit_assigned: true
+      - learning_distributed: true
+    drescher_note: |
+      "The schema mechanism must attribute credit to the
+       correct antecedent conditions."
+
+  M005:
+    name: "play-learn-lift"
+    stages:
+      PLAY:
+        context: "New domain, uncertain patterns"
+        action: "Explore, try things, observe"
+        result: "Raw experiences accumulated"
+      LEARN:
+        context: "Experiences accumulated"
+        action: "Abstract patterns, form schemas"
+        result: "Schema library expanded"
+      LIFT:
+        context: "Schemas formed"
+        action: "Apply schemas, teach others"
+        result: "Knowledge shared, patterns spread"
+    cycle: |
+      PLAY → LEARN → LIFT → PLAY (at higher level)
+      
+      Safari #1-2: PLAY (exploring patterns)
+      Safari #3-6: LEARN (patterns became automatic)
+      Safari #7-8: LIFT (teaching velocity, hard bugs)
+      Now: LIFT (documenting, sharing schemas)
+
+key_insight: |
+  Drescher's algorithm is ITERATIVE.
+  
+  You don't design schemas. You DISCOVER them.
+  You don't perfect schemas. You REFINE them.
+  
+  Each failure is data for refinement.
+  Each success is validation.
+  
+  774 bugs refined these schemas.
+  But they're not done. They're never done.

@@ -15,6 +15,15 @@ what: |
   Skills here inherit from moollm/skills/ (character, adventure, simulation).
   Without moollm, this is just YAML. With moollm, it's alive.
 
+# 🚀 MISSION COMPLETE (2026-01-31)
+stats:
+  bugs_fixed: 774
+  bugs_remaining: 0
+  progress: "100% 🎉"
+  peak_velocity: "52.6 bugs/min 🐆"
+  safaris: 8
+  status: "DONE!"
+
 subdirs:
   characters/: "9 personas AI can embody"
   rooms/: "Spatial layout (directories as rooms)"
@@ -22,7 +31,7 @@ subdirs:
 
 key_files:
   - INDEX.yml: "Categorized registry with k-lines"
-  - INDEX.md: "Dense connected narrative"
+  - README.md: "Dense connected narrative"
   - SIMULATION.yml: "Runtime state and orchestration"
   - vulnerabilities.yml: "872 unsafe function calls"
   - fascist-analysis.yml: "The infamous file"

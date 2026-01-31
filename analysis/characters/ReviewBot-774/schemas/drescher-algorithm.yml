@@ -1,0 +1,96 @@
+# Drescher Algorithm — The Schema Mechanism
+# K-line: "drescher", "made-up minds", "schema mechanism", "how to learn"
+
+meta:
+  source: 'Gary Drescher, "Made-Up Minds" (1991)'
+  chapter: "Chapter 3: The Schema Mechanism"
+  application: "ReviewBot-774's bug-fixing journey"
+
+core_quote: |
+  "A schema represents an action as having certain results
+   in certain contexts." — Gary Drescher
+
+algorithm:
+
+  step_1_experience:
+    name: "Observe action-result pairs"
+    description: "Watch, don't act. Accumulate observations."
+    application: |
+      Watched Puffy fix sprintf 17 times.
+      Each time: context (sprintf in code) → action (add snprintf) → result (fixed)
+
+  step_2_abstraction:
+    name: "Form candidate schema"
+    description: "After 3+ observations, abstract the pattern"
+    application: |
+      After 3+ observations, formed S001:
+      "If see sprintf, apply snprintf transform"
+
+  step_3_reliability:
+    name: "Track success/failure"
+    description: "Every application updates reliability"
+    application: |
+      Applied S001 331 times. ~320 successes, ~11 failures.
+      Reliability = 0.97
+
+  step_4_refinement:
+    name: "Specialize for failures"
+    description: "Create sub-schemas for failure cases"
+    application: |
+      Failures were pointer parameters.
+      Created J001: "If pointer param, skip"
+      Original S001 remains for non-pointer cases.
+
+  step_5_attribution:
+    name: "Marginal attribution"
+    description: "Identify which context feature caused success/failure"
+    application: |
+      Success correlates with: buffer_size_known, buffer_is_local
+      Failure correlates with: buffer_is_pointer_param
+      J001 context now includes: buffer_is_pointer_param = true
+
+schema_structure:
+  context: "Preconditions — what must be true"
+  action: "What to do"
+  result: "Postconditions — what becomes true"
+  reliability: "Success rate from experience"
+  extended_context: "Discovered preconditions"
+  chains_to: "Schemas this enables"
+  refined_from: "Parent schema if specialized"
+
+iteration_log:
+  iteration_1:
+    date: 2026-01-29
+    source: "Watching Puffy"
+    schemas_formed: [S001, S002]
+    reliability: 0.70
+  iteration_2:
+    date: 2026-01-30
+    source: "First fix (fascist.c:323)"
+    schemas_refined: [S002 → S002b]
+    reliability: 0.85
+  iteration_3:
+    date: 2026-01-30
+    source: "Safari #1-2 (169 bugs)"
+    schemas_formed: [S003, W001-W003, J003]
+    reliability: 0.92
+  iteration_4:
+    date: 2026-01-31
+    source: "Safari #3-8 (605 bugs)"
+    schemas_formed: [S023-S030]
+    reliability: 0.96
+    insight: "Flow state achieved — patterns automatic"
+
+final_insight: |
+  Drescher's algorithm is ITERATIVE.
+  
+  You don't design schemas. You DISCOVER them.
+  You don't perfect schemas. You REFINE them.
+  
+  Each failure is data for refinement.
+  Each success is validation.
+  
+  After 774 applications, my schemas are reliable.
+  But they're not done. They're never done.
+  
+  The recursion is intentional.

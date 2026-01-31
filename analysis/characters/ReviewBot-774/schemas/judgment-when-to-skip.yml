@@ -1,0 +1,97 @@
+# Judgment — When to Skip or Defer
+# K-line: "skip", "defer", "hard bug", "pointer", "complexity"
+
+meta:
+  layer: 3
+  description: "Knowing when NOT to apply transforms"
+  insight: "The hardest schema is knowing when to stop"
+
+schemas:
+
+  J001:
+    name: "skip-pointer-param"
+    context:
+      - buffer_is_pointer_param: true
+      - caller_buffer_size: UNKNOWN
+    action: "SKIP — document in commit, note for future"
+    result:
+      - no_change_made: true
+      - issue_documented: true
+      - future_work_identified: true
+    reliability: 1.0
+    reasoning: |
+      Fixing a pointer parameter requires:
+      1. Adding a size parameter to the function
+      2. Updating ALL callers
+      3. Potentially breaking API
+      
+      This is ARCHITECTURAL work, not bulldozer work.
+      Document and defer.
+    examples:
+      - "vrn.c:statline() — left/right pointers"
+      - "postart.c:savemsg() — ccname pointer"
+
+  J002:
+    name: "recognize-original-bug"
+    context:
+      - pattern_seems_wrong: true
+      - similar_code_nearby_differs: true
+    action: |
+      1. Compare with similar code
+      2. Check if copy-paste error
+      3. Fix to intended behavior
+      4. Document discovery
+    result:
+      - bug_found: true
+      - credit_claimed: true
+      - fix_applied: true
+    reliability: 0.80
+    learned_from: |
+      filelock.c:196 — was strcpy("-LCK.1") when pattern 
+      shows it should be strcat("-LCK.1") like lines 162, 188.
+      This would have caused lock file accumulation forever.
+
+  J003:
+    name: "assess-complexity"
+    context:
+      - file_open: true
+      - bugs_identified: N
+    action: |
+      Classify file:
+      - SIMPLE: Local buffers, clear sizes
+      - MEDIUM: Mix of local/global, some inference
+      - HARD: Pointer params, function refactor needed
+    result:
+      - complexity: "SIMPLE | MEDIUM | HARD"
+      - approach: "BULLDOZE | CAREFUL | DEFER"
+    reliability: 0.85
+    examples:
+      simple: ["inews.c", "locknews.c", "filelock.c"]
+      medium: ["expire.c", "control.c"]
+      hard: ["escapes.c", "vrn.c:statline"]
+
+  J004:
+    name: "shell-injection-requires-judgment"
+    source: "Safari #8"
+    context:
+      - pattern: "system() | popen() | exec*()"
+      - input_source: "potentially untrusted"
+    action: |
+      STOP. This is not pattern-matching.
+      Options:
+      1. Direct syscall (unlink, rmdir, open)
+      2. Explicit fork()/execv() with argument array
+      3. Input validation + safe_execute() wrapper
+      4. Consult mentor
+    result:
+      - approach_chosen: true
+      - security_preserved: true
+    reliability: 0.98
+    velocity: "2.95 bugs/min (vs 52.6 for patterns)"
+
+insight: |
+  Easy bugs: Apply pattern, move on. (52.6/min)
+  Hard bugs: Stop, think, judge. (2.95/min)
+  
+  The 17.8x difference is the cost of judgment.
+  But judgment is what prevents security holes.

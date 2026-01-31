@@ -1,0 +1,44 @@
+# Primitives — Atomic Operations
+# K-line: "basic ops", "atomic", "read/match/transform"
+
+meta:
+  layer: 0
+  description: "Foundation schemas — building blocks for everything else"
+  source: "Drescher LAYER 0"
+
+schemas:
+
+  P001:
+    name: "read-line"
+    context:
+      - file_open: true
+      - cursor_at_line: N
+    action: "read_line(N)"
+    result:
+      - line_content: LOADED
+      - pattern_visible: true
+    reliability: 1.0
+
+  P002:
+    name: "pattern-match"
+    context:
+      - line_content: LOADED
+      - known_patterns: [sprintf, strcpy, strcat, gets]
+    action: "match_pattern(line, patterns)"
+    result:
+      - pattern_found: "PATTERN | null"
+      - confidence: "0.0-1.0"
+    reliability: 0.98
+
+  P003:
+    name: "apply-transform"
+    context:
+      - pattern_found: PATTERN
+      - transform_known: true
+    action: "apply_transform(pattern, line)"
+    result:
+      - new_line: TRANSFORMED
+      - original_preserved: true
+    reliability: 0.95
+
+chains: "P001 → P002 → P003 (read → match → transform)"

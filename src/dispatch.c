@@ -89,10 +89,10 @@ bool		maynotify;  /* if FALSE, disables N option */
 	char	batchfile[BUFLEN];
 
       if (fappend && sp->s_xmit[0])
-	  (void) strcpy(batchfile, sp->s_xmit);
+	  (void) strlcpy(batchfile, sp->s_xmit, sizeof(batchfile));
       else
 	  /* append to BATCH/<system> */
-	  (void) sprintf(batchfile, "%s/%s", site.batchdir, sp->s_name);
+	  (void) snprintf(batchfile, sizeof(batchfile), "%s/%s", site.batchdir, sp->s_name);
 
 #ifdef DEBUG
 	if (!debug)
@@ -101,7 +101,7 @@ bool		maynotify;  /* if FALSE, disables N option */
 		xerror2("can't open %s, errno = %d", sp->s_xmit, errno);
 
 	/* construct the batch file line and append it to the batch */
-	(void) strcpy(bfr, hp->h_ident);
+	(void) strlcpy(bfr, hp->h_ident, LBUFLEN);
 #ifdef DEBUG
 	if (debug)
 	{
@@ -111,7 +111,7 @@ bool		maynotify;  /* if FALSE, disables N option */
 	else
 #endif /* DEBUG */
 	{
-	    (void) strcat(bfr, "\n");
+	    (void) strlcat(bfr, "\n", LBUFLEN);
 	    if (write(ofd, bfr, (iolen_t)strlen(bfr)) == FAIL)
 		logerr3("append of %s to %s failed, errno = %d",
 				bfr, batchfile, errno);
@@ -125,8 +125,8 @@ bool		maynotify;  /* if FALSE, disables N option */
     {
 	char	titbuf[SBUFLEN], ngbuf[SBUFLEN];
 
-	(void) sprintf(titbuf, "ihave %s %s", hp->h_ident, site.nodename);
-	(void) sprintf(ngbuf, "to.%s.ctl", sp->s_name);
+	(void) snprintf(titbuf, sizeof(titbuf), "ihave %s %s", hp->h_ident, site.nodename);
+	(void) snprintf(ngbuf, sizeof(ngbuf), "to.%s.ctl", sp->s_name);
 	return(xmitctrl(tp, sp, titbuf, ngbuf, (char *)NULL) != FAIL);
     }
 

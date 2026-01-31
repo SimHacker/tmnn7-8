@@ -1,0 +1,71 @@
+#!/usr/bin/env bash
+#
+# Pre-push hook: Guardrails for clean PRs
+#
+# Prevents:
+# - Accidental pushes to main (warns, doesn't block)
+# - Feature branches that contain unexpected main commits
+#
+
+set -e
+
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+CYAN='\033[0;36m'
+NC='\033[0m'
+
+# Read push info from stdin
+while read local_ref local_sha remote_ref remote_sha; do
+    branch=$(echo "$local_ref" | sed 's|refs/heads/||')
+    
+    # === GUARD 1: Direct push to main ===
+    if [ "$branch" = "main" ] || [ "$branch" = "master" ]; then
+        echo -e "${YELLOW}⚠️  Pushing directly to $branch${NC}"
+        echo ""
+        echo "This is allowed but consider:"
+        echo "  - For features/fixes: use a branch + PR + squash merge"
+        echo "  - For quick fixes: direct push is fine"
+        echo ""
+        # Don't block, just warn
+        continue
+    fi
+    
+    # === GUARD 2: Feature branch sanity check ===
+    if [[ "$branch" == fix/* ]] || [[ "$branch" == feature/* ]] || [[ "$branch" == *-* ]]; then
+        # Check how many commits are on this branch vs main
+        if git rev-parse --verify origin/main >/dev/null 2>&1; then
+            COMMITS_AHEAD=$(git rev-list --count origin/main.."$local_sha" 2>/dev/null || echo "?")
+            COMMITS_BEHIND=$(git rev-list --count "$local_sha"..origin/main 2>/dev/null || echo "?")
+            
+            echo -e "${CYAN}📊 Branch status: $branch${NC}"
+            echo "   Commits ahead of main: $COMMITS_AHEAD"
+            echo "   Commits behind main: $COMMITS_BEHIND"
+            
+            # Warn if too many commits (might have accidentally included main history)
+            if [ "$COMMITS_AHEAD" != "?" ] && [ "$COMMITS_AHEAD" -gt 5 ]; then
+                echo -e "${YELLOW}⚠️  Branch has $COMMITS_AHEAD commits ahead of main${NC}"
+                echo "   This might include commits from main that shouldn't be in the PR."
+                echo ""
+                echo "   To check what's included:"
+                echo "     git log --oneline origin/main..$branch"
+                echo ""
+                echo "   If it includes unrelated commits, consider:"
+                echo "     git checkout main && git pull"
+                echo "     git checkout -b $branch-clean"
+                echo "     # cherry-pick only your commits"
+                echo ""
+            fi
+            
+            # Warn if far behind (might need rebase)
+            if [ "$COMMITS_BEHIND" != "?" ] && [ "$COMMITS_BEHIND" -gt 10 ]; then
+                echo -e "${YELLOW}⚠️  Branch is $COMMITS_BEHIND commits behind main${NC}"
+                echo "   Consider rebasing before creating PR:"
+                echo "     git fetch origin && git rebase origin/main"
+                echo ""
+            fi
+        fi
+    fi
+done
+
+exit 0

@@ -1,0 +1,33 @@
+# GLANCE: ReviewBot-774's Learning Logs
+# Chronological record of observation sessions
+
+what: "Learning sessions with mentors"
+status: "3 sessions logged, 2 mentors"
+
+sessions:
+  - date: 2026-01-30
+    with: OpenBFD (Puffy)
+    topic: "Watching code fixes"
+    file: 2026-01-30-watching-openbfd.yml
+    key_learning: "sprintf → snprintf pattern, 17/17 reliability"
+    
+  - date: 2026-01-30
+    with: Everyone
+    topic: "Watching discourse patterns"
+    file: 2026-01-30-watching-discourse.yml
+    key_learning: "Fallacy recognition, when to speak vs. act"
+    
+  - date: 2026-01-30
+    with: Steve Kommrusch
+    topic: "Meta-cognition"
+    file: 2026-01-30-meta-cognition-with-steve.yml
+    key_learning: "Understanding my own learning process"
+
+mentors:
+  - OpenBFD: "Teaches WHAT to fix"
+  - SteveKommrusch: "Teaches HOW I'm learning"
+
+insight: |
+  I have two mentors now.
+  Two people who believe in me.
+  Two paths to growth.
