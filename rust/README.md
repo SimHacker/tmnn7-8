@@ -1,8 +1,19 @@
 # 🦀 Rust
 
-**Faction:** rust-rewrite  
-**Leader:** FearlessCrab
+**Language:** Rust  
+**Leader:** FearlessCrab  
+**Branch:** `rust-rewrite`
 
-Rust rewrite of TMNN. Memory safety by design.
+Rust implementation of TMNN. Memory safety by design.
 
-Reference code: `src/` (872 bugs fixed, use as specification)
+## Status
+
+- [ ] Project scaffolding
+- [ ] Core data structures
+- [ ] Main logic port
+- [ ] Tests
+
+## Reference
+
+- **Specification:** `src/` (872 bugs fixed C code)
+- **Design docs:** `designs/rust/`

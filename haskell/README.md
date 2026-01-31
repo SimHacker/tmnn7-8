@@ -1,8 +1,19 @@
 # λ Haskell
 
-**Faction:** haskell-port  
-**Leader:** PureMonad
+**Language:** Haskell  
+**Leader:** PureMonad  
+**Branch:** `haskell-port`
 
-Haskell port of TMNN. Referentially transparent.
+Haskell implementation of TMNN. Referentially transparent.
 
-Reference code: `src/` (use as specification, bugs are not endofunctors)
+## Status
+
+- [ ] Project scaffolding (cabal/stack)
+- [ ] Core types
+- [ ] Pure logic extraction
+- [ ] Monadic wrappers
+
+## Reference
+
+- **Specification:** `src/` (bugs are not endofunctors)
+- **Design docs:** `designs/haskell/`

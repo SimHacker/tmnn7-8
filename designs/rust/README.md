@@ -1,10 +1,11 @@
-# 🦀 Rust Rewrite Designs
+# 🦀 Rust
 
-**Faction:** rust-rewrite  
+**Language:** Rust  
 **Leader:** FearlessCrab  
-**Branch:** `rust-rewrite`
+**Code:** `rust/`  
+**Branch:** `rust-rewrite` (for faction-specific work)
 
-Design documents for the Rust rewrite of TMNN.
+Design documents for the Rust implementation of TMNN.
 
 ## Philosophy
 
