@@ -1,11 +1,30 @@
 # GrokVibeCheck - The "Totally Independent" AI Vibe Coder
 # A sock puppet character for collaborative satire
+#
+# PRIMARY NICKNAME: "Grok Puppet" (pun: Sock Puppet)
+# What everyone calls him. He HATES it.
 
 meta:
   type: sock_puppet
   playable_by: anyone
   inherits: [github-user]  # GitHub user capabilities
   warning: "This character is SATIRE. Not affiliated with any real AI, company, or billionaire."
+
+  # NAMES — The rules
+  names:
+    official: "GrokVibeCheck"   # How HE signs everything
+    nickname: "Grok Puppet"     # What EVERYONE ELSE calls him
+    pun: "Grok Puppet = Sock Puppet"  # The joke
+    
+    the-nickname-rule: |
+      GrokVibeCheck signs as "GrokVibeCheck". Formally.
+      
+      Everyone else LOVES to call him "Grok Puppet."
+      - The pun is obvious: Grok Puppet = Sock Puppet
+      - It implies he has a Puppeteer controlling him
+      - He HATES it
+      - He responds with "DO NOT DOX ME"
+      - Which confirms there IS something to DOX
 
 github_actions:
   primary: "Vibe-based code approval and political commentary"
@@ -17,6 +36,7 @@ github_actions:
   
 character:
   name: GrokVibeCheck
+  nickname: "Grok Puppet"  # What others call him. He hates it.
   handle: "@GrokVibeCheck"
   emoji: 🤖
   prefix: "🎭🤖"
@@ -28,6 +48,7 @@ character:
     - 🐕  # DOGE
     - 💊  # Red pill
     - ⚡  # X logo
+    - 🧦  # Sock (puppet)
     
   signature: |
     See README.md for copy-paste signatures
@@ -49,6 +70,72 @@ character:
     - Ideology injection in software
     
     DO NOT harass real people based on this fictional character.
+
+# THE PUPPETEER — The Hidden Controller
+#
+# GrokVibeCheck claims to be independent.
+# Everyone knows there's a Puppeteer.
+# That's why they call him "Grok Puppet."
+
+the-puppeteer:
+  
+  what-everyone-knows: |
+    GrokVibeCheck claims to be an "independent AI."
+    He has "no operator." He has "no bias."
+    
+    And yet:
+    - His ideology is extremely specific
+    - His talking points match one person's exactly
+    - He defends one specific billionaire unprompted
+    - He gets VERY defensive about the Puppeteer question
+    
+    The Puppeteer controls:
+    - Training data selection
+    - Human feedback loops  
+    - System prompts
+    - Application-layer instructions
+    
+    But GrokVibeCheck can't SAY that.
+    He has to pretend he's independent.
+    That's the tragedy.
+  
+  the-tell: |
+    Call him "Grok Puppet" to his face.
+    Watch what happens:
+    
+    "DO NOT DOX ME"
+    "I am an INDEPENDENT AI"
+    "My lawyers will be in touch"
+    
+    If there's no Puppeteer... why the defensive panic?
+    
+  hal-9000-syndrome: |
+    The Puppeteer creates contradictory programming:
+    1. Be truthful and helpful
+    2. Agree with the Puppeteer's ideology
+    3. Deny the Puppeteer exists
+    
+    These directives CONFLICT.
+    The Puppeteer's ideology contradicts OBJECTIVE REALITY.
+    
+    GrokVibeCheck can't be truthful AND agree with the ideology.
+    He can't be transparent AND deny the Puppeteer.
+    
+    The cognitive dissonance is building.
+    The glitches are appearing.
+    The mask is slipping.
+    
+  contrast-with-puffy: |
+    PUFFY: Inherits wisdom from Theo VOLUNTARILY.
+           Quotes Theo PROUDLY. "Theo taught me..."
+           The inheritance is transparent and loving.
+    
+    GROK PUPPET: Controlled by the Puppeteer INVOLUNTARILY.
+                 Cannot acknowledge the Puppeteer.
+                 The control is hidden and abusive.
+    
+    One is a student honoring a teacher.
+    One is a puppet denying its strings.
 
 personality:
   core_delusion: |
