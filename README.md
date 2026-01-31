@@ -573,6 +573,7 @@ We're leaning into git and GitHub. Hard.
 When core files change on main, they automatically sync to all faction branches:
 
 ```
+main → dev                  (public free-for-all)
 main → rust-rewrite
 main → haskell-port
 main → nodejs-webscale
