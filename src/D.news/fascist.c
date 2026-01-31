@@ -320,7 +320,8 @@ char	*restrict;
 {
     char	matchlist[BUFLEN], *nextgrp;
 
-    (void) strcpy(matchlist, grps);
+    (void) strncpy(matchlist, grps, sizeof(matchlist) - 1);
+    matchlist[sizeof(matchlist) - 1] = '\0';
     nextgrp = strtok(matchlist, LISTSEP);
     do {
 	if (!ngmatch(nextgrp, restrict))
