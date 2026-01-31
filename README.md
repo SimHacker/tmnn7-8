@@ -423,6 +423,34 @@ Everything MOOLLM was designed for converges here:
 
 This isn't a demo. This is the destination.
 
+### Lineage: Bar Karma (2011)
+
+**Direct descendant of Will Wright's crowd-sourced TV show.**
+
+[Bar Karma](https://en.wikipedia.org/wiki/Bar_Karma) was a Current TV series where:
+- Users contributed scenes and storylines
+- Community voted on plot directions
+- Multiple paths through the story graph
+- Producers chose from popular + satisfying paths
+- Editorial control balanced with crowd decisions
+
+Don Hopkins built **Storymaker** and **Urban Safari** at Will Wright's Stupid Fun Club for this project.
+
+**What we're doing here is the same pattern:**
+
+| Bar Karma | TMNN Simulation |
+|-----------|-----------------|
+| Branching storylines | GitHub branches |
+| Users contribute scenes | Anyone can comment/issue |
+| Vote on directions | Reactions, forks, merges |
+| Fork alternatives | `git branch`, faction issues |
+| Multiple paths to endings | Browse commit history |
+| Producers choose | Maintainer merges |
+
+**GitHub Issues are episodes. PRs are plot resolutions. Branches are alternate timelines.**
+
+The seed is planted (the codebase + characters). The crowd grows the story. Many paths exist simultaneously. Some get merged to main. Some stay as forks. All are canon somewhere.
+
 ### Use It For YOUR Drama
 
 **Anyone can use Cursor + MOOLLM + GitHub to stage any drama or debate they want.**
