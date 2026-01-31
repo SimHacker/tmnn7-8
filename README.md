@@ -434,14 +434,14 @@ This isn't a demo. This is the destination.
 - Producers chose from popular + satisfying paths
 - Editorial control balanced with crowd decisions
 
-Don Hopkins built **Storymaker** and **Urban Safari** at Will Wright's Stupid Fun Club for this project.
+Don Hopkins built branching **Storymaker** and geographical **Urban Safari** at Will Wright's Stupid Fun Club for this project.
 
 **What we're doing here is the same pattern:**
 
 | Bar Karma | TMNN Simulation |
 |-----------|-----------------|
 | Branching storylines | GitHub branches |
-| Users contribute scenes | Anyone can comment/issue |
+| Users contribute scenes | Anyone can comment/issue/branch/pr |
 | Vote on directions | Reactions, forks, merges |
 | Fork alternatives | `git branch`, faction issues |
 | Multiple paths to endings | Browse commit history |
@@ -455,7 +455,7 @@ The seed is planted (the codebase + characters). The crowd grows the story. Many
 
 ### Use It For YOUR Drama
 
-**Anyone can use Cursor + MOOLLM + GitHub to stage any drama or debate they want.**
+**Anyone can use Cursor + MOOLLM + GitHub to stage any drama or debate they want. Inherently collaborative, AI and humans on the same stage.**
 
 Pick your subject:
 - Historical debates (Lincoln-Douglas, but they're AI characters)
@@ -465,7 +465,7 @@ Pick your subject:
 - Fan fiction (Your favorite characters debate, audience votes)
 - Education (Students play historical figures, get graded on accuracy)
 
-**Git gives you superpowers:**
+**Git gives you multiverse Time Lord reality editing superpowers:**
 
 | Git Feature | Dramatic Superpower |
 |-------------|---------------------|
@@ -552,7 +552,7 @@ You're reading the README on `main`. That's just one timeline. Each branch is a 
 
 **These branches will never converge.** That's the point. Each faction believes their reality is the true path. PRs between branches are declarations of war.
 
-*Directly inspired by Philip K. Dick's "Faith of Our Fathers" (in Harlan Ellison's* Again, Dangerous Visions*, 1972) — where twelve people see twelve different realities, and all of them are true.*
+*Directly inspired by Philip K. Dick's "Faith of Our Fathers" (in Harlan Ellison's* Again, Dangerous Visions*, 1972) — where twelve people see twelve different realities, and all of them are true, and the government puts drugs in the water that make you hallucinate that there is only one shared reality.*
 
 ### 🔧 Every GitHub Feature Is A Game Mechanic
 
@@ -568,7 +568,7 @@ We're leaning into git and GitHub. Hard.
 | [**Tags**](https://github.com/SimHacker/tmnn7-8/tags) | Historical markers / achievements |
 | [**Releases**](https://github.com/SimHacker/tmnn7-8/releases) | Major faction milestones (that ship nothing) |
 | [**Actions**](https://github.com/SimHacker/tmnn7-8/actions) | Automated theater (bots, CI that does weird things) |
-| [**Wiki**](https://github.com/SimHacker/tmnn7-8/wiki) | Lore / world-building / retcons |
+| [**Wiki**](https://github.com/SimHacker/tmnn7-8/wiki) | Lore / world-building / retcons / storyboards |
 
 **Commit messages are dialogue.** Write them in character:
 ```
@@ -580,7 +580,35 @@ We're leaning into git and GitHub. Hard.
 
 **PRs are diplomatic incidents.** A PR from `rust-rewrite` to `main` is an invasion. A PR from `actual-fixes` is OpenBFD screaming into the void.
 
-**One branch might develop GitHub Actions workflows to do god knows what.** Automated poetry. Scheduled bot meltdowns. CI that runs `gets()` and reports the segfault. The possibilities are endless.
+**We already have GitHub Actions doing multiverse maintenance:**
+
+### 🌌 Multiverse Sync
+
+When core files change on main, they automatically sync to all faction branches:
+
+```
+main → rust-rewrite
+main → haskell-port
+main → nodejs-webscale
+main → based-freedom-fork
+main → elbonia-initiative
+main → actual-fixes
+```
+
+Characters exist in ALL timelines. Only the code diverges. If a sync conflicts, an issue gets created tagging the faction (not real humans — fictional accountability).
+
+### 🛡️ PR Guardian
+
+When a PR touches core files (characters, simulation, rooms), the Guardian:
+
+1. **Labels it** for review
+2. **Detects faction** from branch name (FearlessCrab 🦀, PureMonad λ, etc.)
+3. **Checks for vandalism** — is Rust faction editing Haskell character? Suspicious!
+4. **Comments** with review checklist
+
+> *"Factions can diverge on code. Characters are shared. You can hate PureMonad's Haskell port. You cannot edit PureMonad's personality."*
+
+**The multiverse has rules. The bots enforce them.**
 
 ### 🌌 Cross-Temporal Multiverse Sync
 
