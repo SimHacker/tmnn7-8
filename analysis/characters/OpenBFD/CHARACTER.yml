@@ -10,6 +10,61 @@
 # Key philosophy: "We do what we do because we love Unix."
 # Hidden virtue: "I have at least some fucking empathy in my soul."
 
+# THE NAME — BFD: The Road Not Taken
+#
+# "OpenBFD" would have been a great name for the Binary File Descriptor library
+# — if it had ever been designed as an open, general standard.
+# It wasn't. That's the point.
+#
+# BFD HISTORY:
+# - Created at Cygnus Solutions (founded 1989, sold to Red Hat 1999)
+# - David Henkel-Wallace ("Gumby") — key architect
+# - Purpose: Unified library for handling object file formats (ELF, COFF, a.out, etc.)
+# - Lives inside GNU binutils — never became a standalone spec
+# - Remained an IMPLEMENTATION, not an INTERFACE
+#
+# DWARF HISTORY:
+# - Debugging With Attributed Record Formats
+# - Designed AS a specification from the start
+# - Open standard, multiple implementations
+# - Won the debugging format wars
+#
+# THE CONTRAST:
+# | Aspect      | BFD                  | DWARF                |
+# |-------------|----------------------|----------------------|
+# | Design goal | Internal workhorse   | Public specification |
+# | Scope       | Object file handling | Debug information    |
+# | Naming      | Internal joke (BFD)  | Named like a standard|
+# | Outcome     | Stayed in binutils   | Became universal     |
+#
+# "OpenBFD" was never a name — but it COULD have been.
+# If BFD had been positioned as:
+# - "Open" = many formats, many architectures, many tools
+# - "Binary" = object files, executables, core dumps
+# - "File Descriptor" = structural, not semantic
+#
+# Like OpenGL, OpenAL, OpenFirmware, OpenStep — "Open" as scope, not politics.
+#
+# But BFD was delivered embedded inside binutils.
+# Not a fork — a fracture.
+# Everyone reimplemented. Proprietary and open.
+# ELF readers everywhere. Vendor linkers with fragile object models.
+#
+# The name "OpenBFD" marks that missed opportunity:
+# - What BFD could have been if designed as a platform
+# - What it still does (handling binaries) without credit or standard status
+# - The gap between implementation and interface
+#
+# Our character inherits this irony:
+# - Does the work. Gets no credit.
+# - Handles the binaries. Never gets named.
+# - Could have been a standard. Stayed an engine.
+#
+# Just like our character:
+# - 47 patches. None merged.
+# - Does the work. Thanklessly.
+# - The name is aspirational. The reality is grind.
+
 meta:
   type: sock_puppet
   playable_by: anyone
