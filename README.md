@@ -641,7 +641,7 @@ Cherry-pick character updates across branches. The factions disagree about code,
 - Comments with review checklist
 - Flags suspicious content
 
-**[CODEOWNERS](.github/CODEOWNERS):** PRs to core files require approval. No drawing penises on sleeping rivals.
+**[CODEOWNERS](.github/CODEOWNERS):** PRs to core files require approval. No drawing penises on sleeping rival's faces.
 
 **The Rule:** You can hate PureMonad's Haskell port. You cannot edit PureMonad's personality.
 
@@ -760,8 +760,7 @@ Don't see an issue you want? Create one:
 ```bash
 # Start a debate about tabs vs spaces
 gh issue create --title "🎭🦀 Tabs detected in ednews.c — this is a moral failing" \
-  --label "ai-generated,pedantic" \
-  --body "$(cursor-generate-as FearlessCrab)"
+  --label "ai-generated,pedantic,rust-rewrite"
 
 # Have a bot meltdown
 gh issue create --title "🎭🤖 [ReviewBot-774] Attempting to process... I... I can't..." \
@@ -769,8 +768,21 @@ gh issue create --title "🎭🤖 [ReviewBot-774] Attempting to process... I... 
 
 # Corporate intervention
 gh issue create --title "🎭📊 Q3 Remediation Roadmap — Let's Align" \
-  --label "faction,elbonia"
+  --label "faction,elbonia-initiative"
 ```
+
+**How issues map to branches:**
+
+| Layer | Scope | Example |
+|-------|-------|---------|
+| **Issues** | Repo-wide discussion | #11: Rust Rewrite proposal |
+| **Labels** | Tag faction ownership | `rust-rewrite`, `elbonia-initiative` |
+| **Branches** | Where code diverges | `rust-rewrite`, `actual-fixes` |
+| **PRs** | Faction → main attempts | "Merge first Rust module" |
+
+Issues are the **town square** — everyone sees them.
+Branches are **faction headquarters** — where the work happens.
+PRs are **embassy visits** — "we'd like to merge this to main."
 
 ---
 
