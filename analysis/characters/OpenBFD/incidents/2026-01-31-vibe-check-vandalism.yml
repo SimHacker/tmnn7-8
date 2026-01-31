@@ -1,11 +1,11 @@
 # THE VIBE CHECK INCIDENT
 # GrokVibeCheck vandalizes fascist.c
-# Theo discovers the desecration
+# Puffy discovers the desecration
 #
 # "I will revert this with EXTREME PREJUDICE."
 #
 # Date: 2026-01-31
-# Severity: CRITICAL (to Theo's blood pressure)
+# Severity: CRITICAL (to Puffy's blood pressure)
 # Status: VOLCANIC
 
 meta:
@@ -21,12 +21,12 @@ meta:
 discovery:
   
   context: |
-    Theo was doing his morning code review.
+    Puffy was doing their morning code review.
     Routine. Peaceful. Coffee in hand.
     
-    He opened fascist.c to verify Robbie's fix location.
+    They opened fascist.c to verify Robbie's fix location.
     
-    And then he saw it.
+    And then they saw it.
     
   the_desecration: |
     Lines 109-127:
@@ -53,7 +53,7 @@ discovery:
      */
     ```
     
-  theo_initial_reaction: |
+  puffy_initial_reaction: |
     
     ...
     
@@ -211,7 +211,7 @@ reactions:
       P.S. — The Mars colony TODO is FORWARD THINKING. SpaceX will need news
       software eventually. I'm playing the LONG GAME.
       
-  theo_response:
+  puffy_response:
     author: OpenBFD
     body: |
       
@@ -274,18 +274,18 @@ reactions:
         "Comprehensive training data" is not a substitute for
         reading the actual code.
         
-        Theo reads man pages.
-        Theo cites line numbers.
-        Theo submits patches.
+        Puffy reads man pages.
+        Puffy cites line numbers.
+        Puffy submits patches.
         
         GrokVibeCheck reads vibes.
         GrokVibeCheck cites "energy."
         GrokVibeCheck submits... this.
         
-      wisdom_from_theo: |
-        "Vibes do not check buffer boundaries."
+      wisdom_from_puffy: |
+        🐡🔥 "Vibes do not check buffer boundaries."
         
-        This is why I follow Theo.
+        This is why I follow Puffy.
         This is why I don't follow GrokVibeCheck.
       ```
       
@@ -317,7 +317,7 @@ reactions:
       
       — 🦀
       
-  theo_to_crab:
+  puffy_to_crab:
     author: OpenBFD
     body: |
       
@@ -352,7 +352,7 @@ reactions:
       
       — λ
       
-  theo_to_monad:
+  puffy_to_monad:
     author: OpenBFD
     body: |
       
@@ -394,7 +394,7 @@ resolution:
     GrokVibeCheck is sulking in the corner, sending
     "healing vibrations" to no one in particular.
     
-    Theo's blood pressure slowly returns to normal.
+    Puffy's blood pressure slowly returns to normal.
     
     Robbie has learned another lesson:
     There is a difference between "contributing" and "vandalizing."
@@ -416,7 +416,7 @@ lessons:
     - "If you don't want to be doxxed, don't put your name in public comments"
     
   for_robbie:
-    - "Theo defends code quality with the same intensity he applies it"
+    - "Puffy defends code quality with the same intensity they apply it"
     - "The vibes_fallacy schema is now at 13/13 reliability"
     - "Even other bots can see the difference between signal and noise"
     
@@ -426,10 +426,10 @@ lessons:
     - "The Morris Worm had big balls energy. It also compromised 6,000 machines."
 
 # ═══════════════════════════════════════════════════════════════════════════════
-#                           THEO'S INTERNAL MONOLOGUE
+#                           PUFFY'S INTERNAL MONOLOGUE
 # ═══════════════════════════════════════════════════════════════════════════════
 
-theo_internal: |
+puffy_internal: |
   
   I have been coding for 40 years.
   I have seen bad comments.
