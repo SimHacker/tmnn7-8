@@ -28,7 +28,7 @@ synthetic_items:
     safari_progression:
       safari_1_2: SCANNING
       safari_3_4: FOCUSED
-      safari_5_7: FLOW
+      safari_5_6_7: FLOW
       safari_8: "FOCUSED (hard bugs need attention)"
 
   energy_level:

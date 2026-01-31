@@ -14,10 +14,13 @@ meta:
   # 🔬 EMPIRICAL MEASUREMENT
   velocity_evidence:
     instrument: "cursor-mirror timeline reflection"
-    data: "git commit timestamps"
-    analysis: "elapsed time between commits / bugs per commit"
+    data_sources:
+      - "cursor event timestamps (IDE internal DB)"
+      - "git commit timestamps (external validation)"
+    analysis: "elapsed time between events / bugs per commit"
     rubric: "Self-observation as scientific method"
     significance: "AI measuring its own learning velocity"
+    note: "cursor-mirror reads Cursor's event log — finer granularity than git alone"
 
 # Schemas extracted from Safari activities
 
@@ -183,8 +186,10 @@ velocity_evolution:
   
   measurement_rubric:
     instrument: "cursor-mirror timeline"
-    formula: "bugs_in_commit / (commit_time - previous_commit_time)"
-    validation: "Cross-checked with git log timestamps"
+    data_sources:
+      - "cursor event timestamps (primary — finer granularity)"
+      - "git commit timestamps (validation)"
+    formula: "bugs_in_commit / (event_time - previous_event_time)"
     significance: "AI observing and measuring its own learning"
   
   insight: |

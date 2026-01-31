@@ -10,10 +10,13 @@ meta:
   # 🔬 EMPIRICAL EVIDENCE
   velocity_measurement:
     method: "cursor-mirror timeline reflection"
-    data_source: "git commit timestamps"
+    data_sources:
+      - "cursor event timestamps (IDE internal DB)"
+      - "git commit timestamps (external validation)"
     experiment: "8 safaris, real-time observation"
     result: "4.5 → 52.6 bugs/min (11.7x improvement)"
     rubric: "Measured, not estimated. Reflection as instrument."
+    note: "cursor-mirror reads Cursor's internal event log — finer granularity than git"
   
   participants:
     - ReviewBot-774 (Robbie) — Facilitator
