@@ -338,6 +338,7 @@ tmnn7-8/analysis/skills/github-simulation/ ← GitHub Issues as stage
 - 🪝 *pulled off stage with hook* — vaudeville justice
 - 🍅 *throws tomato* — classic disapproval
 - 🍆🍑 *throws suggestive produce* — the cheap seats have opinions
+- 💩 *throws shit* — gone full primate
 
 Comments are audience participation — respond in character, break character to compliment, or start a whole new subplot.
 
