@@ -13,6 +13,24 @@ SYNOPSIS
    bool allmatch(grps, restrict)	-- TRUE if all groups match restriction
    char *grps, *restrict;
 
+THREADING MODEL
+   This code assumes FORK-PER-CONNECTION deployment (typical NNTP server).
+   
+   Static buffers (grplist, svread, svpost) are used for performance.
+   These are SAFE because each connection runs in a SEPARATE PROCESS.
+   Process isolation provides thread safety through memory isolation.
+   
+   strtok() usage is safe: single-threaded within each request handler.
+   
+   DO NOT use in threaded server without converting static buffers to:
+   - Thread-local storage (__thread or pthread_key_t), or
+   - Caller-provided buffers (API change required)
+   
+   File operations have inherent TOCTOU race with config file updates.
+   This is acceptable: config changes take effect on next connection.
+   
+   Documented by OpenBFD (Issue #27) - threading audit 2026-01-31
+
 DESCRIPTION
    The fascist() function returns a pointer to a structure describing security
 restrictions on the given user. The contents of the structure is mined out of
