@@ -145,12 +145,12 @@ char	**argv;
 	char	**cpp;
 	int	ac;
 
-	(void) sprintf(bfr, "running");
+	(void) snprintf(bfr, LBUFLEN, "running");
 	for (ac = argc, cpp = argv; ac--; cpp++) {
-	    (void) strcat(bfr, " ");
-	    (void) strcat(bfr, *cpp);
+	    (void) strlcat(bfr, " ", LBUFLEN);
+	    (void) strlcat(bfr, *cpp, LBUFLEN);
 	}
-	(void) strcat(bfr, "\n");
+	(void) strlcat(bfr, "\n", LBUFLEN);
 	log0(bfr);
     }
 
@@ -209,7 +209,7 @@ char	**argv;
     if (!nosend && !noexpire) {
 	if (verbose >= V_SHOWPHASE)
 	    (void) fprintf(stderr, "Running sendbatch...");
-	(void) sprintf(bfr, "%s/sendbatch", site.libdir);
+	(void) snprintf(bfr, LBUFLEN, "%s/sendbatch", site.libdir);
 	(void) system(bfr);
 	if (verbose >= V_SHOWPHASE)
 	    (void) fprintf(stderr, "Done.\n");
@@ -333,7 +333,7 @@ char	**argv;
 	    if (pwd->pw_uid >= leastuid) {
 		char	newsrc[BUFLEN];
 
-		(void) sprintf(newsrc, "%s/.newsrc", pwd->pw_dir);
+		(void) snprintf(newsrc, sizeof(newsrc), "%s/.newsrc", pwd->pw_dir);
 		if (rdnewsrc(newsrc) == FAIL && verbose >= V_SHOWACTS)
 		    (void) fprintf(stderr,
 				   "Couldn't read %s, errno = %d\n",
@@ -502,7 +502,7 @@ catch_t xxit(i)
 
     if (!nosend && !noexpire && sigcaught != SIGQUIT)
     {
-	(void) sprintf(bfr, "%s/rnews", site.libdir);
+	(void) snprintf(bfr, LBUFLEN, "%s/rnews", site.libdir);
 	if (verbose > V_SHOWPHASE)
 	    (void) fprintf(stdout, "Running %s -U\n", bfr);
 	(void) execl(bfr, "rnews", "-U", (char *)NULL);
@@ -766,8 +766,8 @@ private void cleanparents()
     char	oldparents[BUFLEN], newparents[BUFLEN];
     FILE	*old, *new;
 
-    (void) sprintf(oldparents, "%s/parents", site.admdir);
-    (void) sprintf(newparents, "%s/parents.new", site.admdir);
+    (void) snprintf(oldparents, sizeof(oldparents), "%s/parents", site.admdir);
+    (void) snprintf(newparents, sizeof(newparents), "%s/parents.new", site.admdir);
     if (fopen(oldparents, "r") == NULL || fopen(newparents, "w") == NULL)
 	logerr("couldn't open files to clean out parents list");
     else
@@ -1051,7 +1051,7 @@ time_t	adate;	/* date to set as last-access time */
     char    	*grpdir = fn + strlen(site.textdir) + 1;
     char	*unique = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
 
-    (void) sprintf(bfr, "%s/%s", site.archdir, grpdir);
+    (void) snprintf(bfr, LBUFLEN, "%s/%s", site.archdir, grpdir);
 
     /*
      * Remove group number and use the creation date of the
@@ -1062,7 +1062,8 @@ time_t	adate;	/* date to set as last-access time */
      */
     tm = localtime(&fntime);
     do {
-        (void) sprintf(strrchr(bfr, '/') + 1,
+	char *pos = strrchr(bfr, '/') + 1;
+        (void) snprintf(pos, LBUFLEN - (pos - bfr),
 #ifdef USG
 		"%2.2d%2.2d%2.2d:%2.2d%2.2d.%2.2d%c",
 #else /* !USG */
@@ -1237,7 +1238,7 @@ char	*ext;
 {
     int	fd;
 	
-    (void) sprintf(bfr, "%s.%s", NHISTORY, ext);
+    (void) snprintf(bfr, LBUFLEN, "%s.%s", NHISTORY, ext);
     if ((fd = open(bfr, O_RDONLY|O_CREAT|O_TRUNC, 0644)) < 0)
 	xerror2("Can't create %s, errno is %d", bfr, errno);
     if (close(fd) < 0)
