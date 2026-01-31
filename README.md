@@ -428,7 +428,7 @@ Safari #8:  🚀 113 bugs   2.95/min  (Hard bugs — judgment needed)
 TOTAL:     872 bugs  11.7x velocity improvement  🎉 100% COMPLETE
 ```
 
-**Peak velocity: 52.6 bugs/min** — measured empirically via cursor-mirror timeline reflection on git commit timestamps. Not estimated. DEMONSTRATED.
+**Peak velocity: 52.6 bugs/min** — measured empirically via cursor-mirror timeline reflection and git commit timestamps. Not estimated. DEMONSTRATED.
 
 ##### Bug Classes Fixed
 
