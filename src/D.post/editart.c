@@ -81,20 +81,20 @@ char	*subject;	/* new subject (may be empty) */
     register char	*oldsubj = hp->h_subject;
 
     if (subject != (char *)NULL && subject[0])
-	(void) snprintf(bfr, LBUFLEN, "%s (was: %s)", subject, oldsubj);
+	(void) sprintf(bfr, "%s (was: %s)", subject, oldsubj);
     else if (hlnblank(oldsubj))
     {
 	if (!prefix(oldsubj, "Re:"))
-	    (void) snprintf(bfr, LBUFLEN, "Re: %s", oldsubj);
+	    (void) sprintf(bfr, "Re: %s", oldsubj);
 	else
-	    (void) strlcpy(bfr, oldsubj, LBUFLEN);
+	    (void) strcpy(bfr, oldsubj);
     }
     else
     {
 	if (hlnblank(hp->h_from))
-	    (void) snprintf(bfr, LBUFLEN, "Re: orphan response from %s", hp->h_from);
+	    (void) sprintf(bfr, "Re: orphan response from %s", hp->h_from);
 	else
-	    (void) strlcpy(bfr, "Re: orphan response", LBUFLEN);
+	    (void) strcpy(bfr, "Re: orphan response");
     }
 
     (void) hlcpy(fhp->h_subject, bfr);
@@ -114,7 +114,7 @@ char	*imark;
     FILE *tf, *pf;
     static char	artfile[BUFLEN];
 
-    (void) strlcpy(artfile, "/tmp/postXXXXXX", sizeof(artfile));
+    (void) strcpy(artfile, "/tmp/postXXXXXX");
     (void) mktemp(artfile);
 
     /* insert a header */
@@ -169,7 +169,7 @@ char	*artfile;
 #ifdef KNOWEMACS	/* this doesn't work yet */
     else if (strcmp(editcmd, "emacs") == 0)
     {
-	(void) snprintf(bfr, LBUFLEN, "%s/.emacs", userhome);
+	(void) sprintf(bfr, "%s/.emacs", userhome);
 	if (access(bfr, F_OK) == SUCCEED)	/* probably GNU Emacs */
 	    preflag = "-f (re-search-forward \"^$\")";
 	else
@@ -179,11 +179,11 @@ char	*artfile;
 
     if (preflag)
     {
-	(void) strlcat(editcmd, " ", sizeof(editcmd));
-	(void) strlcat(editcmd, preflag, sizeof(editcmd));
+	(void) strcat(editcmd, " ");
+	(void) strcat(editcmd, preflag);
     }
-    (void) strlcat(editcmd, " ", sizeof(editcmd));
-    (void) strlcat(editcmd, artfile, sizeof(editcmd));
+    (void) strcat(editcmd, " ");
+    (void) strcat(editcmd, artfile);
 	
     return(shcmd(editcmd, FORGRND | NOPRIVS, artfile));
 }
@@ -207,7 +207,7 @@ char	*artfile;
 	    (void) fseek(article, (off_t)0, SEEK_END);
 
 	/* open signature-generation file or program */
-	(void) snprintf(bfr, LBUFLEN, "%s/%s", userhome, ".signature");
+	(void) sprintf(bfr, "%s/%s", userhome, ".signature");
 	if (program = (access(bfr, X_OK) == SUCCEED))
 	    signature = popen(bfr, "r");
 	else if ((signature = fopen(bfr,"r")) == (FILE *)NULL)

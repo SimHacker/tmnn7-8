@@ -1265,7 +1265,7 @@ main()
     database *mydb;
 
     (void) printf("This is the edbm database editor, type ? for help\n");
-    while (fputs("* ", stdout) != EOF && fgets(cmdline, sizeof(cmdline), stdin) != (char *)NULL)
+    while (fputs("* ", stdout) != EOF && gets(cmdline) != (char *)NULL)
     {
 	if (sscanf(cmdline, "o %s", dbname) == 1)
 	{
