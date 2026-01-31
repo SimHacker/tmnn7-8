@@ -57,6 +57,10 @@ on:
       - 'src/D.*/GLANCE.yml'
       - 'analysis/skills/*/GLANCE.yml'
       
+      # Design documents — shared across all factions
+      # Each faction edits their subdir, no conflicts
+      - 'designs/**'
+      
       # The sync workflow itself
       - '.github/workflows/multiverse-sync.yml'
 
