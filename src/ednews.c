@@ -137,7 +137,7 @@ char *argv[];
 		 continue;
 	     else if (filtered)
 		 (void) unlink(artfile);
-	     (void) strcpy(artfile, msgfile());
+	     (void) strlcpy(artfile, msgfile(), sizeof(artfile));
 	     filtered = FALSE;
 	 }
 	
@@ -171,7 +171,7 @@ char *argv[];
 		group_t	*oldgrp = ngactive();
 
 		/* ship the front end a group data list */
-		(void) strcpy(bfr, "/tmp/newgrpsXXXXXX");
+		(void) strlcpy(bfr, "/tmp/newgrpsXXXXXX", LBUFLEN);
 		(void) mktemp(bfr);
 		indfp = xfopen(bfr, "w");
 		ngrewind(TRUE);
@@ -194,7 +194,7 @@ char *argv[];
 
 	    if (session.ngrp == 1)
 	    {
-		(void) sprintf(bfr, "\007GROUP %s %ld %ld %ld %c",
+		(void) snprintf(bfr, LBUFLEN, "\007GROUP %s %ld %ld %ld %c",
 		    ngname(), (long)ngmin(), (long)ngmax(), (long)ngunread(),
 		    rcsubsc(ngactive()) ? SUBSCMK : UNSUBSCMK);
 
@@ -216,22 +216,22 @@ char *argv[];
 	    vclearin();
 
 	    /* assemble and send the command status message */
-	    (void) sprintf(bfr, "\007DONE %02x\n", action);
+	    (void) snprintf(bfr, LBUFLEN, "\007DONE %02x\n", action);
 	    if (session.action == M_SEEK)
-		(void) strcat(bfr, " seek");
+		(void) strlcat(bfr, " seek", LBUFLEN);
 	    if (session.action == M_NEXT)
-		(void) strcat(bfr, " next");
+		(void) strlcat(bfr, " next", LBUFLEN);
 	    if (session.action == M_SKIP)
-		(void) strcat(bfr, " skip");
+		(void) strlcat(bfr, " skip", LBUFLEN);
 	    if (pending(HOLD))
-		(void) strcat(bfr, " hold");
+		(void) strlcat(bfr, " hold", LBUFLEN);
 	    if (pending(NOMORE))
-		(void) strcat(bfr, " nomore");
+		(void) strlcat(bfr, " nomore", LBUFLEN);
 	    if (pending(EXIT))
-		(void) strcat(bfr, " exit");
+		(void) strlcat(bfr, " exit", LBUFLEN);
 	    if (pending(CMDERR))
-		(void) strcat(bfr, " cmderr");
-	    (void) strcat(bfr, "\n");
+		(void) strlcat(bfr, " cmderr", LBUFLEN);
+	    (void) strlcat(bfr, "\n", LBUFLEN);
 	    (void) fputs(bfr, stdout);
 	    (void) fflush(stdout);
 
@@ -361,7 +361,7 @@ void listsubjs()
     FILE	*pfp;
     char	subjtmp[BUFLEN];
 
-    (void) strcpy(subjtmp, "/tmp/grpindexXXXXXX");
+    (void) strlcpy(subjtmp, "/tmp/grpindexXXXXXX", sizeof(subjtmp));
     (void) mktemp(subjtmp);
     pfp = xfopen(subjtmp, "w");
 
@@ -380,13 +380,13 @@ void listsubjs()
 private void caesar_command(bptr)
 char	*bptr;
 {
-    (void) sprintf(bfr, "%s/caesar <%s >%s", site.libdir, msgfile(), artfile);
-    (void) strcpy(artfile, "/tmp/caesarXXXXXX");
+    (void) snprintf(bfr, LBUFLEN, "%s/caesar <%s >%s", site.libdir, msgfile(), artfile);
+    (void) strlcpy(artfile, "/tmp/caesarXXXXXX", sizeof(artfile));
     (void) mktemp(artfile);
     if (*bptr)
     {
-	(void) strcat(bfr, " ");
-	(void) strcat(bfr, bptr);
+	(void) strlcat(bfr, " ", LBUFLEN);
+	(void) strlcat(bfr, bptr, LBUFLEN);
     }
     (void) system(bfr);
     filtered = TRUE;

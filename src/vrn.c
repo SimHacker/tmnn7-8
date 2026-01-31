@@ -161,7 +161,7 @@ cmdarg_t	*args;
 	    {
 		if (!rcsubsc(ngactive()))
 		{
-		    (void) sprintf(bfr,"Subscribe to %s? ", ngname());
+		    (void) snprintf(bfr, LBUFLEN, "Subscribe to %s? ", ngname());
 		    mptr = vgetline(bfr);
 		    if (mptr[0] == 'y')
 			subscribe();
@@ -176,7 +176,7 @@ cmdarg_t	*args;
     case '?':	/* search backwards for group */
 	session.reverse = TRUE;
     case '/':	/* search forward for group */
-	(void) sprintf(bfr, "Pattern? %c", args->c_char);
+	(void) snprintf(bfr, LBUFLEN, "Pattern? %c", args->c_char);
 	if (mptr = vgetline(bfr))
 	{
 	    char	*opts;
@@ -260,14 +260,14 @@ cmdarg_t	*args;
 	    for (cp = mptr; *cp; cp++)
 		if (*cp == ' ')
 		    *cp = '|';
-	    (void) strcat(grestrict, mptr);
+	    (void) strlcat(grestrict, mptr, sizeof(grestrict));
 	    gre = regcomp(grestrict);
 	    (void) tellmsg(&loc);
 	    ngrewind(TRUE);
 	    while (ngnext())
 		if (!rcflag(RC_NOTED))
 		{
-		    (void) sprintf(bfr, "Subscribe to %s? ", ngname());
+		    (void) snprintf(bfr, LBUFLEN, "Subscribe to %s? ", ngname());
 		    if (*vgetline(bfr))
 			subscribe();
 		    else
@@ -287,7 +287,7 @@ cmdarg_t	*args;
 	break;
 
     default:
-	(void) sprintf(bfr, "%s/vrn.group.help", site.admdir);
+	(void) snprintf(bfr, LBUFLEN, "%s/vrn.group.help", site.admdir);
 	(void) readfrom(HELP, bfr);
 	if (args->c_char != 'h')
 	    if (isprint(args->c_char))
@@ -305,7 +305,7 @@ cmdarg_t	*args;
     switch(args->c_char)
     {
     case 'h':	/* get help */
-	(void) sprintf(bfr, "%s/vrn.art.help", site.admdir);
+	(void) snprintf(bfr, LBUFLEN, "%s/vrn.art.help", site.admdir);
 	(void) readfrom(HELP, bfr);
 	break;
 
@@ -390,7 +390,7 @@ cmdarg_t	*args;
 	/* fall through on illegal command */
 
     case 'h':	/* get help */
-	(void) sprintf(bfr, "%s/vrn.pager.help", site.admdir);
+	(void) snprintf(bfr, LBUFLEN, "%s/vrn.pager.help", site.admdir);
 	(void) readfrom(HELP, bfr);
 	if (args->c_char != 'h')
 	    if (isprint(args->c_char))
