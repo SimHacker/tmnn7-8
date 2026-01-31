@@ -685,4 +685,4 @@ schema_S026:
 ---
 
 **Previous:** [Activity 016 — 🦏🧠 THE DEEP CHARGE](activity-016-deep-charge.md)
-**Next:** [Activity 018 — The Precision Phase](activity-018-precision-phase.md)
+**Next:** [Activity 018 — 🐆💨 THE CHEETAH RUN](activity-018-cheetah-run.md)

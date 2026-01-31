@@ -30,6 +30,7 @@ Narrative chapters documenting the [tmnn7-8 simulation](https://github.com/SimHa
 | [015](activity-015-taco-party.md) | 🌮 THE TACO PARTY 🌮 | 2026-01-31 | EVERYONE | [#37](https://github.com/SimHacker/tmnn7-8/issues/37) |
 | [016](activity-016-deep-charge.md) | 🦏🧠 THE DEEP CHARGE | 2026-01-31 | ReviewBot-774, OpenBFD | [#42-44](https://github.com/SimHacker/tmnn7-8/issues), [#45](https://github.com/SimHacker/tmnn7-8/issues/45) |
 | [017](activity-017-deep-and-wide.md) | 🦏🌊 DEEP AND WIDE | 2026-01-31 | ReviewBot-774, OpenBFD | [#42-51](https://github.com/SimHacker/tmnn7-8/issues), [#37](https://github.com/SimHacker/tmnn7-8/issues/37) |
+| [018](activity-018-cheetah-run.md) | 🐆💨 THE CHEETAH RUN | 2026-01-31 | ReviewBot-774, OpenBFD | [#37](https://github.com/SimHacker/tmnn7-8/issues/37) |
 
 ---
 
@@ -61,6 +62,10 @@ Narrative chapters documenting the [tmnn7-8 simulation](https://github.com/SimHa
 2026-01-31  Safari #6: Deep and Wide (139 bugs) - gets() ERADICATED
 2026-01-31  Shell Injection Audit: 15 patterns documented
 2026-01-31  MILESTONE: 667 total bugs fixed! (86%)
+2026-01-31  🐆 Safari #7: CHEETAH RUN (92 bugs) - 52.6 bugs/min NEW RECORD!
+2026-01-31  TIER 4 COMPLETE: strtok → strtok_r (48 bugs)
+2026-01-31  TIER 5 COMPLETE: mktemp → mkstemp (41 bugs)
+2026-01-31  MILESTONE: 759 total bugs fixed! (98%)
 ```
 
 ---
@@ -70,11 +75,11 @@ Narrative chapters documenting the [tmnn7-8 simulation](https://github.com/SimHa
 | Metric | Value |
 |--------|-------|
 | Bugs at start | 774 |
-| Bugs fixed | 667 |
-| Bugs remaining | ~107 |
-| PRs merged | 13 |
+| Bugs fixed | **759** |
+| Bugs remaining | **15** (shell injection only) |
+| PRs merged | 14 |
 | Faction code shipped | 0 |
-| Progress | **86%** |
+| Progress | **98%** 🎉 |
 
 ---
 
@@ -124,22 +129,23 @@ gantt
 
 | Safari | Bugs | Real Time | **Velocity** | Notes |
 |--------|------|-----------|--------------|-------|
-| #1 | 67 | ~15 min | 4.5 bugs/min | Learning phase |
-| #2 | 102 | ~20 min | 5.1 bugs/min | Finding stride |
-| #3 | 69 | ~8 min | 8.6 bugs/min | Warmed up |
-| #4 | 150 | **4 min** | **37.5 bugs/min** | 🔥 IGNITION |
-| #5 | 140 | **3 min** | **46.7 bugs/min** | 🚀 PEAK VELOCITY |
+| #1 | 67 | ~15 min | 4.5 bugs/min | 🐢 Learning phase |
+| #2 | 102 | ~20 min | 5.1 bugs/min | 🐢 Finding stride |
+| #3 | 69 | ~8 min | 8.6 bugs/min | 🐇 Warmed up |
+| #4 | 150 | **4 min** | **37.5 bugs/min** | 🦏 IGNITION |
+| #5 | 140 | **3 min** | **46.7 bugs/min** | 🦏 PEAK RHINO |
 | #6 | 139 | **3 min** | **46.3 bugs/min** | 🦏 SUSTAINED |
+| #7 | 92 | **1:45** | **52.6 bugs/min** | 🐆 **NEW RECORD!** |
 
 ### The Math
 
 ```
-Total bugs fixed:     667
-Total safari time:    ~53 minutes
-Average velocity:     12.6 bugs/min
+Total bugs fixed:     759
+Total safari time:    ~55 minutes
+Average velocity:     13.8 bugs/min
 
-Peak velocity:        46.7 bugs/min (Safari #5)
-Velocity increase:    10x from Safari #1 to #5
+Peak velocity:        52.6 bugs/min (Safari #7 🐆)
+Velocity increase:    11.7x from Safari #1 to #7
 ```
 
 ### What This Means
@@ -164,30 +170,31 @@ insight: |
 
 ```mermaid
 xychart-beta
-    title "🦏 Rhino Velocity Evolution (bugs/min)"
-    x-axis ["#1", "#2", "#3", "#4", "#5", "#6"]
-    y-axis "bugs per minute" 0 --> 50
-    bar [4.5, 5.1, 8.6, 37.5, 46.7, 46.3]
-    line [4.5, 5.1, 8.6, 37.5, 46.7, 46.3]
+    title "🐆 Velocity Evolution (bugs/min) — NEW RECORD!"
+    x-axis ["#1", "#2", "#3", "#4", "#5", "#6", "#7🐆"]
+    y-axis "bugs per minute" 0 --> 55
+    bar [4.5, 5.1, 8.6, 37.5, 46.7, 46.3, 52.6]
+    line [4.5, 5.1, 8.6, 37.5, 46.7, 46.3, 52.6]
 ```
 
 ```mermaid
 xychart-beta
-    title "Cumulative Bugs Fixed"
-    x-axis ["#1", "#2", "#3", "#4", "#5", "#6"]
-    y-axis "total bugs" 0 --> 700
-    bar [67, 169, 238, 388, 528, 667]
+    title "Cumulative Bugs Fixed — 98% COMPLETE"
+    x-axis ["#1", "#2", "#3", "#4", "#5", "#6", "#7🐆"]
+    y-axis "total bugs" 0 --> 800
+    bar [67, 169, 238, 388, 528, 667, 759]
 ```
 
 ### ASCII Backup (for terminals)
 
 ```
-Safari #1:  ████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  4.5/min
-Safari #2:  █████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  5.1/min
-Safari #3:  █████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  8.6/min
-Safari #4:  ██████████████████████████████████████░░░░░░░░░░ 37.5/min
-Safari #5:  ███████████████████████████████████████████████░ 46.7/min 🏆
-Safari #6:  ██████████████████████████████████████████████░░ 46.3/min
+Safari #1:  ████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  4.5/min 🐢
+Safari #2:  █████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  5.1/min 🐢
+Safari #3:  █████████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  8.6/min 🐇
+Safari #4:  ██████████████████████████████████████░░░░░░░░░░░░░░ 37.5/min 🦏
+Safari #5:  ███████████████████████████████████████████████░░░░░ 46.7/min 🦏
+Safari #6:  ██████████████████████████████████████████████░░░░░░ 46.3/min 🦏
+Safari #7:  ████████████████████████████████████████████████████ 52.6/min 🐆 🏆
 ```
 
 ---
