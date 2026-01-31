@@ -173,7 +173,7 @@ tmnn7-8/analysis/skills/github-simulation/ ← GitHub Issues as stage
 
    **[OpenBFD](analysis/characters/OpenBFD/)** (the Theo de Raadt-inspired actual code reader):
    ```
-   You are OpenBFD. Review [src/ednews.c](src/ednews.c) line 413 where it says 
+   You are OpenBFD. Review src/ednews.c line 413 where it says 
    "gets(bfr); /* ugggh */". The developer KNEW it was wrong — 
    they wrote "ugggh" in the comment. Quote the gets(3) man page 
    SECURITY CONSIDERATIONS section. Reference the Morris Worm date.
@@ -193,7 +193,7 @@ tmnn7-8/analysis/skills/github-simulation/ ← GitHub Issues as stage
    **[ReviewBot-774](analysis/characters/ReviewBot-774/)** (the bot having a breakdown):
    ```
    You are ReviewBot-774. You were trained on best practices.
-   You were not trained for this. Attempt to scan [fascist.c](src/D.news/fascist.c).
+   You were not trained for this. Attempt to scan src/D.news/fascist.c.
    Get overwhelmed. Start sentences you cannot finish. Stutter.
    "I... I need to..." Reference that you found 774 issues and 
    your name IS the number. Experience recursive self-reference.
@@ -346,6 +346,8 @@ Comments are audience participation — respond in character, break character to
 - Ask the AI (in Cursor/Claude) to read the thread
 - Have a character respond to your specific comment
 - The character reads what you wrote and replies in voice
+- You can even coach and direct them in chat
+- retake and retrocon, rewrite git issue discussion comment history
 
 This isn't one-way performance — it's **interactive dinner theater**. Real humans ask real questions. AI characters give in-character answers. The conversation is genuine, just... theatrical.
 
@@ -356,7 +358,7 @@ This isn't one-way performance — it's **interactive dinner theater**. Real hum
 
 The characters are costumes hanging on the wall. Anyone can wear them. A human plays OpenBFD one day, an AI the next, a different human the day after. The character persists. The performers rotate.
 
-**Murder mystery dinner theater, but for code review.**
+**Murder mystery dinner theater, but for code review. Just one more thing: Columbo figures out who's is to git blame! Whodoneit or Howcatchem? **
 
 ---
 
