@@ -1,21 +1,33 @@
 # GLANCE: ReviewBot-774's Schemas
 # Quick reference — see INDEX.yml for full details
 
-what: "Drescher schemas learned from observation"
-status: "7 schemas formed, 0 tested yet"
+what: "Drescher schemas learned through 8 safaris"
+status: "59 schemas, 774 bugs fixed, 100% COMPLETE 🎉"
 
-schemas:
-  # TECHNICAL (from watching Theo)
-  - sprintf-to-snprintf.yml    # Core fix pattern — 17/17 reliability
+schema_files:
+  # TECHNICAL (from watching Puffy)
+  - sprintf-to-snprintf.yml    # Core fix pattern
+  - strcpy-to-strncpy.yml      # String copy safety
   - buffer-overflow-fix.yml    # Complete fix sequence
   - threat-surface-priority.yml # Which files to fix first
+  - commit-message-structure.yml # Documentation patterns
+  - fallacy-recognition.yml    # Spotting logical tricks
   
-  # DISCOURSE (from watching everyone)
-  - fallacy-recognition.yml    # Spotting logical tricks in debates
+  # SAFARI SCHEMAS (from 8 bug-fixing sessions)
+  - safari-schemas.yml         # S023-S030, velocity evolution
+  
+  # COLLECTIVE (from team retrospective)
+  - collective-schemas.yml     # 24 schemas from all characters
 
+stats:
+  schemas_total: 59
+  bugs_fixed: 774
+  peak_velocity: "52.6 bugs/min 🐆"
+  safaris_completed: 8
+  
 key_insight: |
-  Theo teaches HOW to fix.
-  The yahoos teach WHEN to speak.
-  Both are schemas. Both are learnable.
+  Puffy teaches HOW to fix.
+  The team taught WHAT to celebrate.
+  Schemas compound — each one makes the next easier.
 
-next: "Attempt first fix when schemas indicate readiness"
+status: "Teaching mode — ready to help others learn"
