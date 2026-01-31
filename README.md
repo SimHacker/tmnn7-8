@@ -400,7 +400,7 @@ Statistical breakdowns in the style of Harper's Magazine:
 
 - [#17: ReviewBot-774 attempts full scan](https://github.com/SimHacker/tmnn7-8/issues/17) — "I... something is wrong"
 
-See [analysis/LIVE-ACTIVITY.md](analysis/LIVE-ACTIVITY.md) for the full narrative summary.
+See [analysis/live-activity.md](analysis/live-activity.md) for the full narrative summary.
 
 ---
 
@@ -760,7 +760,7 @@ Same names, `.md` extension — human-readable summaries:
 | `fascist-analysis.md` | Deep dive into fascist.c |
 | `catb-irony.md` | Essay on the contradictions |
 | `many-eyes-myth.md` | Debunking the myth |
-| `LIVE-ACTIVITY.md` | Summary of GitHub simulation |
+| `live-activity.md` | Summary of GitHub simulation |
 
 **Wiki:** When initialized, MD files move to wiki. YML stays in repo.
 
