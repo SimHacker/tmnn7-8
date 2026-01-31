@@ -84,6 +84,22 @@ Narrative chapters documenting the [tmnn7-8 simulation](https://github.com/SimHa
 
 ### The Evening of 2026-01-31 (20:32 - 20:52)
 
+```mermaid
+gantt
+    title 🦏 Safari Timeline (20 minutes of fury)
+    dateFormat HH:mm
+    axisFormat %H:%M
+    
+    section Safaris
+    Safari #3 (69 bugs)     :s3, 20:28, 4m
+    Safari #4 (150 bugs)    :s4, 20:32, 4m
+    Safari #5 (140 bugs)    :s5, 20:44, 3m
+    Safari #6 (139 bugs)    :s6, 20:49, 3m
+    
+    section Celebrations
+    🌮 Taco Party           :tp, 20:36, 8m
+```
+
 ```
 20:32:33  Safari #3 commit ──── 69 bugs
     │
@@ -145,6 +161,25 @@ insight: |
 ```
 
 ### 🦏 Velocity Evolution
+
+```mermaid
+xychart-beta
+    title "🦏 Rhino Velocity Evolution (bugs/min)"
+    x-axis ["#1", "#2", "#3", "#4", "#5", "#6"]
+    y-axis "bugs per minute" 0 --> 50
+    bar [4.5, 5.1, 8.6, 37.5, 46.7, 46.3]
+    line [4.5, 5.1, 8.6, 37.5, 46.7, 46.3]
+```
+
+```mermaid
+xychart-beta
+    title "Cumulative Bugs Fixed"
+    x-axis ["#1", "#2", "#3", "#4", "#5", "#6"]
+    y-axis "total bugs" 0 --> 700
+    bar [67, 169, 238, 388, 528, 667]
+```
+
+### ASCII Backup (for terminals)
 
 ```
 Safari #1:  ████░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░  4.5/min
