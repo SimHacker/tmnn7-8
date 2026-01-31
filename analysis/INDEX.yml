@@ -5,7 +5,19 @@
 version: 1
 skill_count: 9  # playable characters
 evidence_count: 40+
-last_updated: 2026-01-30
+last_updated: 2026-01-31
+
+# 🐆 RUNNING TOTALS — Updated after Safari #7
+stats:
+  bugs_at_start: 774
+  bugs_fixed: 759
+  bugs_remaining: 15  # shell injection only
+  progress: "98%"
+  prs_merged: 14
+  faction_code_shipped: 0
+  safaris_completed: 7
+  peak_velocity: "52.6 bugs/min (Safari #7 🐆)"
+  velocity_improvement: "11.7x from Safari #1 to #7"
 
 # CHARACTERS — The Playable Cast
 # Each is an "Anthropic Skill" — a persona AI can embody
