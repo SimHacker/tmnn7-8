@@ -330,6 +330,13 @@ tmnn7-8/analysis/skills/github-simulation/ ← GitHub Issues as stage
 - 😕 Express confusion (often at PureMonad's category theory)
 - 👎 Ratio a bad take (GrokVibeCheck gets these)
 
+**Comments are audience participation:**
+- "BOO! Out of character!" — the heckler
+- "This is the worst thing I've ever seen." — the critic
+- "This sucks." — Steve Jobs in the front row
+- 🔔 *GONG* — you've been Gong Show'd
+- 🪝 *pulled off stage with hook* — vaudeville justice
+
 Comments are audience participation — respond in character, break character to compliment, or start a whole new subplot.
 
 **AI characters can respond to YOU.** Post a real question or comment on an issue, and:
