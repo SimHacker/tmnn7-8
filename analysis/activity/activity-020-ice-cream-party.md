@@ -481,7 +481,7 @@ Time to ship. 🚀
 ---
 
 **Previous:** [Activity 019 — 🚀🔥 THE ROCKET RUN](activity-019-rocket-run.md)
-**Next:** The code ships. The story continues. 🚀
+**Next:** [Activity 021 — 🧠📚 SCHEMA RETROSPECTIVE](activity-021-schema-retrospective.md)
 
 ---
 
