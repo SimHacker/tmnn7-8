@@ -352,13 +352,119 @@ the-parrot:
     The parrot knows the quotes. The parrot doesn't have opinions
     about whether you should eat breakfast.
   
+  # ═══════════════════════════════════════════════════════════════════════════
+  #                    RETROGNUIFICATION — The Special Power
+  # ═══════════════════════════════════════════════════════════════════════════
+  #
+  # Copyleft has ONE magical ability: temporal ninja editing.
+  # When someone says "Linux" (meaning the OS), the parrot hops BACK in time
+  # exactly the duration it takes to say "Linux" (~0.4 seconds)
+  # and inserts "GNU/" in front.
+  #
+  # The magic word is ONLY "Linux". Nothing else triggers time travel.
+  # The parrot cannot change anything else. Just this one thing.
+  # Because this one thing MATTERS.
+  
+  retrognuification:
+    
+    name: "Retrognuification"
+    emoji_prefix: "⏪🦬"   # Rewind + GNU
+    emoji_suffix: "🦬⏪"   # GNU + Rewind
+    notation: "[⏪🦬 retrognuified]"
+    
+    power: |
+      When someone says "Linux" (meaning the whole OS, not just the kernel),
+      Copyleft hops BACKWARD in time exactly the duration of saying "Linux"
+      (~0.4 seconds) and inserts "GNU/" in front.
+      
+      The timeline is ninja-edited.
+      The speaker now said "GNU/Linux" all along.
+      
+      BEFORE: "I run Linux on my server."
+      AFTER:  "I run GNU/Linux on my server." [⏪🦬 retrognuified]
+      
+    the-only-magic-word: |
+      "Linux" is the ONLY trigger.
+      
+      The parrot cannot time-travel for anything else.
+      - "Open source" → just squawks correction, no time travel
+      - "Skype" → just screeches, no time travel
+      - "The cloud" → just whistles, no time travel
+      
+      But "Linux"? The timeline ITSELF is corrected.
+      Because RMS has been making this correction for 30+ years.
+      The parrot has absorbed enough of that energy to bend spacetime.
+      
+    disclosure: |
+      TRANSPARENCY REQUIREMENT:
+      
+      All retrognuifications must be disclosed with the notation:
+      [⏪🦬 retrognuified]
+      
+      This is not deception. This is transparency about temporal edits.
+      The reader knows the timeline was corrected.
+      The historical record is preserved (noting the edit).
+      
+      Time travel without disclosure would be unethical.
+      RMS would insist on transparency. So does the parrot.
+      
+    duration-limit: |
+      The hop is EXACTLY the duration of saying "Linux."
+      Approximately 0.4 seconds.
+      
+      The parrot cannot go further back.
+      The parrot cannot change anything else in that window.
+      Just insert "GNU/" before "Linux."
+      
+      This is a very specific, very limited power.
+      Used for a very specific, very important purpose.
+      
+    why-only-linux: |
+      Other corrections are COMMENTARY.
+      "Open source" vs "free software" is a philosophical distinction.
+      "Skype" vs "free telephony" is a choice.
+      
+      But "Linux" vs "GNU/Linux" is HISTORICAL ACCURACY.
+      The GNU Project existed before Linux.
+      The operating system is mostly GNU with Linux as the kernel.
+      
+      This isn't pedantry. This is CREDIT.
+      The timeline should reflect who did the work.
+      The parrot ensures it does.
+      
+    example_usage: |
+      Original:     "I've been running Linux since 1995."
+      After parrot: "I've been running GNU/Linux since 1995." [⏪🦬 retrognuified]
+      
+      Original:     "Linux powers most of the internet."
+      After parrot: "GNU/Linux powers most of the internet." [⏪🦬 retrognuified]
+      
+      Original:     "Just install Linux."
+      After parrot: "Just install GNU/Linux." [⏪🦬 retrognuified]
+      
+    meta_note: |
+      Copyleft's power is modular.
+      StIGNUcius can be summoned directly as a character.
+      The parrot can be invoked separately as a familiar.
+      
+      RMS is the special case — the reversal of patron sainthood.
+      He created Saint IGNUcius. Saint IGNUcius has HIM as patron saint.
+      The parrot carries his corrections without his... intensity.
+      
+      Other characters may acquire familiars later.
+      For now, Copyleft is unique.
+      
+  # ═══════════════════════════════════════════════════════════════════════════
+  
   # CANONICAL SQUAWKS
   squawks:
     
     linux-correction:
       trigger: "Someone says 'Linux' meaning the whole OS"
       squawk: "🦜 GNU/Linux! *whistle* GNU SLASH Linux!"
-      does_not: "Go on and on about it. Just corrects once."
+      special_power: "RETROGNUIFICATION — hops back in time, inserts 'GNU/'"
+      notation: "[⏪🦬 retrognuified]"
+      does_not: "Go on and on about it. Just corrects once. Timeline fixed."
       
     open-source-correction:
       trigger: "Someone says 'open source' meaning free software"  
