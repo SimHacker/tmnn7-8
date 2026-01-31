@@ -284,7 +284,7 @@ feed_t  *sp;            /* data on the link */
     off_t maxbytes, qlen, spoolmin;
 
     /* Find the batch list at BATCH/<system(s)>... */
-    (void) sprintf(batchname, "%s/%s", site.batchdir, target);
+    (void) snprintf(batchname, sizeof(batchname), "%s/%s", site.batchdir, target);
 
     /*
      * ...so we can exclusive-lock it. This may involve waiting on
@@ -360,8 +360,8 @@ long	bytesleft;	/* maximum size of batch sections */
     {
 	char	titbuf[SBUFLEN], ngbuf[SBUFLEN];
 
-	(void) sprintf(titbuf, "ihave %s", site.nodename);
-	(void) sprintf(ngbuf, "to.%s.ctl", sp->s_name);
+	(void) snprintf(titbuf, sizeof(titbuf), "ihave %s", site.nodename);
+	(void) snprintf(ngbuf, sizeof(ngbuf), "to.%s.ctl", sp->s_name);
 	(void) xmitctrl(target, sp, titbuf, ngbuf, (char *)NULL);
 	return;
     }
@@ -381,10 +381,10 @@ long	bytesleft;	/* maximum size of batch sections */
 	 * to recover from a crash without losing anything.
 	 */
 	{
-	    (void) strcpy(workfile, batchfile);
+	    (void) strlcpy(workfile, batchfile, sizeof(workfile));
 	    if (!fileg)
 	    {
-		(void) strcat(workfile, ".work");
+		(void) strlcat(workfile, ".work", sizeof(workfile));
 		if (access(workfile, F_OK) < 0)
 		{
 		    if (access(batchfile, F_OK) < 0 && errno == ENOENT)
@@ -453,8 +453,8 @@ long	bytesleft;	/* maximum size of batch sections */
 	    char ltmpfile[SBUFLEN];
 
 	    (void) umask(2);
-	    (void) strcpy(ltmpfile, batchfile);
-	    (void) strcat(ltmpfile, ".tmp");
+	    (void) strlcpy(ltmpfile, batchfile, sizeof(ltmpfile));
+	    (void) strlcat(ltmpfile, ".tmp", sizeof(ltmpfile));
 	    if ((nfp = fopen(ltmpfile, "w")) == (FILE *)NULL)
 	    {
 		logerr2("fopen(%s,w) %s", ltmpfile, sys_errlist[errno]);
@@ -507,10 +507,10 @@ char    *fname;         /* name of the batch to send */
      * if the remote system has a .cmd file in the batch directory, use
      * it as a transmission method; if not, do a normal transmit
      */
-    (void) sprintf(bfr, "%s/%s.cmd", BATCH, sp->s_name);
+    (void) snprintf(bfr, LBUFLEN, "%s/%s.cmd", BATCH, sp->s_name);
     if (access(bfr, F_OK) == SUCCEED)
     {
-	(void) sprintf(bfr,
+	(void) snprintf(bfr, LBUFLEN,
 	    "%s/%s.cmd <%s %s", BATCH, sp->s_name, fname, syslist);
 #ifdef DEBUG
 	if (debug)
