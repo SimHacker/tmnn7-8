@@ -37,36 +37,59 @@ It's a game of intellectual chicken disguised as provocative truth-telling.
 7. REPEAT: Continue to believe you were right all along
 ```
 
-### The Russ Nelson Case Study
+### The Russ Nelson Case Study (Feb 2005)
 
-**February 7, 2005**: Russ Nelson (then OSI President) posts "Blacks are Lazy" on his blog.
+**Timeline**:
+- Feb 1, 2005: Russ Nelson named OSI President, replacing ESR
+- Feb 7, 2005: Nelson posts "Blacks are Lazy" on his blog
+- Feb 23, 2005: Nelson resigns (backdated)
+- Mar 4, 2005: eWeek publishes ESR's defense
 
-**The Opening Line**:
-> "Black people are lazy in that they work less hard than whites."
+**The Original Post** (archived via [Slashdot](https://slashdot.org/~tomhudson/journal/98015)):
 
-**The "Clever" Argument**: 
-Nelson claimed he was making an economic point about rational labor 
-decisions based on pay disparities. The title was "clickbait" to draw 
-people in to his "real" argument.
+💬 "Black people are lazy in that they work less hard than whites. Not only 
+that, but they are rational to be lazy! After black slaves were freed, they 
+worked less. The value of their leisure time (highly valued after a lifetime 
+of slavery) exceeded the pay from their work. Also, ongoing American racism 
+has caused blacks to be paid less than whites. If everything else is the same, 
+a black person is less likely to want to work as hard as a white person."
+— (Feb 7, 2005, [archived](https://web.archive.org/web/20050308034834/http://blog.russnelson.com/economics/.removed/blacks-are-lazy.html))
 
-**The Result**: Forced to resign as OSI President within weeks.
+💬 "It wouldn't surprise me to find that blacks are still taught to value 
+their leisure time more highly than whites. When their forebears were slaves, 
+their leisure time was very precious to them. Cultures change slowly."
+— (same post)
 
-**ESR's Defense** (the key part):
+**The "Clever" Argument**: Nelson claimed a white libertarian explaining to 
+Black Americans why they have "the right to be lazy" was economic insight, 
+not racism. Classic ESR-style "I'm so smart I can say anything" provocation.
 
-💬 "The people who knew Russ as a Quaker, a pacifist and a gentleman, 
-and no racist, but nevertheless pressured OSI to do the responsible 
-thing and fire him in order to avoid political damage should be 
-equally ashamed. Abetting somebody else's witch hunt is no less 
-disgusting than starting your own."
-— (Mar 2005, [eWeek](https://www.eweek.com/servers/new-osi-president-steps-down/))
+**ESR's Defense** — Instead of distancing OSI, he demanded they fight:
+
+💬 "The people who called Russ a racist should be deeply ashamed of themselves. 
+The rants against him were ugly and ignorant, ignoring what he actually wrote 
+and substituting the ranters' own preoccupations."
+— (Mar 4, 2005, [eWeek](https://www.eweek.com/servers/new-osi-president-steps-down/))
+
+💬 "The people who knew Russ as a Quaker, a pacifist and a gentleman, and no 
+racist, but nevertheless pressured OSI to do the responsible thing and fire 
+him in order to avoid political damage should be equally ashamed. Abetting 
+somebody else's **witch hunt** is no less disgusting than starting your own."
+— (same article)
 
 💬 "Personally, I wanted to fight this on principle. Russ resigned the 
-presidency rather than get OSI into that fight. That sacrifice makes 
-me angrier at the **fools and thugs** who pulled him down."
-— (Mar 2005, [eWeek](https://www.eweek.com/servers/new-osi-president-steps-down/))
+presidency rather than get OSI into that fight. That sacrifice makes me 
+angrier at the **fools and thugs** who pulled him down."
+— (same article)
 
-**Note**: "Thugs" has been identified as a dog-whistle term. ESR wanted 
-OSI to spend resources DEFENDING racism rather than promoting open source.
+**The Pattern**: 
+- ESR demanded OSI spend time, resources, money defending Nelson
+- Called critics "fools", "thugs", used "witch hunt" framing
+- Nelson's resignation made ESR *angrier at critics*, not reflective
+- Nelson stayed on OSI board for 6 more years despite the incident
+
+**Note**: "Thugs" is a recognized dog-whistle. ESR's priority was defending 
+a fellow libertarian's "right" to race-bait, not protecting open source.
 
 ### Why It's "Chicken"
 
