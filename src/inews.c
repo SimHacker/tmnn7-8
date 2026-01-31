@@ -371,15 +371,16 @@ char	*fname;	    /* name of the file to put the text in */
 		for (p = mailfrom; q = strchr(p, PATHSEP); p = q + 1)
 		    for (r = q + 1; s = strchr(r, PATHSEP); r = s + 1)
 		    {
-			*q = *s = '\0';
-			if (strcmp(p, r))
-			    *q = *s = PATHSEP;
-			else
-			{
-			    (void) strcpy(q + 1, s + 1);
-			    *q = PATHSEP;
-			    break;
-			}
+			    *q = *s = '\0';
+			    if (strcmp(p, r))
+				*q = *s = PATHSEP;
+			    else
+			    {
+				/* 🌺 TIKI FIX: memmove for overlapping buffers in path optimization 🦜 */
+				(void) memmove(q + 1, s + 1, strlen(s + 1) + 1);
+				*q = PATHSEP;
+				break;
+			    }
 		    }
 
 		(void) hlcpy(header.h_path, mailfrom);
