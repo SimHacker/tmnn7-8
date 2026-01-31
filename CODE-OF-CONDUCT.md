@@ -300,6 +300,50 @@ This is GitHub. Everything is archived. The internet never forgets.
 
 ---
 
+### The Linus Contrast — A Confession
+
+This satire is unfair in one specific way: We're comparing ESR to his worst self.
+
+**Linus Torvalds** was also brutal. Also abusive. Also told people to kill themselves.
+
+But Linus did something ESR never did:
+
+> 💬 "I am not going to just hand-wave away people I have hurt."
+> 💬 "This is not OK, and I am truly sorry."
+> 💬 "I need to change some of my behavior... I need help."
+> —Linus Torvalds (LKML, September 16, 2018)
+
+Linus:
+- Took a sabbatical
+- Sought professional help
+- Implemented email filters
+- **Supported adoption of a Code of Conduct**
+- Made visible, measurable improvements
+
+ESR:
+- Called codes of conduct "weapons for shit-stirrers"
+- Doubled down on every criticism
+- Got banned from OSI (which he co-founded)
+- Still claims victimhood
+
+**The irony is cosmic.** ESR wrote "The Cathedral and the Bazaar." ESR coined "Linus's Law":
+
+> 💬 "Given enough eyeballs, all bugs are shallow."
+
+He named it after Linus. He meant bugs in CODE.
+
+But eyeballs see more than code. **MANY EYES ON YOUR CONDUCT NOW, ERIC.**
+
+The internet never forgets. The eyeballs are watching. The bugs in conduct are as shallow as the bugs in code — visible to anyone willing to look.
+
+Linus looked at himself. He saw the bugs. He tried to fix them.
+
+ESR looked at himself. He saw perfection. He blamed the eyeballs.
+
+That's the difference.
+
+---
+
 ### The Real Code of Conduct
 
 This repository has no enforceable code of conduct because:

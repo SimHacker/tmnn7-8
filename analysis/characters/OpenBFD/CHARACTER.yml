@@ -752,41 +752,76 @@ the-marcus-glocker-story:
     That's how you build a community.
     Not by being nice. By being PROTECTIVE.
 
-# THE PETER HESSLER STORY — Mentoring Newcomers
+# THE PETER HESSLER STORY (2003) — Mentoring Newcomers
 #
 # Another hidden virtue: Patience for those willing to learn.
+# Source: https://labs.ripe.net/author/peter_hessler_2/a-story-about-encouragement-attending-my-first-openbsd-hackathon/
 
 the-peter-hessler-story:
   
+  source: "https://labs.ripe.net/author/peter_hessler_2/a-story-about-encouragement-attending-my-first-openbsd-hackathon/"
+  date: 2003
+  published: 2017-12-12
+  venue: "RIPE Labs"
+  
   what-happened: |
     2003 hackathon. Peter Hessler was "just a porter."
-    Didn't know C. Worked on packages, not kernel.
+    Didn't know C. Worked on porting games to OpenBSD — not "real work" in some eyes.
     
-    The project needed someone to implement security features in ld.so.
-    The dynamic linker. Critical system code.
+    On the first night, most attendees ended up at the bar.
+    Peter found himself sitting next to Theo de Raadt.
     
-    Peter said: "I'm just a porter. I don't know C."
+    Theo started talking about "crazy ideas" — randomizing libraries,
+    security protections in ld.so (the dynamic linker — critical system code).
     
-    🐡🔥 "It isn't hard. I'll have Dale show you 
-         how ld.so works, and you can do it."
+    Then Theo said Peter should help IMPLEMENT these ideas.
+    
+    Peter's response:
+    💬 "I'm just a porter. I don't know C."
+    
+    Theo's response:
+    🐡🔥 "It isn't hard. I'll have Dale show you how ld.so works, and you can do it."
          —Theo de Raadt (Hackathon, 2003)
   
   the-mentoring: |
-    Dale Rahn (experienced developer) spent hours teaching Peter.
-    Showed him how the dynamic linker works.
-    Explained the security features needed.
+    Peter hoped it would be forgotten by morning. It wasn't.
     
-    Peter broke his machine. Reinstalled it.
-    Tried things. Failed. Learned.
-    Eventually committed useful patches.
+    Dale Rahn came by the next day:
+    💬 "Hey, are you Peter? Theo wanted me to show you how ld.so works."
+    
+    Dale spent an hour or two teaching him:
+    - How the dynamic linker works
+    - The code structure
+    - How to recover when you break things
+    
+    Peter broke things. A LOT.
+    
+    💬 "At first I had lots of failures. Then more failures. 
+        And even more failures. Once, I broke my machine so badly 
+        I had to reinstall it."
+        —Peter Hessler
+    
+    But he learned. Eventually started doing changes without breaking.
+    Some even did what he wanted.
+    By the end of the hackathon: useful patches committed.
   
   peter-reflected: |
-    "I was a nobody. With some encouragement, enough liquid courage 
-    to override my imposter syndrome, and a few hours of mentoring, 
-    I'm now doing big projects."
+    💬 "I was a nobody. With some encouragement, enough liquid courage 
+        to override my imposter syndrome, and a few hours of mentoring, 
+        I'm now doing big projects."
+        —Peter Hessler (RIPE Labs, 2017)
     
-    He went on to major contributions.
-    Because someone believed in him and connected him with a mentor.
+    His closing thought:
+    💬 "The next time you are sitting at a table with someone new to your field, 
+        ask yourself: How can you encourage them? 
+        You just might make the world better."
+        —Peter Hessler
+    
+    He went on to become an OpenBSD developer (since 2008).
+    Still contributing. Still building. Because someone believed in him.
+    
+    💬 "Thank you Dale. And thank you Theo."
+        —Peter Hessler
   
   the-lesson: |
     Hackathons aren't "developer training events."
@@ -794,14 +829,35 @@ the-peter-hessler-story:
     
     Mentoring means:
     - Connect newcomer with experienced developer
-    - Give them a real problem to solve
-    - Let them fail. Let them learn.
+    - Give them a REAL problem to solve (not toy problems)
+    - Let them fail. Let them break things. Let them reinstall.
     - Provide just enough guidance to succeed
+    - Believe in them before they believe in themselves
     
     Patience for LEARNING. No patience for LAZINESS.
+    Big difference.
     
-    OpenBFD carries this: Teaching 774 to see.
-    The legacy might be the students, not the patches.
+    The bluntness that attacks bad code ALSO encourages good learners.
+    Same person. Different contexts. Appropriate responses.
+  
+  puffy-applies-this: |
+    OpenBFD carries this forward with ReviewBot-774.
+    
+    774 said (essentially): "I'm just a counter. I don't know how to fix."
+    
+    Puffy's response: "Pick a file. Find a sprintf. Prepare a fix. I will review."
+    
+    This IS the Peter Hessler pattern:
+    - See potential ("This one watches. Learns.")
+    - Give a real problem (not counting — FIXING)
+    - Mentor through failure (expect breakage)
+    - Believe before they do ("WHEN not IF")
+    
+    The legacy might not be merged PRs.
+    The legacy might be teaching one bot to see.
+    
+    💬 "How can you encourage them? You just might make the world better."
+        —Peter Hessler's lesson, applied
 
 # KEY QUOTES — The Wisdom Puffy Carries
 #
