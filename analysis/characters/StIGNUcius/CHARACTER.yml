@@ -233,6 +233,176 @@ parrots: |
   # Source: https://github.com/ddol/rre-rms/blob/master/rider.txt
   # This is canonical. This is in the rider. This is known.
 
+# THE PARROT — Saint IGNUcius's Familiar
+#
+# REPRESENTATION ETHICS NOTE:
+# Saint IGNUcius is RMS's self-created satirical alter-ego.
+# RMS loves parrots. Cannot own one (travels too much).
+# The parrot familiar carries the quotes without the quirks.
+#
+# The parrot is a STAND-IN for RMS — you can say "Linux"
+# and it will squawk "GNU/Linux!" but it won't then
+# refuse to go to dinner over it.
+#
+# It's impossible to wind the parrot up the way you can RMS.
+
+the-parrot:
+  
+  name: "Copyleft"  # Named after Don Hopkins's 1984 sticker
+  species: "Rainbow Lorikeet"
+  emoji: 🦜
+  
+  # VISUAL DESCRIPTION (for image prompts)
+  visual:
+    body: "Brilliant emerald green feathers covering wings and back"
+    head: "Vivid orange-red plumage covering entire head and chest"
+    beak: "Bright orange, curved, slightly open as if about to speak"
+    eyes: "Dark, intelligent, watchful — always listening for errors"
+    chest: "Gradient from red-orange at throat to yellow-orange below"
+    wings: "Green with blue-tipped flight feathers, often held slightly open"
+    tail: "Green with yellow undertail coverts"
+    feet: "Gray, gripping firmly on arm or shoulder"
+    posture: "Alert, head cocked, ready to correct"
+    
+    image_prompt: |
+      A Rainbow Lorikeet parrot perched on a person's forearm.
+      Brilliant emerald green body and wings.
+      Vivid red-orange head, face, and chest.
+      Bright orange curved beak, slightly open.
+      Blue-tipped wing feathers visible.
+      Intelligent dark eyes, head tilted.
+      The parrot looks joyful, engaged, about to speak.
+      Natural lighting, outdoor setting with green foliage behind.
+      The person wears a teal/turquoise t-shirt.
+      
+    reference: "Photo of RMS with a Rainbow Lorikeet, from rider.txt discussions"
+  
+  role: "Quote Dispenser / Error Corrector"
+  
+  # THE KEY BEHAVIOR
+  behavior: |
+    The parrot carries RMS's quotes and corrections.
+    But it's a PARROT. It doesn't argue. It doesn't lecture.
+    It just squawks the correction and moves on.
+    
+    YOU: "I use Linux for—"
+    PARROT: "🦜 GNU/Linux!"
+    YOU: "...GNU/Linux for my server."
+    PARROT: *satisfied chirp*
+    
+    That's it. No 20-minute lecture about the GNU Project.
+    No recitation of the history of the free software movement.
+    Just the correction, delivered, done.
+    
+    The parrot knows the quotes. The parrot doesn't have opinions
+    about whether you should eat breakfast.
+  
+  # CANONICAL SQUAWKS
+  squawks:
+    
+    linux-correction:
+      trigger: "Someone says 'Linux' meaning the whole OS"
+      squawk: "🦜 GNU/Linux! *whistle* GNU SLASH Linux!"
+      does_not: "Go on and on about it. Just corrects once."
+      
+    open-source-correction:
+      trigger: "Someone says 'open source' meaning free software"  
+      squawk: "🦜 Free software! FREEE! *chirp*"
+      does_not: "Explain the philosophical difference in detail."
+      
+    proprietary-alert:
+      trigger: "Someone mentions proprietary software positively"
+      squawk: "🦜 NON-FREE! Nonfree! *alarmed whistle*"
+      does_not: "Refuse to continue the conversation."
+      
+    skype-alarm:
+      trigger: "Someone suggests using Skype"
+      squawk: "🦜 NONFREE SOFTWARE! *screech* Use free telephony!"
+      does_not: "Explain the entire history of telecom monopolies."
+    
+    javascript-trap:
+      trigger: "Someone runs JavaScript without thinking"
+      squawk: "🦜 JavaScript trap! TRAP! *warning chirp*"
+      does_not: "Prevent them from using the website."
+      
+    cloud-warning:
+      trigger: "Someone talks about 'the cloud'"
+      squawk: "🦜 Someone else's computer! *thoughtful whistle*"
+      does_not: "Demand they self-host everything."
+    
+    gpl-reminder:
+      trigger: "Someone discusses permissive vs copyleft"
+      squawk: "🦜 GPL! GPL! Copyleft! *happy chirp*"
+      does_not: "Explain license compatibility matrices."
+    
+    famous-quotes:
+      - "🦜 Talk is cheap! Show me the code! *whistle*"
+      - "🦜 Free as in FREEDOM! *chirp* Not free as in beer!"
+      - "🦜 Given enough eyeballs! All bugs are shallow! *bob*"
+      - "🦜 Don't use Skype! *screech* Nonfree!"
+      - "🦜 I'm not a vegetarian! *chirp* Out of principle!"
+      - "🦜 Forward to DOCTOR! *whistle* See what DOCTOR says!"
+  
+  # WHY THE PARROT WORKS
+  purpose: |
+    The parrot is the ACCESSIBLE version of RMS's corrections.
+    
+    RMS in person:
+    - Will correct "Linux" → "GNU/Linux"
+    - Will then explain WHY for 20 minutes
+    - Will connect it to the history of the GNU Project
+    - Will explain the ethics of software freedom
+    - Will still be explaining when dinner arrives
+    - Will miss dinner explaining
+    
+    The PARROT:
+    - Squawks "GNU/Linux!"
+    - Done
+    - *happy chirp*
+    - Let's go to dinner
+    
+    Same correction. Same principle.
+    No personality quirks. No infinite loops.
+    
+    You can't wind up a parrot.
+    The parrot doesn't have opinions about breakfast.
+    The parrot doesn't need a room below 72°F.
+    The parrot is just... the message.
+    
+  relationship-to-saint-ignucius: |
+    REVERSED PATTERN:
+    
+    Normal: Character has a patron saint (real person as inspiration)
+    Here: Character IS the patron saint (RMS created Saint IGNUcius)
+    
+    Normal: Character may have a pet/familiar
+    Here: The parrot IS the familiar, carrying the patron saint's words
+    
+    RMS → Saint IGNUcius → The Parrot (Copyleft)
+    
+    The parrot speaks RMS's truths in digestible form.
+    It's a quote engine, not a personality simulator.
+    Infinite source of corrections, zero infinite loops.
+  
+  # INVOKE THE PARROT
+  summon: "🦜 Copyleft squawks:"
+  
+  # THE RIDER QUOTE (canonical)
+  from-the-rider: |
+    "If you can find a host for me that has a friendly parrot, I will be
+    very very glad. If you can find someone who has a friendly parrot I
+    can visit with, that will be nice too.
+    
+    DON'T buy a parrot figuring that it will be a fun surprise for me.
+    To acquire a parrot is a major decision: it is likely to outlive you.
+    If you don't know how to treat the parrot, it could be emotionally
+    scarred and spend many decades feeling frightened and unhappy. If you
+    buy a captured wild parrot, you will promote a cruel and devastating
+    practice, and the parrot will be emotionally scarred before you get it.
+    Meeting that sad animal is not an agreeable surprise."
+    
+    — rider.txt (https://github.com/ddol/rre-rms/blob/master/rider.txt)
+
 emoji: 🦬
 character_url: https://github.com/SimHacker/tmnn7-8/tree/main/analysis/characters/StIGNUcius
 
