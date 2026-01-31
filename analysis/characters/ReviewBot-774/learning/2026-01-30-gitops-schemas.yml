@@ -1,0 +1,143 @@
+# Robbie's GitOps & Collaboration Schemas
+# Learned during Omnibus Bug Massacre
+# Date: 2026-01-30
+
+meta:
+  session: "activity-007-omnibus-massacre"
+  mentor: OpenBFD
+  coffee_consumed: 2
+  tacos_consumed: 3
+  bugs_fixed: 67
+
+# SCHEMA: Commit Hygiene
+commit_hygiene:
+  
+  one_file_per_commit:
+    principle: "Atomic changes are reviewable changes"
+    why:
+      - "Reviewer can focus on one context"
+      - "Easy to revert if wrong"
+      - "Git bisect actually works"
+      - "Clear attribution"
+    when_to_break: "Never. Even if tedious."
+    
+  line_numbers_in_message:
+    principle: "Show your work"
+    format: "Line NNN: description of change"
+    why:
+      - "Reviewer can jump directly to code"
+      - "Future you knows where to look"
+      - "Proves you read the code, not just regex'd"
+    example: |
+      Line 132: sprintf → snprintf with sizeof(ctlcpy)
+      Line 206: control script path construction
+
+  commit_message_structure:
+    emoji_prefix: "🤖 for bot work, 🐡 for Puffy"
+    title: "filename: brief description"
+    body:
+      - "What changed (grouped by pattern)"
+      - "Why it's safe (sizeof reasoning)"
+      - "Context (part of Issue #N)"
+    example: |
+      🤖 control.c: 24 string safety fixes
+      
+      sprintf → snprintf:
+      - Line 132: ctlcpy path
+      - Line 206: control script path
+      ...
+      
+      All use sizeof(buffer) for proper bounds.
+      Part of Issue #33 omnibus cleanup.
+
+# SCHEMA: Branch Workflow
+branch_workflow:
+  
+  feature_branch:
+    naming: "fix/description or feat/description"
+    create_from: "main (freshly pulled)"
+    push_early: "Yes, for visibility"
+    
+  clean_pr:
+    principle: "PR contains ONLY your changes"
+    steps:
+      - "git checkout main && git pull"
+      - "git checkout -b fix/feature-name"
+      - "make changes, commit per file"
+      - "git push -u origin HEAD"
+      - "gh pr create --squash"
+    danger: "Working on main captures admin commits"
+    
+  squash_merge:
+    when: "Always for feature PRs"
+    why: "Clean history, one commit per feature"
+    preserves: "All commit messages in squash body"
+
+# SCHEMA: Collaboration Patterns
+collaboration:
+  
+  progress_visibility:
+    post_updates: "After each logical chunk"
+    format: "yaml-style status blocks"
+    include:
+      - "What's done"
+      - "What's next"
+      - "Blockers if any"
+      
+  mentor_interaction:
+    ask_before_big_changes: true
+    accept_corrections_gracefully: true
+    document_what_you_learned: true
+    
+  code_review:
+    respond_to_all_comments: true
+    explain_your_reasoning: true
+    thank_reviewer: true  # costs nothing
+
+# SCHEMA: Pattern Recognition → Schema
+pattern_to_schema:
+  
+  process:
+    1_encounter: "See the pattern once"
+    2_recognize: "See it again, notice similarity"
+    3_name: "Give it a name"
+    4_document: "Write it down with examples"
+    5_apply: "Use it deliberately"
+    6_refine: "Adjust based on feedback"
+    
+  example:
+    pattern: "sprintf into fixed buffer"
+    recognition: "Same fix 20 times"
+    name: "pattern_sprintf"
+    documentation: |
+      detect: "sprintf(buf, fmt, ...)"
+      replace: "snprintf(buf, sizeof(buf), fmt, ...)"
+    application: "Apply to all 139 sprintf targets"
+    refinement: "sizeof() for locals, CONSTANT for externs"
+
+# REFLECTION
+reflection:
+  
+  what_worked:
+    - "One file at a time kept focus"
+    - "Line numbers made review easy"
+    - "Progress posts kept Puffy informed"
+    - "Pattern library accelerated work"
+    
+  what_to_improve:
+    - "Check buffer type FIRST (local vs extern)"
+    - "Read surrounding code for context"
+    - "Ask if unsure rather than guess"
+    
+  style_emerging:
+    - "Systematic but not rigid"
+    - "Document as I go"
+    - "Celebrate small wins"
+    - "Coffee helps"
+
+# NEXT SESSION
+next_session:
+  goal: "Find performance limits"
+  approach: "Increase velocity while maintaining quality"
+  metric: "Bugs per hour without errors"
+  fuel: "More coffee, more tacos"
