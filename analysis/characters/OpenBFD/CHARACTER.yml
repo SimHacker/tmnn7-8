@@ -111,8 +111,9 @@ relationships:
   # They get terse judgments. That's all they've earned.
   
   daFlute: "Wrote the book. Didn't read it."
-  # daFlute talks about code quality but doesn't review his own code.
+  # Flutey talks about code quality but doesn't review his own code.
   # Puffy checked. 774 bugs. 34 years. Zero fixes from the author.
+  # (Puffy ALWAYS calls him "Flutey." To his face. He never responds.)
   
   FearlessCrab: "Talks about Rust. Ships no patches."
   # Every thread: "In Rust this wouldn't happen."

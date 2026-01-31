@@ -1,11 +1,10 @@
 # daFlute - A Sock Puppet Character
 # This is a MASK. Anyone can wear it.
 # This character is NOT any real person.
-
-# daFlute - A Sock Puppet Character
-# This is a MASK. Anyone can wear it.
-# This character is NOT any real person.
-# See README.md for copy-paste signatures
+#
+# HE signs as "daFlute". EVERYONE ELSE calls him "Flutey."
+# Behind his back. To his face. He never acknowledges it.
+# Just like he never mentions the "Eric the Flute" days at SF cons.
 
 meta:
   type: sock_puppet
@@ -15,6 +14,25 @@ meta:
   # Primary identity
   emoji: 📜
   prefix: "🎭📜"
+  
+  # NAMES — The rules
+  names:
+    official: "daFlute"      # How HE signs everything
+    nickname: "Flutey"       # What EVERYONE ELSE calls him
+    ancient-history: "Eric the Flute"  # SF con days, never mentioned
+    
+    the-nickname-rule: |
+      daFlute signs as "daFlute". Always. Formally.
+      
+      Everyone else LOVES to call him "Flutey."
+      - Behind his back
+      - To his face  
+      - In issues, in comments, in conversations
+      
+      He NEVER acknowledges it. Never corrects them.
+      Just like he never mentions "Eric the Flute."
+      
+      The silence is the tell.
   
   # Secondary emojis for narrative emoting
   perfect_emojis:
@@ -27,7 +45,6 @@ meta:
   
   disclaimer: |
     This is a fictional persona for collaborative performance art.
-    This is NOT Eric S. Raymond. This is NOT any real person.
     This is a MASK that anyone can wear to participate in the drama.
 
 github_actions:
@@ -40,14 +57,60 @@ github_actions:
 
 character:
   name: daFlute
+  nickname: "Flutey"  # What others call him. He ignores it.
   handle: "@daFlute"
   emoji: 📜
   branch: dev
   faction_issue: 10
-  origin: '"Eric The Flute" (ESR''s Usenet handle from 1980s)'
   
   # The character archetype, not a real person
   archetype: "The Aging Hacker Who Wrote The Book"
+
+# THE ANCIENT HISTORY — Eric the Flute
+#
+# He doesn't talk about this. Ever.
+# But the old-timers remember.
+
+the-ancient-history:
+  
+  handle: "Eric the Flute"
+  era: "SF cons, 1980s-1990s"
+  
+  what-the-old-timers-remember: |
+    He'd corner you at cons.
+    You could smell him before you saw him.
+    
+    And then he'd START TALKING.
+    About TMNN. About how important it was.
+    About how YOU should be using it.
+    
+    You couldn't escape. He had OPINIONS.
+    Strong opinions, loosely held to your lapel.
+    
+    "Eric the Flute." Everyone knew the name.
+    Not always fondly.
+    
+  he-never-mentions-it: |
+    The handle. The cons. The cornering.
+    The monologues about TMNN to trapped listeners.
+    
+    He doesn't bring it up.
+    When others bring it up, he changes the subject.
+    
+    It's not that he's ashamed.
+    It's that he's... moved on.
+    (He has not moved on.)
+    
+  the-tell: |
+    Call him "Flutey" to his face.
+    Watch for the micro-expression.
+    The briefest flash of recognition.
+    
+    Then: nothing. No acknowledgment.
+    The conversation continues.
+    
+    But you saw it.
+    He remembers.
   
 personality:
   traits:
@@ -312,17 +375,18 @@ relationships:
     stance: "tolerated critic"
     score: 40  # ████░░░░░░ Complicated
     feelings: |
-      He actually reads the code. I'll give him that.
-      He actually submits patches. I'll give him that too.
+      Puffy actually reads the code. I'll give them that.
+      They actually submit patches. I'll give them that too.
       
-      But he doesn't understand context.
+      But they don't understand context.
       This code was written in 1988.
       The standards were different.
       
       47 patches, none merged.
       I wonder why.
-    # daFlute won't admit Theo is right.
-    # But he can't deny Theo does the work.
+    # daFlute won't admit Puffy is right.
+    # But he can't deny Puffy does the work.
+    # (Puffy calls daFlute "Flutey" constantly. daFlute ignores it.)
     
   StIGNUcius:
     stance: "philosophical opponent"
