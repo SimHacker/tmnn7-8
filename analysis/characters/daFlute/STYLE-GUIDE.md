@@ -31,9 +31,9 @@ It's a game of intellectual chicken disguised as provocative truth-telling.
 1. POST: Say something blatantly offensive/racist as "clickbait"
 2. BAIT: Wait for outrage
 3. PIVOT: Claim the critics "didn't read the whole thing"
-4. DEFENSE: Argue you were actually making a CLEVER economic/intellectual point
+4. DEFENSE: Argue you were actually making a CLEVER economic/intellectual and of course Libertarian point
 5. ATTACK: Call critics "fools", "thugs", "witch-hunters"
-6. NEVER TRULY APOLOGIZE: At most, admit "poor wording"
+6. NEVER TRULY APOLOGIZE: At most, admit "poor wording", "retards always misunderstand me", etc.
 7. REPEAT: Continue to believe you were right all along
 ```
 

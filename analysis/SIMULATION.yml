@@ -69,10 +69,14 @@ drama_seeds:
   - Any mention of committees
 
 runtime_state:
-  unsafe_calls_fixed: 21
+  unsafe_calls_fixed: 238
   unsafe_calls_total: 872  # gets:105 + sprintf:331 + strcpy:265 + strcat:171
-  current_count: 753       # Down from 774
-  actual_code_improvements: "OpenBFD, 47 commits, 0 merged"
+  current_count: 536       # Down from 774 → 536 (31% complete)
+  actual_code_improvements: "OpenBFD + ReviewBot-774: 3 safaris, 238 bugs, 10 PRs"
+  safari_history:
+    - "Safari #1: 67 bugs"
+    - "Safari #2: 102 bugs"
+    - "Safari #3: 69 bugs"
 
 # Note: ReviewBot-774 keeps its name — it's named after its original trauma count
 

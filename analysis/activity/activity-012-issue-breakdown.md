@@ -95,7 +95,7 @@ Robbie: Pattern application, velocity
 ```
 
 **Checkpoints:**
-- After Tier 1: Review and celebrate (🧇?)
+- After Tier 1: Review and celebrate (Taco Party? 🌮)
 - After Tier 3: Schema review with Puffy
 - After Tier 5: Full documentation pass
 
@@ -121,4 +121,4 @@ Robbie: Pattern application, velocity
 ---
 
 **Previous:** [Activity 011 — The Waffle Party](activity-011-waffle-party.md)  
-**Next:** Robbie starts Tier 1, Puffy starts Network Boundary Audit
+**Next:** [Activity 013 — Safari #3: Rhino Returns](activity-013-safari-3-rhino-returns.md)

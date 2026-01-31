@@ -61,6 +61,7 @@ dancers:
   
   characters:
     what_they_are: "Perspectives, not containers"
+    kay_quote: '💬 "Point of view is worth 80 IQ points." — Alan Kay (1982, Creative Think seminar)'
     
     insight: |
       A character is not a bag of traits.
@@ -96,13 +97,36 @@ dancers:
     
     insight: |
       The Sims taught us: relationships are SCORES, not STATES.
+      But MOOLLM goes further: relationships are LANGUAGES.
       
-      Theo → 774: 43/100 (cautious, reserved)
-      774 → Theo: 88/100 (devoted, eager)
+      Sims: Theo → 774: 43/100
+      MOOLLM: Full tree-structured YAML Jazz with comments, emojis, history.
+      
+      # Relationship-Specific Languages (RSLs)
+      # Each bond develops its own vocabulary:
+      
+      theo_to_774:
+        tone: "gruff mentor"           # 😤 but secretly proud
+        inside_jokes: ["the incident", "that one time with rustfmt"]
+        unspoken: "I see myself in you"
+        tension: { type: "holding back", reason: "afraid of favoritism" }
+      
+      774_to_theo:
+        tone: "eager student"          # 🐕 loyal, wants approval
+        misreads: ["thinks gruffness = disappointment"]
+        unspoken: "Please be proud of me"
+        tension: { type: "reaching forward", reason: "needs validation" }
       
       The ASYMMETRY is the story.
       The mentor holds back. The student reaches forward.
       This gap creates TENSION.
+      
+      But the RSL captures what numbers never could:
+      - Private vocabularies (nicknames, references)
+      - Emotional subtext (# comments as inner voice)
+      - History (incidents that shaped the bond)
+      - The things they CAN'T say to each other
+      
       Tension demands resolution.
       Resolution requires action.
       Action generates events.

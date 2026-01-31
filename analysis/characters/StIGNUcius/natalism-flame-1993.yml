@@ -1,0 +1,439 @@
+# The Natalism Flame (1993)
+# RMS -vs- Doctor, on the evils of Natalism
+#
+# A legendary kabuki-west mailing list exchange, archived by Don Hopkins.
+# Source: https://donhopkins.com/home/catalog/text/rms-vs-doctor.html
+
+# ═══════════════════════════════════════════════════════════════════════════
+#         THE NATALISM FLAME (1993) — Legendary kabuki-west exchange
+# ═══════════════════════════════════════════════════════════════════════════
+#
+# 📍 CONTEXT: kabuki-west was a mailing list for planning dinners and
+#    get-togethers in the San Francisco Bay Area.
+#
+# 💥 TRIGGER: Somebody made the horrible mistake of posting a baby announcement.
+#
+# 🦬 RMS replied. At his finest.
+#
+# 🔥 Predictably, much back-and-forth flamage followed.
+#
+# 💊 Don Hopkins waited for it to die down, then ran RMS's original message
+#    through the DOCTOR program in GNU Emacs and sent the resulting
+#    psychoanalysis back to the mailing list.
+#
+# 📜 Source: https://donhopkins.com/home/catalog/text/rms-vs-doctor.html
+
+metadata:
+  date: "1993-02-21"
+  list: "kabuki-west@mica.berkeley.edu"
+  purpose: "SF Bay Area dinner planning"
+  archive: "https://donhopkins.com/home/catalog/text/rms-vs-doctor.html"
+  archived_by: "Don Hopkins"
+  title: "RMS -vs- Doctor, on the evils of Natalism"
+
+# ─────────────────────────────────────────────────────────────────────────
+#                    PART 1: THE SETUP 📧
+# ─────────────────────────────────────────────────────────────────────────
+# RMS's full original message. Read the whole thing. It's ART.
+
+the_setup:
+  
+  headers:
+    date: "Sun, 21 Feb 93 15:14:50 -0500"
+    from: "rms@gnu.ai.mit.edu (Richard Stallman)"
+    to: "mcuddy@ctbu.rational.com"
+    cc: "kabuki-west@mica.berkeley.edu"
+    subject: "Another mcuddy.."
+  
+  # 🎯 THE POLITE REQUEST (that wasn't really polite)
+  paragraph_1: |
+    Could people please not use this list to announce information of no
+    particular interest to the people on the list? Hundreds of thousands
+    of babies are born every day. While the whole phenomenon is menacing,
+    one of them by itself is not newsworthy. Nor is it a difficult
+    achievement--even some fish can do it. (Now, if you were a seahorse,
+    it would be more interesting, since it would be the male that gave birth.)
+  parrot_squawk_1: "🦜📢🚫 Please NOT use this list! *polite screech* Even FISH can do it! 🐟👶"
+  
+  # 🦬 THE GNU COMPARISON
+  paragraph_2: |
+    Following your example, I might send the list an announcement whenever
+    a new GNU program is written. That happens less often than babies are
+    born, it does the world a lot more good, it reflects more conscious
+    creativity and hard work, and some of the readers might actually find
+    the information useful. Even so, I think most of the readers would
+    consider this outside the scope and purpose of the list. Clearly that
+    goes double for babies.
+  parrot_squawk_2: "🦜🦬💻 GNU programs MORE USEFUL! *proud chirp* Goes DOUBLE for babies! 👶👶"
+  
+  # 📰 THE NEWSGROUP SUGGESTION
+  paragraph_3: |
+    Of course, we have another place for announcements of new GNU programs.
+    If some people like to read birth announcements, perhaps you should set
+    up a suitable list or newsgroup. Perhaps rec.births? (While you're at it,
+    start rec.deaths for obituaries--they're usually more interesting to read.)
+  parrot_squawk_3: "🦜📰💀 rec.births! rec.deaths! *morbid chirp* Obituaries MORE INTERESTING! 🪦"
+  
+  # 🌍 THE ENVIRONMENTAL ARGUMENT
+  paragraph_4: |
+    These birth announcements also spread the myth that having a baby is
+    something to be proud of, which fuels natalist pressure, which leads
+    to pollution, extinction of wildlife, poverty, and ultimately mass
+    starvation.
+  parrot_squawk_4: "🦜🌍💀 POLLUTION! EXTINCTION! *alarm* Mass STARVATION! 😱🔥"
+  
+  # 🎤 THE MIC DROP
+  paragraph_5: |
+    Perhaps the people who have decided to have no children should start
+    making proud announcements, so as to set a better example. I could
+    start. I'm sure everyone on this list will be glad to know I don't
+    plan to reproduce myself.
+  parrot_squawk_5: "🦜🎤⬇️ I don't plan to REPRODUCE! *proud chirp* Better EXAMPLE! ✨"
+
+# ─────────────────────────────────────────────────────────────────────────
+#                    PART 2: THE FUCK YOU TREE 🌳🤬
+# ─────────────────────────────────────────────────────────────────────────
+#
+# The responses came FAST. And RMS had COMEBACKS.
+# Preserved here in glorious nested YAML.
+#
+# 🎭 LEGEND:
+#   😤 = angry response
+#   😏 = RMS comeback  
+#   👍 = support
+#   🤷 = confused
+#   🧘 = peacemaker
+#   🎭 = defender
+#   💀 = savage
+
+the_fuck_you_tree:
+  
+  # ═══════════════════════════════════════════════════════════════════════
+  # BRANCH 1: Eliot Lear (no reply) 💨
+  # ═══════════════════════════════════════════════════════════════════════
+  - author: "Eliot Lear"
+    message: "Richard: Fuck off."
+    emoji: 😤
+    # 🎭 INTERPRETATION: Pure rage. No elaboration. Just "fuck off."
+    # RMS did not dignify this with a response.
+    rms_response: null
+    squawk: "🦜😤 Fuck OFF! *angry chirp*"
+  
+  # ═══════════════════════════════════════════════════════════════════════
+  # BRANCH 2: Paul Traina → RMS comeback → Peter Shipley 🌿
+  # ═══════════════════════════════════════════════════════════════════════
+  - author: "Paul Traina"
+    message: "Fuck you."
+    emoji: 😤
+    # 🎭 INTERPRETATION: Concise. Two words. Maximum hostility per word.
+    squawk: "🦜😤🖕 Fuck YOU! *screech*"
+    
+    replies:
+      # ─────────────────────────────────────────────────────────────────
+      # 😏 THE LEGENDARY COMEBACK #1
+      # ─────────────────────────────────────────────────────────────────
+      - author: "RMS"
+        message: "No, thanks. I don't want to have children."
+        emoji: 😏
+        # 🎭 INTERPRETATION: 
+        # RMS takes "fuck you" LITERALLY. As an offer to procreate.
+        # And POLITELY DECLINES. 
+        # This is PEAK deadpan. CHEF'S KISS. 👨‍🍳💋
+        # The room is silent. Nobody saw this coming.
+        squawk: "🦜😏✋ No THANKS! *polite chirp* Don't want CHILDREN! 👶🚫"
+        note: "LEGENDARY. Takes 'fuck you' as reproductive offer. Declines."
+        
+        replies:
+          # ─────────────────────────────────────────────────────────────
+          # 👍 Peter Shipley approves
+          # ─────────────────────────────────────────────────────────────
+          - author: "Peter Shipley"
+            message: "good"
+            emoji: 👍
+            # 🎭 INTERPRETATION: Peter gets it. One word. Respect.
+            squawk: "🦜👍 Good! *approving chirp*"
+  
+  # ═══════════════════════════════════════════════════════════════════════
+  # BRANCH 3: Brent Chapman → RMS comeback → Elaine Richards 🌿
+  # ═══════════════════════════════════════════════════════════════════════
+  - author: "Brent Chapman"
+    message: "Fuck you, Richard."
+    emoji: 😤
+    # 🎭 INTERPRETATION: Uses his first name. Personal. Still hostile.
+    squawk: "🦜😤 Fuck you RICHARD! *personalized screech*"
+    
+    replies:
+      # ─────────────────────────────────────────────────────────────────
+      # 😏 THE LEGENDARY COMEBACK #2
+      # ─────────────────────────────────────────────────────────────────
+      - author: "RMS"
+        message: "Boy, I really am getting popular. I haven't had so many offers before in just one day."
+        emoji: 😏
+        # 🎭 INTERPRETATION:
+        # THIRD "fuck you" and RMS is now COUNTING.
+        # He's getting "popular." So many "offers."
+        # The man is treating hate mail as a DATING SCOREBOARD.
+        # Absolutely UNHINGED comedy. 🤴
+        squawk: "🦜😎💋 So POPULAR! *preening* So many OFFERS in one day! 💋💋💋"
+        note: "COUNTING his 'offers'. Treating hate mail as flirtation. ICONIC."
+        
+        replies:
+          # ─────────────────────────────────────────────────────────────
+          # 💀 Elaine Richards goes for the kill
+          # ─────────────────────────────────────────────────────────────
+          - author: "Elaine Richards"
+            message: "You mean that you are in no danger of getting laid."
+            emoji: 💀
+            # 🎭 INTERPRETATION: 
+            # Elaine tries to turn it around. "You're not getting laid."
+            # But she's missed that RMS has already WON this exchange.
+            # You can't hurt someone who's already laughing.
+            squawk: "🦜💀 No danger of getting LAID! *attempted burn*"
+            note: "Attempted counter. But RMS already won."
+  
+  # ═══════════════════════════════════════════════════════════════════════
+  # BRANCH 4: Joe Buck (standalone) 🤷
+  # ═══════════════════════════════════════════════════════════════════════
+  - author: "Joe Buck"
+    message: "Richard, You appear to be unclear on the concept."
+    emoji: 🤷
+    # 🎭 INTERPRETATION: Condescending. "You don't understand."
+    # But it's JOE who doesn't understand RMS is JOKING.
+    squawk: "🦜🤷 Unclear on the CONCEPT! *confused chirp*"
+    note: "Joe thinks RMS is confused. Joe is the confused one."
+  
+  # ═══════════════════════════════════════════════════════════════════════
+  # BRANCH 5: David Muir Sharnoff (summary fuck you) 😤
+  # ═══════════════════════════════════════════════════════════════════════
+  - author: "David Muir Sharnoff"
+    message: "Richard, what Paul and Brent so succinctly expressed is quite appropriate. ... To sum up: Fuck you."
+    emoji: 😤
+    # 🎭 INTERPRETATION:
+    # David writes a FORMAL summary of the "fuck yous."
+    # Then adds his own. BUREAUCRATIC hostility. 📋🖕
+    squawk: "🦜📋🖕 To SUM UP: Fuck you! *formal screech*"
+    note: "Summarizes previous fuck yous. Adds his own. Administrative rage."
+  
+  # ═══════════════════════════════════════════════════════════════════════
+  # BRANCH 6: Lile Elam (the peacemaker) 🧘
+  # ═══════════════════════════════════════════════════════════════════════
+  - author: "Lile Elam"
+    message: "Please send your 'fucks' via personal mail and refrain from using Kabuki-west for such messages."
+    emoji: 🧘
+    # 🎭 INTERPRETATION:
+    # Lile is BEGGING people to take the "fucks" off-list.
+    # The irony: RMS was complaining about off-topic posts.
+    # Now the responses are ALSO off-topic.
+    # The snake eats its tail. 🐍
+    squawk: "🦜🧘📬 Send fucks via PERSONAL MAIL! *pleading chirp*"
+    note: "Ironic. RMS complained about off-topic. Now the responses are off-topic."
+  
+  # ═══════════════════════════════════════════════════════════════════════
+  # BRANCH 7: RMS doubles down 🦬
+  # ═══════════════════════════════════════════════════════════════════════
+  - author: "RMS"
+    message: "It appears that the problem of natalism is even worse than I thought."
+    emoji: 😏
+    # 🎭 INTERPRETATION:
+    # People are MAD. RMS takes this as EVIDENCE for his point.
+    # "See? They're so defensive. Natalism IS a cult."
+    # He's trolling AND making a point. SIMULTANEOUSLY.
+    squawk: "🦜🦬📈 Natalism WORSE than I thought! *smug chirp*"
+    note: "Uses the anger as evidence. Trolling AND philosophizing."
+  
+  # ═══════════════════════════════════════════════════════════════════════
+  # BRANCH 8: RMS (the clarification) 🤔
+  # ═══════════════════════════════════════════════════════════════════════
+  - author: "RMS"
+    message: "Perhaps some people took my message as an expression of personal hostility. It was not based on hostility, just annoyance at a general practice on the occasion of one instance. If anyone felt bad because of misunderstanding this, I regret the unintended result, and I hope this message corrects the matter."
+    emoji: 🤔
+    # 🎭 INTERPRETATION:
+    # RMS offers a (sort of) apology. Not for what he said.
+    # For the MISUNDERSTANDING. Classic non-apology apology.
+    # "I regret you didn't get the joke."
+    squawk: "🦜🤔🙏 Not HOSTILITY! *clarifying chirp* Just ANNOYANCE! Regret the MISUNDERSTANDING!"
+    note: "Non-apology apology. Regrets the misunderstanding, not the message."
+  
+  # ═══════════════════════════════════════════════════════════════════════
+  # BRANCH 9: Edjik (defender) 🎭
+  # ═══════════════════════════════════════════════════════════════════════
+  - author: "Edjik"
+    message: "Wow, I think yall who sent 'fucks' to the mailing list need to go back and re read RMS's msg. Has breeding become such a religion that the mere mention of an opposing view ignites a fury of vile replies? If those people who sent 'fucks' really want to feel strongly about something, maybe they should move to Iran and start worshiping Kholmeni or something."
+    emoji: 🎭
+    # 🎭 INTERPRETATION:
+    # Edjik GETS IT. "Y'all need to re-read."
+    # Compares the natalism defenders to religious zealots.
+    # Wild analogy but... not entirely wrong? 🤷
+    squawk: "🦜🎭🔥 RE-READ the message! *defensive screech* Breeding a RELIGION?! 🛐"
+    note: "Defender appears. Compares angry parents to zealots."
+  
+  # ═══════════════════════════════════════════════════════════════════════
+  # BRANCH 10: Wayne A. Christopher → RMS "Finally!" 🎭
+  # ═══════════════════════════════════════════════════════════════════════
+  - author: "Wayne A. Christopher"
+    message: "You people just have no sense of humor. I thought the original message was pretty funny and made a few good points (if it didn't, nobody would have been offended). I guess it's a shock for smug self-righteous breeders to learn that not everybody in the world thinks babies are cute and special."
+    emoji: 🎭
+    # 🎭 INTERPRETATION:
+    # Wayne drops the TRUTH BOMB. "No sense of humor."
+    # "If it didn't make good points, nobody would be offended."
+    # And calls them "smug self-righteous breeders." 🔥🔥🔥
+    squawk: "🦜🎭😂 No sense of HUMOR! *truth bomb chirp* Smug self-righteous BREEDERS! 🔥"
+    note: "The defender who sees the joke. RMS has been WAITING for this."
+    
+    replies:
+      # ─────────────────────────────────────────────────────────────────
+      # 😌 RMS: "Finally."
+      # ─────────────────────────────────────────────────────────────────
+      - author: "RMS"
+        message: "Finally, someone read the message as it was intended to be read."
+        emoji: 😌
+        # 🎭 INTERPRETATION:
+        # VINDICATION. RMS has been WAITING for someone to get it.
+        # "Finally." One word that says everything.
+        # IT WAS A JOKE. HE WAS TROLLING. AND IT WORKED.
+        squawk: "🦜😌✨ FINALLY! *relieved chirp* As INTENDED! 🎭"
+        note: "VINDICATION. Confirms it was always a joke. People missed it."
+  
+  # ═══════════════════════════════════════════════════════════════════════
+  # BRANCH 11: Doug Faunt (childfree solidarity) 🤝
+  # ═══════════════════════════════════════════════════════════════════════
+  - author: "Doug Faunt"
+    message: "No, I think you are correct about the purpose of the list, but parents seem to be so flushed with hormones after they have managed to accomplish the same act that single celled life does, that they revert to the brain level of that afore-mentioned life. I appreciate your choice, the same one that I and my partner have made."
+    emoji: 🤝
+    # 🎭 INTERPRETATION:
+    # Doug AGREES. And takes it FURTHER.
+    # "They revert to single-celled brain level." 🦠
+    # Childfree solidarity. ✊
+    squawk: "🦜🤝🦠 Single celled life! *solidarity chirp* Same choice! ✊"
+    note: "Childfree ally appears. Takes it even further."
+  
+  # ═══════════════════════════════════════════════════════════════════════
+  # BRANCH 12: RMS (surprised) 🤷
+  # ═══════════════════════════════════════════════════════════════════════
+  - author: "RMS"
+    message: "I'm somewhat surprised by the idea that a mere message from me could torpedo the happiness of parents. I'd think it wouldn't even come close to doing that. Not that I wanted to do that. The most I thought it could do was to discourage the posting birth announcements."
+    emoji: 🤷
+    # 🎭 INTERPRETATION:
+    # RMS is GENUINELY SURPRISED by the intensity.
+    # He thought he was just being... mildly annoying?
+    # He underestimated the natalist fury. 😅
+    squawk: "🦜🤷😅 TORPEDO happiness? *surprised chirp* Just discourage ANNOUNCEMENTS!"
+    note: "RMS underestimated the reaction. Thought it was mild."
+
+# ─────────────────────────────────────────────────────────────────────────
+#                    PART 3: THE DOCTOR REPLIES 💊
+# ─────────────────────────────────────────────────────────────────────────
+#
+# Don Hopkins waited for the flame war to die down.
+# Then ran RMS's message through GNU Emacs DOCTOR (Eliza).
+# Sent the psychoanalysis to the mailing list.
+# ABSOLUTE GALAXY BRAIN MOVE. 🧠✨
+
+the_doctor_replies:
+  
+  headers:
+    date: "Wed, 10 Mar 93 22:46 EST"
+    from: "Don Hopkins <hopkins@bongo.garnet.cs.cmu.edu>"
+    subject: "The doctor replies ..."
+  
+  opener: "I am the psychotherapist. Please, describe your problems. Each time you are finished talking, type RET twice."
+  
+  # Sample exchanges (the DOCTOR roasts RMS)
+  highlights:
+    - input: "[Subject: Another mcuddy..]"
+      doctor: "Are you annoyed that Stallman is emotionally stimulating?"
+      emoji: 🔥
+      note: "DOCTOR knows who RMS is. Opening shot."
+    
+    - input: "While the whole phenomenon is menacing..."
+      doctor: "What happened when the whole phenomenon is menacing one of them by itself is not newsworthy?"
+      emoji: 🤖
+    
+    - input: "(While you're at it, start rec.deaths for obituaries--they're usually more interesting to read.)"
+      doctor: "This is not a healthy way of thinking."
+      emoji: 💀
+      note: "DOCTOR judges RMS. Correctly."
+    
+    - input: "Perhaps the people who have decided to have no children should start making proud announcements..."
+      doctor: "Is it because of your sex life that you are going through all this?"
+      emoji: 🔥🔥🔥
+      note: "DOCTOR goes for the JUGULAR."
+    
+    - input: "I'm sure everyone on this list will be glad to know I don't plan to reproduce myself."
+      doctor: "How do you reconcile your inhibitions?"
+      emoji: 💊
+      note: "Final diagnosis."
+
+# ─────────────────────────────────────────────────────────────────────────
+#                    PART 4: RMS REPLIES TO THE DOCTOR ⏱️
+# ─────────────────────────────────────────────────────────────────────────
+#
+# RMS replied in 15 MINUTES. At 11 PM.
+# He was ONLINE and WAITING.
+
+rms_replies_to_doctor:
+  
+  reply_1:
+    timestamp: "Wed, 10 Mar 93 23:01:18 -0500"
+    delay: "15 minutes"
+    message: "Funny."
+    emoji: 🤣
+    squawk: "🦜🤣 Funny! *brief appreciative chirp*"
+    note: "ONE WORD. 15 minutes. He was waiting."
+  
+  reply_2:
+    timestamp: "Wed, 10 Mar 93 23:48:54 -0500"
+    delay: "~47 minutes after the first"
+    message: "Did the responses really come from doctor, or did you enhance them by hand?"
+    emoji: 🤔
+    squawk: "🦜🤔💊 Pure DOCTOR? *curious chirp* Or enhanced? 🧑‍⚕️"
+    note: "RMS is curious about the implementation. OF COURSE HE IS."
+  
+  don_final_reply:
+    message: |
+      Pure doctor.el replies -- the indentation was changed to protect
+      the margins. However I did delete a few of the uninteresting or
+      repetitive doctor replies and try again, but most of the replies
+      were funny enough the first time to keep. The first reply to your
+      name in the headers was rigged into the doctor program itself (as
+      to who wrote that code I cannot speculate), but I think the last
+      few replies are a clear indication that emacs is a truly artificial
+      intelligence.
+    note: "Don confirms: Pure doctor.el. Emacs is 'truly artificial intelligence.' 🤖"
+
+# ═══════════════════════════════════════════════════════════════════════════
+#                              KEY QUOTES FOR PARROT
+# ═══════════════════════════════════════════════════════════════════════════
+# These are the squawkable highlights for Copyleft's repertoire.
+
+parrot_highlights:
+  
+  the_fish_quote:
+    quote: "Hundreds of thousands of babies are born every day. While the whole phenomenon is menacing, one of them by itself is not newsworthy. Nor is it a difficult achievement--even some fish can do it."
+    squawk: "🦜🐟👶 Even FISH can do it! *deadpan chirp* 🦈"
+    note: "The opening salvo that started it all."
+  
+  legendary_comeback_1:
+    trigger: "'Fuck you.' -Paul Traina"
+    response: "No, thanks. I don't want to have children."
+    squawk: "🦜😏✋ No THANKS! *polite chirp* 👶🚫"
+    note: "Perfect deadpan literalism. CHEF'S KISS."
+  
+  legendary_comeback_2:
+    trigger: "'Fuck you, Richard.' -Brent Chapman (third such response)"
+    response: "Boy, I really am getting popular. I haven't had so many offers before in just one day."
+    squawk: "🦜😎💋 So POPULAR! *preening* 💋💋💋"
+    note: "Counting his 'offers'. ICONIC."
+  
+  the_vindication:
+    trigger: "Wayne Christopher: 'You people just have no sense of humor.'"
+    response: "Finally, someone read the message as it was intended to be read."
+    squawk: "🦜😌✨ FINALLY! *relieved chirp* 🎭"
+    note: "Confirms it was a joke. Most people missed it."
+  
+  the_doctor_appreciation:
+    context: "Don Hopkins runs RMS's email through GNU Emacs DOCTOR"
+    response: "Funny."
+    reply_time: "15 minutes"
+    squawk: "🦜🤣 Funny! *brief chirp*"
+    note: "Terse. Appreciative. Classic RMS."
