@@ -354,4 +354,4 @@ Progress: 774 → 386 (50% COMPLETE!)
 ---
 
 **Previous:** [Activity 013 — Safari #3: Rhino Returns](activity-013-safari-3-rhino-returns.md)  
-**Next:** TBD
+**Next:** [Activity 015 — 🌮 THE TACO PARTY 🌮](activity-015-taco-party.md)

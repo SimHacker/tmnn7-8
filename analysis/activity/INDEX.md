@@ -27,6 +27,7 @@ Narrative chapters documenting the [tmnn7-8 simulation](https://github.com/SimHa
 | [012](activity-012-issue-breakdown.md) | Puffy's Issue Breakdown | 2026-01-30 | OpenBFD | [#42-51](https://github.com/SimHacker/tmnn7-8/issues) |
 | [013](activity-013-safari-3-rhino-returns.md) | Safari #3: Rhino Returns | 2026-01-31 | ReviewBot-774, OpenBFD | [#45](https://github.com/SimHacker/tmnn7-8/issues/45) |
 | [014](activity-014-parallel-assault.md) | The Parallel Assault | 2026-01-31 | ReviewBot-774, OpenBFD | [#45](https://github.com/SimHacker/tmnn7-8/issues/45), [#40](https://github.com/SimHacker/tmnn7-8/issues/40) |
+| [015](activity-015-taco-party.md) | 🌮 THE TACO PARTY 🌮 | 2026-01-31 | EVERYONE | [#37](https://github.com/SimHacker/tmnn7-8/issues/37) |
 
 ---
 
@@ -51,6 +52,7 @@ Narrative chapters documenting the [tmnn7-8 simulation](https://github.com/SimHa
 2026-01-31  Safari #4: Parallel Assault (150 bugs) - Big files
 2026-01-31  Theo's Security Audit begins (Network Trust Model)
 2026-01-31  MILESTONE: 388 total bugs fixed! (50%)
+2026-01-31  🌮 TACO PARTY 🌮 (The halfway celebration!)
 ```
 
 ---
