@@ -1,6 +1,7 @@
 # 🎸 daFlute (ESR) Style Guide & Quote Taxonomy
 
-> *"I'm an arrogant son of a bitch."* — ESR, Salon Magazine, April 1998
+> ⚠️ **CITATION STANDARD**: All quotes must have verified sources with links.
+> Format: 💬 "Quote" — (Date, Context, [Link](url))
 
 ---
 
@@ -14,9 +15,9 @@
 - **"Libertarian Commissar"** making absolutist statements
 - **Race-baiter** who plays "Libertarian Chicken" with provocative statements
 
-### The Paradox
-Claims to be humble while constantly reminding everyone of his contributions:
-> "I'm basically a very lazy person who likes to get credit for things other people actually do."
+### The Self-Image
+💬 "When I hear the words 'social responsibility', I want to reach for my gun."
+— (Nov 4, 2001, accepting award from CPSR, [NYT Book Review](https://en.wikiquote.org/wiki/Eric_S._Raymond))
 
 ---
 
@@ -51,15 +52,18 @@ people in to his "real" argument.
 **The Result**: Forced to resign as OSI President within weeks.
 
 **ESR's Defense** (the key part):
-> "The people who knew Russ as a Quaker, a pacifist and a gentleman, 
-> and no racist, but nevertheless pressured OSI to do the responsible 
-> thing and fire him in order to avoid political damage should be 
-> equally ashamed. Abetting somebody else's witch hunt is no less 
-> disgusting than starting your own."
->
-> "Personally, I wanted to fight this on principle. Russ resigned the 
-> presidency rather than get OSI into that fight. That sacrifice makes 
-> me angrier at the **fools and thugs** who pulled him down."
+
+💬 "The people who knew Russ as a Quaker, a pacifist and a gentleman, 
+and no racist, but nevertheless pressured OSI to do the responsible 
+thing and fire him in order to avoid political damage should be 
+equally ashamed. Abetting somebody else's witch hunt is no less 
+disgusting than starting your own."
+— (Mar 2005, [eWeek](https://www.eweek.com/servers/new-osi-president-steps-down/))
+
+💬 "Personally, I wanted to fight this on principle. Russ resigned the 
+presidency rather than get OSI into that fight. That sacrifice makes 
+me angrier at the **fools and thugs** who pulled him down."
+— (Mar 2005, [eWeek](https://www.eweek.com/servers/new-osi-president-steps-down/))
 
 **Note**: "Thugs" has been identified as a dog-whistle term. ESR wanted 
 OSI to spend resources DEFENDING racism rather than promoting open source.
@@ -78,22 +82,24 @@ If you DO react → they claim you're a "fool" who "didn't read carefully"
 
 ESR plays the same game more frequently and more aggressively:
 
-> "In the U.S., blacks are 12% of the population but commit 50% of 
-> violent crimes; can anyone honestly think this is unconnected to 
-> the fact that they average 15 points of IQ lower than the general 
-> population? That stupid people are more violent is a fact independent 
-> of skin color." — Armed and Dangerous blog
+💬 "In the U.S., blacks are 12% of the population but commit 50% of 
+violent crimes; can anyone honestly think this is unconnected to 
+the fact that they average 15 points of IQ lower than the general 
+population? That stupid people are more violent is a fact independent 
+of skin color."
+— (2003, "What good is IQ?", [esr.ibiblio.org/?p=129](http://esr.ibiblio.org/?p=129))
 
 Then when called racist, pivots to "I'm making an empirical observation 
 about IQ correlations, you're the real racist for refusing to discuss it."
 
-> "The average IQ of the Haitian population is 67... Haiti is, quite 
-> literally, a country full of violent idiots." — ESR
+💬 "The average IQ of the Haitian population is 67... Haiti is, quite 
+literally, a country full of violent idiots."
+— (Jan 2010, blog post on Haiti, [cited in HN discussion](https://news.ycombinator.com/item?id=15513108))
 
-> "... unfortunately, this doesn't cover the BLM crowd, which would 
-> have an average IQ of about 85 if it's statistically representative 
-> of American blacks as a whole. I've never tried to train anyone that 
-> dim and wouldn't want to." — ESR on firearms training
+💬 "...the BLM crowd, which would have an average IQ of about 85 if 
+it's statistically representative of American blacks as a whole. 
+I've never tried to train anyone that dim and wouldn't want to."
+— (2016, on firearms training, [cited by tqbf on Twitter](https://twitter.com/tqbf/status/780839196231630848))
 
 ---
 
@@ -202,66 +208,54 @@ Self-aware bad code with elaborate justifications:
 ### Category 5: Political Extremism  
 Libertarian/firearms enthusiasm:
 
-| Quote | Context |
-|-------|---------|
-| "No socially responsible programmer should use his craft to assist with any government program of firearms registration" | "On Socially Responsible Programming" |
-| "If the Constitution is abrogated by a 'repeal' of 2A, it will be revolution time — millions of armed Americans will regard it as their moral duty to rise up and kill those who threw it in the trash." | Blog post |
-| "When I hear the words 'social responsibility', I want to reach for my gun." | Accepting award from Computer Professionals for Social Responsibility |
-| On visiting Venezuela: "...until the Cuban Communist 'advisors' have been deported or (better) shot like rabid dogs." | Blog post |
-| "And for any agents or proxy of the regime interested in asking me questions face to face, I've got some bullets slathered in pork fat to make you feel extra special welcome." | NedaNet blog post |
+| Quote | Source |
+|-------|--------|
+| 💬 "When I hear the words 'social responsibility', I want to reach for my gun." | (Nov 4, 2001, CPSR award, [NYT Book Review/WikiQuote](https://en.wikiquote.org/wiki/Eric_S._Raymond)) |
+| 💬 "And for any agents or proxy of the regime interested in asking me questions face to face, I've got some bullets slathered in pork fat to make you feel extra special welcome." | (Jun 2009, NedaNet, [archived](https://web.archive.org/web/20090626000000*/esr.ibiblio.org)) |
 
 ### Category 6: Racist/Race-Baiting Statements
 The "Libertarian Chicken" collection:
 
-| Quote | Context |
-|-------|---------|
-| "In the U.S., blacks are 12% of the population but commit 50% of violent crimes; can anyone honestly think this is unconnected to the fact that they average 15 points of IQ lower than the general population?" | Armed and Dangerous blog |
-| "The average IQ of the Haitian population is 67... Haiti is, quite literally, a country full of violent idiots." | Blog post on Haiti |
-| "...the BLM crowd, which would have an average IQ of about 85 if it's statistically representative of American blacks as a whole. I've never tried to train anyone that dim and wouldn't want to." | On firearms training |
-| "...what's keeping women in general from occupying the vast middle of the programming field is not general intelligence. On the other hand, the average black American has an IQ about 85 and that is pretty much a disqualifier right there." | Blog comment |
-| Defending Russ Nelson's "Blacks are Lazy" article by calling critics "fools and thugs" | eWeek interview |
+| Quote | Source |
+|-------|--------|
+| 💬 "In the U.S., blacks are 12% of the population but commit 50% of violent crimes; can anyone honestly think this is unconnected to the fact that they average 15 points of IQ lower than the general population?" | (2003, [esr.ibiblio.org/?p=129](http://esr.ibiblio.org/?p=129)) |
+| 💬 "The average IQ of the Haitian population is 67... Haiti is, quite literally, a country full of violent idiots." | (Jan 2010, [HN citation](https://news.ycombinator.com/item?id=15513108)) |
+| 💬 "...the BLM crowd, which would have an average IQ of about 85... I've never tried to train anyone that dim and wouldn't want to." | (2016, [tqbf Twitter](https://twitter.com/tqbf/status/780839196231630848)) |
+| 💬 Defending Russ Nelson's "Blacks are Lazy" by calling critics "fools and thugs" | (Mar 2005, [eWeek](https://www.eweek.com/servers/new-osi-president-steps-down/)) |
 
 ### Category 7: Threatening/Violent Statements
 
-| Quote | Context |
-|-------|---------|
-| To Bruce Perens: "Damn straight I took it personally. And if you ever again behave like that kind of disruptive asshole in public, insult me, and jeopardize the interests of our entire tribe, I'll take it just as personally — and I will find a way to make you regret it. Watch your step." | Debian-devel mailing list, 1999 |
-| "A clash of civilizations... I think he is also right to say that our long-term objective must be to break, crush and eventually destroy this culture" | On Islamic culture, 2002 |
-
-### Category 8: Failed Predictions
+| Quote | Source |
+|-------|--------|
+| 💬 "Damn straight I took it personally. And if you ever again behave like that kind of disruptive asshole in public, insult me, and jeopardize the interests of our entire tribe, I'll take it just as personally — and I will find a way to make you regret it. Watch your step." | (Apr 5, 1999, to Bruce Perens, [debian-devel](https://lists.debian.org/debian-devel/1999/04/msg00197.html)) |
+| 💬 "A clash of civilizations... I think he is also right to say that our long-term objective must be to break, crush and eventually destroy this culture" | (Sep 19, 2002, on Islamic culture, [WikiQuote](https://en.wikiquote.org/wiki/Eric_S._Raymond)) |
 
 ### Category 8: Failed Predictions
 Confidently wrong:
 
 | Quote | Reality |
 |-------|---------|
-| "Microsoft's business plan will fail in the first or second quarter of 2001" | Microsoft: still exists |
-| "VA Linux Systems can fund its laboratory branch..." | VA Linux: pivoted away from Linux |
-| "Netscape's execution... the open-source concept may be so discredited" | Mozilla became Firefox, eventually |
-| "Given enough eyeballs, all bugs are shallow" (Linus's Law) | Heartbleed, Shellshock, etc. |
+| 💬 "Given enough eyeballs, all bugs are shallow" | Heartbleed, Shellshock, POODLE proved otherwise. [WikiQuote](https://en.wikiquote.org/wiki/Eric_S._Raymond) |
 
-### Category 9: The Horrible Self-Awareness
-Knowing exactly what he's doing:
+### Category 9: Self-Awareness (verified quotes only)
 
-| Quote | Context |
-|-------|---------|
-| "I'm an arrogant son of a bitch." | Salon Magazine |
-| "I want to make the world a better place for me to live in" | Lawyers Guns and Money interview |
-| "I'm very idealistic" | Same interview |
-| "I publish this blog in part because I think it is my duty to speak taboo and unspeakable truths." | Armed and Dangerous |
+| Quote | Source |
+|-------|--------|
+| 💬 "I publish this blog in part because I think it is my duty to speak taboo and unspeakable truths." | (Aug 14, 2014, [Armed and Dangerous](https://esr.ibiblio.org/?p=6031)) |
+
+**⚠️ NOTE**: The quote "I'm an arrogant son of a bitch" is often attributed but 
+the exact Salon source has not been located. DO NOT USE without verification.
 
 ### Category 10: Self-Proclaimed "Natural" Expertise
-Claims to be a "natural" at everything:
+Claims to be a "natural" at many things (from [RationalWiki](https://rationalwiki.org/wiki/Eric_S._Raymond)):
 
 | Claimed Expertise | Source |
 |-------------------|--------|
-| "natural" at "game" (pick-up artistry) | Blog post |
-| "natural polyglot" | Various |
-| "expert martial artist" | Self-description |
-| "natural small-unit leader" | Self-description |
-| "natural flutist" | Self-description |
-| "a natural witch, albeit of a kind uncommon in this century" | "Dancing" essay |
-| "natural marksman" who can "think like a warrior" | Guns pages |
+| 💬 "natural" at "game" (pick-up artistry) | ([esr.ibiblio.org/?p=3000](http://esr.ibiblio.org/?p=3000), 2011) |
+| 💬 "a natural witch, albeit of a kind uncommon in this century" | ("Dancing" essay, [catb.org](http://www.catb.org/esr/writings/dancing.html)) |
+| 💬 "natural marksman" | (Guns pages, [catb.org/esr/guns](http://www.catb.org/esr/guns/personal.html)) |
+
+**⚠️ NOTE**: Other "natural" claims cited by RationalWiki need individual verification.
 
 ### Category 11: Critic-Attacking Vocabulary
 Dog-whistles and dismissals:
@@ -495,5 +489,6 @@ The character uses only the comedic elements.
 
 ---
 
-*Last updated: Safari #3 Tiki Jungle Edition 🌺🦜*
-*Expanded with Libertarian Chicken documentation*
+*Last updated: Citation audit*
+*Removed misattributed Linus Torvalds quote*
+*All quotes now require verified sources with links*
