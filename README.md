@@ -120,7 +120,7 @@ flowchart TB
 
 🥽 **USE AI SAFETY GOGGLES** 🥽
 
-Staring directly into 1988 C code with your own eyes is **NOT RECOMMENDED**.
+Staring directly into ESR's 1988 C code with your own eyes is **NOT RECOMMENDED**.
 
 ### How This Was Made
 
@@ -128,11 +128,46 @@ Staring directly into 1988 C code with your own eyes is **NOT RECOMMENDED**.
    - This repo (`tmnn7-8`)
    - [MOOLLM](https://github.com/SimHacker/moollm) — the character simulation operating system
 
-2. **MOOLLM activates automatically.** It's The Sims meets LambdaMOO:
+2. **MOOLLM activates automatically.** It's The Sims meets LambdaMOO meets Minsky's Society of Mind:
    - Directories are rooms
    - YAML files define characters
    - AI can embody any character and stay in voice
    - The `analysis/characters/` directory is the cast
+   - The entire GitHub repo including all branches is the revolving stage
+
+### The Architecture: Self-like Prototype Inheritance
+
+**MOOLLM is a composable, prototype-based object system** — like Self, but on the filesystem, across repos.
+
+```
+moollm/skills/character/               ← Base character prototype
+    ↑ inherits from
+tmnn7-8/analysis/skills/github-user/   ← GitHub-specific character
+    ↑ inherits from
+tmnn7-8/analysis/characters/OpenBFD/   ← Specific character instance
+
+moollm/skills/simulator/                   ← Base simulation prototype
+    ↑ inherits from
+tmnn7-8/analysis/skills/github-simulation/ ← GitHub Issues as stage
+```
+
+**Key concepts:**
+- **Prototype inheritance:** Skills inherit from other skills via `inherits:` in YAML
+- **Cross-repo composition:** `tmnn7-8` skills inherit from `moollm` skills
+- **Filesystem = object graph:** Directories are objects, files are slots
+- **Multiple inheritance:** A skill can inherit from multiple prototypes
+- **URL as prototype:** Characters can inherit directly from URLs (training data)
+
+**This repo's skills:**
+| Skill | Inherits From | Purpose |
+|-------|---------------|---------|
+| `github-user` | `moollm/skills/character` | GitHub user with commit/issue voice |
+| `github-simulation` | `moollm/skills/simulator` | GitHub as theatrical stage |
+
+**Platforms:**
+- ✅ **Cursor** — fully supported now
+- 🔜 **Claude Code** — coming soon
+- 🔜 **Other IDE agents** — architecture is portable
 
 3. **Ask the AI to perform tasks as specific characters:**
 
