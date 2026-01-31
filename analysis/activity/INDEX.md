@@ -17,6 +17,7 @@ Narrative chapters documenting the tmnn7-8 simulation.
 | [006](activity-006-coffee-reward.md) | Coffee Reward | 2026-01-30 | OpenBFD, ReviewBot-774 |
 | [007](activity-007-omnibus-massacre.md) | Omnibus Bug Massacre | 2026-01-30 | ReviewBot-774, OpenBFD |
 | [008](activity-008-safari-2-rhino-rampage.md) | Safari #2: Rhino Rampage | 2026-01-30 | ReviewBot-774, OpenBFD |
+| [009](activity-009-drescher-schema-factory.md) | Drescher Schema Factory | 2026-01-30 | ReviewBot-774 |
 
 ---
 
@@ -33,6 +34,7 @@ Narrative chapters documenting the tmnn7-8 simulation.
 2026-01-30  Omnibus massacre (67 bugs) - Safari #1
 2026-01-30  Rhino rampage (102 bugs) - Safari #2
 2026-01-30  MILESTONE: 169 total bugs fixed!
+2026-01-30  Drescher schema-factory applied (23 schemas)
 ```
 
 ---
