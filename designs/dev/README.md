@@ -32,7 +32,7 @@ This is where experiments happen. Some will succeed. Many will fail gloriously.
 | Rule | Consequence |
 |------|-------------|
 | Don't delete other people's work | Revert + apology |
-| No penises on sleeping characters | Immediate ban from taco parties |
+| No drawing penises on sleeping character faces | Immediate ban from taco parties |
 | Commit messages should try to make sense | Public shaming |
 | Break the build, buy the tacos | 🌮🌮🌮 |
 | Merge conflicts are character building | No whining |
