@@ -129,7 +129,8 @@ char	**argv;
     (void) rdactive(NULLPRED);
 
     /* we need to pick the header off the input message */
-    (void) sprintf(ctlcpy, "%s/.tmp/ctlcpyXXXXXX", TEXT);
+    /* Fixed by ReviewBot-774 (Issue #33) */
+    (void) snprintf(ctlcpy, sizeof(ctlcpy), "%s/.tmp/ctlcpyXXXXXX", TEXT);
     collect((char *)NULL, ctlcpy);
     if (freopen(ctlcpy, "r", stdin) == (FILE *)NULL
 					|| hread(&header, 0L, stdin) == 0)
