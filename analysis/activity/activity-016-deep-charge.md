@@ -543,5 +543,5 @@ Progress: 774 → 246 (68% COMPLETE!)
 
 ---
 
-**Previous:** [Activity 015 — 🌮 THE TACO PARTY 🌮](activity-015-taco-party.md)  
-**Next:** The final push begins. 🦏💨
+**Previous:** [Activity 015 — 🌮 THE TACO PARTY 🌮](activity-015-taco-party.md)
+**Next:** [Activity 017 — 🦏🌊 DEEP AND WIDE](activity-017-deep-and-wide.md)
