@@ -158,8 +158,8 @@ char *file;
 {
     register int i, fd;
 
-    (void) strcpy(bfr, file);
-    (void) strcat(bfr, "-LCK.1");
+    (void) strlcpy(bfr, file, LBUFLEN);
+    (void) strlcat(bfr, "-LCK.1", LBUFLEN);
 
     i = DEADTIME;
     while ((fd = creat(bfr, 0444)) < 0)
@@ -184,16 +184,16 @@ char *file;
 bool filecheck(file)
 file *file;
 {
-    (void) strcpy(bfr, file);
-    (void) strcat(bfr, "-LCK.1");
+    (void) strlcpy(bfr, file, LBUFLEN);
+    (void) strlcat(bfr, "-LCK.1", LBUFLEN);
     return(!exists(bfr));
 }
 
 void fileunlock(file)
 char *file;
 {
-    (void) strcpy(bfr, file);
-    (void) strcpy(bfr, "-LCK.1");
+    (void) strlcpy(bfr, file, LBUFLEN);
+    (void) strlcat(bfr, "-LCK.1", LBUFLEN);  /* was strcpy - bug in original */
     (void) unlink(bfr);
     return(SUCCEED);
 }
@@ -224,7 +224,7 @@ char *file;
     else
 	(void) close(fd);
 
-    (void) sprintf(tmplock, "/tmp/%s..LCK", file);
+    (void) snprintf(tmplock, sizeof(tmplock), "/tmp/%s..LCK", file);
 
     /*
      * And because the OS doesn't know our lock file is wedded to
@@ -249,7 +249,7 @@ char *file;
 bool filecheck(file)
 char	*file; 
 {
-    (void) sprintf(bfr, "/tmp/%s..LCK", file);
+    (void) snprintf(bfr, LBUFLEN, "/tmp/%s..LCK", file);
     return(!exists(bfr));
 }
 
@@ -261,13 +261,13 @@ char *file;
     int fd;
 
     (void) strncpy(procfile, file, NAMELIMIT);
-    (void) sprintf(procfile + strlen(file), "..%d", file, getpid());
+    (void) snprintf(procfile + strlen(file), sizeof(procfile) - strlen(file), "..%d", getpid());
 
     if (stat(procfile, &stbuf) == FAIL)
 	return(FAIL);
     else if (stbuf.st_nlink == 2)
     {
-	(void) sprintf(tmplock, "/tmp/%s..LCK", file);
+	(void) snprintf(tmplock, sizeof(tmplock), "/tmp/%s..LCK", file);
 	(void) unlink(tmplock);
     }
 

@@ -45,7 +45,7 @@ char	*field[];
 int	largc;
 char	*largv[];
 {
-    (void) strcpy(newdata, field[F_MEMBERS]);
+    (void) strlcpy(newdata, field[F_MEMBERS], sizeof(newdata));
     for (; largc--; largv++)
 	if (ngmatch(largv[0], field[F_MEMBERS])
 	    || ngmatch(largv[0], field[F_KEEPERS]))
@@ -55,8 +55,8 @@ char	*largv[];
 	}
         else
 	{
-	    (void) strcat(newdata, ",");
-	    (void) strcat(newdata, largv[0]);
+	    (void) strlcat(newdata, ",", sizeof(newdata));
+	    (void) strlcat(newdata, largv[0], sizeof(newdata));
 	}
 	(void) printf("Group %s now has users %s\n",
 		      field[F_GROUP], field[F_MEMBERS] = newdata);
@@ -254,12 +254,12 @@ char	*largv[];
 	}
 	if (largv[F_COMMAND][1] == '+')
 	{
-	    (void) strcpy(newdata, field[F_POSTSUBSC]);
-	    (void) strcat(newdata, ",");
+	    (void) strlcpy(newdata, field[F_POSTSUBSC], sizeof(newdata));
+	    (void) strlcat(newdata, ",", sizeof(newdata));
 	}
 	else
 	    newdata[0] = '\0';
-	(void) strcat(newdata, largv[2]);
+	(void) strlcat(newdata, largv[2], sizeof(newdata));
 	(void) printf("New post subscription for %s is: %s\n",
 		      field[F_GROUP], field[F_POSTSUBSC] = newdata);
 	return(rewrite(lineno, field));
@@ -274,12 +274,12 @@ char	*largv[];
 	}
 	if (largv[F_COMMAND][1] == '+')
 	{
-	    (void) strcpy(newdata, field[F_READSUBSC]);
-	    (void) strcat(newdata, ",");
+	    (void) strlcpy(newdata, field[F_READSUBSC], sizeof(newdata));
+	    (void) strlcat(newdata, ",", sizeof(newdata));
 	}
 	else
 	    newdata[0] = '\0';
-	(void) strcat(newdata, largv[2]);
+	(void) strlcat(newdata, largv[2], sizeof(newdata));
 	(void) printf("New read subscription for %s is: %s\n",
 		      field[F_GROUP], field[F_READSUBSC] = newdata);
 	return(rewrite(lineno, field));
@@ -318,7 +318,7 @@ char	**argv;
 
     newsinit();
 
-    (void) sprintf(oldperms, "%s/authorized", site.admdir);
+    (void) snprintf(oldperms, sizeof(oldperms), "%s/authorized", site.admdir);
 
     /*
      * first, compile a list of all groups
@@ -339,16 +339,16 @@ char	**argv;
 	    }
 	    else
 	    {
-		(void) strcat(allgrps, ",");
-		(void) strcat(allgrps, largv[F_GROUP]);
+		(void) strlcat(allgrps, ",", sizeof(allgrps));
+		(void) strlcat(allgrps, largv[F_GROUP], sizeof(allgrps));
 	    }
 
-	    /* it wouldn't hurt to have bounds checking here too... */
+	    /* bounds checking via strlcat */
 	    if (ngmatch(username, largv[F_KEEPERS]))
 	    {
 		if (keeper[0] != '\0')
-		    (void) strcat(keeper, ",");
-		(void) strcat(keeper, largv[F_GROUP]);
+		    (void) strlcat(keeper, ",", sizeof(keeper));
+		(void) strlcat(keeper, largv[F_GROUP], sizeof(keeper));
 	    }
 	}
     }		
@@ -369,8 +369,8 @@ char	**argv;
 	else
 	{
 	    if (allgrps[0] == '\0')
-		(void) strcat(allgrps, ",");
-	    (void) strcat(allgrps, gr->gr_name);
+		(void) strlcat(allgrps, ",", sizeof(allgrps));
+	    (void) strlcat(allgrps, gr->gr_name, sizeof(allgrps));
 	}
     }
 #ifndef lint	/* USG and BSD disagree on the type of setgrent() */
@@ -385,7 +385,7 @@ char	**argv;
 	exit(1);
     }
 
-    (void) sprintf(newperms, "%s/authorized.tmp", site.admdir);
+    (void) snprintf(newperms, sizeof(newperms), "%s/authorized.tmp", site.admdir);
 
     if (argc > 1)
 	status = edit(argc - 1, argv + 1);

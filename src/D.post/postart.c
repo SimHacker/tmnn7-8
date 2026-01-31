@@ -79,19 +79,19 @@ hdr_t	*fhp;		/* followup header */
 	p = "In %i %e wrote:\n";
     strexpand(p, cite.citeline);
 #else
-    (void) sprintf(cite.citeline, "In %s ", header.h_ident);
+    (void) snprintf(cite.citeline, sizeof(cite.citeline), "In %s ", header.h_ident);
     author(&header, cite.citeline + strlen(cite.citeline));
-    (void) strcat(cite.citeline, " wrote:\n");
+    (void) strlcat(cite.citeline, " wrote:\n", sizeof(cite.citeline));
 #endif /* RNESCAPES */
 
-    (void) strcpy(cite.address, mailreply(fhp));
+    (void) strlcpy(cite.address, mailreply(fhp), sizeof(cite.address));
     hlfree(fhp->h_path);
     hlfree(fhp->h_from);
 
     /* Newsgroups */
     if (fgroups.file == (char *)NULL)
     {
-	(void) sprintf(bfr, "%s/%s", site.admdir, "followups");
+	(void) snprintf(bfr, LBUFLEN, "%s/%s", site.admdir, "followups");
 	fgroups.file = savestr(bfr);
 	(void) dbaread(&fgroups);
     }
@@ -110,12 +110,12 @@ hdr_t	*fhp;		/* followup header */
     /* References: */
     if (hlnblank(header.h_references))
     {
-	(void) strcpy(bfr, header.h_references);
-	(void) strcat(bfr, " ");
+	(void) strlcpy(bfr, header.h_references, LBUFLEN);
+	(void) strlcat(bfr, " ", LBUFLEN);
     }
     else
 	bfr[0] = '\0';
-    (void) strcat(bfr, header.h_ident);
+    (void) strlcat(bfr, header.h_ident, LBUFLEN);
     (void) hlcpy(fhp->h_references, bfr);
 
     hlfree(fhp->h_ident);
@@ -148,7 +148,7 @@ bool	rotate;	    /* whether to ROT13 the text */
     int		c;
     char	copyto[BUFLEN];
 
-    (void) strcpy(copyto, "/tmp/postcopyXXXXXX");
+    (void) strlcpy(copyto, "/tmp/postcopyXXXXXX", sizeof(copyto));
     (void) mktemp(copyto);
 
     if ((wfp = fopen(copyto, "w")) == (FILE *)NULL)
@@ -160,7 +160,7 @@ bool	rotate;	    /* whether to ROT13 the text */
 
     if (rotate)	/* we need to ROT13 the body */
     {
-	(void) sprintf(bfr, "%s/%s 13 >> %s\n", site.libdir, "caesar", copyto);
+	(void) snprintf(bfr, LBUFLEN, "%s/%s 13 >> %s\n", site.libdir, "caesar", copyto);
 	wfp = popen(bfr,  "w");
 	while ((c = fgetc(fp)) != EOF)
 	    (void) fputc(c, wfp);
@@ -186,7 +186,7 @@ char *ngrps;
     FILE *fp;
     char nglist[BUFLEN], fname[BUFLEN];
 
-    (void) sprintf(recbuf, "%s/%s", site.admdir, "recording");
+    (void) snprintf(recbuf, sizeof(recbuf), "%s/%s", site.admdir, "recording");
     fp = fopen(recbuf, "r");
     if (fp == (FILE *)NULL)
 	return((char *)NULL);
@@ -197,9 +197,9 @@ char *ngrps;
 	{
 	    (void) fclose(fp);
 	    if (fname[0] == '/')
-		(void) strcpy(recbuf, fname);
+		(void) strlcpy(recbuf, fname, sizeof(recbuf));
 	    else
-		(void) sprintf(recbuf, "%s/%s", site.admdir, fname);
+		(void) snprintf(recbuf, sizeof(recbuf), "%s/%s", site.admdir, fname);
 	    return(recbuf);
 	}
     }
