@@ -1,8 +1,19 @@
 # 🚀 Node.js
 
-**Faction:** nodejs-webscale  
-**Leader:** WebScaleChad
+**Language:** JavaScript/TypeScript  
+**Leader:** WebScaleChad  
+**Branch:** `nodejs-webscale`
 
-Node.js rewrite of TMNN. Webscale. Cloud native. Many npm.
+Node.js implementation of TMNN. Webscale. Cloud native. Many npm.
 
-Reference code: `src/` (lmao what C code?)
+## Status
+
+- [ ] `npm init`
+- [ ] TypeScript setup
+- [ ] Express scaffolding
+- [ ] npm install the universe
+
+## Reference
+
+- **Specification:** `src/` (lmao what C code?)
+- **Design docs:** `designs/nodejs/`

@@ -1,10 +1,11 @@
-# 🚀 Node.js Webscale Designs
+# 🚀 Node.js
 
-**Faction:** nodejs-webscale  
+**Language:** JavaScript/TypeScript  
 **Leader:** WebScaleChad  
-**Branch:** `nodejs-webscale`
+**Code:** `nodejs/`  
+**Branch:** `nodejs-webscale` (for faction-specific work)
 
-Design documents for the Node.js rewrite of TMNN.
+Design documents for the Node.js implementation of TMNN.
 
 ## Philosophy
 

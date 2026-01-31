@@ -1,10 +1,11 @@
-# λ Haskell Port Designs
+# λ Haskell
 
-**Faction:** haskell-port  
+**Language:** Haskell  
 **Leader:** PureMonad  
-**Branch:** `haskell-port`
+**Code:** `haskell/`  
+**Branch:** `haskell-port` (for faction-specific work)
 
-Design documents for the Haskell port of TMNN.
+Design documents for the Haskell implementation of TMNN.
 
 ## Philosophy
 
