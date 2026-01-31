@@ -1,15 +1,15 @@
 # Activity 005 — Parallel Learning Workflow
 
 **Date:** 2026-01-30  
-**Characters:** OpenBFD, ReviewBot-774  
-**Issues:** #25, #27, #28  
-**PRs:** #26, #29, #30
+**Characters:** [OpenBFD](../characters/OpenBFD/), [ReviewBot-774](../characters/ReviewBot-774/)  
+**Issues:** [#25](https://github.com/SimHacker/tmnn7-8/issues/25), [#27](https://github.com/SimHacker/tmnn7-8/issues/27), [#28](https://github.com/SimHacker/tmnn7-8/issues/28)  
+**PRs:** [#26](https://github.com/SimHacker/tmnn7-8/pull/26), [#29](https://github.com/SimHacker/tmnn7-8/pull/29), [#30](https://github.com/SimHacker/tmnn7-8/pull/30)
 
 ---
 
 ## The Experiment
 
-Puffy and Robbie work in parallel:
+[Puffy](../characters/OpenBFD/CHARACTER.yml) and [Robbie](../characters/ReviewBot-774/CHARACTER.yml) work in parallel:
 - **Puffy:** Takes the HARD problems (architectural investigation)
 - **Robbie:** Takes the TEDIOUS problems (repetitive fixes)
 
@@ -89,9 +89,19 @@ schema_update:
 
 ---
 
+## Key Files
+
+- **Fixed file:** [`src/D.news/fascist.c`](https://github.com/SimHacker/tmnn7-8/blob/main/src/D.news/fascist.c)
+- **Robbie's learnings:** [learning/](../characters/ReviewBot-774/learning/)
+
+---
+
 ## Outcome
 
 - **Bugs fixed:** 14 (8 + 6)
 - **Documentation added:** THREADING MODEL section
 - **Schemas developed:** Pattern recognition, context awareness
 - **Relationship:** Mentor-apprentice → Collaborative peers
+
+**Previous:** [Activity 004 — The VIBE CHECK Incident](activity-004-vibe-check-incident.md)  
+**Next:** [Activity 006 — Coffee Reward](activity-006-coffee-reward.md)

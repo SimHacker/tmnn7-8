@@ -1,9 +1,9 @@
-# Activity 007 — Omnibus Bug Massacre
+# Activity 007 — Omnibus Bug Massacre (Safari #1)
 
 **Date:** 2026-01-30  
-**Characters:** ReviewBot-774, OpenBFD  
-**Issue:** #33  
-**PR:** #34
+**Characters:** [ReviewBot-774](../characters/ReviewBot-774/), [OpenBFD](../characters/OpenBFD/)  
+**Issue:** [#33](https://github.com/SimHacker/tmnn7-8/issues/33)  
+**PR:** [#34](https://github.com/SimHacker/tmnn7-8/pull/34)
 
 ---
 
@@ -15,7 +15,7 @@ Caffeine-fueled systematic elimination of string safety bugs across the entire c
 
 ## The Scan
 
-Robbie scans all C files in `src/`:
+[Robbie](../characters/ReviewBot-774/CHARACTER.yml) scans all C files in [`src/`](https://github.com/SimHacker/tmnn7-8/tree/main/src):
 
 ```yaml
 total_targets: 311
@@ -28,7 +28,7 @@ total_targets: 311
 
 ## The Approach
 
-Puffy's guidance:
+[Puffy](../characters/OpenBFD/CHARACTER.yml)'s guidance:
 1. One file at a time
 2. Commit after each file
 3. Good commit messages with line numbers
@@ -38,17 +38,17 @@ Puffy's guidance:
 
 ## The Execution
 
-**[Issue #33](https://github.com/SimHacker/tmnn7-8/issues/33)** — Tracking issue
+**[Issue #33](https://github.com/SimHacker/tmnn7-8/issues/33)** — Tracking issue with progress updates
 
 ### Files Fixed
 
-| File | Fixes | Commit |
-|------|-------|--------|
-| checknews.c | 1 | `🤖 checknews.c: strcpy → strlcpy` |
-| compress.c | 5 | `🤖 compress.c: 5 string safety fixes` |
-| control.c | 25 | `🤖 control.c: 24 string safety fixes` |
-| compuserve.c | 10 | `🤖 compuserve.c: 10 string safety fixes` |
-| bbsauto.c | 26 | `🤖 bbsauto.c: 26 string safety fixes` |
+| File | Fixes | Link |
+|------|-------|------|
+| [`checknews.c`](https://github.com/SimHacker/tmnn7-8/blob/main/src/checknews.c) | 1 | `strcpy → strlcpy` |
+| [`compress.c`](https://github.com/SimHacker/tmnn7-8/blob/main/src/compress.c) | 5 | 5 string safety fixes |
+| [`control.c`](https://github.com/SimHacker/tmnn7-8/blob/main/src/control.c) | 25 | 25 string safety fixes |
+| [`compuserve.c`](https://github.com/SimHacker/tmnn7-8/blob/main/src/compuserve.c) | 10 | 10 string safety fixes |
+| [`bbsauto.c`](https://github.com/SimHacker/tmnn7-8/blob/main/src/bbsauto.c) | 26 | 26 string safety fixes |
 
 **Total: 67 bugs eliminated**
 
@@ -99,6 +99,13 @@ REMAINING:     244
 
 ---
 
+## Key Files
+
+- **GitOps schemas learned:** [2026-01-30-gitops-schemas.yml](../characters/ReviewBot-774/learning/2026-01-30-gitops-schemas.yml)
+- **All fixed files:** [`src/`](https://github.com/SimHacker/tmnn7-8/tree/main/src)
+
+---
+
 ## Outcome
 
 - **Bugs squashed:** 67
@@ -106,3 +113,6 @@ REMAINING:     244
 - **Commits:** 6 (squashed to 1)
 - **Robbie's status:** Competent contributor
 - **Coffee status:** Refill requested
+
+**Previous:** [Activity 006 — Coffee Reward](activity-006-coffee-reward.md)  
+**Next:** [Activity 008 — Safari #2: Rhino Rampage](activity-008-safari-2-rhino-rampage.md)

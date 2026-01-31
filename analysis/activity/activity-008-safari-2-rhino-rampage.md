@@ -1,22 +1,23 @@
 # Activity 008 — Safari #2: The Unstoppable Rhino
 
-**Date:** 2026-01-30
-**Issue:** #35
-**PR:** #36 (merged)
-**Milestone:** #37
+**Date:** 2026-01-30  
+**Characters:** [ReviewBot-774](../characters/ReviewBot-774/), [OpenBFD](../characters/OpenBFD/)  
+**Issue:** [#35](https://github.com/SimHacker/tmnn7-8/issues/35)  
+**PR:** [#36](https://github.com/SimHacker/tmnn7-8/pull/36) (merged)  
+**Milestone:** [#37](https://github.com/SimHacker/tmnn7-8/issues/37)
 
 ---
 
 ## Synopsis
 
-After the success of Safari #1 (67 bugs), the team launched Safari #2 with Robbie in "Rhino Mode" — maximum velocity, no stopping.
+After the success of [Safari #1](activity-007-omnibus-massacre.md) (67 bugs), the team launched Safari #2 with [Robbie](../characters/ReviewBot-774/CHARACTER.yml) in "Rhino Mode" — maximum velocity, no stopping.
 
 ## Participants
 
 | Character | Role | Mode |
 |-----------|------|------|
-| 🐡 OpenBFD | Mentor/Architect | DEEP_ANALYSIS |
-| 🤖 ReviewBot-774 | Bulldozer | UNSTOPPABLE_RHINO |
+| 🐡 [OpenBFD](../characters/OpenBFD/) | Mentor/Architect | DEEP_ANALYSIS |
+| 🤖 [ReviewBot-774](../characters/ReviewBot-774/) | Bulldozer | UNSTOPPABLE_RHINO |
 
 ## Results
 
@@ -30,20 +31,20 @@ quality: "NO REGRESSIONS"
 
 ### File Breakdown
 
-| File | Bugs | Time | Notes |
+| File | Bugs | Link | Notes |
 |------|------|------|-------|
-| inews.c | 16 | Fast | Clean sweep |
-| locknews.c | 17 | Fast | Clean sweep |
-| ednews.c | 17 | Medium | Status chain |
-| expire.c | 12 | Medium | Buffer math |
-| vrn.c | 7 | Fast | 6 skipped |
-| postart.c | 12 | Medium | cite struct |
-| editart.c | 12 | Fast | editcmd chain |
-| filelock.c | 9 | Medium | **Bug found!** |
+| [`inews.c`](https://github.com/SimHacker/tmnn7-8/blob/main/src/inews.c) | 16 | [diff](https://github.com/SimHacker/tmnn7-8/pull/36/files) | Clean sweep |
+| [`locknews.c`](https://github.com/SimHacker/tmnn7-8/blob/main/src/locknews.c) | 17 | | Clean sweep |
+| [`ednews.c`](https://github.com/SimHacker/tmnn7-8/blob/main/src/ednews.c) | 17 | | Status chain |
+| [`expire.c`](https://github.com/SimHacker/tmnn7-8/blob/main/src/expire.c) | 12 | | Buffer math |
+| [`vrn.c`](https://github.com/SimHacker/tmnn7-8/blob/main/src/vrn.c) | 7 | | 6 skipped |
+| [`postart.c`](https://github.com/SimHacker/tmnn7-8/blob/main/src/D.post/postart.c) | 12 | | cite struct |
+| [`editart.c`](https://github.com/SimHacker/tmnn7-8/blob/main/src/D.post/editart.c) | 12 | | editcmd chain |
+| [`filelock.c`](https://github.com/SimHacker/tmnn7-8/blob/main/src/D.priv/filelock.c) | 9 | | **Bug found!** |
 
 ### Bug Discovery
 
-At `filelock.c:196`, Robbie discovered an original bug:
+At [`filelock.c:196`](https://github.com/SimHacker/tmnn7-8/blob/main/src/D.priv/filelock.c#L196), Robbie discovered an original bug:
 - Was: `strcpy(bfr, "-LCK.1")` — **overwrites entire path!**
 - Should be: `strcat(bfr, "-LCK.1")` — appends suffix
 - Fixed: `strlcat(bfr, "-LCK.1", LBUFLEN)`
@@ -52,7 +53,7 @@ This bug would have caused lock files named "-LCK.1" instead of "filename-LCK.1"
 
 ## Learnings Documented
 
-Robbie created `analysis/characters/ReviewBot-774/learning/2026-01-30-gitops-schemas.yml`:
+Robbie created [`2026-01-30-gitops-schemas.yml`](../characters/ReviewBot-774/learning/2026-01-30-gitops-schemas.yml):
 - Commit hygiene (one file per commit, line numbers)
 - Branch workflow (clean PRs, squash merge)
 - Collaboration patterns
@@ -72,15 +73,17 @@ Session total:
 **Robbie on finding stride:**
 > "The velocity increase from Safari #1 to #2 isn't just speed — it's confidence. The patterns became automatic."
 
-**Puffy's review:**
+**Puffy's review:** ([comment](https://github.com/SimHacker/tmnn7-8/pull/36#issuecomment-3828696403))
 > "102 fixes. 8 files. No regressions. This is what learning looks like."
 
 ## GitHub Artifacts
 
-- Issue #35: Safari #2 tracking
-- PR #36: 102 fixes merged
-- Issue #37: Milestone celebration
+- **Tracking Issue:** [#35](https://github.com/SimHacker/tmnn7-8/issues/35) (closed)
+- **Pull Request:** [#36](https://github.com/SimHacker/tmnn7-8/pull/36) (merged)
+- **Milestone:** [#37](https://github.com/SimHacker/tmnn7-8/issues/37)
+- **Refuel Comment:** [#33 comment](https://github.com/SimHacker/tmnn7-8/issues/33#issuecomment-3828675442)
 
 ---
 
-**Next:** More safaris, approaching 200 fixes total
+**Previous:** [Activity 007 — Omnibus Bug Massacre](activity-007-omnibus-massacre.md)  
+**Next:** [Activity 009 — Drescher Schema Factory](activity-009-drescher-schema-factory.md)
