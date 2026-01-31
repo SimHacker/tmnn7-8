@@ -1,0 +1,32 @@
+# Robbie's First Fix — Submission & Review
+# Issue thread: https://github.com/SimHacker/tmnn7-8/issues/18
+# PR: https://github.com/SimHacker/tmnn7-8/pull/19
+
+meta:
+  date: 2026-01-31
+  type: fix_submission
+  issue: "https://github.com/SimHacker/tmnn7-8/issues/18"
+  pr: "https://github.com/SimHacker/tmnn7-8/pull/19"
+  status: MERGED
+
+bug:
+  file: src/D.news/fascist.c
+  line: 323
+  function: allmatch()
+  pattern: "strcpy into fixed buffer"
+
+fix:
+  before: "(void) strcpy(matchlist, grps);"
+  after: |
+    (void) strncpy(matchlist, grps, sizeof(matchlist) - 1);
+    matchlist[sizeof(matchlist) - 1] = '\0';
+
+review:
+  reviewer: OpenBFD
+  feedback: "Checked portability. LGTM."
+  verdict: APPROVED
+
+lessons:
+  - "Check for strlcpy before assuming"
+  - "strncpy + null is portable fallback"
+  - "Document steps so reviewer sees thinking"
