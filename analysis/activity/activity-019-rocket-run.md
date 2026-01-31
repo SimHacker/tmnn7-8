@@ -480,7 +480,7 @@ Progress: 774 → 0 = 100% COMPLETE 🎉🎉🎉
 ---
 
 **Previous:** [Activity 018 — 🐆💨 THE CHEETAH RUN](activity-018-cheetah-run.md)
-**Next:** The story continues... but the bugs are DONE. 🎯
+**Next:** [Activity 020 — 🍦🍺 ICE CREAM PARTY](activity-020-ice-cream-party.md)
 
 ---
 

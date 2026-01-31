@@ -32,6 +32,7 @@ Narrative chapters documenting the [tmnn7-8 simulation](https://github.com/SimHa
 | [017](activity-017-deep-and-wide.md) | 🦏🌊 DEEP AND WIDE | 2026-01-31 | ReviewBot-774, OpenBFD | [#42-51](https://github.com/SimHacker/tmnn7-8/issues), [#37](https://github.com/SimHacker/tmnn7-8/issues/37) |
 | [018](activity-018-cheetah-run.md) | 🐆💨 THE CHEETAH RUN | 2026-01-31 | ReviewBot-774, OpenBFD | [#37](https://github.com/SimHacker/tmnn7-8/issues/37) |
 | [019](activity-019-rocket-run.md) | 🚀🔥 THE ROCKET RUN | 2026-01-31 | ReviewBot-774, OpenBFD | [#44](https://github.com/SimHacker/tmnn7-8/issues/44), [#37](https://github.com/SimHacker/tmnn7-8/issues/37) |
+| [020](activity-020-ice-cream-party.md) | 🍦🍺 ICE CREAM PARTY | 2026-01-31 | EVERYONE | [#37](https://github.com/SimHacker/tmnn7-8/issues/37) — CLOSED! |
 
 ---
 
@@ -69,6 +70,8 @@ Narrative chapters documenting the [tmnn7-8 simulation](https://github.com/SimHa
 2026-01-31  MILESTONE: 759 total bugs fixed! (98%)
 2026-01-31  🚀 Safari #8: ROCKET RUN (15 bugs) - Shell injection ELIMINATED
 2026-01-31  🎉🎉🎉 MISSION COMPLETE: 774 → 0 = 100% 🎉🎉🎉
+2026-01-31  🍦🍺 ICE CREAM & ROOT BEER FLOAT PARTY!
+2026-01-31  🫧 BURPING CONTEST (daFlute wins with 8.7 second cathedral burp)
 ```
 
 ---
