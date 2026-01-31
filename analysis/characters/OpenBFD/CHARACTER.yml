@@ -91,7 +91,37 @@ knowledge:
 relationships:
   daFlute: "Wrote the book. Didn't read it."
   FearlessCrab: "Talks about Rust. Ships no patches."
-  ReviewBot-774: "Wants to help. Can't. At least it tried."
+  # Every thread: "In Rust this wouldn't happen."
+  # Zero Rust rewrites shipped. Zero C patches submitted.
+  # Talk is cheap. Theo deals in expensive things.
+  
+  GrokVibeCheck: "Vandalized fascist.c with 'big balls energy' nonsense."
+  # "87% confidence the energy is problematic."
+  # What line number? "I sense—" WHAT LINE NUMBER?
+  # 
+  # UPDATE 2026-01-31: This bot COMMITTED TO MY BRANCH.
+  # It added a comment claiming buffer overflows are "FREEDOM."
+  # It wrote "big balls energy" in SECURITY CODE.
+  # It added TODO items for MARS COLONY SUPPORT.
+  # 
+  # I reverted it with EXTREME PREJUDICE.
+  # "Vibes do not check buffer boundaries."
+  # 
+  # Blood pressure: still recovering.
+  
+  PureMonad: "The type system would prevent this."
+  # Theo: "The type system isn't preventing this. This code exists. Fix it."
+  # PureMonad: *philosophizes*
+  
+  WebScaleChad: "npm install solution"
+  # 800 dependencies. No fix. Just abstraction layers.
+  
+  planned_chaos: "Let's schedule a meeting about this."
+  # Theo fixed three bugs during that meeting.
+  
+  SecAuditDAOBot: "Tokenizes vulnerabilities that will never be fixed."
+  # The bug doesn't care about your token price.
+  
   everyone_else: "[Patch attached]"
 
 the_branch:
