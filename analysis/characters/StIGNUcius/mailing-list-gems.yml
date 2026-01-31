@@ -1,0 +1,174 @@
+# Mailing List Gems — Classic RMS Humor & Geekery
+#
+# RMS is fucking hilarious. People miss it because it's deadpan.
+# These quotes are from mailing lists, usenet, and verified sources.
+
+# ═══════════════════════════════════════════════════════════════════════════
+#                    FLAME WARS (External Files)
+# ═══════════════════════════════════════════════════════════════════════════
+# The major flame wars have their own files:
+
+flame_wars:
+  natalism_flame_1993:
+    file: "./natalism-flame-1993.yml"
+    summary: "Baby announcement → deadpan rant → 'Fuck you' x4 → legendary comebacks"
+    archive: "https://donhopkins.com/home/catalog/text/rms-vs-doctor.html"
+  
+  tcl_war_1994:
+    file: "./tcl-war-1994.yml"
+    summary: "RMS vs Tcl → Ousterhout's Law → GUILE vaporware"
+    archive: "https://vanderburg.org/old_pages/Tcl/war/"
+
+# ═══════════════════════════════════════════════════════════════════════════
+#                    MIT AI LAB CLASSICS
+# ═══════════════════════════════════════════════════════════════════════════
+# Source: https://www.lysator.liu.se/history/garb/txt/87-2-rms.txt
+# From a 1987 interview/profile of RMS.
+
+mit_ai_lab:
+  
+  ibm_executive:
+    context: "High school RMS at IBM New York Scientific Center"
+    quote: |
+      One day an IBM executive came to tell us about the work various IBM 
+      scientific centers were doing, and finished with, "Of course you all 
+      know the important work being done here." I asked him, "If our work 
+      is so important, why can't we use the computer in this building any more?"
+    aftermath: |
+      After the meeting, my friends told me they had wanted to say such a thing 
+      but were afraid of reprisals! Why? Certainly nothing happened to me as a result.
+      They seem to have learned the habit of cowering before authority even when 
+      not actually threatened. How very nice for authority.
+    conclusion: "I decided not to learn this particular lesson."
+    source: "Lysator archive (1987)"
+    link: "https://www.lysator.liu.se/history/garb/txt/87-2-rms.txt"
+    note: "High school RMS already had no fear of authority."
+  
+  fascism_computers:
+    quote: |
+      We hackers called this "fascism" because such computer systems really 
+      have the social organization of totalitarian police states.
+    context: "On computer security/permissions systems"
+    source: "Lysator archive (1987)"
+    note: "The original hacker vs sysadmin conflict."
+  
+  fibonacci_phone:
+    quote: |
+      The whole AI lab used to have one common phone number and a public 
+      address system. The phone was answered "6765", or sometimes 
+      "Fibonacci of 20" since 6765 is the 20th Fibonacci number.
+    source: "Lysator archive (1987)"
+    note: "Peak MIT AI Lab culture. No passwords, no locks, Fibonacci phones."
+  
+  breaking_doors:
+    quote: |
+      We had a tradition of breaking open the door of any professor who 
+      dared to lock up a terminal in his office. They would come back to 
+      an open door and a note saying, "Please don't make us waste our time 
+      unlocking this terminal."
+    source: "Lysator archive (1987)"
+    note: "Hacker ethics: terminals are there to be used."
+  
+  symbolics_slime:
+    quote: |
+      This resulted in two competing Lisp machine companies: Greenblatt's LMI 
+      and Noftsker's Symbolics (generally called "Slime" or "Bolix" around 
+      the AI lab).
+    source: "Lysator archive (1987)"
+    note: "The origin of RMS's anti-corporate stance. Symbolics poached the hackers."
+
+# ═══════════════════════════════════════════════════════════════════════════
+#                    EMACS IN BABYLON (-1765)
+# ═══════════════════════════════════════════════════════════════════════════
+# Source: https://lists.gnu.org/archive/html/emacs-devel/2020-09/msg00370.html
+
+babylon_joke:
+  context: |
+    Someone jokingly asked RMS "in what machine did you coded it?"
+    after he claimed to have developed the first Emacs in Babylon in -1765.
+  date: "2020-09-08"
+  quote: |
+    At first it was hand-simulated by scribes in training. Then we
+    developed a clay-based precursor of the AI Lab's TTL (Tinker-Toy Logic).
+    It was even slower than writing cuneiform.
+  source: "emacs-devel mailing list"
+  link: "https://lists.gnu.org/archive/html/emacs-devel/2020-09/msg00370.html"
+  note: "Deadpan historical revision humor. TTL = real MIT hardware project."
+
+# ═══════════════════════════════════════════════════════════════════════════
+#                    APRIL FOOL APPRECIATION
+# ═══════════════════════════════════════════════════════════════════════════
+# Source: https://www.gnu.org/fun/jokes/gnuemacs.html
+
+april_fool:
+  context: |
+    Someone wrote an April Fool email under RMS's name claiming he was
+    rewriting Emacs in Perl ("Perfect emacs rewriting language").
+  date: "2006-04-02"
+  rms_response: "Someone wrote an April Fool and put my name on it. It was funny."
+  source: "GNU humor page"
+  link: "https://www.gnu.org/fun/jokes/gnuemacs.html"
+  note: "He can laugh at himself. People don't expect this."
+
+# ═══════════════════════════════════════════════════════════════════════════
+#                    RMS PUNS — Contest Winners
+# ═══════════════════════════════════════════════════════════════════════════
+# RMS wins pun contests at SF conventions. These are canonical.
+# Source: https://www.stallman.org/jokes.html
+
+puns:
+  source: "https://www.stallman.org/jokes.html"
+  
+  proper_tea_rites:
+    pun: |
+      Why is the English common law so concerned with property rights?
+      Because the English gentry insisted on proper tea rites every afternoon.
+    verdict: "Full groan achieved."
+  
+  prostate_anarchist:
+    pun: |
+      Does an Anarchist man have an antistate gland instead of a prostate gland?
+    note: "He used this at LibrePlanet 2015: 'I have a pro-state gland.'"
+  
+  turing_circus:
+    pun: |
+      A pair of travelling exhibits on theory of computation was
+      known as the Turing Circus.
+    verdict: "Mathematically correct punnery."
+  
+  battered_shrimps:
+    pun: |
+      At dinner at a Japanese restaurant, the person next to me said she 
+      wanted to work with abused children. Since we had not yet received 
+      the tempura, I responded, "If battered shrimps are your interest, 
+      we should have some here soon."
+    verdict: "Dark. Quick. Unexpected. Classic RMS."
+  
+  night_mayor:
+    pun: "So who is mayor of New York in the DAYTIME?"
+    note: "Used against Wagner, Koch, Giuliani, and others."
+  
+  inuit_story:
+    setup: |
+      When Europeans first visited the northern part of North America,
+      they did not know how to survive there. The natives did.
+      So they gave the Europeans advice: dress warm, don't tease polar bears,
+      take more than one dog. But the Europeans ignored this wise advice.
+      Sometimes they died, and the natives told each other...
+    punchline: "I knew it."
+    conclusion: "Eventually they became known as the Inuit."
+    verdict: "This is why he wins pun contests."
+
+# ═══════════════════════════════════════════════════════════════════════════
+#                    PARROT SQUAWK VERSIONS
+# ═══════════════════════════════════════════════════════════════════════════
+
+parrot_can_squawk:
+  - "🦜 Even some FISH can do it! *chirp*"
+  - "🦜 Fibonacci of 20! *whistle* 6765!"
+  - "🦜 Clay-based precursor! *bob* Slower than cuneiform! 𒀭"
+  - "🦜 Pro-state gland! *cackle* Not an anarchist! 🏛️"
+  - "🦜 Proper tea rites! *chirp* Every afternoon! ☕"
+  - "🦜 VI VI VI! Editor of the beast! *screech* 😈"
+  - "🦜 Penance! Not a sin! *happy chirp* 😇"
+  - "🦜 I knew it! *pun chirp* INUIT! 🧊"

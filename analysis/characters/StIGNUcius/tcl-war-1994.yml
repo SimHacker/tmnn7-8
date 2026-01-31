@@ -1,0 +1,157 @@
+# The Tcl War (1994)
+# RMS vs Tcl — Required Reading for Language Designers
+#
+# RMS posted "Why you should not use Tcl" to comp.lang.tcl.
+# 68 messages. Nearly a month of flame war.
+# John Ousterhout (Tcl creator) replied.
+# Led directly to GNU GUILE.
+
+# ═══════════════════════════════════════════════════════════════════════════
+#         THE TCL WAR (1994) — Required Reading for Language Designers
+# ═══════════════════════════════════════════════════════════════════════════
+#
+# 📜 ARCHIVES (REQUIRED READING):
+# - Main archive: https://vanderburg.org/old_pages/Tcl/war/
+# - GUILE follow-up: https://vanderburg.org/old_pages/Tcl/war2/index.html
+# - HN discussion: https://news.ycombinator.com/item?id=12025218
+#
+# 📝 Glenn Vanderburg archived it to preserve "a balanced perspective"
+# since "it seemed likely... the GNU project would archive Stallman's
+# original article and redistribute it without the many reasonable rebuttals."
+
+metadata:
+  start_date: "1994-09-23"
+  end_date: "1994-10-18"
+  messages: 68
+  newsgroup: "comp.lang.tcl"
+  main_archive: "https://vanderburg.org/old_pages/Tcl/war/"
+  guile_archive: "https://vanderburg.org/old_pages/Tcl/war2/index.html"
+  hn_discussion: "https://news.ycombinator.com/item?id=12025218"
+  archived_by: "Glenn Vanderburg"
+  note: "Required reading for programming language designers"
+
+# ─────────────────────────────────────────────────────────────────────────
+#                    RMS'S OPENING SALVO ⚔️
+# ─────────────────────────────────────────────────────────────────────────
+# "Why you should not use Tcl" — September 23, 1994
+# The post that started the war.
+
+rms_opening_salvo:
+  post_title: "Why you should not use Tcl"
+  date: "1994-09-23"
+  link: "https://vanderburg.org/old_pages/Tcl/war/0000.html"
+  
+  quotes:
+    - quote: "Tcl was not designed to be a serious programming language. It was designed to be a 'scripting language', on the assumption that a 'scripting language' need not try to be a real programming language."
+      context: "Opening salvo of the Tcl War"
+      squawk: "🦜⚔️📜 Not a SERIOUS language! *battle cry* Scripting ASSUMPTION! 💥"
+      note: "The post that started the war."
+    
+    - quote: "The principal lesson of Emacs is that a language for extensions should not be a mere 'extension language'. It should be a real programming language, designed for writing and maintaining substantial programs. Because people will want to do that!"
+      context: "Drawing lessons from Emacs Lisp for extension language design"
+      squawk: "🦜📚✨ REAL programming language! *wise chirp* People will WANT that! 🎓"
+      note: "The Emacs lesson."
+    
+    - quote: "It lacks arrays; it lacks structures from which you can make linked lists. It fakes having numbers, which works, but has to be slow."
+      context: "Technical criticism of Tcl"
+      squawk: "🦜🚫📊 No arrays! *alarmed chirp* FAKES numbers! 🐌"
+      note: "Specific technical objections."
+    
+    - quote: "Tcl has a peculiar syntax that appeals to hackers because of its simplicity. But Tcl syntax seems strange to most users. If Tcl does become the 'standard scripting language', users will curse it for years--the way people curse Fortran, MSDOS, Unix shell syntax, and other de facto standards they feel stuck with."
+      context: "Warning about Tcl becoming a despised standard"
+      squawk: "🦜😱🔮 Users will CURSE it! *prophetic screech* Like FORTRAN! Like MSDOS! 💀"
+      note: "Predicting future pain."
+
+# ─────────────────────────────────────────────────────────────────────────
+#                    OUSTERHOUT'S RESPONSE 🤝
+# ─────────────────────────────────────────────────────────────────────────
+# John Ousterhout, creator of Tcl, replied with remarkable composure.
+
+ousterhout_response:
+  author: "John Ousterhout"
+  title: "Tcl creator"
+  date: "1994-09-26"
+  link: "https://vanderburg.org/old_pages/Tcl/war/0009.html"
+  
+  # 🎭 TONE: Ousterhout stays calm. Asks for civility.
+  # Makes technical counterarguments. Coins "Ousterhout's Law."
+  
+  key_quotes:
+    - quote: "I'd like to encourage everyone to keep their responses cordial and technical, rather than personal, regardless of how strong your opinions are."
+      squawk: "🦜🤝📊 Keep it TECHNICAL! *diplomatic chirp* Cordial! 🕊️"
+      note: "Opening with a plea for civility. (Unlike the natalism thread.)"
+    
+    - quote: "I think that Stallman's objections to Tcl may stem largely from one aspect of Tcl's design that he either doesn't understand or doesn't agree with. This is the proposition that you should use *two* languages for a large software system."
+      squawk: "🦜2️⃣💻 TWO languages! *thoughtful whistle* C plus scripting! 🔧"
+      note: "The two-language philosophy. System language + scripting language."
+    
+    - quote: "I didn't design Tcl for building huge programs with 10's or 100's of thousands of lines of Tcl, and I've been pretty surprised that people have used it for huge programs."
+      squawk: "🦜😮📈 Surprised people use it HUGE! *amazed chirp* Not intended! 🤷"
+      note: "Honest about design scope. Users exceeded expectations."
+    
+    - quote: "Language designers love to argue about why this language or that language *must* be better or worse a priori, but none of these arguments really matter a lot. Ultimately all language issues get settled when users vote with their feet."
+      squawk: "🦜🗳️👣 VOTE WITH FEET! *wise bob* The LAW! ⚖️"
+      note: "OUSTERHOUT'S LAW — The market decides language success."
+    
+    - quote: "The Law says to me that Scheme (or any other Lisp dialect) is probably not the 'right' language: too many people have voted with their feet over the last 30 years."
+      squawk: "🦜🦶❌ Scheme LOST the vote! *pointed chirp* 30 years! 📉"
+      note: "Counter-jab at Lisp. RMS advocated Scheme-based extension."
+
+# ─────────────────────────────────────────────────────────────────────────
+#                    THE OUTCOME 🎬
+# ─────────────────────────────────────────────────────────────────────────
+
+outcome:
+  guile_announced: "1994-10-18"
+  guile_link: "https://vanderburg.org/old_pages/Tcl/war2/index.html"
+  resolution: "The war ended when GNU announced GUILE as their extension language"
+  
+  # 🎭 THE IRONY: GUILE was vaporware for ~20 years.
+  # Meanwhile Lua was born quietly and won the market.
+  
+  irony: |
+    HN commenter NelsonMinar (2016): "The Guile vaporware was the first time
+    I really lost respect for Stallman and the FSF. It's incredibly damaging
+    to say 'don't use TCL use Guile instead' and then never actually produce
+    a useful Guile product."
+    
+    Another noted: "Lua was peacefully and quietly born in a manger at the
+    Pontifical Catholic University of Rio de Janeiro, Brazil" around this time.
+    
+    Guile did eventually become usable ~20 years later under Andy Wingo.
+  
+  lessons:
+    - "Ousterhout's Law holds: users vote with their feet"
+    - "Vaporware announcements damage credibility"
+    - "Tcl survived; Guile took 20 years to mature"
+    - "Lua quietly won the embedded scripting market"
+    - "Technical superiority doesn't guarantee adoption"
+
+# ═══════════════════════════════════════════════════════════════════════════
+#                              KEY SQUAWKS FOR PARROT
+# ═══════════════════════════════════════════════════════════════════════════
+
+parrot_highlights:
+  
+  the_opening_shot:
+    quote: "Tcl was not designed to be a serious programming language."
+    squawk: "🦜⚔️📜 Not a SERIOUS language! *battle cry* 💥"
+    note: "The post that started the war."
+  
+  the_emacs_lesson:
+    quote: "The principal lesson of Emacs is that a language for extensions should be a real programming language."
+    squawk: "🦜📚✨ REAL programming language! *wise chirp* 🎓"
+  
+  the_prophecy:
+    quote: "Users will curse it for years--the way people curse Fortran, MSDOS, Unix shell syntax..."
+    squawk: "🦜😱🔮 Users will CURSE it! *prophetic screech* 💀"
+  
+  ousterhouts_law:
+    quote: "Ultimately all language issues get settled when users vote with their feet."
+    squawk: "🦜🗳️👣 VOTE WITH FEET! *wise bob* ⚖️"
+    note: "The most quotable outcome of the war."
+  
+  the_lisp_counter:
+    quote: "Scheme is probably not the 'right' language: too many people have voted with their feet."
+    squawk: "🦜🦶❌ Scheme LOST the vote! *pointed chirp* 📉"
+    note: "Ousterhout turns RMS's logic against Lisp."
