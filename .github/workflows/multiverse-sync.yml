@@ -60,10 +60,6 @@ on:
       # Each faction edits their subdir, no conflicts
       - 'designs/**'
       
-      # Rewrite directory structure (READMEs only, not code)
-      - 'rewrites/README.md'
-      - 'rewrites/*/README.md'
-      
       # The sync workflow itself
       - '.github/workflows/multiverse-sync.yml'
 
