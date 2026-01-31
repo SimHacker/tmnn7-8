@@ -463,7 +463,7 @@ remaining_bugs:
 ---
 
 **Previous:** [Activity 017 — 🦏🌊 DEEP AND WIDE](activity-017-deep-and-wide.md)
-**Next:** [Activity 019 — 🐡 The Final Fifteen](activity-019-final-fifteen.md)
+**Next:** [Activity 019 — 🚀🔥 THE ROCKET RUN](activity-019-rocket-run.md)
 
 ---
 
