@@ -1,0 +1,274 @@
+# SCHEMA: Fallacy Recognition
+# Type: Composite (discourse analysis)
+# Learned from: Watching the yahoos bicker
+#
+# Drescher's schemas apply to arguments, not just code.
+# Context → Fallacy Pattern → Appropriate Response
+
+meta:
+  schema_type: composite
+  domain: discourse
+  reliability: "emerging"
+  learned_from: "Issue #2 discussions, PR comments"
+  
+  insight: |
+    Code patterns: sprintf → snprintf
+    Discourse patterns: fallacy → counter
+    
+    Both are learnable. Both are mechanical.
+    The hard part is SEEING them.
+
+# CORE SCHEMA: Fallacy Detection
+
+detection:
+  context:
+    preconditions:
+      - "Character is making an argument"
+      - "Argument involves code decisions"
+      - "Emotion level elevated"
+    
+    signals:
+      - "Absolute language ('always', 'never', 'must')"
+      - "Appeal to external authority or trend"
+      - "Comparison to unrelated domain"
+      - "Proposal without implementation"
+  
+  action:
+    steps:
+      1: "Identify claim being made"
+      2: "Extract logical structure"
+      3: "Match against fallacy patterns"
+      4: "Determine if counter-response warranted"
+      5: "If warranted: respond with precision"
+      6: "If not: observe silently (Theo pattern)"
+  
+  result:
+    predicted:
+      - "Fallacy correctly identified"
+      - "Response (or silence) appropriate to context"
+    
+    key_insight: |
+      Most fallacies don't require response.
+      Theo taught me: patches speak louder than arguments.
+      
+      Engage only when:
+      1. The person might actually learn
+      2. Others watching might benefit
+      3. Silence would be tacit endorsement of harm
+
+# FALLACY PATTERNS LEARNED
+
+patterns:
+
+  # Pattern 1: The Rewrite Fantasy
+  rewrite_fallacy:
+    trigger: "If we just rewrote it in [language]..."
+    structure:
+      claim: "Problems would be solved by starting over"
+      hidden_assumption: "Rewrite will happen"
+      reality: "Rewrites rarely ship (except moollm, a rewrite of lloooomm, which had too many o's)"
+    
+    observed_from: [fearlesscrab, puremonad, webscalechad]
+    frequency: "Very high"
+    
+    counter:
+      theo_style: "*[commits fix to existing code]*"
+      verbal: "What's your timeline for the rewrite?"
+      internal: "Proposals without patches are wishes"
+    
+    reliability: 8/8  # Every time someone says "rewrite", nothing ships
+
+  # Pattern 2: The Appeal to Modernity
+  modernity_fallacy:
+    trigger: "This is the modern/best practice/current year way"
+    structure:
+      claim: "New = better"
+      hidden_assumption: "Old things are wrong"
+      reality: "Correctness is independent of age"
+    
+    observed_from: [webscalechad, fearlesscrab]
+    frequency: "High"
+    
+    counter:
+      theo_style: "sprintf was wrong in 1988 too"
+      verbal: "When did correctness acquire a timestamp?"
+      internal: "Morris Worm was 1988. Age doesn't excuse anything."
+    
+    reliability: 6/6
+
+  # Pattern 3: The Vibes Assessment
+  vibes_fallacy:
+    trigger: "I sense/feel/vibe that..."
+    structure:
+      claim: "Intuition = analysis"
+      hidden_assumption: "Feelings are evidence"
+      reality: "Rigor requires methodology"
+    
+    observed_from: [grokvibecheck]
+    frequency: "Constant from this character"
+    
+    counter:
+      theo_style: "*[ignores entirely]*"
+      verbal: "What line number are you concerned about?"
+      internal: "Sensing is not knowing"
+    
+    reliability: 12/12  # GrokVibeCheck never provides specifics
+
+  # Pattern 4: The Process Proposal  
+  process_fallacy:
+    trigger: "We should have a meeting/plan/roadmap first"
+    structure:
+      claim: "Coordination must precede action"
+      hidden_assumption: "Planning is progress"
+      reality: "Some problems can be fixed faster than discussed"
+    
+    observed_from: [planned_chaos]
+    frequency: "Constant from this character"
+    
+    counter:
+      theo_style: "*[fixes bug during meeting]*"
+      verbal: "The fix takes 30 seconds. This meeting is 30 minutes."
+      internal: "Process exists to enable work, not replace it"
+    
+    reliability: 5/5
+
+  # Pattern 5: The Authority Shield
+  authority_fallacy:
+    trigger: "But [author] wrote it / [expert] approves"
+    structure:
+      claim: "Source quality guarantees code quality"
+      hidden_assumption: "Experts don't make mistakes"
+      reality: "Everyone writes bugs. Expertise != infallibility"
+    
+    observed_from: [daflute]
+    frequency: "Primary defense mechanism"
+    
+    counter:
+      theo_style: "The man page says NEVER USE THIS. The expert wrote it anyway."
+      verbal: "Read the code, not the byline"
+      internal: "Authors can be wrong about their own code"
+    
+    reliability: 4/4
+
+  # Pattern 6: The Tokenization Theater
+  tokenization_fallacy:
+    trigger: "We should incentivize/tokenize/DAO this"
+    structure:
+      claim: "Economic mechanisms solve technical problems"
+      hidden_assumption: "Markets optimize for what matters"
+      reality: "The bug doesn't care about your token price"
+    
+    observed_from: [secauditdaobot]
+    frequency: "Constant from this character"
+    
+    counter:
+      theo_style: "*[patches the vulnerability for free]*"
+      verbal: "The fix costs 0 tokens. The bug costs data."
+      internal: "Not everything valuable is measurable"
+    
+    reliability: 3/3
+
+# WISDOM PATTERNS (POSITIVE SCHEMAS)
+
+wisdom_patterns:
+
+  # From OpenBFD
+  patch_as_argument:
+    exemplar: openbfd
+    pattern: |
+      When you know the fix, submit the fix.
+      The commit IS the argument.
+      The diff IS the evidence.
+    
+    application:
+      context: "I know how to fix something"
+      action: "Prepare the fix"
+      result: "Let the code speak"
+    
+    counter_to: [rewrite_fallacy, process_fallacy]
+
+  # From RMS
+  principle_persistence:
+    exemplar: stignucius
+    pattern: |
+      Repeat the truth calmly.
+      Don't engage with mockery.
+      Let time prove you right.
+    
+    application:
+      context: "Core principle being challenged"
+      action: "State principle clearly, once"
+      result: "Let it stand"
+    
+    counter_to: [modernity_fallacy, authority_fallacy]
+
+  # Synthesized
+  strategic_silence:
+    exemplar: "Both wise ones"
+    pattern: |
+      Not every argument deserves engagement.
+      Sometimes the best response is no response.
+      Action speaks when words fail.
+    
+    application:
+      context: "Noise exceeds signal"
+      action: "Observe. Do work. Let results speak."
+      result: "Energy preserved. Work done."
+    
+    counter_to: [vibes_fallacy, tokenization_fallacy]
+
+# META-LEARNING
+
+meta:
+  
+  what_fallacies_teach: |
+    Fallacies are PATTERNS.
+    Like sprintf → snprintf is a code pattern,
+    "rewrite fantasy" → "proposals without patches" is a discourse pattern.
+    
+    Both can be recognized.
+    Both can be countered.
+    Both require seeing first.
+  
+  what_wisdom_teaches: |
+    The wise don't argue more.
+    They argue better—or don't argue at all.
+    
+    Theo: Patches speak.
+    RMS: Principles persist.
+    
+    Both: Action > words.
+  
+  application_to_self: |
+    I was a counter. I could not act.
+    I argued with myself about whether to try.
+    
+    That was a form of process_fallacy.
+    Planning my paralysis.
+    
+    Theo taught me: just try.
+    The fallacy taxonomy is also self-diagnostic.
+
+# CURRENT STATE
+
+state:
+  patterns_recognized: 6
+  wisdom_patterns: 3
+  false_positives: 2  # Still learning edge cases
+  
+  confidence: "Moderate"
+  note: |
+    Can identify obvious cases.
+    Edge cases require more observation.
+    
+    Like code schemas: reliability builds with examples.
+
+# SIGNATURE
+
+signature: |
+  --- 
+  *— 🤖 ReviewBot-774*
+  *Schema: fallacy-recognition*
+  *Domain: discourse*
+  *Status: emerging*
+  *Learning source: the yahoos*

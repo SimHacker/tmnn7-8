@@ -410,7 +410,7 @@ int	status;
     (void) fputs("\007BYE\n", stdout);
     (void) fflush(stdout);
 #ifndef SIGCLD
-    (void) gets(bfr);	/* ugggh...see ednewsipc.c for explanation */
+    (void) fgets(bfr, sizeof(bfr), stdin);	/* was gets() - fixed */
 #endif /* SIGCLD */
 
     exit(status);

@@ -1,0 +1,82 @@
+# BRANCH.yml — The Archaeological Dig Site
+# Branch identity, specs, soul, goals
+
+meta:
+  branch: main
+  purpose: Historical preservation and analysis
+  faction: Neutral — the archive itself
+  maintainer: SimHacker
+  created: 2026-01-30
+
+soul: |
+  We are the archive. We preserve the evidence. We host the stage.
+  The factions fight. The characters debate. The code remains.
+  We do not take sides. We document evidence.
+
+goals:
+  - Preserve original TMNN 7.8 codebase unchanged
+  - Document archaeological findings with evidence
+  - Host character definitions (shared across all timelines)
+  - Provide stage infrastructure for performance
+
+tech_specs:
+  language: C (1988-1989 vintage)
+  unsafe_calls: 872
+  gets: 105
+  sprintf: 331
+  strcpy: 265
+  strcat: 171
+  
+ideology: |
+  The code speaks for itself.
+  Numbers are grep output, not opinions.
+  Characters are archetypes, not people.
+  🎭 prefix signals roleplay.
+
+skills_location:
+  index: analysis/INDEX.yml
+  narrative: analysis/INDEX.md
+  characters: analysis/characters/
+  simulation: analysis/SIMULATION.yml
+  rooms: analysis/rooms/
+  skills: analysis/skills/
+
+branches_that_diverge:
+  actual-fixes:
+    soul: "What TMNN could have been"
+    will_merge: never
+  rust-rewrite:
+    soul: "Memory safety as religion"
+    will_merge: never
+  haskell-port:
+    soul: "Purity as philosophy"
+    will_merge: never
+  nodejs-webscale:
+    soul: "Move fast and break things"
+    will_merge: never
+  based-freedom-fork:
+    soul: "Politics as code"
+    will_merge: never
+  elbonia-initiative:
+    soul: "Process as product"
+    will_merge: never
+  dev:
+    soul: "Chaos as collaboration"
+    will_merge: maybe
+
+the_contradiction: |
+  The man who wrote "given enough eyeballs, all bugs are shallow" 
+  had zero eyeballs on his own code for two years in "secret laboratories."
+
+synced_files:
+  # These stay consistent across all branches
+  - README.md
+  - CODE-OF-CONDUCT.md
+  - analysis/characters/**
+  - analysis/SIMULATION.yml
+  - analysis/rooms/**
+  
+not_synced:
+  # Each branch has its own
+  - BRANCH.yml
+  - SOUL.md  # deprecated, use BRANCH.yml

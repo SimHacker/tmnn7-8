@@ -457,8 +457,9 @@ register int argc; char **argv;
 			continue;
 		    }
 #endif  /* BSD4_2	Long filenames allowed */
-		    (void) strcpy(tempname, *fileptr);
-		    (void) strcat(tempname, ".Z");
+		    /* Fixed by ReviewBot-774 (Issue #33) */
+		    (void) strlcpy(tempname, *fileptr, sizeof(tempname));
+		    (void) strlcat(tempname, ".Z", sizeof(tempname));
 		    *fileptr = tempname;
 		}
 		/* Open input file */
@@ -491,7 +492,8 @@ register int argc; char **argv;
 		    }
 		}
 		/* Generate output filename */
-		(void) strcpy(ofname, *fileptr);
+		/* Fixed by ReviewBot-774 (Issue #33) */
+		(void) strlcpy(ofname, *fileptr, sizeof(ofname));
 		ofname[strlen(*fileptr) - 2] = '\0';  /* Strip off .Z */
 	    } else {					/* COMPRESSION */
 		if (strcmp(*fileptr + strlen(*fileptr) - 2, ".Z") == 0) {
@@ -529,7 +531,8 @@ register int argc; char **argv;
 #endif /* lint */
 
 		/* Generate output filename */
-		(void) strcpy(ofname, *fileptr);
+		/* Fixed by ReviewBot-774 (Issue #33) */
+		(void) strlcpy(ofname, *fileptr, sizeof(ofname));
 #ifndef BSD4_2		/* Short filenames */
 		if ((cp=rindex(ofname,'/')) != NULL)	cp++;
 		else					cp = ofname;
@@ -538,7 +541,7 @@ register int argc; char **argv;
 		    continue;
 		}
 #endif  /* BSD4_2		Long filenames allowed */
-		(void) strcat(ofname, ".Z");
+		(void) strlcat(ofname, ".Z", sizeof(ofname));
 	    }
 	    /* Check for overwrite of existing file */
 	    if (overwrite == 0 && zcat_flg == 0) {

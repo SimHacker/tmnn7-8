@@ -1,0 +1,76 @@
+#!/usr/bin/env bash
+#
+# Pre-commit hook: Validate YAML files
+# Runs on all staged .yml/.yaml files before commit
+#
+
+set -e
+
+# Colors for output
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[0;33m'
+NC='\033[0m' # No Color
+
+echo "🔍 Validating YAML files..."
+
+# Get list of staged YAML files
+STAGED_YAML=$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(yml|yaml)$' || true)
+
+if [ -z "$STAGED_YAML" ]; then
+    echo -e "${GREEN}✓ No YAML files staged${NC}"
+    exit 0
+fi
+
+# Count files
+FILE_COUNT=$(echo "$STAGED_YAML" | wc -l | tr -d ' ')
+echo "  Found $FILE_COUNT YAML file(s) to validate"
+
+# Validate using Python
+ERRORS=0
+ERROR_FILES=""
+
+for file in $STAGED_YAML; do
+    if [ -f "$file" ]; then
+        # Use Python to validate YAML
+        if python3 -c "
+import yaml
+import sys
+try:
+    with open('$file', 'r') as f:
+        yaml.safe_load(f)
+    sys.exit(0)
+except yaml.YAMLError as e:
+    print(f'  Error in $file:')
+    print(f'    {e}')
+    sys.exit(1)
+except Exception as e:
+    print(f'  Error reading $file: {e}')
+    sys.exit(1)
+" 2>&1; then
+            echo -e "  ${GREEN}✓${NC} $file"
+        else
+            ERRORS=$((ERRORS + 1))
+            ERROR_FILES="$ERROR_FILES\n  - $file"
+        fi
+    fi
+done
+
+echo ""
+
+if [ $ERRORS -gt 0 ]; then
+    echo -e "${RED}✗ YAML validation failed!${NC}"
+    echo -e "${RED}  $ERRORS file(s) with errors:${NC}$ERROR_FILES"
+    echo ""
+    echo "Fix the YAML syntax errors and try again."
+    echo ""
+    echo "Common issues:"
+    echo "  - Strings with quotes need outer quotes: 'He said \"hello\"'"
+    echo "  - Strings with colons need quotes: 'key: value here'"
+    echo "  - Strings with special chars need quotes: 'text (with parens)'"
+    echo ""
+    exit 1
+else
+    echo -e "${GREEN}✓ All $FILE_COUNT YAML file(s) valid${NC}"
+    exit 0
+fi

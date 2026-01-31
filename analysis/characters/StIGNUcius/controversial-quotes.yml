@@ -1,0 +1,212 @@
+# Controversial Quotes — RMS's Documented Controversial Statements
+#
+# These are verified quotes with primary source links.
+# Documented for CHARACTER completeness. RMS is complex. Hagiography serves no one.
+#
+# NOTE: The parrot does NOT squawk these quotes.
+# These are here because ignoring them would be dishonest.
+
+# ═══════════════════════════════════════════════════════════════════════════
+#                    THE MINSKY INCIDENT (2019)
+# ═══════════════════════════════════════════════════════════════════════════
+# This is the event that led to RMS's resignation from MIT, FSF, and GNU Project.
+# The full context matters.
+
+minsky_2019:
+  
+  what_happened: |
+    September 2019: Internal MIT CSAIL emails were leaked regarding
+    Marvin Minsky and allegations from an Epstein victim.
+    
+    RMS responded on the mailing list with characteristic pedantry:
+    - He objected to the word "assault" (vs "rape") as imprecise
+    - He speculated that the victim may have appeared "willing" 
+      from Minsky's perspective (due to Epstein's coercion)
+    - He was defending his friend and mentor Minsky, not Epstein
+    
+    The press reported this as "Stallman defends Epstein."
+    This was a mischaracterization, but the damage was done.
+  
+  resignations:
+    - MIT CSAIL: "September 16, 2019"
+    - FSF President: "September 16, 2019"
+    - GNU Project leadership: "September 16, 2019"
+  
+  return:
+    fsf_board: "March 2021"
+    controversy: |
+      Many organizations (including Red Hat, GNOME Foundation, EFF)
+      signed an open letter calling for his removal.
+      The FSF conducted a board review.
+    reconfirmed: "April 2025"
+    note: "Re-confirmed by voting FSF members"
+  
+  rms_later_statement: |
+    RMS later posted on stallman.org (Sept 2019):
+    "I want to respond to the description of my message as a defense of 
+    Epstein. Nothing could be further from the truth. I despise Epstein. 
+    I said nothing about him, nothing to excuse what he did. In one message, 
+    I acknowledged he was a serial rapist."
+    
+    And regarding the specific defense of Minsky:
+    "It was about Marvin Minsky, not about Epstein. I said Minsky might not 
+    have known she was coerced, and that we cannot be certain he knew."
+  
+  context: |
+    Marvin Minsky (1927-2016) was an AI pioneer and RMS's friend/mentor.
+    Minsky died before the accusations became public.
+    RMS was defending a dead friend who couldn't defend himself.
+    
+    This doesn't make RMS's comments wise or well-received.
+    It provides context for why he said what he said.
+  
+  # ─────────────────────────────────────────────────────────────────────────
+  #     WHAT ACTUALLY HAPPENED WITH MINSKY (per reliable sources)
+  # ─────────────────────────────────────────────────────────────────────────
+  # Source: Don Hopkins, who works with Minsky's son and knows many people
+  # who knew Marvin personally.
+  
+  what_actually_happened: |
+    According to reliable sources (people who knew Minsky personally):
+    
+    1. Minsky was at Epstein's with his wife
+    2. The young woman approached Minsky (unclear if wife was present)
+    3. Minsky was TAKEN ABACK by the approach
+    4. He told his wife about it
+    5. He told a science fiction author about it IMMEDIATELY
+    6. He DID NOT take her up on the offer
+    
+    IMPORTANT: The court testimony only states that Epstein TOLD her to 
+    offer herself to Minsky. Nothing in the record says Minsky accepted.
+    
+    The SF author has tweeted/blogged about this.
+  
+  the_irony: |
+    RMS's approach was a terrible idea — but not for the reasons people think.
+    
+    RMS was (seemingly or intentionally) trying to justify what he 
+    INCORRECTLY PRESUMED Minsky did. He argued Minsky might not have 
+    known she was coerced.
+    
+    But Minsky apparently DIDN'T DO ANYTHING. He declined the approach.
+    
+    RMS was defending against an accusation that appears to be false,
+    but in a way that assumed the accusation was true. This made him
+    look like he was excusing sexual misconduct, when the actual defense
+    should have been: "Minsky didn't do it."
+    
+    A classic case of losing the PR battle while the facts were actually
+    on your side — by arguing the wrong point.
+  
+  sources:
+    - "https://news.ycombinator.com/item?id=20989696"
+    - "https://news.ycombinator.com/item?id=21120806"
+    - "https://stallman.org/archives/2019-jul-oct.html"
+    - note: "SF author tweet/blog (needs citation)"
+    - note: "Personal testimony from people who knew Minsky"
+
+# ═══════════════════════════════════════════════════════════════════════════
+#                    EARLIER CONTROVERSIAL STATEMENTS
+# ═══════════════════════════════════════════════════════════════════════════
+# These are from stallman.org/archives, documented with primary sources.
+# RMS has written about many topics with characteristic bluntness.
+
+earlier_statements:
+  
+  libertarian_2003:
+    quote: |
+      All of these acts should be legal as long as no one is coerced. 
+      They are illegal only because of prejudice and narrowmindedness.
+    context: "Commenting on a judicial nominee's list of things Constitution might protect"
+    date: "2003-06-28"
+    link: "https://stallman.org/archives/2003-may-aug.html"
+    note: "Standard libertarian position on consensual acts"
+  
+  dutch_2006:
+    quote: |
+      I am skeptical of the claim that voluntarily pedophilia harms children.
+    date: "2006-06-05"
+    link: "https://stallman.org/archives/2006-mar-jun.html#05%20June%202006%20%28Dutch%20paedophiles%20form%20political%20party%29"
+    status: "Later removed from site"
+    context: |
+      Written in response to news about a Dutch political party.
+      This quote was cited extensively in 2019.
+    
+    later_position: |
+      RMS has since stated he was wrong about this.
+      From stallman.org (Sept 2019):
+      "Through personal conversations in recent years, I've learned to 
+      understand how sex with a child can harm per psychologically. 
+      This changed my mind about the matter: I think adults should not 
+      do that."
+  
+  censorship_2012:
+    quote: |
+      Rick Falkvinge joins me in demanding an end to the censorship 
+      of "child pornography"
+    date: "2012-09-15"
+    link: "https://stallman.org/archives/2012-jul-oct.html#15_September_2012_%28Censorship_of_child_pornography%29"
+    context: |
+      RMS opposes ALL possession crimes on principle.
+      His position is anti-censorship absolutism, not pro-abuse.
+      He argues possession laws can be abused by governments.
+      This is a consistent (if unpopular) civil liberties position.
+    note: "The scare quotes around 'child pornography' indicate disagreement with the term, not the harm"
+  
+  possession_2017:
+    quote: |
+      Mere possession of child pornography should not be a crime at all.
+      To prosecute people for possessing something published, no matter 
+      what it may be, is a big threat to human rights.
+    date: "2017"
+    link: "https://stallman.org/archives/2017-mar-jun.html"
+    context: |
+      Same anti-censorship absolutism.
+      RMS consistently opposes criminalizing possession of any content.
+      This is a civil liberties argument, not a defense of the content itself.
+
+# ═══════════════════════════════════════════════════════════════════════════
+#                    JOKES PEOPLE MISSED
+# ═══════════════════════════════════════════════════════════════════════════
+
+misunderstood_humor:
+  
+  rhinophytonecrophilia:
+    quote: |
+      I often enjoy rhinophytonecrophilia (nasal sex with dead plants).
+    date: "2003-06-28"
+    link: "https://stallman.org/archives/2003-may-aug.html"
+    explanation: |
+      This is a JOKE.
+      
+      rhino = nose
+      phyto = plant  
+      necro = dead
+      philia = love of
+      
+      rhinophytonecrophilia = smelling flowers
+      
+      RMS is saying he likes to smell flowers.
+      People who don't parse Greek roots miss the joke.
+    note: "Classic RMS deadpan. People cited this as evidence of deviance."
+
+# ═══════════════════════════════════════════════════════════════════════════
+#                    EDITORIAL NOTE
+# ═══════════════════════════════════════════════════════════════════════════
+
+editorial_note: |
+  RMS has held unpopular opinions. He has expressed them bluntly.
+  Some of those opinions he has since revised.
+  Some he maintains as principled civil liberties positions.
+  
+  This file documents them because:
+  1. Ignoring them would be dishonest
+  2. Context matters (see Minsky incident)
+  3. People change their minds (see dutch_2006 retraction)
+  4. Some "controversial" quotes are just jokes (see rhinophytonecrophilia)
+  
+  We do not endorse all of RMS's statements.
+  We document them accurately.
+  
+  The parrot does NOT squawk these.
+  These are for character documentation only.

@@ -157,7 +157,7 @@ static void rnews_daemon()
 	
     Uflag = TRUE;	/* We're going to be unspooling stuff */
 
-    (void) sprintf(pidfilename, "%s/rnews.pid", site.admdir);	
+    (void) snprintf(pidfilename, sizeof(pidfilename), "%s/rnews.pid", site.admdir);	
     if (pidfile = fopen(pidfilename, "r"))
     {
 	(void) fgets(bfr, sizeof(bfr), pidfile);
@@ -270,13 +270,13 @@ char	**argv;
 	char	**cpp;
 	int	ac;
 
-	(void) sprintf(bfr, "running");
+	(void) snprintf(bfr, LBUFLEN, "running");
 	for (ac = argc, cpp = argv; ac--; cpp++)
 	{
-	    (void) strcat(bfr, " ");
-	    (void) strcat(bfr, *cpp);
+	    (void) strlcat(bfr, " ", LBUFLEN);
+	    (void) strlcat(bfr, *cpp, LBUFLEN);
 	}
-	(void) strcat(bfr, "\n");
+	(void) strlcat(bfr, "\n", LBUFLEN);
 	log0(bfr);
     }
 
@@ -328,7 +328,7 @@ char	**argv;
 
 	    if (infile[0])
 		(void) freopen(infile, "r", stdin);
-	    (void) sprintf(infile, "%s/.tmp/spsafeXXXXXX", site.spooldir);
+	    (void) snprintf(infile, sizeof(infile), "%s/.tmp/spsafeXXXXXX", site.spooldir);
 	    collect((char *)NULL, infile);
 
 	    if (outfd)
@@ -347,7 +347,7 @@ char	**argv;
 		(void) close(outfd);
 	    }
 
-	    (void) sprintf(spoolto, "%s/spoolXXXXXX", site.spooldir);
+	    (void) snprintf(spoolto, sizeof(spoolto), "%s/spoolXXXXXX", site.spooldir);
 	    (void) mktemp(spoolto);
 	    (void) rename(infile, spoolto);
 
@@ -450,7 +450,7 @@ char	**argv;
 #endif /* DEBUG */
 	    spoolcount++;
 
-	    (void) sprintf(infile, "%s/%s", site.spooldir, entry->d_name);
+	    (void) snprintf(infile, sizeof(infile), "%s/%s", site.spooldir, entry->d_name);
 
 	    if (filesize(infile) <= 0)
 	    {
@@ -478,7 +478,7 @@ char	**argv;
                    * going to trip up the next rnews run.
                    */
                   log1("Moving %s to .bad directory", infile);
-                  (void) sprintf(bfr, "%s/.bad/%s", site.textdir,
+                  (void) snprintf(bfr, LBUFLEN, "%s/.bad/%s", site.textdir,
                                  strrchr(infile, '/'));
                   (void) rename(infile, bfr);
                   (void) unlink(infile);
@@ -521,7 +521,7 @@ int status;
      */
     if (status != SUCCEED && Uflag)
     {
-	(void) sprintf(bfr, "%s/.bad/%s", site.textdir, strrchr(infile, '/'));
+	(void) snprintf(bfr, LBUFLEN, "%s/.bad/%s", site.textdir, strrchr(infile, '/'));
 	(void) rename(infile, bfr);
     }
     if (outfd)

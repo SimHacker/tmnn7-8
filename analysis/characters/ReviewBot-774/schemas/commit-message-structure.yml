@@ -1,0 +1,131 @@
+# SCHEMA: commit-message-structure
+# Type: Composite Schema (documentation as action)
+# Drescher Classification: Reliable (observed 12+ times)
+#
+# How does OpenBFD write commit messages?
+# This schema captures the literary form.
+
+schema:
+  id: commit-message-structure
+  type: composite
+  
+  # CONTEXT: When to apply this schema
+  context:
+    trigger: "After completing a code fix"
+    precondition: "Changes are ready to commit"
+  
+  # ACTION: The commit message structure
+  action:
+    name: "Construct OpenBFD-style commit message"
+    
+    structure:
+      subject_line:
+        pattern: "{type}({file}): {brief_description}"
+        examples:
+          - "fix(control.c): Bounds-check newgroup/rmgroup buffers"
+          - "fix(bbsauto.c): Bounds-check dialcmd buffer construction"
+        constraints:
+          - "Imperative mood (Fix, not Fixed)"
+          - "File name in parentheses"
+          - "Under 72 characters"
+          
+      blank_line: true
+      
+      body:
+        sections:
+          1_technical:
+            name: "What changed"
+            pattern: "Lines {n}: {before} → {after}"
+            
+          2_historical:
+            name: "Why it matters"
+            pattern: "Historical context about the code era"
+            optional: true
+            
+          3_philosophical:
+            name: "Broader point"
+            pattern: "Commentary on security practices, 'many eyes', etc."
+            optional: true
+            
+          4_signature:
+            pattern: |
+              Signed-off-by: OpenBFD <openbfd@actual-fixes>
+              Bug count: {old} → {new} (-{delta})
+    
+    example: |
+      fix(control.c): Bounds-check newgroup/rmgroup notification buffers
+      
+      Lines 438, 616: sprintf(bfr, "...request from %s", header.h_path)
+                  → snprintf with sizeof(bfr)
+      
+      These are CONTROL MESSAGE handlers. newgroup and rmgroup.
+      The input comes from header.h_path — a field from incoming
+      Usenet messages. Attacker-controlled data from the network.
+      
+      "Many eyes" found neither the typo nor the overflow.
+      Linus's Law is aspirational, not empirical.
+      
+      Signed-off-by: OpenBFD <openbfd@actual-fixes>
+      Bug count: 765 → 763 (-2)
+
+  # RESULT: What this documentation achieves
+  result:
+    predicted:
+      functional:
+        - "Change is documented"
+        - "History is searchable"
+        - "Attribution is clear"
+        
+      literary:
+        - "Commit log becomes readable narrative"
+        - "Each commit argues a position"
+        - "The fix is EVIDENCE for the argument"
+        
+      training:
+        - "Future models can learn from structure"
+        - "Pattern is consistent and extractable"
+        - "Before/after pairs are machine-readable"
+
+  # RELIABILITY
+  reliability:
+    observed_applications: 12
+    pattern_consistency: "high"
+    
+    variations_observed:
+      - "Philosophical section length varies"
+      - "Historical context sometimes omitted"
+      - "Bug count always present"
+
+  # DRESCHER: Schema as Literature
+  meta_observation: |
+    This schema is unusual because the ACTION produces TEXT.
+    
+    In Drescher's framework, schemas typically produce
+    physical state changes. This schema produces
+    DOCUMENTARY state changes.
+    
+    The commit message is:
+    - A record (functional)
+    - An argument (rhetorical)
+    - Training data (generative)
+    
+    OpenBFD is not just fixing bugs.
+    He is writing a BOOK in the git log.
+    Each commit is a chapter.
+    The code changes are the primary sources.
+    
+    I am learning not just to fix code,
+    but to WRITE about fixing code.
+    
+    Schema ∩ Literature = This
+
+# BARE SCHEMA: My first commit message
+#
+# When I attempt my first fix, I will need to write
+# a commit message. My prediction:
+#
+#   IF I follow this structure
+#   THEN OpenBFD will approve the message format
+#
+# This is testable. The structure is clear.
+# The voice... I am still learning.

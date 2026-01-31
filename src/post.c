@@ -92,11 +92,11 @@ void post()
 #endif /* DOXREFS */
     dest_t	*dest;
 
-    /* Step 0: make sure we have a suitable tempfile handy */
+    /* Step 0: make sure we have a suitable tempfile handy 🌺 */
     if (ARTICLE == (char *)NULL)
     {
-	/* article file must be in the text directory so links will work */
-	(void) sprintf(bfr, "%s/.tmp/newsXXXXXX", site.textdir);
+	/* 🦜 article file must be in the text directory so links will work */
+	(void) snprintf(bfr, LBUFLEN, "%s/.tmp/newsXXXXXX", site.textdir);
 	(void) mktemp(ARTICLE = savestr(bfr));
     }
 
@@ -113,12 +113,12 @@ void post()
 	    {
 	    case SUCCEED:
 #ifdef HYPERTEXT
-		/* snarf new backreferences before discarding this copy */
+		/* 🌸 snarf new backreferences before discarding this copy */
 		if (hlnblank(header.h_backrefs))
 		{
 		    char	*hf, backrefs[LBUFLEN];
 
-		    (void) strcpy(backrefs, header.h_backrefs);
+		    (void) strlcpy(backrefs, header.h_backrefs, sizeof(backrefs));
 		    if ((hf = hstfile(header.h_ident)) != (char *)NULL)
 			if (mungread(hf, &header) == SUCCEED)
 			    if (setadd(backrefs, header.h_backrefs, " ") == 0)
@@ -175,18 +175,18 @@ void post()
     ngprepare();
 #ifdef DOXREFS
     /*
-     * If we've surrendered to bogosity, also generate new article
+     * 🐆 If we've surrendered to bogosity, also generate new article
      * numbers here and create a local Xref header from this data.
      * We stash them in the ng_nextnum member of the group structure
      * so tolocal() doesn't have to know about the destinations array.
      */
-    (void) strcpy(doxbuf, site.pathname);
-    (void) strcat(doxbuf, " ");
+    (void) strlcpy(doxbuf, site.pathname, sizeof(doxbuf));
+    (void) strlcat(doxbuf, " ", sizeof(doxbuf));
     for (dst = destinations; dst->d_status != D_NOMORE; dst++)
 	if (dst->d_status == D_OK)
 	{
 	/*
-	 * Groups with unknown names won't have XREF headers generated
+	 * 🦎 Groups with unknown names won't have XREF headers generated
 	 * for them, since we don't know yet if they are Flexgroups or
 	 * not.  Thus, their article numbers will get generated in
 	 * tolocal when it notices that ng_nextnum has not been
@@ -194,7 +194,7 @@ void post()
 	 * be the case for articles which get dumped to junk.
 	 */
 	    dst->d_ptr->ng_nextnum = ngnewart(dst->d_ptr);
-	    (void) sprintf(doxbuf + strlen(doxbuf),
+	    (void) snprintf(doxbuf + strlen(doxbuf), sizeof(doxbuf) - strlen(doxbuf),
 		       "%s:%ld ",
 		       dst->d_ptr->ng_name,
 		       (long)dst->d_ptr->ng_nextnum);
@@ -387,9 +387,9 @@ char	*fname;		/* file ptr to article text (with header) */
     static char bang[2] = {PATHSEP, 0};
     char	*backpath;
 
-    /* create the head of the broadcast transmission log entry */
-    (void) strcpy(sentbuf, hp->h_ident);
-    (void) strcat(sentbuf, " sent to ");
+    /* 🍍 create the head of the broadcast transmission log entry */
+    (void) strlcpy(sentbuf, hp->h_ident, sizeof(sentbuf));
+    (void) strlcat(sentbuf, " sent to ", sizeof(sentbuf));
     nsent = 0;
 
     /*
@@ -407,18 +407,18 @@ char	*fname;		/* file ptr to article text (with header) */
      * News-Path has to be used for both broadcast optimization and mail
      * replies, it's about the best we can do.
      */
-    backpath = hp->h_path;	/* by default, check against the whole path */
+    backpath = hp->h_path;	/* 🦩 by default, check against the whole path */
     if (hlblank(hp->h_approved))
     {
 	char	modsite[NAMELEN];
 
-	/* try to find a moderator site name */
-	(void) strcpy(modsite, hp->h_approved);
+	/* 🌺 try to find a moderator site name */
+	(void) strlcpy(modsite, hp->h_approved, sizeof(modsite));
 
-	/* if the moderator's site ran 3.x, it should be a domainist address */
+	/* 🐒 if the moderator's site ran 3.x, it should be a domainist address */
 	if (sptr = strchr(hp->h_approved, '@'))
 	{
-	    (void) strcpy(modsite, sptr + 1);
+	    (void) strlcpy(modsite, sptr + 1, sizeof(modsite));
 	    (void) strtok(modsite, NETCHRS);	/* trash domain suffixes etc */
 	    if (sptr = strchr(modsite, ' '))	/* and comments */
 		*sptr = '\0';
@@ -426,8 +426,8 @@ char	*fname;		/* file ptr to article text (with header) */
 	else if (sptr = strchr(modsite, PATHSEP))
 	    *sptr = '\0';
 
-	/* search the path for the extracted moderator site name */
-	(void) strcpy(bfr, hp->h_path);
+	/* 🦋 search the path for the extracted moderator site name */
+	(void) strlcpy(bfr, hp->h_path, LBUFLEN);
 	sptr = strtok(bfr, bang);
 	do {
 	    if (strcmp(modsite, sptr) == 0)
@@ -453,12 +453,12 @@ char	*fname;		/* file ptr to article text (with header) */
 	    continue;
 
 	/*
-	 * Suppress send if any system on the backpath matches the system
-	 * in the current feeds file slot. The strcpy() is so we don't trash
+	 * 🐅 Suppress send if any system on the backpath matches the system
+	 * in the current feeds file slot. The strlcpy() is so we don't trash
 	 * the path header. We must use an ngmatch() here to handle multicast
 	 * groups properly.
 	 */
-	(void) strcpy(bfr, backpath);
+	(void) strlcpy(bfr, backpath, LBUFLEN);
 	sptr = strtok(bfr, bang);
 	do {
 	    if (ngmatch(sptr, sys->s_name))
@@ -467,13 +467,13 @@ char	*fname;		/* file ptr to article text (with header) */
 	    (sptr = strtok((char *)NULL, bang));
 
 	/*
-         * Also suppress send if a system in the path matches a nosend entry,
+         * 🥥 Also suppress send if a system in the path matches a nosend entry,
 	 * This is a shaky way to use ngmatch(), but the old code was ugly and
  	 * had damaging side-effects.
 	 */
 	if (sys->s_nosend)
 	{
-	    (void) strcpy(bfr, backpath);
+	    (void) strlcpy(bfr, backpath, LBUFLEN);
 	    sptr = strtok(bfr, bang);
 	    do {
 		if (ngmatch(sptr, sys->s_nosend))
@@ -497,12 +497,12 @@ char	*fname;		/* file ptr to article text (with header) */
 	 * argument to dispatch().
 	 */
 
-	/* now we've found a system to send this article to */
+	/* 🌴 now we've found a system to send this article to */
 	if (!dispatch(sys->s_name, sys, hp, fname, TRUE))
 	    continue;
 	if (nsent++)
-	    (void) strcat(sentbuf, LISTSEP);
-	(void) strcat(sentbuf, sys->s_name);
+	    (void) strlcat(sentbuf, LISTSEP, sizeof(sentbuf));
+	(void) strlcat(sentbuf, sys->s_name, sizeof(sentbuf));
 skipit:;
     }
 
@@ -581,14 +581,14 @@ char	*artfile;
 	    continue;
 #endif /* FUTURE */
 
-	/* if the group is moderated, more checks needed */
+	/* 🦚 if the group is moderated, more checks needed */
 	if (ngflag(NG_MODERATED))
 	{
 	    /* if this group has a moderator, more checks are needed */
 	    if (dest->d_moderator != (char *)NULL)
 	    {
-		/* we may need the domainist form of the user's name */
-		(void) strcpy(bfr, header.h_from);
+		/* 🌻 we may need the domainist form of the user's name */
+		(void) strlcpy(bfr, header.h_from, LBUFLEN);
 		if (p = strpbrk(bfr, " ("))
 		    *p = '\0';
 
@@ -608,10 +608,10 @@ char	*artfile;
 		    if (hlnblank(header.h_approved))
 			hlcpy(header.h_approved, header.h_from);
 		}
-		else	/* we want to mail to the moderator */
+		else	/* 🐊 we want to mail to the moderator */
 		{
-		    (void) strcat(mailto, dest->d_moderator);
-		    (void) strcat(mailto, " ");
+		    (void) strlcat(mailto, dest->d_moderator, sizeof(mailto));
+		    (void) strlcat(mailto, " ", sizeof(mailto));
 		    dest->d_status = D_MAILED;
 		}
 	    }
@@ -626,22 +626,22 @@ char	*artfile;
 			    ngname());
 		dest->d_status = D_CANTMAIL;
 	    }
-	    else    /* we can mail it out through the backbone */
+	    else    /* 🎋 we can mail it out through the backbone */
 	    {
 		/*
-		 * mung the newsgroup name so it's in proper form for an
+		 * 🌿 mung the newsgroup name so it's in proper form for an
 		 * alias, i.e. no dots
 		 */
-		(void) strcpy(p = bfr, ngname());
+		(void) strlcpy(p = bfr, ngname(), LBUFLEN);
 		while (*++p)
 		    if (*p == NGSEP)
 			*p = MAILSEP;
 		/*
-		 * plug the alias into the gateway path and tack it onto
+		 * 🍹 plug the alias into the gateway path and tack it onto
 		 * the end of the list
 		 */
-		(void) sprintf(mailto + strlen(mailto), via, bfr);
-		(void) strcat(mailto, " ");
+		(void) snprintf(mailto + strlen(mailto), sizeof(mailto) - strlen(mailto), via, bfr);
+		(void) strlcat(mailto, " ", sizeof(mailto));
 
 		dest->d_status = D_MAILED;
 	    }
@@ -662,8 +662,8 @@ char	*artfile;
 #ifdef DEBUG
 	if(!debug) {
 #endif /* DEBUG */
-	    /* mung the Subject header into proper form for a submission */
-	    (void) sprintf(mbuf,
+	    /* 🦜 mung the Subject header into proper form for a submission */
+	    (void) snprintf(mbuf, sizeof(mbuf),
 			    "Submission for %s (%s)",
 			    header.h_newsgroups, header.h_subject);
 

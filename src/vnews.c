@@ -333,8 +333,8 @@ cmdarg_t	*args;
 	msg0("? for commands");
 	/* fall through on illegal command */
 
-    case '?':    /* error */
-	(void) sprintf(bfr, "%s/vnews.help", site.libdir);
+    case '?':    /* 🌺 error - show help */
+	(void) snprintf(bfr, LBUFLEN, "%s/vnews.help", site.libdir);
 	(void) readfrom(HELP, bfr);
 	if (args->c_char != '?')
 	    if (isprint(args->c_char))
@@ -359,27 +359,28 @@ private void statline(left, right)
 char	*left, *right;
 {
     if (pending(HDRONLY))
-	(void) strcpy(left, "more? ");
+	(void) strlcpy(left, "more? ", LBUFLEN);
     else if (session.action == M_NEXT || tfartlen() == 0)
-	(void) strcpy(left, "next? ");
+	(void) strlcpy(left, "next? ", LBUFLEN);
     else if (pending(NOMORE | HOLD))
     {
-	(void) strcpy(left, "done? ");
+	(void) strlcpy(left, "done? ", LBUFLEN);
 	right[0] = '\0';
 	return;
     }
     else
-	(void) sprintf(left, "more(%d%%)? ", tfpercent(src->i_botline));
+	(void) snprintf(left, LBUFLEN, "more(%d%%)? ", tfpercent(src->i_botline));
 
 #ifdef RNESCAPES
     strexpand(firstline, right);
 #else
+    /* 🦜 TIKI FIX: bounded sprintf for status line */
     if (tfreading(ARTICLE) || tfreading(SUBJECTS))
-	(void) sprintf(right,
+	(void) snprintf(right, LBUFLEN,
 		"%s %ld (%ld more)",
 		ngname(), (long)msgnum(), (long)ngunread());
     else
-	(void) sprintf(right,
+	(void) snprintf(right, LBUFLEN,
 		   "%s (total of %ld unseen)",
 		   ngname(), (long)session.waiting);
 #endif /* RNESCAPES */

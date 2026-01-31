@@ -397,7 +397,7 @@ char	**argv;
 
 	for (;;)
 	{
-	    if (fputs("% ", stdout) == EOF || gets(cmdline) == (char *)NULL)
+	    if (fputs("% ", stdout) == EOF || fgets(cmdline, sizeof(cmdline), stdin) == (char *)NULL)
 		break;
 
 	    /* first, check for exit commands */

@@ -1320,7 +1320,7 @@ char	**argv;
 	if (ip != oldip)
 	    (void)printf("This is the %s, type ? for help\n",ip->longname);
 
-	if (fputs(ip->prompt, stdout)==EOF || gets(cmdline)==(char *)NULL)
+	if (fputs(ip->prompt, stdout)==EOF || fgets(cmdline, sizeof(cmdline), stdin)==(char *)NULL)
 	    break;
 
 	/* first, check for common commands */

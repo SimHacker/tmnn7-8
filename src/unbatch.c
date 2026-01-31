@@ -168,10 +168,10 @@ char    *file;    /* input file, if the stuff is already on disk */
 		(void) batchmode("unbatch");
 	    if (file && file[0])
 		(void) fseek(msgin, -((off_t)strlen(inbuf) + 1), SEEK_CUR);
-	    else
+	else
 	    {
-		(void) strcpy(pushback, inbuf);
-		(void) strcat(pushback, "\n");
+		(void) strlcpy(pushback, inbuf, sizeof(pushback));
+		(void) strlcat(pushback, "\n", sizeof(pushback));
 	    }
 	}
 	else if (batchmode(BATCHCMD(inbuf)) == SUCCEED)
@@ -201,7 +201,7 @@ char    *file;    /* input file, if the stuff is already on disk */
 	FILE    *ofp;
 	forward void    decode();
 
-	(void) strcpy(srcfile, "/tmp/decodeXXXXXX");
+	(void) strlcpy(srcfile, "/tmp/decodeXXXXXX", sizeof(srcfile));
 	(void) mktemp(srcfile);
 	if ((ofp = fopen(srcfile, "w")) == (FILE *)NULL)
 	    xerror1("couldn't write decoded text %s", srcfile);
@@ -227,13 +227,13 @@ char    *file;    /* input file, if the stuff is already on disk */
 	int	status;
 
 	/* assemble the decompression command we want */
-	(void) sprintf(doptbuf, "%s/%s", site.libdir, DECOMPRESS);
+	(void) snprintf(doptbuf, sizeof(doptbuf), "%s/%s", site.libdir, DECOMPRESS);
 	if (first != CMPMAGIC[0])
-	    (void) strcat(doptbuf, " -C");
-	(void) strcpy(srcfile, "/tmp/dcmpXXXXXX");
+	    (void) strlcat(doptbuf, " -C", sizeof(doptbuf));
+	(void) strlcpy(srcfile, "/tmp/dcmpXXXXXX", sizeof(srcfile));
 	(void) mktemp(srcfile);
-	(void) strcat(doptbuf, " >");
-	(void) strcat(doptbuf, srcfile);
+	(void) strlcat(doptbuf, " >", sizeof(doptbuf));
+	(void) strlcat(doptbuf, srcfile, sizeof(doptbuf));
 
 	/* arrange to decompress the remaining input to the target file */
 	oldpbreak = signal(SIGPIPE, SIGCAST(deadchild));
@@ -292,7 +292,7 @@ char    *file;    /* input file, if the stuff is already on disk */
 	FILE	*ofp;
 
 	log0("converting bnproc batch");
-	(void) strcpy(srcfile, "/tmp/bncvtXXXXXX");
+	(void) strlcpy(srcfile, "/tmp/bncvtXXXXXX", sizeof(srcfile));
 	(void) mktemp(srcfile);
 	if ((ofp = fopen(srcfile, "w")) == (FILE *)NULL)
 	    xerror1("couldn't write converted text to %s", srcfile);
@@ -349,7 +349,7 @@ char    *file;    /* input file, if the stuff is already on disk */
     /* force a copy of the clear text to disk in a file we can discard */
     if (file == (char *)NULL && srcfile[0] == '\0')
     {
-	(void) sprintf(srcfile, "%s/.tmp/newsbatchXXXXXX", site.textdir);
+	(void) snprintf(srcfile, sizeof(srcfile), "%s/.tmp/newsbatchXXXXXX", site.textdir);
 	collect(pushback[0] ? pushback : (char *)NULL, srcfile);
 	(void) freopen(srcfile, "r", msgin);
 	(void) unlink(srcfile);

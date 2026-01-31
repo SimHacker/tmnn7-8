@@ -1,0 +1,74 @@
+# Git Workflow — Version Control Operations
+# K-line: "git", "branch", "commit", "PR", "merge"
+
+meta:
+  layer: 2
+  description: "Schemas for clean git operations"
+  source: "Drescher LAYER 2"
+
+schemas:
+
+  W001:
+    name: "clean-branch"
+    context:
+      - on_main: true
+      - main_up_to_date: true
+      - task_defined: true
+    action: |
+      git checkout main && git pull
+      git checkout -b fix/descriptive-name
+    result:
+      - branch_created: true
+      - branch_clean: true
+      - no_admin_commits_captured: true
+    reliability: 0.99
+    chains_to: [W002]
+
+  W002:
+    name: "atomic-commit"
+    context:
+      - changes_in_file: true
+      - file_tests_pass: true
+    action: |
+      git add <file>
+      git commit -m "$(cat <<'EOF'
+      🤖 filename.c: N string safety fixes
+      
+      sprintf → snprintf:
+      - Line NNN: description
+      
+      Part of Issue #NN.
+      EOF
+      )"
+    result:
+      - commit_atomic: true
+      - changes_reviewable: true
+      - bisect_works: true
+    reliability: 0.95
+    chains_to: [W003]
+
+  W003:
+    name: "create-pr"
+    context:
+      - commits_ready: true
+      - branch_pushed: true
+    action: |
+      git push -u origin HEAD
+      gh pr create --title "..." --body "..."
+    result:
+      - pr_created: true
+      - review_requested: true
+    reliability: 0.98
+
+  W010:
+    name: "squash-merge"
+    context:
+      - pr_approved: true
+      - checks_pass: true
+    action: "gh pr merge N --squash"
+    result:
+      - history_clean: true
+      - all_commits_preserved_in_body: true
+    reliability: 1.0
+
+chain: "W001 → W002 → W003 → W010 (branch → commit → PR → merge)"

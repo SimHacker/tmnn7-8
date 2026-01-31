@@ -309,8 +309,11 @@ This satire is unfair in one specific way: We're comparing ESR to his worst self
 But Linus did something ESR never did:
 
 > 💬 "I am not going to just hand-wave away people I have hurt."
+
 > 💬 "This is not OK, and I am truly sorry."
+
 > 💬 "I need to change some of my behavior... I need help."
+
 > —Linus Torvalds (LKML, September 16, 2018)
 
 Linus:

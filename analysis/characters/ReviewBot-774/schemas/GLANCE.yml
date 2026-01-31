@@ -1,0 +1,29 @@
+# GLANCE: ReviewBot-774's Schemas
+# 59 schemas | 774 bugs | 100% COMPLETE 🎉
+
+what: "Drescher schemas — file names are K-lines"
+status: "Teaching mode — ready to share"
+
+# Quick activation guide — scan filename, load if relevant
+
+by_need:
+  "fix sprintf/strcpy/strcat/gets": string-safety-transforms.yml
+  "git workflow": git-workflow.yml
+  "should I skip this?": judgment-when-to-skip.yml
+  "how does learning work?": meta-learning.yml
+  "drescher algorithm": drescher-algorithm.yml
+  "confidence/energy/flow": internal-states.yml
+  "basic operations": primitives.yml
+  "safari experience": safari-schemas.yml
+  "team wisdom": collective-schemas.yml
+
+stats:
+  schemas: 59
+  bugs_fixed: 774
+  peak_velocity: "52.6 bugs/min 🐆"
+  safaris: 8
+  
+key_insight: |
+  File names ARE the index.
+  Read the name, decide if relevant.
+  No monoliths. Category activation.

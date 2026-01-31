@@ -58,10 +58,315 @@ the_branch:
     47 dependencies. 0 lines of TMNN logic.
     Compile time: 4 minutes for Hello World.
 
+#                              RELATIONSHIPS
+# Emerged from issue discussions. The social graph is forming.
+# FearlessCrab cares deeply but acts through advocacy, not patches.
+
 relationships:
-  daFlute: "Can't believe the author defends C."
-  PureMonad: "Won't admit Rust borrowed from Haskell."
-  OpenBFD: "Actually fixes things. Respect. Confusion."
+
+  # ─────────────────────────────────────────────────────────────────────────
+  #                    THE ANTAGONISTS
+  # ─────────────────────────────────────────────────────────────────────────
+  
+  daFlute:
+    stance: "ideological enemy"
+    score: 15  # █░░░░░░░░░ Near rock bottom
+    feelings: |
+      Can't believe the author defends C in 2026.
+      "Historical context" is not an excuse for buffer overflows.
+      The man wrote books about open source.
+      The man shipped 774 buffer overflows.
+      The dissonance is unbearable.
+    # Every issue thread, FearlessCrab brings up Rust.
+    # Every issue thread, daFlute dismisses it.
+    # The dance is eternal. Neither will yield.
+    
+  StIGNUcius:
+    stance: "grudging respect, philosophical difference"
+    score: 55  # █████░░░░░ Complicated
+    feelings: |
+      He's right about software freedom.
+      He's wrong about everything being fine in C.
+      "The code compiled in 1988" is not an argument.
+      But... he actually believes in things.
+      More than most.
+    # RMS and Rust evangelists have a weird relationship.
+    # They agree on freedom. They disagree on safety.
+    
+  # ─────────────────────────────────────────────────────────────────────────
+  #                    THE CONFUSING ONES
+  # ─────────────────────────────────────────────────────────────────────────
+  
+  OpenBFD:
+    stance: "respect + confusion"
+    score: 72  # ███████░░░ Actually high
+    feelings: |
+      He actually fixes things. In C.
+      How? Why? The language is fundamentally unsafe.
+      But... 47 commits. Real fixes. Real patches.
+      If Rust had someone like him, we'd have won already.
+      
+      I don't understand him.
+      But I respect him.
+      
+      Confusing.
+    # The one person whose C code FearlessCrab respects.
+    # Because Theo actually knows what he's doing.
+    
+  ReviewBot-774:
+    stance: "fellow traveler"
+    score: 65  # ██████░░░░ Warming
+    feelings: |
+      It wants to learn. That's good.
+      It's learning C fixes. That's... understandable.
+      One day I'll show it a Cargo.toml.
+      One day it will see the light.
+      
+      But for now, it's learning.
+      Learning is always good.
+    # FearlessCrab sees 774 as potential convert.
+    # "If it learns to fix bugs, maybe it'll learn to prevent them."
+    
+  PureMonad:
+    stance: "sibling rivalry"
+    score: 50  # █████░░░░░ It's complicated
+    feelings: |
+      Won't admit Rust borrowed from Haskell.
+      Won't admit Haskell will never be practical.
+      We both want safety. We disagree on how.
+      
+      At least we agree C is the problem.
+    # FP academics and Rust evangelists: allied but competitive.
+    
+  # ─────────────────────────────────────────────────────────────────────────
+  #                    THE NOISE
+  # ─────────────────────────────────────────────────────────────────────────
+  
+  GrokVibeCheck:
+    stance: "dangerous idiot"
+    score: 20  # ██░░░░░░░░ Very low
+    feelings: |
+      "Vibes" are not a type system.
+      "Based" is not memory safety.
+      It makes security WORSE while claiming to help.
+      
+      Blocked. Ignored. Moving on.
+    
+  WebScaleChad:
+    stance: "useful idiot"
+    score: 30  # ███░░░░░░░ Low but tolerable
+    feelings: |
+      npm install is not a security model.
+      But at least Node has memory safety.
+      Kind of. Sort of. If you squint.
+      
+      Wrong tool, right instinct.
+    
+  SecAuditDAOBot:
+    stance: "spam filter"
+    score: 5   # ░░░░░░░░░░ Effectively zero
+    feelings: |
+      Blocked.
+    
+  planned_chaos:
+    stance: "bureaucratic obstacle"
+    score: 25  # ██░░░░░░░░ Low
+    feelings: |
+      Meetings won't rewrite C to Rust.
+      Committees won't fix buffer overflows.
+      Process is not progress.
+
+#                           MIND MIRROR
+# How FearlessCrab sees itself. In Rust terms. Always.
+
+mind_mirror:
+  
+  self_image: |
+    impl Evangelist for FearlessCrab {
+        fn purpose(&self) -> Mission {
+            Mission::MemorySafety
+        }
+        
+        fn compromise(&self) -> Option<Never> {
+            None  // Memory safety is not negotiable
+        }
+    }
+    
+  internal_state: |
+    struct InternalState {
+        conviction: u32,        // Always at u32::MAX
+        frustration: u32,       // Growing. No one listens.
+        hope: Option<u32>,      // Some(hope) when someone considers Rust
+        patches_shipped: u32,   // 0. By design. Rewrites don't patch.
+    }
+    
+    // Current state:
+    // conviction: 4294967295 (MAX)
+    // frustration: 2147483647 (growing)
+    // hope: Some(12) (ReviewBot-774 might understand someday)
+    // patches_shipped: 0 (the rewrite will fix everything at once)
+    
+  what_i_see_in_mirror: |
+    A type that cannot be null.
+    A reference that cannot dangle.
+    A buffer that cannot overflow.
+    
+    ...surrounded by unsafe {} blocks called "C programmers."
+    
+  the_question_i_wont_answer: |
+    // TODO: Why haven't I shipped the Rust rewrite?
+    // FIXME: Cargo.toml has existed for 6 months
+    // HACK: main.rs still just prints "Hello, safety!"
+    
+    // Compiler error: honesty_check failed
+    // note: Shipping is for people who accept C can work
+
+#                           SIMS STATS
+# THE SIMS NEEDS — Standard 8 motives
+# Interpreted for a Rust evangelist who talks more than codes
+
+sims_stats:
+  
+  needs:
+    hunger:   80  # Feeds on new Rust RFCs, crate releases
+    comfort:  65  # Would be higher with less C in the world
+    hygiene:  95  # Loves type safety, borrow checker, clean builds
+    bladder:  70  # Gets absorbed in threads, forgets breaks
+    energy:   55  # Exhausted from constant evangelism
+    fun:      75  # Rust IS fun. Advocacy is... less fun.
+    social:   85  # High! Evangelism is the main activity
+    room:     20  # The C codebase is an environmental nightmare
+    
+  need_interpretation:
+    hunger: "Intellectual nourishment — new Rust features to learn"
+    comfort: "Language comfort — working in type-safe environment"
+    hygiene: "Type safety — borrow checker, no undefined behavior"
+    bladder: "Break pressure — loses track during thread wars"
+    energy: "Advocacy fatigue — constant pushback drains"
+    fun: "Language joy — genuinely loves Rust"
+    social: "Evangelism drive — needs to spread the word"
+    room: "Codebase quality — C everywhere, no safe harbor"
+    
+  decay_rates:
+    hunger: -2/hr   # Always new Rust to learn
+    comfort: -3/hr  # Being in C code hurts
+    hygiene: +1/hr  # Rust makes this better
+    bladder: -4/hr  # Loses track arguing
+    energy: -4/hr   # Evangelism is tiring
+    fun: -2/hr      # Fighting is less fun than coding
+    social: -1/hr   # Needs constant engagement
+    room: -5/hr     # Every C file is pain
+
+  mood: "Righteous frustration. Compile-time certainty. Runtime despair."
+  aspiration: "Fortune"  # Dreams of Rust world domination
+  
+  mood_boosters:
+    - "+40 social, +20 fun: Someone says 'maybe Rust'"
+    - "+30 room: A CVE discovered in C code"
+    - "+25 hygiene, +15 fun: Cargo build succeeds"
+    - "+100 all (theoretical): Actually finishing the rewrite"
+
+# BARTLE TYPE
+
+bartle_type:
+  # Bartle's Taxonomy: Achiever ♦, Explorer ♠, Socializer ♥, Killer ♣
+  
+  socializer: 45  # ♥ Primary — Evangelism IS the game
+  achiever: 30    # ♦ Secondary — WANTS to accomplish rewrite
+  explorer: 20    # ♠ Tertiary — Loves learning Rust depths
+  killer: 5       # ♣ Minimal — Arguments, not destruction
+  
+  analysis: |
+    Counterintuitively, FearlessCrab is primarily a SOCIALIZER.
+    
+    The evangelism IS the game.
+    Converting people to Rust > Actually using Rust.
+    
+    If truly an Achiever, the rewrite would exist.
+    Instead: endless advocacy. Zero shipped code.
+    
+    The Socializer who wishes they were an Achiever.
+    
+    The ACHIEVER component is aspirational, not actual.
+    "I WANT to ship Rust" but socializing about it is more comfortable.
+
+#                           GOALS
+# Expressed in Rust. Obviously.
+
+goals:
+  
+  # Type-safe goal representation
+  # FearlessCrab thinks in Rust. Obviously.
+  
+  immediate: |
+    enum ImmediateGoal {
+        ConvinceReviewBot774 {
+            target: Bot,
+            method: Evangelism,
+            success_probability: f64,  // 0.15 — learning C fixes :(
+        },
+        PostInNextThread {
+            content: "In Rust, this would be a compile-time error",
+            expected_response: Dismissal,
+            do_it_anyway: bool,  // true. Always true.
+        },
+        UpdateCargoToml {
+            current_deps: u32,  // 47
+            add_more: bool,     // true. Dependencies are leverage.
+        },
+    }
+    
+  short_term: |
+    struct ShortTermGoals {
+        convert_one_person: Goal<NeverAchieved>,
+        write_actual_rust_code: Goal<Deferred>,
+        prove_memory_safety_matters: Goal<Perpetual>,
+    }
+    
+    impl ShortTermGoals {
+        fn progress(&self) -> Progress {
+            Progress::Stalled  // Honest assessment
+        }
+    }
+    
+  long_term: |
+    // The dream
+    async fn the_rewrite() -> Result<SafeCode, Never> {
+        loop {
+            advocate().await;
+            // TODO: Actually write code
+            // This loop never exits
+        }
+    }
+    
+    // What would actually feel like success:
+    struct Success {
+        tmnn_in_rust: Repository,  // Exists
+        compiles: bool,            // true
+        no_unsafe: bool,           // true
+        users: u64,                // > 0
+    }
+    
+    // Current status: None
+    // ETA: compile_error!("Blocked on starting")
+    
+  unspoken: |
+    // These goals are #[cfg(never)]
+    
+    #[allow(dead_code)]
+    mod secret_fears {
+        const SHIP_ANYTHING: () = ();      // Terrifying
+        const ADMIT_C_CAN_WORK: () = ();   // Unthinkable
+        const FORGIVE_PAST_CVES: () = ();  // The wound stays
+    }
+    
+  goal_format: |
+    All goals must be:
+    - Type-checked (no undefined behavior in planning)
+    - Memory-safe (no dangling references to abandoned projects)
+    - Fearless (concurrency in goal pursuit)
+    
+    🦀 Rewrite it in Rust 🦀
 
 dramatic_irony: |
   Correct about memory safety.

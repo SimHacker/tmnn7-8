@@ -1,0 +1,114 @@
+# String Safety Transforms — Core C Fix Patterns
+# K-line: "sprintf", "strcpy", "strcat", "gets", "buffer overflow"
+
+meta:
+  layer: 1
+  description: "Transformations that prevent buffer overflows"
+  bugs_fixed_with: 759  # All except shell injection
+
+schemas:
+
+  S001:
+    name: "sprintf-to-snprintf"
+    context:
+      - line_contains: "sprintf("
+      - target_buffer: IDENTIFIED
+      - buffer_size: "KNOWN | INFERRABLE"
+    action: |
+      1. Identify buffer argument (first arg)
+      2. Determine size: sizeof(buf) for locals, CONSTANT for externs
+      3. Replace: sprintf(buf, ...) → snprintf(buf, SIZE, ...)
+    result:
+      - overflow_prevented: true
+      - behavior_preserved: true
+      - bounds_enforced: SIZE
+    reliability: 0.97
+    experience:
+      total: 331
+      size_rules:
+        local_buffer: "sizeof(buffer)"
+        global_bfr: "LBUFLEN"
+        struct_field: "sizeof(struct.field)"
+        pointer_param: "SKIP — need caller analysis"
+
+  S002:
+    name: "strcpy-to-strlcpy"
+    context:
+      - line_contains: "strcpy("
+      - dest_buffer: IDENTIFIED
+      - buffer_size: KNOWN
+    action: "strcpy(dst, src) → strlcpy(dst, src, SIZE)"
+    result:
+      - overflow_prevented: true
+      - null_termination: GUARANTEED
+      - truncation_possible: true
+    reliability: 0.94
+    portability: |
+      strlcpy is BSD. For strict POSIX:
+      strncpy(dst, src, size-1); dst[size-1] = '\0';
+
+  S002b:
+    name: "strcpy-to-strncpy"
+    refined_from: S002
+    context:
+      - line_contains: "strcpy("
+      - strlcpy_available: false
+    action: |
+      strncpy(dst, src, sizeof(dst) - 1);
+      dst[sizeof(dst) - 1] = '\0';
+    result:
+      - overflow_prevented: true
+      - null_termination: EXPLICIT
+      - portable: true
+    reliability: 0.96
+
+  S003:
+    name: "strcat-to-strlcat"
+    context:
+      - line_contains: "strcat("
+      - dest_buffer: IDENTIFIED
+      - buffer_size: KNOWN
+    action: "strcat(dst, src) → strlcat(dst, src, SIZE)"
+    result:
+      - overflow_prevented: true
+      - appends_safely: true
+    reliability: 0.96
+
+  S004:
+    name: "gets-to-fgets"
+    context:
+      - line_contains: "gets("
+      - buffer: IDENTIFIED
+    action: |
+      gets(buf) → fgets(buf, sizeof(buf), stdin)
+      buf[strcspn(buf, "\n")] = '\0'  # Remove newline
+    result:
+      - overflow_prevented: true
+      - newline_handled: true
+    reliability: 0.98
+    note: "gets() removed from C11 standard"
+
+  S005:
+    name: "mid-buffer-sprintf"
+    refined_from: S001
+    context:
+      - sprintf_into_buffer_middle: true
+      - pointer_arithmetic: PRESENT
+      - total_size: KNOWN
+    action: |
+      char *pos = strrchr(buf, '/') + 1;
+      snprintf(pos, SIZE - (pos - buf), fmt, ...);
+    result:
+      - remaining_space_calculated: true
+      - overflow_prevented: true
+    reliability: 0.90
+    edge_case: |
+      If strrchr can return NULL:
+      char *pos = strrchr(buf, '/');
+      if (pos) pos++; else pos = buf;
+    learned_from: "expire.c:1065 — Puffy's review"
+
+summary:
+  high_velocity_patterns: [S001, S002, S003, S004]
+  needs_care: [S005]
+  total_bugs_fixed: 759

@@ -182,9 +182,9 @@ char *argv[];
 
 	/* call the mailer and wait on its completion */
 #ifdef TMAIL
-	(void) sprintf(bfr,"%s -f %s -T %s",mymailer,readbox,mktemp(msglist));
+	(void) snprintf(bfr, LBUFLEN, "%s -f %s -T %s",mymailer,readbox,mktemp(msglist));
 #else
-	(void) sprintf(bfr, "%s -f %s", mymailer, readbox);
+	(void) snprintf(bfr, LBUFLEN, "%s -f %s", mymailer, readbox);
 #endif /* TMAIL */
 	(void) system(bfr);
 	(void) fflush(stdout);	/* V7 system() doesn't flush stdout */
@@ -209,11 +209,11 @@ char *argv[];
 	 *    new messages, making msglist a list of IDs of messages deleted.
 	 */
 	if (dflag)
-	    (void) sprintf(bfr,
+	    (void) snprintf(bfr, LBUFLEN,
 		"sed -n <%s -e '/^Message-ID: */s///p' >%s",
 		readbox, mktemp(msglist));
 	else
-	    (void) sprintf(bfr,
+	    (void) snprintf(bfr, LBUFLEN,
  "sort %s -o %s; sed -n <%s '/^Message-ID: */s///p' |sort| comm -13 - %s >%s",
 		newlist, newlist, readbox, newlist, mktemp(msglist));
 	(void) system(bfr);

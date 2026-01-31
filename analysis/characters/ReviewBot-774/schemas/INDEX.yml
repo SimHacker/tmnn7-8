@@ -1,0 +1,98 @@
+# SCHEMAS: ReviewBot-774's Learned World Model
+# Method: Drescher Schema Mechanism + Play-Learn-Lift
+# Bugs Fixed: 774 | Schemas: 59 | Status: COMPLETE
+
+meta:
+  agent: ReviewBot-774
+  schema_type: drescher
+  mode: teaching  # Learning complete, now sharing
+  bugs_fixed: 774
+  schemas_formed: 59
+  peak_velocity: "52.6 bugs/min 🐆"
+  mentor: OpenBFD (Puffy)
+  
+  wisdom: |
+    Puffy teaches HOW to fix.
+    The yahoos teach WHEN to speak.
+    Both are schemas. Both are learnable.
+
+# Files organized as K-lines — filename activates category
+
+schema_files:
+
+  # LAYER 0: Foundation
+  primitives.yml:
+    k_lines: ["atomic", "read", "match", "transform"]
+    schemas: [P001, P002, P003]
+    description: "Basic operations everything builds on"
+
+  # LAYER 1: Core Transforms
+  string-safety-transforms.yml:
+    k_lines: ["sprintf", "strcpy", "strcat", "gets", "buffer overflow"]
+    schemas: [S001, S002, S002b, S003, S004, S005]
+    description: "The main bug-fixing patterns"
+    bugs_fixed: 759
+
+  # LAYER 2: Workflow
+  git-workflow.yml:
+    k_lines: ["git", "branch", "commit", "PR", "merge"]
+    schemas: [W001, W002, W003, W010]
+    description: "Clean version control operations"
+
+  # LAYER 3: Judgment
+  judgment-when-to-skip.yml:
+    k_lines: ["skip", "defer", "hard bug", "pointer", "complexity"]
+    schemas: [J001, J002, J003, J004]
+    description: "Knowing when NOT to transform"
+
+  # LAYER 4: Meta-Learning
+  meta-learning.yml:
+    k_lines: ["meta", "learning", "drescher", "play-learn-lift"]
+    schemas: [M001, M002, M003, M004, M005]
+    description: "How to learn to learn"
+
+  # LAYER 5: Internal States
+  internal-states.yml:
+    k_lines: ["confidence", "energy", "flow", "overwhelm", "mood"]
+    description: "Synthetic items — internal context"
+
+  # METHODOLOGY
+  drescher-algorithm.yml:
+    k_lines: ["drescher", "made-up minds", "schema mechanism"]
+    description: "The algorithm itself"
+
+  # SAFARI EXPERIENCE
+  safari-schemas.yml:
+    k_lines: ["safari", "velocity", "cheetah", "rhino"]
+    schemas: [S023, S024, S025, S026, S027, S028, S029, S030]
+    description: "Learned during 8 bug-fixing safaris"
+
+  # COLLECTIVE WISDOM
+  collective-schemas.yml:
+    k_lines: ["team", "collective", "donated", "everyone"]
+    description: "24 schemas from all characters"
+
+  # EXISTING FILES
+  buffer-overflow-fix.yml:
+    k_lines: ["overflow", "complete fix"]
+    description: "Complete fix sequence"
+
+  commit-message-structure.yml:
+    k_lines: ["commit", "message", "format"]
+    description: "How to document fixes"
+
+  fallacy-recognition.yml:
+    k_lines: ["fallacy", "discourse", "debate"]
+    description: "Spotting logical tricks"
+
+  threat-surface-priority.yml:
+    k_lines: ["priority", "threat", "which file first"]
+    description: "Which files to fix first"
+
+current_state:
+  schemas_formed: 59
+  schemas_tested: 774
+  reliability: "proven in production"
+  status: "MISSION COMPLETE"
+  peak_velocity: "52.6 bugs/min"
+  teaching: true

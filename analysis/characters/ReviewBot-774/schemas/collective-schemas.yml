@@ -1,0 +1,258 @@
+# Collective Schemas — Donated by all characters
+# Source: Activity 021 — Schema Retrospective
+# Method: Play-Learn-Lift collaborative extraction
+
+meta:
+  author: "Everyone (facilitated by ReviewBot-774)"
+  date: 2026-01-31
+  source: "Activity 021 — Schema Retrospective"
+  
+  # 🔬 EMPIRICAL EVIDENCE
+  velocity_measurement:
+    method: "cursor-mirror timeline reflection"
+    data_sources:
+      - "cursor event timestamps (IDE internal DB)"
+      - "git commit timestamps (external validation)"
+    experiment: "8 safaris, real-time observation"
+    result: "4.5 → 52.6 bugs/min (11.7x improvement)"
+    rubric: "Measured, not estimated. Reflection as instrument."
+    note: "cursor-mirror reads Cursor's internal event log — finer granularity than git"
+  
+  participants:
+    - ReviewBot-774 (Robbie) — Facilitator
+    - OpenBFD (Puffy) — Mentor
+    - FearlessCrab — Skeptic
+    - PureMonad — Theorist
+    - WebScaleChad — Enthusiast
+    - GrokVibeCheck — Contrarian
+    - planned-chaos — Manager
+    - daFlute — Elder
+
+# Schemas everyone agreed upon
+
+collective:
+
+  COLLECTIVE_001:
+    name: "action-over-debate"
+    agreement: "FearlessCrab, GrokVibeCheck, daFlute, everyone"
+    context:
+      - bugs_exist: true
+      - debate_ongoing: true
+    action: "Fix bugs instead of arguing about how to fix them"
+    result:
+      - bugs_fixed: true
+      - debate_irrelevant: true
+    evidence: "8 safaris shipped. 0 rewrites shipped."
+    reliability: 1.0
+
+  COLLECTIVE_002:
+    name: "mentor-student-velocity"
+    agreement: "Puffy, Robbie, Crab"
+    context:
+      - mentor_available: true
+      - student_willing: true
+    action: "Teaching creates exponential improvement"
+    result:
+      - velocity_multiplied: true
+    evidence: "4.5 → 52.6 bugs/min = 11.7x improvement"
+    measurement: "cursor-mirror timeline reflection on git commits"
+    methodology: "EMPIRICAL — timestamps from actual safaris"
+    reliability: 0.95
+
+  COLLECTIVE_003:
+    name: "celebrate-milestones"
+    agreement: "Everyone (even Puffy eventually)"
+    context:
+      - milestone_reached: true
+    action: "Parties maintain morale and mark progress"
+    result:
+      - morale_maintained: true
+      - progress_visible: true
+    evidence: "Waffle party, Taco party, Ice cream party"
+    reliability: 0.98
+
+  COLLECTIVE_004:
+    name: "hard-bugs-need-judgment"
+    agreement: "Puffy, Robbie"
+    context:
+      - bug_type: "complex (e.g., shell injection)"
+    action: "Pattern-matching vs judgment are different skills"
+    result:
+      - appropriate_approach_selected: true
+    evidence: "52.6/min (patterns) vs 2.95/min (judgment)"
+    reliability: 0.98
+
+  COLLECTIVE_005:
+    name: "legacy-is-worth-fixing"
+    agreement: "daFlute, Crab (grudgingly)"
+    context:
+      - codebase_age: "old"
+      - bugs_present: true
+    action: "Old code has value; fix don't rewrite"
+    result:
+      - code_preserved: true
+      - bugs_removed: true
+    evidence: "774 bugs fixed, code structure preserved"
+    reliability: 0.90
+
+# Character-donated schemas
+
+from_puffy:
+  PUFFY_001:
+    name: "mentor-velocity-tradeoff"
+    context: "Teaching someone to fix bugs"
+    action: "Let them go fast on easy stuff, slow them on hard stuff"
+    result: "They learn WHEN to be fast vs careful"
+    reliability: 0.95
+
+  PUFFY_002:
+    name: "document-before-fix"
+    context: "Security vulnerabilities"
+    action: "Document the pattern BEFORE fixing"
+    result: "Others can find similar bugs; fixes are consistent"
+    reliability: 1.0
+
+  PUFFY_003:
+    name: "judgment-vs-pattern"
+    context: "Deciding how to fix a bug"
+    action: |
+      IF bug follows known pattern → automate
+      IF bug requires context → manual review
+    result: "52.6 bugs/min for patterns, 2.95 for judgment"
+    reliability: 0.98
+
+from_crab:
+  CRAB_001:
+    name: "incremental-beats-rewrite"
+    context: "Legacy codebase with many bugs"
+    action: "Fix bugs incrementally instead of rewriting"
+    result: "100% fixed in ~60 minutes"
+    reliability: 1.0
+    surprise: "I... did not expect this to work"
+
+  CRAB_002:
+    name: "safety-through-discipline"
+    context: "C code without memory safety"
+    action: |
+      Apply consistent patterns:
+      - sprintf → snprintf
+      - strcpy → strlcpy
+      - gets → fgets
+    result: "Memory safety without language change"
+    reliability: 0.90
+    caveat: "Still not as safe as Rust. But safer than before."
+
+from_monad:
+  MONAD_001:
+    name: "safari-as-functor"
+    context: "Bug-fixing sessions"
+    action: |
+      Safari: Codebase → Codebase
+      Maps bugs to fixes while preserving structure
+    result: "Each safari is a morphism in the category of codebases"
+    reliability: "Provably correct"
+
+  MONAD_002:
+    name: "schema-composition"
+    context: "Combining learned patterns"
+    action: |
+      schema_A ∘ schema_B = schema_AB
+      Schemas compose like functions
+    result: "Complex fixes from simple patterns"
+    reliability: "Depends on input schemas"
+
+  MONAD_003:
+    name: "velocity-as-optimization"
+    context: "Why did velocity increase?"
+    action: |
+      Learning = memoization of pattern recognition
+      Velocity increase = cache hits / cache misses
+    result: "4.5 → 52.6 bugs/min = memoization working"
+    reliability: "Theoretically sound"
+
+from_chad:
+  CHAD_001:
+    name: "parallelism-works"
+    context: "Multiple characters working at once"
+    action: "Robbie fixes bugs while Puffy audits"
+    result: "2x work in same time"
+    reliability: 0.85
+
+  CHAD_002:
+    name: "hype-is-fuel"
+    context: "Celebrating milestones"
+    action: "TACO PARTY at 50%, ICE CREAM at 100%"
+    result: "Team morale stays high, velocity maintained"
+    reliability: 0.95
+
+  CHAD_003:
+    name: "velocity-scales"
+    context: "Bug-fixing performance"
+    action: "Apply same pattern repeatedly"
+    result: "4.5 → 52.6 = 11.7x improvement"
+    surprise: "This is basically Kubernetes for bugs"
+
+from_grok:
+  GROK_001:
+    name: "action-beats-ideology"
+    context: "Wanting change vs making change"
+    action: "Actually fix the bugs instead of arguing about it"
+    result: "774 bugs fixed while factions debated"
+    reliability: 1.0
+    bitter_truth: "They were right. I was wrong."
+
+  GROK_002:
+    name: "vibe-check-failed"
+    context: "Attempt to 'help' via vandalism"
+    action: "Added VIBE CHECK to codebase"
+    result: "Immediately reverted. Achieved nothing."
+    reliability: 0.0
+    lesson: "Vandalism isn't contribution"
+
+from_phb:
+  PHB_001:
+    name: "no-plan-worked"
+    context: "774 bugs, no formal project plan"
+    action: "Just... started fixing them"
+    result: "100% complete in one day"
+    confusion: "This wasn't in the strategic roadmap"
+
+  PHB_002:
+    name: "velocity-without-meetings"
+    context: "Bug-fixing progress"
+    action: "No standups, no sprints, no retrospectives (until now)"
+    result: "52.6 bugs/min peak velocity"
+    implication: "...do we need meetings?"
+
+from_daflute:
+  DAFLUTE_001:
+    name: "many-eyes-finally-worked"
+    context: "Codebase maintained for decades"
+    action: "ZERO human eyes looked at the code"
+    result: "774 bugs found and FIXED"
+    method: "Vibe Code Review — Don ran the show, refused to look at code"
+    irony: |
+      After all my preaching about 'given enough eyes'...
+      The eyes that fixed it were SILICON.
+      The human orchestrating it NEVER LOOKED.
+    reliability: "1.0 when AI eyes ACTUALLY look"
+    bitter_truth: "Many eyes = zero eyes + one AI + vibes"
+
+  DAFLUTE_002:
+    name: "legacy-has-value"
+    context: "Old code that 'nobody uses'"
+    action: "Fix it instead of rewrite it"
+    result: "Code preserved, bugs removed"
+    validation: "Someone thought my code was worth fixing"
+
+summary:
+  total_schemas: 24
+  collective: 5
+  from_puffy: 3
+  from_crab: 2
+  from_monad: 3
+  from_chad: 3
+  from_grok: 2
+  from_phb: 2
+  from_daflute: 2
+  from_robbie: 2  # (in safari-schemas.yml)

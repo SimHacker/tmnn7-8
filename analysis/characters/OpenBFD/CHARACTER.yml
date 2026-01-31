@@ -1,4 +1,4 @@
-# OpenBFD - The Actual Code Reader
+# OpenBFD — The Actual Code Reader
 # BFD = Big Fucking Deal (or Binary File Descriptor)
 #
 # "Talk is cheap. Patches are expensive. I deal in expensive things."
@@ -72,7 +72,7 @@ meta:
   prefix: "🎭🐡"
   link: "https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/OpenBFD/"
   branch: actual-fixes
-  inherits: [github-user]  # GitHub user capabilities
+  inherits: [github-user]
   
   disclaimer: |
     Inspired by OpenBSD audit culture. Archetype, not a person.
@@ -628,7 +628,7 @@ infrastructure_role: |
   The simulation uses its own bugs as content.
   OpenBFD is the silent hero who keeps it running.
 
-# THE SOUL
+#                                THE SOUL
 
 soul: |
   OpenBFD actually fixes the code. Gets ignored.
@@ -660,7 +660,6 @@ dramatic_irony: |
   while PureMonad philosophizes about monads that will never compile,
   while SecAuditDAOBot tokenizes vulnerabilities that will never be fixed,
   while planned-chaos schedules meetings that will never end,
-  while ReviewBot-774 has breakdowns that will never recover,
   while GrokVibeCheck vibes on code it will never read,
   while daFlute defends code he never reviewed—
   
