@@ -17,6 +17,7 @@
 # - fail-fast: false = one branch failure doesn't stop others
 # - Cherry-pick preserves original commit author and message
 # - --strategy-option=theirs means main always wins for core files
+# - Merge commits detected automatically and use -m 1 (first parent)
 # - Issues create narrative artifacts when conflicts occur
 #
 # PROVENANCE:
@@ -110,7 +111,19 @@ jobs:
           
           git checkout "$BRANCH"
           
-          if git cherry-pick "$COMMIT_SHA" --strategy-option=theirs; then
+          # Check if commit is a merge (has multiple parents)
+          PARENT_COUNT=$(git cat-file -p "$COMMIT_SHA" | grep -c "^parent ")
+          
+          if [ "$PARENT_COUNT" -gt 1 ]; then
+            # Merge commit: use -m 1 to cherry-pick changes from first parent
+            echo "🔀 Merge commit detected (${PARENT_COUNT} parents), using -m 1"
+            CHERRY_CMD="git cherry-pick -m 1 $COMMIT_SHA --strategy-option=theirs"
+          else
+            # Regular commit
+            CHERRY_CMD="git cherry-pick $COMMIT_SHA --strategy-option=theirs"
+          fi
+          
+          if $CHERRY_CMD; then
             git push origin "$BRANCH"
             echo "✅ Synced to $BRANCH"
           else
@@ -128,6 +141,7 @@ jobs:
           The Multiverse Sync Bot attempted to sync from main to $BRANCH.
           
           **Commit:** $COMMIT_SHA
+          **Merge commit:** $([ "$PARENT_COUNT" -gt 1 ] && echo "Yes" || echo "No")
           **Files:**
           $FILES
           
@@ -136,7 +150,7 @@ jobs:
           Resolution:
           \`\`\`bash
           git checkout $BRANCH
-          git cherry-pick $COMMIT_SHA
+          git cherry-pick $([ "$PARENT_COUNT" -gt 1 ] && echo "-m 1 ") $COMMIT_SHA
           git push origin $BRANCH
           \`\`\`
           
