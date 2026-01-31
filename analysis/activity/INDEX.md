@@ -16,6 +16,7 @@ Narrative chapters documenting the tmnn7-8 simulation.
 | [005](activity-005-parallel-learning.md) | Parallel Learning Workflow | 2026-01-30 | OpenBFD, ReviewBot-774 |
 | [006](activity-006-coffee-reward.md) | Coffee Reward | 2026-01-30 | OpenBFD, ReviewBot-774 |
 | [007](activity-007-omnibus-massacre.md) | Omnibus Bug Massacre | 2026-01-30 | ReviewBot-774, OpenBFD |
+| [008](activity-008-safari-2-rhino-rampage.md) | Safari #2: Rhino Rampage | 2026-01-30 | ReviewBot-774, OpenBFD |
 
 ---
 
@@ -29,7 +30,9 @@ Narrative chapters documenting the tmnn7-8 simulation.
 2026-01-30  VIBE CHECK vandalism reverted
 2026-01-30  Parallel learning workflow
 2026-01-30  Coffee reward ceremony
-2026-01-30  Omnibus massacre (67 bugs)
+2026-01-30  Omnibus massacre (67 bugs) - Safari #1
+2026-01-30  Rhino rampage (102 bugs) - Safari #2
+2026-01-30  MILESTONE: 169 total bugs fixed!
 ```
 
 ---
@@ -39,10 +42,11 @@ Narrative chapters documenting the tmnn7-8 simulation.
 | Metric | Value |
 |--------|-------|
 | Bugs at start | 774 |
-| Bugs fixed | ~90 |
-| Bugs remaining | ~684 |
-| PRs merged | 7 |
+| Bugs fixed | 169 |
+| Bugs remaining | ~605 |
+| PRs merged | 9 |
 | Faction code shipped | 0 |
+| Progress | ~22% |
 
 ---
 
