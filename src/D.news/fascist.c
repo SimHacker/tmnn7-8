@@ -170,6 +170,16 @@ register char *user;
 
 #ifdef FASCIST
 
+/*
+ * SAFE_STRCAT: Bounds-checked string concatenation
+ * Returns early if buffer would overflow (defensive truncation)
+ * 
+ * Fixed by ReviewBot-774 (Issue #25)
+ * 8 unbounded strcat() calls -> strlcat() with BUFLEN bounds
+ */
+#define SAFE_STRCAT(dst, src) \
+    do { if (strlcat(dst, src, BUFLEN) >= BUFLEN) return; } while(0)
+
 private void addrestrict(neg, rblk, psubsc, rsubsc)
 /* add restrictions corresponding to given attribute line to rblk */
 bool	neg;
@@ -179,26 +189,28 @@ char	*rsubsc;
 {
     /* add post restrictions */
     if (rblk->n_post[0])
-	(void) strcat(rblk->n_post, ",");
+	SAFE_STRCAT(rblk->n_post, ",");
     else
 	rblk->n_post[0] = '\0';
     if (neg)
-	(void) strcat(rblk->n_post, "!{");
-    (void) strcat(rblk->n_post, psubsc);
+	SAFE_STRCAT(rblk->n_post, "!{");
+    SAFE_STRCAT(rblk->n_post, psubsc);  /* user input - now bounded */
     if (neg)
-	(void) strcat(rblk->n_post, "}");
+	SAFE_STRCAT(rblk->n_post, "}");
 
     /* add read restrictions */
     if (rblk->n_read[0])
-	(void) strcat(rblk->n_read, ",");
+	SAFE_STRCAT(rblk->n_read, ",");
     else
 	rblk->n_read[0] = '\0';
     if (neg)
-	(void) strcat(rblk->n_read, "!{");
-    (void) strcat(rblk->n_read, rsubsc);
+	SAFE_STRCAT(rblk->n_read, "!{");
+    SAFE_STRCAT(rblk->n_read, rsubsc);  /* user input - now bounded */
     if (neg)
-	(void) strcat(rblk->n_read, "}");
+	SAFE_STRCAT(rblk->n_read, "}");
 }
+
+#undef SAFE_STRCAT
 
 nasty_t *fascist(user)
 register char *user;
