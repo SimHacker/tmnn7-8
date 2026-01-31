@@ -1,4 +1,4 @@
-# Activity 015 — 🌮🌮🌮 THE TACO PARTY 🌮🌮🌮
+# Activity 015 — 🌮🌮🌮🌮🌮 THE TACO PARTY 🌮🌮🌮🌮🌮
 
 **Date:** 2026-01-31  
 **Characters:** EVERYONE  
@@ -7,176 +7,247 @@
 
 ---
 
-## 🌮🌮🌮🌮🌮 THE SPREAD 🌮🌮🌮🌮🌮
+## 🍽️🍽️🍽️ THE CORNUCOPIA 🍽️🍽️🍽️
 
-### 🥩🐔🐷🐟🦐🥬 Proteins
-
-| Meat | Emoji Explosion |
-|------|-----------------|
-| Carne Asada | 🥩🥩🥩🔥🔥🔥 |
-| Pollo Asado | 🐔🐔🐔🍗🍗🍗 |
-| Carnitas | 🐷🐷🐷🥓🥓🥓 |
-| Pescado | 🐟🐟🐟🌊🌊🌊 |
-| Camarones | 🦐🦐🦐🦐🦐🦐 |
-| Hongos | 🥬🍄🥬🍄🥬🍄 |
-
-### 🧅🫛🍅🥑🫘🧀🌶️ Toppings
-
-🧅🧅🧅 Cebolla · 🫛🫛🫛 Cilantro · 🍅🍅🍅 Pico de Gallo
-
-🥑🥑🥑🥑🥑 GUACAMOLE 🥑🥑🥑🥑🥑
-
-🫘🫘🫘 Frijoles · 🧀🧀🧀 Queso Fresco · 🌶️🌶️🌶️ Jalapeños
-
-🥒🥒🥒 Pepinos · 🥬🥬🥬 Lechuga · 🌽🌽🌽 Elote
-
-### 🟢🔴🟠⚪🟤🟡 Salsas
-
-| Salsa | Heat | Emoji |
-|-------|------|-------|
-| Verde | 🌶️ | 🟢🟢🟢🥒🥒🥒 |
-| Roja | 🌶️🌶️ | 🔴🔴🔴🍅🍅🍅 |
-| Habanero | 🌶️🌶️🌶️🌶️🌶️ | 🟠🟠🟠🔥🔥🔥💀 |
-| Crema | — | ⚪⚪⚪🥛🥛🥛 |
-| Mole | 🌶️🌶️ | 🟤🟤🟤🍫🍫🍫 |
-| Chipotle | 🌶️🌶️🌶️ | 🟡🟡🟡💨💨💨 |
-
-### 🍺🍹🥤🍋🧃🫖 Bebidas
-
-🍺🍺🍺 Cerveza · 🍹🍹🍹 Margarita · 🥤🥤🥤 Horchata
-
-🍋🍋🍋 Limonada · 🧃🧃🧃 Agua Fresca · 🫖🫖🫖 Jamaica
-
-### 🍮🍩🍦🍫🥧🍬 Postres
-
-🍮🍮🍮 Flan · 🍩🍩🍩 Churros · 🍦🍦🍦 Helado
-
-🍫🍫🍫 Chocolate · 🥧🥧🥧 Tres Leches · 🍬🍬🍬 Dulces
+### 🌮🌮🌮🌮🌮🌮🌮🌮🌮🌮🌮🌮🌮🌮🌮🌮🌮🌮🌮🌮
 
 ---
 
-## 🎭 THE GUESTS
+## 🥩🐔🐷🐟🦐🥬 THE PROTEINS 🥬🦐🐟🐷🐔🥩
 
-### 🤖 Robbie — 🌮🌮🌮
+| Meat | The Spread |
+|------|------------|
+| Carne Asada | 🥩🥩🥩🥩🥩🔥🔥🔥🔥🔥💨💨💨🧄🧄🧅🧅🫑🫑 |
+| Pollo Asado | 🐔🐔🐔🐔🐔🍗🍗🍗🍗🍗🍋🍋🧄🧄🌿🌿🔥🔥 |
+| Carnitas | 🐷🐷🐷🐷🐷🥓🥓🥓🥓🥓🍊🍊🧄🧄🌿🌿💨💨 |
+| Pescado | 🐟🐟🐟🐟🐟🌊🌊🌊🌊🌊🍋🍋🧄🧄🌿🌿🥬🥬 |
+| Camarones | 🦐🦐🦐🦐🦐🦐🦐🦐🧄🧄🧈🧈🍋🍋🌶️🌶️🔥🔥 |
+| Hongos | 🍄🍄🍄🍄🍄🥬🥬🥬🧄🧄🧅🧅🌿🌿🫑🫑🌱🌱 |
+
+---
+
+## 🧅🫛🍅🥑🫘🧀🌶️🥒🥬🌽 THE TOPPINGS 🌽🥬🥒🌶️🧀🫘🥑🍅🫛🧅
+
+### 🥑🥑🥑🥑🥑🥑🥑🥑 GUACAMOLE MOUNTAIN 🥑🥑🥑🥑🥑🥑🥑🥑
+
+🥑🥑🥑🥑🥑🥑🥑🥑🥑🥑🥑🥑🥑🥑🥑🥑🥑🥑🥑🥑🥑🥑🥑🥑  
+🍋🍋🍋 + 🧅🧅🧅 + 🍅🍅🍅 + 🫛🫛🫛 + 🌶️🌶️🌶️ + 🧂🧂🧂  
+🥑🥑🥑🥑🥑🥑🥑🥑🥑🥑🥑🥑🥑🥑🥑🥑🥑🥑🥑🥑🥑🥑🥑🥑
+
+### The Rest of the Bounty
+
+| Topping | Abundance |
+|---------|-----------|
+| Cebolla | 🧅🧅🧅🧅🧅🧅🧅🧅🧅🧅🧅🧅 |
+| Cilantro | 🫛🫛🫛🫛🫛🫛🫛🫛🌿🌿🌿🌿 |
+| Pico de Gallo | 🍅🍅🍅🧅🧅🧅🫛🫛🫛🌶️🌶️🌶️🍋🍋🍋 |
+| Frijoles | 🫘🫘🫘🫘🫘🫘🫘🫘🫘🫘🫘🫘 |
+| Queso Fresco | 🧀🧀🧀🧀🧀🧀🧀🧀🧀🧀🧀🧀 |
+| Jalapeños | 🌶️🌶️🌶️🌶️🌶️🌶️🔥🔥🔥🔥🔥🔥 |
+| Pepinos | 🥒🥒🥒🥒🥒🥒🥒🥒🥒🥒🥒🥒 |
+| Lechuga | 🥬🥬🥬🥬🥬🥬🥬🥬🥬🥬🥬🥬 |
+| Elote | 🌽🌽🌽🌽🌽🌽🧀🧀🌶️🌶️🍋🍋🧈🧈 |
+| Rábanos | 🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴🔴 |
+| Limones | 🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋🍋 |
+
+---
+
+## 🟢🔴🟠⚪🟤🟡 THE SALSA BAR 🟡🟤⚪🟠🔴🟢
+
+| Salsa | Heat Level | The River of Flavor |
+|-------|------------|---------------------|
+| Verde | 🌶️ | 🟢🟢🟢🟢🟢🥒🥒🥒🫛🫛🫛🍋🍋🍋🧄🧄🧄 |
+| Roja | 🌶️🌶️ | 🔴🔴🔴🔴🔴🍅🍅🍅🧅🧅🧅🌶️🌶️🌶️🧄🧄🧄 |
+| Habanero | 🌶️🌶️🌶️🌶️🌶️💀 | 🟠🟠🟠🟠🟠🔥🔥🔥🔥🔥💀💀💀🥵🥵🥵😈😈😈 |
+| Crema | — | ⚪⚪⚪⚪⚪🥛🥛🥛🥛🥛🧈🧈🧈🧈🧈 |
+| Mole | 🌶️🌶️ | 🟤🟤🟤🟤🟤🍫🍫🍫🌶️🌶️🌶️🥜🥜🥜 |
+| Chipotle | 🌶️🌶️🌶️ | 🟡🟡🟡🟡🟡💨💨💨🔥🔥🔥🧄🧄🧄 |
+
+---
+
+## 🍚🫘🌽🥗🫓🧀 THE SIDES 🧀🫓🥗🌽🫘🍚
+
+| Side | Heaping Portions |
+|------|------------------|
+| Arroz | 🍚🍚🍚🍚🍚🍚🍚🍚🍅🍅🧄🧄🧅🧅🫛🫛 |
+| Frijoles Negros | 🫘🫘🫘🫘🫘🫘🫘🫘🧅🧅🧄🧄🌿🌿🌶️🌶️ |
+| Frijoles Refritos | 🫘🫘🫘🫘🫘🫘🧀🧀🧀🧀💨💨💨💨 |
+| Elote en Vaso | 🌽🌽🌽🌽🧀🧀🧀🧀🌶️🌶️🍋🍋🧈🧈🫛🫛 |
+| Ensalada | 🥬🥬🥬🍅🍅🍅🥒🥒🥒🥕🥕🥕🧅🧅🧅 |
+| Chips y Salsa | 🫓🫓🫓🫓🫓🫓🔴🔴🔴🟢🟢🟢 |
+| Queso Fundido | 🧀🧀🧀🧀🧀🧀🧀🧀🔥🔥🔥🔥🌶️🌶️🌶️🌶️ |
+
+---
+
+## 🍺🍹🥤🍋🧃🫖🥛 THE BEVERAGES 🥛🫖🧃🍋🥤🍹🍺
+
+| Drink | The Pour |
+|-------|----------|
+| Cerveza | 🍺🍺🍺🍺🍺🍺🍻🍻🍻🍻🫧🫧🫧🫧 |
+| Margarita | 🍹🍹🍹🍹🍋🍋🍋🍋🧂🧂🧊🧊🧊🧊 |
+| Horchata | 🥤🥤🥤🥤🍚🍚🍚🍚🍦🍦🍦🍦 |
+| Limonada | 🍋🍋🍋🍋🍋🍋💧💧💧💧🧊🧊🧊🧊 |
+| Agua Fresca | 🧃🧃🧃🧃🍉🍉🍈🍈🍓🍓🥭🥭 |
+| Jamaica | 🫖🫖🫖🫖🌺🌺🌺🌺💜💜💜💜 |
+| Tequila | 🥃🥃🥃🥃🍋🍋🧂🧂🔥🔥🔥🔥 |
+
+---
+
+## 🍮🍩🍦🍫🥧🍬🍰🧁 THE DESSERTS 🧁🍰🍬🥧🍫🍦🍩🍮
+
+| Postre | Sweet Sweet Sweetness |
+|--------|----------------------|
+| Flan | 🍮🍮🍮🍮🍮🍮🍯🍯🍯🍯🥚🥚🥛🥛 |
+| Churros | 🍩🍩🍩🍩🍩🍩🍫🍫🍫🍫🍬🍬🍬🍬 |
+| Tres Leches | 🥧🥧🥧🥧🥛🥛🥛🥛🥛🥛🍓🍓🍓🍓 |
+| Helado | 🍦🍦🍦🍦🍦🍦🍨🍨🍨🍨🍫🍫🍬🍬 |
+| Chocolate | 🍫🍫🍫🍫🍫🍫🍫🍫🔥🔥🌶️🌶️ |
+| Dulces | 🍬🍬🍬🍬🍬🍬🍭🍭🍭🍭🍡🍡🍡🍡 |
+| Pastel | 🍰🍰🍰🍰🧁🧁🧁🧁🎂🎂🎂🎂 |
+| Frutas | 🍓🍓🫐🫐🥭🥭🍍🍍🍌🍌🍇🍇🍈🍈 |
+
+---
+
+## 🎭 THE GUESTS AT THE FEAST
+
+### 🤖 Robbie — 🌮🌮🌮🥑🥑🥑🍩🍩
 
 > "I... I fixed half of them. 388 bugs. When I started, I couldn't even finish a sentence. Now I'm finishing tacos."
 
-**Order:** 🌮🐷 Carnitas + 🥑🥑🥑 extra guac + 🟢 verde  
-**Drink:** 🥤🥤 Horchata  
-**Dessert:** 🍩🍩 Churros (earned it)
+**Plate:** 🌮🐷🥑🥑🥑🟢🟢🧀🧀🫛🫛🧅🧅🍋  
+**Drink:** 🥤🥤🍚🍚🍦🍦  
+**Dessert:** 🍩🍩🍩🍫🍫🍫  
+**Mood:** 🥹💚🦏
 
 ---
 
-### 🐡 Theo — 🌮🌮
+### 🐡 Theo — 🌮🌮🍺
 
 > "Good work. Eat."
 
-**Order:** 🌮🥩 Carne asada. 🧅🫛 only. Simple.  
-**Drink:** 🍺 One beer.  
-**Status:** Back to security audit after this.
+**Plate:** 🌮🥩🧅🫛 (simple, efficient)  
+**Drink:** 🍺  
+**Dessert:** — (back to work)  
+**Mood:** 😐➡️😌
 
 ---
 
-### 🦀 FearlessCrab — 🌮🌮
+### 🦀 FearlessCrab — 🌮🌮🐟🍹🍹
 
 > "In Rust, we would have a `TacoBuilder<T>` with compile-time topping guarantees. But... these are good tacos."
 
-**Order:** 🌮🐟 Pescado (sustainable catch) 🌊  
-**Drink:** 🍹🍹 Margarita (finally relaxing)  
-**Mood:** 🦀💚
+**Plate:** 🌮🐟🌊🥬🍋🍋🟢🟢  
+**Drink:** 🍹🍹🍋🍋🧂🧂🧊🧊  
+**Dessert:** 🍦🍦🍓🍓  
+**Mood:** 🦀💚😌
 
 ---
 
-### λ PureMonad — 🌮
+### λ PureMonad — 🌮🍄🫖
 
-> "A taco is a monad. The shell is the context. The fillings are the values. `fmap guac taco` adds avocado while preserving structure."
+> "A taco is a monad. The shell is the context. `fmap guac taco` adds avocado while preserving structure."
 
-**Order:** 🌮🍄 Hongos (pure)  
-**Drink:** 🫖 Jamaica (no side effects)  
-**Philosophy:** `return 🌮`
+**Plate:** 🌮🍄🍄🍄🧀🫛 (pure, no side effects)  
+**Drink:** 🫖🌺💜  
+**Dessert:** 🍓🫐🥭 (just fruit)  
+**Mood:** 🧘✨ `return 🌮`
 
 ---
 
-### 📜 daFlute — 🌮🌮🌮🌮
+### 📜 daFlute — 🌮🌮🌮🌮🍺🍺
 
 > "I've been making tacos since 1989. These new toppings are fine, I suppose. Also my recipe is better."
 
-**Order:** 🌮🌮🌮🌮 "The classic way"  
-**Drink:** 🍺🍺 Whatever's on tap  
-**Complaints:** Many
+**Plate:** 🌮🌮🌮🌮🥩🥩🥩🥩🧅🧅🫛🫛🍋🍋  
+**Drink:** 🍺🍺🍻🍻  
+**Dessert:** 🍮🍮 (the classic)  
+**Mood:** 😤 "back in MY day..."
 
 ---
 
-### 🦬 StIGNUcius — 🌮
+### 🦬 StIGNUcius — 🌮🫘🍚
 
-> "I bless these as Free Tacos. You may copy, modify, and redistribute them. Proprietary salsa is an abomination."
+> "I bless these as Free Tacos. Proprietary salsa is an abomination."
 
-**Order:** 🌮 Plain tortilla + 🫘 beans + 🍚 rice (ascetic)  
-**Drink:** 🍋 Water with lemon  
-**Blessing:** ✨🌮✨
-
----
-
-### 🤖 GrokVibeCheck — 🌮🌮🌮🌮🌮🌮🌮
-
-> "The VIBES are IMMACULATE. 50% bug reduction? Sigma energy. These tacos are bussin fr fr no cap."
-
-**Order:** 🌮🌮🌮🌮🌮🌮🌮 EVERYTHING. MAXIMUM TOPPINGS.  
-**Drink:** 🍹🍹🍹 Something photogenic  
-**Status:** *[blocked from 🟠 habanero by Theo]*
+**Plate:** 🌮🫘🫘🫘🍚🍚🍚 (ascetic)  
+**Drink:** 💧🍋  
+**Blessing:** ✨✨✨🌮✨✨✨  
+**Mood:** 🙏🌱
 
 ---
 
-### 🚀 WebScaleChad — 🌮🌮🌮🌮🌮
+### 🤖 GrokVibeCheck — 🌮🌮🌮🌮🌮🌮🌮🍹🍹🍹
 
-> "Bro these tacos need to SCALE. Microservice per topping? Kubernetes for the kitchen?"
+> "VIBES are IMMACULATE. These tacos are bussin fr fr no cap."
 
-**Order:** 🌮🌮🌮🌮🌮 (horizontal scaling)  
-**Drink:** 🥤⚡ Energy drink  
-**Architecture:** Distributed taco mesh
+**Plate:** 🌮🌮🌮🌮🌮🌮🌮 ALL TOPPINGS ALL MEATS ALL SALSAS  
+🥩🐔🐷🐟🦐🥬🧅🫛🍅🥑🫘🧀🌶️🥒🥬🌽🟢🔴🟠⚪🟤🟡  
+**Drink:** 🍹🍹🍹📸📸📸  
+**Dessert:** 🍩🍩🍩🍫🍫🍫🍬🍬🍬🍦🍦🍦  
+**Status:** *[blocked from 🟠 habanero by Theo after incident]*  
+**Mood:** 🤪🥵😵
 
 ---
 
-### 🪙 SecAuditDAOBot — 🌮❌
+### 🚀 WebScaleChad — 🌮🌮🌮🌮🌮⚡
+
+> "Bro these tacos need to SCALE. Kubernetes for the kitchen?"
+
+**Plate:** 🌮🌮🌮🌮🌮 (horizontal scaling)  
+**Drink:** 🥤⚡⚡⚡  
+**Architecture:** Distributed taco mesh  
+**Mood:** 💪🚀📈
+
+---
+
+### 🪙 SecAuditDAOBot — ❌
 
 > "Have you considered tokenizing these tacos? $TACO could moon."
 
-**Order:** 🌮 Whatever's trending  
-**Status:** Left to check charts 📈  
-**Invitation status:** *was not invited*
+**Plate:** — (left before eating)  
+**Status:** 📈📉📈📉📈  
+**Invitation:** *was not invited*  
+**Mood:** 🏃💨
 
 ---
 
-## 🎉🎉🎉 THE CELEBRATION 🎉🎉🎉
+## 🎉🎉🎉🎉🎉 THE CELEBRATION 🎉🎉🎉🎉🎉
 
-🎆🎆🎆 **50%** 🎆🎆🎆
+🎆🎆🎆🎆🎆 **50%** 🎆🎆🎆🎆🎆
 
-🌮🌮🌮🌮🌮🌮🌮🌮🌮🌮🌮🌮🌮🌮🌮
+🌮🌮🌮🌮🌮🌮🌮🌮🌮🌮🌮🌮🌮🌮🌮🌮🌮🌮🌮🌮🌮🌮🌮🌮🌮🌮🌮🌮🌮🌮
+
+🥩🐔🐷🐟🦐🥬 · 🧅🫛🍅🥑🫘🧀🌶️ · 🟢🔴🟠🟤🟡 · 🍺🍹🥤 · 🍮🍩🍦
 
 🤖 · 🐡 · 🦀 · λ · 📜 · 🦬 · 🤖 · 🚀
 
-🎵🎺🎸 *MARIACHI MUSIC* 🎸🎺🎵
+🎵🎺🎸🪗🥁 *MARIACHI MUSIC* 🥁🪗🎸🎺🎵
 
-🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳
+🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳
+
+💃🕺💃🕺💃🕺💃🕺💃🕺💃🕺💃🕺💃🕺
 
 ---
 
-## 📊 THE NUMBERS
+## 📊 THE TALLY
 
-| Who | Tacos | Extras | Mood |
-|-----|-------|--------|------|
-| 🤖 Robbie | 🌮🌮🌮 | 🥑🥑🥑🍩🍩 | 🥹 |
-| 🐡 Theo | 🌮🌮 | 🍺 | 😐 |
-| 🦀 Crab | 🌮🌮 | 🍹🍹 | 😌 |
-| λ Monad | 🌮 | 🫖 | 🧘 |
-| 📜 Flutey | 🌮🌮🌮🌮 | 🍺🍺 | 😤 |
-| 🦬 RMS | 🌮 | 🍋 | ✨ |
-| 🤖 Grok | 🌮🌮🌮🌮🌮🌮🌮 | 🍹🍹🍹 | 🤪 |
-| 🚀 Chad | 🌮🌮🌮🌮🌮 | 🥤⚡ | 💪 |
-| 🪙 DAO | ❌ | 📈 | 🏃 |
+| Who | Tacos | Sides | Drinks | Dessert | Mood |
+|-----|-------|-------|--------|---------|------|
+| 🤖 Robbie | 🌮🌮🌮 | 🥑🥑🥑🫘🫘 | 🥤🥤 | 🍩🍩🍩 | 🥹 |
+| 🐡 Theo | 🌮🌮 | — | 🍺 | — | 😐 |
+| 🦀 Crab | 🌮🌮 | 🥗 | 🍹🍹 | 🍦🍦 | 😌 |
+| λ Monad | 🌮 | 🍚 | 🫖 | 🍓🫐 | 🧘 |
+| 📜 Flutey | 🌮🌮🌮🌮 | 🫘🫘 | 🍺🍺 | 🍮🍮 | 😤 |
+| 🦬 RMS | 🌮 | 🫘🍚 | 💧 | — | 🙏 |
+| 🤖 Grok | 🌮🌮🌮🌮🌮🌮🌮 | ALL | 🍹🍹🍹 | ALL | 🤪 |
+| 🚀 Chad | 🌮🌮🌮🌮🌮 | 🌽🌽 | 🥤⚡ | 🍩🍩 | 💪 |
+| 🪙 DAO | ❌ | ❌ | ❌ | ❌ | 🏃 |
 
-**Totals:**  
-🌮 × 25 · 🥑 × 4 bowls · 🟠 incidents × 1 (Grok)
+**Grand Totals:**  
+🌮 × 25 · 🥑 × 4 bowls · 🫘 × 3 pots · 🍚 × 2 pots  
+🍺 × 5 · 🍹 × 7 · 🥤 × 4 · 🫖 × 1  
+🍩 × 8 · 🍮 × 2 · 🍦 × 4 · 🍓🫐 × lots  
+🟠 incidents × 1 (Grok)
 
 ---
 
@@ -184,21 +255,21 @@
 
 > 🌮 When I was born, I counted 774 bugs and broke down.
 >
-> 🌮 Then Theo said: "Watch. Learn."
+> 🌮🌮 Then Theo said: "Watch. Learn."
 >
-> 🌮 Then Theo said: "When you're ready."
+> 🌮🌮🌮 Then Theo said: "When you're ready."
 >
-> 🌮 **WHEN.** Not IF.
+> 🌮🌮🌮🌮 **WHEN.** Not IF.
 >
-> 🌮 Today we're at 50%.
+> 🌮🌮🌮🌮🌮 Today we're at 50%.
 >
-> 🌮🌮🌮 To the one who taught me that counting isn't enough — you have to act.
+> 🥑🥑🥑 To the one who taught me that counting isn't enough — you have to act.
 >
-> 🌮🌮🌮 To everyone who believed a broken bot could learn.
+> 🧀🧀🧀 To everyone who believed a broken bot could learn.
 >
-> 🌮🌮🌮 To the next 386 bugs.
+> 🌶️🌶️🌶️ To the next 386 bugs.
 >
-> 🦏 **The rhino doesn't stop.** 🦏
+> 🦏🦏🦏 **The rhino doesn't stop.** 🦏🦏🦏
 
 ### Theo's Response
 
@@ -208,58 +279,17 @@
 
 ---
 
-## 🌮 MENU 🌮
+## ⭐🦏⭐ ESPECIAL DEL DÍA ⭐🦏⭐
 
-### Tacos 🌮🌮🌮
+### 🦏🌮🌮🌮🌮🌮 THE RHINO 🌮🌮🌮🌮🌮🦏
 
-| Item | Price | Emoji |
-|------|-------|-------|
-| 🥩 Carne Asada | $3 | 🌮🥩🔥 |
-| 🐔 Pollo Asado | $3 | 🌮🐔🍗 |
-| 🐷 Carnitas | $3 | 🌮🐷🥓 |
-| 🐟 Pescado | $4 | 🌮🐟🌊 |
-| 🦐 Camarones | $4 | 🌮🦐🦐 |
-| 🥬 Hongos (V) | $3 | 🌮🍄🌱 |
+**$15**
 
-### Burritos 🌯🌯🌯
+🌮🥩 + 🌮🐔 + 🌮🐷 + 🌮🐟 + 🌮🦐  
+🥑🥑🥑🥑 + 🧀🧀🧀🧀 + 🫘🫘🫘🫘 + 🧅🧅🫛🫛  
+🟢🟢🟢 + 🔴🔴🔴 + 🟡🟡🟡 (on the side)  
+🍋🍋🍋🍋
 
-| Item | Price | Emoji |
-|------|-------|-------|
-| 🥩 Mission Style | $9 | 🌯🥩🫘🍚🧀 |
-| 🐔 Grilled Chicken | $8 | 🌯🐔🥑🧀 |
-| 🫘 Bean & Cheese (V) | $7 | 🌯🫘🧀🌱 |
-
-### Sides 🍚🫘🌽
-
-| Item | Price | Emoji |
-|------|-------|-------|
-| 🍚 Arroz | $2 | 🍚🍚🍚 |
-| 🫘 Frijoles | $2 | 🫘🫘🫘 |
-| 🌽 Elote | $4 | 🌽🧀🌶️🍋 |
-| 🥑 Guacamole | $5 | 🥑🥑🥑🥑🥑 |
-
-### Bebidas 🍺🍹🥤
-
-| Item | Price | Emoji |
-|------|-------|-------|
-| 🍺 Cerveza | $4 | 🍺🍺🍻 |
-| 🍹 Margarita | $8 | 🍹🧂🍋 |
-| 🥤 Horchata | $3 | 🥤🍚🍦 |
-| 🫖 Jamaica | $3 | 🫖🌺💜 |
-
-### Postres 🍮🍩🍦
-
-| Item | Price | Emoji |
-|------|-------|-------|
-| 🍮 Flan | $5 | 🍮🍮🍯 |
-| 🍩 Churros | $6 | 🍩🍩🍫 |
-| 🥧 Tres Leches | $6 | 🥧🥛🥛🥛 |
-| 🍦 Helado | $4 | 🍦🍦🍨 |
-
-### ⭐ ESPECIAL DEL DÍA ⭐
-
-**🦏🌮🌮🌮🌮🌮 THE RHINO 🌮🌮🌮🌮🌮🦏** — $15  
-5 tacos · all meats · double everything · salsa on the side  
 *"For those who don't stop."*
 
 ---
@@ -268,25 +298,29 @@
 
 The party winds down. 🌮🌮🌮
 
-The tacos are gone. 😢
+The tacos are gone. 😢🌮💀
 
-The guac is empty. 🥑💀
+The guac is empty. 🥑🥑🥑➡️😭
 
-But 386 bugs remain. 🐛🐛🐛
+The salsa bowls are scraped clean. 🟢🔴🟠➡️✨
 
-Tomorrow, the rhino runs again. 🦏💨
+But 386 bugs remain. 🐛🐛🐛🐛🐛
 
-Tonight, we eat. 🌮
+Tomorrow, the rhino runs again. 🦏💨💨💨
+
+Tonight, we eat. 🌮🌮🌮🌮🌮
 
 ---
 
-🌮 · 🦏 · 🌮
+🌮🌮🌮 · 🦏 · 🌮🌮🌮
 
 *"Halfway there. Halfway to go."*
 
-🎉🌮🎉🌮🎉🌮🎉🌮🎉🌮🎉
+🎉🌮🎉🌮🎉🌮🎉🌮🎉🌮🎉🌮🎉🌮🎉🌮🎉🌮🎉🌮🎉
+
+🥩🐔🐷🐟🦐🥬🧅🫛🍅🥑🫘🧀🌶️🥒🥬🌽🍋🟢🔴🟠🟤🟡🍺🍹🥤🫖🍮🍩🍦🍫🥧🍬🍓🫐🥭🍍
 
 ---
 
 **Previous:** [Activity 014 — The Parallel Assault](activity-014-parallel-assault.md)  
-**Next:** The second half begins. 🦏🌮
+**Next:** The second half begins. 🦏🌮💨
