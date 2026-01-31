@@ -123,7 +123,7 @@ char	*forum;
 	if (strcmp("EASYPLEX", forum) == 0)
 	    expect(" ");
 
-	(void) strcpy(cforum, forum);
+	(void) strlcpy(cforum, forum, sizeof(cforum));
 	return(TRUE);
     }
 #ifdef DEBUG
@@ -311,7 +311,7 @@ static void cpost()
 	*tp = '\0';
 	if (cp = strrchr(bfr, ';'))
 	    *cp = '\0';
-	(void) strcat(bfr, "\r\n");
+	(void) strlcat(bfr, "\r\n", LBUFLEN);
 	send(bfr);
 	expect(E_SUBJ);
 	send("%s\r\n", header.h_subject);
@@ -440,15 +440,16 @@ static void cresynch()
  * 'private' posting (see above under the ID line description).
  */
 
-static void mkid(buf, grp, num)
-/* fake up an Internet-style message-ID corrusponding to a forum/number pair */
+static void mkid(buf, bufsize, grp, num)
+/* fake up an Internet-style message-ID corresponding to a forum/number pair */
 char	*buf;
+size_t	bufsize;
 char	*grp;
 int	num;
 {
-    (void) strcpy(buf, "<");
-    (void) strncat(buf, grp, FUNIQUE);
-    (void) sprintf(buf + strlen(buf), "%d@compuserve>", num);
+    (void) strlcpy(buf, "<", bufsize);
+    (void) strlcat(buf, grp, bufsize);  /* limited by bufsize, not FUNIQUE */
+    (void) snprintf(buf + strlen(buf), bufsize - strlen(buf), "%d@compuserve>", num);
 }
 
 static void cistonews(ifp, nfp, mfp)
@@ -504,11 +505,11 @@ FILE *mfp;	/* mail batch file */
 	    if (ofp == nfp)
 	    {
 		hlcpy(header.h_path, "compuserve");
-		(void) sprintf(bfr, "cis.%s.s%d", cgrp, sectnum);
+		(void) snprintf(bfr, LBUFLEN, "cis.%s.s%d", cgrp, sectnum);
 		hlcpy(header.h_newsgroups, bfr);
 
 		/* generate an article-ID from the message number */
-		mkid(bfr, cgrp, msgnum);
+		mkid(bfr, LBUFLEN, cgrp, msgnum);
 		hlcpy(header.h_ident, bfr);
 
 		/* wedge section name into Keywords for now */
@@ -528,9 +529,9 @@ FILE *mfp;	/* mail batch file */
 
 		if (sscanf(line, "Sb: #%d-%[^\n]", &threadnum, str) == 2)
 		{
-		    (void) sprintf(line, "Re: %s", str);
+		    (void) snprintf(line, sizeof(line), "Re: %s", str);
 		    hlcpy(header.h_subject, line);
-		    mkid(bfr, cgrp, threadnum);
+		    mkid(bfr, LBUFLEN, cgrp, threadnum);
 		    hlcpy(header.h_references, bfr);
 		}
 	        else	/* parent message of this thread expired */
@@ -554,7 +555,7 @@ FILE *mfp;	/* mail batch file */
 		if (sscanf(line, "Fm: %[^0123456789]%d,%d",str,&ugrp,&unum)==3)
 		{
 		    (void) nstrip(str);
-		    (void) sprintf(bfr, "%d.%d@compuserve (%s)",ugrp,unum,str);
+		    (void) snprintf(bfr, LBUFLEN, "%d.%d@compuserve (%s)",ugrp,unum,str);
 		    hlcpy(header.h_from, bfr);
 		}
 	    }
@@ -570,7 +571,7 @@ FILE *mfp;	/* mail batch file */
 		    (void) nstrip(str);
 		    if (ofp == nfp)
 		    {
-			(void) sprintf(bfr,
+			(void) snprintf(bfr, LBUFLEN,
 				   "Posted-To: %d.%d@compuserve (%s)",
 				   ugrp, unum, str);
 			happend(&header, bfr);
@@ -644,7 +645,7 @@ FILE *ifp, *ofp;
 
 	    while (isspace(*cp))
 		*cp-- = '\0';
-	    (void) sprintf(from, "%d.%d@compuserve (%s)", ugrp, unum, str);
+	    (void) snprintf(from, sizeof(from), "%d.%d@compuserve (%s)", ugrp, unum, str);
 	}
 	else if (prefix(bfr, E_SUBH))
 	{

@@ -346,7 +346,7 @@ char	*buf;
 #endif /* ASCII */
 	else
 	{
-	    (void) sprintf(tp, "\\0x%02x", *buf++);
+	    (void) snprintf(tp, sizeof(visbuf) - (tp - visbuf), "\\0x%02x", *buf++);
 	    tp += strlen(tp);
 	}
     }
@@ -380,7 +380,7 @@ void send(sendstr, a1, a2, a3, a4, a5)
 /* send a command to remote */
 char	*sendstr, *a1, *a2, *a3, *a4, *a5;
 {
-    (void) sprintf(bfr, sendstr, a1, a2, a3, a4);
+    (void) snprintf(bfr, LBUFLEN, sendstr, a1, a2, a3, a4);
 #ifdef DEBUG
     if (debug >= D_SHOWSEND)
     {
@@ -573,7 +573,7 @@ char	*emsg, *e1, *e2, *e3;
     mfp = mailopen(mailreply(&header), "Returned BBS mail or posting");
 
     (void) fprintf(mfp,"\nYour post didn't make it onto %s\n",remote.servname);
-    (void) sprintf(bfr, e1, e2, e3);
+    (void) snprintf(bfr, LBUFLEN, e1, e2, e3);
     (void) fprintf(mfp, "The problem appears to be: %s\n", bfr);
     (void) fprintf(mfp, "\n   ----- Unsent message follows -----\n");
 
@@ -720,17 +720,17 @@ void bbsfetch()
 
     /* prepare the dial-out command */
     if (remote.dial == (char *)NULL)
-	(void) sprintf(dialcmd, "cu %s", remote.servname);
+	(void) snprintf(dialcmd, sizeof(dialcmd), "cu %s", remote.servname);
     else
-	(void) strcpy(dialcmd, remote.dial);
+	(void) strlcpy(dialcmd, remote.dial, sizeof(dialcmd));
 
     /* if it's cu(1) or tip(1), we know how to make it exit gracefully */
     if (strindex(remote.dial,"cu")!=FAIL || strindex(remote.dial,"tip")!=FAIL)
-	(void) strcpy(dkill, "~.\n");
+	(void) strlcpy(dkill, "~.\n", sizeof(dkill));
 
 #ifdef DEBUG
     if (debug >= D_SHOWCU)
-	(void) strcat(dialcmd, " -d");
+	(void) strlcat(dialcmd, " -d", sizeof(dialcmd));
     if (debug >= D_SHOWPHASE)
 	log1("dial command is: %s", remote.dial);
 #endif /* DEBUG */
@@ -914,7 +914,7 @@ static void postproc()
     /*
      * First postprocess captured mail into UNIX mailbox form.
      */
-    (void) strcpy(mailbatch, "/tmp/bbsmailXXXXXX");
+    (void) strlcpy(mailbatch, "/tmp/bbsmailXXXXXX", sizeof(mailbatch));
     (void) mktemp(mailbatch);
     if ((mfp = fopen(mailbatch, "w")) == (FILE *)NULL)
 	logerr0("couldn't reopen mailbatch file for mail transcription");
@@ -937,7 +937,7 @@ static void postproc()
      * Some `news' may actually be mail -- leave the mail batch file open
      * during news transcription so we can deal with this
      */
-    (void) strcpy(articles, "/tmp/bbsartsXXXXXX");
+    (void) strlcpy(articles, "/tmp/bbsartsXXXXXX", sizeof(articles));
     (void) mktemp(articles);
     if ((ifp = fopen(remote.newsfile, "r")) == (FILE *)NULL)
 	logerr0("couldn't reopen news capture file");
@@ -955,7 +955,7 @@ static void postproc()
 	(void) fclose(nfp);
 
 	/* decorate the batch with batch header lines etc. */
-	(void) strcpy(newsbatch, "/tmp/bbsnewsXXXXXX");
+	(void) strlcpy(newsbatch, "/tmp/bbsnewsXXXXXX", sizeof(newsbatch));
 	(void) mktemp(newsbatch);
 	if ((ifp = fopen(articles, "r")) == (FILE *)NULL)
 	    logerr0("couldn't reopen article list file");
@@ -1013,10 +1013,10 @@ static void postproc()
 		 * Your BBS-to-UNIX-mail translation hook must generate
 		 * this form.
 		 */
-		(void) strcpy(from, bfr + strlen(FIRST));
+		(void) strlcpy(from, bfr + strlen(FIRST), sizeof(from));
 		if ((cp = strchr(from, ' ')) != (char *)NULL)
 		    *cp = '\0';
-		(void) sprintf(mailcmd, RMAIL, from, remote.owner);
+		(void) snprintf(mailcmd, sizeof(mailcmd), RMAIL, from, remote.owner);
 
 		/*
 		 * Yes, it's OK to use popen(3) here. Forging mail is trivial
@@ -1047,12 +1047,12 @@ static void postproc()
     {
 	char cmdbuf[BUFSIZ];
 
-	(void) sprintf(cmdbuf, "%s/rnews <%s", site.libdir, newsbatch);
+	(void) snprintf(cmdbuf, sizeof(cmdbuf), "%s/rnews <%s", site.libdir, newsbatch);
 	if (nospool)
-	    (void) strcat(cmdbuf, " -u");
+	    (void) strlcat(cmdbuf, " -u", sizeof(cmdbuf));
 #ifdef DEBUG
 	if (debug)
-	    (void) sprintf(cmdbuf + strlen(cmdbuf), " -D %d", debug);
+	    (void) snprintf(cmdbuf + strlen(cmdbuf), sizeof(cmdbuf) - strlen(cmdbuf), " -D %d", debug);
 	if (debug >= D_SHOWPHASE)
 	    log1("rnews command is \"%s\"", cmdbuf);
 #endif /* DEBUG */
@@ -1065,7 +1065,7 @@ static void postproc()
 	 */
 	if (nospool && remote.notify)
 	{
-	    (void) sprintf(mailbatch, "News from %s", remote.servname);
+	    (void) snprintf(mailbatch, sizeof(mailbatch), "News from %s", remote.servname);
 	    nfp = mailopen(remote.notify, mailbatch);
 	    (void) fprintf(nfp,
 			   "\nNews arrived from %s\n", remote.servname);
@@ -1096,8 +1096,8 @@ char *argv[];
     if (procopts(argc, argv, DNC, options) == FAIL)
 	xerror0(usage);
 
-    (void) sprintf(myh, "%s/.bbsauto", userhome);
-    (void) sprintf(newsh, "%s/bbsauto", site.libdir);
+    (void) snprintf(myh, sizeof(myh), "%s/.bbsauto", userhome);
+    (void) snprintf(newsh, sizeof(newsh), "%s/bbsauto", site.libdir);
     if (readparams(service, myh) == FAIL && readparams(service, newsh) == FAIL)
 	xerror1("can't load parameters for service %s", service);
 
@@ -1105,21 +1105,21 @@ char *argv[];
     remote.nnews = 0;
 #ifdef DEBUG
     if (snarf)
-	(void) strcpy(remote.newsfile, "news.capture");
+	(void) strlcpy(remote.newsfile, "news.capture", sizeof(remote.newsfile));
     else
 #endif /* DEBUG */
     {
-	(void) strcpy(remote.newsfile, "/tmp/takenewsXXXXXX");
+	(void) strlcpy(remote.newsfile, "/tmp/takenewsXXXXXX", sizeof(remote.newsfile));
 	(void) mktemp(remote.newsfile);
     }
     remote.nmail = 0;
 #ifdef DEBUG
     if (snarf)
-	(void) strcpy(remote.mailfile, "mail.capture");
+	(void) strlcpy(remote.mailfile, "mail.capture", sizeof(remote.mailfile));
     else
 #endif /* DEBUG */
     {
-	(void) strcpy(remote.mailfile, "/tmp/takemailXXXXXX");
+	(void) strlcpy(remote.mailfile, "/tmp/takemailXXXXXX", sizeof(remote.mailfile));
 	(void) mktemp(remote.mailfile);
     }
 
@@ -1149,13 +1149,13 @@ char *argv[];
 		log0("rebatching input...");
 #endif /* DEBUG */
 	    (void) ungetc(c, stdin);
-	    (void) strcpy(batchtmp, "/tmp/rebatchXXXXXX");
+	    (void) strlcpy(batchtmp, "/tmp/rebatchXXXXXX", sizeof(batchtmp));
 	    (void) mktemp(batchtmp);
 	    ofp = xfopen(batchtmp, "w");
 	    if (rebatch(stdin, ofp) == FAIL)
 		logerr0("garbage header ended input batch");
 	    (void) fclose(ofp);
-	    (void) strcpy(infile, batchtmp);
+	    (void) strlcpy(infile, batchtmp, sizeof(infile));
 	    deletein = TRUE;
 	}
     }
@@ -1166,12 +1166,12 @@ char *argv[];
     {
 	if (fmail)
 	{
-	    (void) strcpy(remote.mailfile, infile);
+	    (void) strlcpy(remote.mailfile, infile, sizeof(remote.mailfile));
 	    remote.nmail = 1;
 	}
 	else
 	{
-	    (void) strcpy(remote.newsfile, infile);
+	    (void) strlcpy(remote.newsfile, infile, sizeof(remote.newsfile));
 	    remote.nnews = 1;
 	}
     }
