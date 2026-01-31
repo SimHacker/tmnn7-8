@@ -254,8 +254,8 @@ time: "25 seconds"
 ```yaml
 total_files: 12
 total_bugs: 140
-total_time: "8 minutes"
-velocity: "17.5 bugs per minute"
+total_time: "3 minutes"  # MEASURED from git commits
+velocity: "46.7 bugs/min"  # 🏆 PEAK VELOCITY
 
 network_critical_fixed: 67  # transmit + uucast + nntpread + nntpclient
 other_fixed: 73
@@ -489,8 +489,8 @@ documentation_created:
 ```yaml
 files_fixed: 12
 bugs_squashed: 140
-time: 8 minutes
-velocity: "17.5 bugs/min"
+time: "3 minutes"  # MEASURED from git commits
+velocity: "46.7 bugs/min"  # 🏆 PEAK VELOCITY
 network_critical: 67
 flagged: 3
 ```

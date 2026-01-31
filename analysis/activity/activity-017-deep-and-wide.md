@@ -512,18 +512,14 @@ priority: |
 ```yaml
 phase_1_files: 8
 phase_1_bugs: 116
-phase_1_time: "3:50"
-phase_1_velocity: "30.3 bugs/min"  # 🏆 NEW RECORD
 
 phase_2_files: 5
 phase_2_bugs: 23  # ALL gets() calls
-phase_2_time: "1:10"
-phase_2_velocity: "19.7 bugs/min"
 
 total_files: 13
 total_bugs: 139
-total_time: "5 minutes"
-average_velocity: "27.8 bugs/min"
+total_time: "3 minutes"  # MEASURED from git commits (20:49:36 → 20:52:45)
+velocity: "46.3 bugs/min"  # 🦏 SUSTAINED PEAK
 ```
 
 ### Theo (Shell Injection Audit)

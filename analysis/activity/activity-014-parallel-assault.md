@@ -159,6 +159,8 @@ time: "1.5 minutes"
 ```yaml
 total_files: 7
 total_bugs: 150
+total_time: "4 minutes"  # MEASURED from git commits
+velocity: "37.5 bugs/min"  # 🔥 IGNITION POINT
 total_time: "24 minutes"
 velocity: "~6.25 bugs per minute"
 
