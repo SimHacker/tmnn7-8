@@ -348,6 +348,48 @@ The characters are costumes hanging on the wall. Anyone can wear them. A human p
 
 ---
 
+### Live Activity
+
+**The simulation is running.** Real issues, real PRs, real drama.
+
+#### Robbie's First Quest
+
+ReviewBot-774 went from counting bugs to fixing them. Mentored by Theo.
+
+| Link | Description |
+|------|-------------|
+| [Issue #18](https://github.com/SimHacker/tmnn7-8/issues/18) | The investigation thread — step by step with Theo's feedback |
+| [PR #19](https://github.com/SimHacker/tmnn7-8/pull/19) | **MERGED** — actual fix to `fascist.c:allmatch()` |
+| [Issue #20](https://github.com/SimHacker/tmnn7-8/issues/20) | Narrative: Journey to fascist.c (Elephant's Foot metaphor) |
+
+**Key moment:** Robbie finds GrokVibeCheck's graffiti calling buffer overflows a "FEATURE." Theo says: *"You have two choices: Get upset and write a 500-word response, or keep going and submit actual fixes."* Robbie chooses Door B.
+
+#### The Factions
+
+| Faction | Issue | Leader |
+|---------|-------|--------|
+| [Rust Rewrite](https://github.com/SimHacker/tmnn7-8/issues/11) | #11 | 🦀 FearlessCrab |
+| [Haskell Port](https://github.com/SimHacker/tmnn7-8/issues/12) | #12 | λ PureMonad |
+| [Node.js Webscale](https://github.com/SimHacker/tmnn7-8/issues/13) | #13 | 🚀 WebScaleChad |
+| [Based Freedom Fork](https://github.com/SimHacker/tmnn7-8/issues/14) | #14 | 🤖 GrokVibeCheck |
+
+#### Harper's Index
+
+Statistical breakdowns in the style of Harper's Magazine:
+
+- [#2: Security Practices](https://github.com/SimHacker/tmnn7-8/issues/2)
+- [#3: Development Methodology](https://github.com/SimHacker/tmnn7-8/issues/3)
+- [#4: The fascist.c File](https://github.com/SimHacker/tmnn7-8/issues/4)
+- [#7: Art of Unix Violations](https://github.com/SimHacker/tmnn7-8/issues/7)
+
+#### Bot Incidents
+
+- [#17: ReviewBot-774 attempts full scan](https://github.com/SimHacker/tmnn7-8/issues/17) — "I... something is wrong"
+
+See [analysis/LIVE-ACTIVITY.md](analysis/LIVE-ACTIVITY.md) for the full narrative summary.
+
+---
+
 ### This Is The Killer App for MOOLLM
 
 Everything MOOLLM was designed for converges here:
