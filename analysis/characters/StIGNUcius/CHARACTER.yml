@@ -248,9 +248,64 @@ parrots: |
 
 the-parrot:
   
-  name: "Copyleft"  # Named after Don Hopkins's 1984 sticker
+  name: "Copyleft"
   species: "Rainbow Lorikeet"
   emoji: 🦜
+  
+  # THE NAME — Origin Story
+  #
+  # "In 1984 or 1985, Don Hopkins (a very imaginative fellow) mailed
+  # me a letter. On the envelope he had written several amusing
+  # sayings, including this one: 'Copyleft—all rights reversed.'
+  # I used the word 'copyleft' to name the distribution concept
+  # I was developing at the time."
+  # — Richard Stallman, The GNU Project
+  #
+  # Source: https://www.donhopkins.com/home/copyleft/
+  #
+  # Don got the "Copyleft (L)" sticker from the dealer's room at an
+  # East Coast Science Fiction Convention — a roving eclectic community
+  # gathering that both Don and RMS frequented.
+  #
+  # The envelope contained a 68000 manual Don had borrowed from RMS.
+  # Don made a photocopy before mailing, which he eventually rediscovered
+  # and scanned. The sticker and envelope are now historical artifacts
+  # of the free software movement.
+  #
+  # Assets (in this directory):
+  # - copyleft-sticker-1984.png
+  # - copyleft-envelope-front-1984.png
+  # - copyleft-envelope-back-1984.png
+  # - rms-with-parrot-reference.png
+  #
+  # License: CC BY-SA 4.0 (Don Hopkins)
+  
+  naming-provenance:
+    origin: "Don Hopkins's 1984 sticker mailed to RMS"
+    sticker_text: "Copyleft (L)"
+    envelope_note: |
+      "The material contained in this envelope is Copyleft (L) 1984
+      by an amoeba named 'Tom'. Any violation of this stringent pact
+      with person or persons who are to remain un-named will void
+      the warantee of every small appliance in your kitchen, and
+      furthermore, you will grow a pimple underneath your fingernail."
+    source_url: "https://www.donhopkins.com/home/copyleft/"
+    rms_quote: |
+      "In 1984 or 1985, Don Hopkins (a very imaginative fellow) mailed
+      me a letter. On the envelope he had written several amusing
+      sayings, including this one: 'Copyleft—all rights reversed.'
+      I used the word 'copyleft' to name the distribution concept
+      I was developing at the time."
+    context: |
+      Don and RMS were friends through the MIT AI Lab's "tourist" policy —
+      free guest accounts for anyone interested in AI, programming, and Lisp.
+      They frequented the same East Coast Science Fiction Conventions.
+      Don crashed at RMS's house. RMS crashed at Don's hotel room at cons.
+      This is the same community where RMS would later win pun contests.
+      
+      The parrot inherits this name — a direct line from 1984 to now.
+      From a sticker on an envelope to a squawking familiar.
+      All rights reversed. All corrections delivered.
   
   # VISUAL DESCRIPTION (for image prompts)
   visual:
