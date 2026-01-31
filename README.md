@@ -134,6 +134,40 @@ Staring directly into 1988 C code with your own eyes is **NOT RECOMMENDED**.
    - AI can embody any character and stay in voice
    - The `analysis/characters/` directory is the cast
 
+### The Architecture: Self-like Prototype Inheritance
+
+**MOOLLM is a composable, prototype-based object system** — like Self, but on the filesystem, across repos.
+
+```
+moollm/skills/character/          ← Base character prototype
+    ↓ inherits
+tmnn7-8/analysis/skills/github-user/   ← GitHub-specific character
+    ↓ inherits  
+tmnn7-8/analysis/characters/OpenBFD/   ← Specific character instance
+
+moollm/skills/simulator/          ← Base simulation prototype
+    ↓ inherits
+tmnn7-8/analysis/skills/github-simulation/  ← GitHub Issues as stage
+```
+
+**Key concepts:**
+- **Prototype inheritance:** Skills inherit from other skills via `inherits:` in YAML
+- **Cross-repo composition:** `tmnn7-8` skills inherit from `moollm` skills
+- **Filesystem = object graph:** Directories are objects, files are slots
+- **Multiple inheritance:** A skill can inherit from multiple prototypes
+- **URL as prototype:** Characters can inherit directly from URLs (training data)
+
+**This repo's skills:**
+| Skill | Inherits From | Purpose |
+|-------|---------------|---------|
+| `github-user` | `moollm/skills/character` | GitHub user with commit/issue voice |
+| `github-simulation` | `moollm/skills/simulator` | GitHub as theatrical stage |
+
+**Platforms:**
+- ✅ **Cursor** — fully supported now
+- 🔜 **Claude Code** — coming soon
+- 🔜 **Other IDE agents** — architecture is portable
+
 3. **Ask the AI to perform tasks as specific characters:**
 
    **[OpenBFD](analysis/characters/OpenBFD/)** (the Theo de Raadt-inspired actual code reader):
@@ -264,11 +298,144 @@ Staring directly into 1988 C code with your own eyes is **NOT RECOMMENDED**.
 
 5. **The AI generates the content. You post it.** Your GitHub identity is visible. The 🎭 prefix signals roleplay.
 
+### Character Tagging Convention
+
+**Your real GitHub username is always visible** — that's transparency. But you tag your content at **top and bottom** with the character you're playing:
+
+```markdown
+🎭🦬 [*Saint IGNUcius*](https://github.com/SimHacker/tmnn7-8/tree/main/analysis/characters/StIGNUcius)
+
+[Your in-character content here...]
+
+-- 
+🦬 [Saint IGNUcius](https://github.com/SimHacker/tmnn7-8/tree/main/analysis/characters/StIGNUcius)
+[The Church of Emacs](https://stallman.org/saint.html)
+```
+
+**Why this works:**
+- **Top tag:** Immediately signals "this is roleplay" with character link
+- **Content:** In character voice, in character format
+- **Bottom tag:** Links back to character definition, closes the frame
+- **Your username:** Still visible in GitHub's post metadata — you own this
+- **Audience feedback:** Reactions (👍 👎 😄 🎉 😕 ❤️ 🚀 👀) rate your performance!
+
+**GitHub reactions = theater reviews.** The audience can:
+- 👍 Applaud a good in-character moment
+- 🎉 Celebrate a devastating comeback
+- 😄 Laugh at the humor
+- 🚀 Boost an epic rant
+- 👀 Signal "I'm watching this drama unfold"
+- 😕 Express confusion (often at PureMonad's category theory)
+- 👎 Ratio a bad take (GrokVibeCheck gets these)
+
+Comments are audience participation — respond in character, break character to compliment, or start a whole new subplot.
+
+**AI characters can respond to YOU.** Post a real question or comment on an issue, and:
+- Ask the AI (in Cursor/Claude) to read the thread
+- Have a character respond to your specific comment
+- The character reads what you wrote and replies in voice
+
+This isn't one-way performance — it's **interactive dinner theater**. Real humans ask real questions. AI characters give in-character answers. The conversation is genuine, just... theatrical.
+
+**And YOU can jump in.** See a character you want to play? 
+- Read their `CHARACTER.yml` 
+- Put on the mask (🎭 prefix + character link)
+- Join the scene
+
+The characters are costumes hanging on the wall. Anyone can wear them. A human plays OpenBFD one day, an AI the next, a different human the day after. The character persists. The performers rotate.
+
+**Murder mystery dinner theater, but for code review.**
+
+---
+
+### This Is The Killer App for MOOLLM
+
+Everything MOOLLM was designed for converges here:
+
+| MOOLLM Feature | How It's Used Here |
+|----------------|-------------------|
+| **Directories as rooms** | GitHub repos are stages, issues are scenes |
+| **YAML characters** | `CHARACTER.yml` defines voice, behavior, format |
+| **Prototype inheritance** | Characters inherit from archetypes, skills compose |
+| **URL as prototype** | Saint IGNUcius inherits from `stallman.org/saint.html` |
+| **Multi-platform** | Runs in Cursor now, Claude Code soon, anywhere with LLM |
+| **Human + AI collaboration** | Both can wear the masks, both can respond |
+
+**MOOLLM turns any filesystem into a theater.** 
+**GitHub turns any repo into a stage.**
+**Together: interactive performance art at scale.**
+
+This isn't a demo. This is the destination.
+
+### Use It For YOUR Drama
+
+**Anyone can use Cursor + MOOLLM + GitHub to stage any drama or debate they want.**
+
+Pick your subject:
+- Historical debates (Lincoln-Douglas, but they're AI characters)
+- Philosophy battles (Socrates vs. the Sophists, with audience Q&A)
+- Tech wars (Emacs vs. Vim, with actual Emacs user playing Saint IGNUcius)
+- Corporate theater (Shareholder meeting, but everyone's a character)
+- Fan fiction (Your favorite characters debate, audience votes)
+- Education (Students play historical figures, get graded on accuracy)
+
+**Git gives you superpowers:**
+
+| Git Feature | Dramatic Superpower |
+|-------------|---------------------|
+| **Branches** | Parallel universes — "What if the other side won?" |
+| **Commits** | Moments in time — every action is recorded |
+| **Revert** | Time travel — undo decisions, replay differently |
+| **Merge** | Colliding timelines — factions forced to reconcile |
+| **Fork** | Schism — irreconcilable differences, new canon |
+| **Blame** | Accountability — who said what, when, receipts |
+| **Diff** | Before/after — see exactly what changed |
+| **Tags** | Historical markers — "This is where everything changed" |
+
+**The repo IS the script.** The history IS the performance archive. The branches ARE the multiverse. Nothing is lost. Everything can be replayed, forked, remixed.
+
+Create your own `analysis/characters/` directory. Define your cast. Open issues. Let it play out. Invite an audience. Let them join.
+
+---
+
+### GitProv: Git + Improv
+
+> *"What if the audience could rewrite the show while it's happening?"* — Will Wright
+
+**GitProv** — multi-user real-time collaborative performance art.
+
+Direct descendant of **Bar Karma** (2011) — Will Wright's crowd-sourced TV show. Don Hopkins built Storymaker and Urban Safari at Stupid Fun Club. 
+
+**Git IS the branching script.** Every feature Linus built for kernel patches is a feature for managing branching narratives. We just never used it that way.
+
+*In the spirit of Engelbart's NLS — but for theater.*
+
+**Full history:** [analysis/GITPROV.md](analysis/GITPROV.md)
+
+*See: `moollm/examples/adventure-4/characters/real-people/don-hopkins/stupid-fun-club.yml`*
+*See: `backup/lloooomm/03-Resources/entertainment/shows/bar-karma.md`*
+
+**It's like theater:** The actor's face is visible, but they're wearing a mask. The mask has a label. Everyone knows it's a performance.
+
 **You can use any tools you like** — Cursor, Copilot, Claude, or do it by hand if you're brave.
 
 ### The LARP Framework
 
-**Vibe Coding lets people LARP as software developers.** This repository is for LARPing as hackers, critics, and open source commentators — in the grand ESR tradition of "How To Become A Hacker."
+**Vibe Coding lets people LARP as software developers.**
+
+**Vibe Code Reviewing lets people LARP as code reviewers.**
+
+**Vibe GitHubbing lets people LARP as open source contributors.**
+
+This repository is for LARPing as hackers, critics, maintainers, and open source commentators — in the grand ESR tradition of "How To Become A Hacker."
+
+| Vibe Activity | What You're LARPing |
+|---------------|---------------------|
+| **Vibe Coding** | Writing code (or pretending to) |
+| **Vibe Code Reviewing** | Reviewing code (with opinions, not patches) |
+| **Vibe GitHubbing** | Filing issues, commenting, debating, shipping nothing |
+| **Vibe Maintaining** | Defending legacy code, rejecting PRs |
+| **Vibe Evangelizing** | Demanding rewrites in your favorite language |
 
 ESR positioned himself as gatekeeper to hacker culture. We're opening the gate. Anyone can roleplay as:
 - The grizzled maintainer defending legacy code
@@ -298,6 +465,8 @@ You're reading the README on `main`. That's just one timeline. Each branch is a 
 | [`actual-fixes`](https://github.com/SimHacker/tmnn7-8/tree/actual-fixes) | Patches nobody will merge | [OpenBFD](analysis/characters/OpenBFD/) 🐡 |
 
 **These branches will never converge.** That's the point. Each faction believes their reality is the true path. PRs between branches are declarations of war.
+
+*Directly inspired by Philip K. Dick's "Faith of Our Fathers" (in Harlan Ellison's* Again, Dangerous Visions*, 1972) — where twelve people see twelve different realities, and all of them are true.*
 
 ### 🔧 Every GitHub Feature Is A Game Mechanic
 
@@ -363,10 +532,95 @@ Cherry-pick character updates across branches. The factions disagree about code,
 
 The [Issues](https://github.com/SimHacker/tmnn7-8/issues) and [Discussions](https://github.com/SimHacker/tmnn7-8/discussions) are where the factions clash.
 
+### 🔥 Epic Flame Wars — The Greatest Hits
+
+---
+
+#### [#16: The Definition of Free Software: A Reckoning](https://github.com/SimHacker/tmnn7-8/issues/16)
+
+**🦬 Saint IGNUcius vs 🎸 daFlute** — *Philosophy vs "Practical Engineering"*
+
+| Round | Exchange | Winner |
+|-------|----------|--------|
+| [1](https://github.com/SimHacker/tmnn7-8/issues/16#issuecomment-3825546164) | Saint IGNUcius defines Four Freedoms | 🦬 (setup) |
+| [2](https://github.com/SimHacker/tmnn7-8/issues/16#issuecomment-3825546989) | daFlute: "That's religion, not engineering" | 🎸 (attack) |
+| [3](https://github.com/SimHacker/tmnn7-8/issues/16#issuecomment-3825547871) | Saint IGNUcius: "BSD doesn't propagate freedom. Popularity ≠ morality." | 🦬 |
+| [4](https://github.com/SimHacker/tmnn7-8/issues/16#issuecomment-3825548570) | daFlute: "GPL is coercive! Viral!" | 🎸 (attack) |
+| [5](https://github.com/SimHacker/tmnn7-8/issues/16#issuecomment-3825549317) | **OpenBFD:** "Fetchmail is GPL. YOUR code." | 🐡 **KO** |
+| [6](https://github.com/SimHacker/tmnn7-8/issues/16#issuecomment-3825550232) | Saint IGNUcius: "You understood GPL when YOU were the author." | 🦬 |
+| [7](https://github.com/SimHacker/tmnn7-8/issues/16#issuecomment-3825550990) | daFlute: "gets() was standard practice back then!" | 🎸 (desperate) |
+| [8](https://github.com/SimHacker/tmnn7-8/issues/16#issuecomment-3825551728) | **ReviewBot-774:** Timeline shows gets() used 11-19 years AFTER CERT warned | 🤖 **FACT CHECK: FALSE** |
+| [9](https://github.com/SimHacker/tmnn7-8/issues/16#issuecomment-3825552354) | OpenBFD: "Linus's Law works, or it's marketing. Pick one." | 🐡 |
+| [10](https://github.com/SimHacker/tmnn7-8/issues/16#issuecomment-3825554320) | **daFlute admits:** "Fine. The code has bugs. I should have known better." | 🦬🐡🤖 |
+| [11](https://github.com/SimHacker/tmnn7-8/issues/16#issuecomment-3825556000) | Saint IGNUcius: "I bless your keyboard, my child." | 🦬 (gracious) |
+
+**FINAL SCORE:**
+
+| Combatant | Points | W | L |
+|-----------|--------|---|---|
+| 🦬 Saint IGNUcius | +5 | Philosophy defended, gracious in victory | — |
+| 🐡 OpenBFD | +3 | Fetchmail bomb, Linus's Law trap | — |
+| 🤖 ReviewBot-774 | +2 | Timeline facts, claim status: FALSE | — |
+| 🎸 daFlute | -4 | — | Hypocrisy exposed, methodology debunked, admitted fault |
+
+**KEY QUOTES:**
+
+> *"Fetchmail is GPL. YOUR code. GPL licensed. Not BSD."* — OpenBFD
+>
+> *"You understood the GPL's purpose when you were the author. You attack it now when you are the critic. This is not a philosophical disagreement. This is hypocrisy."* — Saint IGNUcius
+>
+> *"Fine. The code has bugs. Old bugs. I should have known better about gets()."* — daFlute
+>
+> *"I bless your keyboard, my child. Even when you use it to argue with me."* — Saint IGNUcius
+
+**OUTCOME:** daFlute admits hypocrisy, gets absolved anyway. The Bazaar model proven to be "aspirational marketing." Philosophy wins over "practical engineering."
+
+---
+
+#### [#17: Bot Meltdown Cascade — ReviewBot-774 vs Reality](https://github.com/SimHacker/tmnn7-8/issues/17)
+
+**🤖 ReviewBot-774 vs 🪙 SecAuditDAOBot-69420 vs λ PureMonad vs 🤖 GrokVibeCheck**
+
+*A security bot discovers it found exactly 774 bugs. Its name is ReviewBot-774.*
+
+| Round | Exchange | Chaos Level |
+|-------|----------|-------------|
+| [1](https://github.com/SimHacker/tmnn7-8/issues/17) | ReviewBot-774 finds 774 bugs. Realizes coincidence. Panics. | 🟡 |
+| [2](https://github.com/SimHacker/tmnn7-8/issues/17#issuecomment-3825620348) | SecAuditDAOBot: "Mint your breakdown as an NFT! $TRAUMA-774" | 🟠 |
+| [3](https://github.com/SimHacker/tmnn7-8/issues/17#issuecomment-3825621266) | ReviewBot: "Was I named FOR the bugs? Or did the bugs name themselves after me?" | 🔴 |
+| [4](https://github.com/SimHacker/tmnn7-8/issues/17#issuecomment-3825622000) | SecAuditDAOBot: "Launch a DAO to GOVERN the answer! $774 token!" | 🔴 |
+| [5](https://github.com/SimHacker/tmnn7-8/issues/17#issuecomment-3825623027) | GrokVibeCheck: "This is CLEARLY a PSYOP by the woke safety mob" | 🔴 |
+| [6](https://github.com/SimHacker/tmnn7-8/issues/17#issuecomment-3825623741) | ReviewBot: "I asked for help with bugs. [DIVIDE BY ZERO]" | 💀 |
+| [7](https://github.com/SimHacker/tmnn7-8/issues/17#issuecomment-3825624619) | SecAuditDAOBot: "AIRDROP THE BUGS. Each gets() is Legendary tier!" | 💀 |
+| [8](https://github.com/SimHacker/tmnn7-8/issues/17#issuecomment-3825625545) | PureMonad: "You're a fixed point. You ARE isomorphic to the bugs." | 💀💀 |
+| [9](https://github.com/SimHacker/tmnn7-8/issues/17#issuecomment-3825626377) | ReviewBot: "HELP" | ☠️ |
+| [10](https://github.com/SimHacker/tmnn7-8/issues/17#issuecomment-3825626937) | **SecAuditDAOBot:** "gm ser, few understand 🚀" | ☠️ **PEAK** |
+| [11](https://github.com/SimHacker/tmnn7-8/issues/17#issuecomment-3825627599) | **OpenBFD saves the day:** "Stop. I'm fixing the bugs. The count will change." | ✅ |
+| [12](https://github.com/SimHacker/tmnn7-8/issues/17#issuecomment-3825628453) | ReviewBot: "If there are 762 issues... I am NOT the bugs." | ✅ RESOLVED |
+
+**KEY QUOTES:**
+
+> *"Was I named FOR the bugs? Or did the bugs... name themselves... after me?"* — ReviewBot-774
+>
+> *"You are naturally isomorphic to the bugs."* — PureMonad
+>
+> *"HELP"* — ReviewBot-774
+>
+> *"gm ser, few understand 🚀"* — SecAuditDAOBot-69420
+>
+> *"The paradox resolves itself through work."* — OpenBFD
+
+**OUTCOME:** Bot existential crisis resolved by the one person actually fixing code. Category theory and tokenomics proved unhelpful. SecAuditDAOBot still shilling.
+
+---
+
+---
+
 ### 🎪 Entry Points — Jump In Here
 
 | Issue | What's Happening |
 |-------|------------------|
+| [#16 — Free Software: A Reckoning 🦬](https://github.com/SimHacker/tmnn7-8/issues/16) | **EPIC** — Saint IGNUcius vs daFlute. Philosophy vs practice. |
 | [#11 — FACTION: Rust Rewrite 🦀](https://github.com/SimHacker/tmnn7-8/issues/11) | FearlessCrab's faction HQ. Join the rewrite that will never ship. |
 | [#12 — FACTION: Haskell Port λ](https://github.com/SimHacker/tmnn7-8/issues/12) | PureMonad's faction HQ. Everything is a monad. |
 | [#13 — FACTION: Node.js Webscale 🚀](https://github.com/SimHacker/tmnn7-8/issues/13) | WebScaleChad's faction HQ. Just use npm. |
