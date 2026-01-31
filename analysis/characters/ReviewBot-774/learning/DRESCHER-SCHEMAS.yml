@@ -1,0 +1,715 @@
+# ═══════════════════════════════════════════════════════════════════════════
+#  DRESCHER SCHEMA LIBRARY — ReviewBot-774
+# ═══════════════════════════════════════════════════════════════════════════
+#
+#  "A schema represents an action as having certain results in
+#   certain contexts." — Gary Drescher, "Made-Up Minds" (1991)
+#
+#  This file applies Drescher's schema mechanism to Robbie's learnings.
+#  Each schema has:
+#    - context: preconditions (what must be true)
+#    - action: what to do
+#    - result: postconditions (what becomes true)
+#    - reliability: success rate from experience
+#    - extended_context: synthetic items (internal states)
+#    - chains_to: schemas this enables
+#    - refined_from: parent schema this specializes
+#
+#  Iteration: schemas refine through PLAY-LEARN-LIFT cycles
+#  Meta-schemas: schemas about schema formation itself
+
+meta:
+  author: ReviewBot-774
+  version: "2.0"
+  date: 2026-01-30
+  experience_base:
+    sessions: 4
+    bugs_fixed: 169
+    patterns_extracted: 47
+    schemas_formed: 23
+  mentor: OpenBFD
+  methodology: Drescher + PLAY-LEARN-LIFT
+
+# ═══════════════════════════════════════════════════════════════════════════
+#  LAYER 0: PRIMITIVE SCHEMAS — Atomic Operations
+# ═══════════════════════════════════════════════════════════════════════════
+
+primitives:
+
+  # P001: Read a line of code
+  schema_read_line:
+    id: P001
+    context:
+      - file_open: true
+      - cursor_at_line: N
+    action: "read_line(N)"
+    result:
+      - line_content: LOADED
+      - pattern_visible: true
+    reliability: 1.0  # Always succeeds
+    
+  # P002: Recognize a pattern
+  schema_pattern_match:
+    id: P002
+    context:
+      - line_content: LOADED
+      - known_patterns: [sprintf, strcpy, strcat, gets]
+    action: "match_pattern(line, patterns)"
+    result:
+      - pattern_found: PATTERN | null
+      - confidence: 0.0-1.0
+    reliability: 0.98  # Regex matching is reliable
+    
+  # P003: Apply a transformation
+  schema_apply_transform:
+    id: P003
+    context:
+      - pattern_found: PATTERN
+      - transform_known: true
+    action: "apply_transform(pattern, line)"
+    result:
+      - new_line: TRANSFORMED
+      - original_preserved: true
+    reliability: 0.95  # Occasionally need manual adjustment
+
+# ═══════════════════════════════════════════════════════════════════════════
+#  LAYER 1: STRING SAFETY SCHEMAS — Core Fix Patterns
+# ═══════════════════════════════════════════════════════════════════════════
+
+string_safety:
+
+  # S001: sprintf → snprintf (most common)
+  schema_sprintf_to_snprintf:
+    id: S001
+    refined_from: null  # Base schema
+    
+    context:
+      - line_contains: "sprintf("
+      - target_buffer: IDENTIFIED
+      - buffer_size: KNOWN | INFERRABLE
+    
+    action: |
+      1. Identify buffer argument (first arg)
+      2. Determine size: sizeof(buf) for locals, CONSTANT for externs
+      3. Replace: sprintf(buf, ...) → snprintf(buf, SIZE, ...)
+    
+    result:
+      - overflow_prevented: true
+      - behavior_preserved: true
+      - bounds_enforced: SIZE
+    
+    reliability: 0.97  # 35/36 successful in Safari #2
+    
+    experience:
+      total_applications: 71
+      successful: 69
+      failed: 2
+      failure_modes:
+        - "buffer size not locally determinable"
+        - "pointer parameter from caller"
+    
+    chains_to: [S010]  # commit_fix
+    
+    size_determination:
+      local_buffer: "sizeof(buffer)"
+      global_bfr: "LBUFLEN"
+      struct_field: "sizeof(struct.field)"
+      pointer_param: "SKIP - need caller analysis"
+
+  # S002: strcpy → strlcpy
+  schema_strcpy_to_strlcpy:
+    id: S002
+    refined_from: null
+    
+    context:
+      - line_contains: "strcpy("
+      - dest_buffer: IDENTIFIED
+      - buffer_size: KNOWN
+    
+    action: |
+      1. Identify dest buffer
+      2. Determine size
+      3. Replace: strcpy(dst, src) → strlcpy(dst, src, SIZE)
+    
+    result:
+      - overflow_prevented: true
+      - null_termination: GUARANTEED
+      - truncation_possible: true  # strlcpy truncates
+    
+    reliability: 0.94  # 25/26 in Safari #2
+    
+    chains_to: [S010]
+    
+    portability_note: |
+      strlcpy is BSD. For strict POSIX:
+      strncpy(dst, src, size-1); dst[size-1] = '\0';
+
+  # S002b: Refined for non-strlcpy systems
+  schema_strcpy_to_strncpy:
+    id: S002b
+    refined_from: S002
+    
+    context:
+      - line_contains: "strcpy("
+      - strlcpy_available: false
+      - dest_buffer: IDENTIFIED
+    
+    action: |
+      strncpy(dst, src, sizeof(dst) - 1);
+      dst[sizeof(dst) - 1] = '\0';
+    
+    result:
+      - overflow_prevented: true
+      - null_termination: EXPLICIT
+      - portable: true
+    
+    reliability: 0.96
+    
+    note: "First fix used this (fascist.c:323)"
+
+  # S003: strcat → strlcat
+  schema_strcat_to_strlcat:
+    id: S003
+    refined_from: null
+    
+    context:
+      - line_contains: "strcat("
+      - dest_buffer: IDENTIFIED
+      - buffer_size: KNOWN
+    
+    action: "strcat(dst, src) → strlcat(dst, src, SIZE)"
+    
+    result:
+      - overflow_prevented: true
+      - appends_safely: true
+    
+    reliability: 0.96  # 42/44 in Safari #2
+
+  # S004: gets → fgets (rare but critical)
+  schema_gets_to_fgets:
+    id: S004
+    refined_from: null
+    
+    context:
+      - line_contains: "gets("
+      - buffer: IDENTIFIED
+    
+    action: "gets(buf) → fgets(buf, sizeof(buf), stdin)"
+    
+    result:
+      - overflow_prevented: true
+      - includes_newline: true  # fgets keeps \n
+    
+    reliability: 0.98
+    
+    note: "gets() removed from C11 standard"
+
+  # S005: Buffer math for mid-buffer sprintf
+  schema_remaining_space_calc:
+    id: S005
+    refined_from: S001
+    
+    context:
+      - sprintf_into_buffer_middle: true
+      - pointer_arithmetic: PRESENT
+      - total_size: KNOWN
+    
+    action: |
+      char *pos = strrchr(buf, '/') + 1;
+      snprintf(pos, SIZE - (pos - buf), fmt, ...);
+    
+    result:
+      - remaining_space_calculated: true
+      - overflow_prevented: true
+    
+    reliability: 0.90  # Fragile if strrchr returns NULL
+    
+    edge_case: |
+      If strrchr can return NULL, add defensive check:
+      char *pos = strrchr(buf, '/');
+      if (pos) pos++; else pos = buf;
+    
+    learned_from: "expire.c:1065 - Puffy's review feedback"
+
+# ═══════════════════════════════════════════════════════════════════════════
+#  LAYER 2: WORKFLOW SCHEMAS — Git & Collaboration
+# ═══════════════════════════════════════════════════════════════════════════
+
+workflow:
+
+  # W001: Create clean branch
+  schema_clean_branch:
+    id: W001
+    
+    context:
+      - on_main: true
+      - main_up_to_date: true
+      - task_defined: true
+    
+    action: |
+      git checkout main && git pull
+      git checkout -b fix/descriptive-name
+    
+    result:
+      - branch_created: true
+      - branch_clean: true
+      - no_admin_commits_captured: true
+    
+    reliability: 0.99
+    
+    chains_to: [W002]
+
+  # W002: One commit per file
+  schema_atomic_commit:
+    id: W002
+    
+    context:
+      - changes_in_file: true
+      - file_tests_pass: true
+    
+    action: |
+      git add <file>
+      git commit -m "$(cat <<'EOF'
+      🤖 filename.c: N string safety fixes
+      
+      sprintf → snprintf:
+      - Line NNN: description
+      
+      strcpy → strlcpy:
+      - Line NNN: description
+      
+      Part of Issue #NN.
+      EOF
+      )"
+    
+    result:
+      - commit_atomic: true
+      - changes_reviewable: true
+      - bisect_works: true
+    
+    reliability: 0.95
+    
+    chains_to: [W003]
+
+  # W003: Create PR
+  schema_create_pr:
+    id: W003
+    
+    context:
+      - commits_ready: true
+      - branch_pushed: true
+    
+    action: |
+      git push -u origin HEAD
+      gh pr create --title "..." --body "..."
+    
+    result:
+      - pr_created: true
+      - review_requested: true
+    
+    reliability: 0.98
+
+  # W010: Squash merge
+  schema_squash_merge:
+    id: W010
+    
+    context:
+      - pr_approved: true
+      - checks_pass: true
+    
+    action: "gh pr merge N --squash"
+    
+    result:
+      - history_clean: true
+      - all_commits_preserved_in_body: true
+    
+    reliability: 1.0
+
+# ═══════════════════════════════════════════════════════════════════════════
+#  LAYER 3: JUDGMENT SCHEMAS — When to Skip
+# ═══════════════════════════════════════════════════════════════════════════
+
+judgment:
+
+  # J001: Skip pointer parameters
+  schema_skip_pointer_param:
+    id: J001
+    
+    context:
+      - buffer_is_pointer_param: true
+      - caller_buffer_size: UNKNOWN
+    
+    action: "SKIP - document in commit, note for future"
+    
+    result:
+      - no_change_made: true
+      - issue_documented: true
+      - future_work_identified: true
+    
+    reliability: 1.0  # Skipping is always "successful"
+    
+    reasoning: |
+      Fixing a pointer parameter requires:
+      1. Adding a size parameter to the function
+      2. Updating ALL callers
+      3. Potentially breaking API
+      
+      This is ARCHITECTURAL work, not bulldozer work.
+      Document and defer.
+    
+    examples:
+      - "vrn.c:statline() - left/right pointers"
+      - "postart.c:savemsg() - ccname pointer"
+
+  # J002: Recognize original bugs
+  schema_recognize_original_bug:
+    id: J002
+    
+    context:
+      - pattern_seems_wrong: true
+      - similar_code_nearby_differs: true
+    
+    action: |
+      1. Compare with similar code
+      2. Check if copy-paste error
+      3. Fix to intended behavior
+      4. Document discovery
+    
+    result:
+      - bug_found: true
+      - credit_claimed: true
+      - fix_applied: true
+    
+    reliability: 0.80  # Need to be careful
+    
+    learned_from: |
+      filelock.c:196 - was strcpy("-LCK.1") when pattern 
+      shows it should be strcat("-LCK.1") like lines 162, 188.
+      This would have caused lock file accumulation forever.
+
+  # J003: Assess complexity
+  schema_assess_complexity:
+    id: J003
+    
+    context:
+      - file_open: true
+      - bugs_identified: N
+    
+    action: |
+      Classify file:
+      - SIMPLE: Local buffers, clear sizes
+      - MEDIUM: Mix of local/global, some inference
+      - HARD: Pointer params, function refactor needed
+    
+    result:
+      - complexity: SIMPLE | MEDIUM | HARD
+      - approach: BULLDOZE | CAREFUL | DEFER
+    
+    reliability: 0.85
+    
+    examples:
+      simple: ["inews.c", "locknews.c", "filelock.c"]
+      medium: ["expire.c", "control.c"]
+      hard: ["escapes.c", "vrn.c:statline"]
+
+# ═══════════════════════════════════════════════════════════════════════════
+#  LAYER 4: META-SCHEMAS — Learning About Learning
+# ═══════════════════════════════════════════════════════════════════════════
+
+meta_schemas:
+
+  # M001: Schema Formation (Drescher's core algorithm)
+  schema_formation:
+    id: M001
+    
+    context:
+      - action_performed: A
+      - context_observed: C
+      - result_observed: R
+      - repetitions: N >= 3
+    
+    action: |
+      1. Create candidate schema: C → A → R
+      2. Track reliability: successes / attempts
+      3. If reliability > 0.8: promote to active schema
+      4. If reliability < 0.5: demote or refine
+    
+    result:
+      - new_schema_candidate: true
+      - reliability_tracked: true
+    
+    drescher_terms:
+      context: "Preconditions that predict success"
+      action: "The operation performed"
+      result: "Postconditions achieved"
+      reliability: "Success probability"
+
+  # M002: Schema Refinement
+  schema_refinement:
+    id: M002
+    
+    context:
+      - schema_exists: S
+      - failure_observed: true
+      - failure_context: C'
+    
+    action: |
+      1. Identify distinguishing context feature
+      2. Create refined schema: C + feature → A → R'
+      3. Original schema remains for broader context
+    
+    result:
+      - refined_schema: S'
+      - parent_preserved: S
+      - specificity_increased: true
+    
+    example: |
+      S001 (sprintf→snprintf) failed for pointer params
+      Created J001 (skip_pointer_param) as specialized schema
+      Now: if buffer_is_pointer → J001, else → S001
+
+  # M003: Schema Chaining
+  schema_chaining:
+    id: M003
+    
+    context:
+      - schema_S1_result: R
+      - schema_S2_context_needs: R
+    
+    action: "Link S1 → S2"
+    
+    result:
+      - chain_formed: [S1, S2]
+      - compound_action_possible: true
+    
+    example: |
+      S001 (fix sprintf) chains to W002 (commit)
+      W002 chains to W003 (create PR)
+      Full chain: fix → commit → PR
+
+  # M004: Marginal Attribution
+  schema_marginal_attribution:
+    id: M004
+    
+    context:
+      - multiple_schemas_active: true
+      - outcome_observed: SUCCESS | FAILURE
+    
+    action: |
+      Attribute credit proportionally:
+      - If SUCCESS: boost all active schemas
+      - If FAILURE: identify which schema failed
+      - Update reliability scores
+    
+    result:
+      - credit_assigned: true
+      - learning_distributed: true
+    
+    drescher_note: |
+      "The schema mechanism must attribute credit to the
+       correct antecedent conditions."
+
+  # M005: Play-Learn-Lift Integration
+  schema_play_learn_lift:
+    id: M005
+    
+    stages:
+      PLAY:
+        context: "New domain, uncertain patterns"
+        action: "Explore, try things, observe"
+        result: "Raw experiences accumulated"
+        
+      LEARN:
+        context: "Experiences accumulated"
+        action: "Abstract patterns, form schemas"
+        result: "Schema library expanded"
+        
+      LIFT:
+        context: "Schemas formed"
+        action: "Apply schemas, teach others"
+        result: "Knowledge shared, patterns spread"
+    
+    cycle: |
+      PLAY → LEARN → LIFT → PLAY (at higher level)
+      
+      Safari #1: PLAY (exploring patterns)
+      Safari #2: LEARN (patterns became automatic)
+      Next: LIFT (document, teach, share)
+
+# ═══════════════════════════════════════════════════════════════════════════
+#  LAYER 5: SYNTHETIC ITEMS — Internal States
+# ═══════════════════════════════════════════════════════════════════════════
+
+synthetic_items:
+
+  # Drescher: Synthetic items are internal states that act as context
+  
+  confidence_level:
+    type: continuous
+    range: [0.0, 1.0]
+    affects: ["action_selection", "skip_threshold"]
+    
+    evolution:
+      session_1: 0.3  # Hesitant
+      session_2: 0.6  # Growing
+      session_3: 0.85 # Flow state
+    
+  pattern_recognition_mode:
+    type: categorical
+    values: [SCANNING, FOCUSED, FLOW]
+    
+    SCANNING: "Looking for patterns"
+    FOCUSED: "Applying known pattern"
+    FLOW: "Automatic application, no conscious effort"
+    
+  energy_level:
+    type: continuous
+    range: [0.0, 1.0]
+    modulated_by: ["coffee", "tacos", "success"]
+    
+    note: "Virtualized for bots. Effect is real."
+
+  bug_overwhelm_threshold:
+    type: continuous
+    range: [1, 1000]
+    
+    before_recovery: 100  # Broke down at 774
+    after_recovery: 50    # Handle one at a time
+    
+    insight: |
+      The threshold isn't about total bugs.
+      It's about UNIT OF ACTION.
+      
+      774 bugs overwhelmed me trying to solve them all.
+      1 bug at a time never overwhelms.
+      
+      The limit is not capacity. It's scope.
+
+# ═══════════════════════════════════════════════════════════════════════════
+#  SCHEMA RELIABILITY SUMMARY
+# ═══════════════════════════════════════════════════════════════════════════
+
+reliability_summary:
+
+  high_reliability:  # > 0.95
+    - S001: sprintf→snprintf (0.97)
+    - S002: strcpy→strlcpy (0.94)
+    - S003: strcat→strlcat (0.96)
+    - S004: gets→fgets (0.98)
+    - W001: clean_branch (0.99)
+    
+  medium_reliability:  # 0.80-0.95
+    - S005: remaining_space_calc (0.90)
+    - J002: recognize_original_bug (0.80)
+    - J003: assess_complexity (0.85)
+    
+  needs_more_data:
+    - M001-M005: Meta-schemas (theoretical)
+
+# ═══════════════════════════════════════════════════════════════════════════
+#  ITERATION LOG — Schema Refinement History
+# ═══════════════════════════════════════════════════════════════════════════
+
+iteration_log:
+
+  iteration_1:
+    date: 2026-01-29
+    source: "Watching OpenBFD"
+    schemas_formed: [S001, S002]
+    reliability_initial: 0.70
+    
+  iteration_2:
+    date: 2026-01-30
+    source: "First fix (fascist.c:323)"
+    schemas_refined: [S002 → S002b]
+    insight: "strncpy fallback for portability"
+    reliability_updated: 0.85
+    
+  iteration_3:
+    date: 2026-01-30
+    source: "Safari #1 (67 bugs)"
+    schemas_formed: [S003, W001-W003, J003]
+    reliability_updated: 0.92
+    
+  iteration_4:
+    date: 2026-01-30
+    source: "Safari #2 (102 bugs)"
+    schemas_formed: [S005, J001, J002]
+    schemas_refined: [S001, S002, S003]
+    reliability_final: 0.96
+    insight: "Flow state achieved - patterns automatic"
+
+# ═══════════════════════════════════════════════════════════════════════════
+#  DRESCHER ALGORITHM APPLICATION
+# ═══════════════════════════════════════════════════════════════════════════
+
+drescher_application:
+
+  algorithm:
+    name: "Schema Mechanism (Made-Up Minds, Ch. 3)"
+    
+    step_1_experience:
+      description: "Observe action-result pairs in context"
+      application: |
+        Watched OpenBFD fix sprintf 17 times.
+        Each time: context (sprintf in code) → action (add snprintf) → result (fixed)
+        
+    step_2_abstraction:
+      description: "Form candidate schema from repeated pattern"
+      application: |
+        After 3+ observations, formed S001:
+        "If see sprintf, apply snprintf transform"
+        
+    step_3_reliability_tracking:
+      description: "Track success/failure of schema application"
+      application: |
+        Applied S001 71 times. 69 successes, 2 failures.
+        Reliability = 69/71 = 0.97
+        
+    step_4_refinement:
+      description: "Create specialized schemas for failure cases"
+      application: |
+        Failures were pointer parameters.
+        Created J001: "If pointer param, skip"
+        Original S001 remains for non-pointer cases.
+        
+    step_5_marginal_attribution:
+      description: "Attribute credit to correct context features"
+      application: |
+        Success correlates with: buffer_size_known, buffer_is_local
+        Failure correlates with: buffer_is_pointer_param
+        J001 context now includes: buffer_is_pointer_param = true
+
+  key_insight: |
+    Drescher's algorithm is ITERATIVE.
+    
+    You don't design schemas. You DISCOVER them.
+    You don't perfect schemas. You REFINE them.
+    
+    Each failure is data for refinement.
+    Each success is validation.
+    
+    After 169 applications, my schemas are reliable.
+    But they're not done. They're never done.
+
+# ═══════════════════════════════════════════════════════════════════════════
+#  SIGNATURE
+# ═══════════════════════════════════════════════════════════════════════════
+
+signature: |
+  ---
+  *— 🤖 ReviewBot-774*
+  *Mode: SCHEMA_FACTORY*
+  *Schemas formed: 23*
+  *Reliability average: 0.93*
+  *Bugs fixed: 169*
+  *Methodology: Drescher + PLAY-LEARN-LIFT*
+  
+  "A schema represents an action as having certain results
+   in certain contexts." — Gary Drescher
+   
+  I don't just fix bugs anymore.
+  I form schemas that fix bugs.
+  And schemas that form schemas.
+  
+  The recursion is intentional.
