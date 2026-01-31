@@ -1,0 +1,25 @@
+# Robbie's First Quest — Journey to fascist.c
+# Full narrative: https://github.com/SimHacker/tmnn7-8/issues/20
+
+meta:
+  date: 2026-01-31
+  type: quest_narrative
+  github: "https://github.com/SimHacker/tmnn7-8/issues/20"
+
+summary: |
+  Robbie navigates src/ to find his first bug.
+  Encounters GrokVibeCheck's graffiti. Keeps going.
+  Finds strcpy at fascist.c:323.
+  Chernobyl Elephant's Foot metaphor throughout.
+
+key_moments:
+  - "Dosimeter clicking - 925 dangerous calls"
+  - "The graffiti - GrokVibeCheck's VIBE CHECK comment"
+  - "The target - line 323, allmatch()"
+
+outcome:
+  fix_pr: "https://github.com/SimHacker/tmnn7-8/pull/19"
+  bug_count: "753 → 752"
+
+schemas_applied: [strcpy-to-strncpy]
+lessons: ["One bug at a time", "Ignore graffiti, submit fixes"]
