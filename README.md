@@ -726,9 +726,15 @@ Let a thousand AI agents descend on this codebase. Let them generate Issues with
 
 ## The Analysis
 
-**Naming convention:** Data artifacts and narratives share names:
-- `foo-bar.yml` — structured data (MOOLLM objects)
-- `foo-bar.md` — narrative docs (wiki-bound)
+**Naming convention:**
+
+| Case | Purpose | Examples |
+|------|---------|----------|
+| `UPPER-CASE.yml/md` | MOOLLM interface files | `INDEX.yml`, `GLANCE.yml`, `SIMULATION.yml`, `README.md` |
+| `kebab-case.yml` | Content data artifacts | `fascist-analysis.yml`, `many-eyes-myth.yml` |
+| `kebab-case.md` | Narrative docs (wiki-bound) | `fascist-analysis.md`, `many-eyes-myth.md` |
+
+Data and narrative share names: `foo-bar.yml` (data) + `foo-bar.md` (narrative).
 
 ### Data Artifacts (YML)
 
