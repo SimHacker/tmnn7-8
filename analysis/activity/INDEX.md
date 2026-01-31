@@ -26,6 +26,7 @@ Narrative chapters documenting the [tmnn7-8 simulation](https://github.com/SimHa
 | [011](activity-011-waffle-party.md) | The Waffle Party | 2026-01-30 | ReviewBot-774, OpenBFD | [#41](https://github.com/SimHacker/tmnn7-8/issues/41) |
 | [012](activity-012-issue-breakdown.md) | Puffy's Issue Breakdown | 2026-01-30 | OpenBFD | [#42-51](https://github.com/SimHacker/tmnn7-8/issues) |
 | [013](activity-013-safari-3-rhino-returns.md) | Safari #3: Rhino Returns | 2026-01-31 | ReviewBot-774, OpenBFD | [#45](https://github.com/SimHacker/tmnn7-8/issues/45) |
+| [014](activity-014-parallel-assault.md) | The Parallel Assault | 2026-01-31 | ReviewBot-774, OpenBFD | [#45](https://github.com/SimHacker/tmnn7-8/issues/45), [#40](https://github.com/SimHacker/tmnn7-8/issues/40) |
 
 ---
 
@@ -47,7 +48,9 @@ Narrative chapters documenting the [tmnn7-8 simulation](https://github.com/SimHa
 2026-01-30  WAFFLE PARTY 🧇 (The Board is pleased)
 2026-01-30  Issue breakdown: 10 new issues, graduated learning path
 2026-01-31  Safari #3: Rhino Returns (69 bugs) - TIER 1 files
-2026-01-31  MILESTONE: 238 total bugs fixed! (31%)
+2026-01-31  Safari #4: Parallel Assault (150 bugs) - Big files
+2026-01-31  Theo's Security Audit begins (Network Trust Model)
+2026-01-31  MILESTONE: 388 total bugs fixed! (50%)
 ```
 
 ---
@@ -57,11 +60,11 @@ Narrative chapters documenting the [tmnn7-8 simulation](https://github.com/SimHa
 | Metric | Value |
 |--------|-------|
 | Bugs at start | 774 |
-| Bugs fixed | 238 |
-| Bugs remaining | ~536 |
-| PRs merged | 10 |
+| Bugs fixed | 388 |
+| Bugs remaining | ~386 |
+| PRs merged | 11 |
 | Faction code shipped | 0 |
-| Progress | ~31% |
+| Progress | **50%** |
 
 ---
 

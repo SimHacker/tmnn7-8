@@ -229,4 +229,4 @@ reliability: 1.0  # 100% predictive
 ---
 
 **Previous:** [Activity 012 — Issue Breakdown](activity-012-issue-breakdown.md)  
-**Next:** TBD
+**Next:** [Activity 014 — The Parallel Assault](activity-014-parallel-assault.md)
