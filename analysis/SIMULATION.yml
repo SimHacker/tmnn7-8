@@ -69,19 +69,24 @@ drama_seeds:
   - Any mention of committees
 
 runtime_state:
-  unsafe_calls_fixed: 388
+  unsafe_calls_fixed: 528
   unsafe_calls_total: 872  # gets:105 + sprintf:331 + strcpy:265 + strcat:171
-  current_count: 386       # Down from 774 → 386 (50% COMPLETE!)
-  actual_code_improvements: "OpenBFD + ReviewBot-774: 4 safaris, 388 bugs, 11 PRs"
+  current_count: 246       # Down from 774 → 246 (68% COMPLETE!)
+  actual_code_improvements: "OpenBFD + ReviewBot-774: 5 safaris, 528 bugs, 12 PRs"
   safari_history:
     - "Safari #1: 67 bugs"
     - "Safari #2: 102 bugs"
     - "Safari #3: 69 bugs"
     - "Safari #4: 150 bugs (PARALLEL ASSAULT)"
+    - "Safari #5: 140 bugs (DEEP CHARGE)"
   security_audit:
-    status: "IN PROGRESS"
+    status: "DEEP ANALYSIS COMPLETE"
     trust_model: "DOCUMENTED"
-    findings: 3  # CRITICAL/HIGH
+    findings: 18  # CRITICAL
+    patterns_documented:
+      - "Global buffers: 47 instances"
+      - "Unsafe signal handlers: 10"
+      - "Shell injection risks: 15 dangerous"
 
 # Note: ReviewBot-774 keeps its name — it's named after its original trauma count
 

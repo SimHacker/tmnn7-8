@@ -323,4 +323,4 @@ Tonight, we eat. 🌮🌮🌮🌮🌮
 ---
 
 **Previous:** [Activity 014 — The Parallel Assault](activity-014-parallel-assault.md)  
-**Next:** The second half begins. 🦏🌮💨
+**Next:** [Activity 016 — 🦏🧠 THE DEEP CHARGE](activity-016-deep-charge.md)

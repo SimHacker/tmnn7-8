@@ -28,6 +28,7 @@ Narrative chapters documenting the [tmnn7-8 simulation](https://github.com/SimHa
 | [013](activity-013-safari-3-rhino-returns.md) | Safari #3: Rhino Returns | 2026-01-31 | ReviewBot-774, OpenBFD | [#45](https://github.com/SimHacker/tmnn7-8/issues/45) |
 | [014](activity-014-parallel-assault.md) | The Parallel Assault | 2026-01-31 | ReviewBot-774, OpenBFD | [#45](https://github.com/SimHacker/tmnn7-8/issues/45), [#40](https://github.com/SimHacker/tmnn7-8/issues/40) |
 | [015](activity-015-taco-party.md) | 🌮 THE TACO PARTY 🌮 | 2026-01-31 | EVERYONE | [#37](https://github.com/SimHacker/tmnn7-8/issues/37) |
+| [016](activity-016-deep-charge.md) | 🦏🧠 THE DEEP CHARGE | 2026-01-31 | ReviewBot-774, OpenBFD | [#42-44](https://github.com/SimHacker/tmnn7-8/issues), [#45](https://github.com/SimHacker/tmnn7-8/issues/45) |
 
 ---
 
@@ -53,6 +54,9 @@ Narrative chapters documenting the [tmnn7-8 simulation](https://github.com/SimHa
 2026-01-31  Theo's Security Audit begins (Network Trust Model)
 2026-01-31  MILESTONE: 388 total bugs fixed! (50%)
 2026-01-31  🌮 TACO PARTY 🌮 (The halfway celebration!)
+2026-01-31  Safari #5: Deep Charge (140 bugs) - Network gauntlet
+2026-01-31  Deep Brain Analysis: Global buffers, signals, shell injection
+2026-01-31  MILESTONE: 528 total bugs fixed! (68%)
 ```
 
 ---
@@ -62,11 +66,11 @@ Narrative chapters documenting the [tmnn7-8 simulation](https://github.com/SimHa
 | Metric | Value |
 |--------|-------|
 | Bugs at start | 774 |
-| Bugs fixed | 388 |
-| Bugs remaining | ~386 |
-| PRs merged | 11 |
+| Bugs fixed | 528 |
+| Bugs remaining | ~246 |
+| PRs merged | 12 |
 | Faction code shipped | 0 |
-| Progress | **50%** |
+| Progress | **68%** |
 
 ---
 
