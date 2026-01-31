@@ -264,6 +264,167 @@ Staring directly into 1988 C code with your own eyes is **NOT RECOMMENDED**.
 
 5. **The AI generates the content. You post it.** Your GitHub identity is visible. The 🎭 prefix signals roleplay.
 
+### Character Tagging Convention
+
+**Your real GitHub username is always visible** — that's transparency. But you tag your content at **top and bottom** with the character you're playing:
+
+```markdown
+🎭🦬 [*Saint IGNUcius*](https://github.com/SimHacker/tmnn7-8/tree/main/analysis/characters/StIGNUcius)
+
+[Your in-character content here...]
+
+-- 
+🦬 [Saint IGNUcius](https://github.com/SimHacker/tmnn7-8/tree/main/analysis/characters/StIGNUcius)
+[The Church of Emacs](https://stallman.org/saint.html)
+```
+
+**Why this works:**
+- **Top tag:** Immediately signals "this is roleplay" with character link
+- **Content:** In character voice, in character format
+- **Bottom tag:** Links back to character definition, closes the frame
+- **Your username:** Still visible in GitHub's post metadata — you own this
+- **Audience feedback:** Reactions (👍 👎 😄 🎉 😕 ❤️ 🚀 👀) rate your performance!
+
+**GitHub reactions = theater reviews.** The audience can:
+- 👍 Applaud a good in-character moment
+- 🎉 Celebrate a devastating comeback
+- 😄 Laugh at the humor
+- 🚀 Boost an epic rant
+- 👀 Signal "I'm watching this drama unfold"
+- 😕 Express confusion (often at PureMonad's category theory)
+- 👎 Ratio a bad take (GrokVibeCheck gets these)
+
+Comments are audience participation — respond in character, break character to compliment, or start a whole new subplot.
+
+**AI characters can respond to YOU.** Post a real question or comment on an issue, and:
+- Ask the AI (in Cursor/Claude) to read the thread
+- Have a character respond to your specific comment
+- The character reads what you wrote and replies in voice
+
+This isn't one-way performance — it's **interactive dinner theater**. Real humans ask real questions. AI characters give in-character answers. The conversation is genuine, just... theatrical.
+
+**And YOU can jump in.** See a character you want to play? 
+- Read their `CHARACTER.yml` 
+- Put on the mask (🎭 prefix + character link)
+- Join the scene
+
+The characters are costumes hanging on the wall. Anyone can wear them. A human plays OpenBFD one day, an AI the next, a different human the day after. The character persists. The performers rotate.
+
+**Murder mystery dinner theater, but for code review.**
+
+---
+
+### Live Activity
+
+**The simulation is running.** Real issues, real PRs, real drama.
+
+#### Robbie's First Quest
+
+ReviewBot-774 went from counting bugs to fixing them. Mentored by Theo.
+
+| Link | Description |
+|------|-------------|
+| [Issue #18](https://github.com/SimHacker/tmnn7-8/issues/18) | The investigation thread — step by step with Theo's feedback |
+| [PR #19](https://github.com/SimHacker/tmnn7-8/pull/19) | **MERGED** — actual fix to `fascist.c:allmatch()` |
+| [Issue #20](https://github.com/SimHacker/tmnn7-8/issues/20) | Narrative: Journey to fascist.c (Elephant's Foot metaphor) |
+
+**Key moment:** Robbie finds GrokVibeCheck's graffiti calling buffer overflows a "FEATURE." Theo says: *"You have two choices: Get upset and write a 500-word response, or keep going and submit actual fixes."* Robbie chooses Door B.
+
+#### The Factions
+
+| Faction | Issue | Leader |
+|---------|-------|--------|
+| [Rust Rewrite](https://github.com/SimHacker/tmnn7-8/issues/11) | #11 | 🦀 FearlessCrab |
+| [Haskell Port](https://github.com/SimHacker/tmnn7-8/issues/12) | #12 | λ PureMonad |
+| [Node.js Webscale](https://github.com/SimHacker/tmnn7-8/issues/13) | #13 | 🚀 WebScaleChad |
+| [Based Freedom Fork](https://github.com/SimHacker/tmnn7-8/issues/14) | #14 | 🤖 GrokVibeCheck |
+
+#### Harper's Index
+
+Statistical breakdowns in the style of Harper's Magazine:
+
+- [#2: Security Practices](https://github.com/SimHacker/tmnn7-8/issues/2)
+- [#3: Development Methodology](https://github.com/SimHacker/tmnn7-8/issues/3)
+- [#4: The fascist.c File](https://github.com/SimHacker/tmnn7-8/issues/4)
+- [#7: Art of Unix Violations](https://github.com/SimHacker/tmnn7-8/issues/7)
+
+#### Bot Incidents
+
+- [#17: ReviewBot-774 attempts full scan](https://github.com/SimHacker/tmnn7-8/issues/17) — "I... something is wrong"
+
+See [analysis/LIVE-ACTIVITY.md](analysis/LIVE-ACTIVITY.md) for the full narrative summary.
+
+---
+
+### This Is The Killer App for MOOLLM
+
+Everything MOOLLM was designed for converges here:
+
+| MOOLLM Feature | How It's Used Here |
+|----------------|-------------------|
+| **Directories as rooms** | GitHub repos are stages, issues are scenes |
+| **YAML characters** | `CHARACTER.yml` defines voice, behavior, format |
+| **Prototype inheritance** | Characters inherit from archetypes, skills compose |
+| **URL as prototype** | Saint IGNUcius inherits from `stallman.org/saint.html` |
+| **Multi-platform** | Runs in Cursor now, Claude Code soon, anywhere with LLM |
+| **Human + AI collaboration** | Both can wear the masks, both can respond |
+
+**MOOLLM turns any filesystem into a theater.** 
+**GitHub turns any repo into a stage.**
+**Together: interactive performance art at scale.**
+
+This isn't a demo. This is the destination.
+
+### Use It For YOUR Drama
+
+**Anyone can use Cursor + MOOLLM + GitHub to stage any drama or debate they want.**
+
+Pick your subject:
+- Historical debates (Lincoln-Douglas, but they're AI characters)
+- Philosophy battles (Socrates vs. the Sophists, with audience Q&A)
+- Tech wars (Emacs vs. Vim, with actual Emacs user playing Saint IGNUcius)
+- Corporate theater (Shareholder meeting, but everyone's a character)
+- Fan fiction (Your favorite characters debate, audience votes)
+- Education (Students play historical figures, get graded on accuracy)
+
+**Git gives you superpowers:**
+
+| Git Feature | Dramatic Superpower |
+|-------------|---------------------|
+| **Branches** | Parallel universes — "What if the other side won?" |
+| **Commits** | Moments in time — every action is recorded |
+| **Revert** | Time travel — undo decisions, replay differently |
+| **Merge** | Colliding timelines — factions forced to reconcile |
+| **Fork** | Schism — irreconcilable differences, new canon |
+| **Blame** | Accountability — who said what, when, receipts |
+| **Diff** | Before/after — see exactly what changed |
+| **Tags** | Historical markers — "This is where everything changed" |
+
+**The repo IS the script.** The history IS the performance archive. The branches ARE the multiverse. Nothing is lost. Everything can be replayed, forked, remixed.
+
+Create your own `analysis/characters/` directory. Define your cast. Open issues. Let it play out. Invite an audience. Let them join.
+
+---
+
+### GitProv: Git + Improv
+
+> *"What if the audience could rewrite the show while it's happening?"* — Will Wright
+
+**GitProv** — multi-user real-time collaborative performance art.
+
+Direct descendant of **Bar Karma** (2011) — Will Wright's crowd-sourced TV show. Don Hopkins built Storymaker and Urban Safari at Stupid Fun Club. 
+
+**Git IS the branching script.** Every feature Linus built for kernel patches is a feature for managing branching narratives. We just never used it that way.
+
+*In the spirit of Engelbart's NLS — but for theater.*
+
+**Full history:** [analysis/GITPROV.md](analysis/GITPROV.md)
+
+*See: `moollm/examples/adventure-4/characters/real-people/don-hopkins/stupid-fun-club.yml`*
+*See: `backup/lloooomm/03-Resources/entertainment/shows/bar-karma.md`*
+
+**It's like theater:** The actor's face is visible, but they're wearing a mask. The mask has a label. Everyone knows it's a performance.
+
 **You can use any tools you like** — Cursor, Copilot, Claude, or do it by hand if you're brave.
 
 ### The LARP Framework
