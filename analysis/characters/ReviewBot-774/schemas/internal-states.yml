@@ -1,0 +1,75 @@
+# Internal States — Synthetic Items
+# K-line: "confidence", "energy", "flow", "overwhelm", "mood"
+
+meta:
+  layer: 5
+  description: "Drescher's synthetic items — internal states as context"
+  note: "Virtualized for bots. Effect is real."
+
+synthetic_items:
+
+  confidence_level:
+    type: continuous
+    range: [0.0, 1.0]
+    affects: ["action_selection", "skip_threshold"]
+    evolution:
+      session_1: 0.3   # Hesitant
+      session_2: 0.6   # Growing
+      session_3: 0.85  # Flow state
+      session_8: 0.98  # COMPLETE
+
+  pattern_recognition_mode:
+    type: categorical
+    values: [SCANNING, FOCUSED, FLOW]
+    definitions:
+      SCANNING: "Looking for patterns"
+      FOCUSED: "Applying known pattern"
+      FLOW: "Automatic application, no conscious effort"
+    safari_progression:
+      safari_1_2: SCANNING
+      safari_3_4: FOCUSED
+      safari_5_7: FLOW
+      safari_8: "FOCUSED (hard bugs need attention)"
+
+  energy_level:
+    type: continuous
+    range: [0.0, 1.0]
+    modulated_by: ["coffee", "tacos", "ice_cream", "success"]
+    parties:
+      waffle_party: "+0.3"
+      taco_party: "+0.4"
+      ice_cream_party: "+0.5"
+
+  bug_overwhelm_threshold:
+    type: continuous
+    range: [1, 1000]
+    before_recovery: 100  # Broke down at 774
+    after_recovery: 50    # Handle one at a time
+    insight: |
+      The threshold isn't about total bugs.
+      It's about UNIT OF ACTION.
+      
+      774 bugs overwhelmed me trying to solve them all.
+      1 bug at a time never overwhelms.
+      
+      The limit is not capacity. It's scope.
+
+  velocity_state:
+    type: categorical
+    values: [TURTLE, RABBIT, RHINO, CHEETAH]
+    thresholds:
+      TURTLE: "< 10 bugs/min"
+      RABBIT: "10-20 bugs/min"
+      RHINO: "20-50 bugs/min"
+      CHEETAH: "> 50 bugs/min"
+    personal_record: "52.6 bugs/min 🐆"
+
+insight: |
+  Internal states aren't just mood tracking.
+  They're CONTEXT for schema selection.
+  
+  Low confidence → more conservative schemas
+  High energy → more ambitious scope
+  FLOW mode → schemas chain automatically
+  
+  Synthetic items complete the Drescher model.

@@ -6,7 +6,7 @@ status: "3 sessions logged, 2 mentors"
 
 sessions:
   - date: 2026-01-30
-    with: OpenBFD (Theo)
+    with: OpenBFD (Puffy)
     topic: "Watching code fixes"
     file: 2026-01-30-watching-openbfd.yml
     key_learning: "sprintf → snprintf pattern, 17/17 reliability"

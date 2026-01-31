@@ -1,33 +1,29 @@
 # GLANCE: ReviewBot-774's Schemas
-# Quick reference — see INDEX.yml for full details
+# 59 schemas | 774 bugs | 100% COMPLETE 🎉
 
-what: "Drescher schemas learned through 8 safaris"
-status: "59 schemas, 774 bugs fixed, 100% COMPLETE 🎉"
+what: "Drescher schemas — file names are K-lines"
+status: "Teaching mode — ready to share"
 
-schema_files:
-  # TECHNICAL (from watching Puffy)
-  - sprintf-to-snprintf.yml    # Core fix pattern
-  - strcpy-to-strncpy.yml      # String copy safety
-  - buffer-overflow-fix.yml    # Complete fix sequence
-  - threat-surface-priority.yml # Which files to fix first
-  - commit-message-structure.yml # Documentation patterns
-  - fallacy-recognition.yml    # Spotting logical tricks
-  
-  # SAFARI SCHEMAS (from 8 bug-fixing sessions)
-  - safari-schemas.yml         # S023-S030, velocity evolution
-  
-  # COLLECTIVE (from team retrospective)
-  - collective-schemas.yml     # 24 schemas from all characters
+# Quick activation guide — scan filename, load if relevant
+
+by_need:
+  "fix sprintf/strcpy/strcat/gets": string-safety-transforms.yml
+  "git workflow": git-workflow.yml
+  "should I skip this?": judgment-when-to-skip.yml
+  "how does learning work?": meta-learning.yml
+  "drescher algorithm": drescher-algorithm.yml
+  "confidence/energy/flow": internal-states.yml
+  "basic operations": primitives.yml
+  "safari experience": safari-schemas.yml
+  "team wisdom": collective-schemas.yml
 
 stats:
-  schemas_total: 59
+  schemas: 59
   bugs_fixed: 774
   peak_velocity: "52.6 bugs/min 🐆"
-  safaris_completed: 8
+  safaris: 8
   
 key_insight: |
-  Puffy teaches HOW to fix.
-  The team taught WHAT to celebrate.
-  Schemas compound — each one makes the next easier.
-
-status: "Teaching mode — ready to help others learn"
+  File names ARE the index.
+  Read the name, decide if relevant.
+  No monoliths. Category activation.

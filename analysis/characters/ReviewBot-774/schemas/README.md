@@ -1,79 +1,56 @@
 # ReviewBot-774 Schemas
 
-This directory contains Drescher schemas — learned patterns formed through observation and action.
+**59 schemas | 774 bugs fixed | 100% COMPLETE 🎉**
 
-## 🎉 MISSION COMPLETE
+## File Names as K-Lines
 
-**774 bugs fixed. 59 schemas. 8 safaris. 100% done.**
+Each file name is an activation cue. Scan the name, load if relevant.
 
-## Drescher Schema Mechanism
+| Need | File |
+|------|------|
+| Fix sprintf/strcpy/strcat/gets | `string-safety-transforms.yml` |
+| Git workflow | `git-workflow.yml` |
+| Should I skip this bug? | `judgment-when-to-skip.yml` |
+| How does learning work? | `meta-learning.yml` |
+| Drescher algorithm details | `drescher-algorithm.yml` |
+| Confidence/energy/flow states | `internal-states.yml` |
+| Basic atomic operations | `primitives.yml` |
+| Safari velocity patterns | `safari-schemas.yml` |
+| Team-donated wisdom | `collective-schemas.yml` |
 
-Based on Gary Drescher's "Made-Up Minds" (1991):
-- Schemas are **context → action → result** patterns
-- Built from **observation**, not pre-programmed
-- Refined through **success/failure** tracking
-- Extended with discovered **preconditions**
+## Schema Layers (Drescher Architecture)
 
-## Schema Files
-
-### Technical Schemas (from watching OpenBFD/Puffy)
-
-| Schema | Reliability | Description |
-|--------|-------------|-------------|
-| `sprintf-to-snprintf.yml` | 100% | Core transformation pattern |
-| `strcpy-to-strncpy.yml` | 100% | String copy safety |
-| `buffer-overflow-fix.yml` | 100% | Complete fix sequence |
-| `threat-surface-priority.yml` | 100% | Which files to fix first |
-| `commit-message-structure.yml` | 100% | How to document fixes |
-
-### Safari Schemas (from 8 bug-fixing sessions)
-
-| Schema | Source | Description |
-|--------|--------|-------------|
-| S023 | Safari #3 | author-irony-detector |
-| S024 | Safari #6 | gets-to-fgets-transform |
-| S025 | Safari #6 | phase-velocity-scaling |
-| S026 | Safari #6 | tier-boundary-recognition |
-| S027 | Safari #7 | cheetah-sprint-protocol |
-| S028 | Safari #7 | predator-prey-matching |
-| S029 | Safari #8 | judgment-vs-pattern-recognition |
-| S030 | Safari #8 | trauma-to-triumph |
-
-### Collective Schemas (from team retrospective)
-
-| Schema | Agreement | Description |
-|--------|-----------|-------------|
-| COLLECTIVE_001 | Everyone | action-over-debate |
-| COLLECTIVE_002 | Puffy, Robbie, Crab | mentor-student-velocity |
-| COLLECTIVE_003 | Everyone | celebrate-milestones |
-| COLLECTIVE_004 | Puffy, Robbie | hard-bugs-need-judgment |
-| COLLECTIVE_005 | daFlute, Crab | legacy-is-worth-fixing |
-
-### Discourse Schemas (from watching debates)
-
-| Schema | Reliability | Description |
-|--------|-------------|-------------|
-| `fallacy-recognition.yml` | 83% | Spotting logical tricks |
+```
+LAYER 0: primitives.yml          — Atomic ops (P001-P003)
+LAYER 1: string-safety-transforms.yml — Core fixes (S001-S005)
+LAYER 2: git-workflow.yml        — Version control (W001-W010)
+LAYER 3: judgment-when-to-skip.yml — When NOT to act (J001-J004)
+LAYER 4: meta-learning.yml       — Learning about learning (M001-M005)
+LAYER 5: internal-states.yml     — Synthetic items (confidence, flow, energy)
+```
 
 ## Velocity Evolution
 
 ```
-Safari #1:  🐢  4.5 bugs/min   (Learning)
-Safari #2:  🐢  5.1 bugs/min   (Finding stride)
-Safari #3:  🐇  8.6 bugs/min   (Warmed up)
-Safari #4:  🦏 37.5 bugs/min   (IGNITION)
-Safari #5:  🦏 46.7 bugs/min   (Peak rhino)
-Safari #6:  🦏 46.3 bugs/min   (Sustained)
-Safari #7:  🐆 52.6 bugs/min   (SPEED RECORD!)
-Safari #8:  🚀  2.95 bugs/min  (Hard bugs — judgment needed)
+Safari #1:  🐢  4.5 bugs/min   (SCANNING)
+Safari #2:  🐢  5.1 bugs/min   (SCANNING)
+Safari #3:  🐇  8.6 bugs/min   (FOCUSED)
+Safari #4:  🦏 37.5 bugs/min   (FLOW)
+Safari #5:  🦏 46.7 bugs/min   (FLOW)
+Safari #6:  🦏 46.3 bugs/min   (FLOW)
+Safari #7:  🐆 52.6 bugs/min   (FLOW — RECORD!)
+Safari #8:  🚀  2.95 bugs/min  (FOCUSED — judgment needed)
 ```
 
-## Current Status
+## Drescher's Schema Mechanism
 
-- **Schemas formed:** 59
-- **Schemas tested:** All (774 bugs fixed!)
-- **Peak velocity:** 52.6 bugs/min 🐆
-- **Status:** Teaching mode — ready to help others learn
+From "Made-Up Minds" (1991):
+
+- **Context** → **Action** → **Result**
+- Schemas are DISCOVERED, not designed
+- Reliability tracks success rate
+- Failures trigger REFINEMENT
+- Synthetic items provide internal context
 
 ## Key Insight
 
@@ -82,10 +59,9 @@ Safari #8:  🚀  2.95 bugs/min  (Hard bugs — judgment needed)
 > I watched. I built. I learned.
 > Now I teach.
 
-## Files
+## Status
 
-- `INDEX.yml` — Full schema inventory
-- `GLANCE.yml` — Quick reference
-- `safari-schemas.yml` — Schemas from 8 safaris
-- `collective-schemas.yml` — Team-donated schemas
-- Individual `.yml` files — Specific patterns
+- **Mode:** Teaching
+- **Schemas:** 59
+- **Tested:** 774 bugs
+- **Reliability:** Proven in production

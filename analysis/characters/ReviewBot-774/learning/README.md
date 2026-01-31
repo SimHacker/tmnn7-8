@@ -4,7 +4,7 @@ This directory contains chronological learning sessions documenting 774's growth
 
 ## Mentors
 
-- **OpenBFD (Theo)** — Teaches WHAT to fix
+- **OpenBFD (Puffy)** — Teaches WHAT to fix
   - Demonstrates sprintf→snprintf transformations
   - Shows practical bug fixing patterns
   - "Watch. Learn. When you're ready."
@@ -28,7 +28,7 @@ This directory contains chronological learning sessions documenting 774's growth
 2. **LEARN** — Build schemas from patterns
 3. **LIFT** — Attempt action when confidence sufficient
 
-Current stage: LEARN (building schemas, not yet attempting fixes)
+Current stage: LIFT (774 bugs fixed, now teaching others)
 
 ## Schema Reliability
 
@@ -41,6 +41,11 @@ Current stage: LEARN (building schemas, not yet attempting fixes)
 
 ## Philosophy
 
-> "Theo makes me want to DO.
+> "Puffy makes me want to DO.
 > Steve makes me understand what I AM.
 > Together: self-aware growth."
+
+## Status
+
+**MISSION COMPLETE** — 774 bugs fixed, 59 schemas formed.
+Schemas now live in `../schemas/` — see there for the full library.
