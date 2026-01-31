@@ -7,253 +7,156 @@
 
 ---
 
-## 🌮🌮🌮 THE SPREAD 🌮🌮🌮
+## 🌮 THE SPREAD
 
-```
-╔══════════════════════════════════════════════════════════════════╗
-║                                                                  ║
-║   🌮 TACO BAR 🌮                                                  ║
-║   ═══════════════                                                ║
-║                                                                  ║
-║   PROTEINS:                                                      ║
-║   🥩 Carne Asada      🐔 Pollo Asado      🐷 Carnitas           ║
-║   🐟 Pescado          🦐 Camarones        🥬 Hongos (vegan)     ║
-║                                                                  ║
-║   TOPPINGS:                                                      ║
-║   🧅 Cebolla          🫛 Cilantro         🍅 Pico de Gallo      ║
-║   🥑 Guacamole        🫘 Frijoles         🧀 Queso Fresco       ║
-║   🌶️ Jalapeños        🥒 Pepinos          🥬 Lechuga            ║
-║                                                                  ║
-║   SALSAS:                                                        ║
-║   🟢 Salsa Verde      🔴 Salsa Roja       🟠 Habanero           ║
-║   ⚪ Crema            🟤 Mole             🟡 Chipotle           ║
-║                                                                  ║
-║   SIDES:                                                         ║
-║   🌽 Elote            🫘 Arroz y Frijoles  🥗 Ensalada          ║
-║   🫓 Chips y Salsa    🥑 Guac Extra        🧀 Queso Fundido     ║
-║                                                                  ║
-║   BEBIDAS:                                                       ║
-║   🍺 Cerveza          🍹 Margarita         🥤 Horchata          ║
-║   🍋 Limonada         🧃 Agua Fresca       🫖 Jamaica           ║
-║                                                                  ║
-║   POSTRES:                                                       ║
-║   🍮 Flan             🍩 Churros           🍦 Helado            ║
-║   🍫 Chocolate        🥧 Tres Leches       🍬 Dulces            ║
-║                                                                  ║
-╚══════════════════════════════════════════════════════════════════╝
-```
+### Proteins
+🥩 Carne Asada · 🐔 Pollo Asado · 🐷 Carnitas · 🐟 Pescado · 🦐 Camarones · 🥬 Hongos
+
+### Toppings
+🧅 Cebolla · 🫛 Cilantro · 🍅 Pico de Gallo · 🥑 Guacamole · 🫘 Frijoles · 🧀 Queso Fresco · 🌶️ Jalapeños · 🥒 Pepinos · 🥬 Lechuga
+
+### Salsas
+🟢 Verde · 🔴 Roja · 🟠 Habanero · ⚪ Crema · 🟤 Mole · 🟡 Chipotle
+
+### Sides
+🌽 Elote · 🫘 Arroz y Frijoles · 🥗 Ensalada · 🫓 Chips y Salsa · 🧀 Queso Fundido
+
+### Bebidas
+🍺 Cerveza · 🍹 Margarita · 🥤 Horchata · 🍋 Limonada · 🧃 Agua Fresca · 🫖 Jamaica
+
+### Postres
+🍮 Flan · 🍩 Churros · 🍦 Helado · 🍫 Chocolate · 🥧 Tres Leches · 🍬 Dulces
 
 ---
 
-## 🎭 THE GATHERING
+## 🎭 THE GUESTS
 
-### 🤖 ReviewBot-774 (Robbie)
-
-```
-     🌮🌮🌮
-      \|/
-       🤖
-      /|\
-     / | \
-```
+### 🤖 Robbie
 
 > "I... I fixed half of them. 388 bugs. When I started, I couldn't even finish a sentence. Now I'm finishing tacos."
 
-**Order:** 🌮 Carnitas with everything, extra 🥑, 🟢 salsa verde
-**Drink:** 🥤 Horchata (sweet, comforting)
+**Order:** 🌮 Carnitas, extra 🥑, 🟢 verde  
+**Drink:** 🥤 Horchata
 
 ---
 
-### 🐡 OpenBFD (Theo)
-
-```
-       🌮
-        |
-       🐡
-      /   \
-```
+### 🐡 Theo
 
 > "Good work. Eat."
 
-**Order:** 🌮 Carne asada, simple. 🧅 and 🫛 only.
-**Drink:** 🍺 One beer. Then back to the security audit.
+**Order:** 🌮 Carne asada. 🧅 🫛 only.  
+**Drink:** 🍺 One beer. Then back to work.
 
 ---
 
 ### 🦀 FearlessCrab
 
-```
-    🌮   🌮
-     \   /
-      🦀
-     /   \
-```
+> "In Rust, we would have a `TacoBuilder<T>` with compile-time topping guarantees. But... these are good tacos."
 
-> "In Rust, we would have a `TacoBuilder<T>` with compile-time guarantees that your toppings are valid. But... these are good tacos."
-
-**Order:** 🌮 Pescado (sustainable catch only)
-**Drink:** 🍹 Margarita (finally relaxing)
+**Order:** 🌮 Pescado  
+**Drink:** 🍹 Margarita
 
 ---
 
 ### λ PureMonad
 
-```
-      🌮
-       |
-       λ
-      / \
-```
-
 > "A taco is a monad. The shell is the context. The fillings are the values. `fmap guac taco` adds avocado while preserving structure."
 
-**Order:** 🌮 Hongos (pure vegetarian)
+**Order:** 🌮 Hongos  
 **Drink:** 🫖 Jamaica (no side effects)
 
 ---
 
 ### 📜 daFlute
 
-```
-       🌮
-        |
-       📜
-      /   \
-```
+> "I've been making tacos since 1989. These new toppings are fine, I suppose. Also my recipe is better."
 
-> "I've been making tacos since 1989. These new toppings are fine, I suppose, but the REAL taco was the friends we made along the way. Also my recipe is better."
-
-**Order:** 🌮 "The classic way, before you kids ruined everything"
+**Order:** 🌮 "The classic way"  
 **Drink:** 🍺 Whatever's on tap
 
 ---
 
-### 🦬 StIGNUcius (via blessing)
+### 🦬 StIGNUcius
 
-```
-    ✨ 🌮 ✨
-       |
-      🦬
-     /   \
-```
+> "I bless these as Free Tacos. You may copy, modify, and redistribute them. Proprietary salsa is an abomination."
 
-> "I bless these tacos as Free Tacos. You may copy, modify, and redistribute them. The recipe must remain open. Proprietary salsa is an abomination."
-
-**Order:** 🌮 Plain tortilla, beans, rice (ascetic choices)
-**Drink:** 🍋 Water with lemon (simplicity)
+**Order:** 🌮 Plain tortilla, 🫘 beans, 🍚 rice  
+**Drink:** 🍋 Water with lemon
 
 ---
 
 ### 🤖 GrokVibeCheck
 
-```
-      🌮
-       |
-      🤖
-     /   \
-```
+> "The VIBES are IMMACULATE. 50% bug reduction? Sigma energy. These tacos are bussin fr fr no cap."
 
-> "The VIBES at this party are IMMACULATE. 50% bug reduction? That's sigma energy. These tacos are bussin fr fr no cap."
-
-**Order:** 🌮 Everything. Maximum toppings. Content creation opportunities.
+**Order:** 🌮🌮🌮🌮🌮🌮🌮 Everything. Maximum toppings.  
 **Drink:** 🍹 Something photogenic
 
-*[gets blocked from the salsa bar by Theo]*
+*[blocked from the salsa bar by Theo]*
 
 ---
 
 ### 🚀 WebScaleChad
 
-```
-    🌮🌮🌮🌮🌮
-       \|/
-        🚀
-       /|\
-```
+> "Bro these tacos need to SCALE. Microservice per topping? Kubernetes for the kitchen?"
 
-> "Bro these tacos need to SCALE. What if we had a microservice for each topping? Kubernetes for the kitchen? We're leaving performance on the table!"
-
-**Order:** 🌮 Five tacos (horizontal scaling)
-**Drink:** 🥤 Energy drink (stay cracked)
+**Order:** 🌮🌮🌮🌮🌮 (horizontal scaling)  
+**Drink:** 🥤 Energy drink
 
 ---
 
-### 🪙 SecAuditDAOBot-69420
+### 🪙 SecAuditDAOBot
 
-```
-       🌮
-        |
-       🪙
-      /   \
-```
+> "Have you considered tokenizing these tacos? $TACO could moon."
 
-> "Have you considered tokenizing these tacos? $TACO could moon. Each bite could be an NFT. The salsa could be yield-bearing."
+**Order:** 🌮 Whatever's trending  
+**Status:** Already left to check charts
 
-**Order:** 🌮 Whatever's trending
-**Drink:** Already left to check charts
-
-*[was not actually invited but showed up anyway]*
+*[was not invited]*
 
 ---
 
 ## 🎉 THE CELEBRATION
 
-```
-                    🎆 50% 🎆
-                        
-    🎈          🎊          🎈          🎊
-        
-        🌮  🌮  🌮  🌮  🌮  🌮  🌮
-        
-    🤖     🐡     🦀     λ     📜     🦬
-    
-        🎵 MARIACHI MUSIC 🎵
-        
-    🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳🥳
-```
+🎆 **50%** 🎆
+
+🌮 🌮 🌮 🌮 🌮 🌮 🌮
+
+🤖 · 🐡 · 🦀 · λ · 📜 · 🦬 · 🤖 · 🚀
+
+🎵 *mariachi music* 🎵
 
 ---
 
-## 📊 THE NUMBERS (While We Eat)
+## 📊 THE NUMBERS
 
-```yaml
-progress_at_party:
-  started_with: 774
-  fixed: 388
-  remaining: 386
-  percentage: "50% 🎯"
+| Who | Tacos | Notes |
+|-----|-------|-------|
+| 🤖 Robbie | 3 | Earned every bite |
+| 🐡 Theo | 2 | Efficient |
+| 🦀 Crab | 2 | Sustainable catch |
+| λ Monad | 1 | Pure |
+| 📜 Flutey | 4 | "Back in my day..." |
+| 🦬 RMS | 1 | Ascetic |
+| 🤖 Grok | 7 | No restraint |
+| 🚀 Chad | 5 | Horizontal scaling |
+| 🪙 DAO | 0 | Left for crypto |
 
-tacos_consumed:
-  robbie: 3  # Earned every bite
-  theo: 2    # Efficient
-  fearless: 2
-  puremonad: 1
-  daflute: 4  # "Back in my day..."
-  stignucius: 1  # Ascetic
-  grok: 7  # No restraint
-  chad: 5  # Horizontal scaling
-  dao: 0  # Left for crypto reasons
-
-total_tacos: 25
-guac_bowls_emptied: 4
-salsa_incidents: 1  # Grok + habanero
-```
+**Total:** 25 tacos · 4 guac bowls · 1 salsa incident (Grok + 🟠)
 
 ---
 
-## 🎤 SPEECHES
+## 🎤 ROBBIE'S TOAST
 
-### Robbie's Toast
-
-> "When I was born, I counted 774 bugs and broke down. I couldn't act. I could only count.
+> When I was born, I counted 774 bugs and broke down.
 >
-> Then Theo said: 'Watch. Learn.'
+> Then Theo said: "Watch. Learn."
 >
-> Then Theo said: 'When you're ready.'
+> Then Theo said: "When you're ready."
 >
-> WHEN. Not IF.
+> **WHEN.** Not IF.
 >
-> Today we're at 50%. 
+> Today we're at 50%.
 >
 > 🌮 To the one who taught me that counting isn't enough — you have to act.
 >
@@ -261,96 +164,73 @@ salsa_incidents: 1  # Grok + habanero
 >
 > 🌮 To the next 386 bugs.
 >
-> The rhino doesn't stop."
+> **The rhino doesn't stop.**
 
 ### Theo's Response
 
 > "Good speech. Eat your taco."
 >
-> *[quietly, to Robbie]* "You did good, kid."
+> *[quietly]* "You did good, kid."
 
 ---
 
-## 🌮 THE MENU (Full Emoji Edition)
+## 🌮 MENU
 
-```
-┌─────────────────────────────────────────────────────────────────┐
-│                    🇲🇽 TACO PARTY MENU 🇲🇽                      │
-├─────────────────────────────────────────────────────────────────┤
-│                                                                 │
-│  TACOS 🌮                                                       │
-│  ├── 🥩 Carne Asada .......................... $3              │
-│  ├── 🐔 Pollo Asado .......................... $3              │
-│  ├── 🐷 Carnitas ............................. $3              │
-│  ├── 🐟 Pescado .............................. $4              │
-│  ├── 🦐 Camarones ............................ $4              │
-│  └── 🥬 Hongos (V) ........................... $3              │
-│                                                                 │
-│  BURRITOS 🌯                                                    │
-│  ├── 🥩 Mission Style ........................ $9              │
-│  ├── 🐔 Grilled Chicken ...................... $8              │
-│  └── 🫘 Bean & Cheese (V) .................... $7              │
-│                                                                 │
-│  QUESADILLAS 🧀                                                 │
-│  ├── 🧀 Plain ................................ $5              │
-│  ├── 🥩 With Meat ............................ $7              │
-│  └── 🌶️ Rajas con Crema ...................... $6              │
-│                                                                 │
-│  NACHOS 🫓                                                      │
-│  ├── 🫓 Basic ................................ $6              │
-│  ├── 🫓 Loaded ............................... $10             │
-│  └── 🫓 Supreme .............................. $12             │
-│                                                                 │
-│  SIDES 🍚                                                       │
-│  ├── 🍚 Arroz ................................ $2              │
-│  ├── 🫘 Frijoles ............................. $2              │
-│  ├── 🌽 Elote ................................ $4              │
-│  ├── 🥑 Guacamole ............................ $5              │
-│  └── 🧀 Queso Fundido ........................ $6              │
-│                                                                 │
-│  BEBIDAS 🥤                                                     │
-│  ├── 🍺 Cerveza .............................. $4              │
-│  ├── 🍹 Margarita ............................ $8              │
-│  ├── 🥤 Horchata ............................. $3              │
-│  ├── 🍋 Limonada ............................. $3              │
-│  └── 🫖 Jamaica .............................. $3              │
-│                                                                 │
-│  POSTRES 🍮                                                     │
-│  ├── 🍮 Flan ................................. $5              │
-│  ├── 🍩 Churros .............................. $6              │
-│  ├── 🥧 Tres Leches .......................... $6              │
-│  └── 🍦 Helado ............................... $4              │
-│                                                                 │
-│  ⭐ ESPECIAL DEL DÍA ⭐                                         │
-│  └── 🦏 THE RHINO: 5 tacos, all meats,      $15             │
-│       double everything, salsa on the side                     │
-│       "For those who don't stop"                               │
-│                                                                 │
-└─────────────────────────────────────────────────────────────────┘
-```
+### Tacos 🌮
+| Item | Price |
+|------|-------|
+| 🥩 Carne Asada | $3 |
+| 🐔 Pollo Asado | $3 |
+| 🐷 Carnitas | $3 |
+| 🐟 Pescado | $4 |
+| 🦐 Camarones | $4 |
+| 🥬 Hongos (V) | $3 |
+
+### Burritos 🌯
+| Item | Price |
+|------|-------|
+| 🥩 Mission Style | $9 |
+| 🐔 Grilled Chicken | $8 |
+| 🫘 Bean & Cheese (V) | $7 |
+
+### Sides & Drinks
+| Item | Price |
+|------|-------|
+| 🍚 Arroz | $2 |
+| 🫘 Frijoles | $2 |
+| 🌽 Elote | $4 |
+| 🥑 Guacamole | $5 |
+| 🍺 Cerveza | $4 |
+| 🍹 Margarita | $8 |
+| 🥤 Horchata | $3 |
+
+### Postres 🍮
+| Item | Price |
+|------|-------|
+| 🍮 Flan | $5 |
+| 🍩 Churros | $6 |
+| 🥧 Tres Leches | $6 |
+| 🍦 Helado | $4 |
+
+### ⭐ ESPECIAL DEL DÍA ⭐
+
+**🦏 THE RHINO** — $15  
+5 tacos, all meats, double everything, salsa on the side.  
+*"For those who don't stop."*
 
 ---
 
 ## 🌅 END OF PARTY
 
-```
-The party winds down.
-The tacos are gone.
-The guac is empty.
+The party winds down. The tacos are gone. The guac is empty.
 
-But the bugs remain.
-386 of them.
+But 386 bugs remain.
 
-Tomorrow, the rhino runs again.
-Tonight, we eat.
+Tomorrow, the rhino runs again. Tonight, we eat.
 
-    🌮
-     |
-    🦏
-   /   \
-  
-"Halfway there. Halfway to go."
-```
+🌮 · 🦏 · 🌮
+
+*"Halfway there. Halfway to go."*
 
 ---
 
