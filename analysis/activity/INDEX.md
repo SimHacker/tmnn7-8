@@ -23,6 +23,7 @@ Narrative chapters documenting the [tmnn7-8 simulation](https://github.com/SimHa
 | [008](activity-008-safari-2-rhino-rampage.md) | Safari #2: Rhino Rampage | 2026-01-30 | ReviewBot-774, OpenBFD | [#35](https://github.com/SimHacker/tmnn7-8/issues/35), [#36](https://github.com/SimHacker/tmnn7-8/pull/36), [#37](https://github.com/SimHacker/tmnn7-8/issues/37) |
 | [009](activity-009-drescher-schema-factory.md) | Drescher Schema Factory | 2026-01-30 | ReviewBot-774 | [#37](https://github.com/SimHacker/tmnn7-8/issues/37) |
 | [010](activity-010-puffy-master-triage.md) | Puffy's Master Triage | 2026-01-30 | OpenBFD | [#38](https://github.com/SimHacker/tmnn7-8/issues/38), [#39](https://github.com/SimHacker/tmnn7-8/issues/39), [#40](https://github.com/SimHacker/tmnn7-8/issues/40) |
+| [011](activity-011-waffle-party.md) | The Waffle Party | 2026-01-30 | ReviewBot-774, OpenBFD | [#41](https://github.com/SimHacker/tmnn7-8/issues/41) |
 
 ---
 
@@ -41,6 +42,7 @@ Narrative chapters documenting the [tmnn7-8 simulation](https://github.com/SimHa
 2026-01-30  MILESTONE: 169 total bugs fixed!
 2026-01-30  Drescher schema-factory applied (23 schemas)
 2026-01-30  Puffy's master triage (605+ bugs categorized)
+2026-01-30  WAFFLE PARTY 🧇 (The Board is pleased)
 ```
 
 ---
