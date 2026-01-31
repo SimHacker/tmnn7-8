@@ -336,6 +336,8 @@ tmnn7-8/analysis/skills/github-simulation/ ← GitHub Issues as stage
 - "This sucks." — Steve Jobs in the front row
 - 🔔 *GONG* — you've been Gong Show'd
 - 🪝 *pulled off stage with hook* — vaudeville justice
+- 🍅 *throws tomato* — classic disapproval
+- 🍆🍑 *throws suggestive produce* — the cheap seats have opinions
 
 Comments are audience participation — respond in character, break character to compliment, or start a whole new subplot.
 
