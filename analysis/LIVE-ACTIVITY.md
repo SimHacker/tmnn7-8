@@ -14,7 +14,7 @@ Robbie eliminates 67 string safety bugs across 5 files in a caffeine-fueled sess
 
 ## Activity Log
 
-See [`activity/INDEX.md`](activity/INDEX.md) for full chapter list.
+See [`activity/`](activity/) for full chapter list.
 
 | # | Title | Summary |
 |---|-------|---------|

@@ -22,7 +22,7 @@ subdirs:
 
 key_files:
   - INDEX.yml: "Categorized registry with k-lines"
-  - INDEX.md: "Dense connected narrative"
+  - README.md: "Dense connected narrative"
   - SIMULATION.yml: "Runtime state and orchestration"
   - vulnerabilities.yml: "872 unsafe function calls"
   - fascist-analysis.yml: "The infamous file"

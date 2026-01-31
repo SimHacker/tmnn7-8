@@ -1,6 +1,6 @@
 # TMNN Analysis Registry — 9 Characters, 40+ Evidence Files
 # Load CHARACTER.yml for voice, README.md for quick ref, *.yml for raw data
-# See INDEX.md for narrative connections
+# See README.md for narrative connections
 
 version: 1
 skill_count: 9  # playable characters

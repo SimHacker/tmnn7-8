@@ -231,5 +231,5 @@ ls activity-*.md | tail -1
 # Create new file
 # activity-NNN-description.md
 
-# Update this INDEX.md
+# Update this README.md
 ```
