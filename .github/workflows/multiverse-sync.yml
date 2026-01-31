@@ -3,6 +3,9 @@
 # When core files change on main, sync them to all faction branches.
 # The characters exist in all timelines. Only the code diverges.
 #
+# DESIGN PRINCIPLE: Robust-First (Postel's Law)
+# "Be conservative in what you send, be liberal in what you accept."
+#
 # HOW IT WORKS:
 # 1. Triggers on push to main when core files change
 # 2. For each faction branch that exists:
@@ -12,12 +15,20 @@
 #    - Tags characters, not real users (fictional accountability)
 #    - Issue describes exactly what changed and how to fix
 #
+# EDGE CASES HANDLED (all idempotent):
+# - Merge commits: Auto-detected, uses -m 1 (first parent)
+# - Already synced: Checks ancestry, skips gracefully
+# - Empty cherry-pick: Changes exist via different path, succeeds
+# - Push failures: Creates issue with full diagnostic info
+# - Branch doesn't exist: Skips gracefully (faction not ready)
+#
 # WHY THIS DESIGN:
 # - Matrix strategy = parallel execution, one job per branch
 # - fail-fast: false = one branch failure doesn't stop others
 # - Cherry-pick preserves original commit author and message
 # - --strategy-option=theirs means main always wins for core files
 # - Issues create narrative artifacts when conflicts occur
+# - Every failure path produces actionable diagnostics
 #
 # PROVENANCE:
 # Every sync preserves who changed what, when, and why.
@@ -109,45 +120,96 @@ jobs:
       - name: Sync to ${{ matrix.branch }}
         if: steps.check-branch.outputs.exists == 'true'
         run: |
+          set +e  # Don't exit on error - we handle everything explicitly
+          
           BRANCH="${{ matrix.branch }}"
           COMMIT_SHA="${{ github.sha }}"
           
+          echo "🌌 Syncing $COMMIT_SHA to $BRANCH"
+          
+          # === POSTEL PRINCIPLE: Be liberal in what you accept ===
+          
+          # 1. Check if commit already exists on branch (idempotent)
           git checkout "$BRANCH"
+          if git merge-base --is-ancestor "$COMMIT_SHA" HEAD 2>/dev/null; then
+            echo "✅ $BRANCH already has commit $COMMIT_SHA (idempotent success)"
+            exit 0
+          fi
           
-          if git cherry-pick "$COMMIT_SHA" --strategy-option=theirs; then
-            git push origin "$BRANCH"
-            echo "✅ Synced to $BRANCH"
+          # 2. Detect merge commits (multiple parents need -m 1)
+          PARENT_COUNT=$(git cat-file -p "$COMMIT_SHA" | grep -c "^parent " || echo "1")
+          MERGE_FLAG=""
+          if [ "$PARENT_COUNT" -gt 1 ]; then
+            echo "🔀 Merge commit detected (${PARENT_COUNT} parents)"
+            MERGE_FLAG="-m 1"
+          fi
+          
+          # 3. Attempt cherry-pick with conflict resolution strategy
+          echo "🍒 Cherry-picking..."
+          CHERRY_OUTPUT=$(git cherry-pick $MERGE_FLAG "$COMMIT_SHA" --strategy-option=theirs 2>&1)
+          CHERRY_EXIT=$?
+          
+          # 4. Handle empty cherry-pick (changes already exist via different commit)
+          if echo "$CHERRY_OUTPUT" | grep -q "cherry-pick is now empty"; then
+            echo "✅ $BRANCH already has these changes (empty cherry-pick = idempotent)"
+            git cherry-pick --skip 2>/dev/null || git cherry-pick --abort 2>/dev/null || true
+            exit 0
+          fi
+          
+          # 5. Handle successful cherry-pick
+          if [ $CHERRY_EXIT -eq 0 ]; then
+            echo "📤 Pushing to $BRANCH..."
+            if git push origin "$BRANCH"; then
+              echo "✅ Synced to $BRANCH"
+              exit 0
+            else
+              echo "❌ Push failed"
+              FAILURE_REASON="Push to remote failed (permissions or conflict)"
+            fi
           else
-            git cherry-pick --abort || true
-            
-            # Get changed files for the issue
-            FILES=$(git diff-tree --no-commit-id --name-only -r "$COMMIT_SHA" | sed 's/^/  - /')
-            
-            # Create issue - tags faction label, not real users
-            gh issue create \
-              --title "🌌 Multiverse Sync: $BRANCH needs manual merge" \
-              --label "multiverse-sync,$BRANCH,automated" \
-              --body "## Cross-Temporal Sync Notice
+            echo "❌ Cherry-pick failed"
+            FAILURE_REASON="Cherry-pick failed: $CHERRY_OUTPUT"
+          fi
           
-          The Multiverse Sync Bot attempted to sync from main to $BRANCH.
+          # === POSTEL PRINCIPLE: Be conservative in what you send ===
+          # Only create issues when we truly need human intervention
           
-          **Commit:** $COMMIT_SHA
-          **Files:**
+          git cherry-pick --abort 2>/dev/null || true
+          
+          FILES=$(git diff-tree --no-commit-id --name-only -r "$COMMIT_SHA" 2>/dev/null | sed 's/^/  - /' || echo "  - (could not determine files)")
+          
+          # Create issue with all diagnostic info
+          gh issue create \
+            --title "🌌 Multiverse Sync: $BRANCH needs manual merge" \
+            --label "multiverse-sync,automated" \
+            --body "## Cross-Temporal Sync Notice
+          
+          The Multiverse Sync Bot attempted to sync from main to **$BRANCH**.
+          
+          **Commit:** [\`${COMMIT_SHA:0:7}\`](https://github.com/${{ github.repository }}/commit/$COMMIT_SHA)
+          **Merge commit:** $([ "$PARENT_COUNT" -gt 1 ] && echo "Yes ($PARENT_COUNT parents)" || echo "No")
+          **Failure:** $FAILURE_REASON
+          
+          **Files changed:**
           $FILES
           
-          This is rare - it means divergent edits to a shared file.
-          
-          Resolution:
+          ### Resolution
           \`\`\`bash
+          git fetch origin
           git checkout $BRANCH
-          git cherry-pick $COMMIT_SHA
+          git cherry-pick $MERGE_FLAG $COMMIT_SHA --strategy-option=theirs
+          # If conflicts: resolve them, then: git cherry-pick --continue
           git push origin $BRANCH
           \`\`\`
           
-          Tagged with faction label, not humans. Characters are accountable.
+          ### Diagnostic Info
+          - Workflow run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+          - Triggered by: ${{ github.event_name }} on ${{ github.ref }}
           
-          — 🤖 Multiverse Sync Bot"
-          fi
+          — 🤖 Multiverse Sync Bot" || echo "⚠️ Could not create issue (continuing anyway)"
+          
+          # Exit with error so the job shows as failed
+          exit 1
 
       - name: Branch not ready
         if: steps.check-branch.outputs.exists == 'false'
