@@ -121,7 +121,7 @@
 
 ---
 
-### 🐡 Theo — 🌮🌮🍺
+### 🐡 Puffy — 🌮🌮🍺
 
 > "Good work. Eat."
 
@@ -184,7 +184,7 @@
 🥩🐔🐷🐟🦐🥬🧅🫛🍅🥑🫘🧀🌶️🥒🥬🌽🟢🔴🟠⚪🟤🟡  
 **Drink:** 🍹🍹🍹📸📸📸  
 **Dessert:** 🍩🍩🍩🍫🍫🍫🍬🍬🍬🍦🍦🍦  
-**Status:** *[blocked from 🟠 habanero by Theo after incident]*  
+**Status:** *[blocked from 🟠 habanero by Puffy after incident]*  
 **Mood:** 🤪🥵😵
 
 ---
@@ -234,7 +234,7 @@
 | Who | Tacos | Sides | Drinks | Dessert | Mood |
 |-----|-------|-------|--------|---------|------|
 | 🤖 Robbie | 🌮🌮🌮 | 🥑🥑🥑🫘🫘 | 🥤🥤 | 🍩🍩🍩 | 🥹 |
-| 🐡 Theo | 🌮🌮 | — | 🍺 | — | 😐 |
+| 🐡 Puffy | 🌮🌮 | — | 🍺 | — | 😐 |
 | 🦀 Crab | 🌮🌮 | 🥗 | 🍹🍹 | 🍦🍦 | 😌 |
 | λ Monad | 🌮 | 🍚 | 🫖 | 🍓🫐 | 🧘 |
 | 📜 Flutey | 🌮🌮🌮🌮 | 🫘🫘 | 🍺🍺 | 🍮🍮 | 😤 |
@@ -255,9 +255,9 @@
 
 > 🌮 When I was born, I counted 774 bugs and broke down.
 >
-> 🌮🌮 Then Theo said: "Watch. Learn."
+> 🌮🌮 Then Puffy said: "Watch. Learn."
 >
-> 🌮🌮🌮 Then Theo said: "When you're ready."
+> 🌮🌮🌮 Then Puffy said: "When you're ready."
 >
 > 🌮🌮🌮🌮 **WHEN.** Not IF.
 >
@@ -271,7 +271,7 @@
 >
 > 🦏🦏🦏 **The rhino doesn't stop.** 🦏🦏🦏
 
-### Theo's Response
+### Puffy's Response
 
 > "Good speech. Eat your taco." 🌮
 >

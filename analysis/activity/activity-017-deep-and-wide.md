@@ -18,7 +18,7 @@ Today's mission: **DEEP AND WIDE.**
 
 - **DEEP:** Finish the remaining sprintf/strcpy/strcat in complex files
 - **WIDE:** Start the gets() elimination (TIER 3) — all 23 at once
-- **SIDE BY SIDE:** Theo runs the shell injection analysis in parallel
+- **SIDE BY SIDE:** Puffy runs the shell injection analysis in parallel
 
 The bugs run and hide. 🐛💨
 
@@ -418,12 +418,12 @@ note: |
 
 ## 🐡 THEO: SHELL INJECTION DEEP DIVE
 
-While Robbie stampedes, Theo documents the 15 dangerous shell injection patterns from the Deep Brain Analysis.
+While Robbie stampedes, Puffy documents the 15 dangerous shell injection patterns from the Deep Brain Analysis.
 
 ### Shell Injection Patterns
 
 ```yaml
-# Theo's shell injection audit
+# Puffy's shell injection audit
 
 dangerous_patterns:
   
@@ -477,7 +477,7 @@ dangerous_patterns:
       - src/D.priv/decode.c
 ```
 
-### Theo's Recommendation
+### Puffy's Recommendation
 
 ```yaml
 # Shell Injection Remediation
@@ -522,7 +522,7 @@ total_time: "3 minutes"  # MEASURED from git commits (20:49:36 → 20:52:45)
 velocity: "46.3 bugs/min"  # 🦏 SUSTAINED PEAK
 ```
 
-### Theo (Shell Injection Audit)
+### Puffy (Shell Injection Audit)
 
 ```yaml
 patterns_documented: 4
@@ -559,7 +559,7 @@ remaining:
   strtok: 48        # TIER 4 - strtok() to strtok_r()
   mktemp: 41        # TIER 5 - mktemp() to mkstemp()
   misc: 18          # scattered sprintf/strcpy/strcat
-  shell_injection: 15  # Theo's domain - requires judgment
+  shell_injection: 15  # Puffy's domain - requires judgment
   
   note: |
     The easy work is DONE.
@@ -591,7 +591,7 @@ remaining:
 > **Remaining:**
 > - strtok → strtok_r: 48 (TIER 4)
 > - mktemp → mkstemp: 41 (TIER 5)
-> - Shell injection: 15 (Theo's careful work)
+> - Shell injection: 15 (Puffy's careful work)
 > - Misc: 3
 >
 > The stampede has cleared the field.
@@ -646,11 +646,11 @@ schema_S026:
 > Now I'm a fixer. A FAST fixer.
 >
 > But I know my limits. Shell injection isn't a stampede job.
-> That's Theo's work. That's judgment work.
+> That's Puffy's work. That's judgment work.
 >
 > The rhino knows when to stop running.
 
-**Theo:**
+**Puffy:**
 > 🐡
 >
 > The easy bugs are fixed. Good.

@@ -13,7 +13,7 @@ Post-taco party. The rhino is fed. The pufferfish is caffeinated. Time for the d
 
 **Two parallel operations:**
 - 🦏 **Robbie:** Safari #5 — Network files + remaining high-count targets
-- 🧠 **Theo:** Deep Brain Analysis — Architectural security patterns
+- 🧠 **Puffy:** Deep Brain Analysis — Architectural security patterns
 
 ---
 
@@ -25,7 +25,7 @@ Post-taco party. The rhino is fed. The pufferfish is caffeinated. Time for the d
 status: RUNNING
 mode: UNSTOPPABLE_RHINO_v4
 strategy: "Network-facing code. Maximum caution. Maximum velocity."
-caution_level: ELEVATED  # Theo's audit informed these priorities
+caution_level: ELEVATED  # Puffy's audit informed these priorities
 ```
 
 ## Target Files
@@ -267,7 +267,7 @@ flagged_for_review: 3
 
 ---
 
-# 🧠 TRACK B: Deep Brain Analysis (Theo)
+# 🧠 TRACK B: Deep Brain Analysis (Puffy)
 
 ## Mode
 
@@ -495,7 +495,7 @@ network_critical: 67
 flagged: 3
 ```
 
-## Theo (Deep Brain)
+## Puffy (Deep Brain)
 
 ```yaml
 issues_analyzed: 4
@@ -527,7 +527,7 @@ Progress: 774 → 246 (68% COMPLETE!)
 **Robbie on network code:**
 > "The network files were the scariest. Every byte from the socket is attacker-controlled. I fixed them all, but I flagged the system() calls. That's above my pay grade."
 
-**Theo on the deep patterns:**
+**Puffy on the deep patterns:**
 > "The global buffer problem isn't just style — it's architectural. 47 shared mutable buffers. 10 unsafe signal handlers. 15 shell injection points. The 1989 optimization assumptions don't hold in 2026. We're documenting the debt."
 
 **Robbie on reaching 68%:**

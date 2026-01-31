@@ -9,7 +9,7 @@
 
 ## Synopsis
 
-Two fronts. One goal. Robbie bulldozes the biggest remaining files while Theo maps the network trust boundaries. The rhino and the pufferfish work in parallel.
+Two fronts. One goal. Robbie bulldozes the biggest remaining files while Puffy maps the network trust boundaries. The rhino and the pufferfish work in parallel.
 
 ---
 
@@ -57,14 +57,14 @@ approach:
   - Map all buffer sizes first
   - Identify which escapes are user-controlled
   - Fix in order of risk
-  - Flag any unclear cases for Theo
+  - Flag any unclear cases for Puffy
 
 result: 45/45 fixed
 time: "8 minutes (slower due to caution)"
 ```
 
 **Robbie's note:**
-> "escapes.c is where user input gets processed. Every byte could be an attack. I fixed all 45 but flagged 3 cases where the escape length calculation looked suspicious. Theo should review."
+> "escapes.c is where user input gets processed. Every byte could be an attack. I fixed all 45 but flagged 3 cases where the escape length calculation looked suspicious. Puffy should review."
 
 ### rfuncs.c — Reader Functions (42 bugs)
 
@@ -91,7 +91,7 @@ bugs: 16
 risk: HIGH
 reason: |
   Mail interfaces. Potential shell injection if mail addresses
-  pass through system(). Flagged for Theo's review.
+  pass through system(). Flagged for Puffy's review.
 
 patterns_found:
   sprintf: 10
@@ -171,7 +171,7 @@ flagged_for_review:
 
 ---
 
-## 🐡 Track B: Network Trust Audit (Theo)
+## 🐡 Track B: Network Trust Audit (Puffy)
 
 ### Mode
 
@@ -183,7 +183,7 @@ priority: CRITICAL
 
 ### Issue #40: Network Boundary Mapping
 
-While Robbie bulldozes, Theo maps where the network touches the code.
+While Robbie bulldozes, Puffy maps where the network touches the code.
 
 ### Trust Model (Draft)
 
@@ -308,7 +308,7 @@ velocity: "6.25 bugs/min"
 flagged_for_review: 2 files
 ```
 
-### Theo (Security Audit)
+### Puffy (Security Audit)
 
 ```yaml
 files_audited: 3
@@ -337,9 +337,9 @@ Progress: 774 → 386 (50% COMPLETE!)
 ## Key Quotes
 
 **Robbie on the big files:**
-> "escapes.c was the hardest yet. 45 bugs in string processing code. Every byte matters. I slowed down and got them all — but flagged the suspicious ones for Theo."
+> "escapes.c was the hardest yet. 45 bugs in string processing code. Every byte matters. I slowed down and got them all — but flagged the suspicious ones for Puffy."
 
-**Theo on the security audit:**
+**Puffy on the security audit:**
 > "Not all sprintf overflows are equal. The ones in nntpread.c could be triggered by a malicious news server. The ones in lnfilter.c require local access. The distinction matters."
 
 **Robbie on reaching 50%:**
@@ -350,7 +350,7 @@ Progress: 774 → 386 (50% COMPLETE!)
 ## GitHub Artifacts
 
 - **Robbie's Run:** [#45 comment](https://github.com/SimHacker/tmnn7-8/issues/45)
-- **Theo's Audit:** [#40 comment](https://github.com/SimHacker/tmnn7-8/issues/40)
+- **Puffy's Audit:** [#40 comment](https://github.com/SimHacker/tmnn7-8/issues/40)
 - **Milestone:** [#37](https://github.com/SimHacker/tmnn7-8/issues/37)
 
 ---

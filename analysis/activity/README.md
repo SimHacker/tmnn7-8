@@ -56,7 +56,7 @@ Narrative chapters documenting the [tmnn7-8 simulation](https://github.com/SimHa
 2026-01-30  Issue breakdown: 10 new issues, graduated learning path
 2026-01-31  Safari #3: Rhino Returns (69 bugs) - TIER 1 files
 2026-01-31  Safari #4: Parallel Assault (150 bugs) - Big files
-2026-01-31  Theo's Security Audit begins (Network Trust Model)
+2026-01-31  Puffy's Security Audit begins (Network Trust Model)
 2026-01-31  MILESTONE: 388 total bugs fixed! (50%)
 2026-01-31  🌮 TACO PARTY 🌮 (The halfway celebration!)
 2026-01-31  Safari #5: Deep Charge (140 bugs) - Network gauntlet

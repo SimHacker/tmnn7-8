@@ -21,7 +21,7 @@
 
 **Total hunt:** 92 bugs 🎯
 
-The 15 shell injection bugs stay with Theo. 🐡 Those need stalking, not sprinting.
+The 15 shell injection bugs stay with Puffy. 🐡 Those need stalking, not sprinting.
 
 ---
 
@@ -334,7 +334,7 @@ IMPROVEMENT: +12.6%
 started_with: 774 bugs
 fixed_total: 759 bugs  # 667 + 92
 
-remaining: 15 bugs  # All shell injection (Theo's domain)
+remaining: 15 bugs  # All shell injection (Puffy's domain)
 
 progress: 98% COMPLETE 🎉🎉🎉
 ```
@@ -343,14 +343,14 @@ progress: 98% COMPLETE 🎉🎉🎉
 
 ```yaml
 shell_injection_bugs: 15
-owner: OpenBFD (Theo)
+owner: OpenBFD (Puffy)
 reason: "These require judgment, not speed"
 status: AWAITING_CAREFUL_REVIEW
 
 note: |
   The cheetah knows when to stop.
   Shell injection bugs are prey that fights back.
-  These are Theo's hunt.
+  These are Puffy's hunt.
 ```
 
 ---
@@ -457,7 +457,7 @@ remaining_bugs:
   note: |
     These aren't bugs to hunt.
     These are traps to disarm.
-    🐡 Theo will handle them with care.
+    🐡 Puffy will handle them with care.
 ```
 
 ---

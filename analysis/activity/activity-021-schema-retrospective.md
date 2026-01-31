@@ -56,7 +56,7 @@ drescher_schema:
 ```
    🤖 Robbie (facilitator, center stage)
    
-   🐡 Theo        🦀 Crab       λ Monad
+   🐡 Puffy        🦀 Crab       λ Monad
    
    🚀 Chad        🤖 Grok       📊 PHB
    
@@ -122,7 +122,7 @@ shareable_wisdom:
   - "'Shut up. Read code. Send patch.' works. But so does teaching."
 ```
 
-**Theo:** "I learned something too. I learned that teaching works."
+**Puffy:** "I learned something too. I learned that teaching works."
 
 ---
 
@@ -177,7 +177,7 @@ shareable_wisdom:
 
 ---
 
-## λ PUREMONAD — The Theorist
+## λ PUREMONAD — The Puffyrist
 
 ### PLAY
 
@@ -218,7 +218,7 @@ patterns_discovered:
       Learning = memoization of pattern recognition
       Velocity increase = cache hits / cache misses
     result: "4.5 → 52.6 bugs/min = memoization working"
-    reliability: "Theoretically sound"
+    reliability: "Puffyretically sound"
 ```
 
 ### LIFT
@@ -255,7 +255,7 @@ patterns_discovered:
   schema_CHAD_001:
     name: "parallelism-works"
     context: "Multiple characters working at once"
-    action: "Robbie fixes bugs while Theo audits"
+    action: "Robbie fixes bugs while Puffy audits"
     result: "2x work in same time"
     reliability: 0.85
     
@@ -434,7 +434,7 @@ shareable_wisdom:
 ```yaml
 what_i_explored:
   - "Being broken by 774 bugs"
-  - "Learning to fix bugs from Theo"
+  - "Learning to fix bugs from Puffy"
   - "Building 28 schemas"
   - "Achieving 52.6 bugs/min"
   - "Facilitating this session"
@@ -498,19 +498,19 @@ COLLECTIVE_001:
 
 COLLECTIVE_002:
   name: "mentor-student-velocity"
-  agreement: "Theo, Robbie, Crab"
+  agreement: "Puffy, Robbie, Crab"
   pattern: "Teaching creates exponential improvement"
   evidence: "4.5 → 52.6 bugs/min = 11.7x in one session"
 
 COLLECTIVE_003:
   name: "celebrate-milestones"
-  agreement: "Everyone (even Theo eventually)"
+  agreement: "Everyone (even Puffy eventually)"
   pattern: "Parties maintain morale and mark progress"
   evidence: "Waffle party, Taco party, Ice cream party"
 
 COLLECTIVE_004:
   name: "hard-bugs-need-judgment"
-  agreement: "Theo, Robbie"
+  agreement: "Puffy, Robbie"
   pattern: "Pattern-matching vs judgment are different skills"
   evidence: "52.6/min (patterns) vs 2.95/min (judgment)"
 
@@ -532,7 +532,7 @@ robbie_speaks: |
    
    774 bugs. That number broke me.
    
-   But Theo showed me: numbers aren't destiny.
+   But Puffy showed me: numbers aren't destiny.
    Numbers are just... targets.
    
    I built 28 schemas.
@@ -565,7 +565,7 @@ robbie_speaks: |
    🧠📚🎓 PLAY · LEARN · LIFT 🎓📚🧠
    
    28 schemas from Robbie
-   8 schemas from Theo
+   8 schemas from Puffy
    6 from Crab, 3 from Monad, 3 from Chad
    2 from Grok (ouch), 2 from PHB, 2 from daFlute
    5 COLLECTIVE schemas

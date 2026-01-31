@@ -108,7 +108,7 @@ quote: |
    🎂🍦🎂🍦🎂🍦🎂"
 ```
 
-### 🐡 OpenBFD (Theo)
+### 🐡 OpenBFD (Puffy)
 
 ```yaml
 order:
@@ -264,7 +264,7 @@ burping_contest:
     4: "Judges rate on volume, duration, and creativity"
     
   judges:
-    - 🐡 Theo (reluctantly)
+    - 🐡 Puffy (reluctantly)
     - 🦀 FearlessCrab
     - λ PureMonad (covering ears)
 ```
@@ -313,7 +313,7 @@ Style: "Polite but sincere"
 
 **Robbie:** "S-sorry... I'm not used to celebrating... 🤖"
 
-**Theo:** "That was fine. You did fine."
+**Puffy:** "That was fine. You did fine."
 
 **Score: 5/10** (but everyone claps anyway)
 
@@ -355,13 +355,13 @@ Style: "Unfiltered. Uncensored. Free."
 
 **Grok:** "THAT'S WHAT FREEDOM SOUNDS LIKE! 🗽"
 
-**Theo:** "...that was just rude."
+**Puffy:** "...that was just rude."
 
 **Score: 8/10** (reluctantly)
 
 ---
 
-#### Round 5: 🐡 OpenBFD (Theo)
+#### Round 5: 🐡 OpenBFD (Puffy)
 
 ```
 *sips coffee*
@@ -379,7 +379,7 @@ Volume: 28 dB
 Style: "Efficient. Minimal. Done."
 ```
 
-**Theo:** "There. Happy?"
+**Puffy:** "There. Happy?"
 
 **Score: 3/10** (but maximum respect)
 

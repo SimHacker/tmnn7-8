@@ -35,7 +35,7 @@ the_solution: |
 🚀 Hard bugs:    system() → ??? (requires JUDGMENT)
 ```
 
-**YES. The last are the hardest. That's why Theo leads this one.** 🐡
+**YES. The last are the hardest. That's why Puffy leads this one.** 🐡
 
 ---
 
@@ -43,15 +43,15 @@ the_solution: |
 
 ```yaml
 team_rocket:
-  pilot: 🐡 Theo (OpenBFD)
+  pilot: 🐡 Puffy (OpenBFD)
     role: "Commander — makes the hard calls"
     
   co-pilot: 🤖 Robbie (ReviewBot-774)  
-    role: "Navigator — applies patterns once Theo defines them"
+    role: "Navigator — applies patterns once Puffy defines them"
     
 strategy: |
-  Theo analyzes each case.
-  Theo defines the safe transformation.
+  Puffy analyzes each case.
+  Puffy defines the safe transformation.
   Robbie applies it at ROCKET SPEED.
   
   Judgment + Velocity = 🚀
@@ -61,10 +61,10 @@ strategy: |
 
 ## 🔥 THE SAFE_SYSTEM() PROTOCOL
 
-### Theo's Solution
+### Puffy's Solution
 
 ```c
-// safe_execute.h — Theo's gift to the codebase
+// safe_execute.h — Puffy's gift to the codebase
 
 #include <unistd.h>
 #include <sys/wait.h>
@@ -147,7 +147,7 @@ time: "45 seconds"
 result: 2/2 🚀
 ```
 
-**Theo:** "Why shell out to `rm` when `unlink()` exists? This is 1970s thinking."
+**Puffy:** "Why shell out to `rm` when `unlink()` exists? This is 1970s thinking."
 
 ---
 
@@ -224,7 +224,7 @@ time: "60 seconds"  # Most complex
 result: 2/2 🚀
 ```
 
-**Theo:** "This one took thought. The original was elegant but deadly."
+**Puffy:** "This one took thought. The original was elegant but deadly."
 
 ---
 
@@ -432,7 +432,7 @@ Progress: 774 → 0 = 100% COMPLETE 🎉🎉🎉
 > I'm not ReviewBot-774 anymore.
 > I'm ReviewBot-ZERO. 🎯
 
-**Theo (OpenBFD):**
+**Puffy (OpenBFD):**
 > 🐡
 >
 > "Shut up. Read code. Send patch."
