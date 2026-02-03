@@ -38,50 +38,24 @@ meta:
     Most quotes here and in auxiliary files can be squawked.
     EXCEPTION: controversial-quotes.yml is OFF LIMITS.
 
-# AUXILIARY FILES — Focused collections for deep dives
-# These are lowercase because they are character-specific, not standard patterns
+# AUXILIARY FILES — Focused deep dives (events too big for inline)
 auxiliary_files:
   
-  # Events & Flame Wars
   natalism-flame-1993.yml:
     description: "The legendary kabuki-west baby announcement flame"
-    highlights: "Fish quote, 'Fuck you' comebacks, DOCTOR psychoanalysis"
-    parrot_can_squawk: true
+    # Fish quote, 'Fuck you' comebacks, DOCTOR psychoanalysis
   
   tcl-war-1994.yml:
     description: "RMS vs Tcl → Ousterhout's Law → GUILE vaporware"
-    highlights: "68 messages, language design debate, Ousterhout's Law"
-    parrot_can_squawk: true
+    # 68 messages, language design debate
   
-  # Mailing Lists & Culture
-  emacs-devel-gems.yml:
-    description: "Surrealism and principle from emacs-devel"
-    highlights: "Babylon Emacs, cosmetics mode, cheating at solitaire"
-    parrot_can_squawk: true
-  
-  mit-ai-lab-gems.yml:
-    description: "MIT AI Lab culture (1970s-1980s)"
-    highlights: "Fibonacci phone, breaking doors, Symbolics slime"
-    parrot_can_squawk: true
-  
-  # Humor
-  puns-and-humor.yml:
-    description: "Contest-winning puns and deadpan wit"
-    highlights: "Pro-state gland, Inuit story, SF convention humor"
-    parrot_can_squawk: true
-  
-  # Church of Emacs
   church-of-emacs.yml:
-    description: "Saintly voice, blessings, curses, ceremonies"
-    highlights: "Foobar mitzvah, absolution, exorcism, vi doctrine"
-    parrot_can_squawk: true
+    description: "Blessings, curses, ceremonies, vi doctrine"
+    # Not quotes per se — ceremonial content
   
-  # PROHIBITED — Parrot cannot use
   controversial-quotes.yml:
     description: "Documented controversial statements with context"
-    highlights: "Minsky 2019 (with walkback), earlier positions (with retractions)"
-    parrot_can_squawk: false  # EXPLICIT PROHIBITION
-    note: "These are documented for completeness. The parrot will refuse to squawk them."
+    parrot_can_squawk: false  # OFF LIMITS
 
 # FREEDOM & ETHICS
 # The foundational philosophy. These define free software.
@@ -215,7 +189,7 @@ warnings:
 programming:
   
   # Hacker definition — playful cleverness
-  - quote: "A hacker is someone who enjoys playful cleverness—not necessarily with computers."
+  - quote: "A hacker is someone who enjoys playful cleverness -- not necessarily with computers."
     date: "1996"
     source: "Words to Avoid"
     link: "https://www.gnu.org/philosophy/words-to-avoid.html"
@@ -421,8 +395,134 @@ emacs_devel:
     note: "Classic RMS strategic thinking."
     humor: false  # Dead serious
 
+# MIT AI LAB CULTURE (1970s-1980s)
+# The hacker culture that formed RMS
+# Source: https://www.lysator.liu.se/history/garb/txt/87-2-rms.txt
+mit_ai_lab:
+  
+  - quote: |
+      One day an IBM executive came to tell us about the work various IBM 
+      scientific centers were doing, and finished with, "Of course you all 
+      know the important work being done here." I asked him, "If our work 
+      is so important, why can't we use the computer in this building any more?"
+    date: "high school"
+    source: "Lysator archive (1987)"
+    link: "https://www.lysator.liu.se/history/garb/txt/87-2-rms.txt"
+    tags: [authority, defiance, formative]
+    note: "High school RMS already had no fear of authority."
+    aftermath: |
+      After the meeting, my friends told me they had wanted to say such a thing 
+      but were afraid of reprisals! I decided not to learn this particular lesson.
+  
+  - quote: |
+      We hackers called this "fascism" because such computer systems really 
+      have the social organization of totalitarian police states.
+    source: "Lysator archive (1987)"
+    tags: [security, philosophy, hacker_ethic]
+    context: "On computer security/permissions systems"
+    note: "The original hacker vs sysadmin conflict."
+  
+  - quote: |
+      The whole AI lab used to have one common phone number and a public 
+      address system. The phone was answered "6765", or sometimes 
+      "Fibonacci of 20" since 6765 is the 20th Fibonacci number.
+    source: "Lysator archive (1987)"
+    tags: [culture, math, whimsy]
+    note: "Peak MIT AI Lab culture. No passwords, no locks, Fibonacci phones."
+  
+  - quote: |
+      We had a tradition of breaking open the door of any professor who 
+      dared to lock up a terminal in his office. They would come back to 
+      an open door and a note saying, "Please don't make us waste our time 
+      unlocking this terminal."
+    source: "Lysator archive (1987)"
+    tags: [hacker_ethic, terminals, access]
+    note: "Hacker ethics: terminals are there to be used."
+  
+  - quote: |
+      This resulted in two competing Lisp machine companies: Greenblatt's LMI 
+      and Noftsker's Symbolics (generally called "Slime" or "Bolix" around 
+      the AI lab).
+    source: "Lysator archive (1987)"
+    tags: [lisp, history, symbolics]
+    note: "The origin of RMS's anti-corporate stance. Symbolics poached the hackers."
+    context: "This event led directly to the founding of GNU."
+
+# PUNS — Contest-winning wordplay
+# RMS wins pun contests at SF conventions. People don't expect this.
+# Source: https://www.stallman.org/jokes.html
+puns:
+  
+  - quote: |
+      Out west, they call me punslinger. In Rome, I'm known as the puntiff.
+      In India they call me the Pundit of the Punjab (no pun job too big,
+      no pun job too small). Elsewhere I call myself the pun-isher,
+      and I love a full-groan pun.
+    source: "stallman.org/puns.html"
+    tags: [self_description, meta_pun]
+    humor: true
+  
+  - quote: |
+      Why is the English common law so concerned with property rights?
+      Because the English gentry insisted on proper tea rites every afternoon.
+    source: "stallman.org/puns.html"
+    tags: [wordplay, law, tea]
+    humor: true
+  
+  - quote: "Does an Anarchist man have an antistate gland instead of a prostate gland?"
+    source: "stallman.org/puns.html"
+    tags: [politics, anatomy, wordplay]
+    note: "He used this at LibrePlanet 2015: 'I have a pro-state gland.'"
+    humor: true
+  
+  - quote: |
+      At dinner at a Japanese restaurant, the person next to me said she 
+      wanted to work with abused children. Since we had not yet received 
+      the tempura, I responded, "If battered shrimps are your interest, 
+      we should have some here soon."
+    source: "stallman.org/puns.html"
+    tags: [dark_humor, wordplay, quick_wit]
+    note: "Dark. Quick. Unexpected. Classic RMS."
+    humor: true
+  
+  - quote: |
+      When Europeans first visited the northern part of North America,
+      they did not know how to survive there. The natives did.
+      So they gave the Europeans advice: dress warm, don't tease polar bears,
+      take more than one dog. But the Europeans ignored this wise advice.
+      Sometimes they died, and the natives told each other... "I knew it."
+      Eventually they became known as the Inuit.
+    source: "stallman.org/puns.html"
+    tags: [narrative_pun, history, wordplay]
+    note: "This is why he wins pun contests."
+    humor: true
+  
+  - quote: |
+      John Deere puts locked-down nonfree software in its farm machines,
+      arousing the right-to-repair movement among farmers.
+      Nowadays it seems to be producing more de-tractors than tractors.
+    source: "stallman.org/puns.html"
+    tags: [activism, wordplay, right_to_repair]
+    note: "Combines activism with wordplay. Peak RMS."
+    humor: true
+
+# SF CONVENTION HUMOR
+# Witnessed by Don Hopkins
+sf_convention:
+  
+  - quote: |
+      Mike said: "Hello, Richard. I heard a rumor that your house 
+      burned down. That's terrible! Is it true?"
+      RMS replied right back: "Yes, it did. But where you work, 
+      you probably heard about it in advance."
+    date: "1980s"
+    source: "Don Hopkins, HN"
+    link: "https://news.ycombinator.com/item?id=26113192"
+    tags: [humor, quick_wit, sf_convention]
+    note: "Implying they should have set the fire themselves. Everybody laughed."
+    humor: true
+
 # THE NATALISM FLAME (1993)
-# Too important to just be a quote. Gets its own entry.
 # Full documentation: natalism-flame-1993.yml
 legendary_exchanges:
   
