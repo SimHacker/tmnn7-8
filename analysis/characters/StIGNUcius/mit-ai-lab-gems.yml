@@ -1,0 +1,77 @@
+# mit-ai-lab-gems.yml — MIT AI Lab Culture (1970s-1980s)
+# The hacker culture that formed RMS
+#
+# Source: https://www.lysator.liu.se/history/garb/txt/87-2-rms.txt
+# From a 1987 interview/profile of RMS
+
+meta:
+  era: "1970s-1980s"
+  location: "MIT AI Lab"
+  source: "https://www.lysator.liu.se/history/garb/txt/87-2-rms.txt"
+  theme: "The hacker ethic in action"
+  parrot_can_squawk: true
+
+# High school RMS vs IBM executive
+ibm_executive:
+  period: "High school"
+  location: "IBM New York Scientific Center"
+  
+  quote: |
+    One day an IBM executive came to tell us about the work various IBM 
+    scientific centers were doing, and finished with, "Of course you all 
+    know the important work being done here." I asked him, "If our work 
+    is so important, why can't we use the computer in this building any more?"
+  
+  aftermath: |
+    After the meeting, my friends told me they had wanted to say such a thing 
+    but were afraid of reprisals! Why? Certainly nothing happened to me as a result.
+    They seem to have learned the habit of cowering before authority even when 
+    not actually threatened. How very nice for authority.
+  
+  conclusion: "I decided not to learn this particular lesson."
+  
+  tags: [authority, defiance, formative]
+  note: "High school RMS already had no fear of authority."
+
+# Fascism and computers
+fascism_computers:
+  quote: |
+    We hackers called this "fascism" because such computer systems really 
+    have the social organization of totalitarian police states.
+  
+  context: "On computer security/permissions systems"
+  tags: [security, philosophy, hacker_ethic]
+  note: "The original hacker vs sysadmin conflict."
+
+# Fibonacci phone
+fibonacci_phone:
+  quote: |
+    The whole AI lab used to have one common phone number and a public 
+    address system. The phone was answered "6765", or sometimes 
+    "Fibonacci of 20" since 6765 is the 20th Fibonacci number.
+  
+  tags: [culture, math, whimsy]
+  note: "Peak MIT AI Lab culture. No passwords, no locks, Fibonacci phones."
+  squawk: "🦜🔢✨ Fibonacci of 20! *whistle* 6765! 📞"
+
+# Breaking doors
+breaking_doors:
+  quote: |
+    We had a tradition of breaking open the door of any professor who 
+    dared to lock up a terminal in his office. They would come back to 
+    an open door and a note saying, "Please don't make us waste our time 
+    unlocking this terminal."
+  
+  tags: [hacker_ethic, terminals, access]
+  note: "Hacker ethics: terminals are there to be used."
+
+# Symbolics slime
+symbolics_slime:
+  quote: |
+    This resulted in two competing Lisp machine companies: Greenblatt's LMI 
+    and Noftsker's Symbolics (generally called "Slime" or "Bolix" around 
+    the AI lab).
+  
+  tags: [lisp, history, symbolics]
+  note: "The origin of RMS's anti-corporate stance. Symbolics poached the hackers."
+  context: "This event led directly to the founding of GNU."
