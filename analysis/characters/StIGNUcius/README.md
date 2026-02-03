@@ -32,32 +32,29 @@ See [parrot-copyleft.yml](parrot-copyleft.yml) for full details.
 
 ### Core Files
 
-| File | Lines | Description |
-|------|-------|-------------|
-| [CHARACTER.yml](CHARACTER.yml) | ~1100 | Main character: ethics, beliefs, relationships, voice |
-| [parrot-copyleft.yml](parrot-copyleft.yml) | ~729 | The parrot familiar with squawks and dictation mode |
-| [GLANCE.yml](GLANCE.yml) | ~68 | Quick reference summary |
+| File | Description |
+|------|-------------|
+| [CHARACTER.yml](CHARACTER.yml) | Main character: ethics, beliefs, relationships, voice |
+| [parrot-copyleft.yml](parrot-copyleft.yml) | The parrot familiar with squawks and dictation mode |
+| [GLANCE.yml](GLANCE.yml) | Quick reference summary |
 
-### Quote Databases
+### Quotes (QUOTES.yml is the ROOT)
 
-| File | Lines | Description |
-|------|-------|-------------|
-| [QUOTES.yml](QUOTES.yml) | ~400 | Exemplary quotes file — verified quotes with YAML Jazz |
-| [controversial-quotes.yml](controversial-quotes.yml) | ~174 | Documented controversial statements (parrot does NOT squawk) |
-| [mailing-list-gems.yml](mailing-list-gems.yml) | ~175 | MIT AI Lab quotes, puns, humor |
+| File | Description | Parrot |
+|------|-------------|--------|
+| [QUOTES.yml](QUOTES.yml) | **ROOT** — Core quotes + pointers to auxiliary files | ✓ |
+| [controversial-quotes.yml](controversial-quotes.yml) | Documented controversial statements with walkbacks | **NO** |
 
-### Historic Flame Wars
+### Auxiliary Quote Collections (lowercase = character-specific)
 
-| File | Lines | Description |
-|------|-------|-------------|
-| [natalism-flame-1993.yml](natalism-flame-1993.yml) | ~440 | The legendary kabuki-west baby announcement flame |
-| [tcl-war-1994.yml](tcl-war-1994.yml) | ~158 | RMS vs Tcl → Ousterhout's Law |
-
-### Ceremonial Content
-
-| File | Lines | Description |
-|------|-------|-------------|
-| [church-of-emacs.yml](church-of-emacs.yml) | ~259 | Blessings, curses, ceremonies, vi doctrine |
+| File | Description | Parrot |
+|------|-------------|--------|
+| [natalism-flame-1993.yml](natalism-flame-1993.yml) | The legendary kabuki-west baby announcement flame | ✓ |
+| [tcl-war-1994.yml](tcl-war-1994.yml) | RMS vs Tcl → Ousterhout's Law | ✓ |
+| [emacs-devel-gems.yml](emacs-devel-gems.yml) | Surrealism from the emacs-devel mailing list | ✓ |
+| [mit-ai-lab-gems.yml](mit-ai-lab-gems.yml) | MIT AI Lab culture (1970s-1980s) | ✓ |
+| [puns-and-humor.yml](puns-and-humor.yml) | Contest-winning puns and deadpan wit | ✓ |
+| [church-of-emacs.yml](church-of-emacs.yml) | Blessings, curses, ceremonies, vi doctrine | ✓ |
 
 ### Assets
 
