@@ -45,15 +45,12 @@ See [parrot-copyleft.yml](parrot-copyleft.yml) for full details.
 | [QUOTES.yml](QUOTES.yml) | **ROOT** — Core quotes + pointers to auxiliary files | ✓ |
 | [controversial-quotes.yml](controversial-quotes.yml) | Documented controversial statements with walkbacks | **NO** |
 
-### Auxiliary Quote Collections (lowercase = character-specific)
+### Auxiliary Files (events too big for inline)
 
 | File | Description | Parrot |
 |------|-------------|--------|
 | [natalism-flame-1993.yml](natalism-flame-1993.yml) | The legendary kabuki-west baby announcement flame | ✓ |
 | [tcl-war-1994.yml](tcl-war-1994.yml) | RMS vs Tcl → Ousterhout's Law | ✓ |
-| [emacs-devel-gems.yml](emacs-devel-gems.yml) | Surrealism from the emacs-devel mailing list | ✓ |
-| [mit-ai-lab-gems.yml](mit-ai-lab-gems.yml) | MIT AI Lab culture (1970s-1980s) | ✓ |
-| [puns-and-humor.yml](puns-and-humor.yml) | Contest-winning puns and deadpan wit | ✓ |
 | [church-of-emacs.yml](church-of-emacs.yml) | Blessings, curses, ceremonies, vi doctrine | ✓ |
 
 ### Assets
