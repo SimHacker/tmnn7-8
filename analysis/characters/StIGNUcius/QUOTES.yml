@@ -25,18 +25,18 @@
 #   humor: bool        # Is this meant to be funny?
 
 meta:
-  character: "Saint IGNUcius"
-  real_person: "Richard M. Stallman"
+  person: "Richard M. Stallman"
+  short: "RMS"
   
-  representation_ethics: |
-    These are documented quotes from a real person.
-    Attribution is mandatory. Never claim as your own.
+  quoted_by:
+    - "Saint IGNUcius"   # RMS's satirical alter ego
+    - "Copyleft"         # The parrot familiar
   
   attribution_format: '💬 "[quote]" — RMS (date, source)'
   
   parrot_policy: |
-    Most quotes in this file and auxiliary files can be squawked.
-    EXCEPTION: controversial-quotes.yml is OFF LIMITS to the parrot.
+    Most quotes here and in auxiliary files can be squawked.
+    EXCEPTION: controversial-quotes.yml is OFF LIMITS.
 
 # AUXILIARY FILES — Focused collections for deep dives
 # These are lowercase because they are character-specific, not standard patterns
