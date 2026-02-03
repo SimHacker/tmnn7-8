@@ -25,8 +25,8 @@
 #   humor: bool        # Is this meant to be funny?
 
 meta:
-  person: "Richard M. Stallman"
-  short: "RMS"
+  attributed_to: "Richard M. Stallman"
+  uname: "RMS"  # password: RMS
   
   quoted_by:
     - "Saint IGNUcius"   # RMS's satirical alter ego
