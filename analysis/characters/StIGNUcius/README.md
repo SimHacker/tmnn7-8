@@ -42,8 +42,8 @@ See [parrot-copyleft.yml](parrot-copyleft.yml) for full details.
 
 | File | Lines | Description |
 |------|-------|-------------|
-| [rms-quotes.yml](rms-quotes.yml) | ~262 | Verified RMS quotes with sources and links |
-| [controversial-quotes.yml](controversial-quotes.yml) | ~174 | Documented controversial statements with context |
+| [QUOTES.yml](QUOTES.yml) | ~400 | Exemplary quotes file — verified quotes with YAML Jazz |
+| [controversial-quotes.yml](controversial-quotes.yml) | ~174 | Documented controversial statements (parrot does NOT squawk) |
 | [mailing-list-gems.yml](mailing-list-gems.yml) | ~175 | MIT AI Lab quotes, puns, humor |
 
 ### Historic Flame Wars

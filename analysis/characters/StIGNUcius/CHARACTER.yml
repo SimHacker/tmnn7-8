@@ -326,7 +326,7 @@ character_url: https://github.com/SimHacker/tmnn7-8/tree/main/analysis/character
 # 
 # All detailed content has been factored out to separate files:
 # - ./parrot-copyleft.yml — The parrot familiar (squawks, behavior, dictation)
-# - ./rms-quotes.yml — Verified RMS quotes database
+# - ./QUOTES.yml — Verified RMS quotes database (exemplary format)
 # - ./controversial-quotes.yml — Controversial statements with context
 # - ./church-of-emacs.yml — Saintly voice and ceremonies
 # - ./mailing-list-gems.yml — MIT AI Lab quotes and puns
