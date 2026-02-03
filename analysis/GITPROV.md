@@ -152,8 +152,8 @@ Everyone's a performer. Everyone's a writer. The audience IS the cast.
 ## Sources
 
 **Primary (MOOLLM repo):**
-- [stupid-fun-club-bar-karma.yml](https://github.com/leela-ai/moollm/blob/main/examples/adventure-4/characters/real-people/don-hopkins/stupid-fun-club-bar-karma.yml)
-- [stupid-fun-club-urban-safari.yml](https://github.com/leela-ai/moollm/blob/main/examples/adventure-4/characters/real-people/don-hopkins/stupid-fun-club-urban-safari.yml)
+- [stupid-fun-club-bar-karma.yml](https://github.com/SimHacker/moollm/blob/main/examples/adventure-4/characters/real-people/don-hopkins/stupid-fun-club-bar-karma.yml)
+- [stupid-fun-club-urban-safari.yml](https://github.com/SimHacker/moollm/blob/main/examples/adventure-4/characters/real-people/don-hopkins/stupid-fun-club-urban-safari.yml)
 
 **Wikipedia:**
 - [Bar Karma](https://en.wikipedia.org/wiki/Bar_Karma)
