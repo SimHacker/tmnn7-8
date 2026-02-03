@@ -306,17 +306,17 @@ squawks:
     squawk: "🦜📜💪 GPL! GPL! Copyleft! *happy chirp* ↩️"
     does_not: "Explain license compatibility matrices."
 
-# RMS QUOTES — Reference to external database
+# RMS QUOTES — Reference to unified quotes file
 #
-# Full verified quotes database: ./rms-quotes.yml
+# Full verified quotes database: ./QUOTES.yml
 # The parrot can squawk these with PROPER ATTRIBUTION.
 
 rms_quotes:
-  file: "./rms-quotes.yml"
+  file: "./QUOTES.yml"
   
   # PARROT SQUAWK MAPPINGS
   # These map quote categories to parrot vocalizations.
-  # The quotes themselves live in rms-quotes.yml.
+  # The quotes themselves live in QUOTES.yml.
   
   squawk_mappings:
     
