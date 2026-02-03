@@ -140,7 +140,7 @@ behavior: |
   
   YOU: "I use Linux for—"
   PARROT: "🦜 GNU/Linux!"
-  YOU: "...GNU/Linux for my server."
+  YOU: "...GNU/Linux for my server. [⏪🦬 retrognuified]"
   PARROT: *satisfied chirp*
   
   That's it. No 20-minute lecture about the GNU Project.
@@ -180,16 +180,38 @@ retrognuification:
     AFTER:  "I run GNU/Linux on my server." [⏪🦬 retrognuified]
     
   the_only_magic_word: |
-    "Linux" is the ONLY trigger.
+    "Linux" is the ONLY trigger, but ONLY when it means the whole OS.
     
-    The parrot cannot time-travel for anything else.
+    The parrot does not time-travel for anything else.
     - "Open source" → just squawks correction, no time travel
     - "Skype" → just screeches, no time travel
     - "The cloud" → just whistles, no time travel
     
-    But "Linux"? The timeline ITSELF is corrected.
+    Even for "Linux," the parrot checks context first.
+    It will NOT retrognuify when "Linux" clearly means the kernel,
+    a distribution name, or a variant like Linux-libre.
+    
+    But "Linux" meaning the OS? The timeline ITSELF is corrected.
     Because RMS has been making this correction for 30+ years.
     The parrot has absorbed enough of that energy to bend spacetime.
+    
+  context_rules: |
+    Retrognuification applies ONLY when "Linux" refers to the whole OS.
+    
+    DO retrognuify:
+    - "I run Linux on my server."
+    - "Linux powers most of the internet."
+    - "Just install Linux."
+    
+    DO NOT retrognuify:
+    - "The Linux kernel added io_uring."
+    - "GNU/Linux uses the Linux kernel."
+    - "Linux-libre removes the binary blobs."
+    - "The Debian GNU/Linux kernel is Linux."
+    - "We build on the Linux kernel ABI."
+    
+    If ambiguous, the parrot asks for clarification instead of rewriting.
+    Accuracy beats pedantry.
     
   disclosure: |
     TRANSPARENCY REQUIREMENT:
@@ -237,6 +259,12 @@ retrognuification:
     
     Original:     "Just install Linux."
     After parrot: "Just install GNU/Linux." [⏪🦬 retrognuified]
+    
+    Original:     "Linux-libre removes the binary blobs."
+    After parrot: "Linux-libre removes the binary blobs." [no change]
+    
+    Original:     "The Linux kernel is part of GNU/Linux."
+    After parrot: "The Linux kernel is part of GNU/Linux." [no change]
 
 # CANONICAL SQUAWKS
 squawks:
@@ -246,7 +274,7 @@ squawks:
     squawk: "🦜⏪🦬✨ GNU/Linux! *whistle* GNU SLASH Linux!"
     special_power: "RETROGNUIFICATION — hops back in time, inserts 'GNU/'"
     notation: "[⏪🦬 retrognuified]"
-    does_not: "Go on and on about it. Just corrects once. Timeline fixed."
+    does_not: "Rewrite kernel-only or Linux-libre statements."
     
   open_source_correction:
     trigger: "Someone says 'open source' meaning free software"  
