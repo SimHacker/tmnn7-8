@@ -1,15 +1,15 @@
 # QUOTES.yml — Saint IGNUcius / RMS
-# Exemplary quotes file for MOOLLM characters
+# ROOT of the quotes tree for this character
 #
-# This file demonstrates the standard QUOTES.yml format:
-# - Categories organized to fit the person
-# - Each quote has standard base keys + bespoke notes
-# - YAML Jazz: generous comments, context, narrative
-# - Can be used as a seed/template for any character
+# This is the STANDARD quotes file for MOOLLM characters.
+# For characters with extensive quote collections (like RMS),
+# this file is the ROOT that points to auxiliary files.
 #
-# SOURCES: Merged from QUOTES.md (narrative) + rms-quotes.yml (data)
-# See also: controversial-quotes.yml, mailing-list-gems.yml
-
+# STRUCTURE:
+# - Core quotes organized by theme (in this file)
+# - Auxiliary files for focused events/collections (lowercase)
+# - controversial-quotes.yml flagged with parrot prohibition
+#
 # STANDARD BASE KEYS (required for each quote):
 #   quote: string      # The actual quote text
 #   date: string       # Year or YYYY-MM-DD
@@ -22,24 +22,66 @@
 #   context: string    # What prompted this quote
 #   significance: string  # Why this quote matters
 #   squawk: bool       # Can the parrot use this? (default: true)
-#   verified: bool     # Source verified? (default: true)
 #   humor: bool        # Is this meant to be funny?
 
 meta:
   character: "Saint IGNUcius"
   real_person: "Richard M. Stallman"
+  
   representation_ethics: |
     These are documented quotes from a real person.
     Attribution is mandatory. Never claim as your own.
+  
   attribution_format: '💬 "[quote]" — RMS (date, source)'
+  
   parrot_policy: |
-    Most quotes can be squawked by Copyleft the parrot.
-    Controversial quotes (in separate file) are NOT squawked.
-  related_files:
-    - controversial-quotes.yml  # Documented but not squawked
-    - mailing-list-gems.yml     # MIT AI Lab culture, puns
-    - natalism-flame-1993.yml   # The legendary kabuki-west exchange
-    - tcl-war-1994.yml          # RMS vs Tcl
+    Most quotes in this file and auxiliary files can be squawked.
+    EXCEPTION: controversial-quotes.yml is OFF LIMITS to the parrot.
+
+# AUXILIARY FILES — Focused collections for deep dives
+# These are lowercase because they are character-specific, not standard patterns
+auxiliary_files:
+  
+  # Events & Flame Wars
+  natalism-flame-1993.yml:
+    description: "The legendary kabuki-west baby announcement flame"
+    highlights: "Fish quote, 'Fuck you' comebacks, DOCTOR psychoanalysis"
+    parrot_can_squawk: true
+  
+  tcl-war-1994.yml:
+    description: "RMS vs Tcl → Ousterhout's Law → GUILE vaporware"
+    highlights: "68 messages, language design debate, Ousterhout's Law"
+    parrot_can_squawk: true
+  
+  # Mailing Lists & Culture
+  emacs-devel-gems.yml:
+    description: "Surrealism and principle from emacs-devel"
+    highlights: "Babylon Emacs, cosmetics mode, cheating at solitaire"
+    parrot_can_squawk: true
+  
+  mit-ai-lab-gems.yml:
+    description: "MIT AI Lab culture (1970s-1980s)"
+    highlights: "Fibonacci phone, breaking doors, Symbolics slime"
+    parrot_can_squawk: true
+  
+  # Humor
+  puns-and-humor.yml:
+    description: "Contest-winning puns and deadpan wit"
+    highlights: "Pro-state gland, Inuit story, SF convention humor"
+    parrot_can_squawk: true
+  
+  # Church of Emacs
+  church-of-emacs.yml:
+    description: "Saintly voice, blessings, curses, ceremonies"
+    highlights: "Foobar mitzvah, absolution, exorcism, vi doctrine"
+    parrot_can_squawk: true
+  
+  # PROHIBITED — Parrot cannot use
+  controversial-quotes.yml:
+    description: "Documented controversial statements with context"
+    highlights: "Minsky 2019 (with walkback), earlier positions (with retractions)"
+    parrot_can_squawk: false  # EXPLICIT PROHIBITION
+    note: "These are documented for completeness. The parrot will refuse to squawk them."
 
 # FREEDOM & ETHICS
 # The foundational philosophy. These define free software.
@@ -429,15 +471,27 @@ usage:
     Copyleft the parrot can squawk most of these quotes.
     See parrot-copyleft.yml for squawk mappings.
     
-    Controversial quotes (in controversial-quotes.yml) are NOT squawked.
-    Those are documented for completeness only.
+    EXCEPTION: controversial-quotes.yml is OFF LIMITS.
+    The parrot will refuse if asked to use those.
   
   template_usage: |
-    This QUOTES.yml can serve as a template for any character:
+    QUOTES.yml is the STANDARD quotes file for any MOOLLM character.
     
-    1. Copy the structure (meta, categories, quotes)
-    2. Adjust categories to fit your character
-    3. Keep the standard base keys (quote, date, source, link, tags)
-    4. Add bespoke keys as needed (note, context, significance, etc.)
-    5. Use YAML Jazz: comments, narrative, context
-    6. Link to verification sources when possible
+    For simple characters:
+    - Just use QUOTES.yml with categories and quotes
+    
+    For characters with extensive quote collections:
+    - QUOTES.yml is the ROOT of the quotes tree
+    - Point to auxiliary files for focused events/collections
+    - Use lowercase filenames for character-specific auxiliary files
+    - Flag any prohibited content (like controversial-quotes.yml)
+    
+    Standard structure:
+    1. meta: character info, attribution format, parrot policy
+    2. auxiliary_files: (optional) pointers to focused collections
+    3. categories: quotes organized by theme
+    4. usage: guidance for using the quotes
+    
+    Standard base keys per quote:
+    - quote, date, source, link, tags (required)
+    - note, context, significance, humor (optional YAML Jazz)

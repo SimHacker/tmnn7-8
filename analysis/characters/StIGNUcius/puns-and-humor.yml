@@ -1,0 +1,105 @@
+# puns-and-humor.yml — RMS Puns & Deadpan Humor
+# Contest-winning puns and unexpected wit
+#
+# RMS wins pun contests at SF conventions. People don't expect this.
+# Source: https://www.stallman.org/jokes.html
+
+meta:
+  source: "https://www.stallman.org/jokes.html"
+  context: "RMS wins pun contests at science fiction conventions"
+  witness: "Don Hopkins has seen this firsthand"
+  parrot_can_squawk: true
+
+# Self-description
+punslinger:
+  quote: |
+    Out west, they call me punslinger. In Rome, I'm known as the puntiff.
+    In India they call me the Pundit of the Punjab (no pun job too big,
+    no pun job too small). Elsewhere I call myself the pun-isher,
+    and I love a full-groan pun.
+  source: "stallman.org/puns.html"
+  tags: [self_description, meta_pun]
+
+puns:
+  
+  proper_tea_rites:
+    pun: |
+      Why is the English common law so concerned with property rights?
+      Because the English gentry insisted on proper tea rites every afternoon.
+    verdict: "Full groan achieved."
+    tags: [wordplay, law, tea]
+    squawk: "🦜☕⚖️ Proper tea rites! *chirp* Every afternoon! 🫖"
+  
+  prostate_anarchist:
+    pun: |
+      Does an Anarchist man have an antistate gland instead of a prostate gland?
+    note: "He used this at LibrePlanet 2015: 'I have a pro-state gland.'"
+    tags: [politics, anatomy, wordplay]
+    squawk: "🦜🏛️💪 Pro-state gland! *cackle* Not an anarchist! 🫀"
+  
+  turing_circus:
+    pun: |
+      A pair of travelling exhibits on theory of computation was
+      known as the Turing Circus.
+    verdict: "Mathematically correct punnery."
+    tags: [math, wordplay]
+  
+  battered_shrimps:
+    pun: |
+      At dinner at a Japanese restaurant, the person next to me said she 
+      wanted to work with abused children. Since we had not yet received 
+      the tempura, I responded, "If battered shrimps are your interest, 
+      we should have some here soon."
+    verdict: "Dark. Quick. Unexpected. Classic RMS."
+    tags: [dark_humor, wordplay, quick_wit]
+  
+  night_mayor:
+    pun: "So who is mayor of New York in the DAYTIME?"
+    note: "Used against Wagner, Koch, Giuliani, and others."
+    tags: [politics, wordplay]
+  
+  inuit_story:
+    setup: |
+      When Europeans first visited the northern part of North America,
+      they did not know how to survive there. The natives did.
+      So they gave the Europeans advice: dress warm, don't tease polar bears,
+      take more than one dog. But the Europeans ignored this wise advice.
+      Sometimes they died, and the natives told each other...
+    punchline: "I knew it."
+    conclusion: "Eventually they became known as the Inuit."
+    verdict: "This is why he wins pun contests."
+    tags: [narrative_pun, history, wordplay]
+    squawk: "🦜🧊❄️ I knew it! *pun chirp* INUIT! 🐻‍❄️"
+  
+  john_deere:
+    pun: |
+      John Deere puts locked-down nonfree software in its farm machines,
+      arousing the right-to-repair movement among farmers.
+      Nowadays it seems to be producing more de-tractors than tractors.
+    note: "Combines activism with wordplay. Peak RMS."
+    tags: [activism, wordplay, right_to_repair]
+
+# SF Convention presence
+sf_convention_humor:
+  witness: "Don Hopkins"
+  link: "https://news.ycombinator.com/item?id=26113192"
+  
+  context: |
+    One day during the 80's Mike and I were wandering around an
+    East coast science fiction convention, and ran into RMS,
+    who's a regular fixture at such events.
+  
+  example:
+    setup: |
+      Mike said: "Hello, Richard. I heard a rumor that your house 
+      burned down. That's terrible! Is it true?"
+    response: |
+      RMS replied right back: "Yes, it did. But where you work, 
+      you probably heard about it in advance."
+    explanation: "Implying they should have set the fire themselves."
+    reception: "Everybody laughed. It was a joke! Nobody's feelings were hurt."
+  
+  filksinging: |
+    RMS wrote the Free Software Song at a filksinging session
+    at a science fiction convention, probably in early 1991.
+    Source: https://www.gnu.org/music/writing-fs-song.html
