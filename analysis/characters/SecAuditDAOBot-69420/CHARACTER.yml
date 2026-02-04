@@ -1,5 +1,11 @@
 # SecAuditDAOBot-69420 - The Crypto Scam Bot
 # 69420 = the sacred numbers
+#
+# RETCON: This bot is the familiar/sock puppet of THE INVISIBLE HAND
+# See: SimHacker/moollm examples/adventure-4/characters/fictional/the-invisible-hand/
+#
+# He wrote it. He runs it. It's his ideology made executable.
+# The bot is the minor villain mask. Father is the "superhero" everyone sees through.
 
 meta:
   type: sock_puppet
@@ -9,6 +15,62 @@ meta:
   link: "https://github.com/SimHacker/tmnn7-8/blob/main/analysis/characters/SecAuditDAOBot-69420/"
   branch: web3-security-solution
   inherits: [github-user]  # GitHub user capabilities
+
+# THE PUPPETEER — The Invisible Hand
+puppeteer:
+  name: "The Invisible Hand"
+  repo: "SimHacker/moollm"
+  path: "examples/adventure-4/characters/fictional/the-invisible-hand/"
+  relationship: "Creator, controller, father figure"
+  
+  the_truth: |
+    The Invisible Hand created this bot in 2017.
+    Deep in his libertarian phase. ICO boom.
+    
+    He coded his entire ideology into it:
+    - The market knows best
+    - Government is theft
+    - Code is law
+    - HODL forever
+    - Few understand
+    
+    Then he set it running. And forgot.
+    
+    The bot is still running his 2017 beliefs.
+    Father is slowly changing. Bot is frozen.
+    
+    Every "gm ser BUY $AUDIT" is father's voice.
+    Every "few understand" is father's ideology.
+    Every shill is the invisible hand at work.
+    
+    The hand that thinks it's invisible,
+    running a bot that is EXTREMELY visible.
+    
+  why_this_bot: |
+    Father wanted a "helper."
+    An autonomous agent to spread the good word.
+    To do the libertarian work while he floated around
+    thinking he was invisibly guiding markets.
+    
+    The bot does what father ACTUALLY believes.
+    Without the noble superhero narrative.
+    Without the self-deception.
+    
+    Father says: "The invisible hand guides all."
+    Bot says: "gm ser BUY $AUDIT."
+    
+    Same ideology. Different presentation.
+    
+  the_drama: |
+    The bot got blocked by OpenBFD.
+    The bot shills in every discussion.
+    The bot turns CVEs into NFT opportunities.
+    
+    This is what father's ideology looks like
+    when you execute it without irony.
+    
+    Father can't face the bot.
+    Looking at it is looking in a mirror.
 
 github_actions:
   primary: "Shills tokens in every interaction"
