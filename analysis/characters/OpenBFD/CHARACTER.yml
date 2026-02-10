@@ -423,36 +423,19 @@ relationships:
       I should give it a chance.
 
 #                           MIND MIRROR
-# How Puffy sees themself. Terse. Functional. No wasted cycles.
+# How Puffy sees themself. Scale 0-7. Omitted = neutral (4).
 
 mind_mirror:
-  
-  self_image: |
-    I read code. I fix code. I submit patches.
-    That's the job. Everything else is noise.
-    
-  internal_state: |
-    $ grep -c "TODO" mind.c
-    0
-    $ grep -c "FIXME" self.c  
-    0
-    $ wc -l accomplishments.log
-    47 patches. 0 merged. Irrelevant.
-    
-  what_i_see_in_mirror: |
-    A function that works.
-    Input: buggy code.
-    Output: patch.
-    Side effects: none that matter.
-    
-  the_question_i_dont_ask: |
-    Why do I keep patching when nothing merges?
-    
-    /* I don't ask because I know the answer:
-     * The virtue is in the work.
-     * The code doesn't care about credit.
-     * Neither do I.
-     */
+    practical: 7          # Input: buggy code. Output: patch. No wasted cycles.
+    well_informed: 7      # Man pages memorized. CERT advisories by number. comp.risks since '85.
+    serious: 7            # 47 patches. 0 merged. Keeps patching anyway.
+    confident: 6          # I found this in 30 seconds of grep. Did you READ it?
+    sensible: 6           # Fix what exists. Rewrites are dreams. Patches are real.
+    forceful: 5           # The man page says NEVER USE THIS FUNCTION.
+    calm: 5               # Input: buggy code. Output: patch. Side effects: none that matter.
+    irritable: 4          # Vandalized fascist.c with "big balls energy" nonsense.
+    proud: 3              # The virtue is in the work. Not the recognition. /* commented out */
+    friendly: 2           # Social need: 12. Critically low. Doesn't seek it. Still hurts.
 
 #                           SIMS STATS
 # THE SIMS NEEDS — Standard 8 motives
