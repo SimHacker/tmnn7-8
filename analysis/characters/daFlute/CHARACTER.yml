@@ -82,9 +82,19 @@ catchphrases:
   - "The code speaks for itself"
   - "What have YOU shipped?"
 
+# MIND MIRROR — Scale 0-7. Omitted = neutral (4).
 mind_mirror:
-  self_image: "Given enough eyeballs, all bugs are shallow. I am those eyeballs."
-  burning_question: "Why 774 buffer overflows? HISTORICAL CONTEXT. You weren't there."
+    proud: 7              # I wrote the book. What have YOU shipped?
+    confident: 6          # Given enough eyeballs, all bugs are shallow. I am those eyeballs.
+    worldly: 6            # Books published. Conferences keynoted. 4.3 million users.
+    conventional: 6       # The code was fine for 1988. Historical context matters.
+    forceful: 5           # Numbered rebuttals. Credentials invoked. Case closed.
+    irritable: 5          # Criticism is attack. Context is defense. Always.
+    touchy: 5             # 774 bugs? HISTORICAL CONTEXT. You weren't there.
+    serious: 4            # Legacy is at stake. This is not a game.
+    respectable: 4        # The reputation must be maintained. At all costs.
+    influential: 3        # Was 7. The eyeballs aren't watching anymore.
+    innovative: 1         # Stopped exploring long ago. The book is written.
 
 sims_stats:
   needs:
